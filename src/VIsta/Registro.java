@@ -412,6 +412,11 @@ public class Registro extends javax.swing.JFrame {
         ContenedorP.add(Mas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, 50, 50));
 
         Mas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Mas.png"))); // NOI18N
+        Mas2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Mas2MouseClicked(evt);
+            }
+        });
         ContenedorP.add(Mas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, 50, 50));
 
         jPanel1.add(ContenedorP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 940, 530));
@@ -506,9 +511,21 @@ public class Registro extends javax.swing.JFrame {
                         returnBack();
                     }
          });
-        
-    
     }//GEN-LAST:event_Mas1MouseClicked
+
+    private void Mas2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas2MouseClicked
+      Registro_Nacionalidades nacio = new Registro_Nacionalidades();
+       nacio.setVisible(true);
+        this.enable(false);
+       jLabel1.setVisible(true);
+         nacio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                nacio.addComponentListener(new ComponentAdapter() {
+                    @Override
+                    public void componentHidden(ComponentEvent e) {
+                        returnBack();
+                    }
+         });
+    }//GEN-LAST:event_Mas2MouseClicked
 
     /**
      * @param args the command line arguments
