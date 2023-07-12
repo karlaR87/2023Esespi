@@ -115,22 +115,22 @@ public class Ncionalidad extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        if (registro != null) {
-            // Obtener los idiomas seleccionados de la tabla
-            for (int row = 0; row < jTable1.getRowCount(); row++) {
-                boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
-                if (isSelected) {
-                    Boolean idioma = (Boolean) jTable1.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
-                    registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
-                    System.out.println("funciona beybi");
-                }
-            }
-        } else {
-            System.out.println("La referencia 'registro' no se ha establecido correctamente.");
-        }
-
-        // Limpiar la selección de la tabla
-        jTable1.clearSelection();
+//        if (registro != null) {
+//            // Obtener los idiomas seleccionados de la tabla
+//            for (int row = 0; row < jTable1.getRowCount(); row++) {
+//                boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
+//                if (isSelected) {
+//                    Boolean idioma = (Boolean) jTable1.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
+//                    registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
+//                    System.out.println("funciona beybi");
+//                }
+//            }
+//        } else {
+//            System.out.println("La referencia 'registro' no se ha establecido correctamente.");
+//        }
+//
+//        // Limpiar la selección de la tabla
+//        jTable1.clearSelection();
 
     }//GEN-LAST:event_jPanel1MouseClicked
 

@@ -5,9 +5,12 @@
 package VIsta;
 
 import Modelo.conexionSql;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -23,6 +26,7 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         this.registro = registro;  // Establecer la referencia a la instancia de Registro
     }
     public Registro_Idiomas() {
+        
         initComponents();
         Mostrar();  // Método para mostrar los idiomas en la tabla
         addCheckBox(2, jTable1);  // Método para agregar casillas de verificación a la tabla
@@ -65,7 +69,10 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
     } 
 
-     
+      public void enabled(boolean status)
+    {
+        this.enable(status);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,7 +161,12 @@ public class Registro_Idiomas extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        if (registro != null) {
+       
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
+       
+          if (registro != null) {
             // Obtener los idiomas seleccionados de la tabla
             for (int row = 0; row < jTable1.getRowCount(); row++) {
                 boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
@@ -167,14 +179,11 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         } else {
             System.out.println("La referencia 'registro' no se ha establecido correctamente.");
         }
-        
+
         // Limpiar la selección de la tabla
         jTable1.clearSelection();
-    
-    }//GEN-LAST:event_jPanel1MouseClicked
 
-    private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
-       this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     

@@ -121,7 +121,7 @@ public class Idiomas extends javax.swing.JPanel {
                 boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
                 if (isSelected) {
                     Boolean idioma = (Boolean) jTable1.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
-                    registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
+                    //registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
                     System.out.println("funciona beybi");
                 }
             }
