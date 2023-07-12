@@ -2,6 +2,7 @@
 package VIsta;
 
 import Modelo.PrimerUso;
+import VIsta.Programa.JframePrincipal;
 import VIsta.Registro;
 import java.awt.BorderLayout;
 import java.awt.Frame;
@@ -14,8 +15,6 @@ public class Login extends javax.swing.JFrame {
   
     public Login() {
         initComponents();
-     
-    
     }
 
     
@@ -25,6 +24,7 @@ public class Login extends javax.swing.JFrame {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        Registrarse = new javax.swing.JLabel();
         RecuperarContra = new javax.swing.JLabel();
         OlvidoContra = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -48,6 +48,16 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Registrarse.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        Registrarse.setForeground(new java.awt.Color(255, 255, 255));
+        Registrarse.setText("REGISTRARSE");
+        Registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegistrarseMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
+
         RecuperarContra.setBackground(new java.awt.Color(255, 255, 255));
         RecuperarContra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         RecuperarContra.setForeground(new java.awt.Color(59, 126, 255));
@@ -70,7 +80,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 180, 20));
 
         btnIngresar.setBackground(new java.awt.Color(44, 104, 244));
-        btnIngresar.setFont(new java.awt.Font("Javanese Text", 0, 18)); // NOI18N
+        btnIngresar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
         btnIngresar.setBorder(null);
@@ -81,12 +91,12 @@ public class Login extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, 80, 40));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 100, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/boton.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 120, 80));
 
-        jLabel2.setFont(new java.awt.Font("Javanese Text", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Iniciar Sesión");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
@@ -153,10 +163,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
+        JframePrincipal JFP = new JframePrincipal();
+        JFP.setVisible(true);
         this.setVisible(false);
-        Registro v = new Registro();
-        v.setVisible(true);    
+         
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void RecuperarContraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RecuperarContraMouseClicked
@@ -164,6 +174,12 @@ public class Login extends javax.swing.JFrame {
         RC.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_RecuperarContraMouseClicked
+
+    private void RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarseMouseClicked
+         this.setVisible(false);
+        Registro v = new Registro();
+        v.setVisible(true);  
+    }//GEN-LAST:event_RegistrarseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -202,6 +218,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel OlvidoContra;
     private javax.swing.JLabel RecuperarContra;
+    private javax.swing.JLabel Registrarse;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel jLabel1;

@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JFrame {
 
@@ -72,8 +73,7 @@ public class Registro extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {          
 //            if(tenemos todos los datos)
 //            {
-//            pasar a siguiente
-               cardLayout.show(jPanel2, "PS");
+                cardLayout.show(jPanel2, "PS");
 //            }
 //            else
 //            {
