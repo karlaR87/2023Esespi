@@ -7,6 +7,7 @@ import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Reportes.Reportes_Inicio;
 import VIsta.Programa.Usuario.Usuario;
+import desplazable.Desface;
 import java.awt.CardLayout;
 import java.awt.Color;
 
@@ -18,6 +19,8 @@ public class JframePrincipal extends javax.swing.JFrame {
       Color colorChange = new Color(255, 98, 98);
     public JframePrincipal() {       
         initComponents();
+        desplace = new Desface();
+        jLabel1.setVisible(false);
         PanelsShowInit();
     }
     
@@ -28,7 +31,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     Patrullajes_Inicio patrullajesInicio = new Patrullajes_Inicio();
     Inventario_Inicio inventarioInicio = new Inventario_Inicio();
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
-    
+    Desface desplace;
     private void PanelsShowInit()
     {
        slideMenu.setVisible(false);
@@ -75,6 +78,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblSalir = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,6 +110,9 @@ public class JframePrincipal extends javax.swing.JFrame {
 
         lblMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/menuBack1.png"))); // NOI18N
         lblMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuPrincipalMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblMenuPrincipalMouseEntered(evt);
             }
@@ -296,6 +303,9 @@ public class JframePrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 310, 620));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(980, 710));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -304,7 +314,7 @@ public class JframePrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.setLayout(new java.awt.CardLayout());
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 980, 710));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -322,9 +332,10 @@ public class JframePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseEntered
-
-        if (!slideMenu.isVisible()) {
-        slideMenu.setVisible(true);
+        if (!slideMenu.isVisible()) {   
+         slideMenu.setVisible(true);
+         jLabel1.setVisible(true);
+       desplace.desplazarDerecha(slideMenu, 100, 130, 5, 10);
     }else{ }
 
     }//GEN-LAST:event_lblMenuPrincipalMouseEntered
@@ -339,7 +350,7 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void lblUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseEntered
         lblUsuario.setBackground(colorChange);
-         slideMenu.setVisible(true); 
+         slideMenu.setVisible(true);    
     }//GEN-LAST:event_lblUsuarioMouseEntered
 
     private void lblUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseExited
@@ -413,7 +424,8 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_slideMenuMouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-    slideMenu.setVisible(false); 
+        slideMenu.setVisible(false);  
+        jLabel1.setVisible(false);
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
@@ -466,6 +478,10 @@ public class JframePrincipal extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_lblSalirMouseClicked
 
+    private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblMenuPrincipalMouseClicked
+
     private void changeColor()
     {
         Color color = new Color(70, 70, 70);
@@ -512,7 +528,8 @@ public class JframePrincipal extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconInicio;
@@ -522,6 +539,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel iconReportes;
     private javax.swing.JLabel iconSalir;
     private javax.swing.JLabel iconUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
