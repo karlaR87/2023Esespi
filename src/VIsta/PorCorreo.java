@@ -92,7 +92,7 @@ public class PorCorreo extends javax.swing.JPanel {
             
             //CodigoNumericoRandom
             Random random = new Random();
-           numeroAleatorio = random.nextInt(23543);
+            numeroAleatorio = random.nextInt(23543);
             
             String Mensaje = "Ingresa el siguiente codigo para reestablecer tu Contraseña: " + numeroAleatorio;
            

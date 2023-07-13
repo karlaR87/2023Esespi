@@ -281,6 +281,11 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 200, 600));
 
         jPanel3.setOpaque(false);
+        jPanel3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPanel3FocusLost(evt);
+            }
+        });
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel3MouseEntered(evt);
@@ -294,14 +299,14 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+            .addGap(0, 315, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 620, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 310, 620));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 315, 620));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -332,6 +337,8 @@ public class JframePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseEntered
+        desplace.desplazarDerecha(slideMenu, 100, 130, 5, 10);
+         slideMenu.setSize(200, 600); jLabel1.setVisible(true);
         if (!slideMenu.isVisible()) {   
          slideMenu.setVisible(true);
          jLabel1.setVisible(true);
@@ -350,7 +357,7 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void lblUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseEntered
         lblUsuario.setBackground(colorChange);
-         slideMenu.setVisible(true);    
+        slideMenu.setVisible(true);    
     }//GEN-LAST:event_lblUsuarioMouseEntered
 
     private void lblUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseExited
@@ -424,10 +431,18 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_slideMenuMouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-        slideMenu.setVisible(false);  
-        jLabel1.setVisible(false);
+   
+     
     }//GEN-LAST:event_jPanel3MouseExited
 
+    private void metodo()
+    {
+        desplace.desplazarIzquierda(slideMenu, slideMenu.getX(), 0, 10, 10);
+        slideMenu.setSize(0, 600);
+      jLabel1.setVisible(false);
+       
+    }
+    
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
 
     }//GEN-LAST:event_jPanel3MouseEntered
@@ -481,6 +496,10 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
+
+    private void jPanel3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel3FocusLost
+        metodo();
+    }//GEN-LAST:event_jPanel3FocusLost
 
     private void changeColor()
     {

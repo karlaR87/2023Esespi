@@ -5,6 +5,8 @@
 package VIsta;
 
 import fonts.Fuentes;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl14.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
         lbl15.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
         
-        btnSiguiente.setText("<html><font color='white'> Siguiente </font></html>");
+        btnSiguiente.setText("<html> <font color='white'> Siguiente </font> </html>");
         caracBtn(btnSiguiente);  
     }
     
@@ -76,23 +78,23 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl13 = new javax.swing.JLabel();
         lbl14 = new javax.swing.JLabel();
         lbl15 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombres = new javax.swing.JTextField();
+        txtApellidos = new javax.swing.JTextField();
+        txtFechaNacimiento = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtDui = new javax.swing.JTextField();
+        txtNumeroTel = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtSangre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        javax.swing.JComboBox<String> jComboBox2 = new javax.swing.JComboBox<>();
+        cmbEstadoCivil = new javax.swing.JComboBox<>();
+        javax.swing.JComboBox<String> cmbTipoPersona = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -109,7 +111,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1.png.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
@@ -189,31 +191,61 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl15.setText("Genero ");
         ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, -1, 30));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText(" ");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombres.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombres.setText(" ");
+        txtNombres.setBorder(null);
+        ContenedorP.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 230, 30));
+
+        txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidos.setText(" ");
+        txtApellidos.setBorder(null);
+        ContenedorP.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 230, 30));
+
+        txtFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
+        txtFechaNacimiento.setForeground(new java.awt.Color(0, 0, 0));
+        txtFechaNacimiento.setText(" ");
+        txtFechaNacimiento.setBorder(null);
+        ContenedorP.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 230, 30));
+
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        txtDireccion.setText(" ");
+        txtDireccion.setBorder(null);
+        ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 230, 30));
+
+        txtDui.setBackground(new java.awt.Color(255, 255, 255));
+        txtDui.setForeground(new java.awt.Color(0, 0, 0));
+        txtDui.setText(" ");
+        txtDui.setBorder(null);
+        ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 220, 30));
+
+        txtNumeroTel.setBackground(new java.awt.Color(255, 255, 255));
+        txtNumeroTel.setForeground(new java.awt.Color(0, 0, 0));
+        txtNumeroTel.setText(" ");
+        txtNumeroTel.setBorder(null);
+        txtNumeroTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNumeroTelActionPerformed(evt);
             }
         });
-        ContenedorP.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
+        ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
+
+        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
+        txtCorreo.setText(" ");
+        txtCorreo.setBorder(null);
+        ContenedorP.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 230, 30));
+
+        txtSangre.setBackground(new java.awt.Color(255, 255, 255));
+        txtSangre.setForeground(new java.awt.Color(0, 0, 0));
+        txtSangre.setText(" ");
+        txtSangre.setBorder(null);
+        ContenedorP.add(txtSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 230, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, 50));
-
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setText(" ");
-        jTextField2.setBorder(null);
-        ContenedorP.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 230, 30));
-
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setText(" ");
-        jTextField3.setBorder(null);
-        ContenedorP.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 230, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, 50));
@@ -221,66 +253,36 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, 50));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setText(" ");
-        jTextField4.setBorder(null);
-        ContenedorP.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 230, 30));
-
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, 50));
-
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setText(" ");
-        jTextField5.setBorder(null);
-        ContenedorP.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 230, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, 50));
 
-        jComboBox1.setBackground(new java.awt.Color(59, 126, 255));
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        ContenedorP.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 250, 30));
+        cmbEstadoCivil.setBackground(new java.awt.Color(59, 126, 255));
+        cmbEstadoCivil.setForeground(new java.awt.Color(255, 255, 255));
+        cmbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEstadoCivil.setBorder(null);
+        ContenedorP.add(cmbEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 250, 30));
 
-        jComboBox2.setBackground(new java.awt.Color(59, 126, 255));
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setBorder(null);
-        jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox2.setEditor(null);
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        cmbTipoPersona.setBackground(new java.awt.Color(59, 126, 255));
+        cmbTipoPersona.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTipoPersona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTipoPersona.setBorder(null);
+        cmbTipoPersona.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cmbTipoPersona.setEditor(null);
+        cmbTipoPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                cmbTipoPersonaActionPerformed(evt);
             }
         });
-        ContenedorP.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 250, 30));
+        ContenedorP.add(cmbTipoPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 250, 30));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, 50));
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField9.setText(" ");
-        jTextField9.setBorder(null);
-        ContenedorP.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 230, 30));
-
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField8.setText(" ");
-        jTextField8.setBorder(null);
-        ContenedorP.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 230, 30));
-
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, 50));
-
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField7.setText(" ");
-        jTextField7.setBorder(null);
-        ContenedorP.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 220, 30));
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, 50));
@@ -410,45 +412,42 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
 
     }//GEN-LAST:event_lblRegresarMouseClicked
-
+Registro_Idiomas idiomas = new Registro_Idiomas();
     public void ViewIdiomas()
     {
-       Registro_Idiomas idiomas = new Registro_Idiomas();
        idiomas.setVisible(true);
        jLabel1.setVisible(true);
-        enabled(false);
+         setFocus0(false);
+        
          idiomas.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 idiomas.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                       enabled(true);
                          jLabel1.setVisible(false);
+                         setFocus0(true);
                     }
          });
 
     }
     
+    public boolean status = true;
+    Registro_Nacionalidades nacio = new Registro_Nacionalidades();
     public void ViewNacio()
     {
-        Registro_Nacionalidades nacio = new Registro_Nacionalidades();
        nacio.setVisible(true);
-       enabled(false);
        jLabel1.setVisible(true);
+       setFocus0(false);
        
          nacio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 nacio.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                        enabled(true);
                          jLabel1.setVisible(false);
+                         setFocus0(true);
                     }
          });       
     }
-    
-      public void enabled(boolean status)
-    {
-        
-    }
+
     public JLabel getlblBack()
     {
         return lblRegresar;
@@ -459,13 +458,13 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         return btnSiguiente;
     }
     
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNumeroTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroTelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNumeroTelActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void cmbTipoPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPersonaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_cmbTipoPersonaActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -493,14 +492,26 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void Mas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas1MouseClicked
-        ViewIdiomas();
+        if(idiomas.isVisible()){} else {setFocus0(false); ViewIdiomas(); }
     }//GEN-LAST:event_Mas1MouseClicked
 
     private void Mas2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas2MouseClicked
-        ViewNacio();
+         if(nacio.isVisible()){} else { setFocus0(false); ViewNacio();}
     }//GEN-LAST:event_Mas2MouseClicked
 
-
+    public void setFocus0(boolean status)
+    {
+       txtNombres.setFocusable(status);
+       txtApellidos.setFocusable(status);
+       txtFechaNacimiento.setFocusable(status);
+       txtDireccion.setFocusable(status);
+       txtDui.setFocusable(status);
+       txtNumeroTel.setFocusable(status);
+       txtCorreo.setFocusable(status);
+       txtSangre.setFocusable(status);
+       cmbEstadoCivil.setFocusable(status);   
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContenedorP;
     private javax.swing.JLabel Mas1;
@@ -508,7 +519,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     private javax.swing.JPanel MasIdiomas;
     private javax.swing.JPanel MasNacionalidades;
     private javax.swing.JButton btnSiguiente;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbEstadoCivil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
@@ -523,14 +534,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbl10;
     private javax.swing.JLabel lbl11;
     private javax.swing.JLabel lbl12;
@@ -545,5 +548,13 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     private javax.swing.JLabel lbl8;
     private javax.swing.JLabel lbl9;
     private javax.swing.JLabel lblRegresar;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtDui;
+    private javax.swing.JTextField txtFechaNacimiento;
+    private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtNumeroTel;
+    private javax.swing.JTextField txtSangre;
     // End of variables declaration//GEN-END:variables
 }

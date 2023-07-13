@@ -53,7 +53,7 @@ public class Registro extends javax.swing.JFrame {
         
         JLabel lblBack1 = RDP.getlblBack();
         JLabel lblBack2 = PS.getlblBack();
-        JButton next = RDP.getBtnSiguiente();
+        JButton next = RDP.getBtnSiguiente();      
         
         lblBack1.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
@@ -83,12 +83,6 @@ public class Registro extends javax.swing.JFrame {
         });
 
     }
-    
-    public void enabled(boolean status)
-    {
-        this.enable(status);
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -6,10 +6,10 @@ public class ConexionPrueba {
     public static Connection getConnection(){
     
     //Cadena de conexion
-        String conexionURL = "jdbc:sqlserver://localhost:49789;" +
+        String conexionURL = "jdbc:sqlserver://localhost:50214;" +
             "databaseName=ESESPI_Expo1;" +
             "user=sa;" +
-            "password=yupiyolo123;" +
+            "password=itr2023;" +
             "encrypt=true;trustServerCertificate=true";
         
     //Devuelve la conexion

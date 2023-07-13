@@ -8,6 +8,15 @@ import fonts.Fuentes;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+
+import com.twilio.Twilio;
+import com.twilio.converter.Promoter;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
+import java.net.URI;
+import java.math.BigDecimal;
+
 /**
  *
  * @author Paola Mejia
@@ -169,9 +178,24 @@ public class PorSMS extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAceptarMouseClicked
 
     private void btnEnviarCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarCodeMouseClicked
-
+        sendSMS();
     }//GEN-LAST:event_btnEnviarCodeMouseClicked
+    
+    public static final String ACCOUNT_SID = "AC006c0437db67738083eabf3584946607";
+    public static final String AUTH_TOKEN = "de88ae773e436901a04227ec80e7b02e";
 
+    private void sendSMS()
+    {  
+      Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+    Message message = Message.creator(
+      new com.twilio.type.PhoneNumber("+50370842281"),
+      new com.twilio.type.PhoneNumber("+18146224821"),
+      "asasasas")
+    .create();
+
+    System.out.println(message.getSid());
+    }
+    
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
 
     }//GEN-LAST:event_lblBackMouseClicked
