@@ -148,6 +148,7 @@ public class PorPreguntasS extends javax.swing.JPanel {
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAceptarMouseClicked(evt);

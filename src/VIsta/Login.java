@@ -51,6 +51,7 @@ public class Login extends javax.swing.JFrame {
         Registrarse.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Registrarse.setForeground(new java.awt.Color(255, 255, 255));
         Registrarse.setText("REGISTRARSE");
+        Registrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RegistrarseMouseClicked(evt);
@@ -62,6 +63,7 @@ public class Login extends javax.swing.JFrame {
         RecuperarContra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         RecuperarContra.setForeground(new java.awt.Color(59, 126, 255));
         RecuperarContra.setText("Recuperar Contraseña");
+        RecuperarContra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RecuperarContra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RecuperarContraMouseClicked(evt);

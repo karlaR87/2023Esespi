@@ -66,6 +66,7 @@ public class MenuRC extends javax.swing.JPanel {
         btnCorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R4.png"))); // NOI18N
         btnCorreo.setBorderPainted(false);
         btnCorreo.setContentAreaFilled(false);
+        btnCorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCorreoMouseClicked(evt);
@@ -77,6 +78,7 @@ public class MenuRC extends javax.swing.JPanel {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 370, 70));
 
         lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
+        lblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBackMouseClicked(evt);
@@ -108,6 +110,7 @@ public class MenuRC extends javax.swing.JPanel {
         btnSMS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R4.png"))); // NOI18N
         btnSMS.setBorderPainted(false);
         btnSMS.setContentAreaFilled(false);
+        btnSMS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSMS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSMSMouseClicked(evt);
@@ -121,6 +124,7 @@ public class MenuRC extends javax.swing.JPanel {
         btnSeguridad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R4.png"))); // NOI18N
         btnSeguridad.setBorderPainted(false);
         btnSeguridad.setContentAreaFilled(false);
+        btnSeguridad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSeguridad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSeguridadMouseClicked(evt);

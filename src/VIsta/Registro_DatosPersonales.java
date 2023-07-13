@@ -113,6 +113,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
+        lblRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegresarMouseClicked(evt);
@@ -349,6 +350,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R77.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
+        btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSiguienteMouseClicked(evt);
@@ -367,6 +369,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ContenedorP.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, 70));
 
         Mas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Mas.png"))); // NOI18N
+        Mas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Mas1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Mas1MouseClicked(evt);
@@ -375,6 +378,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ContenedorP.add(Mas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, 50, 50));
 
         Mas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Mas.png"))); // NOI18N
+        Mas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Mas2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Mas2MouseClicked(evt);

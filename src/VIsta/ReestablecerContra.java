@@ -130,12 +130,13 @@ public class ReestablecerContra extends javax.swing.JPanel {
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R4.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 360, 80));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, 360, 60));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle3.png"))); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 390, 130));

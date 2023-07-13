@@ -88,6 +88,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
+        lblRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegresarMouseClicked(evt);
@@ -98,6 +99,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R11.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAceptarMouseClicked(evt);

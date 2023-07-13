@@ -4,15 +4,14 @@
  */
 package VIsta.Programa.Usuario;
 
+
+
 /**
  *
  * @author Pao
  */
 public class Usuario extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Usuario
-     */
     public Usuario() {
         initComponents();
     }
@@ -29,6 +28,7 @@ public class Usuario extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setPreferredSize(new java.awt.Dimension(980, 710));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -39,16 +39,16 @@ public class Usuario extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(358, 358, 358)
+                .addGap(242, 242, 242)
                 .addComponent(jLabel1)
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
+                .addGap(276, 276, 276)
                 .addComponent(jLabel1)
-                .addContainerGap(449, Short.MAX_VALUE))
+                .addContainerGap(386, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

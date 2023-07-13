@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIsta.Programa;
 
 import VIsta.Login;
@@ -12,21 +8,19 @@ import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Reportes.Reportes_Inicio;
 import VIsta.Programa.Usuario.Usuario;
 import java.awt.CardLayout;
+import java.awt.Color;
 
 /**
  *
  * @author Pao
  */
 public class JframePrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JframePrincipal
-     */
-    public JframePrincipal() {
+      Color colorChange = new Color(255, 98, 98);
+    public JframePrincipal() {       
         initComponents();
-         PanelsShowInit();
+        PanelsShowInit();
     }
-
+    
     private CardLayout cardLayout;
     Usuario user = new Usuario();
     Inicio home = new Inicio();
@@ -37,6 +31,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     
     private void PanelsShowInit()
     {
+       slideMenu.setVisible(false);
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
         
@@ -49,8 +44,8 @@ public class JframePrincipal extends javax.swing.JFrame {
         
         cardLayout.show(jPanel1, "inicio");
 
+
     }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,14 +57,24 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        btnUsuario = new javax.swing.JButton();
-        btnInicio = new javax.swing.JButton();
-        btnPolicias = new javax.swing.JButton();
-        btnPatrullajes = new javax.swing.JButton();
-        btnInventario = new javax.swing.JButton();
-        btnReportes = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        iconUsuario = new javax.swing.JLabel();
+        iconInicio = new javax.swing.JLabel();
+        iconPolicias = new javax.swing.JLabel();
+        iconPatrullajes = new javax.swing.JLabel();
+        iconInventario = new javax.swing.JLabel();
+        iconReportes = new javax.swing.JLabel();
+        iconSalir = new javax.swing.JLabel();
+        lblMenuPrincipal = new javax.swing.JLabel();
+        slideMenu = new javax.swing.JPanel();
+        lblUsuario = new javax.swing.JLabel();
+        lblInicio = new javax.swing.JLabel();
+        lblPolicias = new javax.swing.JLabel();
+        lblPatrullajes = new javax.swing.JLabel();
+        lblInventario = new javax.swing.JLabel();
+        lblReportes = new javax.swing.JLabel();
+        lblSalir = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,88 +83,228 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 710));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
-        btnUsuario.setBorderPainted(false);
-        btnUsuario.setContentAreaFilled(false);
-        btnUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUsuarioMouseClicked(evt);
-            }
-        });
-        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuarioActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 60, 50));
+        iconUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
+        jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
-        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/homeIcon.png"))); // NOI18N
-        btnInicio.setBorderPainted(false);
-        btnInicio.setContentAreaFilled(false);
-        btnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnInicioMouseClicked(evt);
+        iconInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/homeIcon.png"))); // NOI18N
+        jPanel2.add(iconInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 50, 70));
+
+        iconPolicias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/policeIcon.png"))); // NOI18N
+        jPanel2.add(iconPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 60, 50));
+
+        iconPatrullajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/carIcon.png"))); // NOI18N
+        jPanel2.add(iconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 50, -1));
+
+        iconInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/gunIcon.png"))); // NOI18N
+        jPanel2.add(iconInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, -1, -1));
+
+        iconReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/docIcon.png"))); // NOI18N
+        jPanel2.add(iconReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
+
+        iconSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/exitIcon.png"))); // NOI18N
+        jPanel2.add(iconSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 40, 40));
+
+        lblMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/menuBack1.png"))); // NOI18N
+        lblMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblMenuPrincipalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMenuPrincipalMouseExited(evt);
             }
         });
-        jPanel2.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 60, 50));
+        jPanel2.add(lblMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
-        btnPolicias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/policeIcon.png"))); // NOI18N
-        btnPolicias.setBorderPainted(false);
-        btnPolicias.setContentAreaFilled(false);
-        btnPolicias.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPoliciasMouseClicked(evt);
+        slideMenu.setBackground(new java.awt.Color(70, 70, 70));
+        slideMenu.setOpaque(false);
+        slideMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                slideMenuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                slideMenuMouseExited(evt);
             }
         });
-        jPanel2.add(btnPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 60, 50));
+        slideMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnPatrullajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/carIcon.png"))); // NOI18N
-        btnPatrullajes.setBorderPainted(false);
-        btnPatrullajes.setContentAreaFilled(false);
-        btnPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblUsuario.setBackground(new java.awt.Color(70, 70, 70));
+        lblUsuario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("  Usuario");
+        lblUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblUsuario.setOpaque(true);
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPatrullajesMouseClicked(evt);
+                lblUsuarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseExited(evt);
             }
         });
-        jPanel2.add(btnPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 60, 50));
+        slideMenu.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 30, 176, 30));
 
-        btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/gunIcon.png"))); // NOI18N
-        btnInventario.setBorderPainted(false);
-        btnInventario.setContentAreaFilled(false);
-        btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblInicio.setBackground(new java.awt.Color(70, 70, 70));
+        lblInicio.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblInicio.setForeground(new java.awt.Color(255, 255, 255));
+        lblInicio.setText("  Inicio");
+        lblInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblInicio.setOpaque(true);
+        lblInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnInventarioMouseClicked(evt);
+                lblInicioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblInicioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblInicioMouseExited(evt);
             }
         });
-        jPanel2.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 60, 50));
+        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 125, 176, 30));
 
-        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/docIcon.png"))); // NOI18N
-        btnReportes.setBorderPainted(false);
-        btnReportes.setContentAreaFilled(false);
-        btnReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblPolicias.setBackground(new java.awt.Color(70, 70, 70));
+        lblPolicias.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblPolicias.setForeground(new java.awt.Color(255, 255, 255));
+        lblPolicias.setText("  Policias");
+        lblPolicias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblPolicias.setOpaque(true);
+        lblPolicias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnReportesMouseClicked(evt);
+                lblPoliciasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblPoliciasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblPoliciasMouseExited(evt);
             }
         });
-        jPanel2.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 60, 50));
+        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 220, 176, 30));
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/exitIcon.png"))); // NOI18N
-        btnSalir.setBorderPainted(false);
-        btnSalir.setContentAreaFilled(false);
-        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblPatrullajes.setBackground(new java.awt.Color(70, 70, 70));
+        lblPatrullajes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblPatrullajes.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatrullajes.setText("  Patrullajes");
+        lblPatrullajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblPatrullajes.setOpaque(true);
+        lblPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalirMouseClicked(evt);
+                lblPatrullajesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblPatrullajesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblPatrullajesMouseExited(evt);
             }
         });
-        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, 60, 50));
+        slideMenu.add(lblPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 310, 176, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/menuBack1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        lblInventario.setBackground(new java.awt.Color(70, 70, 70));
+        lblInventario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblInventario.setForeground(new java.awt.Color(255, 255, 255));
+        lblInventario.setText("  Inventario");
+        lblInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblInventario.setOpaque(true);
+        lblInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblInventarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblInventarioMouseExited(evt);
+            }
+        });
+        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 380, 176, 30));
+
+        lblReportes.setBackground(new java.awt.Color(70, 70, 70));
+        lblReportes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblReportes.setForeground(new java.awt.Color(255, 255, 255));
+        lblReportes.setText("  Reportes");
+        lblReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblReportes.setOpaque(true);
+        lblReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblReportesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblReportesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblReportesMouseExited(evt);
+            }
+        });
+        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 460, 176, 30));
+
+        lblSalir.setBackground(new java.awt.Color(70, 70, 70));
+        lblSalir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblSalir.setForeground(new java.awt.Color(255, 255, 255));
+        lblSalir.setText("  Salir");
+        lblSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSalir.setOpaque(true);
+        lblSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblSalirMouseExited(evt);
+            }
+        });
+        slideMenu.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 540, 176, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/v.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
+        slideMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
+
+        jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 200, 600));
+
+        jPanel3.setOpaque(false);
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel3MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 620, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 310, 620));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(980, 700));
+        jPanel1.setPreferredSize(new java.awt.Dimension(980, 710));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+        });
         jPanel1.setLayout(new java.awt.CardLayout());
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 980, 710));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 980, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,40 +321,163 @@ public class JframePrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarioMouseClicked
-        cardLayout.show(jPanel1, "usuario");
-    }//GEN-LAST:event_btnUsuarioMouseClicked
+    private void lblMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseEntered
 
-    private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
-        cardLayout.show(jPanel1, "inicio");
-    }//GEN-LAST:event_btnInicioMouseClicked
+        if (!slideMenu.isVisible()) {
+        slideMenu.setVisible(true);
+    }else{ }
 
-    private void btnPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPoliciasMouseClicked
-           cardLayout.show(jPanel1, "policias");
-    }//GEN-LAST:event_btnPoliciasMouseClicked
+    }//GEN-LAST:event_lblMenuPrincipalMouseEntered
 
-    private void btnPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrullajesMouseClicked
-       cardLayout.show(jPanel1, "patrullajes");
-    }//GEN-LAST:event_btnPatrullajesMouseClicked
+    private void lblMenuPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseExited
+ 
+    }//GEN-LAST:event_lblMenuPrincipalMouseExited
 
-    private void btnInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseClicked
-         cardLayout.show(jPanel1, "inventario");
-    }//GEN-LAST:event_btnInventarioMouseClicked
+    private void slideMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideMenuMouseExited
+ 
+    }//GEN-LAST:event_slideMenuMouseExited
 
-    private void btnReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseClicked
-         cardLayout.show(jPanel1, "reportes");
-    }//GEN-LAST:event_btnReportesMouseClicked
+    private void lblUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseEntered
+        lblUsuario.setBackground(colorChange);
+         slideMenu.setVisible(true); 
+    }//GEN-LAST:event_lblUsuarioMouseEntered
 
-    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        Login LG = new Login();
-        LG.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnSalirMouseClicked
+    private void lblUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseExited
+        changeColor(); 
+    }//GEN-LAST:event_lblUsuarioMouseExited
 
-    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarioActionPerformed
+    private void lblInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseEntered
+        lblInicio.setBackground(colorChange);slideMenu.setVisible(true); 
+    }//GEN-LAST:event_lblInicioMouseEntered
 
+    private void lblInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseExited
+        changeColor(); 
+    }//GEN-LAST:event_lblInicioMouseExited
+
+    private void lblPoliciasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseExited
+         changeColor(); 
+            
+    }//GEN-LAST:event_lblPoliciasMouseExited
+
+    private void lblPatrullajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseExited
+        changeColor();  
+    }//GEN-LAST:event_lblPatrullajesMouseExited
+
+    private void lblInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseExited
+       changeColor(); 
+    }//GEN-LAST:event_lblInventarioMouseExited
+
+    private void lblReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseExited
+         changeColor();  
+    }//GEN-LAST:event_lblReportesMouseExited
+
+    private void lblSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseExited
+         changeColor(); 
+    }//GEN-LAST:event_lblSalirMouseExited
+
+    private void lblPoliciasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseEntered
+          lblPolicias.setBackground(colorChange);slideMenu.setVisible(true); 
+          
+
+    }//GEN-LAST:event_lblPoliciasMouseEntered
+
+    private void lblPatrullajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseEntered
+       lblPatrullajes.setBackground(colorChange);slideMenu.setVisible(true);
+
+    }//GEN-LAST:event_lblPatrullajesMouseEntered
+
+    private void lblInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseEntered
+          lblInventario.setBackground(colorChange);slideMenu.setVisible(true); 
+
+    }//GEN-LAST:event_lblInventarioMouseEntered
+
+    private void lblReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseEntered
+          lblReportes.setBackground(colorChange);slideMenu.setVisible(true); 
+
+    }//GEN-LAST:event_lblReportesMouseEntered
+
+    private void lblSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseEntered
+         lblSalir.setBackground(colorChange);slideMenu.setVisible(true);  
+    }//GEN-LAST:event_lblSalirMouseEntered
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+ 
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void slideMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideMenuMouseEntered
+
+    }//GEN-LAST:event_slideMenuMouseEntered
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+    slideMenu.setVisible(false); 
+    }//GEN-LAST:event_jPanel3MouseExited
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+       cardLayout.show(jPanel1, "usuario");
+       slideMenu.setVisible(false);
+       slideMenu.setVisible(true);
+    }//GEN-LAST:event_lblUsuarioMouseClicked
+
+    private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
+      cardLayout.show(jPanel1, "inicio");
+       slideMenu.setVisible(false);
+       slideMenu.setVisible(true);
+    }//GEN-LAST:event_lblInicioMouseClicked
+
+    private void lblPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseClicked
+     cardLayout.show(jPanel1, "policias");
+       slideMenu.setVisible(false);
+       slideMenu.setVisible(true);
+    }//GEN-LAST:event_lblPoliciasMouseClicked
+
+    private void lblPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseClicked
+        cardLayout.show(jPanel1, "patrullajes");
+       slideMenu.setVisible(false);
+       slideMenu.setVisible(true);
+    }//GEN-LAST:event_lblPatrullajesMouseClicked
+
+    private void lblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseClicked
+     cardLayout.show(jPanel1, "inventario");
+       slideMenu.setVisible(false);
+       slideMenu.setVisible(true);
+    }//GEN-LAST:event_lblInventarioMouseClicked
+
+    private void lblReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseClicked
+      cardLayout.show(jPanel1, "reportes");
+       slideMenu.setVisible(false);
+       slideMenu.setVisible(true);
+    }//GEN-LAST:event_lblReportesMouseClicked
+
+    private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
+       Login LG = new Login();
+       LG.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_lblSalirMouseClicked
+
+    private void changeColor()
+    {
+        Color color = new Color(70, 70, 70);
+        lblUsuario.setBackground(color);
+        lblInicio.setBackground(color);
+        lblPolicias.setBackground(color);
+        lblPatrullajes.setBackground(color);
+        lblInventario.setBackground(color);
+        lblReportes.setBackground(color);
+        lblSalir.setBackground(color);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -245,18 +513,27 @@ public class JframePrincipal extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarCode;
-    private javax.swing.JButton btnEnviarCode1;
-    private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnInventario;
-    private javax.swing.JButton btnPatrullajes;
-    private javax.swing.JButton btnPolicias;
-    private javax.swing.JButton btnReportes;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnUsuario;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel iconInicio;
+    private javax.swing.JLabel iconInventario;
+    private javax.swing.JLabel iconPatrullajes;
+    private javax.swing.JLabel iconPolicias;
+    private javax.swing.JLabel iconReportes;
+    private javax.swing.JLabel iconSalir;
+    private javax.swing.JLabel iconUsuario;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblInicio;
+    private javax.swing.JLabel lblInventario;
+    private javax.swing.JLabel lblMenuPrincipal;
+    private javax.swing.JLabel lblPatrullajes;
+    private javax.swing.JLabel lblPolicias;
+    private javax.swing.JLabel lblReportes;
+    private javax.swing.JLabel lblSalir;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPanel slideMenu;
     // End of variables declaration//GEN-END:variables
 }
