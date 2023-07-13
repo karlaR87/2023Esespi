@@ -34,7 +34,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     Desface desplace;
     private void PanelsShowInit()
     {
-       slideMenu.setVisible(false);
+       slideMenu.setLocation(-100, 50);
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
         
@@ -68,6 +68,8 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconReportes = new javax.swing.JLabel();
         iconSalir = new javax.swing.JLabel();
         lblMenuPrincipal = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         slideMenu = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         lblInicio = new javax.swing.JLabel();
@@ -109,6 +111,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(iconSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 40, 40));
 
         lblMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/menuBack1.png"))); // NOI18N
+        lblMenuPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMenuPrincipalMouseClicked(evt);
@@ -121,6 +124,27 @@ public class JframePrincipal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(lblMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 40, 600));
 
         slideMenu.setBackground(new java.awt.Color(70, 70, 70));
         slideMenu.setOpaque(false);
@@ -278,7 +302,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         });
         slideMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
 
-        jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 200, 600));
+        jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 50, 200, 600));
 
         jPanel3.setOpaque(false);
         jPanel3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -294,18 +318,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 jPanel3MouseExited(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 315, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
-        );
-
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 315, 620));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
@@ -337,27 +350,25 @@ public class JframePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseEntered
-        desplace.desplazarDerecha(slideMenu, 100, 130, 5, 10);
-         slideMenu.setSize(200, 600); jLabel1.setVisible(true);
-        if (!slideMenu.isVisible()) {   
-         slideMenu.setVisible(true);
-         jLabel1.setVisible(true);
-       desplace.desplazarDerecha(slideMenu, 100, 130, 5, 10);
-    }else{ }
+
+        if (slideMenu.getX()== -50){
+            desplace.desplazarDerecha(slideMenu, slideMenu.getX(), 130, 10, 5);
+            jLabel1.setVisible(true);
+        }else{}
+
 
     }//GEN-LAST:event_lblMenuPrincipalMouseEntered
 
     private void lblMenuPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseExited
- 
+
     }//GEN-LAST:event_lblMenuPrincipalMouseExited
 
     private void slideMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideMenuMouseExited
- 
+                   
     }//GEN-LAST:event_slideMenuMouseExited
 
     private void lblUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseEntered
         lblUsuario.setBackground(colorChange);
-        slideMenu.setVisible(true);    
     }//GEN-LAST:event_lblUsuarioMouseEntered
 
     private void lblUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseExited
@@ -365,7 +376,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblUsuarioMouseExited
 
     private void lblInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseEntered
-        lblInicio.setBackground(colorChange);slideMenu.setVisible(true); 
+        lblInicio.setBackground(colorChange);
     }//GEN-LAST:event_lblInicioMouseEntered
 
     private void lblInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseExited
@@ -394,28 +405,28 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSalirMouseExited
 
     private void lblPoliciasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseEntered
-          lblPolicias.setBackground(colorChange);slideMenu.setVisible(true); 
+          lblPolicias.setBackground(colorChange);
           
 
     }//GEN-LAST:event_lblPoliciasMouseEntered
 
     private void lblPatrullajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseEntered
-       lblPatrullajes.setBackground(colorChange);slideMenu.setVisible(true);
+       lblPatrullajes.setBackground(colorChange);
 
     }//GEN-LAST:event_lblPatrullajesMouseEntered
 
     private void lblInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseEntered
-          lblInventario.setBackground(colorChange);slideMenu.setVisible(true); 
+          lblInventario.setBackground(colorChange); 
 
     }//GEN-LAST:event_lblInventarioMouseEntered
 
     private void lblReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseEntered
-          lblReportes.setBackground(colorChange);slideMenu.setVisible(true); 
+          lblReportes.setBackground(colorChange);
 
     }//GEN-LAST:event_lblReportesMouseEntered
 
     private void lblSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseEntered
-         lblSalir.setBackground(colorChange);slideMenu.setVisible(true);  
+         lblSalir.setBackground(colorChange);  
     }//GEN-LAST:event_lblSalirMouseEntered
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
@@ -431,18 +442,14 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_slideMenuMouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-   
+
+        if (slideMenu.getX()== 130){
+            desplace.desplazarIzquierda(slideMenu, slideMenu.getX(), -50, 10, 10);
+            jLabel1.setVisible(false);
+        }else{}
      
     }//GEN-LAST:event_jPanel3MouseExited
 
-    private void metodo()
-    {
-        desplace.desplazarIzquierda(slideMenu, slideMenu.getX(), 0, 10, 10);
-        slideMenu.setSize(0, 600);
-      jLabel1.setVisible(false);
-       
-    }
-    
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
 
     }//GEN-LAST:event_jPanel3MouseEntered
@@ -452,39 +459,52 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseExited
 
     private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
-       cardLayout.show(jPanel1, "usuario");
-       slideMenu.setVisible(false);
-       slideMenu.setVisible(true);
+        
+          if (slideMenu.getX()!= -50){
+            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+            cardLayout.show(jPanel1, "usuario");
+            jLabel1.setVisible(true);
+          }
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
     private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
-      cardLayout.show(jPanel1, "inicio");
-       slideMenu.setVisible(false);
-       slideMenu.setVisible(true);
+       if (slideMenu.getX()!= -50){
+            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+            cardLayout.show(jPanel1, "inicio");
+            jLabel1.setVisible(true);
+          }
     }//GEN-LAST:event_lblInicioMouseClicked
 
     private void lblPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseClicked
-     cardLayout.show(jPanel1, "policias");
-       slideMenu.setVisible(false);
-       slideMenu.setVisible(true);
+      if (slideMenu.getX()!= -50){
+            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+            cardLayout.show(jPanel1, "policias");
+            jLabel1.setVisible(true);
+          }
     }//GEN-LAST:event_lblPoliciasMouseClicked
 
     private void lblPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseClicked
-        cardLayout.show(jPanel1, "patrullajes");
-       slideMenu.setVisible(false);
-       slideMenu.setVisible(true);
+        if (slideMenu.getX()!= -50){
+            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+            cardLayout.show(jPanel1, "patrullajes");
+            jLabel1.setVisible(true);
+          }
     }//GEN-LAST:event_lblPatrullajesMouseClicked
 
     private void lblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseClicked
-     cardLayout.show(jPanel1, "inventario");
-       slideMenu.setVisible(false);
-       slideMenu.setVisible(true);
+     if (slideMenu.getX()!= -50){
+            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+            cardLayout.show(jPanel1, "inventario");
+            jLabel1.setVisible(true);
+          }
     }//GEN-LAST:event_lblInventarioMouseClicked
 
     private void lblReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseClicked
-      cardLayout.show(jPanel1, "reportes");
-       slideMenu.setVisible(false);
-       slideMenu.setVisible(true);
+      if (slideMenu.getX()!= -50){
+            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+            cardLayout.show(jPanel1, "reportes");
+            jLabel1.setVisible(true);
+          }
     }//GEN-LAST:event_lblReportesMouseClicked
 
     private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
@@ -498,7 +518,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
     private void jPanel3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel3FocusLost
-        metodo();
+
     }//GEN-LAST:event_jPanel3FocusLost
 
     private void changeColor()
@@ -560,9 +580,11 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel iconUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblInventario;
     private javax.swing.JLabel lblMenuPrincipal;
