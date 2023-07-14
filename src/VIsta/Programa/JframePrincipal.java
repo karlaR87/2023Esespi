@@ -54,23 +54,20 @@ public class JframePrincipal extends javax.swing.JFrame {
         cardLayout.show(jPanel1, "inicio");
         iconInicio1.setVisible(true);
  //----------------------------------------------------------------------       
-        jPanelContenedorSuper1.setVisible(false);
-        cardLayout2 = new CardLayout();
-        jPanelContenedorSuper1.setLayout(cardLayout);
-        jPanelContenedorSuper1.add(policiasInicio.jPanelAddPolice, "addPolice");
-        
-        cardLayout2.show(policiasInicio.jPanelAddPolice, "addPolice"); 
-        
-        JButton btnAdd = policiasInicio.getbtnAdd();
-         btnAdd.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            jLabel3.setVisible(true);
-            jPanelContenedorSuper1.setVisible(true);
-        }
-        });
-                
-        
-       
+//        jPanelContenedorSuper1.setVisible(false);
+//        cardLayout2 = new CardLayout();
+//        jPanelContenedorSuper1.setLayout(cardLayout);
+//        jPanelContenedorSuper1.add(policiasInicio.jPanelAddPolice, "addPolice");
+//        
+//        cardLayout2.show(policiasInicio.jPanelAddPolice, "addPolice"); 
+//        
+//        JButton btnAdd = policiasInicio.getbtnAdd();
+//         btnAdd.addActionListener(new ActionListener() {
+//        public void actionPerformed(ActionEvent e) {
+//            jLabel3.setVisible(true);
+//            jPanelContenedorSuper1.setVisible(true);
+//        }
+//        });
     }
     
     /**

@@ -27,7 +27,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanelAddPolice = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnDeletePolicia = new javax.swing.JButton();
@@ -47,7 +46,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
         jPanelAddPolice.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel3.add(jPanelAddPolice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1010, 710));
@@ -124,7 +122,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public javax.swing.JPanel jPanelAddPolice;
     // End of variables declaration//GEN-END:variables
