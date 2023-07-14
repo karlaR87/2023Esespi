@@ -58,7 +58,7 @@ public class Usuario extends javax.swing.JPanel {
         pnlContenedor = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(51, 51, 51));
-        setPreferredSize(new java.awt.Dimension(980, 710));
+        setPreferredSize(new java.awt.Dimension(1010, 710));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
@@ -134,7 +134,7 @@ public class Usuario extends javax.swing.JPanel {
 
         pnlContenedor.setBackground(new java.awt.Color(51, 51, 51));
         pnlContenedor.setLayout(new java.awt.CardLayout());
-        add(pnlContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 660, 600));
+        add(pnlContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 690, 600));
     }// </editor-fold>//GEN-END:initComponents
 
 

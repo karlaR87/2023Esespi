@@ -19,9 +19,9 @@ public class JframePrincipal extends javax.swing.JFrame {
       Color colorChange = new Color(255, 98, 98);
     public JframePrincipal() {       
         initComponents();
-        desplace = new Desface();
+        slideMenu.setSize(0, 600);
         jLabel1.setVisible(false);
-        jLabel3.setVisible(false);
+         iconChange();
         PanelsShowInit();
     }
     
@@ -32,10 +32,9 @@ public class JframePrincipal extends javax.swing.JFrame {
     Patrullajes_Inicio patrullajesInicio = new Patrullajes_Inicio();
     Inventario_Inicio inventarioInicio = new Inventario_Inicio();
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
-    Desface desplace;
     private void PanelsShowInit()
     {
-       slideMenu.setLocation(-100, 50);
+
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
         
@@ -47,7 +46,6 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel1.add(reportesInicio, "reportes");
         
         cardLayout.show(jPanel1, "inicio");
-        lblUsuario.setVisible(false);
     }
     
     /**
@@ -61,15 +59,19 @@ public class JframePrincipal extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         iconUsuario = new javax.swing.JLabel();
+        iconUsuario1 = new javax.swing.JLabel();
         iconInicio = new javax.swing.JLabel();
+        iconInicio1 = new javax.swing.JLabel();
         iconPolicias = new javax.swing.JLabel();
+        iconPolicias1 = new javax.swing.JLabel();
         iconPatrullajes = new javax.swing.JLabel();
+        iconPatrullajes1 = new javax.swing.JLabel();
         iconInventario = new javax.swing.JLabel();
+        iconInventario1 = new javax.swing.JLabel();
         iconReportes = new javax.swing.JLabel();
+        iconReportes1 = new javax.swing.JLabel();
         iconSalir = new javax.swing.JLabel();
         lblMenuPrincipal = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         slideMenu = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         lblInicio = new javax.swing.JLabel();
@@ -79,7 +81,6 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblReportes = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -90,27 +91,45 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
-        jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+        jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 80, 60, -1));
+
+        iconUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        jPanel2.add(iconUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 70, 70, -1));
 
         iconInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/homeIcon.png"))); // NOI18N
-        jPanel2.add(iconInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 50, 70));
+        jPanel2.add(iconInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 140, 70, 90));
+
+        iconInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        jPanel2.add(iconInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 70, 90));
 
         iconPolicias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/policeIcon.png"))); // NOI18N
-        jPanel2.add(iconPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 60, 50));
+        jPanel2.add(iconPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 60, 80));
+
+        iconPolicias1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        jPanel2.add(iconPolicias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 70, 80));
 
         iconPatrullajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/carIcon.png"))); // NOI18N
-        jPanel2.add(iconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 50, -1));
+        jPanel2.add(iconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 321, 50, 70));
+
+        iconPatrullajes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        jPanel2.add(iconPatrullajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 321, 70, 70));
 
         iconInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/gunIcon.png"))); // NOI18N
-        jPanel2.add(iconInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, -1, -1));
+        jPanel2.add(iconInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 415, 70, 60));
+
+        iconInventario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        jPanel2.add(iconInventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 415, 70, 60));
 
         iconReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/docIcon.png"))); // NOI18N
-        jPanel2.add(iconReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
+        jPanel2.add(iconReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 50, 70));
+
+        iconReportes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        jPanel2.add(iconReportes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 70, 70));
 
         iconSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/exitIcon.png"))); // NOI18N
-        jPanel2.add(iconSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 40, 40));
+        jPanel2.add(iconSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, 40, 40));
 
-        lblMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/menuBack1.png"))); // NOI18N
+        lblMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/menuBack1.png.png"))); // NOI18N
         lblMenuPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,29 +144,9 @@ public class JframePrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(lblMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
-        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 40, 600));
-
         slideMenu.setBackground(new java.awt.Color(70, 70, 70));
         slideMenu.setOpaque(false);
+        slideMenu.setPreferredSize(new java.awt.Dimension(0, 600));
         slideMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 slideMenuMouseEntered(evt);
@@ -164,6 +163,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblUsuario.setText("  Usuario");
         lblUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblUsuario.setOpaque(true);
+        lblUsuario.setPreferredSize(new java.awt.Dimension(180, 25));
         lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblUsuarioMouseClicked(evt);
@@ -175,7 +175,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblUsuarioMouseExited(evt);
             }
         });
-        slideMenu.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 30, 176, 30));
+        slideMenu.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 30, 183, 30));
 
         lblInicio.setBackground(new java.awt.Color(70, 70, 70));
         lblInicio.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -183,6 +183,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblInicio.setText("  Inicio");
         lblInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblInicio.setOpaque(true);
+        lblInicio.setPreferredSize(new java.awt.Dimension(180, 25));
         lblInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblInicioMouseClicked(evt);
@@ -194,7 +195,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInicioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 125, 176, 30));
+        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 119, 183, 30));
 
         lblPolicias.setBackground(new java.awt.Color(70, 70, 70));
         lblPolicias.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -202,6 +203,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblPolicias.setText("  Policias");
         lblPolicias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblPolicias.setOpaque(true);
+        lblPolicias.setPreferredSize(new java.awt.Dimension(180, 25));
         lblPolicias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPoliciasMouseClicked(evt);
@@ -213,7 +215,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblPoliciasMouseExited(evt);
             }
         });
-        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 220, 176, 30));
+        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 183, 30));
 
         lblPatrullajes.setBackground(new java.awt.Color(70, 70, 70));
         lblPatrullajes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -221,6 +223,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblPatrullajes.setText("  Patrullajes");
         lblPatrullajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblPatrullajes.setOpaque(true);
+        lblPatrullajes.setPreferredSize(new java.awt.Dimension(180, 25));
         lblPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPatrullajesMouseClicked(evt);
@@ -232,7 +235,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblPatrullajesMouseExited(evt);
             }
         });
-        slideMenu.add(lblPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 310, 176, 30));
+        slideMenu.add(lblPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 290, 183, 30));
 
         lblInventario.setBackground(new java.awt.Color(70, 70, 70));
         lblInventario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -240,6 +243,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblInventario.setText("  Inventario");
         lblInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblInventario.setOpaque(true);
+        lblInventario.setPreferredSize(new java.awt.Dimension(180, 25));
         lblInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblInventarioMouseClicked(evt);
@@ -251,7 +255,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInventarioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 380, 176, 30));
+        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 375, 183, 30));
 
         lblReportes.setBackground(new java.awt.Color(70, 70, 70));
         lblReportes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -259,6 +263,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblReportes.setText("  Reportes");
         lblReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblReportes.setOpaque(true);
+        lblReportes.setPreferredSize(new java.awt.Dimension(180, 25));
         lblReportes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblReportesMouseClicked(evt);
@@ -270,7 +275,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblReportesMouseExited(evt);
             }
         });
-        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 460, 176, 30));
+        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 459, 183, 30));
 
         lblSalir.setBackground(new java.awt.Color(70, 70, 70));
         lblSalir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -278,6 +283,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblSalir.setText("  Salir");
         lblSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSalir.setOpaque(true);
+        lblSalir.setPreferredSize(new java.awt.Dimension(180, 25));
         lblSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSalirMouseClicked(evt);
@@ -289,9 +295,10 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblSalirMouseExited(evt);
             }
         });
-        slideMenu.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 540, 176, 30));
+        slideMenu.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 536, 183, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/v.png"))); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(100, 25));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel2MouseEntered(evt);
@@ -300,30 +307,12 @@ public class JframePrincipal extends javax.swing.JFrame {
                 jLabel2MouseExited(evt);
             }
         });
-        slideMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
+        slideMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 600));
 
-        jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 50, 200, 600));
-
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(315, 620));
-        jPanel3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel3FocusLost(evt);
-            }
-        });
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel3MouseExited(evt);
-            }
-        });
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 340, 620));
+        jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 0, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(980, 710));
@@ -333,7 +322,7 @@ public class JframePrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.setLayout(new java.awt.CardLayout());
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 600));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 1010, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -350,14 +339,9 @@ public class JframePrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseEntered
+    int x = 0;
 
-        if (slideMenu.getX()== -50){
-            desplace.desplazarDerecha(slideMenu, slideMenu.getX(), 130, 10, 10);
-            jLabel1.setVisible(true);
-            jLabel3.setVisible(true);
-            lblUsuario.setVisible(true);
-        }else{}
+    private void lblMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseEntered
        
     }//GEN-LAST:event_lblMenuPrincipalMouseEntered
 
@@ -442,71 +426,67 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_slideMenuMouseEntered
 
-    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-
-        if (slideMenu.getX() != -50){
-            desplace.desplazarIzquierda(slideMenu, slideMenu.getX(), -50, 10, 10);
-            jLabel1.setVisible(false);
-            jLabel3.setVisible(false);
-            lblUsuario.setVisible(false);
-        }else{}
-     
-    }//GEN-LAST:event_jPanel3MouseExited
-
-    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-
-    }//GEN-LAST:event_jPanel3MouseEntered
-
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
 
     }//GEN-LAST:event_jPanel1MouseExited
 
     private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
-        
-          if (slideMenu.getX()!= -50){
-            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
-            cardLayout.show(jPanel1, "usuario");
-          }
+       iconChange();
+       iconUsuario1.setVisible(true);
+       cardLayout.show(jPanel1, "usuario");
+       ShowHide();  
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
+    private void iconChange()
+    {
+       iconUsuario1.setVisible(false);
+       iconInicio1.setVisible(false);
+       iconPolicias1.setVisible(false);
+       iconPatrullajes1.setVisible(false);
+       iconInventario1.setVisible(false);
+       iconReportes1.setVisible(false);
+    }
+    
     private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
-       if (slideMenu.getX()!= -50){
-            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+
+        iconChange();
+        iconInicio1.setVisible(true);
             cardLayout.show(jPanel1, "inicio");
-            jLabel1.setVisible(true);
-          }
+             ShowHide();
+          
     }//GEN-LAST:event_lblInicioMouseClicked
 
     private void lblPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseClicked
-      if (slideMenu.getX()!= -50){
-            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+
+        iconChange();
+        iconPolicias1.setVisible(true);
             cardLayout.show(jPanel1, "policias");
-            jLabel1.setVisible(true);
-          }
+             ShowHide();
     }//GEN-LAST:event_lblPoliciasMouseClicked
 
     private void lblPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseClicked
-        if (slideMenu.getX()!= -50){
-            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+
+        iconChange();
+        iconPatrullajes1.setVisible(true);
             cardLayout.show(jPanel1, "patrullajes");
-            jLabel1.setVisible(true);
-          }
+             ShowHide();
+
     }//GEN-LAST:event_lblPatrullajesMouseClicked
 
     private void lblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseClicked
-     if (slideMenu.getX()!= -50){
-            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+
+         iconChange();
+        iconInventario1.setVisible(true);
             cardLayout.show(jPanel1, "inventario");
-            jLabel1.setVisible(true);
-          }
+             ShowHide();
     }//GEN-LAST:event_lblInventarioMouseClicked
 
     private void lblReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseClicked
-      if (slideMenu.getX()!= -50){
-            desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
+
+         iconChange();
+        iconReportes1.setVisible(true);
             cardLayout.show(jPanel1, "reportes");
-            jLabel1.setVisible(true);
-          }
+             ShowHide();
     }//GEN-LAST:event_lblReportesMouseClicked
 
     private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
@@ -514,14 +494,10 @@ public class JframePrincipal extends javax.swing.JFrame {
        LG.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_lblSalirMouseClicked
-
+    
     private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
-        // TODO add your handling code here:
+      ShowHide();
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
-
-    private void jPanel3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel3FocusLost
-
-    }//GEN-LAST:event_jPanel3FocusLost
 
     private void changeColor()
     {
@@ -533,6 +509,64 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblInventario.setBackground(color);
         lblReportes.setBackground(color);
         lblSalir.setBackground(color);
+        
+        
+    }
+    
+    private void ShowHide()
+    {
+          if(x == 200)
+        {
+            slideMenu.setSize(200, 600); jLabel1.setVisible(false); 
+            Thread th = new Thread() {
+                @Override
+                public void run()
+                {
+                    try
+                    {
+                        for(int i = 200; i >= 0; i--)
+                        {
+                            Thread.sleep(1);
+                            slideMenu.setSize(i, 600);
+                        }
+                    } 
+                    catch(Exception e)
+                    {
+                        System.out.println("Algo paso en el thread");
+                    }
+                }
+            }; th.start();
+            x = 0;
+        }
+        else
+        { jLabel1.setVisible(true);  slideMenu.setSize(200, 600);
+
+            if(x == 0)
+            { 
+                slideMenu.show();
+                slideMenu.setSize(200, 600);
+                Thread th = new Thread () {
+                    @Override
+                    public void run()
+                    {
+
+                        try
+                        {
+                            for (int i = 0; i<= x; i++)
+                            {
+                                Thread.sleep(1);
+                                slideMenu.setSize(i, 600);
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.println("Algo paso en el thread2");
+                        }                     } 
+                };th.start();
+                x = 200;
+                
+            }
+        }
     }
     
     /**
@@ -574,19 +608,22 @@ public class JframePrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconInicio;
+    private javax.swing.JLabel iconInicio1;
     private javax.swing.JLabel iconInventario;
+    private javax.swing.JLabel iconInventario1;
     private javax.swing.JLabel iconPatrullajes;
+    private javax.swing.JLabel iconPatrullajes1;
     private javax.swing.JLabel iconPolicias;
+    private javax.swing.JLabel iconPolicias1;
     private javax.swing.JLabel iconReportes;
+    private javax.swing.JLabel iconReportes1;
     private javax.swing.JLabel iconSalir;
     private javax.swing.JLabel iconUsuario;
+    private javax.swing.JLabel iconUsuario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblInventario;
     private javax.swing.JLabel lblMenuPrincipal;
