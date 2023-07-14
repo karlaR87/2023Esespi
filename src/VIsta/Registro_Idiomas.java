@@ -22,15 +22,19 @@ import javax.swing.table.TableColumn;
 public class Registro_Idiomas extends javax.swing.JFrame {
  private Registro registro;  // Referencia a la instancia de Registro
 
+ 
     public void setRegistro(Registro registro) {
+        
         this.registro = registro;  // Establecer la referencia a la instancia de Registro
     }
+    
     public Registro_Idiomas() {
         
         initComponents();
         Mostrar();  // Método para mostrar los idiomas en la tabla
         addCheckBox(2, jTable1);  // Método para agregar casillas de verificación a la tabla
     }
+    
   public void Mostrar(){
         //Definir un modelo de datos para la tabla
         DefaultTableModel modelo = new DefaultTableModel();
@@ -66,7 +70,9 @@ public class Registro_Idiomas extends javax.swing.JFrame {
 
     public boolean IsSelected(int row, int column, JTable table)
     {    
+        
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
+       
     } 
 
       public void enabled(boolean status)
@@ -169,11 +175,12 @@ public class Registro_Idiomas extends javax.swing.JFrame {
           if (registro != null) {
             // Obtener los idiomas seleccionados de la tabla
             for (int row = 0; row < jTable1.getRowCount(); row++) {
+               
                 boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
                 if (isSelected) {
                     Boolean idioma = (Boolean) jTable1.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
                     registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
-                    System.out.println("funciona beybi");
+                    System.out.println(" Idioma");
                 }
             }
         } else {
@@ -184,6 +191,7 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         jTable1.clearSelection();
 
         this.setVisible(false);
+  
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     

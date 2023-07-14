@@ -18,14 +18,20 @@ import javax.swing.JLabel;
  * @author Pao
  */
 public class Registro_DatosPersonales extends javax.swing.JPanel {
-    
     Fuentes tipoFuentes;
+    private Registro registro;
+    
+    public void setRegistro(Registro registro) {
+    this.registro = registro;
+}
+    
     public Registro_DatosPersonales() {
         initComponents();
-
         fontDesign();
         jLabel1.setVisible(false);
+       
     }
+    
       private void fontDesign()
     { 
         tipoFuentes = new Fuentes();
@@ -415,7 +421,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 Registro_Idiomas idiomas = new Registro_Idiomas();
     public void ViewIdiomas()
     {
-       idiomas.setVisible(true);
+    idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
+      idiomas.setVisible(true);
        jLabel1.setVisible(true);
          setFocus0(false);
         
@@ -434,7 +441,8 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     Registro_Nacionalidades nacio = new Registro_Nacionalidades();
     public void ViewNacio()
     {
-       nacio.setVisible(true);
+        nacio.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
+    nacio.setVisible(true);
        jLabel1.setVisible(true);
        setFocus0(false);
        

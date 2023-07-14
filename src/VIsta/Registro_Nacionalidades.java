@@ -19,33 +19,38 @@ import javax.swing.table.TableColumn;
 public class Registro_Nacionalidades extends javax.swing.JFrame {
 private Registro registro;  // Referencia a la instancia de Registro
 
+ 
     public void setRegistro(Registro registro) {
+        
         this.registro = registro;  // Establecer la referencia a la instancia de Registro
     }
+    
     public Registro_Nacionalidades() {
+        
         initComponents();
-        Mostrar();
-        addCheckBox(2, jTable1);
+        Mostrar();  // Método para mostrar los idiomas en la tabla
+        addCheckBox(2, jTable1);  // Método para agregar casillas de verificación a la tabla
     }
- 
-     public void Mostrar(){
+    
+  public void Mostrar(){
         //Definir un modelo de datos para la tabla
         DefaultTableModel modelo = new DefaultTableModel();
         //Agregar columnas o encabezado de la tabla
-        modelo.setColumnIdentifiers(new Object[] {"IdNacionalidad", "Nacionalidad", "Select"});
+        modelo.setColumnIdentifiers(new Object[] {"IdIdioma", "Idioma", "Select"});
         //Hacer select a la base de datos
         try{
             Statement statement = conexionSql.getConexion().createStatement();
-            ResultSet rs = statement.executeQuery("select * from tbNacionalidades");
+            ResultSet rs = statement.executeQuery("select * from tbIdiomas");
             
             //Recorrer los resultados
             while(rs.next()){
-                modelo.addRow(new Object[] {rs.getInt("IdNacionalidad"), rs.getString("Nacionalidad")} );
+                modelo.addRow(new Object[] {rs.getInt("IdIdioma"), rs.getString("Idioma")} );
              
             }
             jTable1.setModel(modelo);
-        }catch(SQLException ex){
-            System.out.println(ex.toString());
+        }catch(SQLException e){
+            System.out.println(e.toString());
+            
         }
     }
      
@@ -62,9 +67,15 @@ private Registro registro;  // Referencia a la instancia de Registro
 
     public boolean IsSelected(int row, int column, JTable table)
     {    
-        return table.getValueAt(row, column) != null;                       
+        
+        return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
+       
     } 
 
+      public void enabled(boolean status)
+    {
+        this.enable(status);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -153,7 +164,26 @@ private Registro registro;  // Referencia a la instancia de Registro
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
+          if (registro != null) {
+            // Obtener los idiomas seleccionados de la tabla
+            for (int row = 0; row < jTable1.getRowCount(); row++) {
+               
+                boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
+                if (isSelected) {
+                    Boolean idioma = (Boolean) jTable1.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
+                    registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
+                    System.out.println("Nacionalidad");
+                }
+            }
+        } else {
+            System.out.println("La referencia 'registro' no se ha establecido correctamente.");
+        }
+
+        // Limpiar la selección de la tabla
+        jTable1.clearSelection();
+
         this.setVisible(false);
+  
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked

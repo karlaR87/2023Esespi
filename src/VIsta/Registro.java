@@ -13,29 +13,33 @@ import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JFrame {
 
-   Idiomas Idioma = new Idiomas();  // Instancia de la clase Idiomas para manejar los idiomas
-    Ncionalidad Nacio = new Ncionalidad();  // Instancia de la clase Ncionalidad (¿Nacionalidad?) para manejar la nacionalidad
-    private ArrayList<Boolean> idiomasSeleccionados = new ArrayList<>();  // ArrayList para almacenar los idiomas seleccionados
-    private ArrayList<Boolean> nacionalidadesSelecionadas = new ArrayList<>();  // ArrayList para almacenar los idiomas seleccionados
+    private Registro_Idiomas formularioIdiomas;
+    private Registro_Nacionalidades formularioNacionalidad;
+    private ArrayList<Boolean> idiomasSeleccionados = new ArrayList<>();
+    private ArrayList<Boolean> nacionalidadesSelecionadas = new ArrayList<>();
     
-     // Método para agregar un idioma seleccionado a la lista
-    void agregarIdiomaSeleccionado(Boolean idioma) {
-        idiomasSeleccionados.add(idioma);  // Agrega el idioma seleccionado al ArrayList idiomasSeleccionados
-        Idioma.setRegistro(this);  // Establece la referencia a la instancia de Registro existente en la clase Idiomas
+    void agregarIdiomaSeleccionado(Boolean idiomaSeleccionado) {
+        idiomasSeleccionados.add(idiomaSeleccionado);
+        formularioIdiomas.setRegistro(this);
+  
     }
     
-     // Método para agregar un idioma seleccionado a la lista
-    void nacionalidadesSelecionadas(Boolean Nacionalidad) {
-        idiomasSeleccionados.add(Nacionalidad);  // Agrega el idioma seleccionado al ArrayList idiomasSeleccionados
-        Idioma.setRegistro(this);  // Establece la referencia a la instancia de Registro existente en la clase Idiomas
+    void agregarNacionalidadSeleccionada(Boolean nacionalidadseleccionada) {
+        nacionalidadesSelecionadas.add(nacionalidadseleccionada);
+        formularioNacionalidad.setRegistro(this);
+
     }
+    
+    
+   
     
     public Registro() {
     
         initComponents();
         PanelsShowInit();
-        Idioma.setRegistro(this);  // Establece la referencia a la instancia de Registro en la clase Idiomas
-//        Nacio.setRegistro(this);  
+        formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
+        formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro
+   
     }
 
     private CardLayout cardLayout;
@@ -45,7 +49,7 @@ public class Registro extends javax.swing.JFrame {
     {
        cardLayout = new CardLayout();
         jPanel2.setLayout(cardLayout);
-        
+         RDP.setRegistro(this);
         jPanel2.add(PS, "PS");
         jPanel2.add(RDP, "RDP");
         
