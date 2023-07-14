@@ -53,20 +53,18 @@ public class JframePrincipal extends javax.swing.JFrame {
         cardLayout.show(jPanel1, "inicio");
         iconInicio1.setVisible(true);
  //----------------------------------------------------------------------       
-//        jPanelContenedorSuper1.setVisible(false);
-//        cardLayout2 = new CardLayout();
-//        jPanelContenedorSuper1.setLayout(cardLayout);
-//        jPanelContenedorSuper1.add(policiasInicio.jPanelAddPolice, "addPolice");
-//        
-//        cardLayout2.show(policiasInicio.jPanelAddPolice, "addPolice"); 
-//        
-//        JButton btnAdd = policiasInicio.getbtnAdd();
-//         btnAdd.addActionListener(new ActionListener() {
-//        public void actionPerformed(ActionEvent e) {
-//            jLabel3.setVisible(true);
-//            jPanelContenedorSuper1.setVisible(true);
-//        }
-//        });
+        jPanelContenedorSuper1.setVisible(false);
+        cardLayout2 = new CardLayout();
+        jPanelContenedorSuper1.setLayout(cardLayout);
+        jPanelContenedorSuper1.add(policiasInicio.jPanelAddPolice, "addPolice");
+        
+        JButton btnAdd = policiasInicio.getbtnAdd();
+         btnAdd.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            jLabel3.setVisible(true);
+            jPanelContenedorSuper1.setVisible(true);            
+        }
+        });
     }
     
     /**
@@ -113,9 +111,10 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 710));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanelContenedorSuper1.setOpaque(false);
         jPanelContenedorSuper1.setPreferredSize(new java.awt.Dimension(740, 444));
         jPanelContenedorSuper1.setLayout(new java.awt.CardLayout());
-        jPanel2.add(jPanelContenedorSuper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+        jPanel2.add(jPanelContenedorSuper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 740, 444));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

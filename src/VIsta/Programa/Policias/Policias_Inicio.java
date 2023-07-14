@@ -17,7 +17,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
      */
     public Policias_Inicio() {
         initComponents();
-        jPanelAddPolice.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -39,13 +38,14 @@ public class Policias_Inicio extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelAddPolice.setBackground(new java.awt.Color(70, 70, 70));
+        jPanelAddPolice.setOpaque(false);
         jPanelAddPolice.setPreferredSize(new java.awt.Dimension(740, 444));
         jPanelAddPolice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/AgregarPoliciaTitulo.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/AgregarPoliciaFondo.png"))); // NOI18N
         jPanelAddPolice.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel3.add(jPanelAddPolice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+        jPanel3.add(jPanelAddPolice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 740, 444));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1010, 710));
