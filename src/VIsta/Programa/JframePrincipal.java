@@ -7,7 +7,6 @@ import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Reportes.Reportes_Inicio;
 import VIsta.Programa.Usuario.Usuario;
-import desplazable.Desface;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;

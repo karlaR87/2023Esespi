@@ -20,10 +20,7 @@ public class Bienvenida extends javax.swing.JFrame {
         initComponents();
         
        
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src/Vista.imegenes/Bienve.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src/Vista.imegenes/Bienve.png");
-         
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src/Vista.imegenes/Bienve.png");
+      
         
     }
 
