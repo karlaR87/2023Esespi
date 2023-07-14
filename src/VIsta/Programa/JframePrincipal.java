@@ -21,6 +21,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         initComponents();
         desplace = new Desface();
         jLabel1.setVisible(false);
+        jLabel3.setVisible(false);
         PanelsShowInit();
     }
     
@@ -46,8 +47,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel1.add(reportesInicio, "reportes");
         
         cardLayout.show(jPanel1, "inicio");
-
-
+        lblUsuario.setVisible(false);
     }
     
     /**
@@ -305,6 +305,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 50, 200, 600));
 
         jPanel3.setOpaque(false);
+        jPanel3.setPreferredSize(new java.awt.Dimension(315, 620));
         jPanel3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jPanel3FocusLost(evt);
@@ -319,7 +320,7 @@ public class JframePrincipal extends javax.swing.JFrame {
             }
         });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 315, 620));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 340, 620));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -352,15 +353,15 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void lblMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseEntered
 
         if (slideMenu.getX()== -50){
-            desplace.desplazarDerecha(slideMenu, slideMenu.getX(), 130, 10, 5);
+            desplace.desplazarDerecha(slideMenu, slideMenu.getX(), 130, 10, 10);
             jLabel1.setVisible(true);
+            jLabel3.setVisible(true);
+            lblUsuario.setVisible(true);
         }else{}
-
-
+       
     }//GEN-LAST:event_lblMenuPrincipalMouseEntered
 
     private void lblMenuPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseExited
-
     }//GEN-LAST:event_lblMenuPrincipalMouseExited
 
     private void slideMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideMenuMouseExited
@@ -443,9 +444,11 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
 
-        if (slideMenu.getX()== 130){
+        if (slideMenu.getX() != -50){
             desplace.desplazarIzquierda(slideMenu, slideMenu.getX(), -50, 10, 10);
             jLabel1.setVisible(false);
+            jLabel3.setVisible(false);
+            lblUsuario.setVisible(false);
         }else{}
      
     }//GEN-LAST:event_jPanel3MouseExited
@@ -463,7 +466,6 @@ public class JframePrincipal extends javax.swing.JFrame {
           if (slideMenu.getX()!= -50){
             desplace.desplazarDerecha(slideMenu, 130, 130, 10, 10);
             cardLayout.show(jPanel1, "usuario");
-            jLabel1.setVisible(true);
           }
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
