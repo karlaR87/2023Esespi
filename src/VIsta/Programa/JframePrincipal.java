@@ -46,6 +46,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel1.add(reportesInicio, "reportes");
         
         cardLayout.show(jPanel1, "inicio");
+        iconInicio1.setVisible(true);
     }
     
     /**
@@ -175,7 +176,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblUsuarioMouseExited(evt);
             }
         });
-        slideMenu.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 30, 183, 30));
+        slideMenu.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 30, 167, 30));
 
         lblInicio.setBackground(new java.awt.Color(70, 70, 70));
         lblInicio.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -195,7 +196,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInicioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 119, 183, 30));
+        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 119, 167, 30));
 
         lblPolicias.setBackground(new java.awt.Color(70, 70, 70));
         lblPolicias.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -215,7 +216,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblPoliciasMouseExited(evt);
             }
         });
-        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 183, 30));
+        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 205, 167, 30));
 
         lblPatrullajes.setBackground(new java.awt.Color(70, 70, 70));
         lblPatrullajes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -235,7 +236,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblPatrullajesMouseExited(evt);
             }
         });
-        slideMenu.add(lblPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 290, 183, 30));
+        slideMenu.add(lblPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 290, 167, 30));
 
         lblInventario.setBackground(new java.awt.Color(70, 70, 70));
         lblInventario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -255,7 +256,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInventarioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 375, 183, 30));
+        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 375, 167, 30));
 
         lblReportes.setBackground(new java.awt.Color(70, 70, 70));
         lblReportes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -275,7 +276,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblReportesMouseExited(evt);
             }
         });
-        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 459, 183, 30));
+        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 459, 167, 30));
 
         lblSalir.setBackground(new java.awt.Color(70, 70, 70));
         lblSalir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -295,7 +296,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblSalirMouseExited(evt);
             }
         });
-        slideMenu.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 536, 183, 30));
+        slideMenu.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 536, 167, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/v.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(100, 25));
