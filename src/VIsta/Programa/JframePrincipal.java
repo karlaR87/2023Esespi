@@ -10,6 +10,11 @@ import VIsta.Programa.Usuario.Usuario;
 import desplazable.Desface;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 
 /**
  *
@@ -21,11 +26,13 @@ public class JframePrincipal extends javax.swing.JFrame {
         initComponents();
         slideMenu.setSize(0, 600);
         jLabel1.setVisible(false);
+        jLabel3.setVisible(false);
          iconChange();
         PanelsShowInit();
     }
     
     private CardLayout cardLayout;
+    private CardLayout cardLayout2;
     Usuario user = new Usuario();
     Inicio home = new Inicio();
     Policias_Inicio policiasInicio = new Policias_Inicio();
@@ -34,7 +41,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
     private void PanelsShowInit()
     {
-
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
         
@@ -47,6 +53,24 @@ public class JframePrincipal extends javax.swing.JFrame {
         
         cardLayout.show(jPanel1, "inicio");
         iconInicio1.setVisible(true);
+ //----------------------------------------------------------------------       
+        jPanelContenedorSuper1.setVisible(false);
+        cardLayout2 = new CardLayout();
+        jPanelContenedorSuper1.setLayout(cardLayout);
+        jPanelContenedorSuper1.add(policiasInicio.jPanelAddPolice, "addPolice");
+        
+        cardLayout2.show(policiasInicio.jPanelAddPolice, "addPolice"); 
+        
+        JButton btnAdd = policiasInicio.getbtnAdd();
+         btnAdd.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            jLabel3.setVisible(true);
+            jPanelContenedorSuper1.setVisible(true);
+        }
+        });
+                
+        
+       
     }
     
     /**
@@ -59,6 +83,8 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jPanelContenedorSuper1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         iconUsuario = new javax.swing.JLabel();
         iconUsuario1 = new javax.swing.JLabel();
         iconInicio = new javax.swing.JLabel();
@@ -90,6 +116,13 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 710));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelContenedorSuper1.setPreferredSize(new java.awt.Dimension(740, 444));
+        jPanelContenedorSuper1.setLayout(new java.awt.CardLayout());
+        jPanel2.add(jPanelContenedorSuper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         iconUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
         jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 80, 60, -1));
@@ -313,7 +346,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(slideMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 0, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(980, 710));
@@ -623,8 +656,10 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel iconUsuario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelContenedorSuper1;
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblInventario;
     private javax.swing.JLabel lblMenuPrincipal;
