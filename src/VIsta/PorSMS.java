@@ -8,7 +8,6 @@ import fonts.Fuentes;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-
 import com.twilio.Twilio;
 import com.twilio.converter.Promoter;
 import com.twilio.rest.api.v2010.account.Message;
@@ -31,9 +30,11 @@ public class PorSMS extends javax.swing.JPanel {
         fontDesign();
     }
     
-      public void visibleinCode( boolean a)
+    public void visibleinCode( boolean a)
     {
         jLabel5.setVisible(a);
+        jLabel13.setVisible(a);
+        jLabel11.setVisible(a);
         txtCodeN.setVisible(a);
         jLabel6.setVisible(a);
         jLabel7.setVisible(a);
@@ -70,6 +71,8 @@ public class PorSMS extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -92,49 +95,65 @@ public class PorSMS extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel13.setText("Volver a enviar");
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("¿No has recibido nada?");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, -1, -1));
+
         txtNumero.setBackground(new java.awt.Color(51, 51, 51));
         txtNumero.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         txtNumero.setForeground(new java.awt.Color(255, 255, 255));
         txtNumero.setToolTipText("");
         txtNumero.setBorder(null);
-        jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 380, 30));
+        jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 380, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/cellphone.png"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 40, 50));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 40, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R6.png"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 430, 50));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 430, 50));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("<html> Ingrese el número telefónico con el cual registró <br> su cuenta. </html>");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 430, 70));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 430, 70));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("<html> Ingrese el código enviado a su número telefónico  <br> para reestablecer su contraseña. </html>");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 430, 70));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 430, 70));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/cls1.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 30, 50));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 30, 50));
 
         txtCodeN.setBackground(new java.awt.Color(51, 51, 51));
         txtCodeN.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         txtCodeN.setForeground(new java.awt.Color(255, 255, 255));
         txtCodeN.setToolTipText("");
         txtCodeN.setBorder(null);
-        jPanel1.add(txtCodeN, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 380, 30));
+        jPanel1.add(txtCodeN, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 380, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R6.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 430, 70));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 430, 70));
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
@@ -145,10 +164,10 @@ public class PorSMS extends javax.swing.JPanel {
                 btnAceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, 360, 50));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 360, 50));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/G10.png"))); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 390, 100));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 390, 100));
 
         btnEnviarCode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnEnviarCode.setBorderPainted(false);
@@ -159,10 +178,10 @@ public class PorSMS extends javax.swing.JPanel {
                 btnEnviarCodeMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEnviarCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 360, 50));
+        jPanel1.add(btnEnviarCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 360, 50));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/G10.png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 370, 60));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 370, 60));
 
         lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
         lblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -193,8 +212,8 @@ public class PorSMS extends javax.swing.JPanel {
         sendSMS();
     }//GEN-LAST:event_btnEnviarCodeMouseClicked
     
-    public static final String ACCOUNT_SID = "AC006c0437db67738083eabf3584946607";
-    public static final String AUTH_TOKEN = "de88ae773e436901a04227ec80e7b02e";
+  public static final String ACCOUNT_SID = "AC006c0437db67738083eabf3584946607";
+  public static final String AUTH_TOKEN = "ff8f98eb6b428f420e15594a204885f9";
 
     private void sendSMS()
     {  
@@ -217,8 +236,14 @@ public class PorSMS extends javax.swing.JPanel {
     }
     
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
-
+        visibleinCode(false); 
+        txtNumero.setText("");
+        txtCodeN.setText("");
     }//GEN-LAST:event_lblBackMouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        sendSMS();
+    }//GEN-LAST:event_jLabel13MouseClicked
 
        public JLabel getlblBack() {
         return lblBack;
@@ -229,7 +254,9 @@ public class PorSMS extends javax.swing.JPanel {
     private javax.swing.JButton btnEnviarCode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

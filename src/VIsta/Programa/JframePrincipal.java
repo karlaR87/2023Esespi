@@ -1,6 +1,9 @@
 package VIsta.Programa;
 
+import Controlador.cntrlPatrullajes;
+import Modelo.Patrullajes;
 import VIsta.Login;
+import VIsta.Principal;
 import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
@@ -13,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import javax.swing.OverlayLayout;
 
 /**
@@ -527,7 +531,6 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconPatrullajes1.setVisible(true);
             cardLayout.show(jPanel1, "patrullajes");
              ShowHide();
-
     }//GEN-LAST:event_lblPatrullajesMouseClicked
 
     private void lblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseClicked
@@ -667,7 +670,11 @@ public class JframePrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JframePrincipal().setVisible(true);
+                Patrullajes mdlPatrullajes = new Patrullajes();
+                JframePrincipal frmPrincipal = new JframePrincipal();
+                cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, frmPrincipal);
+                
+                frmPrincipal.setVisible(true);
             }
         });
     }
@@ -699,7 +706,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblInventario;
     private javax.swing.JLabel lblMenuPrincipal;
-    private javax.swing.JLabel lblPatrullajes;
+    public javax.swing.JLabel lblPatrullajes;
     private javax.swing.JLabel lblPolicias;
     private javax.swing.JLabel lblReportes;
     private javax.swing.JLabel lblSalir;
