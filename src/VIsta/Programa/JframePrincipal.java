@@ -152,42 +152,126 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         iconUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
+        iconUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconUsuarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconUsuarioMouseExited(evt);
+            }
+        });
         jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 80, 60, -1));
 
         iconUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 70, 70, -1));
 
         iconInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/homeIcon.png"))); // NOI18N
+        iconInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconInicioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconInicioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconInicioMouseExited(evt);
+            }
+        });
         jPanel2.add(iconInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 140, 70, 90));
 
         iconInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 70, 90));
 
         iconPolicias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/policeIcon.png"))); // NOI18N
+        iconPolicias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconPolicias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconPoliciasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconPoliciasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconPoliciasMouseExited(evt);
+            }
+        });
         jPanel2.add(iconPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 60, 80));
 
         iconPolicias1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconPolicias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 70, 80));
 
         iconPatrullajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/carIcon.png"))); // NOI18N
+        iconPatrullajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconPatrullajesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconPatrullajesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconPatrullajesMouseExited(evt);
+            }
+        });
         jPanel2.add(iconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 321, 50, 70));
 
         iconPatrullajes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconPatrullajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 321, 70, 70));
 
         iconInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/gunIcon.png"))); // NOI18N
+        iconInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconInventarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconInventarioMouseExited(evt);
+            }
+        });
         jPanel2.add(iconInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 415, 70, 60));
 
         iconInventario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconInventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 415, 70, 60));
 
         iconReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/docIcon.png"))); // NOI18N
+        iconReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconReportesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconReportesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconReportesMouseExited(evt);
+            }
+        });
         jPanel2.add(iconReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 50, 70));
 
         iconReportes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconReportes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 70, 70));
 
         iconSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/exitIcon.png"))); // NOI18N
+        iconSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconSalirMouseExited(evt);
+            }
+        });
         jPanel2.add(iconSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, 40, 40));
 
         lblMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/menuBack1.png.png"))); // NOI18N
@@ -495,7 +579,7 @@ public class JframePrincipal extends javax.swing.JFrame {
        iconChange();
        iconUsuario1.setVisible(true);
        cardLayout.show(jPanel1, "usuario");
-       ShowHide();  
+       ShowHide(0);  
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
     private void iconChange()
@@ -513,7 +597,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconChange();
         iconInicio1.setVisible(true);
             cardLayout.show(jPanel1, "inicio");
-             ShowHide();
+             ShowHide(0);
           
     }//GEN-LAST:event_lblInicioMouseClicked
 
@@ -522,7 +606,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconChange();
         iconPolicias1.setVisible(true);
             cardLayout.show(jPanel1, "policias");
-             ShowHide();
+             ShowHide(0);
     }//GEN-LAST:event_lblPoliciasMouseClicked
 
     private void lblPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseClicked
@@ -530,7 +614,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconChange();
         iconPatrullajes1.setVisible(true);
             cardLayout.show(jPanel1, "patrullajes");
-             ShowHide();
+             ShowHide(0);
     }//GEN-LAST:event_lblPatrullajesMouseClicked
 
     private void lblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseClicked
@@ -538,7 +622,7 @@ public class JframePrincipal extends javax.swing.JFrame {
          iconChange();
         iconInventario1.setVisible(true);
             cardLayout.show(jPanel1, "inventario");
-             ShowHide();
+             ShowHide(0);
     }//GEN-LAST:event_lblInventarioMouseClicked
 
     private void lblReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseClicked
@@ -546,7 +630,7 @@ public class JframePrincipal extends javax.swing.JFrame {
             iconChange();
            iconReportes1.setVisible(true);
             cardLayout.show(jPanel1, "reportes");
-             ShowHide();
+             ShowHide(0);
     }//GEN-LAST:event_lblReportesMouseClicked
 
     private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
@@ -556,7 +640,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSalirMouseClicked
     
     private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
-      ShowHide();
+      ShowHide(0);
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
@@ -569,6 +653,112 @@ public class JframePrincipal extends javax.swing.JFrame {
             btnCancelar.setVisible(false);
             jPanelContenedorSuper1.setVisible(false);        
     }//GEN-LAST:event_btnCancelarMouseClicked
+
+    private void iconUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuarioMouseClicked
+        iconChange();
+        iconUsuario1.setVisible(true);
+       cardLayout.show(jPanel1, "usuario");
+        ShowHide(1);
+    }//GEN-LAST:event_iconUsuarioMouseClicked
+
+    private void iconInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInicioMouseClicked
+
+        iconChange();
+        iconInicio1.setVisible(true);
+            cardLayout.show(jPanel1, "inicio"); 
+             ShowHide(1);
+    }//GEN-LAST:event_iconInicioMouseClicked
+
+    private void iconPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPoliciasMouseClicked
+            iconChange();
+            iconPolicias1.setVisible(true);
+            cardLayout.show(jPanel1, "policias"); 
+             ShowHide(1);
+    }//GEN-LAST:event_iconPoliciasMouseClicked
+
+    private void iconPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPatrullajesMouseClicked
+       
+        iconChange();
+        iconPatrullajes1.setVisible(true);
+            cardLayout.show(jPanel1, "patrullajes"); 
+             ShowHide(1);
+    }//GEN-LAST:event_iconPatrullajesMouseClicked
+
+    private void iconInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInventarioMouseClicked
+        iconChange();
+        iconInventario1.setVisible(true);
+            cardLayout.show(jPanel1, "inventario"); 
+             ShowHide(1);
+    }//GEN-LAST:event_iconInventarioMouseClicked
+
+    private void iconReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconReportesMouseClicked
+           iconChange();
+           iconReportes1.setVisible(true);
+            cardLayout.show(jPanel1, "reportes"); 
+             ShowHide(1);
+    }//GEN-LAST:event_iconReportesMouseClicked
+
+    private void iconUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuarioMouseEntered
+         lblUsuario.setBackground(colorChange);
+    }//GEN-LAST:event_iconUsuarioMouseEntered
+
+    private void iconUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuarioMouseExited
+          changeColor();
+    }//GEN-LAST:event_iconUsuarioMouseExited
+
+    private void iconInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInicioMouseEntered
+        lblInicio.setBackground(colorChange);
+    }//GEN-LAST:event_iconInicioMouseEntered
+
+    private void iconInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInicioMouseExited
+      changeColor();
+    }//GEN-LAST:event_iconInicioMouseExited
+
+    private void iconPoliciasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPoliciasMouseExited
+       changeColor();
+    }//GEN-LAST:event_iconPoliciasMouseExited
+
+    private void iconPatrullajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPatrullajesMouseExited
+      changeColor();
+    }//GEN-LAST:event_iconPatrullajesMouseExited
+
+    private void iconInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInventarioMouseExited
+       changeColor();
+    }//GEN-LAST:event_iconInventarioMouseExited
+
+    private void iconReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconReportesMouseEntered
+   lblReportes.setBackground(colorChange);  
+    }//GEN-LAST:event_iconReportesMouseEntered
+
+    private void iconSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconSalirMouseEntered
+     lblSalir.setBackground(colorChange);
+    }//GEN-LAST:event_iconSalirMouseEntered
+
+    private void iconReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconReportesMouseExited
+       changeColor();
+    }//GEN-LAST:event_iconReportesMouseExited
+
+    private void iconSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconSalirMouseExited
+     changeColor();
+    }//GEN-LAST:event_iconSalirMouseExited
+
+    private void iconPoliciasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPoliciasMouseEntered
+           lblPolicias.setBackground(colorChange);
+    }//GEN-LAST:event_iconPoliciasMouseEntered
+
+    private void iconPatrullajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPatrullajesMouseEntered
+          lblPatrullajes.setBackground(colorChange);
+    }//GEN-LAST:event_iconPatrullajesMouseEntered
+
+    private void iconInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInventarioMouseEntered
+         lblInventario.setBackground(colorChange);
+    }//GEN-LAST:event_iconInventarioMouseEntered
+
+    private void iconSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconSalirMouseClicked
+        Login LG = new Login();
+       LG.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_iconSalirMouseClicked
 
     private void changeColor()
     {
@@ -584,36 +774,18 @@ public class JframePrincipal extends javax.swing.JFrame {
         
     }
     
-    private void ShowHide()
+    private void ShowHide(int a)
     {
-          if(x == 200)
+        if (a == 1) {jLabel1.setVisible(false); x=0;//If a == 1, AND X = 200, la animacion de hide }else{
+        if(x == 200)
         {
-            slideMenu.setSize(200, 600); jLabel1.setVisible(false); 
-            Thread th = new Thread() {
-                @Override
-                public void run()
-                {
-                    try
-                    {
-                        for(int i = 200; i >= 0; i--)
-                        {
-                            Thread.sleep(1);
-                            slideMenu.setSize(i, 600);
-                        }
-                    } 
-                    catch(Exception e)
-                    {
-                        System.out.println("Algo paso en el thread");
-                    }
-                }
-            }; th.start();
-            x = 0;
+           Hide();
         }
         else
-        { jLabel1.setVisible(true);  slideMenu.setSize(200, 600);
-
+        {
+        jLabel1.setVisible(true); slideMenu.setSize(200, 600);
             if(x == 0)
-            { 
+            {
                 slideMenu.show();
                 slideMenu.setSize(200, 600);
                 Thread th = new Thread () {
@@ -635,11 +807,34 @@ public class JframePrincipal extends javax.swing.JFrame {
                         }                     } 
                 };th.start();
                 x = 200;
-                
             }
-        }
+        }   
     }
+ }
     
+    public void Hide()
+    {
+         slideMenu.setSize(200, 600); jLabel1.setVisible(false); 
+            Thread th = new Thread() {
+                @Override
+                public void run()
+                {
+                    try
+                    {
+                        for(int i = 200; i >= 0; i--)
+                        {
+                            Thread.sleep(1);
+                            slideMenu.setSize(i, 600);
+                        }
+                    } 
+                    catch(Exception e)
+                    {
+                        System.out.println("Algo paso en el thread");
+                    }
+                }
+            }; th.start();
+            x = 0;
+    }
     /**
      * @param args the command line arguments
      */
