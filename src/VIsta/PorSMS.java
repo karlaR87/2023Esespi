@@ -16,6 +16,7 @@ import com.twilio.type.PhoneNumber;
 
 import java.net.URI;
 import java.math.BigDecimal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,7 +27,18 @@ public class PorSMS extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     public PorSMS() {
         initComponents();
+        visibleinCode(false); 
         fontDesign();
+    }
+    
+      public void visibleinCode( boolean a)
+    {
+        jLabel5.setVisible(a);
+        txtCodeN.setVisible(a);
+        jLabel6.setVisible(a);
+        jLabel7.setVisible(a);
+        jLabel12.setVisible(a);
+        btnAceptar.setVisible(a);
     }
 
      private void fontDesign()
@@ -186,14 +198,22 @@ public class PorSMS extends javax.swing.JPanel {
 
     private void sendSMS()
     {  
+        try{
       Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-    Message message = Message.creator(
+       Message message = Message.creator(
       new com.twilio.type.PhoneNumber("+50370842281"),
       new com.twilio.type.PhoneNumber("+18146224821"),
       "asasasas")
-    .create();
+        .create();
 
-    System.out.println(message.getSid());
+        System.out.println(message.getSid());
+        JOptionPane.showMessageDialog(this, "Mensaje Enviado");
+        visibleinCode(true); 
+    }
+        catch(Exception e)
+        {
+        JOptionPane.showMessageDialog(this, "Hubo un error en el envio");
+        }
     }
     
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked

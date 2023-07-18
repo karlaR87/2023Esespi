@@ -26,6 +26,8 @@ public class JframePrincipal extends javax.swing.JFrame {
         slideMenu.setSize(0, 600);
         jLabel1.setVisible(false);
         jLabel3.setVisible(false);
+        btnGuardar.setVisible(false);
+        btnCancelar.setVisible(false);
          iconChange();
         PanelsShowInit();
     }
@@ -62,6 +64,8 @@ public class JframePrincipal extends javax.swing.JFrame {
          btnAdd.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             jLabel3.setVisible(true);
+            btnGuardar.setVisible(true);
+           btnCancelar.setVisible(true);
             jPanelContenedorSuper1.setVisible(true);            
         }
         });
@@ -77,6 +81,8 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        btnCancelar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jPanelContenedorSuper1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         iconUsuario = new javax.swing.JLabel();
@@ -110,6 +116,28 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 710));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCancelar1.png"))); // NOI18N
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 140, -1));
+
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnGuardar1.png"))); // NOI18N
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, 140, -1));
 
         jPanelContenedorSuper1.setOpaque(false);
         jPanelContenedorSuper1.setPreferredSize(new java.awt.Dimension(740, 444));
@@ -512,8 +540,8 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void lblReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportesMouseClicked
 
-         iconChange();
-        iconReportes1.setVisible(true);
+            iconChange();
+           iconReportes1.setVisible(true);
             cardLayout.show(jPanel1, "reportes");
              ShowHide();
     }//GEN-LAST:event_lblReportesMouseClicked
@@ -527,6 +555,17 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
       ShowHide();
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+            
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+            jLabel3.setVisible(false);
+            btnGuardar.setVisible(false);
+            btnCancelar.setVisible(false);
+            jPanelContenedorSuper1.setVisible(false);        
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
     private void changeColor()
     {
@@ -636,6 +675,8 @@ public class JframePrincipal extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel iconInicio;
     private javax.swing.JLabel iconInicio1;
     private javax.swing.JLabel iconInventario;
