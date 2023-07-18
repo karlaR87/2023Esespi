@@ -4,11 +4,13 @@
  */
 package VIsta;
 
+import Controlador.ControladorRegistro;
 import fonts.Fuentes;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,17 +22,21 @@ import javax.swing.JLabel;
 public class Registro_DatosPersonales extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     private Registro registro;
+   
     
     public void setRegistro(Registro registro) {
     this.registro = registro;
 }
     
+    
+    
     public Registro_DatosPersonales() {
         initComponents();
         fontDesign();
         jLabel1.setVisible(false);
-       
+        
     }
+ 
     
       private void fontDesign()
     { 

@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.Patrullajes;
+import Modelo.ModeloPatrullajes;
 import VIsta.Programa.JframePrincipal;
 
 import java.awt.event.ActionEvent;
@@ -10,10 +10,10 @@ import java.awt.event.MouseListener;
 
 public class cntrlPatrullajes implements MouseListener {
 
-    private Patrullajes modelPatrullajes;
+    private ModeloPatrullajes modelPatrullajes;
     private JframePrincipal JframePrincipal;
 
-    public cntrlPatrullajes(Patrullajes modelPatrullajes, JframePrincipal JframePrincipal) {
+    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal) {
         this.modelPatrullajes = modelPatrullajes;
         this.JframePrincipal = JframePrincipal;
         this.JframePrincipal.lblPatrullajes.addMouseListener(this);

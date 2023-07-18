@@ -1,6 +1,8 @@
 
 package VIsta;
 
+import Modelo.conexionSql;
+import java.sql.Connection;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,8 +10,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import Controlador.ControladorRegistro;
+
 
 public class Registro extends javax.swing.JFrame {
 
@@ -29,19 +37,33 @@ public class Registro extends javax.swing.JFrame {
         formularioNacionalidad.setRegistro(this);
 
     }
-    
-    
    
     
-    public Registro() {
+ private javax.swing.JComboBox<String> cmbTipoPersona;
     
+    public Registro() {
         initComponents();
         PanelsShowInit();
         formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
         formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro
-   
+        cargarTiopoPersonas();
     }
-
+    
+       
+     void cargarTiopoPersonas(){
+        try{
+            ResultSet rs; 
+            rs = ControladorRegistro.CargarTiopoPersona();
+            while (rs.next()){
+                cmbTipoPersona.addItem(rs.getString(2));
+                
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    
     private CardLayout cardLayout;
     PreguntasSeguridad PS = new PreguntasSeguridad();
     Registro_DatosPersonales RDP = new Registro_DatosPersonales();

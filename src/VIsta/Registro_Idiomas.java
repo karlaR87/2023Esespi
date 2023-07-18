@@ -29,7 +29,6 @@ public class Registro_Idiomas extends javax.swing.JFrame {
     }
     
     public Registro_Idiomas() {
-        
         initComponents();
         Mostrar();  // Método para mostrar los idiomas en la tabla
         addCheckBox(2, jTable1);  // Método para agregar casillas de verificación a la tabla
@@ -48,12 +47,10 @@ public class Registro_Idiomas extends javax.swing.JFrame {
             //Recorrer los resultados
             while(rs.next()){
                 modelo.addRow(new Object[] {rs.getInt("IdIdioma"), rs.getString("Idioma")} );
-             
             }
             jTable1.setModel(modelo);
         }catch(SQLException e){
             System.out.println(e.toString());
-            
         }
     }
      
@@ -65,14 +62,11 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         //lo pasamos a booleanos para poner obtener info
         tc.setCellEditor(table.getDefaultEditor(Boolean.class));
         tc.setCellRenderer(table.getDefaultRenderer(Boolean.class));
-        
     }
 
     public boolean IsSelected(int row, int column, JTable table)
     {    
-        
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
-       
     } 
 
       public void enabled(boolean status)
@@ -191,7 +185,6 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         jTable1.clearSelection();
 
         this.setVisible(false);
-  
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     
