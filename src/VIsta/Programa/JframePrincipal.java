@@ -776,7 +776,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     
     private void ShowHide(int a)
     {
-        if (a == 1) {jLabel1.setVisible(false); x=0;//If a == 1, AND X = 200, la animacion de hide }else{
+        if (a == 1) {jLabel1.setVisible(false); x=0; }else{
         if(x == 200)
         {
            Hide();
