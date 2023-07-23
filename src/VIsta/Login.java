@@ -1,7 +1,7 @@
 
 package VIsta;
 
-import Modelo.PrimerUso;
+
 import VIsta.Programa.JframePrincipal;
 import VIsta.Registro;
 import java.awt.BorderLayout;
