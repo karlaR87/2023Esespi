@@ -13,22 +13,10 @@ import javax.swing.JOptionPane;
  * @author Pao
  */
 public class AskUsuario1 extends javax.swing.JPanel {
-    
-     public void setRecuperarContra(RecuperarContra recuperarContra) {
-        this.recuperarContra = recuperarContra;
-    }
-    
+
     Fuentes tipoFuentes;
     public AskUsuario1() {
         initComponents();
-//        RecuperarContra recuperarContra = new RecuperarContra();
-//        
-//    AskUsuario1 panelContenedor = new AskUsuario1();
-//    panelContenedor.setRecuperarContra(recuperarContra);
-//        mdlUsuarios mdlUsuario = new mdlUsuarios();
-//        mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();
-//       cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, this, mdlPreguntasDSeguridad, recuperarContra );
-//        
         fontDesign();
     }
    private void fontDesign()

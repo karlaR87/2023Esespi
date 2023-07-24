@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 public class RecuperarContra extends javax.swing.JFrame {
     
-    private AskUsuario1 panelContenedor;
+    private AskUsuario1 askUsuario;
     private MenuRC menu = new MenuRC();
     private PorCorreo porCorreo = new PorCorreo();
     private PorPreguntasS porPreguntasS = new PorPreguntasS();
@@ -25,13 +25,12 @@ public class RecuperarContra extends javax.swing.JFrame {
     public RecuperarContra() {
         initComponents();  
         
-       mdlUsuarios mdlUsuario = new mdlUsuarios();
+        mdlUsuarios mdlUsuario = new mdlUsuarios();
         mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();
 
-        panelContenedor = new AskUsuario1();
-        panelContenedor.setRecuperarContra(this);
-
-        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, panelContenedor, mdlPreguntasDSeguridad, this);
+        askUsuario = new AskUsuario1();
+        
+        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this);
 
         
         cardLayout = new CardLayout();
@@ -41,7 +40,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         pnlPrincipal.add(porCorreo, "Correo");
         pnlPrincipal.add(porPreguntasS, "PreguntasS");
         pnlPrincipal.add(porSMS, "SMS");
-        pnlPrincipal.add(panelContenedor, "askUsuario");
+        pnlPrincipal.add(askUsuario, "askUsuario");
         pnlPrincipal.add(resCon, "ReesCon");
 
         cardLayout.show(pnlPrincipal, "menu");
@@ -52,7 +51,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         
         JLabel lblBack1 = menu.getlblBack();
         JLabel lblBack2 = porCorreo.getlblBack();
-        JLabel lblBack6 = panelContenedor.getlblBack();
+        JLabel lblBack6 = askUsuario.getlblBack();
         JLabel lblBack3 = porPreguntasS.getlblBack();
         JLabel lblBack4 = porSMS.getlblBack();
         JLabel lblBack5 = resCon.getlblBack();
@@ -60,7 +59,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         JButton btnacept1 = porCorreo.getbtnAceptar();
         JButton btnacept2 = resCon.getbtnAceptar();
         JButton btnacept3 = porPreguntasS.getbtnAceptar();
-        JButton btnacept5 = panelContenedor.getbtnAceptar();
+        JButton btnacept5 = askUsuario.getbtnAceptar();
         
         btnacept2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
