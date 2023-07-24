@@ -43,7 +43,7 @@ public class mdlPreguntasRespuestasDSeguridad {
     }
     
     
-  public boolean insertPreguntasS(int idPersona, String Pregunta, String Respuesta)
+  public void insertPreguntasS(int idPersona, String Pregunta, String Respuesta)
     {
         try{
             String query = "Insert Into tbPreguntasRespuestasDSeguridad(IdUsuario, Pregunta, Respuesta) Values (?,?,?)"; 
@@ -53,27 +53,24 @@ public class mdlPreguntasRespuestasDSeguridad {
             addPreguntasS.setString(3, Respuesta);
             
             addPreguntasS.executeUpdate();
-            return true;
           
         }catch(Exception e){
             System.out.println("ERROR en el query addPreguntasS: " + e.toString());
-            return false;
         }
     }
 
   public ResultSet readPreguntas()
     {
         try{
-            String query = "Select Pregunta, Respuesta From tbPreguntasRespuestasDSeguridad Where IdUsuario = 1";    
+            String query = "Select Pregunta, Respuesta From tbPreguntasRespuestasDSeguridad Where IdUsuario = ?";    
             PreparedStatement readPreguntas = ConexionPrueba.getConnection().prepareStatement(query);
+            readPreguntas.setInt(1, IdUsuario);
             ResultSet rs = readPreguntas.executeQuery();
             return rs;
-          
         }catch(Exception e){
             System.out.println("ERROR en el query readPpreguntas: " + e.toString());
             return null;
         }
-    
     }
 
 }

@@ -1,5 +1,8 @@
 package VIsta;
 
+import Controlador.cntrlUsuarios;
+import Modelo.mdlPreguntasRespuestasDSeguridad;
+import Modelo.mdlUsuarios;
 import fonts.Fuentes;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,10 +13,22 @@ import javax.swing.JOptionPane;
  * @author Pao
  */
 public class AskUsuario1 extends javax.swing.JPanel {
-
+    
+     public void setRecuperarContra(RecuperarContra recuperarContra) {
+        this.recuperarContra = recuperarContra;
+    }
+    
     Fuentes tipoFuentes;
     public AskUsuario1() {
         initComponents();
+//        RecuperarContra recuperarContra = new RecuperarContra();
+//        
+//    AskUsuario1 panelContenedor = new AskUsuario1();
+//    panelContenedor.setRecuperarContra(recuperarContra);
+//        mdlUsuarios mdlUsuario = new mdlUsuarios();
+//        mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();
+//       cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, this, mdlPreguntasDSeguridad, recuperarContra );
+//        
         fontDesign();
     }
    private void fontDesign()
@@ -118,21 +133,9 @@ public class AskUsuario1 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-        
-    }//GEN-LAST:event_btnAceptarMouseClicked
 
-    public void isOk()
-    {
-        if(txtUsuario.getText().isBlank())
-        {
-             JOptionPane.showMessageDialog(this, "No se permite ningún campo vacío");
-        }
-        else
-        {
-            
-        }
-    }
-    
+    }//GEN-LAST:event_btnAceptarMouseClicked
+ 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
 
     }//GEN-LAST:event_lblBackMouseClicked
@@ -146,7 +149,7 @@ public class AskUsuario1 extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
+    public javax.swing.JButton btnAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;

@@ -1,5 +1,8 @@
 package VIsta;
 
+import Controlador.cntrlUsuarios;
+import Modelo.mdlPreguntasRespuestasDSeguridad;
+import Modelo.mdlUsuarios;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,16 +14,25 @@ import javax.swing.JPanel;
 
 public class RecuperarContra extends javax.swing.JFrame {
     
-    MenuRC menu = new MenuRC();
-    PorCorreo porCorreo = new PorCorreo();
-    PorPreguntasS porPreguntasS = new PorPreguntasS();
-    PorSMS porSMS = new PorSMS();
-    AskUsuario1 askUsuario = new AskUsuario1();
-    ReestablecerContra resCon = new ReestablecerContra();
-    
+    private AskUsuario1 panelContenedor;
+    private MenuRC menu = new MenuRC();
+    private PorCorreo porCorreo = new PorCorreo();
+    private PorPreguntasS porPreguntasS = new PorPreguntasS();
+    private PorSMS porSMS = new PorSMS();
+    private ReestablecerContra resCon = new ReestablecerContra();
     private CardLayout cardLayout;
+
     public RecuperarContra() {
         initComponents();  
+        
+       mdlUsuarios mdlUsuario = new mdlUsuarios();
+        mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();
+
+        panelContenedor = new AskUsuario1();
+        panelContenedor.setRecuperarContra(this);
+
+        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, panelContenedor, mdlPreguntasDSeguridad, this);
+
         
         cardLayout = new CardLayout();
         pnlPrincipal.setLayout(cardLayout);
@@ -29,7 +41,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         pnlPrincipal.add(porCorreo, "Correo");
         pnlPrincipal.add(porPreguntasS, "PreguntasS");
         pnlPrincipal.add(porSMS, "SMS");
-        pnlPrincipal.add(askUsuario, "askUsuario");
+        pnlPrincipal.add(panelContenedor, "askUsuario");
         pnlPrincipal.add(resCon, "ReesCon");
 
         cardLayout.show(pnlPrincipal, "menu");
@@ -40,7 +52,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         
         JLabel lblBack1 = menu.getlblBack();
         JLabel lblBack2 = porCorreo.getlblBack();
-        JLabel lblBack6 = askUsuario.getlblBack();
+        JLabel lblBack6 = panelContenedor.getlblBack();
         JLabel lblBack3 = porPreguntasS.getlblBack();
         JLabel lblBack4 = porSMS.getlblBack();
         JLabel lblBack5 = resCon.getlblBack();
@@ -48,7 +60,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         JButton btnacept1 = porCorreo.getbtnAceptar();
         JButton btnacept2 = resCon.getbtnAceptar();
         JButton btnacept3 = porPreguntasS.getbtnAceptar();
-        JButton btnacept5 = askUsuario.getbtnAceptar();
+        JButton btnacept5 = panelContenedor.getbtnAceptar();
         
         btnacept2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
@@ -186,7 +198,11 @@ public class RecuperarContra extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-           
+
+    public void loadPreguntas() {
+        cardLayout.show(pnlPrincipal, "PreguntasS");
+    }
+    
     public void putReesCon()
     {
       cardLayout.show(pnlPrincipal, "ReesCon");
@@ -220,13 +236,13 @@ public class RecuperarContra extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run() { 
                 new RecuperarContra().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel pnlPrincipal;
+    public javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 }
