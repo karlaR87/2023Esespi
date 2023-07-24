@@ -21,17 +21,22 @@ import javax.swing.JOptionPane;
 public class PorPreguntasS extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
+    private mdlPreguntasRespuestasDSeguridad mdlPreguntasS;
+    
+     public void setMdl(mdlPreguntasRespuestasDSeguridad mdlPreguntasS) {
+        this.mdlPreguntasS = mdlPreguntasS;
+    }
+    
     public PorPreguntasS() {
         initComponents();
-//        initPreguntas();
+        initPreguntas();
          fontDesign();
          
     }
-    mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();
     private void initPreguntas()
     {
         try {
-            ResultSet rs = mdlPreguntasDSeguridad.readPreguntas();                
+            ResultSet rs = mdlPreguntasS.readPreguntas();                
             List<String> listaPreguntas = new ArrayList<>();
 
             while (rs.next()) {
@@ -39,9 +44,11 @@ public class PorPreguntasS extends javax.swing.JPanel {
                 listaPreguntas.add(pregunta);
             }
 
-            lblPregunta1.setText(listaPreguntas.get(0));
-            lblPregunta2.setText(listaPreguntas.get(1));
-            lblPregunta3.setText(listaPreguntas.get(2));
+            if (!listaPreguntas.isEmpty()) {
+                lblPregunta1.setText(listaPreguntas.get(0));
+                lblPregunta2.setText(listaPreguntas.get(1));
+                lblPregunta3.setText(listaPreguntas.get(2));
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(PorPreguntasS.class.getName()).log(Level.SEVERE, null, ex);
@@ -204,7 +211,7 @@ public class PorPreguntasS extends javax.swing.JPanel {
     public boolean IsOk()
     {
          try {
-            ResultSet rs =  mdlPreguntasDSeguridad.readPreguntas();            
+            ResultSet rs =  mdlPreguntasS.readPreguntas();            
             List<String> listaRespuesta = new ArrayList<>();
 
             while (rs.next()) {

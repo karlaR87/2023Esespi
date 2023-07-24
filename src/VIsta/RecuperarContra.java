@@ -31,7 +31,6 @@ public class RecuperarContra extends javax.swing.JFrame {
         askUsuario = new AskUsuario1();
         
         cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this);
-
         
         cardLayout = new CardLayout();
         pnlPrincipal.setLayout(cardLayout);

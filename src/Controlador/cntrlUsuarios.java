@@ -43,6 +43,7 @@ public class cntrlUsuarios implements ActionListener{
                 vistaUsuario1.txtUsuario.setText("");
 
                int IdCurrentUser = modeloUsuarios.readIDUsuario();
+               mdlPreguntasS.setIdUsuario(IdCurrentUser);
 
                 if(IdCurrentUser == -1)
                 {

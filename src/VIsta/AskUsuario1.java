@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class AskUsuario1 extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
+    
     public AskUsuario1() {
         initComponents();
         fontDesign();
