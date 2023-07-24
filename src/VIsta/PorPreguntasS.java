@@ -30,22 +30,22 @@ public class PorPreguntasS extends javax.swing.JPanel {
     
     private void initPreguntas()
     {
-        try {
-            ResultSet rs = CntrlreadPreguntasS.readPreguntasS();            
-            List<String> listaPreguntas = new ArrayList<>();
-
-            while (rs.next()) {
-                String pregunta = rs.getString("Pregunta");
-                listaPreguntas.add(pregunta);
-            }
-
-            lblPregunta1.setText(listaPreguntas.get(0));
-            lblPregunta2.setText(listaPreguntas.get(1));
-            lblPregunta3.setText(listaPreguntas.get(2));
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(PorPreguntasS.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            ResultSet rs = CntrlreadPreguntasS.readPreguntasS();            
+//            List<String> listaPreguntas = new ArrayList<>();
+//
+//            while (rs.next()) {
+//                String pregunta = rs.getString("Pregunta");
+//                listaPreguntas.add(pregunta);
+//            }
+//
+//            lblPregunta1.setText(listaPreguntas.get(0));
+//            lblPregunta2.setText(listaPreguntas.get(1));
+//            lblPregunta3.setText(listaPreguntas.get(2));
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(PorPreguntasS.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private void fontDesign()
@@ -203,42 +203,79 @@ public class PorPreguntasS extends javax.swing.JPanel {
 
     public boolean IsOk()
     {
-         try {
-            ResultSet rs = CntrlreadPreguntasS.readPreguntasS();            
-            List<String> listaRespuesta = new ArrayList<>();
-
-            while (rs.next()) {
-                String respuesta = rs.getString("Respuesta");
-                listaRespuesta.add(respuesta);
-            }
-            String R1 = listaRespuesta.get(0);  
-            String R2 = listaRespuesta.get(1);
-            String R3 = listaRespuesta.get(2);
-            
-            if(txtR1.getText().isBlank() || txtR2.getText().isBlank() || txtR3.getText().isBlank())
-            {
-                JOptionPane.showMessageDialog(this, "Por favor, ingrese todas las respuestas");
-                return false;
-            }
-            else{
-                if(!txtR1.getText().equals(R1)|| !txtR2.getText().equals(R2) || !txtR3.getText().equals(R3))
-                {
-                    JOptionPane.showMessageDialog(this, "Alguna de las respuestas es incorrecta, intente nuevamente");
-                    return false;
-                }
-                else
-                {
-                   JOptionPane.showMessageDialog(this, "Todo OK");
-                    txtR1.setText("");
-                    txtR2.setText("");
-                    txtR3.setText("");
-                   return true;
-                }
-            }
-            
-        } catch (SQLException ex) {
-            return false;
-        }  
+//         try {
+//            ResultSet rs = CntrlreadPreguntasS.readPreguntasS();            
+//            List<String> listaRespuesta = new ArrayList<>();
+//
+//            while (rs.next()) {
+//                String respuesta = rs.getString("Respuesta");
+//                listaRespuesta.add(respuesta);
+//            }
+//            String R1 = listaRespuesta.get(0);  
+//            String R2 = listaRespuesta.get(1);
+//            String R3 = listaRespuesta.get(2);
+//            
+//            if(txtR1.getText().isBlank() || txtR2.getText().isBlank() || txtR3.getText().isBlank())
+//            {
+//                JOptionPane.showMessageDialog(this, "Por favor, ingrese todas las respuestas");
+//                return false;
+//            }
+//            else{
+//                if(!txtR1.getText().equals(R1)|| !txtR2.getText().equals(R2) || !txtR3.getText().equals(R3))
+//                {
+//                    JOptionPane.showMessageDialog(this, "Alguna de las respuestas es incorrecta, intente nuevamente");
+//                    return false;
+//                }
+//                else
+//                {
+//                   JOptionPane.showMessageDialog(this, "Todo OK");
+//                    txtR1.setText("");
+//                    txtR2.setText("");
+//                    txtR3.setText("");
+//                   return true;
+//                }
+//            }
+//            
+//        } catch (SQLException ex) {
+//            return false;
+//        }  
+        return false;
+//         try {
+//            ResultSet rs = CntrlreadPreguntasS.readPreguntasS();            
+//            List<String> listaRespuesta = new ArrayList<>();
+//
+//            while (rs.next()) {
+//                String respuesta = rs.getString("Respuesta");
+//                listaRespuesta.add(respuesta);
+//            }
+//            String R1 = listaRespuesta.get(0);  
+//            String R2 = listaRespuesta.get(1);
+//            String R3 = listaRespuesta.get(2);
+//            
+//            if(txtR1.getText().isBlank() || txtR2.getText().isBlank() || txtR3.getText().isBlank())
+//            {
+//                JOptionPane.showMessageDialog(this, "Por favor, ingrese todas las respuestas");
+//                return false;
+//            }
+//            else{
+//                if(!txtR1.getText().equals(R1)|| !txtR2.getText().equals(R2) || !txtR3.getText().equals(R3))
+//                {
+//                    JOptionPane.showMessageDialog(this, "Alguna de las respuestas es incorrecta, intente nuevamente");
+//                    return false;
+//                }
+//                else
+//                {
+//                   JOptionPane.showMessageDialog(this, "Todo OK");
+//                    txtR1.setText("");
+//                    txtR2.setText("");
+//                    txtR3.setText("");
+//                   return true;
+//                }
+//            }
+//            
+//        } catch (SQLException ex) {
+//            return false;
+//        }  
     }
     
     public JButton getbtnAceptar() {

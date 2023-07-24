@@ -19,18 +19,6 @@ public class CntrlRC {
         return MdlRecuContraC.readCorreo(correo);
     }
     
-    public boolean insertPreguntasS()
-    {
-        Personas MdlinsertPreguntasS =  new Personas();
-        return MdlinsertPreguntasS.insertPreguntasS(idPersona, pregunta, respuesta);
-    }
-    
-    public ResultSet readPreguntasS()
-    {
-        Personas MdlreadPreguntasS =  new Personas();
-        return MdlreadPreguntasS.readPreguntas();
-    }
-    
     public boolean updateContra()
     {
         Personas MdlupdateCon =  new Personas();

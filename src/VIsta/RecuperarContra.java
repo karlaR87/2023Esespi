@@ -15,6 +15,7 @@ public class RecuperarContra extends javax.swing.JFrame {
     PorCorreo porCorreo = new PorCorreo();
     PorPreguntasS porPreguntasS = new PorPreguntasS();
     PorSMS porSMS = new PorSMS();
+    AskUsuario1 askUsuario = new AskUsuario1();
     ReestablecerContra resCon = new ReestablecerContra();
     
     private CardLayout cardLayout;
@@ -28,6 +29,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         pnlPrincipal.add(porCorreo, "Correo");
         pnlPrincipal.add(porPreguntasS, "PreguntasS");
         pnlPrincipal.add(porSMS, "SMS");
+        pnlPrincipal.add(askUsuario, "askUsuario");
         pnlPrincipal.add(resCon, "ReesCon");
 
         cardLayout.show(pnlPrincipal, "menu");
@@ -38,6 +40,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         
         JLabel lblBack1 = menu.getlblBack();
         JLabel lblBack2 = porCorreo.getlblBack();
+        JLabel lblBack6 = askUsuario.getlblBack();
         JLabel lblBack3 = porPreguntasS.getlblBack();
         JLabel lblBack4 = porSMS.getlblBack();
         JLabel lblBack5 = resCon.getlblBack();
@@ -45,6 +48,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         JButton btnacept1 = porCorreo.getbtnAceptar();
         JButton btnacept2 = resCon.getbtnAceptar();
         JButton btnacept3 = porPreguntasS.getbtnAceptar();
+        JButton btnacept5 = askUsuario.getbtnAceptar();
         
         btnacept2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
@@ -113,11 +117,17 @@ public class RecuperarContra extends javax.swing.JFrame {
              porPreguntasS.txtR1.setText("");
              porPreguntasS.txtR2.setText("");
              porPreguntasS.txtR3.setText("");
-            cardLayout.show(pnlPrincipal, "menu");
+            cardLayout.show(pnlPrincipal, "askUsuario");
         }
         });
         
         lblBack4.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            cardLayout.show(pnlPrincipal, "menu");
+        }
+        });
+        
+        lblBack6.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
             cardLayout.show(pnlPrincipal, "menu");
         }
@@ -147,7 +157,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         
         btnSeguridad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(pnlPrincipal, "PreguntasS");
+                cardLayout.show(pnlPrincipal, "askUsuario");
             }
         });
     }

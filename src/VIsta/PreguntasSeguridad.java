@@ -249,15 +249,15 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
          insertPreguntasS.idPersona = 1;        
          insertPreguntasS.pregunta = txt1Pregunta.getText();   
          insertPreguntasS.respuesta = txt1Respuesta.getText();           
-         insertPreguntasS.insertPreguntasS();
-          
-         insertPreguntasS.pregunta = txt2Pregunta.getText();   
-         insertPreguntasS.respuesta = txt2Respuesta.getText();           
-         insertPreguntasS.insertPreguntasS();
-         
-         insertPreguntasS.pregunta = txt3Pregunta.getText();   
-         insertPreguntasS.respuesta = txt3Respuesta.getText();           
-         insertPreguntasS.insertPreguntasS();
+//         insertPreguntasS.insertPreguntasS();
+//          
+//         insertPreguntasS.pregunta = txt2Pregunta.getText();   
+//         insertPreguntasS.respuesta = txt2Respuesta.getText();           
+//         insertPreguntasS.insertPreguntasS();
+//         
+//         insertPreguntasS.pregunta = txt3Pregunta.getText();   
+//         insertPreguntasS.respuesta = txt3Respuesta.getText();           
+//         insertPreguntasS.insertPreguntasS();
 
          JOptionPane.showMessageDialog(this, "Insertado");
         }
