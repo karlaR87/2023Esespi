@@ -5,6 +5,8 @@
 package VIsta;
 
 import Modelo.conexionSql;
+import Modelo.mdlIdiomas;
+import Modelo.mdlNacionalidad;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,31 +30,10 @@ private Registro registro;  // Referencia a la instancia de Registro
     public Registro_Nacionalidades() {
         
         initComponents();
-        Mostrar();  // Método para mostrar los idiomas en la tabla
-        addCheckBox(2, jTable1);  // Método para agregar casillas de verificación a la tabla
+       
     }
     
-  public void Mostrar(){
-        //Definir un modelo de datos para la tabla
-        DefaultTableModel modelo = new DefaultTableModel();
-        //Agregar columnas o encabezado de la tabla
-        modelo.setColumnIdentifiers(new Object[] {"IdIdioma", "Idioma", "Select"});
-        //Hacer select a la base de datos
-        try{
-            Statement statement = conexionSql.getConexion().createStatement();
-            ResultSet rs = statement.executeQuery("select * from tbIdiomas");
-            
-            //Recorrer los resultados
-            while(rs.next()){
-                modelo.addRow(new Object[] {rs.getInt("IdIdioma"), rs.getString("Idioma")} );
-             
-            }
-            jTable1.setModel(modelo);
-        }catch(SQLException e){
-            System.out.println(e.toString());
-            
-        }
-    }
+ 
      
      //metodo para poner los checkbox en las columnas
      public void addCheckBox(int column, JTable table)
@@ -82,7 +63,7 @@ private Registro registro;  // Referencia a la instancia de Registro
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbNacionalidad = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
@@ -99,7 +80,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbNacionalidad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,7 +91,7 @@ private Registro registro;  // Referencia a la instancia de Registro
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbNacionalidad);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 460, 410));
 
@@ -166,11 +147,11 @@ private Registro registro;  // Referencia a la instancia de Registro
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
           if (registro != null) {
             // Obtener los idiomas seleccionados de la tabla
-            for (int row = 0; row < jTable1.getRowCount(); row++) {
+            for (int row = 0; row < tbNacionalidad.getRowCount(); row++) {
                
-                boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
+                boolean isSelected = IsSelected(row, 2, tbNacionalidad);  // Verificar si la casilla está seleccionada
                 if (isSelected) {
-                    Boolean idioma = (Boolean) jTable1.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
+                    Boolean idioma = (Boolean) tbNacionalidad.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
                     registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
                     System.out.println("Nacionalidad");
                 }
@@ -180,7 +161,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         }
 
         // Limpiar la selección de la tabla
-        jTable1.clearSelection();
+        tbNacionalidad.clearSelection();
 
         this.setVisible(false);
   
@@ -190,9 +171,14 @@ private Registro registro;  // Referencia a la instancia de Registro
 
     }//GEN-LAST:event_jPanel1MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    public void init(){
+        mdlNacionalidad modeloNacionalidad = new mdlNacionalidad();
+                Registro_Nacionalidades nacio = new Registro_Nacionalidades();
+                System.out.println("metodo init");
+                     nacio.setVisible(true);
+                     
+                modeloNacionalidad.Mostrar(nacio);
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -230,7 +216,7 @@ private Registro registro;  // Referencia a la instancia de Registro
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblRegresar;
+    public javax.swing.JTable tbNacionalidad;
     // End of variables declaration//GEN-END:variables
 }

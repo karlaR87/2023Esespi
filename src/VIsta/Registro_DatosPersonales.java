@@ -410,7 +410,9 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     public void ViewIdiomas()
     {
     idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
-      idiomas.setVisible(true);
+ 
+      idiomas.init();
+      System.out.println("Se ejectua ");
        jLabel1.setVisible(true);
          setFocus0(false);
         
@@ -429,8 +431,8 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     Registro_Nacionalidades nacio = new Registro_Nacionalidades();
     public void ViewNacio()
     {
-        nacio.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
-    nacio.setVisible(true);
+    nacio.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
+    nacio.init();
        jLabel1.setVisible(true);
        setFocus0(false);
        
