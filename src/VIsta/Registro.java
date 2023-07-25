@@ -26,14 +26,16 @@ public class Registro extends javax.swing.JFrame {
     private ArrayList<Boolean> nacionalidadesSelecionadas = new ArrayList<>();
     
     void agregarIdiomaSeleccionado(Boolean idiomaSeleccionado) {
+        
         idiomasSeleccionados.add(idiomaSeleccionado);
         formularioIdiomas.setRegistro(this);
   
     }
     
     void agregarNacionalidadSeleccionada(Boolean nacionalidadseleccionada) {
+       
         nacionalidadesSelecionadas.add(nacionalidadseleccionada);
-        formularioNacionalidad.setRegistro(this);
+         formularioNacionalidad.setRegistro(this);
 
     }
     
@@ -42,6 +44,8 @@ public class Registro extends javax.swing.JFrame {
         PanelsShowInit();
         formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
         formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro
+        
+        
     }
     
     

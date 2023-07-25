@@ -5,6 +5,7 @@
 package VIsta;
 
 import Modelo.conexionSql;
+import Modelo.mdlIdiomas;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.sql.ResultSet;
@@ -20,8 +21,8 @@ import javax.swing.table.TableColumn;
  * @author Pao
  */
 public class Registro_Idiomas extends javax.swing.JFrame {
- private Registro registro;  // Referencia a la instancia de Registro
-
+private Registro registro;  // Referencia a la instancia de Registro
+    private mdlIdiomas modeloIdiomas;  // Instancia de mdlIdiomas
  
     public void setRegistro(Registro registro) {
         
@@ -30,30 +31,10 @@ public class Registro_Idiomas extends javax.swing.JFrame {
     
     public Registro_Idiomas() {
         initComponents();
-        Mostrar();  // Método para mostrar los idiomas en la tabla
-        addCheckBox(2, jTable1);  // Método para agregar casillas de verificación a la tabla
+        
     }
     
-  public void Mostrar(){
-        //Definir un modelo de datos para la tabla
-        DefaultTableModel modelo = new DefaultTableModel();
-        //Agregar columnas o encabezado de la tabla
-        modelo.setColumnIdentifiers(new Object[] {"IdIdioma", "Idioma", "Select"});
-        //Hacer select a la base de datos
-        try{
-            Statement statement = conexionSql.getConexion().createStatement();
-            ResultSet rs = statement.executeQuery("select * from tbIdiomas");
-            
-            //Recorrer los resultados
-            while(rs.next()){
-                modelo.addRow(new Object[] {rs.getInt("IdIdioma"), rs.getString("Idioma")} );
-            }
-            jTable1.setModel(modelo);
-        }catch(SQLException e){
-            System.out.println(e.toString());
-        }
-    }
-     
+  
      //metodo para poner los checkbox en las columnas
      public void addCheckBox(int column, JTable table)
     {
@@ -80,7 +61,7 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblRegresar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbIdiomas = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -105,7 +86,7 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         });
         jPanel1.add(lblRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbIdiomas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -116,7 +97,7 @@ public class Registro_Idiomas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbIdiomas);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 460, 410));
 
@@ -168,11 +149,11 @@ public class Registro_Idiomas extends javax.swing.JFrame {
        
           if (registro != null) {
             // Obtener los idiomas seleccionados de la tabla
-            for (int row = 0; row < jTable1.getRowCount(); row++) {
+            for (int row = 0; row < tbIdiomas.getRowCount(); row++) {
                
-                boolean isSelected = IsSelected(row, 2, jTable1);  // Verificar si la casilla está seleccionada
+                boolean isSelected = IsSelected(row, 2, tbIdiomas);  // Verificar si la casilla está seleccionada
                 if (isSelected) {
-                    Boolean idioma = (Boolean) jTable1.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
+                    Boolean idioma = (Boolean) tbIdiomas.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
                     registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
                     System.out.println(" Idioma");
                 }
@@ -182,15 +163,20 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         }
 
         // Limpiar la selección de la tabla
-        jTable1.clearSelection();
+        tbIdiomas.clearSelection();
 
         this.setVisible(false);
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     
-    /**
-     * @param args the command line arguments
-     */
+    
+    public void init(){
+    
+        modeloIdiomas = new mdlIdiomas(); // Crear una sola instancia de mdlIdiomas
+        System.out.println("metodo init");
+        setVisible(true); // Muestra el formulario Registro_Idiomas
+        modeloIdiomas.Mostrar(this);
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -218,7 +204,7 @@ public class Registro_Idiomas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro_Idiomas().setVisible(true);
+                
             }
         });
     }
@@ -228,7 +214,7 @@ public class Registro_Idiomas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblRegresar;
+    public javax.swing.JTable tbIdiomas;
     // End of variables declaration//GEN-END:variables
 }
