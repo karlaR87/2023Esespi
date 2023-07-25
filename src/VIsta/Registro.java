@@ -26,7 +26,6 @@ public class Registro extends javax.swing.JFrame {
     private ArrayList<Boolean> nacionalidadesSelecionadas = new ArrayList<>();
     
     void agregarIdiomaSeleccionado(Boolean idiomaSeleccionado) {
-        
         idiomasSeleccionados.add(idiomaSeleccionado);
         formularioIdiomas.setRegistro(this);
   
@@ -42,6 +41,7 @@ public class Registro extends javax.swing.JFrame {
     public Registro() {
         initComponents();
         PanelsShowInit();
+
         formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
         formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro
         

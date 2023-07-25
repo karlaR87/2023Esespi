@@ -47,6 +47,7 @@ private Registro registro;  // Referencia a la instancia de Registro
 
     public boolean IsSelected(int row, int column, JTable table)
     {    
+         System.out.println("Fila: " + row + ", Columna: " + column);
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
     } 
 
@@ -146,16 +147,17 @@ private Registro registro;  // Referencia a la instancia de Registro
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
-       
+
           if (registro != null) {
             // Obtener los idiomas seleccionados de la tabla
             for (int row = 0; row < tbIdiomas.getRowCount(); row++) {
-               
+            
                 boolean isSelected = IsSelected(row, 2, tbIdiomas);  // Verificar si la casilla está seleccionada
                 if (isSelected) {
+                                       
                     Boolean idioma = (Boolean) tbIdiomas.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
-                    registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
-                    System.out.println(" Idioma");
+                    registro.agregarIdiomaSeleccionado(idioma);                
+                        System.out.println(" Idioma");
                 }
             }
         } else {

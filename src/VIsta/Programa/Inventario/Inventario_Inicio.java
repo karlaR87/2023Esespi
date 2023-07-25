@@ -5,6 +5,7 @@
 package VIsta.Programa.Inventario;
 
 import VIsta.Bienvenida;
+import VIsta.VistaAgregarTransporte;
 
 /**
  *
@@ -122,11 +123,11 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 .addGap(54, 54, 54)
                 .addComponent(jLabel1)
                 .addGap(88, 88, 88)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(164, Short.MAX_VALUE))
         );
 
@@ -152,6 +153,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
 
     private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
        //boton para mostrar formulario de transporte
+       
+       VistaAgregarTransporte v = new VistaAgregarTransporte();
+       v.setVisible(true);
+       
     }//GEN-LAST:event_kButton2MouseClicked
 
     private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked

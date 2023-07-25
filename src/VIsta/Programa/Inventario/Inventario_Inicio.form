@@ -72,11 +72,11 @@
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                  <Component id="kButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                  <Component id="kButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                  <Component id="kButton3" min="-2" max="-2" attributes="0"/>
+                  <Component id="kButton1" min="-2" pref="72" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="kButton2" min="-2" pref="85" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="kButton3" min="-2" pref="73" max="-2" attributes="0"/>
                   <EmptySpace pref="164" max="32767" attributes="0"/>
               </Group>
           </Group>

@@ -26,7 +26,7 @@ public class SplashScreen extends javax.swing.JFrame {
 
 public void CargarBarraDeProgreso()
 {
-           Timer time = new Timer(60, (ActionEvent e) -> {
+           Timer time = new Timer(50, (ActionEvent e) -> {
             pbCargar.setValue(pbCargar.getValue()+1);
             pbCargar.setBackground(Color.cyan); 
             pbCargar.setStringPainted(true); 

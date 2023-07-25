@@ -66,6 +66,11 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(68, 68, 68));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAgregarArticulo.png"))); // NOI18N
         jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(68, 68, 68));
@@ -86,6 +91,10 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+       
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments

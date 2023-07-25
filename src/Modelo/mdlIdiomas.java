@@ -53,6 +53,7 @@ public class mdlIdiomas {
                 System.out.println("mostrar3");
             }
             idiomas.tbIdiomas.setModel(modelo);
+            
             idiomas.addCheckBox(2, idiomas.tbIdiomas);
 
         }catch(SQLException e){

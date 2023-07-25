@@ -410,7 +410,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     public void ViewIdiomas()
     {
     idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
-     idiomas.init();
+ idiomas.init();// Utilizar la referencia a registro para agregar el idioma seleccionado
       System.out.println("Se ejectua ");
        jLabel1.setVisible(true);
          setFocus0(false);
@@ -489,8 +489,8 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void Mas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas1MouseClicked
-        if(idiomas.isVisible()){} else {setFocus0(false);  }
-        ViewIdiomas();
+          if(idiomas.isVisible()){} else { setFocus0(false); }
+          ViewIdiomas();
     }//GEN-LAST:event_Mas1MouseClicked
 
     private void Mas2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas2MouseClicked
