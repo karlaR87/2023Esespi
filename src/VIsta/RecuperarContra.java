@@ -17,27 +17,27 @@ public class RecuperarContra extends javax.swing.JFrame {
     private AskUsuario1 askUsuario;
     private MenuRC menu = new MenuRC();
     private PorCorreo porCorreo = new PorCorreo();
-    private PorPreguntasS porPreguntasS = new PorPreguntasS();
+    private PorPreguntasS porPreguntasS;
     private PorSMS porSMS = new PorSMS();
     private ReestablecerContra resCon = new ReestablecerContra();
     private CardLayout cardLayout;
-
+    public mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad;
+    
     public RecuperarContra() {
-        initComponents();  
+        initComponents();        
         
         mdlUsuarios mdlUsuario = new mdlUsuarios();
-        mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();
+        mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();       
 
         askUsuario = new AskUsuario1();
-        
-        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this);
+        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this);     
         
         cardLayout = new CardLayout();
         pnlPrincipal.setLayout(cardLayout);
         
         pnlPrincipal.add(menu, "menu");
         pnlPrincipal.add(porCorreo, "Correo");
-        pnlPrincipal.add(porPreguntasS, "PreguntasS");
+        
         pnlPrincipal.add(porSMS, "SMS");
         pnlPrincipal.add(askUsuario, "askUsuario");
         pnlPrincipal.add(resCon, "ReesCon");
@@ -51,13 +51,12 @@ public class RecuperarContra extends javax.swing.JFrame {
         JLabel lblBack1 = menu.getlblBack();
         JLabel lblBack2 = porCorreo.getlblBack();
         JLabel lblBack6 = askUsuario.getlblBack();
-        JLabel lblBack3 = porPreguntasS.getlblBack();
+        
         JLabel lblBack4 = porSMS.getlblBack();
         JLabel lblBack5 = resCon.getlblBack();
         
         JButton btnacept1 = porCorreo.getbtnAceptar();
         JButton btnacept2 = resCon.getbtnAceptar();
-        JButton btnacept3 = porPreguntasS.getbtnAceptar();
         JButton btnacept5 = askUsuario.getbtnAceptar();
         
         btnacept2.addActionListener(new ActionListener() {
@@ -71,17 +70,7 @@ public class RecuperarContra extends javax.swing.JFrame {
             else{}
         }
         });
-        
-        btnacept3.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {          
-            if(porPreguntasS.IsOk())
-            {
-                 cardLayout.show(pnlPrincipal, "ReesCon");
-            }
-            else{}
-        }
-        });
-               
+     
         btnacept1.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
         String txtcode = porCorreo.txtCode.getText();
@@ -119,15 +108,6 @@ public class RecuperarContra extends javax.swing.JFrame {
             porCorreo.txtCode.setText("");
             porCorreo.txtMail.setText("");
             cardLayout.show(pnlPrincipal, "menu");
-        }
-        });
-        
-        lblBack3.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-             porPreguntasS.txtR1.setText("");
-             porPreguntasS.txtR2.setText("");
-             porPreguntasS.txtR3.setText("");
-            cardLayout.show(pnlPrincipal, "askUsuario");
         }
         });
         
@@ -197,8 +177,34 @@ public class RecuperarContra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void loadPreguntas() {
+    public void loadPreguntas() 
+    {
+        porPreguntasS = new PorPreguntasS(mdlPreguntasDSeguridad);
+        pnlPrincipal.add(porPreguntasS, "PreguntasS");
+           
+        JLabel lblBack3 = porPreguntasS.getlblBack();
+        JButton btnacept3 = porPreguntasS.getbtnAceptar();
+                
         cardLayout.show(pnlPrincipal, "PreguntasS");
+                
+        btnacept3.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {          
+            if(porPreguntasS.IsOk())
+            {
+                 cardLayout.show(pnlPrincipal, "ReesCon");
+            }
+            else{}
+        }
+        });
+        
+        lblBack3.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+             porPreguntasS.txtR1.setText("");
+             porPreguntasS.txtR2.setText("");
+             porPreguntasS.txtR3.setText("");
+            cardLayout.show(pnlPrincipal, "askUsuario");
+        }
+        });
     }
     
     public void putReesCon()

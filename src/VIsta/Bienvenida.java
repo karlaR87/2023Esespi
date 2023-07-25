@@ -110,12 +110,17 @@ public class Bienvenida extends javax.swing.JFrame {
         btnRegistroContinuar.setkEndColor(new java.awt.Color(243, 167, 18));
         btnRegistroContinuar.setkForeGround(new java.awt.Color(0, 0, 102));
         btnRegistroContinuar.setkHoverEndColor(new java.awt.Color(243, 167, 18));
-        btnRegistroContinuar.setkHoverForeGround(new java.awt.Color(243, 167, 18));
+        btnRegistroContinuar.setkHoverForeGround(new java.awt.Color(0, 0, 102));
         btnRegistroContinuar.setkHoverStartColor(new java.awt.Color(243, 167, 18));
         btnRegistroContinuar.setkIndicatorColor(new java.awt.Color(243, 167, 18));
         btnRegistroContinuar.setkPressedColor(new java.awt.Color(255, 102, 0));
         btnRegistroContinuar.setkSelectedColor(new java.awt.Color(243, 167, 18));
         btnRegistroContinuar.setkStartColor(new java.awt.Color(243, 167, 18));
+        btnRegistroContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistroContinuarMouseClicked(evt);
+            }
+        });
         btnRegistroContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroContinuarActionPerformed(evt);
@@ -147,6 +152,12 @@ public class Bienvenida extends javax.swing.JFrame {
     private void btnRegistroContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroContinuarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistroContinuarActionPerformed
+
+    private void btnRegistroContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroContinuarMouseClicked
+        Registro r = new Registro();
+        r.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegistroContinuarMouseClicked
 
     
     public static void main(String args[]) {

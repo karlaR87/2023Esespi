@@ -29,6 +29,9 @@ public class cntrlUsuarios implements ActionListener{
         
         this.vistaUsuario1.btnAceptar.addActionListener(this);
     }
+     
+     public int IdCurrentUser;
+     
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getSource() == vistaUsuario1.btnAceptar)
@@ -42,8 +45,7 @@ public class cntrlUsuarios implements ActionListener{
                 modeloUsuarios.setUsuario(vistaUsuario1.txtUsuario.getText().trim());
                 vistaUsuario1.txtUsuario.setText("");
 
-               int IdCurrentUser = modeloUsuarios.readIDUsuario();
-               mdlPreguntasS.setIdUsuario(IdCurrentUser);
+                IdCurrentUser = modeloUsuarios.readIDUsuario();
 
                 if(IdCurrentUser == -1)
                 {

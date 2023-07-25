@@ -21,21 +21,19 @@ import javax.swing.JOptionPane;
 public class PorPreguntasS extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
-    private mdlPreguntasRespuestasDSeguridad mdlPreguntasS;
-    
-     public void setMdl(mdlPreguntasRespuestasDSeguridad mdlPreguntasS) {
+    public mdlPreguntasRespuestasDSeguridad mdlPreguntasS;
+
+    public PorPreguntasS(mdlPreguntasRespuestasDSeguridad mdlPreguntasS) {
         this.mdlPreguntasS = mdlPreguntasS;
-    }
-    
-    public PorPreguntasS() {
         initComponents();
         initPreguntas();
-         fontDesign();
-         
+        fontDesign();
     }
+    
     private void initPreguntas()
     {
         try {
+            System.out.println(mdlPreguntasS.getIdUsuario() + "AAA");
             ResultSet rs = mdlPreguntasS.readPreguntas();                
             List<String> listaPreguntas = new ArrayList<>();
 
