@@ -43,7 +43,7 @@ public class mdlUsuarios {
     
     public int readIDUsuario()
     {
-         try {
+        try {
         String query = "SELECT IdUsuario FROM tbUsuarios WHERE Usuario = ?";
         PreparedStatement readIDUsuario = ConexionPrueba.getConnection().prepareStatement(query);
         readIDUsuario.setString(1, Usuario);
@@ -60,6 +60,43 @@ public class mdlUsuarios {
             System.out.println("ERROR en el query readIDUsuario: " + e.toString());
             return -1; // O cualquier otro valor que desees usar para indicar un error.
 
+        }
+    }
+    
+    public String readConUsuario()
+    {
+      try {
+        String query = "SELECT Contraseña FROM tbUsuarios WHERE IdUsuario = 1";
+        PreparedStatement readConsuario = ConexionPrueba.getConnection().prepareStatement(query);
+        readConsuario.setInt(1, IdUsuario);
+        ResultSet rs = readConsuario.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("Contraseña");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR en el query readIDUsuario: " + e.toString());
+            return null;
+
+        }  
+    }
+    
+    public boolean updateConUsuario()
+    {
+        try{
+            String query = "UPDATE tbUsuarios SET Contraseña = ? WHERE IdUsuario = ?"; 
+            PreparedStatement updateCon = ConexionPrueba.getConnection().prepareStatement(query);
+            updateCon.setString(1, Contrasena);
+            updateCon.setInt(2, IdUsuario);
+            
+            updateCon.executeUpdate();
+            return true;
+          
+        }catch(Exception e){
+            System.out.println("ERROR en el query UpdateConUsuario: " + e.toString());
+            return false;
         }
     }
 }

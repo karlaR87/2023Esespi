@@ -203,38 +203,26 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl15.setText("Genero ");
         ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, -1, 30));
 
-        txtNombres.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
         txtNombres.setText(" ");
         txtNombres.setBorder(null);
         ContenedorP.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 230, 30));
 
-        txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
-        txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
         txtApellidos.setText(" ");
         txtApellidos.setBorder(null);
         ContenedorP.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 230, 30));
 
-        txtFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        txtFechaNacimiento.setForeground(new java.awt.Color(0, 0, 0));
         txtFechaNacimiento.setText(" ");
         txtFechaNacimiento.setBorder(null);
         ContenedorP.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 230, 30));
 
-        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
         txtDireccion.setText(" ");
         txtDireccion.setBorder(null);
         ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 230, 30));
 
-        txtDui.setBackground(new java.awt.Color(255, 255, 255));
-        txtDui.setForeground(new java.awt.Color(0, 0, 0));
         txtDui.setText(" ");
         txtDui.setBorder(null);
         ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 220, 30));
 
-        txtNumeroTel.setBackground(new java.awt.Color(255, 255, 255));
-        txtNumeroTel.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeroTel.setText(" ");
         txtNumeroTel.setBorder(null);
         txtNumeroTel.addActionListener(new java.awt.event.ActionListener() {
@@ -244,14 +232,10 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         });
         ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
 
-        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
-        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreo.setText(" ");
         txtCorreo.setBorder(null);
         ContenedorP.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 230, 30));
 
-        txtSangre.setBackground(new java.awt.Color(255, 255, 255));
-        txtSangre.setForeground(new java.awt.Color(0, 0, 0));
         txtSangre.setText(" ");
         txtSangre.setBorder(null);
         ContenedorP.add(txtSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 230, 30));

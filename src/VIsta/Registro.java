@@ -117,15 +117,17 @@ public class Registro extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1012, 720));
         setResizable(false);
-        setSize(new java.awt.Dimension(1012, 700));
+        setSize(new java.awt.Dimension(1012, 720));
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(1012, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1012, 608));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1012, 720));
         jPanel2.setLayout(new java.awt.CardLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1012, 700));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1012, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

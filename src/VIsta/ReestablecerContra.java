@@ -2,6 +2,8 @@ package VIsta;
 
 import Controlador.CntrlRC;
 import fonts.Fuentes;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -10,10 +12,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
-/**
- *
- * @author Paola Mejia
- */
 public class ReestablecerContra extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
@@ -22,8 +20,7 @@ public class ReestablecerContra extends javax.swing.JPanel {
         NOSPACE();
         fontDesign();
     }
-
-      
+    
     private void fontDesign()
     {      
         tipoFuentes = new Fuentes();
@@ -180,27 +177,38 @@ public class ReestablecerContra extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
                 return false;
             }
-        else if (!txtContra1.getText().equals(txtContra2.getText()) || !txtContra2.getText().equals(txtContra1.getText()))
+        if (!txtContra1.getText().equals(txtContra2.getText()) || !txtContra2.getText().equals(txtContra1.getText()))
         {
             JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
             return false;
         }
+        //Si mide menos que algo, devolver ffalso
         else
-        {
-          CntrlRC updateContra = new CntrlRC();
-          //FALTA ENCRIPTAR......................................................................................................................................................
-         updateContra.con = txtContra1.getText();        
-         //updateContra.user = user
-         //DA ERROR, porque voy a sacar el user cuando haya ingresado 
-         //Correctamente, el error solo es para ver en donde me quede
-        //(osea, cuando ya se pueda iniciar sesion saco el user)
-         
-         updateContra.updateContra();
-
-           JOptionPane.showMessageDialog(this, "Contraseña restablecida exitosamente");
+        {   
             return true;
         }
     }
+    
+    public String convertirSHA256(String password) {
+	MessageDigest md = null;
+
+	try {
+            md = MessageDigest.getInstance("SHA-256");
+	}
+	catch (NoSuchAlgorithmException e) {
+		System.out.println(e.toString());
+		return null;
+	}
+
+	byte[] hash = md.digest(password.getBytes());
+	StringBuffer sb = new StringBuffer();
+
+	for(byte b : hash) {
+		sb.append(String.format("%02x", b));
+	}
+
+	return sb.toString();
+}
     
     public void NOSPACE()
     {
@@ -246,16 +254,12 @@ public class ReestablecerContra extends javax.swing.JPanel {
     
     }
     
-     public JButton getbtnAceptar() {
-        return btnAceptar;
-    }
-    
     public JLabel getlblBack() {
         return lblBack;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
+    public javax.swing.JButton btnAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -270,7 +274,7 @@ public class ReestablecerContra extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBack;
-    private javax.swing.JPasswordField txtContra1;
+    public javax.swing.JPasswordField txtContra1;
     private javax.swing.JPasswordField txtContra2;
     // End of variables declaration//GEN-END:variables
 

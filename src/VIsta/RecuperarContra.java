@@ -19,7 +19,7 @@ public class RecuperarContra extends javax.swing.JFrame {
     private PorCorreo porCorreo = new PorCorreo();
     private PorPreguntasS porPreguntasS;
     private PorSMS porSMS = new PorSMS();
-    private ReestablecerContra resCon = new ReestablecerContra();
+    private ReestablecerContra resCon;
     private CardLayout cardLayout;
     public mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad;
     
@@ -30,7 +30,8 @@ public class RecuperarContra extends javax.swing.JFrame {
         mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();       
 
         askUsuario = new AskUsuario1();
-        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this);     
+        resCon = new ReestablecerContra();
+        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this, resCon);     
         
         cardLayout = new CardLayout();
         pnlPrincipal.setLayout(cardLayout);
@@ -40,7 +41,6 @@ public class RecuperarContra extends javax.swing.JFrame {
         
         pnlPrincipal.add(porSMS, "SMS");
         pnlPrincipal.add(askUsuario, "askUsuario");
-        pnlPrincipal.add(resCon, "ReesCon");
 
         cardLayout.show(pnlPrincipal, "menu");
         
@@ -53,23 +53,9 @@ public class RecuperarContra extends javax.swing.JFrame {
         JLabel lblBack6 = askUsuario.getlblBack();
         
         JLabel lblBack4 = porSMS.getlblBack();
-        JLabel lblBack5 = resCon.getlblBack();
         
         JButton btnacept1 = porCorreo.getbtnAceptar();
-        JButton btnacept2 = resCon.getbtnAceptar();
-        JButton btnacept5 = askUsuario.getbtnAceptar();
         
-        btnacept2.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {          
-            if(resCon.AllisOk())
-            {
-                Login LG = new Login();
-                LG.setVisible(true);
-                dispose();
-            }
-            else{}
-        }
-        });
      
         btnacept1.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
@@ -84,7 +70,7 @@ public class RecuperarContra extends javax.swing.JFrame {
                 porCorreo.numeroAleatorio = 0;
                 porCorreo.txtMail.setText("");
                 porCorreo.txtCode.setText("");
-                cardLayout.show(pnlPrincipal, "ReesCon");
+                loadReesCon();
             }
             else{
                  porCorreo.showDialog("El código ingresado no coincide, intente nuevamente");           
@@ -123,15 +109,6 @@ public class RecuperarContra extends javax.swing.JFrame {
         }
         });
         
-         lblBack5.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            porCorreo.numeroAleatorio = 0;
-            porCorreo.visibleinCode(false);
-            porCorreo.txtCode.setText("");
-            porCorreo.txtMail.setText("");            
-            cardLayout.show(pnlPrincipal, "menu");
-        }
-        });
         
         btnCorreo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -191,7 +168,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {          
             if(porPreguntasS.IsOk())
             {
-                 cardLayout.show(pnlPrincipal, "ReesCon");
+                loadReesCon();
             }
             else{}
         }
@@ -207,9 +184,23 @@ public class RecuperarContra extends javax.swing.JFrame {
         });
     }
     
-    public void putReesCon()
+    
+    public void loadReesCon()
     {
-      cardLayout.show(pnlPrincipal, "ReesCon");
+       pnlPrincipal.add(resCon, "ReesCon");
+       JLabel lblBack5 = resCon.getlblBack();
+       
+       cardLayout.show(pnlPrincipal, "ReesCon");
+       
+        lblBack5.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            porCorreo.numeroAleatorio = 0;
+            porCorreo.visibleinCode(false);
+            porCorreo.txtCode.setText("");
+            porCorreo.txtMail.setText("");            
+            cardLayout.show(pnlPrincipal, "menu");
+        }
+        });   
     }
     /**
      * @param args the command line arguments

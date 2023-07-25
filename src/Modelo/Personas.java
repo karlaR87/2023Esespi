@@ -21,24 +21,5 @@ public class Personas {
             return null;
         }
     
-    }
- 
-   public boolean updateContra(String con, String user)
-    {
-        try{
-            String query = "Update tbUsuarios Set Contraseña = ? Where Usuario = ?"; 
-            PreparedStatement updateCon = ConexionPrueba.getConnection().prepareStatement(query);
-            updateCon.setString(1, con);
-            updateCon.setString(2, user);
-            
-            updateCon.executeUpdate();
-            return true;
-          
-        }catch(Exception e){
-            System.out.println("ERROR en el query addPreguntasS: " + e.toString());
-            return false;
-        }
-    }
-   
-  
+    }  
 }

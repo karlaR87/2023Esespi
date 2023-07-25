@@ -18,10 +18,4 @@ public class CntrlRC {
         Personas MdlRecuContraC =  new Personas();
         return MdlRecuContraC.readCorreo(correo);
     }
-    
-    public boolean updateContra()
-    {
-        Personas MdlupdateCon =  new Personas();
-        return MdlupdateCon.updateContra(con, user);
-    }
 }
