@@ -36,30 +36,12 @@ public class Registro extends javax.swing.JFrame {
         formularioNacionalidad.setRegistro(this);
 
     }
-   
-    
- private javax.swing.JComboBox<String> cmbTipoPersona;
     
     public Registro() {
         initComponents();
         PanelsShowInit();
         formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
         formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro
-        cargarTiopoPersonas();
-    }
-    
-       
-     void cargarTiopoPersonas(){
-        try{
-            ResultSet rs; 
-            rs = ControladorRegistro.CargarTiopoPersona();
-            while (rs.next()){
-                cmbTipoPersona.addItem(rs.getString(2));
-                
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
     
     
