@@ -15,6 +15,7 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
         snm.setStepSize(2);
         spNumeros.setModel(snm);
         
+        llanerCombo();
     }
 
 
@@ -88,9 +89,9 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
     
     public void llanerCombo()
     {
-        ControladorTransporte ctt = new ControladorTransporte();
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel(ctt.getTiposTransporte().toArray());
-        cmbTipos.setModel(modelo);
+//        ControladorTransporte ctt = new ControladorTransporte();
+//        //DefaultComboBoxModel modelo = new DefaultComboBoxModel(ctt.getTiposTransporte().toArray());
+//        cmbTipos.setModel(modelo);
     }
   
     public static void main(String args[]) {
