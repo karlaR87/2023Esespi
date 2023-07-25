@@ -28,8 +28,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     this.registro = registro;
 }
     
-    
-    
     public Registro_DatosPersonales() {
         initComponents();
         fontDesign();
@@ -38,7 +36,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     }
  
     
-      private void fontDesign()
+    private void fontDesign()
     { 
         tipoFuentes = new Fuentes();
 
@@ -62,7 +60,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     
     private void caracBtn(JButton btn)
     {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 0, 24)));
+        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 1, 22)));
         btn.setHorizontalTextPosition(JButton.CENTER);
         btn.setVerticalTextPosition(JButton.CENTER);
         btn.setVerticalAlignment(JButton.CENTER);
@@ -386,8 +384,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         jPanel1.add(ContenedorP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 940, 530));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/HeaderRDTPRS.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroPersonas.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

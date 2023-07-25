@@ -41,7 +41,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     
     private void caracBtn(JButton btn)
     {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 0, 24)));
+        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 1, 22)));
         btn.setHorizontalTextPosition(JButton.CENTER);
         btn.setVerticalTextPosition(JButton.CENTER);
         btn.setVerticalAlignment(JButton.CENTER);
@@ -217,13 +217,13 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("<html> Por favor, formule preguntas de seguridad en caso de que olvide su contraseña. Procure que las respuestas sean difíciles de adivinar para terceros.  <br> <br> Aquí tienes un ejemplo:  <br> <br> Pregunta: <br> \"¿Cuántos perfiles reprobé en el módulo 03 de Bryan?\"  <br> <br>  Respuesta: <br> \"No reprobé ninguno porque las clases de Bryan son las mejores y entregué todo a tiempo.\"</htm>");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 210, 300));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 210, 310));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/G_PGDS2.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/G_PGDS1.png.png.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 700));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroPreguntas.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

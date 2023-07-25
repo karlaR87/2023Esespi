@@ -1,4 +1,3 @@
-
 package VIsta;
 
 import Modelo.conexionSql;
@@ -65,21 +64,34 @@ public class Registro extends javax.swing.JFrame {
     
     
     private CardLayout cardLayout;
-    PreguntasSeguridad PS = new PreguntasSeguridad();
-    Registro_DatosPersonales RDP = new Registro_DatosPersonales();
+  
     private void PanelsShowInit()
     {
+        Registro_DatosPersonales RDatosPersonales = new Registro_DatosPersonales();
+        RegistroInfoPolicial RInfoPolicial = new RegistroInfoPolicial();
+        RegistroUsuario RUsuario = new RegistroUsuario();
+        PreguntasSeguridad RPreguntasS = new PreguntasSeguridad();
+  
+        
        cardLayout = new CardLayout();
         jPanel2.setLayout(cardLayout);
-         RDP.setRegistro(this);
-        jPanel2.add(PS, "PS");
-        jPanel2.add(RDP, "RDP");
+        RDatosPersonales.setRegistro(this);
         
-        cardLayout.show(jPanel2, "RDP");
+        jPanel2.add(RDatosPersonales, "RDatosPersonales");
+        jPanel2.add(RInfoPolicial, "RInfoPolicial");
+        jPanel2.add(RUsuario, "rUsuario");
+        jPanel2.add(RPreguntasS, "preguntasS");
+                
+        cardLayout.show(jPanel2, "RDatosPersonales");
         
-        JLabel lblBack1 = RDP.getlblBack();
-        JLabel lblBack2 = PS.getlblBack();
-        JButton next = RDP.getBtnSiguiente();      
+        JLabel lblBack1 = RDatosPersonales.getlblBack();
+        JLabel lblBack2 = RInfoPolicial.lblRegresar;
+        JLabel lblBack3 = RUsuario.lblRegresar;
+        JLabel lblBack4 = RPreguntasS.getlblBack();
+        
+        JButton next1 = RDatosPersonales.getBtnSiguiente();      
+        JButton next2 = RInfoPolicial.btnSiguiente; 
+        JButton next3 = RUsuario.btnSiguiente; 
         
         lblBack1.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
@@ -89,17 +101,42 @@ public class Registro extends javax.swing.JFrame {
         }
         });
         
-         lblBack2.addMouseListener(new MouseAdapter() {
+        lblBack2.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
-            cardLayout.show(jPanel2, "RDP");
+            cardLayout.show(jPanel2, "RDatosPersonales");
         }
         });
         
-        next.addActionListener(new ActionListener() {
+         lblBack3.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            cardLayout.show(jPanel2, "RInfoPolicial");
+        }
+        });
+        
+        lblBack4.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            cardLayout.show(jPanel2, "rUsuario");
+        }
+        });
+        
+        next1.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
 //            if(tenemos todos los datos)
 //            {
-                cardLayout.show(jPanel2, "PS");
+                cardLayout.show(jPanel2, "RInfoPolicial");
+//            }
+//            else
+//            {
+//             si no, evitar y mostrar mensaje de que falta
+//            }
+        }
+        });
+        
+        next2.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {          
+//            if(tenemos todos los datos)
+//            {
+                cardLayout.show(jPanel2, "rUsuario"); 
 //            }
 //            else
 //            {
@@ -108,6 +145,18 @@ public class Registro extends javax.swing.JFrame {
         }
         });
 
+        next3.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {          
+//            if(tenemos todos los datos)
+//            {
+                cardLayout.show(jPanel2, "preguntasS"); 
+//            }
+//            else
+//            {
+//             si no, evitar y mostrar mensaje de que falta
+//            }
+        }
+        });
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -117,17 +166,17 @@ public class Registro extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1012, 720));
+        setPreferredSize(new java.awt.Dimension(1010, 720));
         setResizable(false);
-        setSize(new java.awt.Dimension(1012, 720));
+        setSize(new java.awt.Dimension(1010, 720));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1012, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1012, 720));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1010, 720));
         jPanel2.setLayout(new java.awt.CardLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1012, 720));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, -1, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

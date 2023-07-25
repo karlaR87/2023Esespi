@@ -17,7 +17,7 @@ public class RecuperarContra extends javax.swing.JFrame {
     private AskUsuario1 askUsuario;
     private MenuRC menu = new MenuRC();
     private PorCorreo porCorreo = new PorCorreo();
-    private PorPreguntasS porPreguntasS;
+private PorPreguntasS porPreguntasS;
     private PorSMS porSMS = new PorSMS();
     private ReestablecerContra resCon;
     private CardLayout cardLayout;
