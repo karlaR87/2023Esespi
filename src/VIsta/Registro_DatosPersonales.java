@@ -509,7 +509,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private com.toedter.calendar.JDateChooser jdcFecha;
+    public com.toedter.calendar.JDateChooser jdcFecha;
     private javax.swing.JLabel lbl10;
     private javax.swing.JLabel lbl11;
     private javax.swing.JLabel lbl12;

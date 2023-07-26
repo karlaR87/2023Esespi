@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 public class ControladorRegistro implements ActionListener{
 
@@ -181,11 +182,18 @@ public class ControladorRegistro implements ActionListener{
 //    public void actionPerformed(    ActionEvent e){
 //        if(e.getSource() == vista.btnSiguiente){
 //            
-//            modeloRegistro.getNombre(vista.txtNombres.getText());
-//            modeloRegistro.setCantidad(Integer.parseInt(frmVentas.txtCantidad.getText()));
-//            modeloRegistro.setPrecio(Double.parseDouble(frmVentas.txtPrecio.getText()));
-//            modeloRegistro.setCliente(frmVentas.txtCliente.getText());
-//            modeloRegistro.setComentarios(frmVentas.txtComentario.getText());
+//            modeloRegistro.setNombre(vista.txtNombres.getText());
+//            modeloRegistro.setFecha(vista.jdcFecha.getDate());
+//            modeloRegistro.setDirección(vista.txtDireccion.getText());
+//            modeloRegistro.setDUI(vista.txtDui.getText());
+//            modeloRegistro.setTel(vista.txtNumeroTel.getText());
+//            modeloRegistro.setCorreo(vista.txtCorreo.getText());
+//            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString());
+//            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString());
+//            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString());
+//            modeloRegistro.agregarRegistroYAsociarIdiomas(modeloRegistro);
+//
+//            
 //        }
 //    }
     
