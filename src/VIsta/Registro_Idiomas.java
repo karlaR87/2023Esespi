@@ -11,6 +11,7 @@ import java.awt.event.ComponentEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -150,9 +151,12 @@ private Registro registro;  // Referencia a la instancia de Registro
 
           if (registro != null) {
             // Obtener los idiomas seleccionados de la tabla
+            
+             System.out.println("Total de filas en la tabla: " + tbIdiomas.getRowCount());
             for (int row = 0; row < tbIdiomas.getRowCount(); row++) {
             
                 boolean isSelected = IsSelected(row, 2, tbIdiomas);  // Verificar si la casilla está seleccionada
+                System.out.println("Fila: " + row + ", Columna: 2, isSelected: " + isSelected);
                 if (isSelected) {
                                        
                     Boolean idioma = (Boolean) tbIdiomas.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
@@ -160,6 +164,7 @@ private Registro registro;  // Referencia a la instancia de Registro
                         System.out.println(" Idioma");
                 }
             }
+             // Imprimir el contenido del array de idiomasSeleccionados
         } else {
             System.out.println("La referencia 'registro' no se ha establecido correctamente.");
         }
@@ -167,7 +172,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         // Limpiar la selección de la tabla
         tbIdiomas.clearSelection();
 
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     
