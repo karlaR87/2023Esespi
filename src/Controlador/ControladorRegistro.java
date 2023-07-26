@@ -7,10 +7,15 @@ import VIsta.PorCorreo;
 import VIsta.PorSMS;
 import VIsta.RecuperarContra;
 import VIsta.ReestablecerContra;
+import VIsta.Registro_DatosPersonales;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ControladorRegistro implements ActionListener{
 
@@ -40,6 +45,11 @@ public class ControladorRegistro implements ActionListener{
      porSMS.btnEnviarCode.addActionListener(this);
     }
      int IdCurrentPersona;
+
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -156,10 +166,29 @@ public class ControladorRegistro implements ActionListener{
             }
        }
 }
+
     
-    // llenar tipos persona 
-    public static ResultSet CargarTiopoPersona(){
-        return ModeloRegistro.CargarTiopoPersona();
+    //PARTE DE CONTROLADOR DE REGISTRO 
+    private Registro_DatosPersonales vista; // o la vista correspondiente
+
+     public ControladorRegistro(ModeloRegistro modelo, Registro_DatosPersonales datos){
+        this.modeloRegistro=modelo;
+        this.vista=datos;
+        this.vista.btnSiguiente.addActionListener(this);
+       
     }
+//    
+//    public void actionPerformed(    ActionEvent e){
+//        if(e.getSource() == vista.btnSiguiente){
+//            
+//            modeloRegistro.getNombre(vista.txtNombres.getText());
+//            modeloRegistro.setCantidad(Integer.parseInt(frmVentas.txtCantidad.getText()));
+//            modeloRegistro.setPrecio(Double.parseDouble(frmVentas.txtPrecio.getText()));
+//            modeloRegistro.setCliente(frmVentas.txtCliente.getText());
+//            modeloRegistro.setComentarios(frmVentas.txtComentario.getText());
+//        }
+//    }
+    
+    
 }   
         

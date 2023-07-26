@@ -1,5 +1,8 @@
 package VIsta;
 
+import Modelo.ModeloDatosTransporte;
+import Modelo.ModeloRegistro;
+import Modelo.ModeloTransporte;
 import Modelo.conexionSql;
 import java.sql.Connection;
 import java.awt.CardLayout;
@@ -7,10 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.SpinnerNumberModel;
 
 
 public class Registro extends javax.swing.JFrame {
@@ -39,7 +44,10 @@ public class Registro extends javax.swing.JFrame {
         PanelsShowInit();
 
         formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
-        formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro        
+        formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro    
+      
+      
+        
     }
     
     
@@ -208,7 +216,8 @@ public class Registro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro().setVisible(true);
+            
+                
             }
         });
     }

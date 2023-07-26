@@ -5,6 +5,7 @@
 package VIsta;
 
 import Controlador.ControladorRegistro;
+import Modelo.ModeloRegistro;
 import fonts.Fuentes;
 import java.awt.Component;
 import java.awt.Container;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Pao
@@ -32,6 +35,15 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         initComponents();
         fontDesign();
         jLabel1.setVisible(false);
+             // Llenar el ComboBox de estado civil
+        try {
+            ModeloRegistro modeloRegistro = new ModeloRegistro();
+            modeloRegistro.llenarCombo(cmbEstadoCivil1);
+            modeloRegistro.llenarCombo2(cmbtipoSangre1);
+            modeloRegistro.llenarCombo3(cmbgenero);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles.");
+        }
         
     }
  
@@ -71,6 +83,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
@@ -106,9 +119,9 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jLabel34 = new javax.swing.JLabel();
         Mas1 = new javax.swing.JLabel();
         Mas2 = new javax.swing.JLabel();
-        jCalendar2 = new com.toedter.calendar.JCalendar();
         cmbEstadoCivil1 = new javax.swing.JComboBox<>();
         cmbtipoSangre1 = new javax.swing.JComboBox<>();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -149,32 +162,32 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl7.setForeground(new java.awt.Color(255, 255, 255));
         lbl7.setText("Dirección ");
-        ContenedorP.add(lbl7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
+        ContenedorP.add(lbl7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
 
         lbl8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl8.setForeground(new java.awt.Color(255, 255, 255));
         lbl8.setText("DUI ");
-        ContenedorP.add(lbl8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        ContenedorP.add(lbl8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
 
         lbl9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl9.setForeground(new java.awt.Color(255, 255, 255));
         lbl9.setText("Número de Telefono ");
-        ContenedorP.add(lbl9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+        ContenedorP.add(lbl9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
         lbl10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl10.setForeground(new java.awt.Color(255, 255, 255));
         lbl10.setText("Correo Electronico");
-        ContenedorP.add(lbl10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, -1, -1));
+        ContenedorP.add(lbl10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
         lbl11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl11.setForeground(new java.awt.Color(255, 255, 255));
         lbl11.setText("Estado civil ");
-        ContenedorP.add(lbl11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
+        ContenedorP.add(lbl11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
         lbl12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl12.setForeground(new java.awt.Color(255, 255, 255));
         lbl12.setText("Tipo de sangre");
-        ContenedorP.add(lbl12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, -1));
+        ContenedorP.add(lbl12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
         lbl13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl13.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,7 +202,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl15.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl15.setForeground(new java.awt.Color(255, 255, 255));
         lbl15.setText("Genero ");
-        ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, -1, 30));
+        ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 210, 30));
 
         txtNombres.setText(" ");
         txtNombres.setBorder(null);
@@ -201,11 +214,11 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         txtDireccion.setText(" ");
         txtDireccion.setBorder(null);
-        ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 230, 30));
+        ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 230, 30));
 
         txtDui.setText(" ");
         txtDui.setBorder(null);
-        ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 220, 30));
+        ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 220, 30));
 
         txtNumeroTel.setText(" ");
         txtNumeroTel.setBorder(null);
@@ -214,11 +227,11 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 txtNumeroTelActionPerformed(evt);
             }
         });
-        ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
+        ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 230, 30));
 
         txtCorreo.setText(" ");
         txtCorreo.setBorder(null);
-        ContenedorP.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 230, 30));
+        ContenedorP.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         ContenedorP.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, 50));
@@ -227,22 +240,22 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ContenedorP.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, 50));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
-        ContenedorP.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, 50));
+        ContenedorP.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, 50));
 
         cmbgenero.setBackground(new java.awt.Color(59, 126, 255));
         cmbgenero.setForeground(new java.awt.Color(255, 255, 255));
         cmbgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbgenero.setBorder(null);
-        ContenedorP.add(cmbgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 110, 30));
+        ContenedorP.add(cmbgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 250, 30));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
-        ContenedorP.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, 50));
+        ContenedorP.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
-        ContenedorP.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, 50));
+        ContenedorP.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, 50));
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
-        ContenedorP.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, 50));
+        ContenedorP.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, -1, 50));
 
         MasIdiomas.setBackground(new java.awt.Color(70, 70, 70));
         MasIdiomas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -322,19 +335,31 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
             }
         });
         ContenedorP.add(Mas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, 50, 50));
-        ContenedorP.add(jCalendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 260, 90));
 
         cmbEstadoCivil1.setBackground(new java.awt.Color(59, 126, 255));
         cmbEstadoCivil1.setForeground(new java.awt.Color(255, 255, 255));
         cmbEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEstadoCivil1.setBorder(null);
-        ContenedorP.add(cmbEstadoCivil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 250, 30));
+        cmbEstadoCivil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEstadoCivil1ActionPerformed(evt);
+            }
+        });
+        ContenedorP.add(cmbEstadoCivil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 250, 30));
 
         cmbtipoSangre1.setBackground(new java.awt.Color(59, 126, 255));
         cmbtipoSangre1.setForeground(new java.awt.Color(255, 255, 255));
         cmbtipoSangre1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbtipoSangre1.setBorder(null);
-        ContenedorP.add(cmbtipoSangre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 250, 30));
+        cmbtipoSangre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbtipoSangre1ActionPerformed(evt);
+            }
+        });
+        ContenedorP.add(cmbtipoSangre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 250, 30));
+
+        jdcFecha.setDateFormatString("dd MMM yyyy");
+        ContenedorP.add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 200, 30));
 
         jPanel1.add(ContenedorP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 940, 530));
 
@@ -442,6 +467,14 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
          ViewNacio();
     }//GEN-LAST:event_Mas2MouseClicked
 
+    private void cmbEstadoCivil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoCivil1ActionPerformed
+        
+    }//GEN-LAST:event_cmbEstadoCivil1ActionPerformed
+
+    private void cmbtipoSangre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbtipoSangre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbtipoSangre1ActionPerformed
+
     public void setFocus0(boolean status)
     {
        txtNombres.setFocusable(status);
@@ -465,7 +498,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     public javax.swing.JComboBox<String> cmbEstadoCivil1;
     public javax.swing.JComboBox<String> cmbgenero;
     public javax.swing.JComboBox<String> cmbtipoSangre1;
-    public com.toedter.calendar.JCalendar jCalendar2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
@@ -476,6 +509,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser jdcFecha;
     private javax.swing.JLabel lbl10;
     private javax.swing.JLabel lbl11;
     private javax.swing.JLabel lbl12;
