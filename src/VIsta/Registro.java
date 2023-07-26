@@ -26,6 +26,7 @@ public class Registro extends javax.swing.JFrame {
     private ArrayList<Boolean> nacionalidadesSelecionadas = new ArrayList<>();
     
     void agregarIdiomaSeleccionado(Boolean idiomaSeleccionado) {
+        
         idiomasSeleccionados.add(idiomaSeleccionado);
         formularioIdiomas.setRegistro(this);
   
@@ -35,8 +36,9 @@ public class Registro extends javax.swing.JFrame {
        
         nacionalidadesSelecionadas.add(nacionalidadseleccionada);
          formularioNacionalidad.setRegistro(this);
-
+           
     }
+
     
     public Registro() {
         initComponents();
@@ -223,6 +225,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
 
 
     

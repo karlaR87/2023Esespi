@@ -48,9 +48,8 @@ private Registro registro;  // Referencia a la instancia de Registro
 
     public boolean IsSelected(int row, int column, JTable table)
     {    
-        
+         System.out.println("Fila: " + row + ", Columna: " + column);
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
-       
     } 
 
       public void enabled(boolean status)
@@ -145,17 +144,23 @@ private Registro registro;  // Referencia a la instancia de Registro
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
+          
           if (registro != null) {
             // Obtener los idiomas seleccionados de la tabla
+            
+             System.out.println("Total de filas en la tabla: " + tbNacionalidad.getRowCount());
             for (int row = 0; row < tbNacionalidad.getRowCount(); row++) {
-               
+            
                 boolean isSelected = IsSelected(row, 2, tbNacionalidad);  // Verificar si la casilla está seleccionada
+                System.out.println("Fila: " + row + ", Columna: 2, isSelected: " + isSelected);
                 if (isSelected) {
-                    Boolean idioma = (Boolean) tbNacionalidad.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
-                    registro.agregarIdiomaSeleccionado(idioma);  // Utilizar la referencia a registro para agregar el idioma seleccionado
-                    System.out.println("Nacionalidad");
+                                       
+                    Boolean nacionalidad = (Boolean) tbNacionalidad.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
+                    registro.agregarNacionalidadSeleccionada(nacionalidad);                
+                        System.out.println(" Idioma");
                 }
             }
+             // Imprimir el contenido del array de idiomasSeleccionados
         } else {
             System.out.println("La referencia 'registro' no se ha establecido correctamente.");
         }
@@ -163,8 +168,8 @@ private Registro registro;  // Referencia a la instancia de Registro
         // Limpiar la selección de la tabla
         tbNacionalidad.clearSelection();
 
-        this.setVisible(false);
-  
+        this.dispose();
+                     
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked

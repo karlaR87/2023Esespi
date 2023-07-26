@@ -49,7 +49,7 @@ public class mdlIdiomas {
             
             //Recorrer los resultados
             while(rs.next()){
-                modelo.addRow(new Object[] {rs.getInt("IdIdioma"), rs.getString("Idioma"), false} );
+                modelo.addRow(new Object[] {rs.getInt("IdIdioma"), rs.getString("Idioma"), null} );
                 System.out.println("mostrar3");
             }
             idiomas.tbIdiomas.setModel(modelo);
