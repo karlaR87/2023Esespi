@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ControladorRegistro implements ActionListener{
+public class ControladorRecuperarContra implements ActionListener{
 
     private ModeloRegistro modeloRegistro;
     private RecuperarContra vistaRecuperarContra; // Referencia al JFrame
@@ -31,7 +31,7 @@ public class ControladorRegistro implements ActionListener{
     private mdlUsuarios mdlusuarios;
     private mdlTipoPersonas_Personas mdlTipoPersonasP;
     
-     public ControladorRegistro(ModeloRegistro modeloRegistro, RecuperarContra vistaRecuperarContra, ReestablecerContra reestablecerContra, PorCorreo porCorreo, PorSMS porSMS, mdlPolicias mdlPolicias, mdlUsuarios mdlusuarios, mdlTipoPersonas_Personas mdlTipoPersonasP) {
+     public ControladorRecuperarContra(ModeloRegistro modeloRegistro, RecuperarContra vistaRecuperarContra, ReestablecerContra reestablecerContra, PorCorreo porCorreo, PorSMS porSMS, mdlPolicias mdlPolicias, mdlUsuarios mdlusuarios, mdlTipoPersonas_Personas mdlTipoPersonasP) {
      this.modeloRegistro = modeloRegistro;
      this.vistaRecuperarContra = vistaRecuperarContra;
      this.reestablecerContra = reestablecerContra;
@@ -55,14 +55,14 @@ public class ControladorRegistro implements ActionListener{
      */
      
       //PARTE DE CONTROLADOR DE REGISTRO 
-    private Registro_DatosPersonales vista; // o la vista correspondiente
-
-     public ControladorRegistro(ModeloRegistro modelo, Registro_DatosPersonales datos){
-        this.modeloRegistro=modelo;
-        this.vista=datos;
-        this.vista.btnSiguiente.addActionListener(this);
-       
-    }
+//    private Registro_DatosPersonales vista; // o la vista correspondiente
+//
+//     public ControladorRegistro(ModeloRegistro modelo, Registro_DatosPersonales datos){
+//        this.modeloRegistro=modelo;
+//        this.vista=datos;
+//        this.vista.btnSiguiente.addActionListener(this);
+//       
+//    }
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -105,7 +105,6 @@ public class ControladorRegistro implements ActionListener{
                 porCorreo.numeroAleatorio = 0;
                 porCorreo.txtMail.setText("");
                 porCorreo.txtCode.setText("");
-                
                 
                 mdlTipoPersonasP.setIdPersona(IdCurrentPersona);
                 int currentIdpersona = mdlTipoPersonasP.readIDTipoPersona();

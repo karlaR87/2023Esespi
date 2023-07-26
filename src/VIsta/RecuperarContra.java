@@ -1,6 +1,6 @@
 package VIsta;
 
-import Controlador.ControladorRegistro;
+import Controlador.ControladorRecuperarContra;
 import Controlador.cntrlUsuarios;
 import Modelo.ModeloRegistro;
 import Modelo.mdlPolicias;
@@ -14,7 +14,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class RecuperarContra extends javax.swing.JFrame {
     
@@ -27,7 +26,7 @@ public class RecuperarContra extends javax.swing.JFrame {
     private CardLayout cardLayout;
     
     public mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad;
-    public ControladorRegistro cntrRegistro;
+    public ControladorRecuperarContra cntrRegistro;
     public ModeloRegistro mdlRegistro;
     
     public RecuperarContra() {
@@ -42,7 +41,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         mdlTipoPersonas_Personas mdlTipoPersonasP = new mdlTipoPersonas_Personas();
         mdlRegistro = new ModeloRegistro();        
         mdlPolicias mdlpolicias = new mdlPolicias();
-        cntrRegistro = new ControladorRegistro(mdlRegistro, this, resCon, porCorreo, porSMS, mdlpolicias, mdlUsuario, mdlTipoPersonasP);
+        cntrRegistro = new ControladorRecuperarContra(mdlRegistro, this, resCon, porCorreo, porSMS, mdlpolicias, mdlUsuario, mdlTipoPersonasP);
         
         cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this, resCon);     
         

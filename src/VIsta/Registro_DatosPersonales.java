@@ -4,7 +4,7 @@
  */
 package VIsta;
 
-import Controlador.ControladorRegistro;
+import Controlador.ControladorRecuperarContra;
 import Modelo.ModeloRegistro;
 import fonts.Fuentes;
 import java.awt.Component;
@@ -28,11 +28,12 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     private Registro registro;
    
+     public ControladorRecuperarContra cntrRegistro;
     
     public void setRegistro(Registro registro) {
     this.registro = registro;
 }
-    
+        ControladorRecuperarContra contrlRegistro;
     public Registro_DatosPersonales() {
         initComponents();
         fontDesign();
@@ -40,6 +41,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
              // Llenar el ComboBox de estado civil
         try {
             ModeloRegistro modeloRegistro = new ModeloRegistro();
+//            cntrRegistro = new ControladorRegistro(modeloRegistro, this);
             modeloRegistro.llenarCombo(cmbEstadoCivil1);
             modeloRegistro.llenarCombo2(cmbtipoSangre1);
             modeloRegistro.llenarCombo3(cmbgenero);
