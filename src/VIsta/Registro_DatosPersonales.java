@@ -426,6 +426,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "El número de teléfono debe contener solo números.");
                 return false;
             }
+            
             else{
                 return true; // Si todas las validaciones son exitosas, se retorna true.
             }
@@ -510,7 +511,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void Mas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas1MouseClicked

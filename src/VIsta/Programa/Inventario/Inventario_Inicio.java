@@ -60,6 +60,11 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 kButton1MouseClicked(evt);
             }
         });
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
         kButton2.setText("Transporte");
         kButton2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -148,7 +153,9 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        //boton para mostrar formulario de armamento
+      Inventario_Inicio_Armamento inv = new Inventario_Inicio_Armamento();
+        inv.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_kButton1MouseClicked
 
     private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
@@ -171,6 +178,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
         //boton para mostrar formulario de equipo especial
     }//GEN-LAST:event_kButton3MouseClicked
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

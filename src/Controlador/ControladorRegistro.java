@@ -131,7 +131,7 @@ public class ControladorRegistro implements ActionListener{
        }
         //POR SMS-----------------------------POR SMS---------------------------------------------POR SMS
          if(e.getSource() == porSMS.btnEnviarCode)
-       {
+       {  
           if(porSMS.txtNumero.getText().isBlank())
           {
             porSMS.numeroAleatorio = 0;
@@ -183,7 +183,8 @@ public class ControladorRegistro implements ActionListener{
           
           
         if(e.getSource() == vista.btnSiguiente){
-            
+           if(vista.isOK())
+            { 
             modeloRegistro.setNombre(vista.txtNombres.getText());
             modeloRegistro.setFecha(vista.jdcFecha.getDate());
             modeloRegistro.setDirección(vista.txtDireccion.getText());
@@ -194,7 +195,10 @@ public class ControladorRegistro implements ActionListener{
             modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString());
             modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString());
           // modeloRegistro.agregarRegistroYAsociarIdiomas(idiomasSeleccionados);
-
+            }
+           else{
+               
+           }
            
         }
     }
