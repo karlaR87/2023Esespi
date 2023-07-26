@@ -31,6 +31,7 @@ public class ControladorRegistro implements ActionListener{
      porCorreo.btnAceptar.addActionListener(this);
      
      porSMS.btnAceptar.addActionListener(this);
+     porSMS.btnEnviarCode.addActionListener(this);
     }
 
     @Override
@@ -91,22 +92,22 @@ public class ControladorRegistro implements ActionListener{
           if(porSMS.txtNumero.getText().isBlank())
           {
             porSMS.numeroAleatorio = 0;
-            JOptionPane.showMessageDialog(porCorreo, "Por favor, ingrese su número telefónico");
+            JOptionPane.showMessageDialog(porSMS, "Por favor, ingrese su número telefónico");
           }
           else
           {
-            modeloRegistro.setCorreoElectronico(porCorreo.txtMail.getText().trim());
-            int IdCurrentPersona = modeloRegistro.readIDCorreo();
+            modeloRegistro.setNumeroTelefonico(porSMS.txtNumero.getText().trim());
+            int IdCurrentPersona = modeloRegistro.readIdTelefono();
             if(IdCurrentPersona == -1)
             {
-              porCorreo.numeroAleatorio = 0;
-              JOptionPane.showMessageDialog(porCorreo, "No se encontró el correo electrónico, intente nuevamente");
+              porSMS.numeroAleatorio = 0;
+              JOptionPane.showMessageDialog(porSMS, "No se encontró el número telefónico, intente nuevamente");
             }
             else
             {
                 //Ya con el idPersonas
-                System.out.println("Si hay persona con ese correo: " + IdCurrentPersona);
-                porCorreo.EnviarCorreo();
+                System.out.println("Si hay persona con ese número telefónico: " + IdCurrentPersona);
+                porSMS.sendSMS();
             }
           }
        }

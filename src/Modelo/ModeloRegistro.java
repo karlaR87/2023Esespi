@@ -14,6 +14,15 @@ import javax.swing.JOptionPane;
 public class ModeloRegistro {
     
     private String CorreoElectronico;
+    private String numeroTelefonico;
+
+    public String getNumeroTelefonico() {
+        return numeroTelefonico;
+    }
+
+    public void setNumeroTelefonico(String numeroTelefonico) {
+        this.numeroTelefonico = numeroTelefonico;
+    }
 
     public String getCorreoElectronico() {
         return CorreoElectronico;
@@ -22,6 +31,28 @@ public class ModeloRegistro {
     public void setCorreoElectronico(String CorreoElectronico) {
         this.CorreoElectronico = CorreoElectronico;
     }
+    
+       public int readIdTelefono()
+    {
+        try{   
+            String query = "SELECT IdPersona FROM tbPersonas WHERE NumeroTel = ?";    
+            PreparedStatement readIdPersonaTelefono = ConexionPrueba.getConnection().prepareStatement(query);
+            readIdPersonaTelefono.setString(1, numeroTelefonico);
+            
+             ResultSet rs = readIdPersonaTelefono.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR en el query readIDUsuario: " + e.toString());
+            return -1;
+
+        }
+    } 
 
     public int readIDCorreo()
     {
