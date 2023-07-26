@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.sql.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 /**
  *
@@ -78,8 +80,9 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         btn.setVerticalAlignment(JButton.CENTER);
         btn.setHorizontalAlignment(JButton.CENTER); 
     }
+ 
     
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")  
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -383,7 +386,57 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+           public boolean isOK()
+{
+    // Validar campos vacíos
+    if(txtNombres.getText().isBlank() || txtApellidos.getText().isBlank() || txtDireccion.getText().isBlank()
+            || txtDui.getText().isBlank() || txtNumeroTel.getText().isBlank() || txtCorreo.getText().isBlank())
+    {
+        JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
+        return false;
+    }
+    else
+    {
+        // Validar longitud de campos
+        if(txtNombres.getText().length() > 30 || txtApellidos.getText().length() > 30 || txtDireccion.getText().length() > 40
+                || txtDui.getText().length() > 10 || txtNumeroTel.getText().length() > 8 )
+        {
+            JOptionPane.showMessageDialog(this, "Los campos no deben ser mayores a: Nombres y apellidos = 30, Dirección = 40, Dui = 10, y número de teléfono = 8.");
+            return false;
+        }
+        else
+        {
+            // Validar formato del correo electrónico
+            String correoPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+            Pattern pattern = Pattern.compile(correoPattern);
+            Matcher matcher = pattern.matcher(txtCorreo.getText());
+            if (!matcher.matches()) {
+                JOptionPane.showMessageDialog(this, "El formato del correo electrónico no es válido.");
+                return false;
+            }
+            
+            // Validar que el DUI contenga solo números
+            if (!txtDui.getText().matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "El DUI debe contener solo números.");
+                return false;
+            }
+            
+            // Validar que el número de teléfono contenga solo números
+            if (!txtNumeroTel.getText().matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "El número de teléfono debe contener solo números.");
+                return false;
+            }
+            else{
+                return true; // Si todas las validaciones son exitosas, se retorna true.
+            }
+        }
+    }
+    
+}
 
+    
+    
+    
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
 
     }//GEN-LAST:event_lblRegresarMouseClicked
@@ -425,7 +478,8 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
                     }
          });       
     }
-
+    
+      
     public JLabel getlblBack()
     {
         return lblRegresar;
@@ -435,7 +489,10 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     {
         return btnSiguiente;
     }
-    
+   
+ 
+   
+
     private void txtNumeroTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroTelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroTelActionPerformed
@@ -445,12 +502,11 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_MasIdiomasMouseClicked
 
     private void MasNacionalidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MasNacionalidadesMouseClicked
-
+                
     }//GEN-LAST:event_MasNacionalidadesMouseClicked
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
-
-
+         
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed

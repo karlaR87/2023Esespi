@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ControladorRegistro implements ActionListener{
 
@@ -51,6 +53,16 @@ public class ControladorRegistro implements ActionListener{
      *
      * @param e
      */
+     
+      //PARTE DE CONTROLADOR DE REGISTRO 
+    private Registro_DatosPersonales vista; // o la vista correspondiente
+
+     public ControladorRegistro(ModeloRegistro modelo, Registro_DatosPersonales datos){
+        this.modeloRegistro=modelo;
+        this.vista=datos;
+        this.vista.btnSiguiente.addActionListener(this);
+       
+    }
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -166,37 +178,25 @@ public class ControladorRegistro implements ActionListener{
                 }
             }
        }
-}
+          
+          //Registro de registro 
+          
+          
+        if(e.getSource() == vista.btnSiguiente){
+            
+            modeloRegistro.setNombre(vista.txtNombres.getText());
+            modeloRegistro.setFecha(vista.jdcFecha.getDate());
+            modeloRegistro.setDirección(vista.txtDireccion.getText());
+            modeloRegistro.setDUI(vista.txtDui.getText());
+            modeloRegistro.setTel(vista.txtNumeroTel.getText());
+            modeloRegistro.setCorreo(vista.txtCorreo.getText());
+            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString());
+            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString());
+            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString());
+          // modeloRegistro.agregarRegistroYAsociarIdiomas(idiomasSeleccionados);
 
-    
-    //PARTE DE CONTROLADOR DE REGISTRO 
-    private Registro_DatosPersonales vista; // o la vista correspondiente
-
-     public ControladorRegistro(ModeloRegistro modelo, Registro_DatosPersonales datos){
-        this.modeloRegistro=modelo;
-        this.vista=datos;
-        this.vista.btnSiguiente.addActionListener(this);
-       
+           
+        }
     }
-//    
-//    public void actionPerformed(    ActionEvent e){
-//        if(e.getSource() == vista.btnSiguiente){
-//            
-//            modeloRegistro.setNombre(vista.txtNombres.getText());
-//            modeloRegistro.setFecha(vista.jdcFecha.getDate());
-//            modeloRegistro.setDirección(vista.txtDireccion.getText());
-//            modeloRegistro.setDUI(vista.txtDui.getText());
-//            modeloRegistro.setTel(vista.txtNumeroTel.getText());
-//            modeloRegistro.setCorreo(vista.txtCorreo.getText());
-//            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString());
-//            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString());
-//            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString());
-//            modeloRegistro.agregarRegistroYAsociarIdiomas(modeloRegistro);
-//
-//            
-//        }
-//    }
-    
-    
 }   
         
