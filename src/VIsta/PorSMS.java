@@ -202,7 +202,7 @@ public class PorSMS extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAceptarMouseClicked
 
     private void btnEnviarCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarCodeMouseClicked
-        sendSMS();
+
     }//GEN-LAST:event_btnEnviarCodeMouseClicked
     
   public static final String ACCOUNT_SID = "AC006c0437db67738083eabf3584946607";
