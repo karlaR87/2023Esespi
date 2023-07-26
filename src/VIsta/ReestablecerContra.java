@@ -1,6 +1,5 @@
 package VIsta;
 
-import Controlador.CntrlRC;
 import fonts.Fuentes;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -173,19 +172,45 @@ public class ReestablecerContra extends javax.swing.JPanel {
     public boolean AllisOk()
     {
         if(txtContra1.getText().isBlank() || txtContra2.getText().isBlank())
-            {
-                JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
-                return false;
-            }
-        if (!txtContra1.getText().equals(txtContra2.getText()) || !txtContra2.getText().equals(txtContra1.getText()))
         {
-            JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+            JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
             return false;
         }
-        //Si mide menos que algo, devolver ffalso
         else
-        {   
-            return true;
+        {
+            if (!txtContra1.getText().equals(txtContra2.getText()) || !txtContra2.getText().equals(txtContra1.getText()))
+            {
+               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                return false;
+            }
+            else
+            {
+                if(txtContra1.getText().length() <8 || txtContra2.getText().length() <8)
+                {
+                     JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
+                     return false;
+                }
+                else
+                {
+                    if(txtContra1.getText().length() > 15 || txtContra2.getText().length() > 15)
+                    {
+                        JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (!txtContra1.getText().equals(txtContra2.getText()) || !txtContra2.getText().equals(txtContra1.getText()))
+                        {
+                            JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                            return false;
+                        }
+                        else
+                        {   
+                            return true;
+                        }
+                    }
+                }
+            }
         }
     }
     

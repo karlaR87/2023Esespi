@@ -1,6 +1,5 @@
 package VIsta;
 
-import Controlador.CntrlRC;
 import fonts.Fuentes;
 import javax.swing.JLabel;
 
@@ -19,6 +18,7 @@ import javax.swing.JOptionPane;
 public class PorCorreo extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
+    
     public PorCorreo() {
         initComponents();      
         visibleinCode(false);      
@@ -61,19 +61,10 @@ public class PorCorreo extends javax.swing.JPanel {
     
      String CorreoA;
      public int numeroAleatorio;
-      final void EnviarCorreo(){
-        CntrlRC CntrlRecuContraC = new CntrlRC();
-        
-        String correo = txtMail.getText().trim(); 
-        CntrlRecuContraC.correo = correo;        
-        
+      public final void EnviarCorreo(){        
         try{
-           ResultSet rs = CntrlRecuContraC.readCorreo();
-            if(rs.next())
-            {
-                    CorreoA = rs.getString("CorreoElectronico");
-            //System.out.println("Correo Encontrado, es: " + CorreoA);
-
+            CorreoA = txtMail.getText().trim();
+            
             Properties props = new Properties();
             props.setProperty("mail.smtp.ssl.trust", "*");
             props.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -108,13 +99,7 @@ public class PorCorreo extends javax.swing.JPanel {
             
             t.close();
             JOptionPane.showMessageDialog(this, "Correo Enviado");
-            visibleinCode(true);   
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "No se encontró el correo electrónico, intente nuevamente");
-         visibleinCode(false); 
-        }
-            
+            visibleinCode(true);          
         }catch(Exception ex){
             System.out.println("Error fatal: " + ex.toString());
         }    
@@ -256,13 +241,7 @@ public class PorCorreo extends javax.swing.JPanel {
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void btnEnviarCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarCodeMouseClicked
-        numeroAleatorio = 0; 
-        if(txtMail.getText().isBlank())
-        {
-          JOptionPane.showMessageDialog(this, "Por favor, ingrese su correo electrónico");
-          visibleinCode(false); 
-        }
-        else{EnviarCorreo();}
+
     }//GEN-LAST:event_btnEnviarCodeMouseClicked
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
@@ -282,8 +261,8 @@ public class PorCorreo extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnEnviarCode;
+    public javax.swing.JButton btnAceptar;
+    public javax.swing.JButton btnEnviarCode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

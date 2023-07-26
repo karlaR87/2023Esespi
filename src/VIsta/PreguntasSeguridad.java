@@ -4,7 +4,6 @@
  */
 package VIsta;
 
-import Controlador.CntrlRC;
 import fonts.Fuentes;
 import java.sql.ResultSet;
 import javax.swing.JButton;
@@ -244,11 +243,11 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         }
         else
         {
-         CntrlRC insertPreguntasS = new CntrlRC();
+//         CntrlRC insertPreguntasS = new CntrlRC();
          
-         insertPreguntasS.idPersona = 1;        
-         insertPreguntasS.pregunta = txt1Pregunta.getText();   
-         insertPreguntasS.respuesta = txt1Respuesta.getText();           
+//         insertPreguntasS.idPersona = 1;        
+//         insertPreguntasS.pregunta = txt1Pregunta.getText();   
+//         insertPreguntasS.respuesta = txt1Respuesta.getText();           
 //         insertPreguntasS.insertPreguntasS();
 //          
 //         insertPreguntasS.pregunta = txt2Pregunta.getText();   

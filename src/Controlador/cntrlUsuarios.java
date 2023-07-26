@@ -46,24 +46,28 @@ public class cntrlUsuarios implements ActionListener{
            if(vistaUsuario1.txtUsuario.getText().isBlank())
            {
                 JOptionPane.showMessageDialog(vistaUsuario1, "No se permite ningún campo vacío");
-
            }
            else{
                 modeloUsuarios.setUsuario(vistaUsuario1.txtUsuario.getText().trim());
                 vistaUsuario1.txtUsuario.setText("");
 
                 IdCurrentUser = modeloUsuarios.readIDUsuario();
-
-                if(IdCurrentUser == -1)
-                {
-                    JOptionPane.showMessageDialog(vistaUsuario1, "No se encontró el usuario, intente nuevamente, Id: " + IdCurrentUser);
-                }
+                if(IdCurrentUser == 1)
+                {JOptionPane.showMessageDialog(vistaUsuario1, "Es Admin: " + IdCurrentUser);
+}
                 else
-                {    
-                     mdlPreguntasS.setIdUsuario(IdCurrentUser);
-                     modeloUsuarios.setIdUsuario(IdCurrentUser);
-                     JOptionPane.showMessageDialog(vistaUsuario1, "Usuario encontrado, Id: " + IdCurrentUser);
-                     vistaRecuperarContra.loadPreguntas();
+                {
+                    if(IdCurrentUser == -1)
+                    {
+                        JOptionPane.showMessageDialog(vistaUsuario1, "No se encontró el usuario, intente nuevamente, Id: " + IdCurrentUser);
+                    }
+                    else
+                    {    
+                         mdlPreguntasS.setIdUsuario(IdCurrentUser);
+                         modeloUsuarios.setIdUsuario(IdCurrentUser);
+                         JOptionPane.showMessageDialog(vistaUsuario1, "Usuario encontrado, Id: " + IdCurrentUser);
+                         vistaRecuperarContra.loadPreguntas();
+                    }
                 }
            }
        }
@@ -73,9 +77,8 @@ public class cntrlUsuarios implements ActionListener{
             if(reestablecerContra.AllisOk())
             {
               String conCompleta = reestablecerContra.convertirSHA256(reestablecerContra.txtContra1.getText());
-             String con15Digitos = conCompleta.substring(0, Math.min(conCompleta.length(), 15));
 
-             modeloUsuarios.setContrasena(con15Digitos);
+             modeloUsuarios.setContrasena(conCompleta);
              System.out.println(modeloUsuarios.getIdUsuario() + "BBBB");
                 
                 if(modeloUsuarios.updateConUsuario())

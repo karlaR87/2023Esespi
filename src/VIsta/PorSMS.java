@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VIsta;
 
 import fonts.Fuentes;
@@ -15,12 +11,9 @@ import com.twilio.type.PhoneNumber;
 
 import java.net.URI;
 import java.math.BigDecimal;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Paola Mejia
- */
 public class PorSMS extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
@@ -215,15 +208,22 @@ public class PorSMS extends javax.swing.JPanel {
   public static final String ACCOUNT_SID = "AC006c0437db67738083eabf3584946607";
   public static final String AUTH_TOKEN = "ff8f98eb6b428f420e15594a204885f9";
 
-    private void sendSMS()
+    public int numeroAleatorio;
+    public String numberString;
+    public String numeroReceptor;
+    public void sendSMS()
     {  
         try{
-      Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-       Message message = Message.creator(
-      new com.twilio.type.PhoneNumber("+50370842281"),
-      new com.twilio.type.PhoneNumber("+18146224821"),
-      "asasasas")
-        .create();
+        //CodigoNumericoRandom
+        Random random = new Random();
+        numeroAleatorio = random.nextInt(23543);
+            
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+         Message message = Message.creator(
+        new com.twilio.type.PhoneNumber(numeroReceptor),
+        new com.twilio.type.PhoneNumber("+18146224821"),
+        numberString)
+          .create();
 
         System.out.println(message.getSid());
         JOptionPane.showMessageDialog(this, "Mensaje Enviado");
@@ -250,8 +250,8 @@ public class PorSMS extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnEnviarCode;
+    public javax.swing.JButton btnAceptar;
+    public javax.swing.JButton btnEnviarCode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

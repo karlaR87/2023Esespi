@@ -1,7 +1,6 @@
 
 package VIsta;
 
-import Controlador.CntrlRC;
 import Modelo.mdlPreguntasRespuestasDSeguridad;
 import fonts.Fuentes;
 import java.util.List;

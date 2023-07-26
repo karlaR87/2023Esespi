@@ -1,6 +1,8 @@
 package VIsta;
 
+import Controlador.ControladorRegistro;
 import Controlador.cntrlUsuarios;
+import Modelo.ModeloRegistro;
 import Modelo.mdlPreguntasRespuestasDSeguridad;
 import Modelo.mdlUsuarios;
 import java.awt.CardLayout;
@@ -17,11 +19,14 @@ public class RecuperarContra extends javax.swing.JFrame {
     private AskUsuario1 askUsuario;
     private MenuRC menu = new MenuRC();
     private PorCorreo porCorreo = new PorCorreo();
-private PorPreguntasS porPreguntasS;
+    private PorPreguntasS porPreguntasS;
     private PorSMS porSMS = new PorSMS();
     private ReestablecerContra resCon;
     private CardLayout cardLayout;
+    
     public mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad;
+    public ControladorRegistro cntrRegistro;
+    public ModeloRegistro mdlRegistro;
     
     public RecuperarContra() {
         initComponents();        
@@ -31,6 +36,10 @@ private PorPreguntasS porPreguntasS;
 
         askUsuario = new AskUsuario1();
         resCon = new ReestablecerContra();
+        
+        mdlRegistro = new ModeloRegistro();        
+        cntrRegistro = new ControladorRegistro(mdlRegistro, this, resCon, porCorreo, porSMS);
+        
         cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this, resCon);     
         
         cardLayout = new CardLayout();
@@ -53,31 +62,6 @@ private PorPreguntasS porPreguntasS;
         JLabel lblBack6 = askUsuario.getlblBack();
         
         JLabel lblBack4 = porSMS.getlblBack();
-        
-        JButton btnacept1 = porCorreo.getbtnAceptar();
-        
-     
-        btnacept1.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {          
-        String txtcode = porCorreo.txtCode.getText();
-        String numeroA = String.valueOf(porCorreo.numeroAleatorio);
-        if(txtcode.isBlank())
-        {porCorreo.showDialog("Por favor, ingrese el código enviado a su correo electrónico");}
-        else{
-            if(txtcode.equals(numeroA))
-            {
-                porCorreo.showDialog("Codigos iguales");  
-                porCorreo.numeroAleatorio = 0;
-                porCorreo.txtMail.setText("");
-                porCorreo.txtCode.setText("");
-                loadReesCon();
-            }
-            else{
-                 porCorreo.showDialog("El código ingresado no coincide, intente nuevamente");           
-                }
-            }
-        }
-        });
          
         lblBack1.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
