@@ -4,13 +4,13 @@
  */
 package VIsta.Programa.Inventario;
 
+import Modelo.ModeloDatosTransporte;
+import Modelo.ModeloTransporte;
 import VIsta.Bienvenida;
 import VIsta.VistaAgregarTransporte;
+import java.sql.*;
 
-/**
- *
- * @author Pao
- */
+
 public class Inventario_Inicio extends javax.swing.JPanel {
 
     /**
@@ -154,8 +154,17 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
        //boton para mostrar formulario de transporte
        
-       VistaAgregarTransporte v = new VistaAgregarTransporte();
-       v.setVisible(true);
+      try {
+                    ModeloTransporte modelo = new ModeloTransporte();
+                    ModeloDatosTransporte modDtaos = new ModeloDatosTransporte();
+                    VistaAgregarTransporte vista = new VistaAgregarTransporte();
+                    
+                    
+                    
+                    vista.setVisible(true);
+                } catch (SQLException ex) {
+                   
+                }
        
     }//GEN-LAST:event_kButton2MouseClicked
 
