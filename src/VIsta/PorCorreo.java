@@ -85,7 +85,7 @@ public class PorCorreo extends javax.swing.JPanel {
             Random random = new Random();
             numeroAleatorio = random.nextInt(23543);
             
-            String Mensaje = "Ingresa el siguiente codigo para reestablecer tu Contraseña: " + numeroAleatorio;
+            String Mensaje = "Ingresa el siguiente codigo en el sistema para reestablecer tu Contraseña: " + numeroAleatorio;
            
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(CorreoRemitente));

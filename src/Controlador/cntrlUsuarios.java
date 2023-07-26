@@ -22,10 +22,9 @@ public class cntrlUsuarios implements ActionListener{
     private AskUsuario1 vistaUsuario1;
     private mdlPreguntasRespuestasDSeguridad mdlPreguntasS;
     private RecuperarContra vistaRecuperarContra; // Referencia al JFrame
-    private ReestablecerContra reestablecerContra;
+    private ReestablecerContra reestablecerContra;    
 
-
-     public cntrlUsuarios( mdlUsuarios modeloUsuarios, AskUsuario1 vistaUsuario1, mdlPreguntasRespuestasDSeguridad mdlPreguntasS, RecuperarContra vistaRecuperarContra, ReestablecerContra reestablecerContra) {
+     public cntrlUsuarios(mdlUsuarios modeloUsuarios, AskUsuario1 vistaUsuario1, mdlPreguntasRespuestasDSeguridad mdlPreguntasS, RecuperarContra vistaRecuperarContra, ReestablecerContra reestablecerContra) {
         this.modeloUsuarios = modeloUsuarios;
         this.vistaUsuario1 = vistaUsuario1;
         this.mdlPreguntasS = mdlPreguntasS;

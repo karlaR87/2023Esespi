@@ -140,7 +140,7 @@ public class ControladorRegistro implements ActionListener{
           else
           {
             modeloRegistro.setNumeroTelefonico(porSMS.txtNumero.getText().trim());
-            int IdCurrentPersona = modeloRegistro.readIdTelefono();
+            IdCurrentPersona = modeloRegistro.readIdTelefono();
             if(IdCurrentPersona == -1)
             {
               porSMS.numeroAleatorio = 0;
@@ -164,14 +164,27 @@ public class ControladorRegistro implements ActionListener{
         else{
             if(txtcode.equals(numeroA))
             {
-               JOptionPane.showMessageDialog(porSMS, "Codigos iguales");
+                JOptionPane.showMessageDialog(porSMS, "Codigos iguales");  
                 porSMS.numeroAleatorio = 0;
                 porSMS.txtNumero.setText("");
                 porSMS.txtCodeN.setText("");
+                                
+                mdlTipoPersonasP.setIdPersona(IdCurrentPersona);
+                int currentIdpersona = mdlTipoPersonasP.readIDTipoPersona();
                 
-//                IdCurrentUser = modeloUsuarios.readIDUsuario();
-                //Antes de esto V, debo conseguir el idUsuario
-                vistaRecuperarContra.loadReesCon();
+                mdlPolicias.setIdPersona(currentIdpersona);
+                int IdCurrentUser = mdlPolicias.readIDUsuario();
+                System.out.println(IdCurrentUser);
+                
+                if(IdCurrentUser == -1)
+                {
+                     JOptionPane.showMessageDialog(porCorreo, "No se encontró el usuario");
+                }
+                else
+                {
+                    mdlusuarios.setIdUsuario(IdCurrentUser);
+                    vistaRecuperarContra.loadReesCon();
+                }
             }
             else{ 
                  JOptionPane.showMessageDialog(porSMS, "El código ingresado no coincide, intente nuevamente");        
@@ -181,26 +194,26 @@ public class ControladorRegistro implements ActionListener{
           
           //Registro de registro 
           
-          
-        if(e.getSource() == vista.btnSiguiente){
-           if(vista.isOK())
-            { 
-            modeloRegistro.setNombre(vista.txtNombres.getText());
-            modeloRegistro.setFecha(vista.jdcFecha.getDate());
-            modeloRegistro.setDirección(vista.txtDireccion.getText());
-            modeloRegistro.setDUI(vista.txtDui.getText());
-            modeloRegistro.setTel(vista.txtNumeroTel.getText());
-            modeloRegistro.setCorreo(vista.txtCorreo.getText());
-            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString());
-            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString());
-            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString());
-          // modeloRegistro.agregarRegistroYAsociarIdiomas(idiomasSeleccionados);
-            }
-           else{
-               
-           }
-           
-        }
+//          
+//        if(e.getSource() == vista.btnSiguiente){
+//           if(vista.isOK())
+//            { 
+//            modeloRegistro.setNombre(vista.txtNombres.getText());
+//            modeloRegistro.setFecha(vista.jdcFecha.getDate());
+//            modeloRegistro.setDirección(vista.txtDireccion.getText());
+//            modeloRegistro.setDUI(vista.txtDui.getText());
+//            modeloRegistro.setTel(vista.txtNumeroTel.getText());
+//            modeloRegistro.setCorreo(vista.txtCorreo.getText());
+//            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString());
+//            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString());
+//            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString());
+//          // modeloRegistro.agregarRegistroYAsociarIdiomas(idiomasSeleccionados);
+//            }
+//           else{
+//               
+//           }
+//           
+//        }
     }
 }   
         

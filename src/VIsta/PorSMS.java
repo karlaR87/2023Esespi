@@ -206,32 +206,35 @@ public class PorSMS extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEnviarCodeMouseClicked
 
     public int numeroAleatorio;
-    public String numberString;
     public String numeroReceptor;
+    
+      // Find your Account Sid and Token at twilio.com/console
+  public static final String ACCOUNT_SID = "ACd88cf77d417af40bf11c6f7e800d6d35";
+  public static final String AUTH_TOKEN = "f13c9ccfb2ef3dc71a8ff951cc5b5a7a";
+
     public void sendSMS()
     {  
         try{
-           String ACCOUNT_SID = "ACd88cf77d417af40bf11c6f7e800d6d35";
-           String AUTH_TOKEN = "64b25b80a598d3c7ea319a58a31cbc98";
-
+         numeroReceptor=txtNumero.getText().trim();
         //CodigoNumericoRandom
         Random random = new Random();
         numeroAleatorio = random.nextInt(23543);
-            
+        System.out.println(numeroAleatorio);
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-         Message message = Message.creator(
-        new com.twilio.type.PhoneNumber("+50369983522"),
-        new com.twilio.type.PhoneNumber("+15738892923"),
-        numberString)
-          .create();
+        Message message = Message.creator(
+      new com.twilio.type.PhoneNumber("+503"+numeroReceptor), //+50369983522
+      new com.twilio.type.PhoneNumber("+15738892923"),
+      "Ingresa el siguiente codigo en el sistema para reestablecer tu Contraseña:" + numeroAleatorio)
 
-        System.out.println(message.getSid());
+    .create();
+
+    System.out.println(message.getSid());
         JOptionPane.showMessageDialog(this, "Mensaje Enviado");
         visibleinCode(true); 
     }
         catch(Exception e)
         {
-        JOptionPane.showMessageDialog(this, "Hubo un error en el envio");
+            JOptionPane.showMessageDialog(this, "Hubo un error en el envio");
         }
     }
     

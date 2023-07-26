@@ -5,15 +5,10 @@
 package VIsta;
 
 import fonts.Fuentes;
-import java.sql.ResultSet;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Paola Mejia
- */
 public class PreguntasSeguridad extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
@@ -272,7 +267,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
+    public javax.swing.JButton btnAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

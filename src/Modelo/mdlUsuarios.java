@@ -41,6 +41,25 @@ public class mdlUsuarios {
         this.IdNivelUsuario = IdNivelUsuario;
     }
     
+    
+    public boolean insertUsuario()
+    {
+           try{
+            String query = "INSERT INTO tbUsuarios(Usuario, Contraseña, IdNivelUsuario) VALUES (?,?,?)"; 
+            PreparedStatement insertUser = ConexionPrueba.getConnection().prepareStatement(query);
+            insertUser.setString(1, Usuario);
+            insertUser.setString(2, Contrasena);
+            insertUser.setInt(3, IdNivelUsuario);
+            
+            insertUser.executeUpdate();
+            return true;
+          
+        }catch(Exception e){
+            System.out.println("ERROR en el query InsertUsuario: " + e.toString());
+            return false;
+        }
+    }
+    
     public int readIDUsuario()
     {
         try {
