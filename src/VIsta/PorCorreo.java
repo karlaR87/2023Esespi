@@ -38,7 +38,7 @@ public class PorCorreo extends javax.swing.JPanel {
     private void fontDesign()
     {      
         tipoFuentes = new Fuentes();
-       // jLabel1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 35));
+     
        
        jLabel4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
        jLabel5.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));

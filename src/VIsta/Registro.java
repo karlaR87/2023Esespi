@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
 
@@ -109,40 +110,39 @@ public class Registro extends javax.swing.JFrame {
         
         next1.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
-//            if(tenemos todos los datos)
-//            {
+            //if()
+            //{
                 cardLayout.show(jPanel2, "RInfoPolicial");
-//            }
-//            else
-//            {
-//             si no, evitar y mostrar mensaje de que falta
-//            }
+            //}
+           //else
+            //{
+              
+            //}
         }
         });
         
         next2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
-//            if(tenemos todos los datos)
+//            if()
 //            {
                 cardLayout.show(jPanel2, "rUsuario"); 
 //            }
 //            else
 //            {
-//             si no, evitar y mostrar mensaje de que falta
+//                
 //            }
         }
         });
 
         next3.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {          
-//            if(tenemos todos los datos)
-//            {
+            if(RUsuario.isOK())
+            {
                 cardLayout.show(jPanel2, "preguntasS"); 
-//            }
-//            else
-//            {
-//             si no, evitar y mostrar mensaje de que falta
-//            }
+            }
+            else
+            {
+            }
         }
         });
     }

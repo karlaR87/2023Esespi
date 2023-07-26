@@ -502,7 +502,7 @@ public class ModeloRegistro {
 
             // Insertar datos en la tabla tbPersonas
             String sqlInsertPersona = "INSERT INTO tbPersonas (Nombre, Apellidos, Fecha, Dirección, DUI, Tel, Correo, Idestadocicivl, IdtipoSangre, Idgenero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement pstInsertPersona = conectar.prepareStatement(sqlInsertPersona, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstInsertPersona = conectar.prepareStatement(sqlInsertPersona, PreparedStatement.RETURN_GENERATED_KEYS);
             pstInsertPersona.setString(1, Nombre);
             pstInsertPersona.setString(2, Apellidos);
             pstInsertPersona.setDate(3, new java.sql.Date(Fecha.getTime())); // Convirtiendo la fecha util.Date a sql.Date
