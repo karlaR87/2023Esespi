@@ -2,6 +2,7 @@ package VIsta;
 
 import fonts.Fuentes;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class RegistroUsuario extends javax.swing.JPanel {
 
@@ -130,6 +131,51 @@ public class RegistroUsuario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean isOK()
+    {
+        if(txtUsuario.getText().isBlank() || txtContrasena.getText().isBlank() || txtContrasena2.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
+            return false;
+        }
+        else
+        {
+             if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+            {
+               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                return false;
+            }
+             else
+             {
+                 if(txtContrasena.getText().length() <8 || txtContrasena2.getText().length() <8)
+                {
+                     JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
+                     return false;
+                }
+                else
+                {
+                     if(txtContrasena.getText().length() > 15 || txtContrasena.getText().length() > 15)
+                    {
+                        JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                        return false;
+                    }
+                    else
+                    {
+                         if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+                        {
+                            JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                            return false;
+                        }
+                        else
+                        {   
+                            return true;
+                        }
+                    }
+                }
+             }
+        }
+    }
+    
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
 
     }//GEN-LAST:event_lblRegresarMouseClicked
