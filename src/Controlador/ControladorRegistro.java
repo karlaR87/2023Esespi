@@ -1,8 +1,8 @@
 package Controlador;
 import Modelo.ModeloRegistro;
-import Modelo.mdlPreguntasRespuestasDSeguridad;
+import Modelo.mdlPolicias;
+import Modelo.mdlTipoPersonas_Personas;
 import Modelo.mdlUsuarios;
-import VIsta.AskUsuario1;
 import VIsta.PorCorreo;
 import VIsta.PorSMS;
 import VIsta.RecuperarContra;
@@ -19,13 +19,19 @@ public class ControladorRegistro implements ActionListener{
     private ReestablecerContra reestablecerContra;
     private PorCorreo porCorreo;
     private PorSMS porSMS;
+    private mdlPolicias mdlPolicias;
+    private mdlUsuarios mdlusuarios;
+    private mdlTipoPersonas_Personas mdlTipoPersonasP;
     
-     public ControladorRegistro(ModeloRegistro modeloRegistro, RecuperarContra vistaRecuperarContra, ReestablecerContra reestablecerContra, PorCorreo porCorreo, PorSMS porSMS) {
+     public ControladorRegistro(ModeloRegistro modeloRegistro, RecuperarContra vistaRecuperarContra, ReestablecerContra reestablecerContra, PorCorreo porCorreo, PorSMS porSMS, mdlPolicias mdlPolicias, mdlUsuarios mdlusuarios, mdlTipoPersonas_Personas mdlTipoPersonasP) {
      this.modeloRegistro = modeloRegistro;
      this.vistaRecuperarContra = vistaRecuperarContra;
      this.reestablecerContra = reestablecerContra;
      this.porCorreo = porCorreo;
      this.porSMS = porSMS;
+     this.mdlPolicias = mdlPolicias;
+     this.mdlusuarios = mdlusuarios;
+     this.mdlTipoPersonasP = mdlTipoPersonasP;
      
      porCorreo.btnEnviarCode.addActionListener(this);
      porCorreo.btnAceptar.addActionListener(this);
@@ -33,7 +39,7 @@ public class ControladorRegistro implements ActionListener{
      porSMS.btnAceptar.addActionListener(this);
      porSMS.btnEnviarCode.addActionListener(this);
     }
-
+     int IdCurrentPersona;
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -48,7 +54,7 @@ public class ControladorRegistro implements ActionListener{
           else
           {
             modeloRegistro.setCorreoElectronico(porCorreo.txtMail.getText().trim());
-            int IdCurrentPersona = modeloRegistro.readIDCorreo();
+            IdCurrentPersona = modeloRegistro.readIDCorreo();
             if(IdCurrentPersona == -1)
             {
               porCorreo.numeroAleatorio = 0;
@@ -77,9 +83,23 @@ public class ControladorRegistro implements ActionListener{
                 porCorreo.txtMail.setText("");
                 porCorreo.txtCode.setText("");
                 
-//                IdCurrentUser = modeloUsuarios.readIDUsuario();
-                //Antes de esto V, debo conseguir el idUsuario
-                vistaRecuperarContra.loadReesCon();
+                
+                mdlTipoPersonasP.setIdPersona(IdCurrentPersona);
+                int currentIdpersona = mdlTipoPersonasP.readIDTipoPersona();
+                
+                mdlPolicias.setIdPersona(currentIdpersona);
+                int IdCurrentUser = mdlPolicias.readIDUsuario();
+                System.out.println(IdCurrentUser);
+                
+                if(IdCurrentUser == -1)
+                {
+                     JOptionPane.showMessageDialog(porCorreo, "No se encontró el usuario");
+                }
+                else
+                {
+                    mdlusuarios.setIdUsuario(IdCurrentUser);
+                    vistaRecuperarContra.loadReesCon();
+                }
             }
             else{
                  porCorreo.showDialog("El código ingresado no coincide, intente nuevamente");           
@@ -105,7 +125,6 @@ public class ControladorRegistro implements ActionListener{
             }
             else
             {
-                //Ya con el idPersonas
                 System.out.println("Si hay persona con ese número telefónico: " + IdCurrentPersona);
                 porSMS.sendSMS();
             }

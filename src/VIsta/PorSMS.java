@@ -204,9 +204,6 @@ public class PorSMS extends javax.swing.JPanel {
     private void btnEnviarCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarCodeMouseClicked
 
     }//GEN-LAST:event_btnEnviarCodeMouseClicked
-    
-  public static final String ACCOUNT_SID = "AC006c0437db67738083eabf3584946607";
-  public static final String AUTH_TOKEN = "ff8f98eb6b428f420e15594a204885f9";
 
     public int numeroAleatorio;
     public String numberString;
@@ -214,14 +211,17 @@ public class PorSMS extends javax.swing.JPanel {
     public void sendSMS()
     {  
         try{
+           String ACCOUNT_SID = "ACd88cf77d417af40bf11c6f7e800d6d35";
+           String AUTH_TOKEN = "64b25b80a598d3c7ea319a58a31cbc98";
+
         //CodigoNumericoRandom
         Random random = new Random();
         numeroAleatorio = random.nextInt(23543);
             
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
          Message message = Message.creator(
-        new com.twilio.type.PhoneNumber(numeroReceptor),
-        new com.twilio.type.PhoneNumber("+18146224821"),
+        new com.twilio.type.PhoneNumber("+50369983522"),
+        new com.twilio.type.PhoneNumber("+15738892923"),
         numberString)
           .create();
 

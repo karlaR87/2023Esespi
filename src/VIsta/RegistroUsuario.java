@@ -33,6 +33,8 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtMail = new javax.swing.JTextField();
         btnSiguiente = new javax.swing.JButton();
         lblRegresar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -40,6 +42,18 @@ public class RegistroUsuario extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Usuario:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 430, 70));
+
+        txtMail.setBackground(new java.awt.Color(51, 51, 51));
+        txtMail.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtMail.setForeground(new java.awt.Color(255, 255, 255));
+        txtMail.setToolTipText("");
+        txtMail.setBorder(null);
+        jPanel1.add(txtMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 380, 30));
 
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R77.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
@@ -102,7 +116,9 @@ public class RegistroUsuario extends javax.swing.JPanel {
     public javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblRegresar;
+    public javax.swing.JTextField txtMail;
     // End of variables declaration//GEN-END:variables
 }

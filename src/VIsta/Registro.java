@@ -11,11 +11,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
-import Controlador.ControladorRegistro;
 
 
 public class Registro extends javax.swing.JFrame {
@@ -30,7 +25,6 @@ public class Registro extends javax.swing.JFrame {
         formularioIdiomas.setRegistro(this);
   
     }
-    
     void agregarNacionalidadSeleccionada(Boolean nacionalidadseleccionada) {
        
         nacionalidadesSelecionadas.add(nacionalidadseleccionada);
@@ -43,9 +37,7 @@ public class Registro extends javax.swing.JFrame {
         PanelsShowInit();
 
         formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
-        formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro
-        
-        
+        formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro        
     }
     
     

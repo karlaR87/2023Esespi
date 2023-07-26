@@ -3,7 +3,9 @@ package VIsta;
 import Controlador.ControladorRegistro;
 import Controlador.cntrlUsuarios;
 import Modelo.ModeloRegistro;
+import Modelo.mdlPolicias;
 import Modelo.mdlPreguntasRespuestasDSeguridad;
+import Modelo.mdlTipoPersonas_Personas;
 import Modelo.mdlUsuarios;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -37,8 +39,10 @@ public class RecuperarContra extends javax.swing.JFrame {
         askUsuario = new AskUsuario1();
         resCon = new ReestablecerContra();
         
+        mdlTipoPersonas_Personas mdlTipoPersonasP = new mdlTipoPersonas_Personas();
         mdlRegistro = new ModeloRegistro();        
-        cntrRegistro = new ControladorRegistro(mdlRegistro, this, resCon, porCorreo, porSMS);
+        mdlPolicias mdlpolicias = new mdlPolicias();
+        cntrRegistro = new ControladorRegistro(mdlRegistro, this, resCon, porCorreo, porSMS, mdlpolicias, mdlUsuario, mdlTipoPersonasP);
         
         cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this, resCon);     
         
