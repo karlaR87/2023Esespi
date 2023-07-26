@@ -116,7 +116,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1.png.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 710));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
@@ -353,7 +353,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 710, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -457,15 +457,15 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContenedorP;
-    private javax.swing.JLabel Mas1;
-    private javax.swing.JLabel Mas2;
+    public javax.swing.JLabel Mas1;
+    public javax.swing.JLabel Mas2;
     private javax.swing.JPanel MasIdiomas;
     private javax.swing.JPanel MasNacionalidades;
-    private javax.swing.JButton btnSiguiente;
-    private javax.swing.JComboBox<String> cmbEstadoCivil1;
-    private javax.swing.JComboBox<String> cmbgenero;
-    private javax.swing.JComboBox<String> cmbtipoSangre1;
-    private com.toedter.calendar.JCalendar jCalendar2;
+    public javax.swing.JButton btnSiguiente;
+    public javax.swing.JComboBox<String> cmbEstadoCivil1;
+    public javax.swing.JComboBox<String> cmbgenero;
+    public javax.swing.JComboBox<String> cmbtipoSangre1;
+    public com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
@@ -489,11 +489,11 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     private javax.swing.JLabel lbl8;
     private javax.swing.JLabel lbl9;
     private javax.swing.JLabel lblRegresar;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtDui;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtNumeroTel;
+    public javax.swing.JTextField txtApellidos;
+    public javax.swing.JTextField txtCorreo;
+    public javax.swing.JTextField txtDireccion;
+    public javax.swing.JTextField txtDui;
+    public javax.swing.JTextField txtNombres;
+    public javax.swing.JTextField txtNumeroTel;
     // End of variables declaration//GEN-END:variables
 }
