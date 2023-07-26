@@ -15,6 +15,20 @@ public class ModeloRegistro {
     
     private String CorreoElectronico;
     private String numeroTelefonico;
+    
+    private String Nombre;
+    private String Apellidos;
+    private String Fecha;
+    private String Dirección;
+    private String DUI;
+    private String Tel;
+    private String Correo;
+    private String estadocicivl;
+    private String tipoSangre;
+    private String genero;
+    
+    
+    
 
     public String getNumeroTelefonico() {
         return numeroTelefonico;
