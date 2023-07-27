@@ -66,6 +66,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         btnSiguiente = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -109,7 +110,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         txtUsuario.setBorder(null);
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 410, 30));
 
-        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R77.png"))); // NOI18N
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
         btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -125,6 +126,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
         });
         jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 170, 60));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrangeBack.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, 200, 90));
+
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
         lblRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -138,7 +144,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroUser.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backRegistroUser.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backRegistroUser_2.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -226,6 +232,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblRegresar;
     public javax.swing.JPasswordField txtContrasena;
