@@ -57,7 +57,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         btnACt = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

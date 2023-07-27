@@ -154,7 +154,7 @@ public class Bienvenida extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroContinuarActionPerformed
 
     private void btnRegistroContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroContinuarMouseClicked
-        Registro r = new Registro();
+        Login r = new Login();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnRegistroContinuarMouseClicked
