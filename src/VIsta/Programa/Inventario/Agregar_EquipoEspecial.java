@@ -16,10 +16,15 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     /**
      * Creates new form Agregar_EquipoEspecial
      */
-    public Agregar_EquipoEspecial() throws SQLException {
-        initComponents();
-        ModeloEquipoEspecial equipo = new ModeloEquipoEspecial();
-            equipo.llenarCombo(cmbCat);
+    public Agregar_EquipoEspecial()  {
+            initComponents();
+    ModeloEquipoEspecial equipo = new ModeloEquipoEspecial();
+    try {
+        equipo.llenarCombo(cmbCat);
+    } catch (SQLException e) {
+        // Manejar la excepción aquí, ya sea mostrando un mensaje de error o tomando otras acciones necesarias.
+        e.printStackTrace();
+        }
     }
 
     /**
@@ -159,6 +164,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
             }
         });
     }

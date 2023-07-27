@@ -39,7 +39,7 @@ public class ModeloEquipoEspecial {
     
     
     
-    //LLENAR COMBOBOX DE TIPO DE SANGRE
+    //LLENAR 
     public void llenarCombo(JComboBox<String> combocat) throws SQLException {
          Connection conectar = null;
         PreparedStatement pst = null;

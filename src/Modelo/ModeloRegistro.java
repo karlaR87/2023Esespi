@@ -225,22 +225,7 @@ public class ModeloRegistro {
         }
     } 
     
-    //llenar combobox 
-    public static ResultSet CargarTiopoPersona(){
-       Connection con; 
-       PreparedStatement ps; 
-       try{
-           con =  conexionSql.getConexion();
-           ps = con.prepareStatement("select * from TipoPersona");
-           ResultSet rs; 
-           rs = ps.executeQuery();
-           return rs;
-       }
-       catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Error al mostrar");
-           return null; 
-       }
-    }
+   
     
     //LLENAR COMBOBOX DE ESTADO CIVIL 
     public void llenarCombo(JComboBox<String> comboboxEstadoCivil) throws SQLException {

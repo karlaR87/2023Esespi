@@ -157,7 +157,7 @@ private Registro registro;  // Referencia a la instancia de Registro
                                        
                     Boolean nacionalidad = (Boolean) tbNacionalidad.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
                     registro.agregarNacionalidadSeleccionada(nacionalidad);                
-                        System.out.println(" Idioma");
+                        System.out.println("nacio");
                 }
             }
              // Imprimir el contenido del array de idiomasSeleccionados

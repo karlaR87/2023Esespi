@@ -13,6 +13,8 @@ import VIsta.Registro_DatosPersonales;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import java.sql.*;
+import java.sql.SQLException;
 
 public class cntrlRegistro implements ActionListener {
 
@@ -60,9 +62,13 @@ public class cntrlRegistro implements ActionListener {
             modeloRegistro.setDUI(vista.txtDui.getText().trim());
             modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
             modeloRegistro.setCorreo(vista.txtCorreo.getText().trim());
-            if(vista.cmbEstadoCivil1.getSelectedItem().toString().trim().equals("Soltero"))
-            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
-            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
+            
+//            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString().trim())
+//            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
+//            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
+
+            
+            
             vistaJframeRegistro.loadInfoPolicias();
             }
            else{  

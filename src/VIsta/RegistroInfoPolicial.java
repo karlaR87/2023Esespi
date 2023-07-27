@@ -78,7 +78,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Numero de Placa:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 420, 40));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 420, 30));
 
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
@@ -111,7 +111,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ONI:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 420, 50));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 420, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backInfoPolicial.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));

@@ -30,17 +30,20 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     this.registro = registro;
 }
         ControladorRecuperarContra contrlRegistro;
+         ModeloRegistro modeloRegistro = new ModeloRegistro();
     public Registro_DatosPersonales() {
         initComponents();
         fontDesign();
         jLabel1.setVisible(false);
              // Llenar el ComboBox de estado civil
         try {
-            ModeloRegistro modeloRegistro = new ModeloRegistro();
+           
 //            cntrRegistro = new ControladorRegistro(modeloRegistro, this);
             modeloRegistro.llenarCombo(cmbEstadoCivil1);
             modeloRegistro.llenarCombo2(cmbtipoSangre1);
             modeloRegistro.llenarCombo3(cmbgenero);
+            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles.");
         }
@@ -501,7 +504,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_MasNacionalidadesMouseClicked
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
-         
+  
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
