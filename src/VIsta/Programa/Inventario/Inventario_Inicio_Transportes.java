@@ -161,7 +161,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
             VistaAgregarTransporte vb = new VistaAgregarTransporte();
             vb.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
+        //gger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2MouseClicked
 

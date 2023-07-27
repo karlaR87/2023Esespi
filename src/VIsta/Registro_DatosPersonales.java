@@ -559,13 +559,11 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
  idiomas.init();// Utilizar la referencia a registro para agregar el idioma seleccionado
       System.out.println("Se ejectua ");
-         setFocus0(false);
         
          idiomas.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 idiomas.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                         setFocus0(true);
                     }
          });
 
@@ -577,13 +575,12 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     {
     nacio.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
     nacio.init();
-       setFocus0(false);
        
          nacio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 nacio.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                         setFocus0(true);
+                        
                     }
          });       
     }
@@ -623,12 +620,12 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void Mas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas1MouseClicked
-          if(idiomas.isVisible()){} else { setFocus0(false); }
+          if(idiomas.isVisible()){} else {  }
           ViewIdiomas();
     }//GEN-LAST:event_Mas1MouseClicked
 
     private void Mas2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas2MouseClicked
-         if(nacio.isVisible()){} else { setFocus0(false); }
+         if(nacio.isVisible()){} else {  }
          ViewNacio();
     }//GEN-LAST:event_Mas2MouseClicked
 
@@ -640,18 +637,18 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbtipoSangre1ActionPerformed
 
-    public void setFocus0(boolean status)
-    {
-       txtNombres.setFocusable(status);
-       txtApellidos.setFocusable(status);
-       
-       txtDireccion.setFocusable(status);
-       txtDui.setFocusable(status);
-       txtNumeroTel.setFocusable(status);
-       txtCorreo.setFocusable(status);
-      
-       cmbgenero.setFocusable(status);   
-    }
+//    public void setFocus0(boolean status)
+//    {
+//       txtNombres.setFocusable(status);
+//       txtApellidos.setFocusable(status);
+//       
+//       txtDireccion.setFocusable(status);
+//       txtDui.setFocusable(status);
+//       txtNumeroTel.setFocusable(status);
+//       txtCorreo.setFocusable(status);
+//      
+//       cmbgenero.setFocusable(status);   
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContenedorP;
