@@ -28,7 +28,7 @@ public class mdlTipoPersonas_Personas {
             return true;
           
         }catch(Exception e){
-            System.out.println("ERROR en el query InsertUsuario: " + e.toString());
+            System.out.println("ERROR en el query TipoPersonas: " + e.toString());
             return false;
         }
     }

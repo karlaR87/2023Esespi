@@ -60,7 +60,7 @@ public class cntrlRegistro implements ActionListener {
             modeloRegistro.setDUI(vista.txtDui.getText().trim());
             modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
             modeloRegistro.setCorreo(vista.txtCorreo.getText().trim());
-            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString().trim());
+            if(vista.cmbEstadoCivil1.getSelectedItem().toString().trim().equals("Soltero"))
             modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
             modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
             vistaJframeRegistro.loadInfoPolicias();
@@ -113,17 +113,21 @@ public class cntrlRegistro implements ActionListener {
                     //Seleccionamos el "Maximo", el "Ultimo"
                     int idCurrentUser = mdlUsuario.readIDULTIMATEUsuario();
                     mdlPreguntasDS.setIdUsuario(idCurrentUser);
+                    System.out.println(idCurrentUser);
                     //Primera insercion de primera fila de P/R
                     mdlPreguntasDS.setPregunta(preguntasS.txt1Pregunta.getText().trim());
                     mdlPreguntasDS.setRespuesta(preguntasS.txt1Respuesta.getText().trim());
+                    mdlPreguntasDS.setIdUsuario(idCurrentUser);
                     mdlPreguntasDS.insertPreguntasS();
                     //Segunda insercion de segunda fila de P/R
                     mdlPreguntasDS.setPregunta(preguntasS.txt2Pregunta.getText().trim());
                     mdlPreguntasDS.setRespuesta(preguntasS.txt2Respuesta.getText().trim());
+                    mdlPreguntasDS.setIdUsuario(idCurrentUser);
                     mdlPreguntasDS.insertPreguntasS();
                     //Tercera insercion de tercera fila de P/R
                     mdlPreguntasDS.setPregunta(preguntasS.txt3Pregunta.getText().trim());
                     mdlPreguntasDS.setRespuesta(preguntasS.txt3Respuesta.getText().trim());
+                    mdlPreguntasDS.setIdUsuario(idCurrentUser);
                     mdlPreguntasDS.insertPreguntasS();
                 //Cuarto, Insertar al Policia
                     //Primero, necesitamos el id Usuario
