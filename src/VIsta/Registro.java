@@ -1,9 +1,13 @@
 package VIsta;
 
+import Controlador.cntrlRegistro;
 import Modelo.ModeloDatosTransporte;
 import Modelo.ModeloRegistro;
 import Modelo.ModeloTransporte;
 import Modelo.conexionSql;
+import Modelo.mdlPolicias;
+import Modelo.mdlTipoPersonas_Personas;
+import Modelo.mdlUsuarios;
 import java.sql.Connection;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -46,9 +50,7 @@ public class Registro extends javax.swing.JFrame {
 
         formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
         formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro    
-      
-      
-        
+
     }
     
     
@@ -61,6 +63,12 @@ public class Registro extends javax.swing.JFrame {
         RegistroUsuario RUsuario = new RegistroUsuario();
         PreguntasSeguridad RPreguntasS = new PreguntasSeguridad();
   
+        ModeloRegistro mdlRegistro = new ModeloRegistro();
+        mdlPolicias mdlPolicias= new mdlPolicias();
+        mdlTipoPersonas_Personas mdltipoPersona = new mdlTipoPersonas_Personas();
+        mdlUsuarios mdUsuario = new mdlUsuarios();
+        
+        cntrlRegistro cntrlRegistro = new cntrlRegistro(this, RDatosPersonales, mdlRegistro, RInfoPolicial, mdlPolicias, mdltipoPersona, RUsuario, mdUsuario);
         
        cardLayout = new CardLayout();
         jPanel2.setLayout(cardLayout);
@@ -77,10 +85,8 @@ public class Registro extends javax.swing.JFrame {
         JLabel lblBack2 = RInfoPolicial.lblRegresar;
         JLabel lblBack3 = RUsuario.lblRegresar;
         JLabel lblBack4 = RPreguntasS.getlblBack();
-        
-        JButton next1 = RDatosPersonales.getBtnSiguiente();      
-        JButton next2 = RInfoPolicial.btnSiguiente; 
-        JButton next3 = RUsuario.btnSiguiente; 
+             
+
         
         lblBack1.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
@@ -107,45 +113,14 @@ public class Registro extends javax.swing.JFrame {
             cardLayout.show(jPanel2, "rUsuario");
         }
         });
-        
-        next1.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {          
-            //if()
-            //{
-                cardLayout.show(jPanel2, "RInfoPolicial");
-            //}
-           //else
-            //{
-              
-            //}
-        }
-        });
-        
-        next2.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {          
-//            if()
-//            {
-                cardLayout.show(jPanel2, "rUsuario"); 
-//            }
-//            else
-//            {
-//                
-//            }
-        }
-        });
 
-        next3.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {          
-            if(RUsuario.isOK())
-            {
-                cardLayout.show(jPanel2, "preguntasS"); 
-            }
-            else
-            {
-            }
-        }
-        });
     }
+    
+    public void loadPreguntasS()
+    {
+        cardLayout.show(jPanel2, "preguntasS");  
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -184,8 +159,15 @@ public class Registro extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-            
+    public void loadInfoUsuario()
+    {
+        cardLayout.show(jPanel2, "rUsuario"); 
+    }
     
+    public void loadInfoPolicias()
+    {
+        cardLayout.show(jPanel2, "RInfoPolicial");
+    }
     /**
      * @param args the command line arguments
      */

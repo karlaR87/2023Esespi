@@ -4,6 +4,11 @@
  */
 package VIsta.Programa.Inventario;
 
+import VIsta.VistaAgregarTransporte;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Saraí
@@ -93,7 +98,12 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       
+        try {
+            VistaAgregarTransporte vb = new VistaAgregarTransporte();
+            vb.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**

@@ -1,5 +1,15 @@
 package Controlador;
 
-public class contrlPolicias {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class contrlPolicias implements ActionListener{
+
+    
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
     
 }

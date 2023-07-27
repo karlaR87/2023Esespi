@@ -1,6 +1,5 @@
 package Modelo;
 
-import Controlador.ConexionPrueba;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -47,7 +46,7 @@ public class mdlPreguntasRespuestasDSeguridad {
     {
         try{
             String query = "Insert Into tbPreguntasRespuestasDSeguridad(IdUsuario, Pregunta, Respuesta) Values (?,?,?)"; 
-            PreparedStatement addPreguntasS = ConexionPrueba.getConnection().prepareStatement(query);
+            PreparedStatement addPreguntasS = conexionSql.getConexion().prepareStatement(query);
             addPreguntasS.setInt(1, idPersona);
             addPreguntasS.setString(2, Pregunta);
             addPreguntasS.setString(3, Respuesta);
@@ -63,7 +62,7 @@ public class mdlPreguntasRespuestasDSeguridad {
     {
         try{
             String query = "Select Pregunta, Respuesta From tbPreguntasRespuestasDSeguridad Where IdUsuario = ?";    
-            PreparedStatement readPreguntas = ConexionPrueba.getConnection().prepareStatement(query);
+            PreparedStatement readPreguntas = conexionSql.getConexion().prepareStatement(query);
             readPreguntas.setInt(1, IdUsuario);
             ResultSet rs = readPreguntas.executeQuery();
             return rs;

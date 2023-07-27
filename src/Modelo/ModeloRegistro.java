@@ -1,5 +1,4 @@
 package Modelo;
-import Controlador.ConexionPrueba;
 import java.sql.Connection;
 import Modelo.conexionSql;
 import VIsta.Registro;
@@ -163,11 +162,31 @@ public class ModeloRegistro {
         this.CorreoElectronico = CorreoElectronico;
     }
     
-       public int readIdTelefono()
+   public int readIdUltimaPersona()
+    {
+        try{   
+            String query = "SELECT MAX(IdPersona)FROM tbPersonas";    
+            PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
+            
+             ResultSet rs = readIdUltimaPersona.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR en el query readIDUsuarioPersonas: " + e.toString());
+            return -1;
+        }
+    } 
+    
+    public int readIdTelefono()
     {
         try{   
             String query = "SELECT IdPersona FROM tbPersonas WHERE NumeroTel = ?";    
-            PreparedStatement readIdPersonaTelefono = ConexionPrueba.getConnection().prepareStatement(query);
+            PreparedStatement readIdPersonaTelefono = conexionSql.getConexion().prepareStatement(query);
             readIdPersonaTelefono.setString(1, numeroTelefonico);
             
              ResultSet rs = readIdPersonaTelefono.executeQuery();
@@ -181,7 +200,6 @@ public class ModeloRegistro {
         } catch (SQLException e) {
             System.out.println("ERROR en el query readIDUsuario: " + e.toString());
             return -1;
-
         }
     } 
 
@@ -189,7 +207,7 @@ public class ModeloRegistro {
     {
         try{   
             String query = "Select IdPersona From tbPersonas Where CorreoElectronico = ?";    
-            PreparedStatement readIdPersonaCorreo = ConexionPrueba.getConnection().prepareStatement(query);
+            PreparedStatement readIdPersonaCorreo = conexionSql.getConexion().prepareStatement(query);
             readIdPersonaCorreo.setString(1, CorreoElectronico);
             
              ResultSet rs = readIdPersonaCorreo.executeQuery();
@@ -239,9 +257,6 @@ public class ModeloRegistro {
             conectar = conexionSql.getConexion();
             pst = conectar.prepareStatement(SSQL);
             result = pst.executeQuery();
-
- 
-
 
             while (result.next()) {
                 int id = result.getInt("IdEstadoCivil");
@@ -307,15 +322,8 @@ public class ModeloRegistro {
                 conectar.close();
             }
         }
-
- 
-
         return Estado;
     }
-    
-    
-    
-    
     
      //LLENAR COMBOBOX DE TIPO DE SANGRE
     public void llenarCombo2(JComboBox<String> comboboxSangre) throws SQLException {

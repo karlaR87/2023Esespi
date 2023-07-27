@@ -1,6 +1,6 @@
 package Modelo;
 
-import Controlador.ConexionPrueba;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -23,7 +23,7 @@ public class ModeloPatrullajes {
     {
         try {
 
-           PreparedStatement readPatrullajes = ConexionPrueba.getConnection().prepareStatement("Select * from tbPatrullajes");
+           PreparedStatement readPatrullajes = conexionSql.getConexion().prepareStatement("Select * from tbPatrullajes");
            
            readPatrullajes.executeUpdate();
            return true;

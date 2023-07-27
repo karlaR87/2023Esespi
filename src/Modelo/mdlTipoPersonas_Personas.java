@@ -1,6 +1,5 @@
 package Modelo;
 
-import Controlador.ConexionPrueba;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,11 +15,29 @@ public class mdlTipoPersonas_Personas {
         this.idPersona = idPersona;
     }
     
+    
+    
+    public boolean insertTipoPersona()
+    {
+         try{
+            String query = "INSERT INTO tbTiposPersonas_Personas(IdTipoPersona, IdPersona) VALUES (1, ?)"; 
+            PreparedStatement insertTipoPersona = conexionSql.getConexion().prepareStatement(query);
+            insertTipoPersona.setInt(1, idPersona);
+
+            insertTipoPersona.executeUpdate();
+            return true;
+          
+        }catch(Exception e){
+            System.out.println("ERROR en el query InsertUsuario: " + e.toString());
+            return false;
+        }
+    }
+    
      public int readIDTipoPersona()
     {
         try{   
             String query = "SELECT TOP 1 IdTipoPersonas_Personas FROM tbTiposPersonas_Personas WHERE IdPersona = ?";    
-            PreparedStatement readIdUsuario = ConexionPrueba.getConnection().prepareStatement(query);
+            PreparedStatement readIdUsuario = conexionSql.getConexion().prepareStatement(query);
             readIdUsuario.setInt(1, idPersona);
             
              ResultSet rs = readIdUsuario.executeQuery();
