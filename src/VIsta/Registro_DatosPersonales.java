@@ -34,7 +34,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     public Registro_DatosPersonales() {
         initComponents();
         fontDesign();
-        jLabel1.setVisible(false);
              // Llenar el ComboBox de estado civil
         try {
            
@@ -88,7 +87,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
         ContenedorP = new javax.swing.JPanel();
         lbl4 = new javax.swing.JLabel();
@@ -130,9 +128,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1.png.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 710));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
@@ -386,7 +381,16 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-   public boolean isOK()
+   
+    String currentGenero;
+    String currentTipoSangre;
+    String currentEstadoCivil;
+    
+    public int currentIdGenero;
+    public int currentIdTipoSangre;
+    public int currentIdEstadoCivil;
+    
+    public boolean isOK()
 {
     // Validar campos vacíos
     if(txtNombres.getText().isBlank() || txtApellidos.getText().isBlank() || txtDireccion.getText().isBlank()
@@ -427,6 +431,68 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 return false;
             } 
             else{
+                currentGenero=cmbgenero.getSelectedItem().toString().trim();
+                System.out.println(currentGenero);
+                if(currentGenero.equals("Femenino"))
+                {
+                    currentIdGenero = 2;
+                }
+                else
+                {
+                    currentIdGenero = 1;
+                }
+                
+                currentEstadoCivil=cmbEstadoCivil1.getSelectedItem().toString().trim();
+                System.out.println(currentEstadoCivil);
+                if(currentEstadoCivil.equals("Soltero"))
+                {
+                    currentIdEstadoCivil = 1;
+                }
+                else
+                {
+                    currentIdEstadoCivil = 2;
+                }
+                
+                currentTipoSangre=cmbtipoSangre1.getSelectedItem().toString().trim();
+                System.out.println(currentTipoSangre);
+                if(currentTipoSangre.equals("A+"))
+                {
+                    currentIdTipoSangre = 1;
+                }
+                else 
+                {
+                    if(currentTipoSangre.equals("O+"))
+                    {currentIdTipoSangre = 2;}
+                    else
+                    {
+                      if(currentTipoSangre.equals("O-"))
+                      {currentIdTipoSangre = 3;}
+                      else
+                      {
+                        if(currentTipoSangre.equals("B+"))
+                        {currentIdTipoSangre = 4;}
+                        else
+                        {
+                           if(currentTipoSangre.equals("AB+"))
+                           {currentIdTipoSangre = 5;}
+                           else
+                           {
+                              if(currentTipoSangre.equals("A-"))
+                              {currentIdTipoSangre = 6;}
+                              else
+                              {
+                                if(currentTipoSangre.equals("B-"))
+                                {currentIdTipoSangre = 7;}
+                                else
+                                {
+                                    currentIdTipoSangre = 8;
+                                }
+                              }
+                           }
+                        }
+                      }
+                    }
+                }    
                 return true; // Si todas las validaciones son exitosas, se retorna true.
             }
         }
@@ -444,14 +510,12 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
  idiomas.init();// Utilizar la referencia a registro para agregar el idioma seleccionado
       System.out.println("Se ejectua ");
-       jLabel1.setVisible(true);
          setFocus0(false);
         
          idiomas.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 idiomas.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                         jLabel1.setVisible(false);
                          setFocus0(true);
                     }
          });
@@ -464,14 +528,12 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     {
     nacio.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
     nacio.init();
-       jLabel1.setVisible(true);
        setFocus0(false);
        
          nacio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 nacio.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                         jLabel1.setVisible(false);
                          setFocus0(true);
                     }
          });       
@@ -553,7 +615,6 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     public javax.swing.JComboBox<String> cmbgenero;
     public javax.swing.JComboBox<String> cmbtipoSangre1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
