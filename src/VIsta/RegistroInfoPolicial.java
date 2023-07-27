@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VIsta;
 
 import fonts.Fuentes;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Pao
- */
 public class RegistroInfoPolicial extends javax.swing.JPanel {
 
      Fuentes tipoFuentes;
@@ -44,7 +37,11 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         lblRegresar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        txtNumeroPlaca = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
+        txtONI = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1010, 720));
 
@@ -67,6 +64,18 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(1010, 700));
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
+        txtNumeroPlaca.setBackground(new java.awt.Color(255, 255, 255));
+        txtNumeroPlaca.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtNumeroPlaca.setForeground(new java.awt.Color(0, 0, 0));
+        txtNumeroPlaca.setToolTipText("");
+        txtNumeroPlaca.setBorder(null);
+        jPanel2.add(txtNumeroPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 410, 30));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Numero de Placa:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 420, 40));
+
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R77.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
@@ -81,7 +90,19 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 170, 60));
+        jPanel2.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 590, 170, 60));
+
+        txtONI.setBackground(new java.awt.Color(255, 255, 255));
+        txtONI.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtONI.setForeground(new java.awt.Color(0, 0, 0));
+        txtONI.setToolTipText("");
+        txtONI.setBorder(null);
+        jPanel2.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 410, 30));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("ONI:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 420, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,15 +146,32 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
+    
+    public boolean isOk()
+    {
+        if(txtONI.getText().isBlank() || txtNumeroPlaca.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JLabel lblRegresar;
+    public javax.swing.JTextField txtNumeroPlaca;
+    public javax.swing.JTextField txtONI;
     // End of variables declaration//GEN-END:variables
 }

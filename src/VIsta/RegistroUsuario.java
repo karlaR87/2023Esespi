@@ -198,7 +198,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblRegresar;
-    private javax.swing.JPasswordField txtContrasena;
+    public javax.swing.JPasswordField txtContrasena;
     private javax.swing.JPasswordField txtContrasena2;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VIsta;
 
 import Controlador.ControladorRecuperarContra;
@@ -56,7 +52,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     { 
         tipoFuentes = new Fuentes();
 
-    
         lbl4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
         lbl5.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
         lbl6.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
@@ -427,8 +422,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
             if (!txtNumeroTel.getText().matches("\\d+")) {
                 JOptionPane.showMessageDialog(this, "El número de teléfono debe contener solo números.");
                 return false;
-            }
-            
+            } 
             else{
                 return true; // Si todas las validaciones son exitosas, se retorna true.
             }
@@ -437,8 +431,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     
 }
 
-    
-    
     
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
 

@@ -1,6 +1,5 @@
 package Modelo;
 
-import Controlador.ConexionPrueba;
 import java.sql.*;
 
 public class mdlUsuarios {
@@ -46,7 +45,7 @@ public class mdlUsuarios {
     {
            try{
             String query = "INSERT INTO tbUsuarios(Usuario, Contraseña, IdNivelUsuario) VALUES (?,?,?)"; 
-            PreparedStatement insertUser = ConexionPrueba.getConnection().prepareStatement(query);
+            PreparedStatement insertUser = conexionSql.getConexion().prepareStatement(query);
             insertUser.setString(1, Usuario);
             insertUser.setString(2, Contrasena);
             insertUser.setInt(3, IdNivelUsuario);
@@ -64,7 +63,7 @@ public class mdlUsuarios {
     {
         try {
         String query = "SELECT IdUsuario FROM tbUsuarios WHERE Usuario = ?";
-        PreparedStatement readIDUsuario = ConexionPrueba.getConnection().prepareStatement(query);
+        PreparedStatement readIDUsuario = conexionSql.getConexion().prepareStatement(query);
         readIDUsuario.setString(1, Usuario);
         ResultSet rs = readIDUsuario.executeQuery();
 
@@ -86,7 +85,7 @@ public class mdlUsuarios {
     {
       try {
         String query = "SELECT Contraseña FROM tbUsuarios WHERE IdUsuario = 1";
-        PreparedStatement readConsuario = ConexionPrueba.getConnection().prepareStatement(query);
+        PreparedStatement readConsuario = conexionSql.getConexion().prepareStatement(query);
         readConsuario.setInt(1, IdUsuario);
         ResultSet rs = readConsuario.executeQuery();
 
@@ -106,7 +105,7 @@ public class mdlUsuarios {
     {
         try{
             String query = "UPDATE tbUsuarios SET Contraseña = ? WHERE IdUsuario = ?"; 
-            PreparedStatement updateCon = ConexionPrueba.getConnection().prepareStatement(query);
+            PreparedStatement updateCon = conexionSql.getConexion().prepareStatement(query);
             updateCon.setString(1, Contrasena);
             updateCon.setInt(2, IdUsuario);
             
