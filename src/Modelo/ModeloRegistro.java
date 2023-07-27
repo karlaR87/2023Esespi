@@ -165,7 +165,7 @@ public class ModeloRegistro {
    public int readIdUltimaPersona()
     {
         try{   
-            String query = "SELECT MAX(IdPersona)FROM tbPersonas";    
+            String query = "SELECT MAX(IdPersona) as IdPersona FROM tbPersonas";    
             PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
             
              ResultSet rs = readIdUltimaPersona.executeQuery();
@@ -509,7 +509,7 @@ public class ModeloRegistro {
             Connection conectar = conexionSql.getConexion();
 
             // Insertar datos en la tabla tbPersonas
-            String sqlInsertPersona = "INSERT INTO tbPersonas (Nombre, Apellidos, Fecha, Dirección, DUI, Tel, Correo, Idestadocicivl, IdtipoSangre, Idgenero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlInsertPersona = "INSERT INTO tbPersonas (Nombre, Apellido, FechaNacimiento, DireccionDomicilio, DUI, NumeroTel, CorreoElectronico, IdEstadoCivil, IdTipoSangre, IdGenero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstInsertPersona = conectar.prepareStatement(sqlInsertPersona, PreparedStatement.RETURN_GENERATED_KEYS);
             pstInsertPersona.setString(1, Nombre);
             pstInsertPersona.setString(2, Apellidos);

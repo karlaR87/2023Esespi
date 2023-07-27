@@ -116,7 +116,7 @@ public class Inventario_Inicio_EquipoEspecial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inventario_Inicio_EquipoEspecial().setVisible(true);
+                
             }
         });
     }

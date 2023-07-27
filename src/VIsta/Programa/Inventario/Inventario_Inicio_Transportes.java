@@ -35,6 +35,8 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNuevoDetalle = new javax.swing.JTextField();
         txtNuevaPLaca = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,10 +96,10 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(118, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,9 +109,19 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 520, 70));
-        jPanel1.add(txtNuevoDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 230, -1));
-        jPanel1.add(txtNuevaPLaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 230, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 420, 70));
+        jPanel1.add(txtNuevoDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 230, -1));
+        jPanel1.add(txtNuevaPLaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 230, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Placa:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 50, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nuevo detalle:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 130, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,7 +200,9 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -2,14 +2,17 @@ package Controlador;
 
 import Modelo.ModeloRegistro;
 import Modelo.mdlPolicias;
+import Modelo.mdlPreguntasRespuestasDSeguridad;
 import Modelo.mdlTipoPersonas_Personas;
 import Modelo.mdlUsuarios;
+import VIsta.PreguntasSeguridad;
 import VIsta.Registro;
 import VIsta.RegistroInfoPolicial;
 import VIsta.RegistroUsuario;
 import VIsta.Registro_DatosPersonales;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class cntrlRegistro implements ActionListener {
 
@@ -21,8 +24,10 @@ public class cntrlRegistro implements ActionListener {
     private mdlTipoPersonas_Personas mdlTipoPersonas;
     private RegistroUsuario registroUser;
     private mdlUsuarios mdlUsuario;
+    private PreguntasSeguridad preguntasS;
+    private mdlPreguntasRespuestasDSeguridad mdlPreguntasDS;
     
-     public cntrlRegistro(Registro vistaJframeRegistro, Registro_DatosPersonales vista, ModeloRegistro modeloRegistro, RegistroInfoPolicial InfoPolicial, mdlPolicias mdlPolicias, mdlTipoPersonas_Personas mdlTipoPersonas, RegistroUsuario registroUser, mdlUsuarios mdlUsuario){
+     public cntrlRegistro(Registro vistaJframeRegistro, Registro_DatosPersonales vista, ModeloRegistro modeloRegistro, RegistroInfoPolicial InfoPolicial, mdlPolicias mdlPolicias, mdlTipoPersonas_Personas mdlTipoPersonas, RegistroUsuario registroUser, mdlUsuarios mdlUsuario, PreguntasSeguridad preguntasS, mdlPreguntasRespuestasDSeguridad mdlPreguntasDS){
         this.vistaJframeRegistro = vistaJframeRegistro;
         this.vista = vista;
         this.modeloRegistro = modeloRegistro;
@@ -31,10 +36,13 @@ public class cntrlRegistro implements ActionListener {
         this.mdlTipoPersonas = mdlTipoPersonas;
         this.registroUser = registroUser;
         this.mdlUsuario = mdlUsuario;
+        this.preguntasS = preguntasS;
+        this.mdlPreguntasDS = mdlPreguntasDS;
         
         InfoPolicial.btnSiguiente.addActionListener(this);
         vista.btnSiguiente.addActionListener(this);
         registroUser.btnSiguiente.addActionListener(this);
+        preguntasS.btnAceptar.addActionListener(this);
     }
     
     @Override
@@ -45,15 +53,16 @@ public class cntrlRegistro implements ActionListener {
         if(e.getSource() == vista.btnSiguiente){
            if(vista.isOK())
             { 
-            modeloRegistro.setNombre(vista.txtNombres.getText());
+            modeloRegistro.setNombre(vista.txtNombres.getText().trim());
+            modeloRegistro.setApellidos(vista.txtApellidos.getText().trim());
             modeloRegistro.setFecha(vista.jdcFecha.getDate());
-            modeloRegistro.setDirección(vista.txtDireccion.getText());
-            modeloRegistro.setDUI(vista.txtDui.getText());
-            modeloRegistro.setTel(vista.txtNumeroTel.getText());
-            modeloRegistro.setCorreo(vista.txtCorreo.getText());
-            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString());
-            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString());
-            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString());
+            modeloRegistro.setDirección(vista.txtDireccion.getText().trim());
+            modeloRegistro.setDUI(vista.txtDui.getText().trim());
+            modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
+            modeloRegistro.setCorreo(vista.txtCorreo.getText().trim());
+            if(vista.cmbEstadoCivil1.getSelectedItem().toString().trim().equals("Soltero"))
+            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
+            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
             vistaJframeRegistro.loadInfoPolicias();
             }
            else{  
@@ -70,23 +79,6 @@ public class cntrlRegistro implements ActionListener {
                 
                 int rangoTipoUsuario = 1;
                 mdlPolicias.setIdRangoTipoUsuario(rangoTipoUsuario);
-                
-//                int idCurrentPersona = modeloRegistro.readIdUltimaPersona();
-//                if(idCurrentPersona == -1)
-//                {
-//                    idCurrentPersona = 1;
-//                }
-//                else
-//                {
-//                    idCurrentPersona += 1;
-//                }
-//                
-//                mdlTipoPersonas.setIdPersona(idCurrentPersona);
-//                mdlTipoPersonas.insertTipoPersona();
-//                
-//                int TipoPersonas_Personas = mdlTipoPersonas.readIDTipoPersona();
-//                mdlPolicias.setIdTipoPersonas_Personas(TipoPersonas_Personas);
-                
                 vistaJframeRegistro.loadInfoUsuario();
             }
         }
@@ -96,12 +88,65 @@ public class cntrlRegistro implements ActionListener {
             if(registroUser.isOK())
             {
                 mdlUsuario.setUsuario(registroUser.txtUsuario.getText().trim());
-                mdlUsuario.setContrasena(registroUser.txtContrasena.getText().trim());
+                mdlUsuario.setContrasena(registroUser.convertirSHA256(registroUser.txtContrasena.getText().trim()));
                 mdlUsuario.setIdNivelUsuario(2);
-                
-                
-                
+              
                 vistaJframeRegistro.loadPreguntasS();
+            }
+            else
+            {
+                
+            }
+        }
+        
+        if(e.getSource() == preguntasS.btnAceptar)
+        {
+            if(preguntasS.isOK())
+            {
+                try{
+                //Primero, Insertar a la persona
+                modeloRegistro.agregarRegistroYAsociarIdiomas(vistaJframeRegistro.idiomasSeleccionados);
+                //Segundo, Insertar el usuario
+                mdlUsuario.insertUsuario();
+                //Tercero, Insertar las preguntas de Seguridad
+                    //Para eso, necesitamos el id usuario, que acabamos de agregar
+                    //Seleccionamos el "Maximo", el "Ultimo"
+                    int idCurrentUser = mdlUsuario.readIDULTIMATEUsuario();
+                    mdlPreguntasDS.setIdUsuario(idCurrentUser);
+                    System.out.println(idCurrentUser);
+                    //Primera insercion de primera fila de P/R
+                    mdlPreguntasDS.setPregunta(preguntasS.txt1Pregunta.getText().trim());
+                    mdlPreguntasDS.setRespuesta(preguntasS.txt1Respuesta.getText().trim());
+                    mdlPreguntasDS.setIdUsuario(idCurrentUser);
+                    mdlPreguntasDS.insertPreguntasS();
+                    //Segunda insercion de segunda fila de P/R
+                    mdlPreguntasDS.setPregunta(preguntasS.txt2Pregunta.getText().trim());
+                    mdlPreguntasDS.setRespuesta(preguntasS.txt2Respuesta.getText().trim());
+                    mdlPreguntasDS.setIdUsuario(idCurrentUser);
+                    mdlPreguntasDS.insertPreguntasS();
+                    //Tercera insercion de tercera fila de P/R
+                    mdlPreguntasDS.setPregunta(preguntasS.txt3Pregunta.getText().trim());
+                    mdlPreguntasDS.setRespuesta(preguntasS.txt3Respuesta.getText().trim());
+                    mdlPreguntasDS.setIdUsuario(idCurrentUser);
+                    mdlPreguntasDS.insertPreguntasS();
+                //Cuarto, Insertar al Policia
+                    //Primero, necesitamos el id Usuario
+                    mdlPolicias.setIdUsuario(idCurrentUser);
+                    //Segundo, necesitamos el idTipoPersonas_Personas
+                        //2.1, necesitamos primero el idDe la persona actual
+                        int idCurrentPersona = modeloRegistro.readIdUltimaPersona();
+                        //2.2, necesitamos insertar el tipo persona
+                        mdlTipoPersonas.setIdPersona(idCurrentPersona);
+                        mdlTipoPersonas.insertTipoPersona();
+                        //2.3, ahora sacamos el idTipopersonas personas, de la tabla de antes
+                        int TipoPersonas_Personas = mdlTipoPersonas.readIDTipoPersona();
+                        mdlPolicias.setIdTipoPersonas_Personas(TipoPersonas_Personas);
+                    mdlPolicias.insertPolicia();
+                JOptionPane.showMessageDialog(preguntasS, "Datos insertados exitosamente");
+                }catch(Exception ea)
+                {
+                    System.out.println(ea.toString());
+                }
             }
             else
             {
