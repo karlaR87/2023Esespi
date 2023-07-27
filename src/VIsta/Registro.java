@@ -6,6 +6,7 @@ import Modelo.ModeloRegistro;
 import Modelo.ModeloTransporte;
 import Modelo.conexionSql;
 import Modelo.mdlPolicias;
+import Modelo.mdlPreguntasRespuestasDSeguridad;
 import Modelo.mdlTipoPersonas_Personas;
 import Modelo.mdlUsuarios;
 import java.sql.Connection;
@@ -27,7 +28,7 @@ public class Registro extends javax.swing.JFrame {
 
     private Registro_Idiomas formularioIdiomas;
     private Registro_Nacionalidades formularioNacionalidad;
-    private ArrayList<Boolean> idiomasSeleccionados = new ArrayList<>();
+    public ArrayList<Boolean> idiomasSeleccionados = new ArrayList<>();
     private ArrayList<Boolean> nacionalidadesSelecionadas = new ArrayList<>();
     
     void agregarIdiomaSeleccionado(Boolean idiomaSeleccionado) {
@@ -67,8 +68,9 @@ public class Registro extends javax.swing.JFrame {
         mdlPolicias mdlPolicias= new mdlPolicias();
         mdlTipoPersonas_Personas mdltipoPersona = new mdlTipoPersonas_Personas();
         mdlUsuarios mdUsuario = new mdlUsuarios();
+        mdlPreguntasRespuestasDSeguridad mdlPreguntasDS = new mdlPreguntasRespuestasDSeguridad();
         
-        cntrlRegistro cntrlRegistro = new cntrlRegistro(this, RDatosPersonales, mdlRegistro, RInfoPolicial, mdlPolicias, mdltipoPersona, RUsuario, mdUsuario);
+        cntrlRegistro cntrlRegistro = new cntrlRegistro(this, RDatosPersonales, mdlRegistro, RInfoPolicial, mdlPolicias, mdltipoPersona, RUsuario, mdUsuario, RPreguntasS, mdlPreguntasDS);
         
        cardLayout = new CardLayout();
         jPanel2.setLayout(cardLayout);
@@ -85,8 +87,6 @@ public class Registro extends javax.swing.JFrame {
         JLabel lblBack2 = RInfoPolicial.lblRegresar;
         JLabel lblBack3 = RUsuario.lblRegresar;
         JLabel lblBack4 = RPreguntasS.getlblBack();
-             
-
         
         lblBack1.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {

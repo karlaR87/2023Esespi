@@ -1,6 +1,8 @@
 package VIsta;
 
 import fonts.Fuentes;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -12,6 +14,26 @@ public class RegistroUsuario extends javax.swing.JPanel {
         fontDesign();
     }
 
+     public String convertirSHA256(String password) {
+	MessageDigest md = null;
+
+	try {
+            md = MessageDigest.getInstance("SHA-256");
+	}
+	catch (NoSuchAlgorithmException e) {
+		System.out.println(e.toString());
+		return null;
+	}
+
+	byte[] hash = md.digest(password.getBytes());
+	StringBuffer sb = new StringBuffer();
+
+	for(byte b : hash) {
+		sb.append(String.format("%02x", b));
+	}
+
+	return sb.toString();
+}
     
     private void fontDesign()
     { 
@@ -140,40 +162,48 @@ public class RegistroUsuario extends javax.swing.JPanel {
         }
         else
         {
-             if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+            if(txtUsuario.getText().length() > 20)
             {
-               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
-                return false;
+              JOptionPane.showMessageDialog(this, "EL usuario no puede exceder los 20 caracteres.");  
             }
-             else
-             {
-                 if(txtContrasena.getText().length() <8 || txtContrasena2.getText().length() <8)
-                {
-                     JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
-                     return false;
-                }
+            else{
+                if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+               {
+                  JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                   return false;
+               }
                 else
                 {
-                     if(txtContrasena.getText().length() > 15 || txtContrasena.getText().length() > 15)
-                    {
-                        JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                    if(txtContrasena.getText().length() <8 || txtContrasena2.getText().length() <8)
+                   {
+                        JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
                         return false;
-                    }
-                    else
-                    {
-                         if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
-                        {
-                            JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
-                            return false;
-                        }
-                        else
-                        {   
-                            return true;
-                        }
-                    }
+                   }
+                   else
+                   {
+                        if(txtContrasena.getText().length() > 15 || txtContrasena.getText().length() > 15)
+                       {
+                           JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                           return false;
+                       }
+                       else
+                       {
+                            if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+                           {
+                               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                               return false;
+                           }
+                           else
+                           {   
+                               return true;
+                           }
+                       }
+                   }
                 }
-             }
+            }
+             
         }
+        return false;
     }
     
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked

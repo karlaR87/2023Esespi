@@ -42,12 +42,12 @@ public class mdlPreguntasRespuestasDSeguridad {
     }
     
     
-  public void insertPreguntasS(int idPersona, String Pregunta, String Respuesta)
+  public void insertPreguntasS()
     {
         try{
             String query = "Insert Into tbPreguntasRespuestasDSeguridad(IdUsuario, Pregunta, Respuesta) Values (?,?,?)"; 
             PreparedStatement addPreguntasS = conexionSql.getConexion().prepareStatement(query);
-            addPreguntasS.setInt(1, idPersona);
+            addPreguntasS.setInt(1, IdUsuario);
             addPreguntasS.setString(2, Pregunta);
             addPreguntasS.setString(3, Respuesta);
             

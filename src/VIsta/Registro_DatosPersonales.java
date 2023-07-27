@@ -383,7 +383,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-           public boolean isOK()
+   public boolean isOK()
 {
     // Validar campos vacíos
     if(txtNombres.getText().isBlank() || txtApellidos.getText().isBlank() || txtDireccion.getText().isBlank()
