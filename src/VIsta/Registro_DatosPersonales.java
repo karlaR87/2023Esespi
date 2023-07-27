@@ -454,6 +454,10 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Los campos no deben ser mayores a: Nombres y apellidos = 30, Dirección = 40, Dui = 10, y número de teléfono = 8.");
             return false;
         }
+        if(txtDui.getText().length() < 10){
+        JOptionPane.showMessageDialog(this, "el DUI no debe ser menor");
+            return false;
+        }
         
 
         else

@@ -210,12 +210,14 @@ public class PorSMS extends javax.swing.JPanel {
     
       // Find your Account Sid and Token at twilio.com/console
   public static final String ACCOUNT_SID = "ACd88cf77d417af40bf11c6f7e800d6d35";
-  public static final String AUTH_TOKEN = "f13c9ccfb2ef3dc71a8ff951cc5b5a7a";
+  public static final String AUTH_TOKEN = "68dfd768c35cbb3644197817765b6bde";
 
     public void sendSMS()
     {  
         try{
          numeroReceptor=txtNumero.getText().trim();
+         numeroReceptor = "+503" + numeroReceptor;
+            System.out.println(numeroReceptor);
         //CodigoNumericoRandom
         Random random = new Random();
         numeroAleatorio = random.nextInt(23543);
@@ -223,7 +225,7 @@ public class PorSMS extends javax.swing.JPanel {
 //        System.out.println(numeroAleatorio);
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
-      new com.twilio.type.PhoneNumber("+503"+numeroReceptor), //+50369983522
+      new com.twilio.type.PhoneNumber(numeroReceptor), //+50369983522
       new com.twilio.type.PhoneNumber("+15738892923"),
       "Ingresa el siguiente codigo en el sistema para reestablecer tu Contraseña:" + numeroAleatorio)
 

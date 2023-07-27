@@ -34,6 +34,7 @@ public class cntrlLogin implements ActionListener{
             else
             {
                 mdlUsuarios.setIdUsuario(idUser);
+                System.out.println(idUser);
                 String con = mdlUsuarios.readConUsuario();
                  if(con == null)
                  {
@@ -41,6 +42,7 @@ public class cntrlLogin implements ActionListener{
                  }
                  else
                  {
+                     System.out.println(con);
                      if(con.equals(lg.convertirSHA256(lg.txtContraseña.getText().trim())))
                      {
                         JframePrincipal JFP = new JframePrincipal();
