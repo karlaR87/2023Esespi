@@ -1,6 +1,8 @@
 package VIsta;
 
 import fonts.Fuentes;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -12,6 +14,26 @@ public class RegistroUsuario extends javax.swing.JPanel {
         fontDesign();
     }
 
+     public String convertirSHA256(String password) {
+	MessageDigest md = null;
+
+	try {
+            md = MessageDigest.getInstance("SHA-256");
+	}
+	catch (NoSuchAlgorithmException e) {
+		System.out.println(e.toString());
+		return null;
+	}
+
+	byte[] hash = md.digest(password.getBytes());
+	StringBuffer sb = new StringBuffer();
+
+	for(byte b : hash) {
+		sb.append(String.format("%02x", b));
+	}
+
+	return sb.toString();
+}
     
     private void fontDesign()
     { 
@@ -44,6 +66,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         btnSiguiente = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -87,7 +110,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         txtUsuario.setBorder(null);
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 410, 30));
 
-        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R77.png"))); // NOI18N
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
         btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -103,6 +126,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
         });
         jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 170, 60));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrangeBack.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, 200, 90));
+
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
         lblRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -116,7 +144,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroUser.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backRegistroUser.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backRegistroUser_2.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -140,40 +168,48 @@ public class RegistroUsuario extends javax.swing.JPanel {
         }
         else
         {
-             if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+            if(txtUsuario.getText().length() > 20)
             {
-               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
-                return false;
+              JOptionPane.showMessageDialog(this, "EL usuario no puede exceder los 20 caracteres.");  
             }
-             else
-             {
-                 if(txtContrasena.getText().length() <8 || txtContrasena2.getText().length() <8)
-                {
-                     JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
-                     return false;
-                }
+            else{
+                if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+               {
+                  JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                   return false;
+               }
                 else
                 {
-                     if(txtContrasena.getText().length() > 15 || txtContrasena.getText().length() > 15)
-                    {
-                        JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                    if(txtContrasena.getText().length() <8 || txtContrasena2.getText().length() <8)
+                   {
+                        JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
                         return false;
-                    }
-                    else
-                    {
-                         if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
-                        {
-                            JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
-                            return false;
-                        }
-                        else
-                        {   
-                            return true;
-                        }
-                    }
+                   }
+                   else
+                   {
+                        if(txtContrasena.getText().length() > 15 || txtContrasena.getText().length() > 15)
+                       {
+                           JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                           return false;
+                       }
+                       else
+                       {
+                            if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+                           {
+                               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                               return false;
+                           }
+                           else
+                           {   
+                               return true;
+                           }
+                       }
+                   }
                 }
-             }
+            }
+             
         }
+        return false;
     }
     
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
@@ -196,6 +232,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblRegresar;
     public javax.swing.JPasswordField txtContrasena;

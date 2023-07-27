@@ -232,31 +232,21 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-        if (txt1Pregunta.getText().isBlank() || txt2Pregunta.getText().isBlank() || txt3Pregunta.getText().isBlank() || txt1Respuesta.getText().isBlank()|| txt2Respuesta.getText().isBlank() || txt3Respuesta.getText().isBlank())
+    }//GEN-LAST:event_btnAceptarMouseClicked
+
+    public boolean isOK()
+    {
+       if (txt1Pregunta.getText().isBlank() || txt2Pregunta.getText().isBlank() || txt3Pregunta.getText().isBlank() || txt1Respuesta.getText().isBlank()|| txt2Respuesta.getText().isBlank() || txt3Respuesta.getText().isBlank())
         {
             JOptionPane.showMessageDialog(this, "No se permite ningún campo vacío");
+            return false;
         }
         else
         {
-//         CntrlRC insertPreguntasS = new CntrlRC();
-         
-//         insertPreguntasS.idPersona = 1;        
-//         insertPreguntasS.pregunta = txt1Pregunta.getText();   
-//         insertPreguntasS.respuesta = txt1Respuesta.getText();           
-//         insertPreguntasS.insertPreguntasS();
-//          
-//         insertPreguntasS.pregunta = txt2Pregunta.getText();   
-//         insertPreguntasS.respuesta = txt2Respuesta.getText();           
-//         insertPreguntasS.insertPreguntasS();
-//         
-//         insertPreguntasS.pregunta = txt3Pregunta.getText();   
-//         insertPreguntasS.respuesta = txt3Respuesta.getText();           
-//         insertPreguntasS.insertPreguntasS();
-
-         JOptionPane.showMessageDialog(this, "Insertado");
+           return true;
         }
-    }//GEN-LAST:event_btnAceptarMouseClicked
-
+    }
+    
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
 
     }//GEN-LAST:event_lblRegresarMouseClicked

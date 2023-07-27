@@ -98,7 +98,7 @@ public class mdlPolicias {
                 return -1;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuario: " + e.toString());
+            System.out.println("ERROR en el query readIDUsuarioA: " + e.toString());
             return -1;
 
         }

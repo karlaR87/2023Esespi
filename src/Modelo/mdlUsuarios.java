@@ -40,6 +40,26 @@ public class mdlUsuarios {
         this.IdNivelUsuario = IdNivelUsuario;
     }
     
+     public int readIDULTIMATEUsuario()
+    {
+        try {
+        String query = "SELECT MAX(IdUsuario) as IdUsuario FROM tbUsuarios";
+        PreparedStatement readIDUsuario = conexionSql.getConexion().prepareStatement(query);
+        ResultSet rs = readIDUsuario.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdUsuario");
+            } else {
+                // No se encontró ningún usuario con el nombre proporcionado
+                return -1; // O cualquier otro valor que desees usar para indicar que no se encontró el usuario.
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR en el query readIDUsuarioB: " + e.toString());
+            return -1; // O cualquier otro valor que desees usar para indicar un error.
+
+        }
+    }
     
     public boolean insertUsuario()
     {
@@ -75,7 +95,7 @@ public class mdlUsuarios {
                 return -1; // O cualquier otro valor que desees usar para indicar que no se encontró el usuario.
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuario: " + e.toString());
+            System.out.println("ERROR en el query readIDUsuarioC: " + e.toString());
             return -1; // O cualquier otro valor que desees usar para indicar un error.
 
         }

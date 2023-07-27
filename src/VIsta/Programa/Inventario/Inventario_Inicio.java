@@ -7,6 +7,7 @@ package VIsta.Programa.Inventario;
 import Modelo.ModeloDatosTransporte;
 import Modelo.ModeloTransporte;
 import VIsta.Bienvenida;
+import VIsta.Programa.JframePrincipal;
 import VIsta.VistaAgregarTransporte;
 import java.sql.*;
 
@@ -30,110 +31,115 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanelAddPolice = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
-        kButton2 = new com.k33ptoo.components.KButton();
-        kButton3 = new com.k33ptoo.components.KButton();
+        btnDeleteEquipo = new javax.swing.JButton();
+        btnEdiEquipo = new javax.swing.JButton();
+        btnAddEquipo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(980, 710));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Inventario/ Inicio");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kButton1.setForeground(new java.awt.Color(0, 0, 102));
-        kButton1.setText("Armamento");
-        kButton1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        kButton1.setkBorderRadius(40);
-        kButton1.setkEndColor(new java.awt.Color(243, 167, 18));
-        kButton1.setkForeGround(new java.awt.Color(0, 0, 102));
-        kButton1.setkHoverEndColor(new java.awt.Color(243, 167, 18));
-        kButton1.setkHoverForeGround(new java.awt.Color(0, 0, 102));
-        kButton1.setkHoverStartColor(new java.awt.Color(243, 167, 18));
-        kButton1.setkIndicatorColor(new java.awt.Color(243, 167, 18));
-        kButton1.setkPressedColor(new java.awt.Color(243, 167, 18));
-        kButton1.setkSelectedColor(new java.awt.Color(243, 167, 18));
-        kButton1.setkStartColor(new java.awt.Color(243, 167, 18));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
-            }
-        });
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
-            }
-        });
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kButton2.setText("Transporte");
-        kButton2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        kButton2.setkBackGroundColor(new java.awt.Color(243, 167, 18));
-        kButton2.setkBorderRadius(40);
-        kButton2.setkEndColor(new java.awt.Color(243, 167, 18));
-        kButton2.setkForeGround(new java.awt.Color(0, 0, 102));
-        kButton2.setkHoverEndColor(new java.awt.Color(243, 167, 18));
-        kButton2.setkHoverForeGround(new java.awt.Color(0, 0, 102));
-        kButton2.setkHoverStartColor(new java.awt.Color(243, 167, 18));
-        kButton2.setkIndicatorColor(new java.awt.Color(243, 167, 18));
-        kButton2.setkSelectedColor(new java.awt.Color(243, 167, 18));
-        kButton2.setkStartColor(new java.awt.Color(243, 167, 18));
-        kButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton2MouseClicked(evt);
-            }
-        });
+        jPanelAddPolice.setBackground(new java.awt.Color(70, 70, 70));
+        jPanelAddPolice.setOpaque(false);
+        jPanelAddPolice.setPreferredSize(new java.awt.Dimension(740, 444));
+        jPanelAddPolice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kButton3.setText("Equipo especial");
-        kButton3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        kButton3.setkAllowTab(true);
-        kButton3.setkBackGroundColor(new java.awt.Color(243, 167, 18));
-        kButton3.setkBorderRadius(40);
-        kButton3.setkEndColor(new java.awt.Color(243, 167, 18));
-        kButton3.setkForeGround(new java.awt.Color(0, 0, 102));
-        kButton3.setkHoverColor(new java.awt.Color(243, 167, 18));
-        kButton3.setkHoverEndColor(new java.awt.Color(243, 167, 18));
-        kButton3.setkHoverForeGround(new java.awt.Color(0, 0, 102));
-        kButton3.setkHoverStartColor(new java.awt.Color(243, 167, 18));
-        kButton3.setkPressedColor(new java.awt.Color(243, 167, 18));
-        kButton3.setkSelectedColor(new java.awt.Color(243, 167, 18));
-        kButton3.setkStartColor(new java.awt.Color(243, 167, 18));
-        kButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanelAddPolice.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 690, 340));
+
+        jPanel3.add(jPanelAddPolice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 740, 444));
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1010, 710));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar.png"))); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+
+        btnDeleteEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnDeletePolicia.png"))); // NOI18N
+        btnDeleteEquipo.setBorderPainted(false);
+        btnDeleteEquipo.setContentAreaFilled(false);
+        btnDeleteEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeleteEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton3MouseClicked(evt);
+                btnDeleteEquipoMouseClicked(evt);
             }
         });
+        jPanel4.add(btnDeleteEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 340, 60, 60));
+
+        btnEdiEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
+        btnEdiEquipo.setBorderPainted(false);
+        btnEdiEquipo.setContentAreaFilled(false);
+        btnEdiEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEdiEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEdiEquipoMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnEdiEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, 60, 60));
+
+        btnAddEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddPolicia.png"))); // NOI18N
+        btnAddEquipo.setBorderPainted(false);
+        btnAddEquipo.setContentAreaFilled(false);
+        btnAddEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddEquipoMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnAddEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 280, 60, 60));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("TABLAS");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, -1, -1));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 710));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(275, 275, 275)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(kButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                .addComponent(kButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(405, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addGap(88, 88, 88)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -152,43 +158,33 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-      Inventario_Inicio_Armamento inv = new Inventario_Inicio_Armamento();
-        inv.setVisible(true);
+    private void btnDeleteEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEquipoMouseClicked
+
+    }//GEN-LAST:event_btnDeleteEquipoMouseClicked
+
+    private void btnEdiEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdiEquipoMouseClicked
+
+    }//GEN-LAST:event_btnEdiEquipoMouseClicked
+
+    private void btnAddEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEquipoMouseClicked
+                ElecION_Equipo JFP = new ElecION_Equipo();
+        JFP.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_kButton1MouseClicked
-
-    private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
-       //boton para mostrar formulario de transporte
-       
-      try {
-                    ModeloTransporte modelo = new ModeloTransporte();
-                    ModeloDatosTransporte modDtaos = new ModeloDatosTransporte();
-                    VistaAgregarTransporte vista = new VistaAgregarTransporte();
-                    
-                    
-                    
-                    vista.setVisible(true);
-                } catch (SQLException ex) {
-                   
-                }
-       
-    }//GEN-LAST:event_kButton2MouseClicked
-
-    private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
-        //boton para mostrar formulario de equipo especial
-    }//GEN-LAST:event_kButton3MouseClicked
-
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kButton1ActionPerformed
+    }//GEN-LAST:event_btnAddEquipoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddEquipo;
+    private javax.swing.JButton btnDeleteEquipo;
+    private javax.swing.JButton btnEdiEquipo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private com.k33ptoo.components.KButton kButton1;
-    private com.k33ptoo.components.KButton kButton2;
-    private com.k33ptoo.components.KButton kButton3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    public javax.swing.JPanel jPanelAddPolice;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
