@@ -24,7 +24,7 @@ public class cntrlLogin implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == lg.btnIngresar)
         {
-            mdlUsuarios.setUsuario(lg.convertirSHA256(lg.txtUsuario.getText().trim()));
+            mdlUsuarios.setUsuario(lg.txtUsuario.getText().trim());
             int idUser = mdlUsuarios.readIDUsuario();
             
             if(idUser == -1)
@@ -41,7 +41,7 @@ public class cntrlLogin implements ActionListener{
                  }
                  else
                  {
-                     if(con.equals(lg.convertirSHA256(lg.txtUsuario.getText().trim())))
+                     if(con.equals(lg.convertirSHA256(lg.txtContraseña.getText().trim())))
                      {
                         JframePrincipal JFP = new JframePrincipal();
                         JFP.setVisible(true);

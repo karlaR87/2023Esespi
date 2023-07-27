@@ -253,7 +253,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel redondo;
     private javax.swing.JLabel redondo1;
-    private javax.swing.JPasswordField txtContraseña;
+    public javax.swing.JPasswordField txtContraseña;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

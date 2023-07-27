@@ -152,7 +152,7 @@ public class cntrlRegistro implements ActionListener {
                     mdlPolicias.insertPolicia();
                 JOptionPane.showMessageDialog(preguntasS, "Datos insertados exitosamente");
 
-                    preguntasS.setVisible(false);
+                    vistaJframeRegistro.setVisible(false);
                      Login lg = new Login();
                     lg.setVisible(true);
                 }catch(Exception ea)
