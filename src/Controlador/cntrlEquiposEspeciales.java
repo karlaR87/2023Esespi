@@ -27,7 +27,8 @@ public class cntrlEquiposEspeciales {
     
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == Vista.btnAdd){
-                //MdlEquipos.setIdCategoriaEquipamiento(Vista.cmbCat.));
+                //MdlEquipos.setIdCategoriaEquipamiento(Vista.cmbCat.getItemAt()));
+                
             }
         }
     }

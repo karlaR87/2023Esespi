@@ -5,6 +5,7 @@ import Modelo.mdlPolicias;
 import Modelo.mdlPreguntasRespuestasDSeguridad;
 import Modelo.mdlTipoPersonas_Personas;
 import Modelo.mdlUsuarios;
+import VIsta.Login;
 import VIsta.PreguntasSeguridad;
 import VIsta.Registro;
 import VIsta.RegistroInfoPolicial;
@@ -63,7 +64,9 @@ public class cntrlRegistro implements ActionListener {
             modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
             modeloRegistro.setCorreo(vista.txtCorreo.getText().trim());
             
-//            modeloRegistro.setEstadocicivl(vista.cmbEstadoCivil1.getSelectedItem().toString().trim())
+            modeloRegistro.setIdgenero(vista.currentIdGenero);
+             modeloRegistro.setIdtipoSangre(vista.currentIdTipoSangre);
+              modeloRegistro.setIdestadocicivl(vista.currentIdEstadoCivil);
 //            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
 //            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
 
@@ -81,7 +84,6 @@ public class cntrlRegistro implements ActionListener {
             {
                 mdlPolicias.setONI(InfoPolicial.txtONI.getText().trim());
                 mdlPolicias.setNumeroPlaca(InfoPolicial.txtNumeroPlaca.getText().trim());
-                mdlPolicias.setIdGrupoPatrullaje(0);
                 
                 int rangoTipoUsuario = 1;
                 mdlPolicias.setIdRangoTipoUsuario(rangoTipoUsuario);
@@ -149,6 +151,10 @@ public class cntrlRegistro implements ActionListener {
                         mdlPolicias.setIdTipoPersonas_Personas(TipoPersonas_Personas);
                     mdlPolicias.insertPolicia();
                 JOptionPane.showMessageDialog(preguntasS, "Datos insertados exitosamente");
+
+                    vistaJframeRegistro.setVisible(false);
+                     Login lg = new Login();
+                    lg.setVisible(true);
                 }catch(Exception ea)
                 {
                     System.out.println(ea.toString());

@@ -2,10 +2,14 @@
 package VIsta;
 
 
+import Controlador.cntrlLogin;
+import Modelo.mdlUsuarios;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Registro;
 import java.awt.BorderLayout;
 import java.awt.Frame;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -15,8 +19,32 @@ public class Login extends javax.swing.JFrame {
   
     public Login() {
         initComponents();
+        
+        mdlUsuarios mdlUsuarios = new mdlUsuarios();
+        cntrlLogin ctLg = new cntrlLogin(this, mdlUsuarios); 
+
     }
 
+     public String convertirSHA256(String password) {
+	MessageDigest md = null;
+
+	try {
+            md = MessageDigest.getInstance("SHA-256");
+	}
+	catch (NoSuchAlgorithmException e) {
+		System.out.println(e.toString());
+		return null;
+	}
+
+	byte[] hash = md.digest(password.getBytes());
+	StringBuffer sb = new StringBuffer();
+
+	for(byte b : hash) {
+		sb.append(String.format("%02x", b));
+	}
+
+	return sb.toString();
+}
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -103,7 +131,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Iniciar Sesión");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
-        txtContraseña.setBackground(new java.awt.Color(255, 255, 255));
         txtContraseña.setBorder(null);
         txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtContraseña.setHighlighter(null);
@@ -118,7 +145,6 @@ public class Login extends javax.swing.JFrame {
         redondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 131 (1).png"))); // NOI18N
         jPanel1.add(redondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 280, 50));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setBorder(null);
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUsuario.setHighlighter(null);
@@ -165,9 +191,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        JframePrincipal JFP = new JframePrincipal();
-        JFP.setVisible(true);
-        this.setVisible(false);
          
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -221,7 +244,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel OlvidoContra;
     private javax.swing.JLabel RecuperarContra;
     private javax.swing.JLabel Registrarse;
-    private javax.swing.JButton btnIngresar;
+    public javax.swing.JButton btnIngresar;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -230,7 +253,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel redondo;
     private javax.swing.JLabel redondo1;
-    private javax.swing.JPasswordField txtContraseña;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JPasswordField txtContraseña;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

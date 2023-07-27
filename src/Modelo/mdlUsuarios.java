@@ -74,7 +74,7 @@ public class mdlUsuarios {
             return true;
           
         }catch(Exception e){
-            System.out.println("ERROR en el query InsertUsuario: " + e.toString());
+            System.out.println("ERROR en el query InsertUsuarioA: " + e.toString());
             return false;
         }
     }
@@ -104,7 +104,7 @@ public class mdlUsuarios {
     public String readConUsuario()
     {
       try {
-        String query = "SELECT Contraseña FROM tbUsuarios WHERE IdUsuario = 1";
+        String query = "SELECT Contraseña FROM tbUsuarios WHERE IdUsuario = ?";
         PreparedStatement readConsuario = conexionSql.getConexion().prepareStatement(query);
         readConsuario.setInt(1, IdUsuario);
         ResultSet rs = readConsuario.executeQuery();

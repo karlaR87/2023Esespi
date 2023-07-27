@@ -2,6 +2,7 @@ package VIsta;
 
 import Controlador.ControladorRecuperarContra;
 import Modelo.ModeloRegistro;
+import com.toedter.calendar.JDateChooser;
 import fonts.Fuentes;
 import java.awt.Component;
 import java.awt.Container;
@@ -35,7 +36,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     public Registro_DatosPersonales() {
         initComponents();
         fontDesign();
-        jLabel1.setVisible(false);
              // Llenar el ComboBox de estado civil
         try {
            
@@ -48,7 +48,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles.");
         }
-        
+         
+
     }
  
     
@@ -89,7 +90,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
         ContenedorP = new javax.swing.JPanel();
         lbl4 = new javax.swing.JLabel();
@@ -131,9 +131,6 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1.png.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 710));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
@@ -387,8 +384,60 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-   public boolean isOK()
+   
+    String currentGenero;
+    String currentTipoSangre;
+    String currentEstadoCivil;
+    
+    public int currentIdGenero;
+    public int currentIdTipoSangre;
+    public int currentIdEstadoCivil;
+    
+    private static int calcularDiferenciaEnAnios(java.util.Date fechaInicio, java.util.Date fechaFin) {
+        java.util.Calendar calInicio = java.util.Calendar.getInstance();
+        calInicio.setTime(fechaInicio);
+        java.util.Calendar calFin = java.util.Calendar.getInstance();
+        calFin.setTime(fechaFin);
+        int diff = calFin.get(java.util.Calendar.YEAR) - calInicio.get(java.util.Calendar.YEAR);
+        if (calFin.get(java.util.Calendar.MONTH) < calInicio.get(java.util.Calendar.MONTH)
+                || (calFin.get(java.util.Calendar.MONTH) == calInicio.get(java.util.Calendar.MONTH)
+                        && calFin.get(java.util.Calendar.DAY_OF_MONTH) < calInicio
+                                .get(java.util.Calendar.DAY_OF_MONTH))) {
+            diff--;
+        }
+        return diff;
+    }
+    
+    public boolean isOK()
 {
+    if (jdcFecha.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar una fecha válida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    
+            JDateChooser dateChooser = new JDateChooser();
+
+        // Obtener la fecha seleccionada del JDateChooser
+        java.util.Date fechaSeleccionada = dateChooser.getDate();
+
+        // Obtener la fecha actual
+        java.util.Date fechaActual = new java.util.Date();
+
+        // Calcular la diferencia en años entre ambas fechas
+        int diferenciaEnAnios = calcularDiferenciaEnAnios(fechaActual, fechaSeleccionada);
+         // Verificar si la fecha seleccionada es mayor a la fecha actual
+        if (fechaSeleccionada.after(fechaActual)) {
+            System.out.println("Error: La fecha seleccionada es mayor a la fecha actual.");
+        }
+
+        // Verificar si el usuario tiene al menos 18 años
+        if (diferenciaEnAnios < 18) {
+            System.out.println("Error: El usuario debe tener al menos 18 años.");
+        } else {
+            // Llamar al método o realizar la acción deseada
+            System.out.println("Fecha válida. El usuario tiene al menos 18 años.");
+        }
+        
     // Validar campos vacíos
     if(txtNombres.getText().isBlank() || txtApellidos.getText().isBlank() || txtDireccion.getText().isBlank()
             || txtDui.getText().isBlank() || txtNumeroTel.getText().isBlank() || txtCorreo.getText().isBlank())
@@ -405,6 +454,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Los campos no deben ser mayores a: Nombres y apellidos = 30, Dirección = 40, Dui = 10, y número de teléfono = 8.");
             return false;
         }
+        
+
         else
         {
             // Validar formato del correo electrónico
@@ -427,7 +478,70 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "El número de teléfono debe contener solo números.");
                 return false;
             } 
+            
             else{
+                currentGenero=cmbgenero.getSelectedItem().toString().trim();
+                System.out.println(currentGenero);
+                if(currentGenero.equals("Femenino"))
+                {
+                    currentIdGenero = 2;
+                }
+                else
+                {
+                    currentIdGenero = 1;
+                }
+                
+                currentEstadoCivil=cmbEstadoCivil1.getSelectedItem().toString().trim();
+                System.out.println(currentEstadoCivil);
+                if(currentEstadoCivil.equals("Soltero"))
+                {
+                    currentIdEstadoCivil = 1;
+                }
+                else
+                {
+                    currentIdEstadoCivil = 2;
+                }
+                
+                currentTipoSangre=cmbtipoSangre1.getSelectedItem().toString().trim();
+                System.out.println(currentTipoSangre);
+                if(currentTipoSangre.equals("A+"))
+                {
+                    currentIdTipoSangre = 1;
+                }
+                else 
+                {
+                    if(currentTipoSangre.equals("O+"))
+                    {currentIdTipoSangre = 2;}
+                    else
+                    {
+                      if(currentTipoSangre.equals("O-"))
+                      {currentIdTipoSangre = 3;}
+                      else
+                      {
+                        if(currentTipoSangre.equals("B+"))
+                        {currentIdTipoSangre = 4;}
+                        else
+                        {
+                           if(currentTipoSangre.equals("AB+"))
+                           {currentIdTipoSangre = 5;}
+                           else
+                           {
+                              if(currentTipoSangre.equals("A-"))
+                              {currentIdTipoSangre = 6;}
+                              else
+                              {
+                                if(currentTipoSangre.equals("B-"))
+                                {currentIdTipoSangre = 7;}
+                                else
+                                {
+                                    currentIdTipoSangre = 8;
+                                }
+                              }
+                           }
+                        }
+                      }
+                    }
+                }    
                 return true; // Si todas las validaciones son exitosas, se retorna true.
             }
         }
@@ -445,14 +559,12 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
  idiomas.init();// Utilizar la referencia a registro para agregar el idioma seleccionado
       System.out.println("Se ejectua ");
-       jLabel1.setVisible(true);
          setFocus0(false);
         
          idiomas.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 idiomas.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                         jLabel1.setVisible(false);
                          setFocus0(true);
                     }
          });
@@ -465,14 +577,12 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     {
     nacio.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
     nacio.init();
-       jLabel1.setVisible(true);
        setFocus0(false);
        
          nacio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 nacio.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentHidden(ComponentEvent e) {
-                         jLabel1.setVisible(false);
                          setFocus0(true);
                     }
          });       
@@ -554,7 +664,6 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     public javax.swing.JComboBox<String> cmbgenero;
     public javax.swing.JComboBox<String> cmbtipoSangre1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
