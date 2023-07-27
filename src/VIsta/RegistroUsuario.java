@@ -79,36 +79,36 @@ public class RegistroUsuario extends javax.swing.JPanel {
         txtContrasena2.setToolTipText("");
         txtContrasena2.setBorder(null);
         txtContrasena2.setPreferredSize(new java.awt.Dimension(90, 18));
-        jPanel1.add(txtContrasena2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, 410, 33));
+        jPanel1.add(txtContrasena2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 410, 33));
 
         txtContrasena.setBackground(new java.awt.Color(51, 51, 51));
         txtContrasena.setForeground(new java.awt.Color(255, 255, 255));
         txtContrasena.setToolTipText("");
         txtContrasena.setBorder(null);
         txtContrasena.setPreferredSize(new java.awt.Dimension(90, 18));
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 376, 410, 33));
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 385, 410, 33));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Confirmación de contraseña:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 420, 40));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 420, 40));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Contraseña:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 420, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 420, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Usuario:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 420, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 420, 40));
 
         txtUsuario.setBackground(new java.awt.Color(51, 51, 51));
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuario.setToolTipText("");
         txtUsuario.setBorder(null);
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 410, 30));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 410, 30));
 
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
@@ -124,12 +124,12 @@ public class RegistroUsuario extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 170, 60));
+        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, 170, 60));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrangeBack.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, 200, 90));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 200, 90));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
@@ -145,7 +145,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backRegistroUserAAA.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

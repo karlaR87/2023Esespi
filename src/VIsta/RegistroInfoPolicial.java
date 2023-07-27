@@ -70,15 +70,15 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
 
         txtNumeroPlaca.setBackground(new java.awt.Color(51, 51, 51));
         txtNumeroPlaca.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNumeroPlaca.setForeground(new java.awt.Color(0, 0, 0));
+        txtNumeroPlaca.setForeground(new java.awt.Color(255, 255, 255));
         txtNumeroPlaca.setToolTipText("");
         txtNumeroPlaca.setBorder(null);
-        jPanel2.add(txtNumeroPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 410, 30));
+        jPanel2.add(txtNumeroPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 415, 410, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Numero de Placa:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 420, 40));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 420, 40));
 
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
@@ -94,27 +94,27 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 170, 60));
+        jPanel2.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 510, 170, 60));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrangeBack.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 200, 90));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 200, 90));
 
         txtONI.setBackground(new java.awt.Color(51, 51, 51));
         txtONI.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtONI.setForeground(new java.awt.Color(0, 0, 0));
+        txtONI.setForeground(new java.awt.Color(255, 255, 255));
         txtONI.setToolTipText("");
         txtONI.setBorder(null);
-        jPanel2.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 410, 30));
+        jPanel2.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 410, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ONI:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 420, 40));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 420, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backInfoPolicial.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
