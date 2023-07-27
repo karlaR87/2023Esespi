@@ -219,7 +219,8 @@ public class PorSMS extends javax.swing.JPanel {
         //CodigoNumericoRandom
         Random random = new Random();
         numeroAleatorio = random.nextInt(23543);
-        System.out.println(numeroAleatorio);
+        
+//        System.out.println(numeroAleatorio);
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
       new com.twilio.type.PhoneNumber("+503"+numeroReceptor), //+50369983522
