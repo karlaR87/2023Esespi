@@ -393,50 +393,50 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     public int currentIdTipoSangre;
     public int currentIdEstadoCivil;
     
-    private static int calcularDiferenciaEnAnios(java.util.Date fechaInicio, java.util.Date fechaFin) {
-        java.util.Calendar calInicio = java.util.Calendar.getInstance();
-        calInicio.setTime(fechaInicio);
-        java.util.Calendar calFin = java.util.Calendar.getInstance();
-        calFin.setTime(fechaFin);
-        int diff = calFin.get(java.util.Calendar.YEAR) - calInicio.get(java.util.Calendar.YEAR);
-        if (calFin.get(java.util.Calendar.MONTH) < calInicio.get(java.util.Calendar.MONTH)
-                || (calFin.get(java.util.Calendar.MONTH) == calInicio.get(java.util.Calendar.MONTH)
-                        && calFin.get(java.util.Calendar.DAY_OF_MONTH) < calInicio
-                                .get(java.util.Calendar.DAY_OF_MONTH))) {
-            diff--;
-        }
-        return diff;
-    }
+//    private static int calcularDiferenciaEnAnios(java.util.Date fechaInicio, java.util.Date fechaFin) {
+//        java.util.Calendar calInicio = java.util.Calendar.getInstance();
+//        calInicio.setTime(fechaInicio);
+//        java.util.Calendar calFin = java.util.Calendar.getInstance();
+//        calFin.setTime(fechaFin);
+//        int diff = calFin.get(java.util.Calendar.YEAR) - calInicio.get(java.util.Calendar.YEAR);
+//        if (calFin.get(java.util.Calendar.MONTH) < calInicio.get(java.util.Calendar.MONTH)
+//                || (calFin.get(java.util.Calendar.MONTH) == calInicio.get(java.util.Calendar.MONTH)
+//                        && calFin.get(java.util.Calendar.DAY_OF_MONTH) < calInicio
+//                                .get(java.util.Calendar.DAY_OF_MONTH))) {
+//            diff--;
+//        }
+//        return diff;
+//    }
     
     public boolean isOK()
 {
-    if (jdcFecha.getDate() == null) {
-            JOptionPane.showMessageDialog(this, "Debes seleccionar una fecha válida.", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    
-            JDateChooser dateChooser = new JDateChooser();
+//    if (jdcFecha.getDate() == null) {
+//            JOptionPane.showMessageDialog(this, "Debes seleccionar una fecha válida.", "Error", JOptionPane.ERROR_MESSAGE);
+//            return false;
+//        }
+//    
+//            JDateChooser dateChooser = new JDateChooser();
+//
+//        // Obtener la fecha seleccionada del JDateChooser
+//        java.util.Date fechaSeleccionada = dateChooser.getDate();
+//
+//        // Obtener la fecha actual
+//        java.util.Date fechaActual = new java.util.Date();
+//
+//        // Calcular la diferencia en años entre ambas fechas
+//        int diferenciaEnAnios = calcularDiferenciaEnAnios(fechaActual, fechaSeleccionada);
+//         // Verificar si la fecha seleccionada es mayor a la fecha actual
+//        if (fechaSeleccionada.after(fechaActual)) {
+//            System.out.println("Error: La fecha seleccionada es mayor a la fecha actual.");
+//        }
 
-        // Obtener la fecha seleccionada del JDateChooser
-        java.util.Date fechaSeleccionada = dateChooser.getDate();
-
-        // Obtener la fecha actual
-        java.util.Date fechaActual = new java.util.Date();
-
-        // Calcular la diferencia en años entre ambas fechas
-        int diferenciaEnAnios = calcularDiferenciaEnAnios(fechaActual, fechaSeleccionada);
-         // Verificar si la fecha seleccionada es mayor a la fecha actual
-        if (fechaSeleccionada.after(fechaActual)) {
-            System.out.println("Error: La fecha seleccionada es mayor a la fecha actual.");
-        }
-
-        // Verificar si el usuario tiene al menos 18 años
-        if (diferenciaEnAnios < 18) {
-            System.out.println("Error: El usuario debe tener al menos 18 años.");
-        } else {
-            // Llamar al método o realizar la acción deseada
-            System.out.println("Fecha válida. El usuario tiene al menos 18 años.");
-        }
+//        // Verificar si el usuario tiene al menos 18 años
+//        if (diferenciaEnAnios < 18) {
+//            System.out.println("Error: El usuario debe tener al menos 18 años.");
+//        } else {
+//            // Llamar al método o realizar la acción deseada
+//            System.out.println("Fecha válida. El usuario tiene al menos 18 años.");
+//        }
         
     // Validar campos vacíos
     if(txtNombres.getText().isBlank() || txtApellidos.getText().isBlank() || txtDireccion.getText().isBlank()
