@@ -30,7 +30,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     this.registro = registro;
 }
         ControladorRecuperarContra contrlRegistro;
-         ModeloRegistro modeloRegistro = new ModeloRegistro();
+        ModeloRegistro modeloRegistro = new ModeloRegistro();
+         
     public Registro_DatosPersonales() {
         initComponents();
         fontDesign();

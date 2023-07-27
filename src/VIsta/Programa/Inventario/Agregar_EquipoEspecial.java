@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VIsta.Programa.Inventario;
+import Controlador.cntrlEquiposEspeciales;
 import java.sql.*;
 
 import Modelo.ModeloEquipoEspecial;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,14 +18,16 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     /**
      * Creates new form Agregar_EquipoEspecial
      */
+    ModeloEquipoEspecial equipo = new ModeloEquipoEspecial();
+    
+    
     public Agregar_EquipoEspecial()  {
             initComponents();
-    ModeloEquipoEspecial equipo = new ModeloEquipoEspecial();
-    try {
-        equipo.llenarCombo(cmbCat);
-    } catch (SQLException e) {
-        // Manejar la excepción aquí, ya sea mostrando un mensaje de error o tomando otras acciones necesarias.
-        e.printStackTrace();
+               try {
+            equipo.llenarCombo(cmbCat);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles");
         }
     }
 
@@ -39,12 +43,18 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbEquiposEspeciales = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         cmbCat = new javax.swing.JComboBox<>();
+        btnModificar = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JPanel();
+        btnACt = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,6 +70,21 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Categoria: ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 100, 50));
+
+        tbEquiposEspeciales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tbEquiposEspeciales);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 390, 340));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +102,27 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(cmbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 290, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 79 (1).png"))); // NOI18N
+        btnModificar.setBackground(new java.awt.Color(68, 68, 68));
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
+        btnModificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 450, -1, -1));
+
+        btnAdd.setBackground(new java.awt.Color(68, 68, 68));
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnaddBig.png"))); // NOI18N
+        btnAdd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 450, -1, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
+        btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 88.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 540));
 
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,6 +143,19 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         );
 
         jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 220, 80));
+
+        javax.swing.GroupLayout btnACtLayout = new javax.swing.GroupLayout(btnACt);
+        btnACt.setLayout(btnACtLayout);
+        btnACtLayout.setHorizontalGroup(
+            btnACtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        btnACtLayout.setVerticalGroup(
+            btnACtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(btnACt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 60, 50));
 
         javax.swing.GroupLayout btnCancelarLayout = new javax.swing.GroupLayout(btnCancelar);
         btnCancelar.setLayout(btnCancelarLayout);
@@ -134,6 +192,10 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
+     
+    }//GEN-LAST:event_btnAddMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -164,21 +226,33 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                ModeloEquipoEspecial model = new ModeloEquipoEspecial();
+                Agregar_EquipoEspecial equipo = new Agregar_EquipoEspecial();
+                cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(model, equipo); 
                 
+                equipo.setVisible(true);
+                
+                model.mostrar(equipo);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnAgregar;
-    private javax.swing.JPanel btnCancelar;
+    private javax.swing.JPanel btnACt;
+    public javax.swing.JButton btnAdd;
+    public javax.swing.JPanel btnAgregar;
+    public javax.swing.JPanel btnCancelar;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnModificar;
     public javax.swing.JComboBox<String> cmbCat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JSpinner jSpinner1;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTable tbEquiposEspeciales;
     // End of variables declaration//GEN-END:variables
 }
