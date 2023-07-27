@@ -15,6 +15,8 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
         initComponents();
         ModeloTransporte m = new ModeloTransporte();
         m.llenarCombo(cmbTipos);
+        
+       
         m.llenarComboMarcas(cmbMarcas);
         m.llenarComboGrupos(cmbGrupos);
         
@@ -61,6 +63,11 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
 
         btnRegistrar.setBackground(new java.awt.Color(255, 153, 0));
         btnRegistrar.setText("Agregar");
+        btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrarMouseClicked(evt);
+            }
+        });
 
         cmbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -213,6 +220,52 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
+
+        ModeloTransporte n = new ModeloTransporte();
+        ModeloDatosTransporte m = new ModeloDatosTransporte();
+        
+        //
+        String variable = (String) cmbTipos.getSelectedItem();
+        String variable2 = (String) cmbMarcas.getSelectedItem();
+         String variable3 = (String) cmbGrupos.getSelectedItem();
+            int v = -1;
+            int v2 = -1;
+            int v3 = -1;
+            try {
+                v = n.IdRetorno(variable);
+                System.out.println(v);
+            } catch (SQLException ex) {
+                System.out.println("ee");
+                java.util.logging.Logger.getLogger(ControladorTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            try {
+                v2 = n.IdRetorno2(variable2);
+                System.out.println(v2);
+            } catch (SQLException ex) {
+                System.out.println("ee");
+                java.util.logging.Logger.getLogger(ControladorTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+             try {
+                v3= n.IdRetorno3(variable3);
+                System.out.println(v3);
+            } catch (SQLException ex) {
+                System.out.println("ee");
+                java.util.logging.Logger.getLogger(ControladorTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            m.setDetalles(txtDetalles.getText());
+             m.setPlaca(txtPlaca.getText());
+            n.setTipotransporte(variable);
+             n.setMarcas(variable2);
+             
+             
+             n.setId(v);
+             n.setId2(v2);
+             n.setId3(v3);
+            m.agregar(n, m);
+            
+    }//GEN-LAST:event_btnRegistrarMouseClicked
+
     
    
   
@@ -247,7 +300,7 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
                     ModeloTransporte modelo = new ModeloTransporte();
                     ModeloDatosTransporte modDtaos = new ModeloDatosTransporte();
                     VistaAgregarTransporte vista = new VistaAgregarTransporte();
-                    
+                    ControladorTransporte ny = new ControladorTransporte(modelo, modDtaos, vista);
                     
                     
                     vista.setVisible(true);

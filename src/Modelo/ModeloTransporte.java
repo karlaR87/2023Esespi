@@ -203,9 +203,55 @@ public class ModeloTransporte {
     }
     
     
+    //retornos de id
     
+
+    public int IdRetorno2(String tiposTransporte) throws SQLException {
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+        int tiposTrans = -1; //retornará un valor erróneo en caso de no encontrarse 
+
+ 
+
+        String SSQL = "SELECT IdMarcaDeVehiculo FROM tbMarcasDeVehiculos WHERE Marca = ?";
+
+ 
+
+        try {
+            conectar = conexionSql.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            pst.setString(1, tiposTransporte);
+            result = pst.executeQuery();
+
+ 
+
+            if (result.next()) {
+                tiposTrans = result.getInt("IdMarcaDeVehiculo");
+            }
+
+ 
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            // Cerrar recursos
+            if (result != null) {
+                result.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (conectar != null) {
+                conectar.close();
+            }
+        }
+
+ 
+
+        return tiposTrans;
+    }
     
-  //por el momento, este metodo no tiene funcionalidad, es para retornar id
     public int IdRetorno(String tiposTransporte) throws SQLException {
         Connection conectar = null;
         PreparedStatement pst = null;
@@ -228,6 +274,51 @@ public class ModeloTransporte {
 
             if (result.next()) {
                 tiposTrans = result.getInt("IdTipoTransporteEstacion");
+            }
+
+ 
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            // Cerrar recursos
+            if (result != null) {
+                result.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (conectar != null) {
+                conectar.close();
+            }
+        }
+
+ 
+
+        return tiposTrans;
+    }
+    public int IdRetorno3(String tiposTransporte) throws SQLException {
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+        int tiposTrans = -1; //retornará un valor erróneo en caso de no encontrarse 
+
+ 
+
+        String SSQL = "SELECT IdGrupoPatrullaje FROM tbGrupoPatrullajes WHERE NumeroDeGrupo = ?";
+
+ 
+
+        try {
+            conectar = conexionSql.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            pst.setString(1, tiposTransporte);
+            result = pst.executeQuery();
+
+ 
+
+            if (result.next()) {
+                tiposTrans = result.getInt("IdGrupoPatrullaje");
             }
 
  
