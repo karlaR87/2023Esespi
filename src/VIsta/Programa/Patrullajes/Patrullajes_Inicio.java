@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VIsta.Programa.Patrullajes;
 
 /**
@@ -27,39 +23,75 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnDeletePatrullaje = new javax.swing.JButton();
+        btnAddPatrullaje = new javax.swing.JButton();
+        btnEditPatrullaje = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(980, 710));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Patrullaje/ Inicio");
+        jTable1.setBackground(new java.awt.Color(70, 70, 70));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setGridColor(new java.awt.Color(153, 255, 153));
+        jTable1.setOpaque(false);
+        jTable1.setSelectionBackground(new java.awt.Color(212, 212, 212));
+        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(389, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(334, 334, 334))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(315, 315, 315)
-                .addComponent(jLabel1)
-                .addContainerGap(347, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 900, 670));
+
+        btnDeletePatrullaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnDeleteP1.png"))); // NOI18N
+        btnDeletePatrullaje.setBorderPainted(false);
+        btnDeletePatrullaje.setContentAreaFilled(false);
+        btnDeletePatrullaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeletePatrullaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeletePatrullajeMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnDeletePatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 340, 60, 60));
+
+        btnAddPatrullaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddP1.png"))); // NOI18N
+        btnAddPatrullaje.setBorderPainted(false);
+        btnAddPatrullaje.setContentAreaFilled(false);
+        btnAddPatrullaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddPatrullaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddPatrullajeMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAddPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 280, 60, 60));
+
+        btnEditPatrullaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditP1.png"))); // NOI18N
+        btnEditPatrullaje.setBorderPainted(false);
+        btnEditPatrullaje.setContentAreaFilled(false);
+        btnEditPatrullaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditPatrullaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditPatrullajeMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnEditPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 220, 60, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,9 +101,27 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDeletePatrullajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletePatrullajeMouseClicked
+
+    }//GEN-LAST:event_btnDeletePatrullajeMouseClicked
+
+    private void btnAddPatrullajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPatrullajeMouseClicked
+
+    }//GEN-LAST:event_btnAddPatrullajeMouseClicked
+
+    private void btnEditPatrullajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditPatrullajeMouseClicked
+
+    }//GEN-LAST:event_btnEditPatrullajeMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JButton btnAddPatrullaje;
+    private javax.swing.JButton btnDeletePatrullaje;
+    private javax.swing.JButton btnEditPatrullaje;
+    private javax.swing.JButton btnEditPolicia;
+    private javax.swing.JButton btnEditPolicia1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

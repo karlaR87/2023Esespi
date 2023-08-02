@@ -6,6 +6,7 @@ import VIsta.Login;
 import VIsta.Principal;
 import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
+import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Reportes.Reportes_Inicio;
@@ -40,18 +41,24 @@ public class JframePrincipal extends javax.swing.JFrame {
     private CardLayout cardLayout2;
     Usuario user = new Usuario();
     Inicio home = new Inicio();
+    Patrullajes_Inicio patrullajesInicio;
     Policias_Inicio policiasInicio = new Policias_Inicio();
-    Patrullajes_Inicio patrullajesInicio = new Patrullajes_Inicio();
     Inventario_Inicio inventarioInicio = new Inventario_Inicio();
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
+    
+    //Patrullajes Panel
+    Patrullajes_Agregar AddPatrullajes;
     private void PanelsShowInit()
     {
+       patrullajesInicio = new Patrullajes_Inicio();
+       AddPatrullajes = new Patrullajes_Agregar();
+        
         //Inicializacion de modelos y controladores
        ModeloPatrullajes mdlPatrullajes = new ModeloPatrullajes();
-      cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this);
+      cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes);
+       
+       
       
-      
-                
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
         
@@ -61,6 +68,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel1.add(patrullajesInicio, "patrullajes");
         jPanel1.add(inventarioInicio, "inventario");
         jPanel1.add(reportesInicio, "reportes");
+        jPanel1.add(AddPatrullajes, "AddPatrullajes");
         
         cardLayout.show(jPanel1, "inicio");
         iconInicio1.setVisible(true);
@@ -789,6 +797,11 @@ public class JframePrincipal extends javax.swing.JFrame {
              ShowHide(1);
         }
 
+    }
+    
+    public void showAddPatrullajePanel()
+    {
+        cardLayout.show(jPanel1, "AddPatrullajes"); 
     }
     
     private void ShowHide(int a)

@@ -70,8 +70,6 @@ public class cntrlRegistro implements ActionListener {
 //            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
 //            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
 
-            
-            
             vistaJframeRegistro.loadInfoPolicias();
             }
            else{  
