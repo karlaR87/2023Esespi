@@ -90,7 +90,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         });
         jPanel1.add(lblRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 50));
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R11.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAzul.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -99,7 +99,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
                 btnAceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 580, 190, 70));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 581, 220, 70));
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));

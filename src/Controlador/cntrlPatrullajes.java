@@ -16,23 +16,19 @@ public class cntrlPatrullajes implements ActionListener {
     public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal) {
         this.modelPatrullajes = modelPatrullajes;
         this.JframePrincipal = JframePrincipal;
-        this.JframePrincipal.lblPatrullajes.addMouseListener((MouseListener) this);
+        
+        this.JframePrincipal.btnPatrullajes.addActionListener(this);
+        this.JframePrincipal.btniconPatrullajes.addActionListener(this);
     }
-
-//    @Override
-//    public void mouseClicked(MouseEvent e) {
-//        if (e.getSource() == JframePrincipal.lblPatrullajes) {
-////            modelPatrullajes.readAllPatrullajes(modelPatrullajes);
-//            System.out.println("A");
-//        }else{System.out.println("B");}
-//    }
-
     @Override
     public void actionPerformed(ActionEvent e) {   
-        if (e.getSource() == JframePrincipal.lblPatrullajes) {
-//            modelPatrullajes.readAllPatrullajes(modelPatrullajes);
-            System.out.println("A");
-        }else{System.out.println("B");}
+        if (e.getSource() == JframePrincipal.btnPatrullajes) {
+            JframePrincipal.showPatrullajePanel(1);
+        }
+        
+       if (e.getSource() == JframePrincipal.btniconPatrullajes) {
+            JframePrincipal.showPatrullajePanel(2);
+        }
     }
 
 }

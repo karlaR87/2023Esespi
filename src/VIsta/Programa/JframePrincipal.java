@@ -46,6 +46,12 @@ public class JframePrincipal extends javax.swing.JFrame {
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
     private void PanelsShowInit()
     {
+        //Inicializacion de modelos y controladores
+       ModeloPatrullajes mdlPatrullajes = new ModeloPatrullajes();
+      cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this);
+      
+      
+                
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
         
@@ -95,7 +101,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconInicio1 = new javax.swing.JLabel();
         iconPolicias = new javax.swing.JLabel();
         iconPolicias1 = new javax.swing.JLabel();
-        iconPatrullajes = new javax.swing.JLabel();
+        btniconPatrullajes = new javax.swing.JButton();
         iconPatrullajes1 = new javax.swing.JLabel();
         iconInventario = new javax.swing.JLabel();
         iconInventario1 = new javax.swing.JLabel();
@@ -107,7 +113,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblInicio = new javax.swing.JLabel();
         lblPolicias = new javax.swing.JLabel();
-        lblPatrullajes = new javax.swing.JLabel();
+        btnPatrullajes = new javax.swing.JButton();
         lblInventario = new javax.swing.JLabel();
         lblReportes = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
@@ -205,20 +211,24 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconPolicias1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconPolicias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 70, 80));
 
-        iconPatrullajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/carIcon.png"))); // NOI18N
-        iconPatrullajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        iconPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
+        btniconPatrullajes.setForeground(new java.awt.Color(255, 255, 255));
+        btniconPatrullajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/carIcon.png"))); // NOI18N
+        btniconPatrullajes.setBorderPainted(false);
+        btniconPatrullajes.setContentAreaFilled(false);
+        btniconPatrullajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btniconPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconPatrullajesMouseClicked(evt);
+                btniconPatrullajesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconPatrullajesMouseEntered(evt);
+                btniconPatrullajesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconPatrullajesMouseExited(evt);
+                btniconPatrullajesMouseExited(evt);
             }
         });
-        jPanel2.add(iconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 321, 50, 70));
+        jPanel2.add(btniconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 321, 50, 70));
+        btniconPatrullajes.getAccessibleContext().setAccessibleDescription("");
 
         iconPatrullajes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
         jPanel2.add(iconPatrullajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 321, 70, 70));
@@ -362,25 +372,26 @@ public class JframePrincipal extends javax.swing.JFrame {
         });
         slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 205, 167, 30));
 
-        lblPatrullajes.setBackground(new java.awt.Color(70, 70, 70));
-        lblPatrullajes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        lblPatrullajes.setForeground(new java.awt.Color(255, 255, 255));
-        lblPatrullajes.setText("  Patrullajes");
-        lblPatrullajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblPatrullajes.setOpaque(true);
-        lblPatrullajes.setPreferredSize(new java.awt.Dimension(180, 25));
-        lblPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPatrullajes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        btnPatrullajes.setForeground(new java.awt.Color(255, 255, 255));
+        btnPatrullajes.setText("Patrullajes");
+        btnPatrullajes.setBorderPainted(false);
+        btnPatrullajes.setContentAreaFilled(false);
+        btnPatrullajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPatrullajes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPatrullajes.setOpaque(true);
+        btnPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblPatrullajesMouseClicked(evt);
+                btnPatrullajesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblPatrullajesMouseEntered(evt);
+                btnPatrullajesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblPatrullajesMouseExited(evt);
+                btnPatrullajesMouseExited(evt);
             }
         });
-        slideMenu.add(lblPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 290, 167, 30));
+        slideMenu.add(btnPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 290, 167, 30));
 
         lblInventario.setBackground(new java.awt.Color(70, 70, 70));
         lblInventario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -518,10 +529,6 @@ public class JframePrincipal extends javax.swing.JFrame {
             
     }//GEN-LAST:event_lblPoliciasMouseExited
 
-    private void lblPatrullajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseExited
-        changeColor();  
-    }//GEN-LAST:event_lblPatrullajesMouseExited
-
     private void lblInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseExited
        changeColor(); 
     }//GEN-LAST:event_lblInventarioMouseExited
@@ -536,14 +543,7 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void lblPoliciasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseEntered
           lblPolicias.setBackground(colorChange);
-          
-
     }//GEN-LAST:event_lblPoliciasMouseEntered
-
-    private void lblPatrullajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseEntered
-       lblPatrullajes.setBackground(colorChange);
-
-    }//GEN-LAST:event_lblPatrullajesMouseEntered
 
     private void lblInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseEntered
           lblInventario.setBackground(colorChange); 
@@ -609,14 +609,6 @@ public class JframePrincipal extends javax.swing.JFrame {
              ShowHide(0);
     }//GEN-LAST:event_lblPoliciasMouseClicked
 
-    private void lblPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPatrullajesMouseClicked
-
-        iconChange();
-        iconPatrullajes1.setVisible(true);
-            cardLayout.show(jPanel1, "patrullajes");
-             ShowHide(0);
-    }//GEN-LAST:event_lblPatrullajesMouseClicked
-
     private void lblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInventarioMouseClicked
 
          iconChange();
@@ -676,14 +668,6 @@ public class JframePrincipal extends javax.swing.JFrame {
              ShowHide(1);
     }//GEN-LAST:event_iconPoliciasMouseClicked
 
-    private void iconPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPatrullajesMouseClicked
-       
-        iconChange();
-        iconPatrullajes1.setVisible(true);
-            cardLayout.show(jPanel1, "patrullajes"); 
-             ShowHide(1);
-    }//GEN-LAST:event_iconPatrullajesMouseClicked
-
     private void iconInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInventarioMouseClicked
         iconChange();
         iconInventario1.setVisible(true);
@@ -718,10 +702,6 @@ public class JframePrincipal extends javax.swing.JFrame {
        changeColor();
     }//GEN-LAST:event_iconPoliciasMouseExited
 
-    private void iconPatrullajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPatrullajesMouseExited
-      changeColor();
-    }//GEN-LAST:event_iconPatrullajesMouseExited
-
     private void iconInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInventarioMouseExited
        changeColor();
     }//GEN-LAST:event_iconInventarioMouseExited
@@ -746,10 +726,6 @@ public class JframePrincipal extends javax.swing.JFrame {
            lblPolicias.setBackground(colorChange);
     }//GEN-LAST:event_iconPoliciasMouseEntered
 
-    private void iconPatrullajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPatrullajesMouseEntered
-          lblPatrullajes.setBackground(colorChange);
-    }//GEN-LAST:event_iconPatrullajesMouseEntered
-
     private void iconInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInventarioMouseEntered
          lblInventario.setBackground(colorChange);
     }//GEN-LAST:event_iconInventarioMouseEntered
@@ -760,18 +736,59 @@ public class JframePrincipal extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_iconSalirMouseClicked
 
+    private void btnPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrullajesMouseClicked
+
+    }//GEN-LAST:event_btnPatrullajesMouseClicked
+
+    private void btniconPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btniconPatrullajesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btniconPatrullajesMouseClicked
+
+    private void btnPatrullajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrullajesMouseEntered
+        btnPatrullajes.setBackground(colorChange);
+    }//GEN-LAST:event_btnPatrullajesMouseEntered
+
+    private void btnPatrullajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrullajesMouseExited
+        changeColor(); 
+    }//GEN-LAST:event_btnPatrullajesMouseExited
+
+    private void btniconPatrullajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btniconPatrullajesMouseEntered
+        btnPatrullajes.setBackground(colorChange);
+    }//GEN-LAST:event_btniconPatrullajesMouseEntered
+
+    private void btniconPatrullajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btniconPatrullajesMouseExited
+       changeColor();
+    }//GEN-LAST:event_btniconPatrullajesMouseExited
+
     private void changeColor()
     {
         Color color = new Color(70, 70, 70);
         lblUsuario.setBackground(color);
         lblInicio.setBackground(color);
         lblPolicias.setBackground(color);
-        lblPatrullajes.setBackground(color);
+        btnPatrullajes.setBackground(color);
         lblInventario.setBackground(color);
         lblReportes.setBackground(color);
-        lblSalir.setBackground(color);
-        
-        
+        lblSalir.setBackground(color);      
+    }
+    
+    public void showPatrullajePanel(int who)
+    {
+        if(who == 1)
+        {
+         iconChange();
+            iconPatrullajes1.setVisible(true);
+            cardLayout.show(jPanel1, "patrullajes");
+             ShowHide(0);
+        }
+        else
+        {
+        iconChange();
+            iconPatrullajes1.setVisible(true);
+            cardLayout.show(jPanel1, "patrullajes"); 
+             ShowHide(1);
+        }
+
     }
     
     private void ShowHide(int a)
@@ -865,10 +882,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModeloPatrullajes mdlPatrullajes = new ModeloPatrullajes();
                 JframePrincipal frmPrincipal = new JframePrincipal();
-                cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, frmPrincipal);
-                
                 frmPrincipal.setVisible(true);
             }
         });
@@ -879,11 +893,12 @@ public class JframePrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnPatrullajes;
+    public javax.swing.JButton btniconPatrullajes;
     private javax.swing.JLabel iconInicio;
     private javax.swing.JLabel iconInicio1;
     private javax.swing.JLabel iconInventario;
     private javax.swing.JLabel iconInventario1;
-    private javax.swing.JLabel iconPatrullajes;
     private javax.swing.JLabel iconPatrullajes1;
     private javax.swing.JLabel iconPolicias;
     private javax.swing.JLabel iconPolicias1;
@@ -901,7 +916,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblInventario;
     private javax.swing.JLabel lblMenuPrincipal;
-    public javax.swing.JLabel lblPatrullajes;
     private javax.swing.JLabel lblPolicias;
     private javax.swing.JLabel lblReportes;
     private javax.swing.JLabel lblSalir;
