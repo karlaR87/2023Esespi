@@ -89,7 +89,7 @@ public class cntrlUsuarios implements ActionListener{
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(reestablecerContra, "No se pudo reestablecer la contraseña ");
+                    JOptionPane.showMessageDialog(reestablecerContra, "No se pudo restablecer la contraseña ");
                 }
             }
             else{}

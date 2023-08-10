@@ -8,10 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Pao
- */
 public class AskUsuario1 extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
@@ -27,7 +23,7 @@ public class AskUsuario1 extends javax.swing.JPanel {
        
        jLabel4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
        
-        btnAceptar.setText("<html><font color='white'> Aceptar </font></html>");
+        btnAceptar.setText("<html><font color='white'> Siguiente </font></html>");
         caracBtn(btnAceptar);
     }
     
@@ -58,7 +54,7 @@ public class AskUsuario1 extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuario.setToolTipText("");
         txtUsuario.setBorder(null);

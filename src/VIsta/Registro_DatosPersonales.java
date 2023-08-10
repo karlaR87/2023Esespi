@@ -298,7 +298,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         ContenedorP.add(MasNacionalidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, 50, 50));
 
-        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R77.png"))); // NOI18N
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
         btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -312,7 +312,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        ContenedorP.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 170, 60));
+        ContenedorP.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 421, 170, -1));
 
         jLabel34.setFont(new java.awt.Font("Javanese Text", 1, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));

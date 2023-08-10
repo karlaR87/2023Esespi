@@ -69,7 +69,7 @@ public class Bienvenida extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("¡Bienvenido a ESESPI!");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
 
         kGradientPanel1.setkEndColor(new java.awt.Color(110, 59, 255));
         kGradientPanel1.setkStartColor(new java.awt.Color(110, 59, 255));
@@ -104,11 +104,11 @@ public class Bienvenida extends javax.swing.JFrame {
         jPanel1.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 340, 640, 40));
 
         btnRegistroContinuar.setBackground(new java.awt.Color(243, 167, 18));
+        btnRegistroContinuar.setBorder(null);
         btnRegistroContinuar.setText("Registrarme");
-        btnRegistroContinuar.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
+        btnRegistroContinuar.setFont(new java.awt.Font("Bookman Old Style", 0, 24)); // NOI18N
         btnRegistroContinuar.setkBackGroundColor(new java.awt.Color(243, 167, 18));
         btnRegistroContinuar.setkEndColor(new java.awt.Color(243, 167, 18));
-        btnRegistroContinuar.setkForeGround(new java.awt.Color(0, 0, 102));
         btnRegistroContinuar.setkHoverEndColor(new java.awt.Color(243, 167, 18));
         btnRegistroContinuar.setkHoverForeGround(new java.awt.Color(0, 0, 102));
         btnRegistroContinuar.setkHoverStartColor(new java.awt.Color(243, 167, 18));
@@ -126,7 +126,7 @@ public class Bienvenida extends javax.swing.JFrame {
                 btnRegistroContinuarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistroContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
+        jPanel1.add(btnRegistroContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 9.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));

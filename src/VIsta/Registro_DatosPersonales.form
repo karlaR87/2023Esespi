@@ -542,7 +542,7 @@
             <Component class="javax.swing.JButton" name="btnSiguiente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/VIsta/imagenes/R77.png"/>
+                  <Image iconType="3" name="/VIsta/imagenes/btnOrange.png"/>
                 </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -559,7 +559,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="740" y="420" width="170" height="60"/>
+                  <AbsoluteConstraints x="740" y="421" width="170" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
