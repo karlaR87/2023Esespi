@@ -88,10 +88,10 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setResizable(false);
-        setSize(new java.awt.Dimension(1016, 720));
+        setSize(new java.awt.Dimension(1027, 720));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1016, 720));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1027, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Registrarse.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -103,13 +103,13 @@ public class Login extends javax.swing.JFrame {
                 RegistrarseMouseClicked(evt);
             }
         });
-        jPanel1.add(Registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 140, 140, -1));
+        jPanel1.add(Registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(886, 140, 140, -1));
 
         back13.setBackground(new java.awt.Color(255, 255, 255));
         back13.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
         back13.setForeground(new java.awt.Color(255, 255, 255));
         back13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnRegistrarseBack.png"))); // NOI18N
-        jPanel1.add(back13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 140, -1, -1));
+        jPanel1.add(back13, new org.netbeans.lib.awtextra.AbsoluteConstraints(881, 140, -1, -1));
 
         RecuperarContra.setBackground(new java.awt.Color(255, 255, 255));
         RecuperarContra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -121,25 +121,25 @@ public class Login extends javax.swing.JFrame {
                 RecuperarContraMouseClicked(evt);
             }
         });
-        jPanel1.add(RecuperarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, -1, -1));
+        jPanel1.add(RecuperarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(781, 50, -1, -1));
 
         back12.setBackground(new java.awt.Color(255, 255, 255));
         back12.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
         back12.setForeground(new java.awt.Color(255, 255, 255));
         back12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnRCBack.png"))); // NOI18N
-        jPanel1.add(back12, new org.netbeans.lib.awtextra.AbsoluteConstraints(765, 50, 250, -1));
+        jPanel1.add(back12, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 50, 250, -1));
 
         OlvidoContra1.setBackground(new java.awt.Color(255, 255, 255));
         OlvidoContra1.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
         OlvidoContra1.setForeground(new java.awt.Color(255, 255, 255));
         OlvidoContra1.setText("¿No tiene una cuenta? ");
-        jPanel1.add(OlvidoContra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 116, -1, -1));
+        jPanel1.add(OlvidoContra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(841, 116, -1, -1));
 
         OlvidoContra.setBackground(new java.awt.Color(255, 255, 255));
         OlvidoContra.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
         OlvidoContra.setForeground(new java.awt.Color(255, 255, 255));
-        OlvidoContra.setText("¿Olvido su contraseña? ");
-        jPanel1.add(OlvidoContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 26, -1, -1));
+        OlvidoContra.setText("¿Olvidó su contraseña? ");
+        jPanel1.add(OlvidoContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(831, 26, -1, -1));
 
         btnIngresar.setBackground(new java.awt.Color(44, 104, 244));
         btnIngresar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
