@@ -68,7 +68,9 @@ public class Login extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
         Registrarse = new javax.swing.JLabel();
+        back13 = new javax.swing.JLabel();
         RecuperarContra = new javax.swing.JLabel();
+        back12 = new javax.swing.JLabel();
         OlvidoContra1 = new javax.swing.JLabel();
         OlvidoContra = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
@@ -78,6 +80,7 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         redondo = new javax.swing.JLabel();
         fondoLogin = new javax.swing.JLabel();
+        redondo2 = new javax.swing.JLabel();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -102,6 +105,12 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(Registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 140, 140, -1));
 
+        back13.setBackground(new java.awt.Color(255, 255, 255));
+        back13.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        back13.setForeground(new java.awt.Color(255, 255, 255));
+        back13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnRegistrarseBack.png"))); // NOI18N
+        jPanel1.add(back13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 140, -1, -1));
+
         RecuperarContra.setBackground(new java.awt.Color(255, 255, 255));
         RecuperarContra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         RecuperarContra.setForeground(new java.awt.Color(59, 126, 255));
@@ -113,6 +122,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(RecuperarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, -1, -1));
+
+        back12.setBackground(new java.awt.Color(255, 255, 255));
+        back12.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        back12.setForeground(new java.awt.Color(255, 255, 255));
+        back12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnRCBack.png"))); // NOI18N
+        jPanel1.add(back12, new org.netbeans.lib.awtextra.AbsoluteConstraints(765, 50, 250, -1));
 
         OlvidoContra1.setBackground(new java.awt.Color(255, 255, 255));
         OlvidoContra1.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
@@ -181,11 +196,14 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 300, 390, 45));
 
-        redondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userBack.png"))); // NOI18N
-        jPanel1.add(redondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 420, 80));
+        redondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnIngresarBABACK.png"))); // NOI18N
+        jPanel1.add(redondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 490, 220, -1));
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/wave.png"))); // NOI18N
         jPanel1.add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, 720));
+
+        redondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userBack.png"))); // NOI18N
+        jPanel1.add(redondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 420, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,6 +287,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel OlvidoContra1;
     private javax.swing.JLabel RecuperarContra;
     private javax.swing.JLabel Registrarse;
+    private javax.swing.JLabel back12;
+    private javax.swing.JLabel back13;
     public javax.swing.JButton btnIngresar;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel jLabel2;
@@ -276,6 +296,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel redondo;
     private javax.swing.JLabel redondo1;
+    private javax.swing.JLabel redondo2;
     public javax.swing.JPasswordField txtContraseña;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
