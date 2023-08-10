@@ -3,7 +3,6 @@ package VIsta.Programa;
 import Controlador.cntrlPatrullajes;
 import Modelo.ModeloPatrullajes;
 import VIsta.Login;
-import VIsta.Principal;
 import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
