@@ -236,19 +236,19 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="270" y="500" width="360" height="50"/>
+              <AbsoluteConstraints x="330" y="510" width="220" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/VIsta/imagenes/G10.png"/>
+              <Image iconType="3" name="/VIsta/imagenes/btnnextDBack.png"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="270" y="490" width="360" height="80"/>
+              <AbsoluteConstraints x="330" y="510" width="220" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -297,12 +297,12 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/VIsta/imagenes/R5.png"/>
+              <Image iconType="3" name="/VIsta/imagenes/R1010.png"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="200" y="130" width="-1" height="-1"/>
+              <AbsoluteConstraints x="200" y="130" width="-1" height="490"/>
             </Constraint>
           </Constraints>
         </Component>
