@@ -75,7 +75,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel5.setText("Numero de Placa");
+        jLabel5.setText("Número de placa");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 420, 30));
 
         btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
@@ -109,7 +109,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("ONI");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 420, 40));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 420, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backInfoPolicial.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));

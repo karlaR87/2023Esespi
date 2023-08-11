@@ -69,20 +69,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl13.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
         lbl14.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
         lbl15.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
-        
-        btnSiguiente.setText("<html> <font color='white'> Siguiente </font> </html>");
-        caracBtn(btnSiguiente);  
+
     }
-    
-    private void caracBtn(JButton btn)
-    {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 1, 22)));
-        btn.setHorizontalTextPosition(JButton.CENTER);
-        btn.setVerticalTextPosition(JButton.CENTER);
-        btn.setVerticalAlignment(JButton.CENTER);
-        btn.setHorizontalAlignment(JButton.CENTER); 
-    }
- 
     
     @SuppressWarnings("unchecked")  
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -129,18 +117,18 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1010, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
+        lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
         lblRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegresarMouseClicked(evt);
             }
         });
-        jPanel1.add(lblRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 50));
+        jPanel1.add(lblRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 64, 70));
 
         ContenedorP.setBackground(new java.awt.Color(70, 70, 70));
         ContenedorP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -206,35 +194,35 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 210, 30));
 
         txtNombres.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombres.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtNombres.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtNombres.setForeground(new java.awt.Color(0, 0, 0));
         txtNombres.setText(" ");
         txtNombres.setBorder(null);
         ContenedorP.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 230, 30));
 
         txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
-        txtApellidos.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtApellidos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
         txtApellidos.setText(" ");
         txtApellidos.setBorder(null);
         ContenedorP.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 230, 30));
 
         txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtDireccion.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
         txtDireccion.setText(" ");
         txtDireccion.setBorder(null);
         ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 230, 30));
 
         txtDui.setBackground(new java.awt.Color(255, 255, 255));
-        txtDui.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtDui.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtDui.setForeground(new java.awt.Color(0, 0, 0));
         txtDui.setText(" ");
         txtDui.setBorder(null);
         ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 220, 30));
 
         txtNumeroTel.setBackground(new java.awt.Color(255, 255, 255));
-        txtNumeroTel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtNumeroTel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtNumeroTel.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeroTel.setText(" ");
         txtNumeroTel.setBorder(null);
@@ -246,7 +234,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 230, 30));
 
         txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
-        txtCorreo.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtCorreo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreo.setText(" ");
         txtCorreo.setBorder(null);
@@ -316,7 +304,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         ContenedorP.add(MasNacionalidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, 50, 50));
 
-        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
         btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -330,12 +318,12 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        ContenedorP.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 421, 170, -1));
+        ContenedorP.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 220, 50));
 
         jLabel34.setFont(new java.awt.Font("Javanese Text", 1, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R7.png"))); // NOI18N
-        ContenedorP.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, 70));
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnnextDBack.png"))); // NOI18N
+        ContenedorP.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 220, 60));
 
         Mas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Mas.png"))); // NOI18N
         Mas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -383,7 +371,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jPanel1.add(ContenedorP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 940, 530));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroPersonas.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -397,7 +385,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
