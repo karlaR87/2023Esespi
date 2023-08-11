@@ -116,14 +116,14 @@ public class PorCorreo extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtCode.setBackground(new java.awt.Color(51, 51, 51));
-        txtCode.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtCode.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txtCode.setForeground(new java.awt.Color(255, 255, 255));
         txtCode.setToolTipText("");
         txtCode.setBorder(null);
         jPanel1.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 380, 30));
 
         txtMail.setBackground(new java.awt.Color(51, 51, 51));
-        txtMail.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtMail.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txtMail.setForeground(new java.awt.Color(255, 255, 255));
         txtMail.setToolTipText("");
         txtMail.setBorder(null);
@@ -136,7 +136,7 @@ public class PorCorreo extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("<html> Ingrese el código enviado a su correo electrónico <br> para reestablecer su contraseña. </html>");
+        jLabel5.setText("<html> Ingrese el código enviado a su correo electrónico <br> para restablecer su contraseña. </html>");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 430, 430, 50));
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N

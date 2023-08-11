@@ -83,10 +83,7 @@ public class PorPreguntasS extends javax.swing.JPanel {
         txtR3 = new javax.swing.JTextField();
         txtR1 = new javax.swing.JTextField();
         lblPregunta3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         lblPregunta2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         lblPregunta1 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -95,59 +92,46 @@ public class PorPreguntasS extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(870, 700));
+
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtR2.setBackground(new java.awt.Color(51, 51, 51));
-        txtR2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtR2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txtR2.setForeground(new java.awt.Color(255, 255, 255));
         txtR2.setToolTipText("");
         txtR2.setBorder(null);
-        jPanel1.add(txtR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 400, 30));
+        jPanel1.add(txtR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 355, 400, 30));
 
         txtR3.setBackground(new java.awt.Color(51, 51, 51));
-        txtR3.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtR3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txtR3.setForeground(new java.awt.Color(255, 255, 255));
         txtR3.setToolTipText("");
         txtR3.setBorder(null);
-        jPanel1.add(txtR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 400, 20));
+        jPanel1.add(txtR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 400, 30));
 
         txtR1.setBackground(new java.awt.Color(51, 51, 51));
-        txtR1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtR1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txtR1.setForeground(new java.awt.Color(255, 255, 255));
         txtR1.setToolTipText("");
         txtR1.setBorder(null);
-        jPanel1.add(txtR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 400, 20));
+        jPanel1.add(txtR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 400, 30));
 
         lblPregunta3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblPregunta3.setForeground(new java.awt.Color(255, 255, 255));
         lblPregunta3.setText("Pregunta 3");
-        jPanel1.add(lblPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R6.png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 430, 60));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R6.png"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 430, 50));
+        jPanel1.add(lblPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 426, -1, 30));
 
         lblPregunta2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblPregunta2.setForeground(new java.awt.Color(255, 255, 255));
         lblPregunta2.setText("Pregunta 2");
-        jPanel1.add(lblPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 292, -1, 30));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R6.png"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 430, 60));
+        jPanel1.add(lblPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, -1, 30));
 
         lblPregunta1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblPregunta1.setForeground(new java.awt.Color(255, 255, 255));
         lblPregunta1.setText("Pregunta 1");
-        jPanel1.add(lblPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
+        jPanel1.add(lblPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 216, -1, 30));
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
@@ -158,10 +142,10 @@ public class PorPreguntasS extends javax.swing.JPanel {
                 btnAceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 220, 50));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 535, 220, 50));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnnextDBack.png"))); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 220, 60));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 535, 220, 60));
 
         lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
         lblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -176,10 +160,10 @@ public class PorPreguntasS extends javax.swing.JPanel {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/shielddrop.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 150, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 150, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R1010.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, 490));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 164, -1, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -256,13 +240,10 @@ public class PorPreguntasS extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblPregunta1;
