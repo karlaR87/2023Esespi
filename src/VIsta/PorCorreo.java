@@ -115,27 +115,27 @@ public class PorCorreo extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtCode.setBackground(new java.awt.Color(51, 51, 51));
-        txtCode.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtCode.setForeground(new java.awt.Color(255, 255, 255));
+        txtCode.setBackground(new java.awt.Color(255, 255, 255));
+        txtCode.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtCode.setForeground(new java.awt.Color(0, 0, 0));
         txtCode.setToolTipText("");
         txtCode.setBorder(null);
         jPanel1.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 380, 30));
 
-        txtMail.setBackground(new java.awt.Color(51, 51, 51));
-        txtMail.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtMail.setForeground(new java.awt.Color(255, 255, 255));
+        txtMail.setBackground(new java.awt.Color(255, 255, 255));
+        txtMail.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtMail.setForeground(new java.awt.Color(0, 0, 0));
         txtMail.setToolTipText("");
         txtMail.setBorder(null);
         jPanel1.add(txtMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 380, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("<html> Ingrese el correo electrónico con el cual registró <br> su cuenta. </html>");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 182, 430, 50));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("<html> Ingrese el código enviado a su correo electrónico <br> para restablecer su contraseña. </html>");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 430, 430, 50));
 

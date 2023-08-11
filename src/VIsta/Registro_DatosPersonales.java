@@ -57,18 +57,18 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     { 
         tipoFuentes = new Fuentes();
 
-        lbl4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl5.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl6.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl7.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl8.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl9.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl10.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl11.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl12.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl13.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl14.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        lbl15.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
+        lbl4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl5.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl6.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl7.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl8.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl9.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl10.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl11.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl12.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl13.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl14.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        lbl15.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
         
         btnSiguiente.setText("<html> <font color='white'> Siguiente </font> </html>");
         caracBtn(btnSiguiente);  
@@ -145,82 +145,97 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ContenedorP.setBackground(new java.awt.Color(70, 70, 70));
         ContenedorP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl4.setForeground(new java.awt.Color(255, 255, 255));
+        lbl4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl4.setForeground(new java.awt.Color(242, 242, 242));
         lbl4.setText("Nombres ");
         ContenedorP.add(lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
 
-        lbl5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl5.setForeground(new java.awt.Color(255, 255, 255));
+        lbl5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl5.setForeground(new java.awt.Color(242, 242, 242));
         lbl5.setText("Apellidios");
         ContenedorP.add(lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
 
-        lbl6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl6.setForeground(new java.awt.Color(255, 255, 255));
+        lbl6.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl6.setForeground(new java.awt.Color(242, 242, 242));
         lbl6.setText("Fecha de Nacimiento ");
         ContenedorP.add(lbl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
 
-        lbl7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl7.setForeground(new java.awt.Color(255, 255, 255));
+        lbl7.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl7.setForeground(new java.awt.Color(242, 242, 242));
         lbl7.setText("Dirección ");
         ContenedorP.add(lbl7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
 
-        lbl8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl8.setForeground(new java.awt.Color(255, 255, 255));
+        lbl8.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl8.setForeground(new java.awt.Color(242, 242, 242));
         lbl8.setText("DUI ");
         ContenedorP.add(lbl8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
 
-        lbl9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl9.setForeground(new java.awt.Color(255, 255, 255));
+        lbl9.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl9.setForeground(new java.awt.Color(242, 242, 242));
         lbl9.setText("Número de Telefono ");
         ContenedorP.add(lbl9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
-        lbl10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl10.setForeground(new java.awt.Color(255, 255, 255));
+        lbl10.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl10.setForeground(new java.awt.Color(242, 242, 242));
         lbl10.setText("Correo Electronico");
         ContenedorP.add(lbl10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
-        lbl11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl11.setForeground(new java.awt.Color(255, 255, 255));
+        lbl11.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl11.setForeground(new java.awt.Color(242, 242, 242));
         lbl11.setText("Estado civil ");
         ContenedorP.add(lbl11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
-        lbl12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl12.setForeground(new java.awt.Color(255, 255, 255));
+        lbl12.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl12.setForeground(new java.awt.Color(242, 242, 242));
         lbl12.setText("Tipo de sangre");
         ContenedorP.add(lbl12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
-        lbl13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl13.setForeground(new java.awt.Color(255, 255, 255));
+        lbl13.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl13.setForeground(new java.awt.Color(242, 242, 242));
         lbl13.setText("Idiomas");
         ContenedorP.add(lbl13, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 120, 40));
 
-        lbl14.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl14.setForeground(new java.awt.Color(255, 255, 255));
+        lbl14.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl14.setForeground(new java.awt.Color(242, 242, 242));
         lbl14.setText("Nacionalidad ");
         ContenedorP.add(lbl14, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 130, 30));
 
-        lbl15.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbl15.setForeground(new java.awt.Color(255, 255, 255));
+        lbl15.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lbl15.setForeground(new java.awt.Color(242, 242, 242));
         lbl15.setText("Genero ");
         ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 210, 30));
 
+        txtNombres.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombres.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
         txtNombres.setText(" ");
         txtNombres.setBorder(null);
         ContenedorP.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 230, 30));
 
+        txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidos.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
         txtApellidos.setText(" ");
         txtApellidos.setBorder(null);
         ContenedorP.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 230, 30));
 
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
         txtDireccion.setText(" ");
         txtDireccion.setBorder(null);
         ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 230, 30));
 
+        txtDui.setBackground(new java.awt.Color(255, 255, 255));
+        txtDui.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtDui.setForeground(new java.awt.Color(0, 0, 0));
         txtDui.setText(" ");
         txtDui.setBorder(null);
         ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 220, 30));
 
+        txtNumeroTel.setBackground(new java.awt.Color(255, 255, 255));
+        txtNumeroTel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtNumeroTel.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeroTel.setText(" ");
         txtNumeroTel.setBorder(null);
         txtNumeroTel.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +245,9 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         });
         ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 230, 30));
 
+        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreo.setText(" ");
         txtCorreo.setBorder(null);
         ContenedorP.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));

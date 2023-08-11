@@ -100,29 +100,29 @@ public class PorSMS extends javax.swing.JPanel {
         jLabel11.setText("¿No has recibido nada?");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 630, -1, -1));
 
-        txtNumero.setBackground(new java.awt.Color(51, 51, 51));
-        txtNumero.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtNumero.setForeground(new java.awt.Color(255, 255, 255));
+        txtNumero.setBackground(new java.awt.Color(255, 255, 255));
+        txtNumero.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtNumero.setForeground(new java.awt.Color(0, 0, 0));
         txtNumero.setToolTipText("");
         txtNumero.setBorder(null);
         jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 380, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("<html> Ingrese el número telefónico con el cual registró <br> su cuenta. </html>");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 182, 430, 50));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("<html> Ingrese el código enviado a su número telefónico  <br> para restablecer su contraseña. </html>");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 430, 430, 50));
 
-        txtCodeN.setBackground(new java.awt.Color(51, 51, 51));
+        txtCodeN.setBackground(new java.awt.Color(255, 255, 255));
         txtCodeN.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtCodeN.setForeground(new java.awt.Color(255, 255, 255));
+        txtCodeN.setForeground(new java.awt.Color(0, 0, 0));
         txtCodeN.setToolTipText("");
         txtCodeN.setBorder(null);
-        jPanel1.add(txtCodeN, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 380, 30));
+        jPanel1.add(txtCodeN, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 488, 380, 30));
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);

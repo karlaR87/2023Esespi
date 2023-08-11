@@ -69,13 +69,15 @@ public class ReestablecerContra extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(870, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtContra2.setBackground(new java.awt.Color(51, 51, 51));
-        txtContra2.setForeground(new java.awt.Color(255, 255, 255));
+        txtContra2.setBackground(new java.awt.Color(255, 255, 255));
+        txtContra2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtContra2.setForeground(new java.awt.Color(0, 0, 0));
         txtContra2.setBorder(null);
-        jPanel1.add(txtContra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 370, 30));
+        jPanel1.add(txtContra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 438, 370, 30));
 
-        txtContra1.setBackground(new java.awt.Color(51, 51, 51));
-        txtContra1.setForeground(new java.awt.Color(255, 255, 255));
+        txtContra1.setBackground(new java.awt.Color(255, 255, 255));
+        txtContra1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtContra1.setForeground(new java.awt.Color(0, 0, 0));
         txtContra1.setBorder(null);
         jPanel1.add(txtContra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 370, 30));
 
@@ -86,12 +88,12 @@ public class ReestablecerContra extends javax.swing.JPanel {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 150, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("Ingrese su nueva contraseña");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 430, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("<html>Por favor, ingrese una vez más su nueva contraseña </html>");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 430, 30));
 

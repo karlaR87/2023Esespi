@@ -97,39 +97,39 @@ public class PorPreguntasS extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtR2.setBackground(new java.awt.Color(51, 51, 51));
-        txtR2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtR2.setForeground(new java.awt.Color(255, 255, 255));
+        txtR2.setBackground(new java.awt.Color(255, 255, 255));
+        txtR2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtR2.setForeground(new java.awt.Color(0, 0, 0));
         txtR2.setToolTipText("");
         txtR2.setBorder(null);
         jPanel1.add(txtR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 355, 400, 30));
 
-        txtR3.setBackground(new java.awt.Color(51, 51, 51));
-        txtR3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtR3.setForeground(new java.awt.Color(255, 255, 255));
+        txtR3.setBackground(new java.awt.Color(255, 255, 255));
+        txtR3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtR3.setForeground(new java.awt.Color(0, 0, 0));
         txtR3.setToolTipText("");
         txtR3.setBorder(null);
         jPanel1.add(txtR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 400, 30));
 
-        txtR1.setBackground(new java.awt.Color(51, 51, 51));
-        txtR1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtR1.setForeground(new java.awt.Color(255, 255, 255));
+        txtR1.setBackground(new java.awt.Color(255, 255, 255));
+        txtR1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtR1.setForeground(new java.awt.Color(0, 0, 0));
         txtR1.setToolTipText("");
         txtR1.setBorder(null);
         jPanel1.add(txtR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 400, 30));
 
         lblPregunta3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblPregunta3.setForeground(new java.awt.Color(255, 255, 255));
+        lblPregunta3.setForeground(new java.awt.Color(242, 242, 242));
         lblPregunta3.setText("Pregunta 3");
         jPanel1.add(lblPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 426, -1, 30));
 
         lblPregunta2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblPregunta2.setForeground(new java.awt.Color(255, 255, 255));
+        lblPregunta2.setForeground(new java.awt.Color(242, 242, 242));
         lblPregunta2.setText("Pregunta 2");
         jPanel1.add(lblPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, -1, 30));
 
         lblPregunta1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblPregunta1.setForeground(new java.awt.Color(255, 255, 255));
+        lblPregunta1.setForeground(new java.awt.Color(242, 242, 242));
         lblPregunta1.setText("Pregunta 1");
         jPanel1.add(lblPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 216, -1, 30));
 

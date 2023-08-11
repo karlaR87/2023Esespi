@@ -17,9 +17,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         tipoFuentes = new Fuentes();
         
          jLabel4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-         jLabel5.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        btnSiguiente.setText("<html> <font color='white'> Siguiente </font> </html>");
-        caracBtn(btnSiguiente);  
+         jLabel5.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18)); 
     }
     
     private void caracBtn(JButton btn)
@@ -55,32 +53,32 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
+        lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
         lblRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegresarMouseClicked(evt);
             }
         });
-        jPanel2.add(lblRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 50));
+        jPanel2.add(lblRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 64, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroPoli.png"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(1010, 700));
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 120));
 
-        txtNumeroPlaca.setBackground(new java.awt.Color(51, 51, 51));
-        txtNumeroPlaca.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNumeroPlaca.setForeground(new java.awt.Color(255, 255, 255));
+        txtNumeroPlaca.setBackground(new java.awt.Color(255, 255, 255));
+        txtNumeroPlaca.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtNumeroPlaca.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeroPlaca.setToolTipText("");
         txtNumeroPlaca.setBorder(null);
-        jPanel2.add(txtNumeroPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 415, 410, 30));
+        jPanel2.add(txtNumeroPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 426, 410, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Numero de Placa:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 420, 30));
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setText("Numero de Placa");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 420, 30));
 
-        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrange.png"))); // NOI18N
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
         btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -94,24 +92,24 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 510, 170, 60));
+        jPanel2.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 220, 50));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrangeBack.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 200, 90));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnnextDBack.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 220, 60));
 
-        txtONI.setBackground(new java.awt.Color(51, 51, 51));
-        txtONI.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtONI.setForeground(new java.awt.Color(255, 255, 255));
+        txtONI.setBackground(new java.awt.Color(255, 255, 255));
+        txtONI.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtONI.setForeground(new java.awt.Color(0, 0, 0));
         txtONI.setToolTipText("");
         txtONI.setBorder(null);
-        jPanel2.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 410, 30));
+        jPanel2.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 314, 410, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("ONI:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 420, 40));
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel4.setText("ONI");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 420, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backInfoPolicial.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));

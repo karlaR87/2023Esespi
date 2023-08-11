@@ -22,18 +22,6 @@ public class AskUsuario1 extends javax.swing.JPanel {
        // jLabel1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 35));
        
        jLabel4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-       
-        btnAceptar.setText("<html><font color='white'> Siguiente </font></html>");
-        caracBtn(btnAceptar);
-    }
-    
-    private void caracBtn(JButton btn)
-    {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 0, 24)));
-        btn.setHorizontalTextPosition(JButton.CENTER);
-        btn.setVerticalTextPosition(JButton.CENTER);
-        btn.setVerticalAlignment(JButton.CENTER);
-        btn.setHorizontalAlignment(JButton.CENTER); 
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -54,13 +42,14 @@ public class AskUsuario1 extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(870, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        txtUsuario.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtUsuario.setToolTipText("");
         txtUsuario.setBorder(null);
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 380, 30));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 360, 380, 30));
 
+        btnAceptar.setForeground(java.awt.SystemColor.controlHighlight);
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R10.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
@@ -78,9 +67,9 @@ public class AskUsuario1 extends javax.swing.JPanel {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 446, 220, 60));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("1. Ingrese el usuario con el cual registró su cuenta.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 321, 430, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 430, 30));
 
         lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
         lblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

@@ -97,50 +97,50 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnrangeAceptarBack.png"))); // NOI18N
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, 220, 120));
 
-        txt3Respuesta.setBackground(new java.awt.Color(70, 70, 70));
-        txt3Respuesta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txt3Respuesta.setForeground(new java.awt.Color(255, 255, 255));
+        txt3Respuesta.setBackground(new java.awt.Color(255, 255, 255));
+        txt3Respuesta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt3Respuesta.setForeground(new java.awt.Color(0, 0, 0));
         txt3Respuesta.setToolTipText("");
         txt3Respuesta.setBorder(null);
         jPanel1.add(txt3Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 636, 410, 30));
 
-        txt3Pregunta.setBackground(new java.awt.Color(70, 70, 70));
-        txt3Pregunta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txt3Pregunta.setForeground(new java.awt.Color(255, 255, 255));
+        txt3Pregunta.setBackground(new java.awt.Color(255, 255, 255));
+        txt3Pregunta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt3Pregunta.setForeground(new java.awt.Color(0, 0, 0));
         txt3Pregunta.setToolTipText("");
         txt3Pregunta.setBorder(null);
         jPanel1.add(txt3Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 556, 410, 30));
 
-        txt2Respuesta.setBackground(new java.awt.Color(70, 70, 70));
-        txt2Respuesta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txt2Respuesta.setForeground(new java.awt.Color(255, 255, 255));
+        txt2Respuesta.setBackground(new java.awt.Color(255, 255, 255));
+        txt2Respuesta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt2Respuesta.setForeground(new java.awt.Color(0, 0, 0));
         txt2Respuesta.setToolTipText("");
         txt2Respuesta.setBorder(null);
-        jPanel1.add(txt2Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 446, 410, 30));
+        jPanel1.add(txt2Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 410, 30));
 
-        txt2Pregunta.setBackground(new java.awt.Color(70, 70, 70));
-        txt2Pregunta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txt2Pregunta.setForeground(new java.awt.Color(255, 255, 255));
+        txt2Pregunta.setBackground(new java.awt.Color(255, 255, 255));
+        txt2Pregunta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt2Pregunta.setForeground(new java.awt.Color(0, 0, 0));
         txt2Pregunta.setToolTipText("");
         txt2Pregunta.setBorder(null);
         jPanel1.add(txt2Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 356, 410, 30));
 
-        txt1Respuesta.setBackground(new java.awt.Color(70, 70, 70));
-        txt1Respuesta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txt1Respuesta.setForeground(new java.awt.Color(255, 255, 255));
+        txt1Respuesta.setBackground(new java.awt.Color(255, 255, 255));
+        txt1Respuesta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt1Respuesta.setForeground(new java.awt.Color(0, 0, 0));
         txt1Respuesta.setToolTipText("");
         txt1Respuesta.setBorder(null);
         jPanel1.add(txt1Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 246, 410, 30));
 
-        txt1Pregunta.setBackground(new java.awt.Color(70, 70, 70));
-        txt1Pregunta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txt1Pregunta.setForeground(new java.awt.Color(255, 255, 255));
+        txt1Pregunta.setBackground(new java.awt.Color(255, 255, 255));
+        txt1Pregunta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt1Pregunta.setForeground(new java.awt.Color(0, 0, 0));
         txt1Pregunta.setToolTipText("");
         txt1Pregunta.setBorder(null);
         jPanel1.add(txt1Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 166, 410, 30));
 
         lblR3.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        lblR3.setForeground(new java.awt.Color(204, 204, 204));
+        lblR3.setForeground(new java.awt.Color(242, 242, 242));
         lblR3.setText("Respuesta:");
         jPanel1.add(lblR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 600, 220, 40));
 
@@ -155,19 +155,19 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 430, 50));
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel15.setForeground(new java.awt.Color(242, 242, 242));
         jLabel15.setText("Tercera Pregunta:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 220, 40));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R1212.png"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 430, 50));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 430, 50));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setForeground(new java.awt.Color(242, 242, 242));
         jLabel9.setText("Respuesta:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 220, 60));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 220, 60));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,12 +175,12 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 430, 50));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setForeground(new java.awt.Color(242, 242, 242));
         jLabel11.setText("Segunda Pregunta:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 210, 60));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("Primera Pregunta:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 180, 80));
 
@@ -195,7 +195,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 430, 50));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("Respuesta:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 190, 60));
 
@@ -208,7 +208,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroPreguntas.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
