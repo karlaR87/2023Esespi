@@ -34,8 +34,8 @@ public class Login extends javax.swing.JFrame {
     {      
         tipoFuentes = new Fuentes();
          
-       OlvidoContra.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 17));
-        OlvidoContra1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 17));
+       OlvidoContra.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+        OlvidoContra1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
     }
     
    
@@ -130,13 +130,13 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(back12, new org.netbeans.lib.awtextra.AbsoluteConstraints(777, 50, 250, -1));
 
         OlvidoContra1.setBackground(new java.awt.Color(255, 255, 255));
-        OlvidoContra1.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        OlvidoContra1.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         OlvidoContra1.setForeground(new java.awt.Color(255, 255, 255));
         OlvidoContra1.setText("¿No tiene una cuenta? ");
         jPanel1.add(OlvidoContra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(842, 116, -1, -1));
 
         OlvidoContra.setBackground(new java.awt.Color(255, 255, 255));
-        OlvidoContra.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        OlvidoContra.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         OlvidoContra.setForeground(new java.awt.Color(255, 255, 255));
         OlvidoContra.setText("¿Olvidó su contraseña? ");
         jPanel1.add(OlvidoContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(832, 26, -1, -1));

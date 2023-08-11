@@ -28,19 +28,8 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
        jLabel9.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
        jLabel15.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
        lblR3.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
-        
-        btnAceptar.setText("<html><font color='white'> Aceptar </font></html>");
-        caracBtn(btnAceptar);
     }
-    
-    private void caracBtn(JButton btn)
-    {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 1, 22)));
-        btn.setHorizontalTextPosition(JButton.CENTER);
-        btn.setVerticalTextPosition(JButton.CENTER);
-        btn.setVerticalAlignment(JButton.CENTER);
-        btn.setHorizontalAlignment(JButton.CENTER); 
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,6 +66,8 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1010, 700));
+
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -90,7 +81,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         });
         jPanel1.add(lblRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 64, 70));
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAzul.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnOrangeAceptar.png"))); // NOI18N
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -99,57 +90,57 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
                 btnAceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 550, 220, 70));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 565, 220, 60));
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/R1111.png"))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 580, 220, 120));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnrangeAceptarBack.png"))); // NOI18N
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, 220, 120));
 
         txt3Respuesta.setBackground(new java.awt.Color(70, 70, 70));
         txt3Respuesta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txt3Respuesta.setForeground(new java.awt.Color(255, 255, 255));
         txt3Respuesta.setToolTipText("");
         txt3Respuesta.setBorder(null);
-        jPanel1.add(txt3Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, 410, 30));
+        jPanel1.add(txt3Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 636, 410, 30));
 
         txt3Pregunta.setBackground(new java.awt.Color(70, 70, 70));
         txt3Pregunta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txt3Pregunta.setForeground(new java.awt.Color(255, 255, 255));
         txt3Pregunta.setToolTipText("");
         txt3Pregunta.setBorder(null);
-        jPanel1.add(txt3Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, 410, 30));
+        jPanel1.add(txt3Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 556, 410, 30));
 
         txt2Respuesta.setBackground(new java.awt.Color(70, 70, 70));
         txt2Respuesta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txt2Respuesta.setForeground(new java.awt.Color(255, 255, 255));
         txt2Respuesta.setToolTipText("");
         txt2Respuesta.setBorder(null);
-        jPanel1.add(txt2Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 410, 30));
+        jPanel1.add(txt2Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 446, 410, 30));
 
         txt2Pregunta.setBackground(new java.awt.Color(70, 70, 70));
         txt2Pregunta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txt2Pregunta.setForeground(new java.awt.Color(255, 255, 255));
         txt2Pregunta.setToolTipText("");
         txt2Pregunta.setBorder(null);
-        jPanel1.add(txt2Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 410, 30));
+        jPanel1.add(txt2Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 356, 410, 30));
 
         txt1Respuesta.setBackground(new java.awt.Color(70, 70, 70));
         txt1Respuesta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txt1Respuesta.setForeground(new java.awt.Color(255, 255, 255));
         txt1Respuesta.setToolTipText("");
         txt1Respuesta.setBorder(null);
-        jPanel1.add(txt1Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 410, 30));
+        jPanel1.add(txt1Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 246, 410, 30));
 
         txt1Pregunta.setBackground(new java.awt.Color(70, 70, 70));
         txt1Pregunta.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txt1Pregunta.setForeground(new java.awt.Color(255, 255, 255));
         txt1Pregunta.setToolTipText("");
         txt1Pregunta.setBorder(null);
-        jPanel1.add(txt1Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 410, 30));
+        jPanel1.add(txt1Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 166, 410, 30));
 
         lblR3.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        lblR3.setForeground(new java.awt.Color(255, 255, 255));
+        lblR3.setForeground(new java.awt.Color(204, 204, 204));
         lblR3.setText("Respuesta:");
         jPanel1.add(lblR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 600, 220, 40));
 
@@ -164,7 +155,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 430, 50));
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
         jLabel15.setText("Tercera Pregunta:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 220, 40));
 
@@ -174,7 +165,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 430, 50));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("Respuesta:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 220, 60));
 
@@ -184,12 +175,12 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 430, 50));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("Segunda Pregunta:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 210, 60));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Primera Pregunta:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 180, 80));
 
@@ -204,7 +195,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 430, 50));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Respuesta:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 190, 60));
 
@@ -217,7 +208,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroPreguntas.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 120));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -230,9 +221,6 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-    }//GEN-LAST:event_btnAceptarMouseClicked
 
     public boolean isOK()
     {
@@ -250,6 +238,10 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
 
     }//GEN-LAST:event_lblRegresarMouseClicked
+
+    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
+
+    }//GEN-LAST:event_btnAceptarMouseClicked
 
      public JLabel getlblBack()
     {
