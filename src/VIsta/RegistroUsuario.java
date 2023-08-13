@@ -41,19 +41,9 @@ public class RegistroUsuario extends javax.swing.JPanel {
         
         jLabel4.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
         jLabel5.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        jLabel6.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        btnSiguiente.setText("<html> <font color='white'> Siguiente </font> </html>");
-        caracBtn(btnSiguiente);  
+        jLabel6.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18)); 
     }
-    
-    private void caracBtn(JButton btn)
-    {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 1, 22)));
-        btn.setHorizontalTextPosition(JButton.CENTER);
-        btn.setVerticalTextPosition(JButton.CENTER);
-        btn.setVerticalAlignment(JButton.CENTER);
-        btn.setHorizontalAlignment(JButton.CENTER); 
-    }
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
