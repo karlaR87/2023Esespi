@@ -9,10 +9,10 @@ public class conexionSql {
     //Metodo de conexion
        public static Connection getConexion() {
         // Datos de conexión
-        String endpoint = "expo2023.coadsqodqdsq.us-east-2.rds.amazonaws.com";
+        String endpoint = "expo2023.cwiwwdujwmza.us-east-2.rds.amazonaws.com";
         String databaseName = "ESESPI_Expo1";
-        String username = "expo";
-        String password = "fbXJ7f0W";
+        String username = "admin";
+        String password = "#Dbnlemus2006xd";
 
         // Cadena de conexión
         String connectionUrl = "jdbc:sqlserver://" + endpoint + ":1433;"

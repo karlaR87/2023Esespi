@@ -30,20 +30,6 @@ public class ReestablecerContra extends javax.swing.JPanel {
        
        jlbl1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
        jlbl2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-       
-       JButton button2 = btnAceptar;    
-        
-        button2.setText("<html><font color='white'> Aceptar </font></html>");
-        caracBtn(button2);
-    }
-    
-     private void caracBtn(JButton btn)
-    {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 0, 24)));
-        btn.setHorizontalTextPosition(JButton.CENTER);
-        btn.setVerticalTextPosition(JButton.CENTER);
-        btn.setVerticalAlignment(JButton.CENTER);
-        btn.setHorizontalAlignment(JButton.CENTER); 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

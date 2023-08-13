@@ -60,19 +60,8 @@ public class PorPreguntasS extends javax.swing.JPanel {
        lblPregunta1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
        lblPregunta2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
        lblPregunta3.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 18));
-        
-        btnAceptar.setText("<html><font color='white'> Aceptar </font></html>");
-        caracBtn(btnAceptar);
     }
-    
-    private void caracBtn(JButton btn)
-    {
-        btn.setFont((tipoFuentes.fuente(tipoFuentes.DMSans, 0, 24)));
-        btn.setHorizontalTextPosition(JButton.CENTER);
-        btn.setVerticalTextPosition(JButton.CENTER);
-        btn.setVerticalAlignment(JButton.CENTER);
-        btn.setHorizontalAlignment(JButton.CENTER); 
-    }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
