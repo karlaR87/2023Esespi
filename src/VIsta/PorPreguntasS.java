@@ -32,7 +32,7 @@ public class PorPreguntasS extends javax.swing.JPanel {
     private void initPreguntas()
     {
         try {
-            System.out.println(mdlPreguntasS.getIdUsuario() + "AAA");
+            System.out.println(mdlPreguntasS.getIdUsuario());
             ResultSet rs = mdlPreguntasS.readPreguntas();                
             List<String> listaPreguntas = new ArrayList<>();
 

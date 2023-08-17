@@ -30,6 +30,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -42,6 +43,9 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         btnEdiEquipo = new javax.swing.JButton();
         btnAddEquipo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        jToggleButton1.setText("jToggleButton1");
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(980, 710));
@@ -117,6 +121,9 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jLabel2.setText("TABLAS");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, -1, -1));
 
+        jButton1.setText("jButton1");
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, 130, 80));
+
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 710));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -177,6 +184,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     private javax.swing.JButton btnAddEquipo;
     private javax.swing.JButton btnDeleteEquipo;
     private javax.swing.JButton btnEdiEquipo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -186,5 +194,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     public javax.swing.JPanel jPanelAddPolice;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,9 +2,11 @@ package VIsta.Programa;
 
 import Controlador.cntrlPatrullajes;
 import Modelo.ModeloPatrullajes;
+import Modelo.mdlPolicias;
 import VIsta.Login;
 import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
+import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import VIsta.Programa.Policias.Policias_Inicio;
@@ -44,20 +46,21 @@ public class JframePrincipal extends javax.swing.JFrame {
     Policias_Inicio policiasInicio = new Policias_Inicio();
     Inventario_Inicio inventarioInicio = new Inventario_Inicio();
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
-    
+    Patrullajes_AddPersonal PatrullajesAddP;
     //Patrullajes Panel
     Patrullajes_Agregar AddPatrullajes;
     private void PanelsShowInit()
     {
        patrullajesInicio = new Patrullajes_Inicio();
        AddPatrullajes = new Patrullajes_Agregar();
-        
+       
+       PatrullajesAddP = new Patrullajes_AddPersonal();
+       
         //Inicializacion de modelos y controladores
        ModeloPatrullajes mdlPatrullajes = new ModeloPatrullajes();
-      cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes);
+      cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP);
        
        
-      
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
         
@@ -921,7 +924,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel iconUsuario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelContenedorSuper1;

@@ -5,31 +5,56 @@
 package Controlador;
 import VIsta.Programa.Inventario.Agregar_EquipoEspecial;
 import Modelo.ModeloEquipoEspecial;
+import VIsta.Programa.Inventario.Inventario_Inicio_Transportes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.*;
 
 /**
  *
  * @author karla
  */
-public class cntrlEquiposEspeciales {
+public class cntrlEquiposEspeciales implements ActionListener{
+
     
     private ModeloEquipoEspecial MdlEquipos;
     private Agregar_EquipoEspecial Vista; 
     
     public cntrlEquiposEspeciales(ModeloEquipoEspecial modeloEspecial, Agregar_EquipoEspecial VistaEquipo){
+        
         this.MdlEquipos=modeloEspecial;
         this.Vista=VistaEquipo;
-        //this.Vista.btnAdd.addActionListener(this);
+        this.Vista.btnAdd.addActionListener(this);
+        System.out.println("el inicio del controlador");
         
         
     }
     
-    public void actionPerformed(ActionEvent e){
+    
+    public void actionPerformed(ActionEvent e){ 
+        ///ANTERIOR
         if(e.getSource() == Vista.btnAdd){
-                //MdlEquipos.setIdCategoriaEquipamiento(Vista.cmbCat.getItemAt()));
+                String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
+                System.out.println("luego de la variable del vomobox");
                 
+                int v;
+            try {
+                v = MdlEquipos.obtenerIdClasificacion(variable2);
+                System.out.println(v);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+             
+            MdlEquipos.setClasificacion(Vista.cmbClasificacion.getSelectedItem().toString());         
+            
+            MdlEquipos.agregar(MdlEquipos);
+            MdlEquipos.mostrar(Vista);
+          
+         }
         }
     }
  

@@ -11,7 +11,16 @@ public class mdlPolicias {
     private String NumeroPlaca;
     private int IdRangoTipoUsuario;
     private int IdGrupoPatrullaje;
+    private byte[] Foto;
 
+    public byte[] getFoto() {
+        return Foto;
+    }
+
+    public void setFoto(byte[] Foto) {
+        this.Foto = Foto;
+    }
+    
     public int getIdGrupoPatrullaje() {
         return IdGrupoPatrullaje;
     }
@@ -60,24 +69,47 @@ public class mdlPolicias {
         this.IdTipoPersonas_Personas = idPersona;
     }
     
+    
+     public ResultSet readPoliceInfoWithJoins() {
+        try {
+           String query = "SELECT p.IdPolicia, p.IdUsuario, r.Rango, " +
+                       "SUBSTRING(per.Nombre, 1, CHARINDEX(' ', per.Nombre + ' ') - 1) AS Nombre, " +
+                       "SUBSTRING(per.Apellido, 1, CHARINDEX(' ', per.Apellido + ' ') - 1) AS Apellido, " +
+                       "p.IdGrupoPatrullaje " +
+                       "FROM tbPolicias p " +
+                       "INNER JOIN tbRangosTipoUsuarios r ON p.IdRangoTipoUsuario = r.IdRangoTipoUsuario " +
+                       "INNER JOIN tbTiposPersonas_Personas tp ON p.IdTipoPersonas_Personas = tp.IdPersona " +
+                       "INNER JOIN tbPersonas per ON per.IdPersona = tp.IdPersona " +
+                       "INNER JOIN tbUsuarios us ON us.IdUsuario = p.IdUsuario " +
+                       "WHERE p.IdGrupoPatrullaje IS NULL AND us.IdNivelUsuario = 2 " +
+                       "ORDER BY Nombre;";
+             
+            PreparedStatement readUserInfo = conexionSql.getConexion().prepareStatement(query);
+            ResultSet rs = readUserInfo.executeQuery();
+            return rs;
+            
+        } catch (SQLException e) {
+            System.out.println("ERROR en el query readPoliceInfoWithJoins: " + e.toString());
+            return null;
+        }
+    }
+    
     public boolean insertPolicia()
     {
            try{
-            String query = "INSERT INTO tbPolicias(ONI, NumeroPlaca, IdUsuario, IdRangoTipoUsuario, IdTipoPersonas_Personas, IdGrupoPatrullaje) VALUES (?,?,?,?,?,?)"; 
+            String query = "INSERT INTO tbPolicias(ONI, NumeroPlaca, IdUsuario, IdRangoTipoUsuario, IdTipoPersonas_Personas) VALUES (?,?,?,?,?)"; 
             PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
             insertPolice.setString(1, ONI);
             insertPolice.setString(2, NumeroPlaca);
             insertPolice.setInt(3, idUsuario);
             insertPolice.setInt(4, IdRangoTipoUsuario);
             insertPolice.setInt(5, IdTipoPersonas_Personas);
-            insertPolice.setInt(6, IdGrupoPatrullaje);
-            
             
             insertPolice.executeUpdate();
             return true;
           
         }catch(Exception e){
-            System.out.println("ERROR en el query InsertUsuario: " + e.toString());
+            System.out.println("ERROR en el query InsertPolicia: " + e.toString());
             return false;
         }
     }

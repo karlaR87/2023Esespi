@@ -22,8 +22,13 @@ public class ModeloEquipoEspecial {
     
     private int IdCategoriaEquipamiento; 
     private String Categoria; 
-    private String Nombre; 
+
+    private int idTipoClasificacion; 
+    private String clasificacion; 
+    
     private int Cantidad;
+    private String Detalles; 
+    
 
     public int getIdCategoriaEquipamiento() {
         return IdCategoriaEquipamiento;
@@ -41,13 +46,7 @@ public class ModeloEquipoEspecial {
         this.Categoria = Categoria;
     }
 
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
+ 
 
     public int getCantidad() {
         return Cantidad;
@@ -56,6 +55,32 @@ public class ModeloEquipoEspecial {
     public void setCantidad(int Cantidad) {
         this.Cantidad = Cantidad;
     }
+
+    public int getIdTipoClasificacion() {
+        return idTipoClasificacion;
+    }
+
+    public void setIdTipoClasificacion(int idTipoClasificacion) {
+        this.idTipoClasificacion = idTipoClasificacion;
+    }
+
+    public String getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+
+    public String getDetalles() {
+        return Detalles;
+    }
+
+    public void setDetalles(String Detalles) {
+        this.Detalles = Detalles;
+    }
+    
+    
     
     
     
@@ -149,65 +174,137 @@ public class ModeloEquipoEspecial {
         return gen;
     }
     
-   
-    //Agregar 
     
-    public boolean agregar(ModeloEquipoEspecial equipo){
+        //LLENAR 
+    public void llenarComboClasificacion(JComboBox<String> comboClasificacion, int idCategoria) throws SQLException {
+    Connection conectar = null;
+    PreparedStatement pst = null;
+    ResultSet result = null;
 
-        try {
+    String SSQL = "SELECT TipoEquipamiento FROM tbTiposEquipamientoEstacion WHERE IdCategoriaEquipamiento = ?";
+    comboClasificacion.removeAllItems();
 
-            PreparedStatement add = conexionSql.getConexion().prepareStatement("insert into tbCategoriasEquipamiento(IdCategoriaEquipamiento, Nombre, Cantidad) values(?,?,?)");
+    try {
+        conectar = conexionSql.getConexion();
+        pst = conectar.prepareStatement(SSQL);
+        pst.setInt(1, idCategoria);
+        result = pst.executeQuery();
 
-            add.setInt(1, equipo.getIdCategoriaEquipamiento());
-
-            add.setString(2, equipo.getNombre());
-            
-            add.setInt(3, equipo.getCantidad());
-            
-
-            add.executeUpdate();
-            System.out.println("funciona");
-            
-            return true;
-
-        } catch (SQLException e) {
-
-            System.out.println(e.toString()); 
-            return false;
-
+        while (result.next()) {
+            String tipoEquipamiento = result.getString("TipoEquipamiento");
+            comboClasificacion.addItem(tipoEquipamiento);
         }
 
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    } finally {
+        // Cerrar recursos
+        if (result != null) {
+            result.close();
+        }
+        if (pst != null) {
+            pst.close();
+        }
+        if (conectar != null) {
+            conectar.close();
+        }
     }
-    
-    
-     //Mostrar
-    
-    public void mostrar(Agregar_EquipoEspecial especial){
+ 
+ }
+  public int obtenerIdClasificacion(String clasificacion) throws SQLException {
+    Connection conectar = null;
+    PreparedStatement pst = null;
+    ResultSet result = null;
+    int idClasificacion = -1;
 
+    String SSQL = "SELECT IdTiposEquipamientoEstacion FROM tbTiposEquipamientoEstacion WHERE TipoEquipamiento = ?";
+
+    try {
+        conectar = conexionSql.getConexion();
+        pst = conectar.prepareStatement(SSQL);
+        pst.setString(1, clasificacion);
+        result = pst.executeQuery();
+
+        if (result.next()) {
+            idClasificacion = result.getInt("IdTiposEquipamientoEstacion");
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    } finally {
+        // Cerrar recursos
+        if (result != null) {
+            result.close();
+        }
+        if (pst != null) {
+            pst.close();
+        }
+        if (conectar != null) {
+            conectar.close();
+        }
+    }
+
+    return idClasificacion;
+}
+    
+    
+    
+    
+   
+    //Agregar 
+  public void agregar(ModeloEquipoEspecial equipo) {
+        try {
+            String query = "INSERT INTO tdDetallesEquipo (IdTipoEquipamientoEstacion, Detalles, Cantidad) VALUES (?, ?, ?);";
+            System.out.println("cadena");
+            PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query);
+                        System.out.println("pasa 2");
+            
+                        
+            addDatos.setInt(1, equipo.getIdTipoClasificacion());
+                        System.out.println("pasa 4 ");
+            addDatos.setString(2, equipo.getDetalles()); 
+                        System.out.println("pasa 5 ");
+            addDatos.setInt(3, equipo.getCantidad()); 
+            System.out.println("pasa despues de pasar los datos ");
+
+            
+
+            addDatos.executeUpdate();
+            System.out.println("agrega datos");
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+  
+  
+  
+  
+  //MOSTRAR
+    
+    public void mostrar(Agregar_EquipoEspecial inventa){
+        
         DefaultTableModel modelo = new DefaultTableModel();
+        System.out.println("a");
 
-        modelo.setColumnIdentifiers(new Object []{"IdTiposEquipamientoEstacion","IdCategoriaEquipamiento", "Nombre", "Cantidad"});
-
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTipoEquipamientoEstacion", "Detalles", "Cantidad"});
+         System.out.println("b");
 
 
         try{
-
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT * FROM tbCategoriasEquipamiento";
-
+            String query = "SELECT * FROM tdDetallesEquipo";
             ResultSet rs = statement.executeQuery(query);
-
             
             while(rs.next()){
-
-                modelo.addRow(new Object[] {rs.getString("IdTiposEquipamientoEstacion"),rs.getString("IdCategoriaEquipamiento"),rs.getInt("Cantidad"), rs.getString("Nombre") });
+                System.out.println("ti");
+                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("IdTipoEquipamientoEstacion"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                System.out.println("agregando los datos se supnme");
 
             }
-
-            especial.tbEquiposEspeciales.setModel(modelo);
-            
-
+            inventa.tbEquiposEspeciales.setModel(modelo);
+                System.out.println("ya se ven");
         }catch(SQLException ex){
 
             System.out.println(ex.toString());
@@ -215,6 +312,10 @@ public class ModeloEquipoEspecial {
         }
 
     }
+    
+    
+    
+    
     
     //Eliminar 
     public void eliminar(Agregar_EquipoEspecial especial){
@@ -252,9 +353,9 @@ public class ModeloEquipoEspecial {
         
        String nuevoValorIngresadoTipo =especial.cmbCat.toString();
    
-       String nuevoValorIngresadoNombre = especial.jTextField1.getText();
+       String nuevoValorIngresadoNombre = especial.txtDetalles.getText();
 
-       String nuevoValorIngresadoCantidad = especial.jSpinner1.toString();
+       String nuevoValorIngresadoCantidad = especial.spCantidad.toString();
 
 
         try {

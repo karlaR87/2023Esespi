@@ -3,10 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VIsta.Programa.Inventario;
+
 import Controlador.cntrlEquiposEspeciales;
+import Modelo.ModeloDatosTransporte;
 import java.sql.*;
+import Modelo.ModeloEquipoEspecial;
 
 import Modelo.ModeloEquipoEspecial;
+import Modelo.ModeloTransporte;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +30,11 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
                try {
             equipo.llenarCombo(cmbCat);
             
+//        
+//        cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(modelo, vista);
+//        
+//        vista.btnAdd.addActionListener(controlador);
+        
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles");
         }
@@ -45,9 +54,11 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEquiposEspeciales = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        txtDetalles = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        spCantidad = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
+        cmbClasificacion = new javax.swing.JComboBox<>();
         cmbCat = new javax.swing.JComboBox<>();
         btnModificar = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
@@ -68,8 +79,8 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Categoria: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 100, 50));
+        jLabel3.setText("Clasficación: ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 130, 50));
 
         tbEquiposEspeciales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,21 +97,39 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 390, 340));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtDetallesActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 240, 40));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 110, 30));
+        jPanel1.add(txtDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 240, 40));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Categoria: ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 100, 50));
+        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 110, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre del articulo: ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 170, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 170, 50));
+
+        cmbClasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClasificacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 290, 40));
 
         cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 290, 40));
+        cmbCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCatActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 290, 40));
 
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
@@ -188,13 +217,56 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         System.out.println("Lolalallalaa");
     }//GEN-LAST:event_btnAgregarMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDetallesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtDetallesActionPerformed
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-     
+         ModeloEquipoEspecial n = new ModeloEquipoEspecial();
+
+        //
+        String variable = (String) cmbClasificacion.getSelectedItem();
+        
+            int v = -1;
+            System.out.println("imprime este menos 1");
+            
+            try {
+                v = n.obtenerIdClasificacion(variable);
+                System.out.println(v);
+            } catch (SQLException ex) {
+                System.out.println("ee");
+                java.util.logging.Logger.getLogger(cntrlEquiposEspeciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+           
+             n.setDetalles(txtDetalles.getText());
+             n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
+           
+             
+             
+             n.setIdTipoClasificacion(v);
+             
+             n.agregar(n);
+            
     }//GEN-LAST:event_btnAddMouseClicked
+
+    private void cmbClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasificacionActionPerformed
+
+    }//GEN-LAST:event_cmbClasificacionActionPerformed
+
+    private void cmbCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCatActionPerformed
+               String categoriaSeleccionada = (String) cmbCat.getSelectedItem();
+       if (categoriaSeleccionada != null) {
+        try {
+            int idCategoria = equipo.IdRetorno3(categoriaSeleccionada);
+            equipo.llenarComboClasificacion(cmbClasificacion, idCategoria);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+       
+       
+            
+    }//GEN-LAST:event_cmbCatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,13 +298,12 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModeloEquipoEspecial model = new ModeloEquipoEspecial();
-                Agregar_EquipoEspecial equipo = new Agregar_EquipoEspecial();
-                cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(model, equipo); 
+            ModeloEquipoEspecial modelo = new ModeloEquipoEspecial();
+            Agregar_EquipoEspecial vista = new Agregar_EquipoEspecial();
+            cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(modelo, vista);
+                vista.setVisible(true);
+                modelo.mostrar(vista);
                 
-                equipo.setVisible(true);
-                
-                model.mostrar(equipo);
             }
         });
     }
@@ -245,14 +316,16 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JComboBox<String> cmbCat;
+    public javax.swing.JComboBox<String> cmbClasificacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JSpinner jSpinner1;
-    public javax.swing.JTextField jTextField1;
+    public javax.swing.JSpinner spCantidad;
     public javax.swing.JTable tbEquiposEspeciales;
+    public javax.swing.JTextField txtDetalles;
     // End of variables declaration//GEN-END:variables
 }
