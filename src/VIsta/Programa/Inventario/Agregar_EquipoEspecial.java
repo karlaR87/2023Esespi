@@ -12,12 +12,16 @@ import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author karla
  */
 public class Agregar_EquipoEspecial extends javax.swing.JFrame {
+    
+
 
     /**
      * Creates new form Agregar_EquipoEspecial
@@ -28,6 +32,8 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     public Agregar_EquipoEspecial()  {
             initComponents();
                try {
+                        cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(equipo, this); 
+                               equipo.mostrar(this);   
             equipo.llenarCombo(cmbCat);
             
 //        
@@ -93,6 +99,11 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbEquiposEspeciales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbEquiposEspecialesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbEquiposEspeciales);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 390, 340));
@@ -134,6 +145,11 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
         btnModificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 450, -1, -1));
 
         btnAdd.setBackground(new java.awt.Color(68, 68, 68));
@@ -149,6 +165,11 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
         btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 88.png"))); // NOI18N
@@ -228,13 +249,13 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         String variable = (String) cmbClasificacion.getSelectedItem();
         
             int v = -1;
-            System.out.println("imprime este menos 1");
+            
             
             try {
                 v = n.obtenerIdClasificacion(variable);
                 System.out.println(v);
             } catch (SQLException ex) {
-                System.out.println("ee");
+                
                 java.util.logging.Logger.getLogger(cntrlEquiposEspeciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
            
@@ -268,6 +289,27 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
             
     }//GEN-LAST:event_cmbCatActionPerformed
 
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        
+
+        
+        
+    }//GEN-LAST:event_btnEliminarMouseClicked
+//
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+    
+    
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void tbEquiposEspecialesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEquiposEspecialesMouseClicked
+        
+        int seleccionar = tbEquiposEspeciales.rowAtPoint(evt.getPoint());
+        
+        txtDetalles.setText(String.valueOf(tbEquiposEspeciales.getValueAt(seleccionar, 2)));
+        // Mostrar el valor en un JSpinner (spCantidad)
+        
+    }//GEN-LAST:event_tbEquiposEspecialesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -300,9 +342,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
             public void run() {
             ModeloEquipoEspecial modelo = new ModeloEquipoEspecial();
             Agregar_EquipoEspecial vista = new Agregar_EquipoEspecial();
-            cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(modelo, vista);
-                vista.setVisible(true);
-                modelo.mostrar(vista);
+            vista.setVisible(true);
                 
             }
         });

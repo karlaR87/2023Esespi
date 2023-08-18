@@ -28,6 +28,8 @@ public class cntrlEquiposEspeciales implements ActionListener{
         this.MdlEquipos=modeloEspecial;
         this.Vista=VistaEquipo;
         this.Vista.btnAdd.addActionListener(this);
+        this.Vista.btnEliminar.addActionListener(this);
+        this.Vista.btnModificar.addActionListener(this);
         System.out.println("el inicio del controlador");
         
         
@@ -38,7 +40,7 @@ public class cntrlEquiposEspeciales implements ActionListener{
         ///ANTERIOR
         if(e.getSource() == Vista.btnAdd){
                 String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
-                System.out.println("luego de la variable del vomobox");
+               
                 
                 int v;
             try {
@@ -53,8 +55,20 @@ public class cntrlEquiposEspeciales implements ActionListener{
             
             MdlEquipos.agregar(MdlEquipos);
             MdlEquipos.mostrar(Vista);
-          
          }
+         if(e.getSource() == Vista.btnEliminar){
+
+            MdlEquipos.eliminar(Vista);
+            MdlEquipos.mostrar(Vista);
+            
+            }
+         
+         if(e.getSource() == Vista.btnModificar){
+             System.out.println("Viene al controladpr");
+            MdlEquipos.actualizar(Vista);
+            MdlEquipos.mostrar(Vista);
+            
+            }
         }
     }
  

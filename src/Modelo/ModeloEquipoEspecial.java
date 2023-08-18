@@ -255,17 +255,17 @@ public class ModeloEquipoEspecial {
   public void agregar(ModeloEquipoEspecial equipo) {
         try {
             String query = "INSERT INTO tdDetallesEquipo (IdTipoEquipamientoEstacion, Detalles, Cantidad) VALUES (?, ?, ?);";
-            System.out.println("cadena");
+     
             PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query);
-                        System.out.println("pasa 2");
+                        
             
                         
             addDatos.setInt(1, equipo.getIdTipoClasificacion());
-                        System.out.println("pasa 4 ");
+                
             addDatos.setString(2, equipo.getDetalles()); 
-                        System.out.println("pasa 5 ");
+                      
             addDatos.setInt(3, equipo.getCantidad()); 
-            System.out.println("pasa despues de pasar los datos ");
+       
 
             
 
@@ -285,26 +285,26 @@ public class ModeloEquipoEspecial {
     public void mostrar(Agregar_EquipoEspecial inventa){
         
         DefaultTableModel modelo = new DefaultTableModel();
-        System.out.println("a");
+        
 
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTipoEquipamientoEstacion", "Detalles", "Cantidad"});
-         System.out.println("b");
-
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","NombreTipoEquipamiento", "Detalles", "Cantidad"});
+       
 
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT * FROM tdDetallesEquipo";
+            String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
+                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTipoEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
             ResultSet rs = statement.executeQuery(query);
             
             while(rs.next()){
-                System.out.println("ti");
-                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("IdTipoEquipamientoEstacion"),rs.getString("Detalles"), rs.getString("Cantidad")});
-                System.out.println("agregando los datos se supnme");
+              
+                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("NombreTipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                
 
             }
             inventa.tbEquiposEspeciales.setModel(modelo);
-                System.out.println("ya se ven");
+                
         }catch(SQLException ex){
 
             System.out.println(ex.toString());
@@ -322,16 +322,16 @@ public class ModeloEquipoEspecial {
     
         //obtenemos que fila seleccionó el usuario
         int filaSeleccionada = especial.tbEquiposEspeciales.getSelectedRow();
-        System.out.println("si");
+        
         //Obtenemos el id de la fila seleccionada
         String miId = especial.tbEquiposEspeciales.getValueAt(filaSeleccionada, 0).toString();
         //borramos 
         try {
-            PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tbCategoriasEquipamiento where id = '" + miId + "'");
-            System.out.println("pipipipi");
+            PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tdDetallesEquipo where IdDetalleEquipo = '" + miId + "'");
+            
             deleteUser.executeUpdate();
         } catch (Exception e) {
-            System.out.println("pipipipjhdhagdai");
+            
          System.out.println(e.toString());
         }
     }
@@ -341,47 +341,47 @@ public class ModeloEquipoEspecial {
    
 
 //Luego colocamos el método para actualizar
- public void actualizar(Agregar_EquipoEspecial especial){
+ public void actualizar(Agregar_EquipoEspecial especial) throws SQLException{
 
         //obtenemos que fila seleccionó el usuario
 
         int filaSeleccionada = especial.tbEquiposEspeciales.getSelectedRow();
-
+            System.out.println("pasa int ");
         //Obtenemos el id de la fila seleccionada
 
         String miId = especial.tbEquiposEspeciales.getValueAt(filaSeleccionada, 0).toString();
+        System.out.println("El miId");
         
-       String nuevoValorIngresadoTipo =especial.cmbCat.toString();
-   
        String nuevoValorIngresadoNombre = especial.txtDetalles.getText();
+       System.out.println("Nuevo nombre ");
+       
+       int nuevoValorIngresadoCantidad = (int) especial.spCantidad.getValue();
 
-       String nuevoValorIngresadoCantidad = especial.spCantidad.toString();
+        // Obtén el valor seleccionado en el ComboBox (nombre del tipo de equipamiento)
+        String nuevoValorIngresadoTipoNombre = especial.cmbClasificacion.getSelectedItem().toString();
+
+        // Obtén el ID correspondiente al nombre seleccionado
+        int nuevoValorIngresadoTipo = obtenerIdClasificacion(nuevoValorIngresadoTipoNombre);
+        
+        
 
 
         try {
 
-            PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("update tbCategoriasEquipamiento set IdCategoriaEquipamiento = ?, Nombre = ?, Cantidad = ?");
-
-            updateUser.setString(1, nuevoValorIngresadoTipo);
-
-            updateUser.setString(2,(nuevoValorIngresadoNombre)) ;
-            
-             updateUser.setString(3, ( nuevoValorIngresadoCantidad));
-
-            updateUser.setString(6, miId);
-
-            updateUser.executeUpdate();
-
-
+          PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTipoEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
+        updateUser.setString(1, nuevoValorIngresadoNombre);
+        updateUser.setInt(2, nuevoValorIngresadoCantidad);
+        updateUser.setInt(3, nuevoValorIngresadoTipo);
+        updateUser.setString(4, miId);
+    
+        updateUser.executeUpdate();
+            System.out.println("Se actualiza");
 
         } catch (Exception e) {
 
-
+            System.out.println("Error de conversión a entero: " + e.getMessage());
 
             System.out.println(e.toString());
-
-
-
         }
 
     }
