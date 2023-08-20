@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -247,8 +249,79 @@ public class ModeloEquipoEspecial {
     return idClasificacion;
 }
     
-    
-    
+    public int obtenerIdCategoriaDesdeIdClasificacion(int idClasificacion) throws SQLException {
+    Connection conectar = null;
+    PreparedStatement pst = null;
+    ResultSet result = null;
+    int idCategoria = -1;
+
+    String SSQL = "SELECT IdCategoriaEquipamiento FROM tbTiposEquipamientoEstacion WHERE IdTiposEquipamientoEstacion = ?";
+
+    try {
+        conectar = conexionSql.getConexion();
+        pst = conectar.prepareStatement(SSQL);
+        pst.setInt(1, idClasificacion);
+        result = pst.executeQuery();
+
+        if (result.next()) {
+            idCategoria = result.getInt("IdCategoriaEquipamiento");
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    } finally {
+        // Cerrar recursos
+        if (result != null) {
+            result.close();
+        }
+        if (pst != null) {
+            pst.close();
+        }
+        if (conectar != null) {
+            conectar.close();
+        }
+    }
+
+    return idCategoria;
+}
+
+   public String obtenerNombreCategoriaDesdeId(int idCategoria) throws SQLException {
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+        String nombreCategoria = null;
+
+        String SSQL = "SELECT Categoria FROM tbCategoriasEquipamiento WHERE IdCategoriaEquipamiento = ?";
+
+        try {
+            conectar = conexionSql.getConexion(); // Asegúrate de tener una conexión válida
+            pst = conectar.prepareStatement(SSQL);
+            pst.setInt(1, idCategoria);
+            result = pst.executeQuery();
+
+            if (result.next()) {
+                nombreCategoria = result.getString("Categoria");
+            }
+
+        } catch (SQLException e) {
+            // Manejo de errores
+            e.printStackTrace();
+        } finally {
+            // Cerrar recursos
+            if (result != null) {
+                result.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (conectar != null) {
+                conectar.close();
+            }
+        }
+
+        return nombreCategoria;
+    }
+
     
    
     //Agregar 
@@ -258,12 +331,14 @@ public class ModeloEquipoEspecial {
      
             PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query);
                         
-            
                         
             addDatos.setInt(1, equipo.getIdTipoClasificacion());
                 
-            addDatos.setString(2, equipo.getDetalles()); 
-                      
+            String detalles = equipo.getDetalles();
+         
+            addDatos.setString(2, detalles);
+         
+            
             addDatos.setInt(3, equipo.getCantidad()); 
        
 
@@ -286,10 +361,8 @@ public class ModeloEquipoEspecial {
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","NombreTipoEquipamiento", "Detalles", "Cantidad"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTipoEquipamientoEstacion", "Detalles", "Cantidad"});
        
-
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
@@ -301,7 +374,6 @@ public class ModeloEquipoEspecial {
               
                 modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("NombreTipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
                 
-
             }
             inventa.tbEquiposEspeciales.setModel(modelo);
                 
@@ -341,47 +413,54 @@ public class ModeloEquipoEspecial {
    
 
 //Luego colocamos el método para actualizar
- public void actualizar(Agregar_EquipoEspecial especial) throws SQLException{
-
-        //obtenemos que fila seleccionó el usuario
-
-        int filaSeleccionada = especial.tbEquiposEspeciales.getSelectedRow();
-            System.out.println("pasa int ");
-        //Obtenemos el id de la fila seleccionada
-
-        String miId = especial.tbEquiposEspeciales.getValueAt(filaSeleccionada, 0).toString();
-        System.out.println("El miId");
-        
-       String nuevoValorIngresadoNombre = especial.txtDetalles.getText();
-       System.out.println("Nuevo nombre ");
-       
-       int nuevoValorIngresadoCantidad = (int) especial.spCantidad.getValue();
-
-        // Obtén el valor seleccionado en el ComboBox (nombre del tipo de equipamiento)
-        String nuevoValorIngresadoTipoNombre = especial.cmbClasificacion.getSelectedItem().toString();
-
-        // Obtén el ID correspondiente al nombre seleccionado
-        int nuevoValorIngresadoTipo = obtenerIdClasificacion(nuevoValorIngresadoTipoNombre);
-        
-        
-
+ public void actualizar(Agregar_EquipoEspecial especial) {
 
         try {
+            
+            //obtenemos que fila seleccionó el usuario
+            
+            int filaSeleccionada = especial.tbEquiposEspeciales.getSelectedRow();
+            System.out.println("pasa int ");
+            //Obtenemos el id de la fila seleccionada
+            
+            String miId = especial.tbEquiposEspeciales.getValueAt(filaSeleccionada, 0).toString();
+            System.out.println("El miId");
+            
+            String nuevoValorIngresadoNombre = especial.txtDetalles.getText();
+            System.out.println("Nuevo nombre ");
+            
+            int nuevoValorIngresadoCantidad = (int) especial.spCantidad.getValue();
+            
+            // Obtén el valor seleccionado en el ComboBox (nombre del tipo de equipamiento)
+            String nuevoValorIngresadoTipoNombre = especial.cmbClasificacion.getSelectedItem().toString();
+            
+            // Obtén el ID correspondiente al nombre seleccionado
+            int nuevoValorIngresadoTipo = obtenerIdClasificacion(nuevoValorIngresadoTipoNombre);
+            
+            
+            
+            
+            try {
+                
+                PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTipoEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
+                updateUser.setString(1, nuevoValorIngresadoNombre);
+                updateUser.setInt(2, nuevoValorIngresadoCantidad);
+                updateUser.setInt(3, nuevoValorIngresadoTipo);
+                updateUser.setString(4, miId);
+                
+                updateUser.executeUpdate();
+                System.out.println("Se actualiza");
+                
+            } catch (Exception e) {
+                
+                System.out.println("Error de conversión a entero: " + e.getMessage());
+                
+                System.out.println(e.toString());
+            }
+            
+        } catch (SQLException ex) {
 
-          PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTipoEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
-        updateUser.setString(1, nuevoValorIngresadoNombre);
-        updateUser.setInt(2, nuevoValorIngresadoCantidad);
-        updateUser.setInt(3, nuevoValorIngresadoTipo);
-        updateUser.setString(4, miId);
-    
-        updateUser.executeUpdate();
-            System.out.println("Se actualiza");
-
-        } catch (Exception e) {
-
-            System.out.println("Error de conversión a entero: " + e.getMessage());
-
-            System.out.println(e.toString());
+            Logger.getLogger(ModeloEquipoEspecial.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

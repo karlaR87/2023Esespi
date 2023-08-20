@@ -11,6 +11,8 @@ import Modelo.ModeloEquipoEspecial;
 
 import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -303,13 +305,37 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
 
     private void tbEquiposEspecialesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEquiposEspecialesMouseClicked
         
-        int seleccionar = tbEquiposEspeciales.rowAtPoint(evt.getPoint());
-        
-        txtDetalles.setText(String.valueOf(tbEquiposEspeciales.getValueAt(seleccionar, 2)));
-        // Mostrar el valor en un JSpinner (spCantidad)
+        try {
+            int seleccionar = tbEquiposEspeciales.rowAtPoint(evt.getPoint());
+            
+            txtDetalles.setText(String.valueOf(tbEquiposEspeciales.getValueAt(seleccionar, 2)));
+            
+           
+            // Configurar el JComboBox cmbClasificacion
+            String tipoEquipamiento = String.valueOf(tbEquiposEspeciales.getValueAt(seleccionar, 1));
+            cmbClasificacion.setSelectedItem(tipoEquipamiento);
+
+            // Obtener la categoría correspondiente a la clasificación
+            int idClasificacion = equipo.obtenerIdClasificacion(tipoEquipamiento);
+            int idCategoria = equipo.obtenerIdCategoriaDesdeIdClasificacion(idClasificacion);
+            String nombreCategoria = equipo.obtenerNombreCategoriaDesdeId(idCategoria);
+
+            // Configurar ambos ComboBox
+            cmbCat.setSelectedItem(nombreCategoria);
+            cmbClasificacion.setSelectedItem(tipoEquipamiento);
+            
+            // Configurar el JSpinner spCantidad
+            int cantidad = Integer.parseInt(String.valueOf(tbEquiposEspeciales.getValueAt(seleccionar, 3)));
+            SpinnerNumberModel model = (SpinnerNumberModel) spCantidad.getModel();
+            model.setValue(cantidad);
+        } catch (SQLException ex) {
+            Logger.getLogger(Agregar_EquipoEspecial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_tbEquiposEspecialesMouseClicked
 
+    
+    
     /**
      * @param args the command line arguments
      */
