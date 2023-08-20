@@ -23,6 +23,7 @@ public class ElecION_Equipo extends javax.swing.JFrame {
      */
     Agregar_EquipoEspecial ventanaNueva=new Agregar_EquipoEspecial();
     Inventario_Inicio_Transportes vetana2 = new Inventario_Inicio_Transportes();
+   
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -90,7 +91,14 @@ public class ElecION_Equipo extends javax.swing.JFrame {
         
         
         String seleccion2 = (String) cmbTipo.getSelectedItem();
-        if (seleccion.equals("Transporte")) {
+        if (seleccion2.equals("Transporte")) {
+            
+            vetana2.setVisible(true);
+            this.dispose();
+        }
+        
+         String seleccion3 = (String) cmbTipo.getSelectedItem();
+        if (seleccion3.equals("Armamento")) {
             
             vetana2.setVisible(true);
             this.dispose();
