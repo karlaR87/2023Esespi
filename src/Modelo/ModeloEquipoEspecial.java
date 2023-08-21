@@ -327,7 +327,7 @@ public class ModeloEquipoEspecial {
     //Agregar 
   public void agregar(ModeloEquipoEspecial equipo) {
         try {
-            String query = "INSERT INTO tdDetallesEquipo (IdTipoEquipamientoEstacion, Detalles, Cantidad) VALUES (?, ?, ?);";
+            String query = "INSERT INTO tdDetallesEquipo (IdTiposEquipamientoEstacion, Detalles, Cantidad) VALUES (?, ?, ?);";
      
             PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query);
                         
@@ -361,13 +361,13 @@ public class ModeloEquipoEspecial {
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTipoEquipamientoEstacion", "Detalles", "Cantidad"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTiposEquipamientoEstacion", "Detalles", "Cantidad"});
        
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
             String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
-                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTipoEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
+                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
             ResultSet rs = statement.executeQuery(query);
             
             while(rs.next()){
@@ -442,7 +442,7 @@ public class ModeloEquipoEspecial {
             
             try {
                 
-                PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTipoEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
+                PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTiposEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
                 updateUser.setString(1, nuevoValorIngresadoNombre);
                 updateUser.setInt(2, nuevoValorIngresadoCantidad);
                 updateUser.setInt(3, nuevoValorIngresadoTipo);

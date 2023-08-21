@@ -40,17 +40,18 @@ public class cntrlEquiposEspeciales implements ActionListener{
         ///ANTERIOR
         if(e.getSource() == Vista.btnAdd){
                 String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
-               
-                
                 int v;
             try {
                 v = MdlEquipos.obtenerIdClasificacion(variable2);
+                
+                
                 System.out.println(v);
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-             
+             MdlEquipos.setDetalles(Vista.txtDetalles.getText());
+             MdlEquipos.setCantidad((int) Vista.spCantidad.getValue());
             MdlEquipos.setClasificacion(Vista.cmbClasificacion.getSelectedItem().toString());         
             
             MdlEquipos.agregar(MdlEquipos);

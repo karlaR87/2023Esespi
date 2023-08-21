@@ -23,6 +23,7 @@ public class ElecION_Equipo extends javax.swing.JFrame {
      */
     Agregar_EquipoEspecial ventanaNueva=new Agregar_EquipoEspecial();
     Inventario_Inicio_Transportes vetana2 = new Inventario_Inicio_Transportes();
+    Agregar_calibre calibre = new Agregar_calibre();
    
     
     @SuppressWarnings("unchecked")
@@ -40,7 +41,7 @@ public class ElecION_Equipo extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armamento", "Transporte", "Equipo Especializado", " " }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armamento", "Calibre", "Transporte", "Equipo Especializado" }));
         jPanel1.add(cmbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 132, 290, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 77.png"))); // NOI18N
@@ -101,6 +102,12 @@ public class ElecION_Equipo extends javax.swing.JFrame {
         if (seleccion3.equals("Armamento")) {
             
             vetana2.setVisible(true);
+            this.dispose();
+        }
+        
+        if (seleccion3.equals("Calibre")) {
+            
+            calibre.setVisible(true);
             this.dispose();
         }
         
