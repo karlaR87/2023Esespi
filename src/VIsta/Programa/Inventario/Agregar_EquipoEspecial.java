@@ -11,6 +11,7 @@ import Modelo.ModeloEquipoEspecial;
 
 import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
+import Modelo.conexionSql;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -71,10 +72,12 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        txtBuscarEP = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JPanel();
         btnACt = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JPanel();
+        txtDetalles1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -108,7 +111,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbEquiposEspeciales);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 390, 340));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, 390, 340));
 
         txtDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +177,19 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, -1, -1));
 
+        txtBuscarEP.setText("jTextField1");
+        txtBuscarEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarEPActionPerformed(evt);
+            }
+        });
+        txtBuscarEP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarEPKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtBuscarEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 360, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 88.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 540));
 
@@ -221,6 +237,13 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         );
 
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 420, 220, 80));
+
+        txtDetalles1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDetalles1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtDetalles1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -334,6 +357,41 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tbEquiposEspecialesMouseClicked
 
+    private void txtDetalles1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDetalles1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDetalles1ActionPerformed
+
+    private void txtBuscarEPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarEPKeyReleased
+ DefaultTableModel tabla = new DefaultTableModel();
+    tabla.setColumnIdentifiers(new Object[]{"IdDetalleEquipo", "NombreTipoEquipamiento", "Detalles", "Cantidad"});
+
+    try {
+        String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
+                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTipoEquipamientoEstacion = t.IdTiposEquipamientoEstacion " +
+                       "WHERE d.idDetallesEquipo LIKE ? OR t.TipoEquipamiento LIKE ? OR d.Cantidad LIKE ?";
+        
+        PreparedStatement preparedStatement = conexionSql.getConexion().prepareStatement(query);
+        preparedStatement.setString(1, "%" + txtBuscarEP + "%");
+        preparedStatement.setString(2, "%" +  txtBuscarEP + "%");
+        preparedStatement.setString(3, "%" + txtBuscarEP + "%");
+        preparedStatement.setString(4, "%" + txtBuscarEP+ "%");
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        while (rs.next()) {
+            tabla.addRow(new Object[]{rs.getString("IdDetalleEquipo"), rs.getString("NombreTipoEquipamiento"), rs.getString("Detalles"), rs.getString("Cantidad")});
+        }
+
+        tbEquiposEspeciales.setModel(tabla);
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarEPKeyReleased
+
+    private void txtBuscarEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarEPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarEPActionPerformed
+
     
     
     public static void main(String args[]) {
@@ -389,6 +447,8 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JSpinner spCantidad;
     public javax.swing.JTable tbEquiposEspeciales;
+    private javax.swing.JTextField txtBuscarEP;
     public javax.swing.JTextField txtDetalles;
+    public javax.swing.JTextField txtDetalles1;
     // End of variables declaration//GEN-END:variables
 }

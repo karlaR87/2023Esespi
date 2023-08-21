@@ -386,8 +386,33 @@ public class ModeloEquipoEspecial {
     }
     
     
-    
-    
+    //Metodo para buscar
+   public static void buscarEquipo(Agregar_EquipoEspecial inventa, String searchTerm) {
+    DefaultTableModel tabla = new DefaultTableModel();
+    tabla.setColumnIdentifiers(new Object[]{"IdDetalleEquipo", "NombreTipoEquipamiento", "Detalles", "Cantidad"});
+
+    try {
+        String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
+                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTipoEquipamientoEstacion = t.IdTiposEquipamientoEstacion " +
+                       "WHERE d.idDetallesEquipo LIKE ? OR t.TipoEquipamiento LIKE ? OR d.Cantidad LIKE ?";
+        
+        PreparedStatement preparedStatement = conexionSql.getConexion().prepareStatement(query);
+        preparedStatement.setString(1, "%" + searchTerm + "%");
+        preparedStatement.setString(2, "%" + searchTerm + "%");
+        preparedStatement.setString(3, "%" + searchTerm + "%");
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        while (rs.next()) {
+            tabla.addRow(new Object[]{rs.getString("IdDetalleEquipo"), rs.getString("NombreTipoEquipamiento"), rs.getString("Detalles"), rs.getString("Cantidad")});
+        }
+
+        inventa.tbEquiposEspeciales.setModel(tabla);
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+    }
+}
+     
     
     //Eliminar 
     public void eliminar(Agregar_EquipoEspecial especial){
