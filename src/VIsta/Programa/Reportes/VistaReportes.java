@@ -34,7 +34,6 @@ public class VistaReportes extends javax.swing.JFrame {
         txtBusquedaRep = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -58,10 +57,10 @@ public class VistaReportes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 165, 416, 293));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 416, 293));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/searchBack.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 106, 311, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 311, -1));
 
         txtBusquedaRep.setBorder(null);
         txtBusquedaRep.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -69,14 +68,11 @@ public class VistaReportes extends javax.swing.JFrame {
                 txtBusquedaRepKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBusquedaRep, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 106, 263, 30));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 165, 218, 33));
+        jPanel1.add(txtBusquedaRep, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 263, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 218, 150));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 255, 218, 29));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 342, 218, 29));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 218, 29));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -111,18 +107,18 @@ public class VistaReportes extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 403, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, -1, -1));
 
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
         btnModificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 403, -1, -1));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +175,6 @@ public class VistaReportes extends javax.swing.JFrame {
     public javax.swing.JButton btnModificar;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

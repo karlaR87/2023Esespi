@@ -82,7 +82,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
