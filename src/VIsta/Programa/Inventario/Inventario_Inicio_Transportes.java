@@ -82,36 +82,30 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
         btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
-        txtBusqueda.setBackground(new java.awt.Color(255, 255, 255));
-        txtBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         txtBusqueda.setBorder(null);
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 270, 30));
+        jPanel1.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 280, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/searchBack.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        txtNuevoDetalle.setBackground(new java.awt.Color(255, 255, 255));
-        txtNuevoDetalle.setForeground(new java.awt.Color(0, 0, 0));
         txtNuevoDetalle.setBorder(null);
         jPanel1.add(txtNuevoDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 300, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/txtWhite.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, -1, -1));
 
-        txtNuevaPLaca.setBackground(new java.awt.Color(255, 255, 255));
-        txtNuevaPLaca.setForeground(new java.awt.Color(0, 0, 0));
         txtNuevaPLaca.setBorder(null);
         jPanel1.add(txtNuevaPLaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, 300, 30));
 

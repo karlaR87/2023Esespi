@@ -17,17 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author karla
- */
+
 public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     
-
-
-    /**
-     * Creates new form Agregar_EquipoEspecial
-     */
     ModeloEquipoEspecial equipo = new ModeloEquipoEspecial();
     
     
@@ -35,7 +27,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
             initComponents();
                try {
                         cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(equipo, this); 
-                               equipo.mostrar(this);   
+                   equipo.mostrar(this);   
             equipo.llenarCombo(cmbCat);
             
 //        
@@ -44,7 +36,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
 //        vista.btnAdd.addActionListener(controlador);
         
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles");
+            JOptionPane.showMessageDialog(this, "Error ");
         }
     }
 
@@ -245,30 +237,25 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDetallesActionPerformed
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-         ModeloEquipoEspecial n = new ModeloEquipoEspecial();
+    ModeloEquipoEspecial n = new ModeloEquipoEspecial();
 
-        //
-        String variable = (String) cmbClasificacion.getSelectedItem();
-        
-            int v = -1;
-            
-            
-            try {
-                v = n.obtenerIdClasificacion(variable);
-                System.out.println(v);
-            } catch (SQLException ex) {
-                
-                java.util.logging.Logger.getLogger(cntrlEquiposEspeciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
-           
-             n.setDetalles(txtDetalles.getText());
-             n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
-           
-             
-             
-             n.setIdTipoClasificacion(v);
-             
-             n.agregar(n);
+    String variable = (String) cmbClasificacion.getSelectedItem();
+    int v = -1;
+
+    try {
+        v = n.obtenerIdClasificacion(variable);
+      
+    } catch (SQLException ex) {
+        java.util.logging.Logger.getLogger(cntrlEquiposEspeciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+
+    n.setDetalles(txtDetalles.getText());
+    n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
+
+    n.setIdTipoClasificacion(v);
+
+    n.agregar(n);
+    n.mostrar(this);
             
     }//GEN-LAST:event_btnAddMouseClicked
 

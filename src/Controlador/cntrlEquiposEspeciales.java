@@ -38,39 +38,31 @@ public class cntrlEquiposEspeciales implements ActionListener{
     
     public void actionPerformed(ActionEvent e){ 
         ///ANTERIOR
-        if(e.getSource() == Vista.btnAdd){
-                String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
-                int v;
+         if (e.getSource() == Vista.btnAdd) {
+            String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
+            int v;
             try {
                 v = MdlEquipos.obtenerIdClasificacion(variable2);
-                
-                
-                System.out.println(v);
+                System.out.println("ID obtenido para " + variable2 + ": " + v);
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-             MdlEquipos.setDetalles(Vista.txtDetalles.getText());
-             MdlEquipos.setCantidad((int) Vista.spCantidad.getValue());
-            MdlEquipos.setClasificacion(Vista.cmbClasificacion.getSelectedItem().toString());         
-            
-            MdlEquipos.agregar(MdlEquipos);
-            MdlEquipos.mostrar(Vista);
-         }
-         if(e.getSource() == Vista.btnEliminar){
 
+            MdlEquipos.setDetalles(Vista.txtDetalles.getText());
+            MdlEquipos.setCantidad((int) Vista.spCantidad.getValue());
+            MdlEquipos.setClasificacion(Vista.cmbClasificacion.getSelectedItem().toString());
+
+            
+            MdlEquipos.mostrar(Vista);
+        } else if (e.getSource() == Vista.btnEliminar) {
             MdlEquipos.eliminar(Vista);
             MdlEquipos.mostrar(Vista);
-            
-            }
-         
-         if(e.getSource() == Vista.btnModificar){
-             System.out.println("Viene al controladpr");
+        } else if (e.getSource() == Vista.btnModificar) {
+            System.out.println("Viene al controlador");
             MdlEquipos.actualizar(Vista);
             MdlEquipos.mostrar(Vista);
-            
-            }
         }
+    }
     }
  
     
