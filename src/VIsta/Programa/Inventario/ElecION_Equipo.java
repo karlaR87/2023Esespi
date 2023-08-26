@@ -24,6 +24,8 @@ public class ElecION_Equipo extends javax.swing.JFrame {
     Agregar_EquipoEspecial ventanaNueva=new Agregar_EquipoEspecial();
     Inventario_Inicio_Transportes vetana2 = new Inventario_Inicio_Transportes();
     Agregar_calibre calibre = new Agregar_calibre();
+    Agregar_Armamento Armamento = new Agregar_Armamento();
+
    
     
     @SuppressWarnings("unchecked")
@@ -101,7 +103,7 @@ public class ElecION_Equipo extends javax.swing.JFrame {
          String seleccion3 = (String) cmbTipo.getSelectedItem();
         if (seleccion3.equals("Armamento")) {
             
-            vetana2.setVisible(true);
+            Armamento.setVisible(true);
             this.dispose();
         }
         
