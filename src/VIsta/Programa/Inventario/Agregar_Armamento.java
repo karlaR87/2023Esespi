@@ -25,8 +25,11 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         
         try {
              ControladorArmamento controladorArmamento= new ControladorArmamento(armas, this);
+             armas.mostrar(this);
     
             armas.llenarComboTipoArmamento(cmbTipoArmamento);
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(Agregar_Armamento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,32 +156,32 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-        
-        ModeloArmamento n = new ModeloArmamento();
-
-        //
-        String variable = (String) cmbTipoArmamento.getSelectedItem();
-        
-            int v = -1;
-            
-            
-            try {
-                v = n.IdRetornoTipoArmamento(variable);
-                System.out.println(v);
-            } catch (SQLException ex) {
-                
-                java.util.logging.Logger.getLogger(ControladorArmamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
-           
-             n.setArmas(txtDetalles.getText());
-             n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
-           
-             
-             
-             n.setIdTipoArmamento(v);
-             
-             n.agregar(n);
-            
+//        
+//        ModeloArmamento n = new ModeloArmamento();
+//
+//        //
+//        String variable = (String) cmbTipoArmamento.getSelectedItem();
+//        
+//            int v = -1;
+//            
+//            
+//            try {
+//                v = n.IdRetornoTipoArmamento(variable);
+//                System.out.println(v);
+//            } catch (SQLException ex) {
+//                
+//                java.util.logging.Logger.getLogger(ControladorArmamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            }
+//           
+//             n.setArmas(txtDetalles.getText());
+//             n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
+//           
+//             
+//             
+//             n.setIdTipoArmamento(v);
+//             
+//             n.agregar(n);
+//            
         
     }//GEN-LAST:event_btnAddMouseClicked
 

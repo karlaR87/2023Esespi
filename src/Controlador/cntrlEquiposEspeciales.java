@@ -39,21 +39,29 @@ public class cntrlEquiposEspeciales implements ActionListener{
     public void actionPerformed(ActionEvent e){ 
         ///ANTERIOR
          if (e.getSource() == Vista.btnAdd) {
+             
             String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
-            int v;
+            
+            int v=-1;
+            
             try {
                 v = MdlEquipos.obtenerIdClasificacion(variable2);
+                
                 System.out.println("ID obtenido para " + variable2 + ": " + v);
+                
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
 
             MdlEquipos.setDetalles(Vista.txtDetalles.getText());
-            MdlEquipos.setCantidad((int) Vista.spCantidad.getValue());
+            MdlEquipos.setCantidad(Integer.parseInt(Vista.spCantidad.getValue().toString()));
             MdlEquipos.setClasificacion(Vista.cmbClasificacion.getSelectedItem().toString());
+            MdlEquipos.setIdTipoClasificacion(v);
 
-            
+            MdlEquipos.agregar(MdlEquipos);
             MdlEquipos.mostrar(Vista);
+            
         } else if (e.getSource() == Vista.btnEliminar) {
             MdlEquipos.eliminar(Vista);
             MdlEquipos.mostrar(Vista);

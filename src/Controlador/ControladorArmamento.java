@@ -38,10 +38,9 @@ public class ControladorArmamento implements ActionListener{
         ///ANTERIOR
         if(e.getSource() == Vista.btnAdd){
                 String variable2 = (String) Vista.cmbTipoArmamento.getSelectedItem();
-                int v;
+                int v = -1;
             try {
                 v = modeloArmamento.IdRetornoTipoArmamento(variable2);
-                
                 
                 System.out.println(v);
             } catch (SQLException ex) {
@@ -50,11 +49,15 @@ public class ControladorArmamento implements ActionListener{
                   
              modeloArmamento.setArmas(Vista.txtDetalles.getText());
              modeloArmamento.setTipoArmamento(Vista.cmbTipoArmamento.getSelectedItem().toString());    
-             modeloArmamento.setCantidad((int) Vista.spCantidad.getValue());
+             modeloArmamento.setCantidad(Integer.parseInt(Vista.spCantidad.getValue().toString()));
            
+             
+             
+             modeloArmamento.setIdTipoArmamento(v);
+             
+             modeloArmamento.agregar(modeloArmamento);
             
-            modeloArmamento.agregar(modeloArmamento);
-//            modeloArmamento.mostrar(Vista);
+             modeloArmamento.mostrar(Vista);
          }
     
     }
