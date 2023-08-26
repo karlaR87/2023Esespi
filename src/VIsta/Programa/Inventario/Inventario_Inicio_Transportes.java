@@ -18,6 +18,9 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
     public Inventario_Inicio_Transportes() {
         initComponents();
         fontDesign();
+        
+        ModeloDatosTransporte mn = new ModeloDatosTransporte();
+         mn.mostrar(this);
     }
 
      private void fontDesign()
@@ -72,6 +75,11 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
         btnModificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(68, 68, 68));
@@ -87,6 +95,11 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
         btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
         txtBusqueda.setBorder(null);
@@ -167,6 +180,17 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
        dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    ModeloDatosTransporte men = new ModeloDatosTransporte();
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+       men.eliminar(this);
+       men.mostrar(this);
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        men.actualizar(this);
+       men.mostrar(this);
+    }//GEN-LAST:event_btnModificarMouseClicked
 
     /**
      * @param args the command line arguments

@@ -27,6 +27,7 @@ public class ControladorTransporte implements ActionListener{
             this.vstATr = vstATr;
            this.vstATr.btnRegistrar.addActionListener(this);
            
+           
         }
         
         @Override
