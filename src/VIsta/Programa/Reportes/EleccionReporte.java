@@ -3,7 +3,10 @@ package VIsta.Programa.Reportes;
 
 
 public class EleccionReporte extends javax.swing.JFrame {
-
+    VistaReportePatrullajeConParametos vp = new VistaReportePatrullajeConParametos();
+    VistaReportePatrullaje vpm = new VistaReportePatrullaje();
+    VistaReportrTransporteConParametros vpp = new VistaReportrTransporteConParametros();
+    VistaReporteTransporte vpt = new VistaReporteTransporte();
     
     public EleccionReporte() {
         initComponents();
@@ -17,7 +20,7 @@ public class EleccionReporte extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbOpciones = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,8 +57,8 @@ public class EleccionReporte extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 60));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reporte de patrullaje", "Reporte de patrullaje con parámetros", "Reporte de transporte", "Reporte de transporte con parámetros"}));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 290, 40));
+        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reporte de patrullaje", "Reporte de patrullaje con parámetros", "Reporte de transporte", "Reporte de transporte con parámetros"}));
+        jPanel1.add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 290, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 77.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,6 +84,34 @@ public class EleccionReporte extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 
+        String seleccion = (String) cmbOpciones.getSelectedItem();
+        if (seleccion.equals("Reporte de patrullaje")) {
+            
+            vpm.setVisible(true);
+            this.dispose();
+        }
+        
+        
+        String seleccion2 = (String) cmbOpciones.getSelectedItem();
+        if (seleccion2.equals("Reporte de patrullaje con parámetros")) {
+            
+            vp.setVisible(true);
+            this.dispose();
+        }
+        
+         String seleccion3 = (String) cmbOpciones.getSelectedItem();
+        if (seleccion3.equals("Reporte de transporte")) {
+            
+            vpt.setVisible(true);
+            this.dispose();
+        }
+                 String seleccion4 = (String) cmbOpciones.getSelectedItem();
+        if (seleccion3.equals("Reporte de transporte con parámetros")) {
+            
+            vpp.setVisible(true);
+            this.dispose();
+        }
+        
         
 
     }//GEN-LAST:event_jLabel4MouseClicked
@@ -121,7 +152,7 @@ public class EleccionReporte extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbOpciones;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

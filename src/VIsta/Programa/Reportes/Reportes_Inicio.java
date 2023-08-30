@@ -9,10 +9,10 @@ public class Reportes_Inicio extends javax.swing.JPanel {
     
     public Reportes_Inicio() {
         initComponents();
-        VistaReportes vR = new VistaReportes();
-        vR.setVisible(true);
-        ModeloInformes b = new ModeloInformes();
-        b.mostrar(this);
+        
+       ModeloInformes m = new ModeloInformes();
+       m.mostrar(this);
+        
     }
 
    
@@ -24,7 +24,7 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMostrarDatos = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        txtBusquedaRep = new javax.swing.JTextField();
+        txtBusquedaInforme = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -49,15 +49,15 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 140, 580, 410));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/searchBack.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 580, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 330, 50));
 
-        txtBusquedaRep.setBorder(null);
-        txtBusquedaRep.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtBusquedaInforme.setBorder(null);
+        txtBusquedaInforme.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBusquedaRepKeyReleased(evt);
+                txtBusquedaInformeKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBusquedaRep, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 280, 30));
+        jPanel1.add(txtBusquedaInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 300, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -103,7 +103,7 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,9 +111,9 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBusquedaRepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaRepKeyReleased
+    private void txtBusquedaInformeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaInformeKeyReleased
 
-    }//GEN-LAST:event_txtBusquedaRepKeyReleased
+    }//GEN-LAST:event_txtBusquedaInformeKeyReleased
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         EleccionReporte el = new EleccionReporte();
@@ -130,6 +130,6 @@ public class Reportes_Inicio extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbMostrarDatos;
-    public javax.swing.JTextField txtBusquedaRep;
+    public javax.swing.JTextField txtBusquedaInforme;
     // End of variables declaration//GEN-END:variables
 }

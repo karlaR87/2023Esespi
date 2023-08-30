@@ -38,39 +38,39 @@ public class cntrlEquiposEspeciales implements ActionListener{
     
     public void actionPerformed(ActionEvent e){ 
         ///ANTERIOR
-        if(e.getSource() == Vista.btnAdd){
-                String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
-                int v;
+         if (e.getSource() == Vista.btnAdd) {
+             
+            String variable2 = (String) Vista.cmbClasificacion.getSelectedItem();
+            
+            int v=-1;
+            
             try {
                 v = MdlEquipos.obtenerIdClasificacion(variable2);
                 
+                System.out.println("ID obtenido para " + variable2 + ": " + v);
                 
-                System.out.println(v);
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-             MdlEquipos.setDetalles(Vista.txtDetalles.getText());
-             MdlEquipos.setCantidad((int) Vista.spCantidad.getValue());
-            MdlEquipos.setClasificacion(Vista.cmbClasificacion.getSelectedItem().toString());         
-            
+
+            MdlEquipos.setDetalles(Vista.txtDetalles.getText());
+            MdlEquipos.setCantidad(Integer.parseInt(Vista.spCantidad.getValue().toString()));
+            MdlEquipos.setClasificacion(Vista.cmbClasificacion.getSelectedItem().toString());
+            MdlEquipos.setIdTipoClasificacion(v);
+
             MdlEquipos.agregar(MdlEquipos);
             MdlEquipos.mostrar(Vista);
-         }
-         if(e.getSource() == Vista.btnEliminar){
-
+            
+        } else if (e.getSource() == Vista.btnEliminar) {
             MdlEquipos.eliminar(Vista);
             MdlEquipos.mostrar(Vista);
-            
-            }
-         
-         if(e.getSource() == Vista.btnModificar){
-             System.out.println("Viene al controladpr");
+        } else if (e.getSource() == Vista.btnModificar) {
+            System.out.println("Viene al controlador");
             MdlEquipos.actualizar(Vista);
             MdlEquipos.mostrar(Vista);
-            
-            }
         }
+    }
     }
  
     

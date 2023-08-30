@@ -89,7 +89,8 @@ public class ModeloEquipoEspecial {
     
     //LLENAR 
     public void llenarCombo(JComboBox<String> combocat) throws SQLException {
-         Connection conectar = null;
+         combocat.removeAllItems();
+        Connection conectar = null;
         PreparedStatement pst = null;
         ResultSet result = null;
 
@@ -179,6 +180,8 @@ public class ModeloEquipoEspecial {
     
         //LLENAR 
     public void llenarComboClasificacion(JComboBox<String> comboClasificacion, int idCategoria) throws SQLException {
+     comboClasificacion.removeAllItems(); 
+    comboClasificacion.removeAllItems();
     Connection conectar = null;
     PreparedStatement pst = null;
     ResultSet result = null;
@@ -229,6 +232,8 @@ public class ModeloEquipoEspecial {
 
         if (result.next()) {
             idClasificacion = result.getInt("IdTiposEquipamientoEstacion");
+        } else {
+            System.out.println("No se encontró ningún ID para " + clasificacion); // Agregamos una salida si no se encuentra el ID
         }
 
     } catch (SQLException e) {
