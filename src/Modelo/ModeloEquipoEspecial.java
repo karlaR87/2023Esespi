@@ -89,7 +89,8 @@ public class ModeloEquipoEspecial {
     
     //LLENAR 
     public void llenarCombo(JComboBox<String> combocat) throws SQLException {
-         Connection conectar = null;
+         combocat.removeAllItems();
+        Connection conectar = null;
         PreparedStatement pst = null;
         ResultSet result = null;
 
@@ -179,6 +180,8 @@ public class ModeloEquipoEspecial {
     
         //LLENAR 
     public void llenarComboClasificacion(JComboBox<String> comboClasificacion, int idCategoria) throws SQLException {
+     comboClasificacion.removeAllItems(); 
+    comboClasificacion.removeAllItems();
     Connection conectar = null;
     PreparedStatement pst = null;
     ResultSet result = null;
@@ -229,6 +232,8 @@ public class ModeloEquipoEspecial {
 
         if (result.next()) {
             idClasificacion = result.getInt("IdTiposEquipamientoEstacion");
+        } else {
+            System.out.println("No se encontró ningún ID para " + clasificacion); // Agregamos una salida si no se encuentra el ID
         }
 
     } catch (SQLException e) {
@@ -325,33 +330,65 @@ public class ModeloEquipoEspecial {
     
    
     //Agregar 
-  public void agregar(ModeloEquipoEspecial equipo) {
-        try {
-            String query = "INSERT INTO tdDetallesEquipo (IdTipoEquipamientoEstacion, Detalles, Cantidad) VALUES (?, ?, ?);";
-     
+ public void agregar(ModeloEquipoEspecial equipo) {
+    try {
+        // Obtén el valor de IdTiposEquipamientoEstacion que intentas insertar
+        int idTipoEquipamiento = equipo.getIdTipoClasificacion();
+        
+        // Verifica si el valor de idTipoEquipamiento existe en tbTiposEquipamientoEstacion
+        if (existeTipoEquipamiento(idTipoEquipamiento)) {
+            // El valor existe, puedes proceder con la inserción
+            String query = "INSERT INTO tdDetallesEquipo (IdTiposEquipamientoEstacion, Detalles, Cantidad) VALUES (?, ?, ?);";
             PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query);
-                        
-                        
-            addDatos.setInt(1, equipo.getIdTipoClasificacion());
-                
+            addDatos.setInt(1, idTipoEquipamiento);
             String detalles = equipo.getDetalles();
-         
             addDatos.setString(2, detalles);
-         
-            
-            addDatos.setInt(3, equipo.getCantidad()); 
-       
-
-            
-
+            addDatos.setInt(3, equipo.getCantidad());
             addDatos.executeUpdate();
-            System.out.println("agrega datos");
-
-        } catch (SQLException e) {
-            System.out.println(e.toString());
+            System.out.println("Datos agregados exitosamente.");
+        } else {
+            // El valor no existe en tbTiposEquipamientoEstacion, maneja el error
+            System.out.println("El valor de IdTiposEquipamientoEstacion no existe en tbTiposEquipamientoEstacion.");
+            // Puedes mostrar un mensaje de error al usuario o tomar alguna otra acción aquí
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al agregar datos: " + e.toString());
+    }
+}
+// Función para verificar si un valor de IdTiposEquipamientoEstacion existe en tbTiposEquipamientoEstacion
+private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLException {
+    Connection conectar = null;
+    PreparedStatement pst = null;
+    ResultSet result = null;
+    boolean existe = false;
+    
+    String SSQL = "SELECT IdTiposEquipamientoEstacion FROM tbTiposEquipamientoEstacion WHERE IdTiposEquipamientoEstacion = ?";
+    
+    try {
+        conectar = conexionSql.getConexion();
+        pst = conectar.prepareStatement(SSQL);
+        pst.setInt(1, idTipoEquipamiento);
+        result = pst.executeQuery();
+        
+        // Si result tiene al menos una fila, el valor existe
+        existe = result.next();
+    } catch (SQLException e) {
+        System.out.println("Error al verificar la existencia del valor: " + e.toString());
+    } finally {
+        // Cerrar recursos
+        if (result != null) {
+            result.close();
+        }
+        if (pst != null) {
+            pst.close();
+        }
+        if (conectar != null) {
+            conectar.close();
         }
     }
-  
+    
+    return existe;
+}
   
   
   
@@ -361,13 +398,13 @@ public class ModeloEquipoEspecial {
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTipoEquipamientoEstacion", "Detalles", "Cantidad"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTiposEquipamientoEstacion", "Detalles", "Cantidad"});
        
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
             String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
-                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTipoEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
+                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
             ResultSet rs = statement.executeQuery(query);
             
             while(rs.next()){
@@ -467,7 +504,7 @@ public class ModeloEquipoEspecial {
             
             try {
                 
-                PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTipoEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
+                PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTiposEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
                 updateUser.setString(1, nuevoValorIngresadoNombre);
                 updateUser.setInt(2, nuevoValorIngresadoCantidad);
                 updateUser.setInt(3, nuevoValorIngresadoTipo);

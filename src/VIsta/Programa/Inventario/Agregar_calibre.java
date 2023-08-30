@@ -3,36 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VIsta.Programa.Inventario;
-import Controlador.ControladorArmamento;
- import Modelo.ModeloArmamento;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import Controlador.cntrlClibre;
+import Modelo.ModeloCalibre;
+
 /**
  *
  * @author karla
  */
-public class Agregar_Armamento extends javax.swing.JFrame {
+public class Agregar_calibre extends javax.swing.JFrame {
 
     /**
-     * Creates new form Agregar_Armamento
+     * Creates new form Agregar_calibre
      */
     
-    ModeloArmamento armas = new ModeloArmamento();
-   
-    public Agregar_Armamento() {
+    ModeloCalibre calibre = new ModeloCalibre();
+    
+    public Agregar_calibre() {
         initComponents();
         
-        try {
-             ControladorArmamento controladorArmamento= new ControladorArmamento(armas, this);
-             armas.mostrar(this);
-    
-            armas.llenarComboTipoArmamento(cmbTipoArmamento);
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Agregar_Armamento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         cntrlClibre controlador = new cntrlClibre(calibre, this); 
+                               calibre.mostrar(this);  
     }
 
     /**
@@ -45,14 +36,12 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbArmas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtDetalles = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbCalibre = new javax.swing.JTable();
+        txtCalibre = new javax.swing.JTextField();
         spCantidad = new javax.swing.JSpinner();
-        cmbTipoArmamento = new javax.swing.JComboBox<>();
         btnEliminar = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -62,7 +51,17 @@ public class Agregar_Armamento extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbArmas.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Calibre");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 130, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Cantidad");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 130, 30));
+
+        tbCalibre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -73,32 +72,17 @@ public class Agregar_Armamento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tbArmas);
+        jScrollPane1.setViewportView(tbCalibre);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 430, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 410, 230));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nombre del arma: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 180, -1));
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Clasificacion: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 180, -1));
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Cantidad: ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 180, -1));
-
-        txtDetalles.addActionListener(new java.awt.event.ActionListener() {
+        txtCalibre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDetallesActionPerformed(evt);
+                txtCalibreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 170, -1));
-        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
-
-        cmbTipoArmamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbTipoArmamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 170, -1));
+        jPanel1.add(txtCalibre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 150, -1));
+        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
@@ -108,7 +92,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 350, -1, -1));
 
         btnAdd.setBackground(new java.awt.Color(68, 68, 68));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnaddBig.png"))); // NOI18N
@@ -118,7 +102,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
                 btnAddMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, -1, -1));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, -1, -1));
 
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
@@ -128,10 +112,10 @@ public class Agregar_Armamento extends javax.swing.JFrame {
                 btnModificarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 420, -1, -1));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 350, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 123.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 540));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/calibre_1.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,42 +131,17 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDetallesActionPerformed
+    private void txtCalibreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalibreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDetallesActionPerformed
+    }//GEN-LAST:event_txtCalibreActionPerformed
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
 
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-//        
-//        ModeloArmamento n = new ModeloArmamento();
-//
-//        //
-//        String variable = (String) cmbTipoArmamento.getSelectedItem();
-//        
-//            int v = -1;
-//            
-//            
-//            try {
-//                v = n.IdRetornoTipoArmamento(variable);
-//                System.out.println(v);
-//            } catch (SQLException ex) {
-//                
-//                java.util.logging.Logger.getLogger(ControladorArmamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//            }
-//           
-//             n.setArmas(txtDetalles.getText());
-//             n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
-//           
-//             
-//             
-//             n.setIdTipoArmamento(v);
-//             
-//             n.agregar(n);
-//            
         
+
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
@@ -206,20 +165,20 @@ public class Agregar_Armamento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Armamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_calibre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Armamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_calibre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Armamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_calibre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Armamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_calibre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agregar_Armamento().setVisible(true);
+                new Agregar_calibre().setVisible(true);
             }
         });
     }
@@ -228,15 +187,13 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     public javax.swing.JButton btnAdd;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
-    public javax.swing.JComboBox<String> cmbTipoArmamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JSpinner spCantidad;
-    public javax.swing.JTable tbArmas;
-    public javax.swing.JTextField txtDetalles;
+    public javax.swing.JTable tbCalibre;
+    public javax.swing.JTextField txtCalibre;
     // End of variables declaration//GEN-END:variables
 }
