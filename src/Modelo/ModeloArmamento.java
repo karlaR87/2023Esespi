@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
+import VIsta.Programa.Inventario.Agregar_Armamento;
 import java.sql.*; 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -160,4 +162,114 @@ public class ModeloArmamento {
         System.out.println("Error al agregar datos: " + e.toString());
         }
     }
+ 
+ //MOSTRAR
+    
+    public void mostrar(Agregar_Armamento armamento){
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleArmamentoEstacion","DetalleArmamento", "Cantidad", "IdTipoArmamentoEstacion"});
+       
+        try{
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select * from tbDetallesArmamentosEstacion";
+            ResultSet rs = statement.executeQuery(query);
+            
+            while(rs.next()){
+              
+                modelo.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("IdTipoArmamentoEstacion")});
+                
+            }
+            armamento.tbArmas.setModel(modelo);
+                
+        }catch(SQLException ex){
+
+            System.out.println(ex.toString());
+
+        }
+
+    }
+    
+    
+    
+    
+//    
+//    //Eliminar 
+//    public void eliminar(Agregar_EquipoEspecial especial){
+//    
+//        //obtenemos que fila seleccionó el usuario
+//        int filaSeleccionada = especial.tbEquiposEspeciales.getSelectedRow();
+//        
+//        //Obtenemos el id de la fila seleccionada
+//        String miId = especial.tbEquiposEspeciales.getValueAt(filaSeleccionada, 0).toString();
+//        //borramos 
+//        try {
+//            PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tdDetallesEquipo where IdDetalleEquipo = '" + miId + "'");
+//            
+//            deleteUser.executeUpdate();
+//        } catch (Exception e) {
+//            
+//         System.out.println(e.toString());
+//        }
+//    }
+//
+// //Actualizar 
+//    
+//   
+//
+////Luego colocamos el método para actualizar
+// public void actualizar(Agregar_EquipoEspecial especial) {
+//
+//        try {
+//            
+//            //obtenemos que fila seleccionó el usuario
+//            
+//            int filaSeleccionada = especial.tbEquiposEspeciales.getSelectedRow();
+//            System.out.println("pasa int ");
+//            //Obtenemos el id de la fila seleccionada
+//            
+//            String miId = especial.tbEquiposEspeciales.getValueAt(filaSeleccionada, 0).toString();
+//            System.out.println("El miId");
+//            
+//            String nuevoValorIngresadoNombre = especial.txtDetalles.getText();
+//            System.out.println("Nuevo nombre ");
+//            
+//            int nuevoValorIngresadoCantidad = (int) especial.spCantidad.getValue();
+//            
+//            // Obtén el valor seleccionado en el ComboBox (nombre del tipo de equipamiento)
+//            String nuevoValorIngresadoTipoNombre = especial.cmbClasificacion.getSelectedItem().toString();
+//            
+//            // Obtén el ID correspondiente al nombre seleccionado
+//            int nuevoValorIngresadoTipo = obtenerIdClasificacion(nuevoValorIngresadoTipoNombre);
+//            
+//            
+//            
+//            
+//            try {
+//                
+//                PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("UPDATE tdDetallesEquipo SET Detalles = ?, Cantidad = ?, IdTiposEquipamientoEstacion = ? WHERE IdDetalleEquipo = ?");
+//                updateUser.setString(1, nuevoValorIngresadoNombre);
+//                updateUser.setInt(2, nuevoValorIngresadoCantidad);
+//                updateUser.setInt(3, nuevoValorIngresadoTipo);
+//                updateUser.setString(4, miId);
+//                
+//                updateUser.executeUpdate();
+//                System.out.println("Se actualiza");
+//                
+//            } catch (Exception e) {
+//                
+//                System.out.println("Error de conversión a entero: " + e.getMessage());
+//                
+//                System.out.println(e.toString());
+//            }
+//            
+//        } catch (SQLException ex) {
+//
+//            Logger.getLogger(ModeloEquipoEspecial.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
+//    
 }
