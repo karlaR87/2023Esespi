@@ -18,17 +18,9 @@ import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author karla
- */
+
 public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     
-
-
-    /**
-     * Creates new form Agregar_EquipoEspecial
-     */
     ModeloEquipoEspecial equipo = new ModeloEquipoEspecial();
     
     
@@ -36,7 +28,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
             initComponents();
                try {
                         cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(equipo, this); 
-                               equipo.mostrar(this);   
+                   equipo.mostrar(this);   
             equipo.llenarCombo(cmbCat);
             
 //        
@@ -45,7 +37,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
 //        vista.btnAdd.addActionListener(controlador);
         
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles");
+            JOptionPane.showMessageDialog(this, "Error ");
         }
     }
 
@@ -268,31 +260,26 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDetallesActionPerformed
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-         ModeloEquipoEspecial n = new ModeloEquipoEspecial();
-
-        //
-        String variable = (String) cmbClasificacion.getSelectedItem();
-        
-            int v = -1;
-            
-            
-            try {
-                v = n.obtenerIdClasificacion(variable);
-                System.out.println(v);
-            } catch (SQLException ex) {
-                
-                java.util.logging.Logger.getLogger(cntrlEquiposEspeciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
-           
-             n.setDetalles(txtDetalles.getText());
-             n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
-           
-             
-             
-             n.setIdTipoClasificacion(v);
-             
-             n.agregar(n);
-            
+//    ModeloEquipoEspecial n = new ModeloEquipoEspecial();
+//
+//    String variable = (String) cmbClasificacion.getSelectedItem();
+//    int v = -1;
+//
+//    try {
+//        v = n.obtenerIdClasificacion(variable);
+//      
+//    } catch (SQLException ex) {
+//        java.util.logging.Logger.getLogger(cntrlEquiposEspeciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//    }
+//
+//    n.setDetalles(txtDetalles.getText());
+//    n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
+//
+//    n.setIdTipoClasificacion(v);
+//
+//    n.agregar(n);
+//    n.mostrar(this);
+//            
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void cmbClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasificacionActionPerformed
@@ -361,31 +348,16 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDetalles1ActionPerformed
 
+    
+    
+    
     private void txtBuscarEPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarEPKeyReleased
- DefaultTableModel tabla = new DefaultTableModel();
-    tabla.setColumnIdentifiers(new Object[]{"IdDetalleEquipo", "NombreTipoEquipamiento", "Detalles", "Cantidad"});
-
-    try {
-        String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
-                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTipoEquipamientoEstacion = t.IdTiposEquipamientoEstacion " +
-                       "WHERE d.idDetallesEquipo LIKE ? OR t.TipoEquipamiento LIKE ? OR d.Cantidad LIKE ?";
+          
         
-        PreparedStatement preparedStatement = conexionSql.getConexion().prepareStatement(query);
-        preparedStatement.setString(1, "%" + txtBuscarEP + "%");
-        preparedStatement.setString(2, "%" +  txtBuscarEP + "%");
-        preparedStatement.setString(3, "%" + txtBuscarEP + "%");
-        preparedStatement.setString(4, "%" + txtBuscarEP+ "%");
-
-        ResultSet rs = preparedStatement.executeQuery();
-
-        while (rs.next()) {
-            tabla.addRow(new Object[]{rs.getString("IdDetalleEquipo"), rs.getString("NombreTipoEquipamiento"), rs.getString("Detalles"), rs.getString("Cantidad")});
-        }
-
-        tbEquiposEspeciales.setModel(tabla);
-    } catch (SQLException ex) {
-        System.out.println(ex.toString());
-    }        // TODO add your handling code here:
+        ModeloEquipoEspecial M = new ModeloEquipoEspecial();
+        
+        M.mostrarDatos(this);
+           // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarEPKeyReleased
 
     private void txtBuscarEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarEPActionPerformed
@@ -447,7 +419,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JSpinner spCantidad;
     public javax.swing.JTable tbEquiposEspeciales;
-    private javax.swing.JTextField txtBuscarEP;
+    public javax.swing.JTextField txtBuscarEP;
     public javax.swing.JTextField txtDetalles;
     public javax.swing.JTextField txtDetalles1;
     // End of variables declaration//GEN-END:variables

@@ -23,6 +23,9 @@ public class ElecION_Equipo extends javax.swing.JFrame {
      */
     Agregar_EquipoEspecial ventanaNueva=new Agregar_EquipoEspecial();
     Inventario_Inicio_Transportes vetana2 = new Inventario_Inicio_Transportes();
+    Agregar_calibre calibre = new Agregar_calibre();
+    Agregar_Armamento Armamento = new Agregar_Armamento();
+
    
     
     @SuppressWarnings("unchecked")
@@ -40,7 +43,7 @@ public class ElecION_Equipo extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armamento", "Transporte", "Equipo Especializado", " " }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armamento", "Calibre", "Transporte", "Equipo Especializado" }));
         jPanel1.add(cmbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 132, 290, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 77.png"))); // NOI18N
@@ -49,7 +52,7 @@ public class ElecION_Equipo extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,7 +103,13 @@ public class ElecION_Equipo extends javax.swing.JFrame {
          String seleccion3 = (String) cmbTipo.getSelectedItem();
         if (seleccion3.equals("Armamento")) {
             
-            vetana2.setVisible(true);
+            Armamento.setVisible(true);
+            this.dispose();
+        }
+        
+        if (seleccion3.equals("Calibre")) {
+            
+            calibre.setVisible(true);
             this.dispose();
         }
         
