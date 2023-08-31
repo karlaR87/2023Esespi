@@ -66,9 +66,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(1010, 700));
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 120));
 
-        txtNumeroPlaca.setBackground(new java.awt.Color(255, 255, 255));
         txtNumeroPlaca.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtNumeroPlaca.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeroPlaca.setToolTipText("");
         txtNumeroPlaca.setBorder(null);
         jPanel2.add(txtNumeroPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 426, 410, 30));
@@ -99,9 +97,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnnextDBack.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 220, 60));
 
-        txtONI.setBackground(new java.awt.Color(255, 255, 255));
         txtONI.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtONI.setForeground(new java.awt.Color(0, 0, 0));
         txtONI.setToolTipText("");
         txtONI.setBorder(null);
         jPanel2.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 314, 410, 30));

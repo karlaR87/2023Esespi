@@ -103,6 +103,11 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
         txtBusqueda.setBorder(null);
+        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaActionPerformed(evt);
+            }
+        });
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
@@ -191,6 +196,10 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         men.actualizar(this);
        men.mostrar(this);
     }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+        
+    }//GEN-LAST:event_txtBusquedaActionPerformed
 
     /**
      * @param args the command line arguments

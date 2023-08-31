@@ -47,6 +47,7 @@ public class ModeloDatosTransporte {
         }
     }
     
+    //Mostrar datos en las tablas
     public void mostrar(Inventario_Inicio_Transportes IIT){
 
         
@@ -91,7 +92,8 @@ public class ModeloDatosTransporte {
 
     }
     
-    public void mostrarDatos(Inventario_Inicio_Transportes IIT){
+    //Barra de busqueda
+    public void mostrarDatos(Inventario_Inicio_Transportes IIT){ //Parametro de la busqueda
 
         
 
@@ -105,7 +107,7 @@ public class ModeloDatosTransporte {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT*FROM tbDetallesTransportesEstacion where DetalleTransporte like '%"+IIT.txtBusqueda.getText()+"%';";
+            String query = "SELECT*FROM tbDetallesTransportesEstacion where DetalleTransporte like '%"+IIT.txtBusqueda.getText()+"%';"; //Parametro + el texto a obtener del textfield
 
             ResultSet rs = statement.executeQuery(query);
 
