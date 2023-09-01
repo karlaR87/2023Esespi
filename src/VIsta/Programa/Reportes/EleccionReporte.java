@@ -1,17 +1,63 @@
 
 package VIsta.Programa.Reportes;
 
+import Modelo.conexionSql;
+import javax.swing.WindowConstants;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 public class EleccionReporte extends javax.swing.JFrame {
     VistaReportePatrullajeConParametos vp = new VistaReportePatrullajeConParametos();
     VistaReportePatrullaje vpm = new VistaReportePatrullaje();
     VistaReportrTransporteConParametros vpp = new VistaReportrTransporteConParametros();
-    VistaReporteTransporte vpt = new VistaReporteTransporte();
+    
     
     public EleccionReporte() {
         initComponents();
     }
+    
+  private void mostrarReporte() {
+        try {
+            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReporteTransporte.jasper"));
+            System.out.println("ee");
+            JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
+                System.out.println("ee");
+            JasperViewer view = new JasperViewer(jprint, false);
+             System.out.println("ee");
+            view.setTitle("Reporte de transporte");
+            view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            view.setVisible(true);
 
+        } catch (JRException ex) {
+            ex.getMessage();
+        }
+        
+    }
+  
+  private void mostrarReportePat() {
+        try {
+            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReportePatrullaje.jasper"));
+            System.out.println("ee");
+            JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
+                System.out.println("ee");
+            JasperViewer view = new JasperViewer(jprint, false);
+             System.out.println("ee");
+            view.setTitle("Reporte de transporte");
+            view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+            ex.getMessage();
+        }
+        
+    }
+
+    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -123,8 +169,8 @@ public class EleccionReporte extends javax.swing.JFrame {
         String seleccion = (String) cmbOpciones.getSelectedItem();
         if (seleccion.equals("Reporte de patrullaje")) {
             
-            vpm.setVisible(true);
-            this.dispose();
+           
+            mostrarReportePat();
         }
         
         
@@ -138,8 +184,9 @@ public class EleccionReporte extends javax.swing.JFrame {
          String seleccion3 = (String) cmbOpciones.getSelectedItem();
         if (seleccion3.equals("Reporte de transporte")) {
             
-            vpt.setVisible(true);
-            this.dispose();
+            
+            
+            mostrarReporte();
         }
                  String seleccion4 = (String) cmbOpciones.getSelectedItem();
         if (seleccion3.equals("Reporte de transporte con parámetros")) {

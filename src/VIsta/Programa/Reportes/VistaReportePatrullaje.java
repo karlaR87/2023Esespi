@@ -15,8 +15,7 @@ public class VistaReportePatrullaje extends javax.swing.JFrame {
 
     public VistaReportePatrullaje() {
         initComponents();
-        mdl m = new mdl();
-       m.mostrar(this);
+        
     }
 
     private void mostrarReporteP() {
