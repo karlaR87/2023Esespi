@@ -2,6 +2,7 @@
 package VIsta.Programa.Reportes;
 
 import Modelo.conexionSql;
+import Modelo.mdl;
 import javax.swing.WindowConstants;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -14,6 +15,8 @@ public class VistaReportePatrullaje extends javax.swing.JFrame {
 
     public VistaReportePatrullaje() {
         initComponents();
+        mdl m = new mdl();
+       m.mostrar(this);
     }
 
     private void mostrarReporteP() {
@@ -42,7 +45,7 @@ public class VistaReportePatrullaje extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbDatos = new javax.swing.JTable();
         btnGenerarReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,7 +99,7 @@ public class VistaReportePatrullaje extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -107,7 +110,7 @@ public class VistaReportePatrullaje extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbDatos);
 
         btnGenerarReporte.setBackground(new java.awt.Color(68, 68, 68));
         btnGenerarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnaddBig.png"))); // NOI18N
@@ -208,6 +211,6 @@ public class VistaReportePatrullaje extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tbDatos;
     // End of variables declaration//GEN-END:variables
 }
