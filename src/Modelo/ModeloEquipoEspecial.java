@@ -562,6 +562,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
                 updateUser.setInt(3, nuevoValorIngresadoTipo);
                 updateUser.setString(4, miId);
                 
+                
                 updateUser.executeUpdate();
                 System.out.println("Se actualiza");
                 

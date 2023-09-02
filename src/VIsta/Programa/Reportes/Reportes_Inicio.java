@@ -57,7 +57,7 @@ public class Reportes_Inicio extends javax.swing.JPanel {
                 txtBusquedaInformeKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBusquedaInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 300, 30));
+        jPanel1.add(txtBusquedaInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 280, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 

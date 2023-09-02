@@ -4,6 +4,7 @@
  */
 package Modelo;
 import VIsta.Programa.Inventario.Agregar_Armamento;
+import VIsta.Programa.Inventario.Agregar_EquipoEspecial;
 import java.sql.*; 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -51,7 +52,58 @@ public class ModeloArmamento {
     public void setIdTipoArmamento(int idTipoArmamento) {
         this.idTipoArmamento = idTipoArmamento;
     }
-    
+     public void mostrarDatos(Agregar_Armamento IIT){
+
+        
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+    modelo.setColumnIdentifiers(new Object[]{"DetalleArmamento", "IdTipoArmamentoEstacion", "Cantidad", "IdDetalleArmamentoEstacion"});
+
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+           String filtro = IIT.txtbuscarArm.getText(); 
+
+        String query = "SELECT * FROM  tbDetallesArmamentosEstacion WHERE " +
+                       "IdTipoArmamentoEstacion LIKE '%" + filtro + "%' OR " +
+                       "DetalleArmamento LIKE '%" + filtro + "%' OR " +
+                       "Cantidad LIKE '%" + filtro + "%' OR " +
+                       "IdDetalleArmamentoEstacion LIKE '%" + filtro + "%';";
+           
+            
+
+            ResultSet rs = statement.executeQuery(query);
+            
+
+            
+
+          
+
+            while(rs.next()){
+
+                modelo.addRow(new Object[] {rs.getString("IdTipoArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("IdDetalleArmamentoEstacion")});
+
+            }
+
+            
+
+            IIT.tbArmas.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+            System.out.println(ex.toString());
+
+        }
+
+    }
     //LLENAR 
     public void llenarComboTipoArmamento(JComboBox<String> combocat) throws SQLException {
         Connection conectar = null;

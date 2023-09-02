@@ -1,20 +1,17 @@
 
 package Modelo;
 
-import VIsta.Programa.Reportes.VistaReportePatrullaje;
+import VIsta.Programa.Reportes.VistaReportePatrullajeConParametos;
+import VIsta.Programa.Reportes.VistaReportrTransporteConParametros;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 
 public class mdl {
-    //modelo a utilizar para visualizar las tablas de los reportes
     
-    //Método para mostrar datos en una tabla
  
-
-    public void mostrar(VistaReportePatrullaje vis){
-
-        
+//Mostrar datos en la tabla de los reportes de los patrullajes
+    public void mostrar(VistaReportePatrullajeConParametos vis){
 
         DefaultTableModel modelo = new DefaultTableModel();
 
@@ -29,7 +26,7 @@ public class mdl {
 
             String query = "SELECT tbInfor.IdInforme, \n" +
 "tbPatru.IdPatrullaje, tbPatru.Fecha_Hora_Inicio, tbPatru.Fecha_Hora_Fin,\n" +
-"tbAcerc.Lugar AS Lugar_Acercamiento, tbAcerc.Horas AS Hora_Acercamiento, tbAcerc.NombrePersona AS Nombre_Acercamiento, tbAcerc.Acercamiento,\n" +
+"tbAcerc.Lugar AS Lugar_Acercamiento, tbAcerc.Fecha AS Hora_Acercamiento, tbAcerc.NombrePersona AS Nombre_Acercamiento, tbAcerc.Acercamiento,\n" +
 "tbDete.Lugar AS Lugar_Detenido, tbDete.Fecha AS Fecha_Detenido,\n" +
 "tbInfract.NombreInfractor,\n" +
 "tbDec.Detalles,\n" +
@@ -61,7 +58,63 @@ public class mdl {
 
             
 
-            vis.tbDatos.setModel(modelo);
+            vis.tbMostrarD.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+            System.out.println(ex.toString());
+
+        }
+
+    }
+    
+    //Mostrar datos de los transportes para los reportes
+    //Método para mostrar datos en una tabla
+ 
+
+    public void mostrar(VistaReportrTransporteConParametros rrr){
+
+        
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", 
+            "Marca", "NumeroDeGrupo"});
+
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte, \n" +
+"                         dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
+"FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
+"                         dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
+"                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
+"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+
+                modelo.addRow(new Object[] {rs.getString("IdDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),
+                    rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), 
+                    rs.getString("NumeroDeGrupo")});
+
+            }
+
+            
+
+            rrr.tbMostrarData.setModel(modelo);
 
 
 
