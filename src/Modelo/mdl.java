@@ -16,7 +16,7 @@ public class mdl {
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.setColumnIdentifiers(new Object []{"IdInforme","IdPatrullaje", "Fecha_Hora_Inicio", "Fecha_Hora_Fin", "Lugar_Acercamiento", "Hora_Acercamiento", "Nombre_Acercamiento"
-        , "Acercamiento", "Lugar_Detenido", "Fecha_Detenido", "NombreInfractor", "Detalles", "Lugar_Denuncia", "Hora_Denuncia", "Nombre_Denunciante"});
+        , "Acercamiento", "Lugar_Detenido", "Fecha_Detenido", "NombreInfractor", "Detalles", "Lugar_Denuncia", "Fecha_Denuncia", "Nombre_Denunciante"});
 
 
 
@@ -30,7 +30,7 @@ public class mdl {
 "tbDete.Lugar AS Lugar_Detenido, tbDete.Fecha AS Fecha_Detenido,\n" +
 "tbInfract.NombreInfractor,\n" +
 "tbDec.Detalles,\n" +
-"tbDenun.Lugar AS Lugar_Denuncia, tbDenun.Horas AS Hora_Denuncia,\n" +
+"tbDenun.Lugar AS Lugar_Denuncia, tbDenun.Fecha AS Fecha_Denuncia,\n" +
 "tbPer.Nombre AS Nombre_Denunciante\n" +
 "FROM tbInformes tbInfor\n" +
 "INNER JOIN tbPatrullajes tbPatru ON tbInfor.idPatrullaje = tbPatru.idPatrullaje\n" +
@@ -52,7 +52,7 @@ public class mdl {
             while(rs.next()){
 
                 modelo.addRow(new Object[] {rs.getString("IdInforme"),rs.getString("IdPatrullaje"),rs.getString("Fecha_Hora_Inicio"), rs.getString("Fecha_Hora_Fin"), rs.getString("Lugar_Acercamiento"), rs.getString("Hora_Acercamiento"), rs.getString("Nombre_Acercamiento"), rs.getString("Acercamiento")
-                , rs.getString("Lugar_Detenido"), rs.getString("Fecha_Detenido"), rs.getString("NombreInfractor"), rs.getString("Detalles"), rs.getString("Lugar_Denuncia"), rs.getString("Hora_Denuncia"), rs.getString("Nombre_Denunciante")});
+                , rs.getString("Lugar_Detenido"), rs.getString("Fecha_Detenido"), rs.getString("NombreInfractor"), rs.getString("Detalles"), rs.getString("Lugar_Denuncia"), rs.getString("Fecha_Denuncia"), rs.getString("Nombre_Denunciante")});
 
             }
 
