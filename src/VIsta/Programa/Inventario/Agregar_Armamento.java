@@ -5,6 +5,7 @@
 package VIsta.Programa.Inventario;
 import Controlador.ControladorArmamento;
  import Modelo.ModeloArmamento;
+import Modelo.ModeloEquipoEspecial;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +45,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbArmas = new javax.swing.JTable();
@@ -55,8 +57,11 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         cmbTipoArmamento = new javax.swing.JComboBox<>();
         btnEliminar = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        txtbuscarArm = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        jTextField2.setText("jTextField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +80,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbArmas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 430, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 430, 300));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre del arma: ");
@@ -120,6 +125,14 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         });
         jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, -1, -1));
 
+        txtbuscarArm.setText("Buscar");
+        txtbuscarArm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarArmKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtbuscarArm, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 340, -1));
+
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
         btnModificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -130,6 +143,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         });
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 420, -1, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 123.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 540));
 
@@ -141,7 +155,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -151,6 +165,9 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDetallesActionPerformed
 
+    
+    
+        
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
 
     }//GEN-LAST:event_btnEliminarMouseClicked
@@ -188,6 +205,12 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
 
     }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void txtbuscarArmKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarArmKeyReleased
+    ModeloArmamento MR = new ModeloArmamento();
+        
+        MR.mostrarDatos(this);// TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarArmKeyReleased
 
     /**
      * @param args the command line arguments
@@ -235,8 +258,10 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField2;
     public javax.swing.JSpinner spCantidad;
     public javax.swing.JTable tbArmas;
     public javax.swing.JTextField txtDetalles;
+    public javax.swing.JTextField txtbuscarArm;
     // End of variables declaration//GEN-END:variables
 }
