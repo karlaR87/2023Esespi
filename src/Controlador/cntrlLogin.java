@@ -1,10 +1,12 @@
 package Controlador;
 
 import Modelo.mdlUsuarios;
+import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.Programa.JframePrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class cntrlLogin implements ActionListener{
@@ -29,7 +31,9 @@ public class cntrlLogin implements ActionListener{
             
             if(idUser == -1)
             {
-                JOptionPane.showMessageDialog(lg, "No se encontró el usuario, intente nuevamente");
+                
+                show("No se encontró el usuario, intente nuevamente", 15, 1);
+                close1();
             }
             else
             {
@@ -38,7 +42,8 @@ public class cntrlLogin implements ActionListener{
                 String con = mdlUsuarios.readConUsuario();
                  if(con == null)
                  {
-                    JOptionPane.showMessageDialog(lg, "Usuario o contraseña incorrecto");
+                    show("Usuario o contraseña incorrecto", 17, 1);
+                    close1();
                  }
                  else
                  {
@@ -51,15 +56,38 @@ public class cntrlLogin implements ActionListener{
                      }
                      else
                      {
-                        JOptionPane.showMessageDialog(lg, "Contraseña incorrecta"); 
+                        show("Contraseña incorrecta", 17, 1);
+                        close1();
                      }
-
                  }
             }
 
             }
         }
+     JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        lg.jLabel1.setVisible(true);
+        lg.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
     }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            lg.jLabel1.setVisible(false);
+            lg.setEnabled(true);
+        }
+        });
+    }
+    
+    
+   }
     
 
 

@@ -16,6 +16,7 @@ public class ReestablecerContra extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     public ReestablecerContra() {
         initComponents();
+        jLabel6.setVisible(false);
         NOSPACE();
         fontDesign();
     }
@@ -36,6 +37,7 @@ public class ReestablecerContra extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         txtContra2 = new javax.swing.JPasswordField();
         txtContra1 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
@@ -54,6 +56,9 @@ public class ReestablecerContra extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(870, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent870x700.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         txtContra2.setBackground(new java.awt.Color(255, 255, 255));
         txtContra2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -257,6 +262,7 @@ public class ReestablecerContra extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBack;
     public javax.swing.JPasswordField txtContra1;
