@@ -19,17 +19,17 @@ public class Agregar_Armamento extends javax.swing.JFrame {
      * Creates new form Agregar_Armamento
      */
     
-    ModeloArmamento armas = new ModeloArmamento();
-    Agregar_Municion_Armas municion = new Agregar_Municion_Armas();
+    ModeloArmamento modeloArmamento = new ModeloArmamento(); // Crea una única instancia del modelo
+    Agregar_Municion_Armas vistamedia = new Agregar_Municion_Armas();
    
     public Agregar_Armamento() {
         initComponents();
         
         try {
-             ControladorArmamento controladorArmamento= new ControladorArmamento(armas, this);
-             armas.mostrar(this);
+             ControladorArmamento controladorArmas = new ControladorArmamento(modeloArmamento, this, vistamedia);
+             modeloArmamento.mostrar(this);
     
-            armas.llenarComboTipoArmamento(cmbTipoArmamento);
+            modeloArmamento.llenarComboTipoArmamento(cmbTipoArmamento);
             
             
         } catch (SQLException ex) {
@@ -206,8 +206,8 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        municion = new Agregar_Municion_Armas();
-        municion.setVisible(true);
+        
+        vistamedia.setVisible(true);
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     /**

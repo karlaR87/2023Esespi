@@ -6,6 +6,7 @@ package Modelo;
 import VIsta.Programa.Inventario.Agregar_Armamento;
 import VIsta.Programa.Inventario.Agregar_EquipoEspecial;
 import java.sql.*; 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -197,7 +198,7 @@ public class ModeloArmamento {
         return gen;
     }
 
-    //Agregar 
+    //Agregar Armas
  public int agregar(ModeloArmamento armas) {
     try {
         // Obtén el valor de IdTiposEquipamientoEstacion que intentas insertar
@@ -227,6 +228,31 @@ public class ModeloArmamento {
     } catch (SQLException e) {
         System.out.println("Error al agregar datos: " + e.toString());
         return -1; // Retorna un valor indicando un error
+    }
+}
+ 
+ //Agregar relacion
+ 
+ public void agregarRelacionesArmamentoCalibres(int idDetalleArma, List<Integer> idsCalibres) {
+    try {
+        // Consulta SQL para insertar relaciones en la tabla intermedia
+        String query = "INSERT INTO tbMunicionesEstacion (IdDetalleArmamentoEstacion, IdTipoMunicion_Calibre) VALUES (?, ?);";
+        
+        // Preparar la declaración SQL
+        PreparedStatement addRelaciones = conexionSql.getConexion().prepareStatement(query);
+        
+        // Iterar sobre los IDs de los calibres y agregar las relaciones
+        for (int idCalibre : idsCalibres) {
+            addRelaciones.setInt(1, idDetalleArma); // Último ID de arma obtenido
+            addRelaciones.setInt(2, idCalibre); // ID del calibre actual
+            addRelaciones.executeUpdate();
+        }
+        System.out.println("ID del detalle de arma: " + idDetalleArma);
+        System.out.println("IDs de calibres: " + idsCalibres);
+        
+        System.out.println("Relaciones entre arma y calibre agregadas con éxito.");
+    } catch (SQLException e) {
+        System.out.println("Error al agregar relaciones: " + e.toString());
     }
 }
  

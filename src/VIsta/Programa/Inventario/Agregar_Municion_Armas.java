@@ -22,9 +22,12 @@ import javax.swing.table.TableColumn;
  */
 public class Agregar_Municion_Armas extends javax.swing.JFrame  {
     
-    private Agregar_Armamento armasVista; 
-    private ModeloArmamento modeloArmas; 
-    private ModeloCalibre modelocalibre; 
+    ModeloArmamento modeloArmamento = new ModeloArmamento(); // Crea una única instancia del modelo
+
+    
+    ModeloCalibre modeloCalibre = new ModeloCalibre();
+
+
 
     
    
@@ -32,9 +35,9 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
      
     public Agregar_Municion_Armas() {
         initComponents();
-        modelocalibre = new ModeloCalibre();
-        
-        modelocalibre.mostrarParaSeleccion(this);
+        modeloCalibre = new ModeloCalibre();
+
+        modeloCalibre.mostrarParaSeleccion(this);
         addCheckBox(2, tbMuniconSelecccion);
         
     }
@@ -79,10 +82,14 @@ public List<Integer> obtenerCalibresSeleccionados(JTable table) {
 
     return calibresSeleccionados;
 }
-      public void enabled(boolean status)
-    {
-        this.enable(status);
+
+// Agregar un campo en la clase para almacenar los IDs de calibres seleccionados
+    private List<Integer> calibresSeleccionados = new ArrayList<>();
+    
+    public List<Integer> getCalibresSeleccionados() {
+        return calibresSeleccionados;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -147,8 +154,8 @@ public List<Integer> obtenerCalibresSeleccionados(JTable table) {
     }//GEN-LAST:event_btnAgregarMunicionActionPerformed
 
     private void btnAgregarMunicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMunicionMouseClicked
-    List<Integer> calibresSeleccionados = obtenerCalibresSeleccionados(tbMuniconSelecccion);
-
+   calibresSeleccionados = obtenerCalibresSeleccionados(tbMuniconSelecccion);
+    this.dispose();  // Cerrar la ventana de calibres después de obtener los IDs
     }//GEN-LAST:event_btnAgregarMunicionMouseClicked
 
     
