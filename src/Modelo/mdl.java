@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Reportes.VistaReportePatrullajeConParametos;
 import VIsta.Programa.Reportes.VistaReportrTransporteConParametros;
 import javax.swing.table.DefaultTableModel;
@@ -115,6 +116,59 @@ public class mdl {
             
 
             rrr.tbMostrarData.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+            System.out.println(ex.toString());
+
+        }
+
+    }
+    
+    //mostrar en el inicio de Inventario
+    public void mostrar(Inventario_Inicio rrr){
+
+        
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", 
+            "Marca", "NumeroDeGrupo"});
+
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte, \n" +
+"                         dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
+"FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
+"                         dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
+"                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
+"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+
+                modelo.addRow(new Object[] {rs.getString("IdDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),
+                    rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), 
+                    rs.getString("NumeroDeGrupo")});
+
+            }
+
+            
+
+            rrr.tbMostrarDatosTransporte.setModel(modelo);
 
 
 
