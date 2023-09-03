@@ -9,9 +9,11 @@ import Controlador.ControladorArmamento;
 import Controlador.cntrlClibre;
 import Modelo.ModeloArmamento;
 import Modelo.ModeloCalibre;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 /**
@@ -33,7 +35,7 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
         modelocalibre = new ModeloCalibre();
         
         modelocalibre.mostrarParaSeleccion(this);
-//        addCheckBox(2, tbMuniconSelecccion);
+        addCheckBox(2, tbMuniconSelecccion);
         
     }
 
@@ -53,6 +55,30 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
         
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
     } 
+    // Método para obtener los IDs de los calibres seleccionados
+public List<Integer> obtenerCalibresSeleccionados(JTable table) {
+    List<Integer> calibresSeleccionados = new ArrayList<>();
+    DefaultTableModel model = (DefaultTableModel) table.getModel();
+
+    for (int row = 0; row < model.getRowCount(); row++) {
+        // Verifica si la casilla de verificación en la columna 2 está seleccionada
+        boolean isSelected = IsSelected(row, 2, table);
+
+        if (isSelected) {
+            // Obtiene el ID de la columna 0 (la columna de los IDs)
+            int idCalibre = (int) model.getValueAt(row, 0);
+            calibresSeleccionados.add(idCalibre);
+
+            // Agrega un mensaje de depuración para verificar los calibres seleccionados
+            System.out.println("Calibre seleccionado - ID: " + idCalibre);
+        }
+    }
+
+    // Agrega un mensaje de depuración para mostrar todos los calibres seleccionados
+    System.out.println("Calibres seleccionados: " + calibresSeleccionados);
+
+    return calibresSeleccionados;
+}
       public void enabled(boolean status)
     {
         this.enable(status);
@@ -121,7 +147,8 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
     }//GEN-LAST:event_btnAgregarMunicionActionPerformed
 
     private void btnAgregarMunicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMunicionMouseClicked
-   
+    List<Integer> calibresSeleccionados = obtenerCalibresSeleccionados(tbMuniconSelecccion);
+
     }//GEN-LAST:event_btnAgregarMunicionMouseClicked
 
     

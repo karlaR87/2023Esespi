@@ -66,8 +66,7 @@ public class ControladorArmamento implements ActionListener{
              modeloArmamento.setCantidad(Integer.parseInt(Vista.spCantidad.getValue().toString()));
              modeloArmamento.setIdTipoArmamento(v);
              
-             modeloArmamento.agregar(modeloArmamento);
-             
+            modeloArmamento.agregar(modeloArmamento);
             
 
                 modeloArmamento.mostrar(Vista);

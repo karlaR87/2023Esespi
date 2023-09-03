@@ -198,26 +198,37 @@ public class ModeloArmamento {
     }
 
     //Agregar 
- public void agregar(ModeloArmamento armas) {
+ public int agregar(ModeloArmamento armas) {
     try {
         // Obtén el valor de IdTiposEquipamientoEstacion que intentas insertar
         int IdTipoArmamentoEstacion = armas.getIdTipoArmamento();
+
+        // El valor existe, puedes proceder con la inserción
+        String query = "INSERT INTO tbDetallesArmamentosEstacion (IdTipoArmamentoEstacion, DetalleArmamento, Cantidad) VALUES (?, ?, ?);";
         
-       
-            // El valor existe, puedes proceder con la inserción
-            String query = "INSERT INTO tbDetallesArmamentosEstacion (IdTipoArmamentoEstacion, DetalleArmamento, Cantidad) VALUES (?, ?, ?);";
-            PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query);
-            addDatos.setInt(1, IdTipoArmamentoEstacion);
-            String arma = armas.getArmas();
-            addDatos.setString(2, arma);
-            addDatos.setInt(3, armas.getCantidad());
-            addDatos.executeUpdate();
-            System.out.println("Datos agregados exitosamente.");
-       
+        // Agregar el Statement.RETURN_GENERATED_KEYS para obtener las claves generadas automáticamente
+        PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        
+        addDatos.setInt(1, IdTipoArmamentoEstacion);
+        String arma = armas.getArmas();
+        addDatos.setString(2, arma);
+        addDatos.setInt(3, armas.getCantidad());
+        addDatos.executeUpdate();
+
+        // Obtener las claves generadas automáticamente (en este caso, el ID)
+        ResultSet generatedKeys = addDatos.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int idDetalleArma = generatedKeys.getInt(1);
+            System.out.println("Detalle de arma agregado con ID: " + idDetalleArma);
+            return idDetalleArma; // Retorna el ID generado
+        } else {
+            throw new SQLException("No se pudo obtener el ID del detalle de arma.");
+        }
     } catch (SQLException e) {
         System.out.println("Error al agregar datos: " + e.toString());
-        }
+        return -1; // Retorna un valor indicando un error
     }
+}
  
  //MOSTRAR
     

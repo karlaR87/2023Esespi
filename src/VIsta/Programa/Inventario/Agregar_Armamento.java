@@ -20,6 +20,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
      */
     
     ModeloArmamento armas = new ModeloArmamento();
+    Agregar_Municion_Armas municion = new Agregar_Municion_Armas();
    
     public Agregar_Armamento() {
         initComponents();
@@ -187,33 +188,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-//        
-//        ModeloArmamento n = new ModeloArmamento();
-//
-//        //
-//        String variable = (String) cmbTipoArmamento.getSelectedItem();
-//        
-//            int v = -1;
-//            
-//            
-//            try {
-//                v = n.IdRetornoTipoArmamento(variable);
-//                System.out.println(v);
-//            } catch (SQLException ex) {
-//                
-//                java.util.logging.Logger.getLogger(ControladorArmamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//            }
-//           
-//             n.setArmas(txtDetalles.getText());
-//             n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
-//           
-//             
-//             
-//             n.setIdTipoArmamento(v);
-//             
-//             n.agregar(n);
-//            
-        
+//  
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
@@ -231,7 +206,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-         Agregar_Municion_Armas municion = new Agregar_Municion_Armas();
+        municion = new Agregar_Municion_Armas();
         municion.setVisible(true);
     }//GEN-LAST:event_btnAgregarMouseClicked
 

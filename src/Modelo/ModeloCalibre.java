@@ -150,7 +150,7 @@ public class ModeloCalibre {
             }
             calibre.tbMuniconSelecccion.setModel(modelo);
             
-            calibre.addCheckBox(2, calibre.tbMuniconSelecccion);
+//            calibre.addCheckBox(2, calibre.tbMuniconSelecccion);
 
         }catch(SQLException e){
             System.out.println(e.toString());
