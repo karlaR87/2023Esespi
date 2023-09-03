@@ -1,4 +1,3 @@
-
 package VIsta;
 
 
@@ -11,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -21,12 +21,13 @@ public class Login extends javax.swing.JFrame {
     Fuentes tipoFuentes;
     public Login() {
         initComponents();
+        ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());
+        jLabel1.setVisible(false);
         
         mdlUsuarios mdlUsuarios = new mdlUsuarios();
         cntrlLogin ctLg = new cntrlLogin(this, mdlUsuarios); 
        
         fontDesign();
-
     }
     
        
@@ -38,8 +39,6 @@ public class Login extends javax.swing.JFrame {
         OlvidoContra1.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
     }
     
-   
-
      public String convertirSHA256(String password) {
 	MessageDigest md = null;
 
@@ -67,6 +66,7 @@ public class Login extends javax.swing.JFrame {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         Registrarse = new javax.swing.JLabel();
         back13 = new javax.swing.JLabel();
         RecuperarContra = new javax.swing.JLabel();
@@ -81,18 +81,25 @@ public class Login extends javax.swing.JFrame {
         redondo = new javax.swing.JLabel();
         fondoLogin = new javax.swing.JLabel();
         redondo2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setUndecorated(true);
         setResizable(false);
-        setSize(new java.awt.Dimension(1027, 720));
+        setSize(new java.awt.Dimension(1027, 759));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1027, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1027x720.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, -1));
 
         Registrarse.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Registrarse.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,16 +212,29 @@ public class Login extends javax.swing.JFrame {
         redondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userBack.png"))); // NOI18N
         jPanel1.add(redondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 420, 80));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1030, 38));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerMenuBar.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(0, 7, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1027, 40));
 
         pack();
         setLocationRelativeTo(null);
@@ -278,7 +298,8 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                Login lg = new Login();
+                lg.setVisible(true);
             }
         });
     }
@@ -291,8 +312,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel back13;
     public javax.swing.JButton btnIngresar;
     private javax.swing.JLabel fondoLogin;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel redondo;
     private javax.swing.JLabel redondo1;

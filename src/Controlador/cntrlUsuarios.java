@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.mdlPreguntasRespuestasDSeguridad;
 import Modelo.mdlUsuarios;
 import VIsta.AskUsuario1;
+import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.PorPreguntasS;
 import VIsta.RecuperarContra;
@@ -44,7 +45,8 @@ public class cntrlUsuarios implements ActionListener{
        {
            if(vistaUsuario1.txtUsuario.getText().isBlank())
            {
-                JOptionPane.showMessageDialog(vistaUsuario1, "No se permite ningún campo vacío");
+               show("No se permite ningún campo vacío", 17, 1);
+               close1();
            }
            else{
                 modeloUsuarios.setUsuario(vistaUsuario1.txtUsuario.getText().trim());
@@ -52,20 +54,23 @@ public class cntrlUsuarios implements ActionListener{
 
                 IdCurrentUser = modeloUsuarios.readIDUsuario();
                 if(IdCurrentUser == 1)
-                {JOptionPane.showMessageDialog(vistaUsuario1, "Es Admin: " + IdCurrentUser);
-}
+                {
+                    show("Es el Administrador, restablezca de otra manera", 15,0);
+                    close1();
+                }
                 else
                 {
                     if(IdCurrentUser == -1)
                     {
-                        JOptionPane.showMessageDialog(vistaUsuario1, "No se encontró el usuario, intente nuevamente, Id: " + IdCurrentUser);
+                        show("No se encontró el usuario, intente nuevamente", 15, 1);
+                        close1();
                     }
                     else
                     {    
                          mdlPreguntasS.setIdUsuario(IdCurrentUser);
-                         modeloUsuarios.setIdUsuario(IdCurrentUser);
-                         JOptionPane.showMessageDialog(vistaUsuario1, "Usuario encontrado, Id: " + IdCurrentUser);
-                         vistaRecuperarContra.loadPreguntas();
+                         modeloUsuarios.setIdUsuario(IdCurrentUser);                         
+                         show("Usuario encontrado Id: " + IdCurrentUser, 17, 0);   
+                         close2();
                     }
                 }
            }
@@ -78,21 +83,74 @@ public class cntrlUsuarios implements ActionListener{
               String conCompleta = reestablecerContra.convertirSHA256(reestablecerContra.txtContra1.getText());
 
              modeloUsuarios.setContrasena(conCompleta);
-             System.out.println(modeloUsuarios.getIdUsuario() + "BBBB");
+ //            System.out.println(modeloUsuarios.getIdUsuario() + "BBBB");
                 
                 if(modeloUsuarios.updateConUsuario())
                 {
-                     JOptionPane.showMessageDialog(reestablecerContra, "Contraseña restablecida exitosamente");
-                    Login LG = new Login();
-                    LG.setVisible(true);
-                    vistaRecuperarContra.dispose();
+                    reestablecerContra.jLabel6.setVisible(true);
+                    show("Contraseña restablecida exitosamente", 17, 0);                   
+                    close3();    
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(reestablecerContra, "No se pudo restablecer la contraseña ");
+                    show("No se pudo restablecer la contraseña", 15 , 1);
+                    close1();
                 }
             }
             else{}
        }
+    }
+    
+     JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        vistaUsuario1.jLabel6.setVisible(true);
+        vistaRecuperarContra.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            vistaUsuario1.jLabel6.setVisible(false);
+            vistaRecuperarContra.setEnabled(true);
+        }
+        });
+    }
+    
+    public void close2()
+    {
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.dispose();
+            vistaUsuario1.jLabel6.setVisible(false);
+            vistaRecuperarContra.setEnabled(true);
+            //Esclusivo de close2
+            vistaRecuperarContra.loadPreguntas();
+        }
+        });
+    }
+    
+    public void close3()
+    {
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.dispose();
+            vistaRecuperarContra.setEnabled(true);
+            reestablecerContra.jLabel6.setVisible(false);
+            //Exclusivo de close3
+               Login LG = new Login();
+                    LG.setVisible(true);
+                    vistaRecuperarContra.dispose();
+            
+        }
+        });
     }
 }

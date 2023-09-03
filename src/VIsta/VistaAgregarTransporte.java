@@ -330,7 +330,10 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-         ModeloTransporte n = new ModeloTransporte();
+        
+        String texto1 = txtDetalles.getText();
+        
+        ModeloTransporte n = new ModeloTransporte();
         ModeloDatosTransporte m = new ModeloDatosTransporte();
         
         //

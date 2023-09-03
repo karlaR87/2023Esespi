@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -65,7 +66,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         JLabel lblBack6 = askUsuario.getlblBack();
         
         JLabel lblBack4 = porSMS.getlblBack();
-         
+        
         lblBack1.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
             Login LG = new Login();
