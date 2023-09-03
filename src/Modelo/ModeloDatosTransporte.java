@@ -70,18 +70,19 @@ public class ModeloDatosTransporte {
             addDatos.executeUpdate();
 
         } catch (SQLException e) {
+           
             System.out.println(e.toString());
         }
     }
     
     //Mostrar datos en las tablas
-    public void mostrar(Inventario_Inicio_Transportes IIT){
+    public void mostrar(VistaAgregarTransporte IIT){
 
         
 
         DefaultTableModel modelo = new DefaultTableModel();
 
-        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "IdTipoTransporteEstacion", "IdMarcaDeVehiculo", "IdGrupoPatrullaje"});
+        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", "Marca", "NumeroDeGrupo"});
 
 
 
@@ -89,7 +90,12 @@ public class ModeloDatosTransporte {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT * FROM tbDetallesTransportesEstacion";
+            String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte, \n" +
+"                         dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
+"FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
+"                         dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
+"                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
+"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje";
 
             ResultSet rs = statement.executeQuery(query);
 
@@ -99,7 +105,7 @@ public class ModeloDatosTransporte {
 
             while(rs.next()){
                 System.out.println("ddddd");
-                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("IdTipoTransporteEstacion"), rs.getString("IdMarcaDeVehiculo"), rs.getString("IdGrupoPatrullaje")});
+                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
 
             }
 
@@ -120,13 +126,13 @@ public class ModeloDatosTransporte {
     }
     
     //Barra de busqueda
-    public void mostrarDatos(Inventario_Inicio_Transportes IIT){ //Parametro de la busqueda
+    public void mostrarDatos(VistaAgregarTransporte IIT){ //Parametro de la busqueda
 
         
 
         DefaultTableModel modelo = new DefaultTableModel();
 
-        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "IdTipoTransporteEstacion", "IdMarcaDeVehiculo", "IdGrupoPatrullaje"});
+        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", "Marca", "NumeroDeGrupo"});
 
 
 
@@ -134,7 +140,14 @@ public class ModeloDatosTransporte {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT*FROM tbDetallesTransportesEstacion where DetalleTransporte like '%"+IIT.txtBusqueda.getText()+"%';"; //Parametro + el texto a obtener del textfield
+            String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte,\n" +
+"                        dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
+"FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
+"                        dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
+"                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
+"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje\n" +
+"\n" +
+"	 where NumeroDeGrupo like '%"+IIT.txtBusqueda.getText()+"%';"; //Parametro + el texto a obtener del textfield
 
             ResultSet rs = statement.executeQuery(query);
 
@@ -144,7 +157,7 @@ public class ModeloDatosTransporte {
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("IdTipoTransporteEstacion"), rs.getString("IdMarcaDeVehiculo"), rs.getString("IdGrupoPatrullaje")});
+                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
 
             }
 
@@ -164,7 +177,7 @@ public class ModeloDatosTransporte {
 
     }
     
-    public void eliminar(Inventario_Inicio_Transportes IIT2){
+    public void eliminar(VistaAgregarTransporte IIT2){
     
         //obtenemos que fila seleccionó el usuario
         int filaSeleccionada = IIT2.tbDatosTransporte.getSelectedRow();
@@ -184,7 +197,7 @@ public class ModeloDatosTransporte {
 
         
     
-    public void actualizar(Inventario_Inicio_Transportes IIT3){
+    public void actualizar(VistaAgregarTransporte IIT3){
 
         //obtenemos que fila seleccionó el usuario
 
@@ -194,9 +207,9 @@ public class ModeloDatosTransporte {
 
         String miId = IIT3.tbDatosTransporte.getValueAt(filaSeleccionada, 0).toString();
    
-       String nuevoValorIngresadoDetalle = IIT3.txtNuevoDetalle.getText();
+       String nuevoValorIngresadoDetalle = IIT3.txtDetalles.getText();
 
-       String nuevoValorIngresadoPlaca = IIT3.txtNuevaPLaca.getText();
+       String nuevoValorIngresadoPlaca = IIT3.txtPlaca.getText();
 
        
 

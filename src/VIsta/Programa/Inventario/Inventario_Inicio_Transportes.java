@@ -2,7 +2,7 @@
 package VIsta.Programa.Inventario;
 
 import Controlador.ControladorTransporte;
-import Controlador.ControladorTransporteEAB;
+        
 import Modelo.ModeloDatosTransporte;
 import Modelo.ModeloTransporte;
 import VIsta.VistaAgregarTransporte;
@@ -20,7 +20,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         fontDesign();
         
         ModeloDatosTransporte mn = new ModeloDatosTransporte();
-         mn.mostrar(this);
+        
          
          ModeloTransporte m = new ModeloTransporte();
         m.llenarCombo(cmbTipo);
@@ -216,8 +216,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
-        ModeloDatosTransporte modDtaos = new ModeloDatosTransporte();
-        modDtaos.mostrarDatos(this);
+        
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
     private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
@@ -225,22 +224,15 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBusquedaActionPerformed
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        men.eliminar(this);
-        men.mostrar(this);
+        
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        try {
-            VistaAgregarTransporte vb = new VistaAgregarTransporte();
-            vb.setVisible(true);
-        } catch (SQLException ex) {
-            //gger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
-        men.actualizar(this);
-        men.mostrar(this);
+       
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void tbDatosTransporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosTransporteMouseClicked
@@ -280,17 +272,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModeloTransporte modelo = new ModeloTransporte();
-                    ModeloDatosTransporte modDtaos = new ModeloDatosTransporte();
-                    Inventario_Inicio_Transportes me;
-                try {
-                    me = new Inventario_Inicio_Transportes();
-                     ControladorTransporteEAB ny = new ControladorTransporteEAB(modelo, modDtaos, me);
-                      me.setVisible(true);
-                          modDtaos.mostrar(me);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
                    
                     
                     
