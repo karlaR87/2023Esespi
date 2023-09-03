@@ -15,12 +15,19 @@ import java.util.logging.Logger;
 public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
 
    Fuentes tipoFuentes;
-    public Inventario_Inicio_Transportes() {
+    public Inventario_Inicio_Transportes() throws SQLException {
         initComponents();
         fontDesign();
         
         ModeloDatosTransporte mn = new ModeloDatosTransporte();
          mn.mostrar(this);
+         
+         ModeloTransporte m = new ModeloTransporte();
+        m.llenarCombo(cmbTipo);
+        
+       
+        m.llenarComboMarcas(cmbMarca);
+        m.llenarComboGrupos(cmbGrupo);
     }
 
      private void fontDesign()
@@ -49,7 +56,13 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cmbTipo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        cmbMarca = new javax.swing.JComboBox<>();
+        cmbGrupo = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,6 +81,11 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbDatosTransporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDatosTransporteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbDatosTransporte);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 580, 330));
@@ -80,7 +98,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
                 btnModificarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, -1, -1));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 400, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(68, 68, 68));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnaddBig.png"))); // NOI18N
@@ -90,7 +108,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
@@ -100,7 +118,7 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, -1, -1));
 
         txtBusqueda.setBorder(null);
         txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
@@ -119,26 +137,26 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         txtNuevoDetalle.setBorder(null);
-        jPanel1.add(txtNuevoDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 300, 30));
+        jPanel1.add(txtNuevoDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 300, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/txtWhite.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, -1, -1));
 
         txtNuevaPLaca.setBorder(null);
-        jPanel1.add(txtNuevaPLaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, 300, 30));
+        jPanel1.add(txtNuevaPLaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 300, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/txtWhite.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Placa a ingresar:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 130, 30));
+        jLabel1.setText("Grupo:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 290, 60, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nuevo detalle:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 130, 40));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 130, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,8 +166,33 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/newBackTransporte.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 90, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Placa a ingresar:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 130, 30));
+
+        cmbMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, 120, -1));
+
+        cmbGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, 90, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Tipo:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 60, 30));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Marca:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 60, 30));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/newBackTransporte.png"))); // NOI18N
+        jLabel10.setText("jLabel10");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,39 +211,44 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        try {
-            VistaAgregarTransporte vb = new VistaAgregarTransporte();
-            vb.setVisible(true);
-        } catch (SQLException ex) {
-        //gger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
         ModeloDatosTransporte modDtaos = new ModeloDatosTransporte();
         modDtaos.mostrarDatos(this);
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-       dispose();
-    }//GEN-LAST:event_jLabel4MouseClicked
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
 
-    ModeloDatosTransporte men = new ModeloDatosTransporte();
+    }//GEN-LAST:event_txtBusquedaActionPerformed
+
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-       men.eliminar(this);
-       men.mostrar(this);
+        men.eliminar(this);
+        men.mostrar(this);
     }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        try {
+            VistaAgregarTransporte vb = new VistaAgregarTransporte();
+            vb.setVisible(true);
+        } catch (SQLException ex) {
+            //gger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         men.actualizar(this);
-       men.mostrar(this);
+        men.mostrar(this);
     }//GEN-LAST:event_btnModificarMouseClicked
 
-    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+    private void tbDatosTransporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosTransporteMouseClicked
         
-    }//GEN-LAST:event_txtBusquedaActionPerformed
 
+    }//GEN-LAST:event_tbDatosTransporteMouseClicked
+
+    ModeloDatosTransporte men = new ModeloDatosTransporte();
     /**
      * @param args the command line arguments
      */
@@ -234,12 +282,20 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
             public void run() {
                 ModeloTransporte modelo = new ModeloTransporte();
                     ModeloDatosTransporte modDtaos = new ModeloDatosTransporte();
-                    Inventario_Inicio_Transportes me = new Inventario_Inicio_Transportes();
-                    ControladorTransporteEAB ny = new ControladorTransporteEAB(modelo, modDtaos, me);
+                    Inventario_Inicio_Transportes me;
+                try {
+                    me = new Inventario_Inicio_Transportes();
+                     ControladorTransporteEAB ny = new ControladorTransporteEAB(modelo, modDtaos, me);
+                      me.setVisible(true);
+                          modDtaos.mostrar(me);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Inventario_Inicio_Transportes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                   
                     
                     
-                    me.setVisible(true);
-                     modDtaos.mostrar(me);
+                   
+                 
             }
         });
     }
@@ -247,14 +303,20 @@ public class Inventario_Inicio_Transportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
+    public javax.swing.JComboBox<String> cmbGrupo;
+    public javax.swing.JComboBox<String> cmbMarca;
+    public javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbDatosTransporte;

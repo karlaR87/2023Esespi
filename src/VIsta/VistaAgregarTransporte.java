@@ -285,8 +285,14 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnModificar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificar4MouseClicked
-        Inventario_Inicio_Transportes i = new Inventario_Inicio_Transportes();
-        i.setVisible(true);
+        Inventario_Inicio_Transportes i;
+        try {
+            i = new Inventario_Inicio_Transportes();
+            i.setVisible(true);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(VistaAgregarTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
        this.dispose();
     }//GEN-LAST:event_btnModificar4MouseClicked
 

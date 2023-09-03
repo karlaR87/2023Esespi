@@ -8,6 +8,9 @@ import javax.swing.table.DefaultTableModel;
 public class ModeloDatosTransporte {
     private String detalles;
      private String placa;
+     private int tipo;
+     private int Marca;
+     private int Grupo;
 
     public String getDetalles() {
         return detalles;
@@ -23,6 +26,30 @@ public class ModeloDatosTransporte {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getMarca() {
+        return Marca;
+    }
+
+    public void setMarca(int Marca) {
+        this.Marca = Marca;
+    }
+
+    public int getGrupo() {
+        return Grupo;
+    }
+
+    public void setGrupo(int Grupo) {
+        this.Grupo = Grupo;
     }
      
      
@@ -153,6 +180,10 @@ public class ModeloDatosTransporte {
         }
     }
     
+                                     
+
+        
+    
     public void actualizar(Inventario_Inicio_Transportes IIT3){
 
         //obtenemos que fila seleccionó el usuario
@@ -175,7 +206,9 @@ public class ModeloDatosTransporte {
 
             updateUser.setString(1, nuevoValorIngresadoDetalle);
 
-            updateUser.setString(2, ( nuevoValorIngresadoPlaca));
+            updateUser.setString(2, nuevoValorIngresadoPlaca);
+            
+         
 
             updateUser.setString(3, miId);
 

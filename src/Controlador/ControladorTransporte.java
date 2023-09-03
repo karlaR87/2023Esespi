@@ -50,8 +50,14 @@ public class ControladorTransporte implements ActionListener{
             
             mdDTr.agregar(mdTr, mdDTr);
             
-            Inventario_Inicio_Transportes m = new Inventario_Inicio_Transportes();
-            mdDTr.mostrar(m);
+            Inventario_Inicio_Transportes m;
+            try {
+                m = new Inventario_Inicio_Transportes();
+                mdDTr.mostrar(m);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }       
         
     }

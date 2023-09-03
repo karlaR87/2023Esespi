@@ -22,7 +22,7 @@ public class ElecION_Equipo extends javax.swing.JFrame {
     }
 
     Agregar_EquipoEspecial ventanaNueva=new Agregar_EquipoEspecial();
-    Inventario_Inicio_Transportes vetana2 = new Inventario_Inicio_Transportes();
+    
     Agregar_calibre calibre = new Agregar_calibre();
     Agregar_Armamento Armamento = new Agregar_Armamento();
     
