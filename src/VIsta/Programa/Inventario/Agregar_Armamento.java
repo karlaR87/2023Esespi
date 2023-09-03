@@ -59,6 +59,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         txtbuscarArm = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
@@ -143,6 +144,19 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         });
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 420, -1, -1));
 
+        btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 100, 40));
+
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 123.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 540));
@@ -212,6 +226,15 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         MR.mostrarDatos(this);// TODO add your handling code here:
     }//GEN-LAST:event_txtbuscarArmKeyReleased
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+         Agregar_Municion_Armas municion = new Agregar_Municion_Armas();
+        municion.setVisible(true);
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -249,6 +272,7 @@ public class Agregar_Armamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JComboBox<String> cmbTipoArmamento;

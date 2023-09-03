@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import VIsta.Programa.Inventario.Agregar_Armamento;
+import VIsta.Programa.Inventario.Agregar_Municion_Armas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import VIsta.Programa.Inventario.Agregar_calibre;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -71,9 +77,20 @@ public class ModeloCalibre {
         System.out.println(e.toString());
     }
 }
-  
-  
-  
+      //Agregar 
+            public void agregarCalibreaArmas(int idArma, int idCalibre) {
+          try {
+              String query = "INSERT INTO tbMunicionesEstacion (IdDetalleArmamentoEstacion, IdTipoMunicion_Calibre) VALUES (?, ?);";
+              PreparedStatement addDatos = conexionSql.getConexion().prepareStatement(query);
+              addDatos.setInt(1, idArma);
+              addDatos.setInt(2, idCalibre);
+              addDatos.executeUpdate();
+              System.out.println("Datos de calibre agregados exitosamente.");
+          } catch (SQLException e) {
+              System.out.println("Error al agregar datos de calibre: " + e.toString());
+          }
+      }
+
   
   //MOSTRAR
     
@@ -105,7 +122,42 @@ public class ModeloCalibre {
     }
     
     
+      //MOSTRAR
     
+    public void mostrarParaSeleccion(Agregar_Municion_Armas calibre){
+        
+       System.out.println("mostrar");
+        //Definir un modelo de datos para la tabla
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        
+        //Agregar columnas o encabezado de la tabla
+        modelo.setColumnIdentifiers(new Object[] {"IdTipoMunicion_Calibre", "Calibre", "Checbox"});
+        
+        
+        //Hacer select a la base de datos
+        try{
+            Statement statement = conexionSql.getConexion().createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT IdTipoMunicion_Calibre, Calibre FROM tbTipoMuniciones_Calibre");
+            
+            
+            
+            //Recorrer los resultados
+            while(rs.next()){
+                modelo.addRow(new Object[] {rs.getInt("IdTipoMunicion_Calibre"), rs.getString("Calibre"), null} );
+                
+            }
+            calibre.tbMuniconSelecccion.setModel(modelo);
+            
+            calibre.addCheckBox(2, calibre.tbMuniconSelecccion);
+
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }
+
+    }
+
     
     
     //Eliminar 
@@ -173,6 +225,7 @@ public class ModeloCalibre {
             
 
     }
-    
+
+ 
     
 }

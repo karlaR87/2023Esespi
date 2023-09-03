@@ -260,26 +260,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDetallesActionPerformed
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-//    ModeloEquipoEspecial n = new ModeloEquipoEspecial();
-//
-//    String variable = (String) cmbClasificacion.getSelectedItem();
-//    int v = -1;
-//
-//    try {
-//        v = n.obtenerIdClasificacion(variable);
-//      
-//    } catch (SQLException ex) {
-//        java.util.logging.Logger.getLogger(cntrlEquiposEspeciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//    }
-//
-//    n.setDetalles(txtDetalles.getText());
-//    n.setCantidad(Integer.parseInt(spCantidad.getValue().toString()));
-//
-//    n.setIdTipoClasificacion(v);
-//
-//    n.agregar(n);
-//    n.mostrar(this);
-//            
+            
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void cmbClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasificacionActionPerformed

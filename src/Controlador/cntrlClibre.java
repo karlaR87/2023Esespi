@@ -25,7 +25,7 @@ public class cntrlClibre implements ActionListener{
         this.Vista.btnAdd.addActionListener(this);
         this.Vista.btnEliminar.addActionListener(this);
         this.Vista.btnModificar.addActionListener(this);
-        System.out.println("el inicio del controlador");
+        System.out.println("el inicio del controlador calibre");
         
         
     }

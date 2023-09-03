@@ -23,7 +23,7 @@ import javax.swing.table.TableColumn;
  */
 public class Registro_Idiomas extends javax.swing.JFrame {
 private Registro registro;  // Referencia a la instancia de Registro
-    private mdlIdiomas modeloIdiomas;  // Instancia de mdlIdiomas
+private mdlIdiomas modeloIdiomas;  // Instancia de mdlIdiomas
  
     public void setRegistro(Registro registro) {
         
@@ -173,6 +173,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         tbIdiomas.clearSelection();
 
         this.dispose();
+        
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     
@@ -184,6 +185,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         setVisible(true); // Muestra el formulario Registro_Idiomas
         modeloIdiomas.Mostrar(this);
     }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
