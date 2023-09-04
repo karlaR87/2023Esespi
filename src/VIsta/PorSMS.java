@@ -17,8 +17,13 @@ import javax.swing.JOptionPane;
 public class PorSMS extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
-    public PorSMS() {
+    RecuperarContra jFrame;
+    PorSMS Vista;
+    public PorSMS(RecuperarContra jFrame) {
         initComponents();
+        this.jFrame = jFrame;
+        this.Vista = this;
+        jLabel7.setVisible(false);
         visibleinCode(false); 
         fontDesign();
     }
@@ -48,6 +53,7 @@ public class PorSMS extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
@@ -68,6 +74,9 @@ public class PorSMS extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent870x700.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 102, 255));
@@ -191,17 +200,20 @@ public class PorSMS extends javax.swing.JPanel {
         Message message = Message.creator(
       new com.twilio.type.PhoneNumber(numeroReceptor), //+50369983522
       new com.twilio.type.PhoneNumber("+15738892923"),
-      "Ingresa el siguiente codigo en el sistema para reestablecer tu Contraseña:" + numeroAleatorio)
+      "Ingresa el siguiente codigo en el sistema para restablecer tu Contraseña:" + numeroAleatorio)
 
     .create();
 
     System.out.println(message.getSid());
-        JOptionPane.showMessageDialog(this, "Mensaje Enviado");
+    
+        show("Mensaje Enviado", 17, 0);      
+        close1();
         visibleinCode(true); 
     }
         catch(Exception e)
         {
-            JOptionPane.showMessageDialog(this, "Hubo un error en el envio");
+            show("Hubo un error en el envio", 17, 1);      
+            close1();
         }
     }
     
@@ -218,7 +230,29 @@ public class PorSMS extends javax.swing.JPanel {
        public JLabel getlblBack() {
         return lblBack;
     }
-
+       
+    JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        this.jLabel7.setVisible(true);
+        jFrame.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            Vista.jLabel7.setVisible(false);
+            jFrame.setEnabled(true);
+        }
+        });
+    }
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAceptar;
     public javax.swing.JButton btnEnviarCode;
@@ -232,6 +266,7 @@ public class PorSMS extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBack;
     public javax.swing.JTextField txtCodeN;

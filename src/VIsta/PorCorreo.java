@@ -20,7 +20,8 @@ public class PorCorreo extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     
     public PorCorreo() {
-        initComponents();      
+        initComponents();    
+        jLabel6.setVisible(false);
         visibleinCode(false);      
         fontDesign();
     }
@@ -69,7 +70,7 @@ public class PorCorreo extends javax.swing.JPanel {
             Random random = new Random();
             numeroAleatorio = random.nextInt(23543);
             
-            String Mensaje = "Ingresa el siguiente codigo en el sistema para reestablecer tu Contraseña: " + numeroAleatorio;
+            String Mensaje = "Ingresa el siguiente codigo en el sistema para restablecer tu Contraseña: " + numeroAleatorio;
            
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(CorreoRemitente));
@@ -82,7 +83,6 @@ public class PorCorreo extends javax.swing.JPanel {
             t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
             
             t.close();
-            JOptionPane.showMessageDialog(this, "Correo Enviado");
             visibleinCode(true);          
         }catch(Exception ex){
             System.out.println("Error fatal: " + ex.toString());
@@ -95,6 +95,7 @@ public class PorCorreo extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         txtMail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -114,6 +115,9 @@ public class PorCorreo extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent870x700.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         txtCode.setBackground(new java.awt.Color(255, 255, 255));
         txtCode.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -212,11 +216,6 @@ public class PorCorreo extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAceptarMouseClicked
 
-    
-    public void showDialog(String message){
-    JOptionPane.showMessageDialog(this, message);
-    }
-    
     public JButton getbtnAceptar() {
         return btnAceptar;
     }
@@ -235,6 +234,7 @@ public class PorCorreo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBack;

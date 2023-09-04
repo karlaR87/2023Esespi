@@ -5,6 +5,7 @@ import Modelo.mdlPolicias;
 import Modelo.mdlPreguntasRespuestasDSeguridad;
 import Modelo.mdlTipoPersonas_Personas;
 import Modelo.mdlUsuarios;
+import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.PreguntasSeguridad;
 import VIsta.Registro;
@@ -108,7 +109,7 @@ public class cntrlRegistro implements ActionListener {
         if(e.getSource() == preguntasS.btnAceptar)
         {
             if(preguntasS.isOK())
-            {
+            {   
                 try{
                 //Primero, Insertar a la persona
                 modeloRegistro.agregarRegistroYAsociarIdiomas(vistaJframeRegistro.idiomasSeleccionados);
@@ -148,11 +149,9 @@ public class cntrlRegistro implements ActionListener {
                         int TipoPersonas_Personas = mdlTipoPersonas.readIDTipoPersona();
                         mdlPolicias.setIdTipoPersonas_Personas(TipoPersonas_Personas);
                     mdlPolicias.insertPolicia();
-                JOptionPane.showMessageDialog(preguntasS, "Datos insertados exitosamente");
-
-                    vistaJframeRegistro.setVisible(false);
-                     Login lg = new Login();
-                    lg.setVisible(true);
+                    
+                show("Datos insertados exitosamente", 17, 0);      
+                close2();
                 }catch(Exception ea)
                 {
                     System.out.println(ea.toString());
@@ -160,9 +159,49 @@ public class cntrlRegistro implements ActionListener {
             }
             else
             {
-                
+                show("No se permite ningún campo vacío", 17, 1);      
+                close1();
             }
         }
+    }
+    
+    JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        preguntasS.jLabel12.setVisible(true);
+        vistaJframeRegistro.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            preguntasS.jLabel12.setVisible(false);
+            vistaJframeRegistro.setEnabled(true);
+        }
+        });
+    }
+    
+     public void close2()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            preguntasS.jLabel12.setVisible(false);
+            vistaJframeRegistro.setEnabled(true);
+            //Exclusivo de close2
+            vistaJframeRegistro.setVisible(false);
+                     Login lg = new Login();
+                    lg.setVisible(true);
+            
+        }
+        });
     }
     
 }

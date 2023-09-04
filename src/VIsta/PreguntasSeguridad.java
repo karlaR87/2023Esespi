@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VIsta;
 
 import fonts.Fuentes;
@@ -14,6 +10,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     public PreguntasSeguridad() {
         initComponents();
+        jLabel12.setVisible(false);
         fontDesign();
     }
       private void fontDesign()
@@ -41,6 +38,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -70,6 +68,9 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1010x700.png"))); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
@@ -116,7 +117,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
         txt2Respuesta.setForeground(new java.awt.Color(0, 0, 0));
         txt2Respuesta.setToolTipText("");
         txt2Respuesta.setBorder(null);
-        jPanel1.add(txt2Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 410, 30));
+        jPanel1.add(txt2Respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 436, 410, 30));
 
         txt2Pregunta.setBackground(new java.awt.Color(255, 255, 255));
         txt2Pregunta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -226,7 +227,6 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     {
        if (txt1Pregunta.getText().isBlank() || txt2Pregunta.getText().isBlank() || txt3Pregunta.getText().isBlank() || txt1Respuesta.getText().isBlank()|| txt2Respuesta.getText().isBlank() || txt3Respuesta.getText().isBlank())
         {
-            JOptionPane.showMessageDialog(this, "No se permite ningún campo vacío");
             return false;
         }
         else
@@ -253,6 +253,7 @@ public class PreguntasSeguridad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    public javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
