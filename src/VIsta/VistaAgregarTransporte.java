@@ -332,8 +332,23 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         
         String texto1 = txtDetalles.getText();
+        String texto2 = txtPlaca.getText();
         
-        ModeloTransporte n = new ModeloTransporte();
+        if(texto1.isBlank()||texto2.isBlank())
+        {
+            JOptionPane.showMessageDialog(null, "No se permiten campos vacios");
+        }
+        else if(texto2.length()< 7)
+        {
+            JOptionPane.showMessageDialog(null, "No se permiten menos de 7 digitos para la placa");
+        }
+        else if(texto2.length()>7)
+        {
+            JOptionPane.showMessageDialog(null, "No se permiten más de 7 digitos para la placa");
+        }
+        else
+        {
+            ModeloTransporte n = new ModeloTransporte();
         ModeloDatosTransporte m = new ModeloDatosTransporte();
         
         //
@@ -377,6 +392,9 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
     
              m.agregar(n, m);
              m.mostrar(this);
+        }
+        
+        
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked

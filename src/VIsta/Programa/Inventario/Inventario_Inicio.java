@@ -32,7 +32,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanelAddPolice = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnDeleteEquipo = new javax.swing.JButton();
@@ -44,6 +43,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         tbMostrarDatosEquipoEsp = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbMostrarDatosArmamento = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -58,15 +58,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanelAddPolice.setOpaque(false);
         jPanelAddPolice.setPreferredSize(new java.awt.Dimension(740, 444));
         jPanelAddPolice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/lapiz 1.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanelAddPolice.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 30, 40));
-
         jPanel3.add(jPanelAddPolice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 740, 444));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
@@ -122,7 +113,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbMostrarDatosTransporte);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 690, 170));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 820, 170));
 
         tbMostrarDatosEquipoEsp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,7 +128,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbMostrarDatosEquipoEsp);
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 690, 160));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 820, 160));
 
         tbMostrarDatosArmamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,7 +143,15 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tbMostrarDatosArmamento);
 
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 690, 160));
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 820, 160));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/lapiz 1.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 470, 30, 40));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 710));
 
