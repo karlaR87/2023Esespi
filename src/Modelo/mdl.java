@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Reportes.VistaReportePatrullajeConParametos;
 import VIsta.Programa.Reportes.VistaReportrTransporteConParametros;
@@ -181,4 +182,6 @@ public class mdl {
         }
 
     }
+    
+    
 }

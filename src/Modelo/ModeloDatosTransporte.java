@@ -81,6 +81,7 @@ public class ModeloDatosTransporte {
         
 
         DefaultTableModel modelo = new DefaultTableModel();
+       
 
         modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", "Marca", "NumeroDeGrupo"});
 
