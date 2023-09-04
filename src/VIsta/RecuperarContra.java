@@ -22,13 +22,14 @@ public class RecuperarContra extends javax.swing.JFrame {
     private MenuRC menu = new MenuRC();
     private PorCorreo porCorreo = new PorCorreo();
     private PorPreguntasS porPreguntasS;
-    private PorSMS porSMS = new PorSMS();
+    private PorSMS porSMS = new PorSMS(this);
     private ReestablecerContra resCon;
     private CardLayout cardLayout;
     
     public mdlPreguntasRespuestasDSeguridad mdlPreguntasDSeguridad;
     public ControladorRecuperarContra cntrRegistro;
     public ModeloRegistro mdlRegistro;
+    public cntrlUsuarios cntrlUsuarios;
     
     public RecuperarContra() {
         initComponents();        
@@ -44,7 +45,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         mdlPolicias mdlpolicias = new mdlPolicias();
         cntrRegistro = new ControladorRecuperarContra(mdlRegistro, this, resCon, porCorreo, porSMS, mdlpolicias, mdlUsuario, mdlTipoPersonasP);
         
-        cntrlUsuarios cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this, resCon);     
+        cntrlUsuarios = new cntrlUsuarios(mdlUsuario, askUsuario, mdlPreguntasDSeguridad, this, resCon);     
         
         cardLayout = new CardLayout();
         pnlPrincipal.setLayout(cardLayout);
@@ -121,30 +122,91 @@ public class RecuperarContra extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlPrincipal = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btnMinimizar = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(870, 700));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(870, 730));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlPrincipal.setPreferredSize(new java.awt.Dimension(870, 700));
         pnlPrincipal.setLayout(new java.awt.CardLayout());
+        getContentPane().add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 870, 700));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1030, 38));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Minus-.png"))); // NOI18N
+        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 11, -1, -1));
+
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/XClose.png"))); // NOI18N
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 4, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerMenuBar3.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1027, 30));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    int LayoutX;
+    int LayoutY;
+    
+    private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
+        if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            this.setExtendedState(ICONIFIED);
+        }
+    }//GEN-LAST:event_btnMinimizarMouseClicked
+
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+        if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnCerrarMouseClicked
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
+    }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            LayoutX = evt.getX();
+            LayoutY = evt.getY();
+        }
+    }//GEN-LAST:event_jPanel2MousePressed
+
     public void loadPreguntas() 
     {
-        porPreguntasS = new PorPreguntasS(mdlPreguntasDSeguridad);
+        porPreguntasS = new PorPreguntasS(mdlPreguntasDSeguridad, this);
         pnlPrincipal.add(porPreguntasS, "PreguntasS");
            
         JLabel lblBack3 = porPreguntasS.getlblBack();
@@ -226,6 +288,10 @@ public class RecuperarContra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnCerrar;
+    private javax.swing.JLabel btnMinimizar;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 }

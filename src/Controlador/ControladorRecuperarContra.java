@@ -3,6 +3,7 @@ import Modelo.ModeloRegistro;
 import Modelo.mdlPolicias;
 import Modelo.mdlTipoPersonas_Personas;
 import Modelo.mdlUsuarios;
+import VIsta.JoptionReplacemnt;
 import VIsta.PorCorreo;
 import VIsta.PorSMS;
 import VIsta.RecuperarContra;
@@ -56,7 +57,8 @@ public class ControladorRecuperarContra implements ActionListener{
           if(porCorreo.txtMail.getText().isBlank())
           {
             porCorreo.numeroAleatorio = 0;
-            JOptionPane.showMessageDialog(porCorreo, "Por favor, ingrese su correo electrónico");
+            show("Ingrese su correo electrónico", 17, 1);
+            close1();
           }
           else
           {
@@ -65,13 +67,16 @@ public class ControladorRecuperarContra implements ActionListener{
             if(IdCurrentPersona == -1)
             {
               porCorreo.numeroAleatorio = 0;
-              JOptionPane.showMessageDialog(porCorreo, "No se encontró el correo electrónico, intente nuevamente");
+               show("No se encontró el correo electrónico", 17, 1);
+                close1();
             }
             else
             {
                 //Ya con el idPersonas
                 System.out.println("Si hay persona con ese correo: " + IdCurrentPersona);
                 porCorreo.EnviarCorreo();
+                show("Correo Enviado", 17, 0);
+                close1();
             }
           }
        }
@@ -81,11 +86,11 @@ public class ControladorRecuperarContra implements ActionListener{
         String txtcode = porCorreo.txtCode.getText();
         String numeroA = String.valueOf(porCorreo.numeroAleatorio);
         if(txtcode.isBlank())
-        {porCorreo.showDialog("Por favor, ingrese el código enviado a su correo electrónico");}
+        { show("Ingrese el código enviado a su correo electrónico", 15, 1);
+          close1();}
         else{
             if(txtcode.equals(numeroA))
             {
-                porCorreo.showDialog("Codigos iguales");  
                 porCorreo.numeroAleatorio = 0;
                 porCorreo.txtMail.setText("");
                 porCorreo.txtCode.setText("");
@@ -99,7 +104,9 @@ public class ControladorRecuperarContra implements ActionListener{
                 
                 if(IdCurrentUser == -1)
                 {
-                     JOptionPane.showMessageDialog(porCorreo, "No se encontró el usuario");
+                    show("No se encontró el usuario", 17, 1);
+                    close1();
+
                 }
                 else
                 {
@@ -108,7 +115,8 @@ public class ControladorRecuperarContra implements ActionListener{
                 }
             }
             else{
-                 porCorreo.showDialog("El código ingresado no coincide, intente nuevamente");           
+                 show("El código ingresado no coincide, intente nuevamente", 14, 1);      
+                 close1();
                 }
             }
        }
@@ -118,7 +126,8 @@ public class ControladorRecuperarContra implements ActionListener{
           if(porSMS.txtNumero.getText().isBlank())
           {
             porSMS.numeroAleatorio = 0;
-            JOptionPane.showMessageDialog(porSMS, "Por favor, ingrese su número telefónico");
+            show("Ingrese su número telefónico", 17, 1);      
+            close1();
           }
           else
           {
@@ -127,7 +136,8 @@ public class ControladorRecuperarContra implements ActionListener{
             if(IdCurrentPersona == -1)
             {
               porSMS.numeroAleatorio = 0;
-              JOptionPane.showMessageDialog(porSMS, "No se encontró el número telefónico, intente nuevamente");
+              show("No se encontró el número telefónico", 17, 1);      
+              close1();
             }
             else
             {
@@ -143,11 +153,14 @@ public class ControladorRecuperarContra implements ActionListener{
         String txtcode = porSMS.txtCodeN.getText();
         String numeroA = String.valueOf(porSMS.numeroAleatorio);
         if(txtcode.isBlank())
-        {JOptionPane.showMessageDialog(porSMS, "Por favor, ingrese el código enviado a su número telefónico");}
+        {
+            show("Ingrese el código enviado a su número telefónico", 16, 1);      
+            close1();
+        }
         else{
             if(txtcode.equals(numeroA))
             {
-                JOptionPane.showMessageDialog(porSMS, "Codigos iguales");  
+                //JOptionPane.showMessageDialog(porSMS, "Codigos iguales");  
                 porSMS.numeroAleatorio = 0;
                 porSMS.txtNumero.setText("");
                 porSMS.txtCodeN.setText("");
@@ -160,8 +173,9 @@ public class ControladorRecuperarContra implements ActionListener{
                 System.out.println(IdCurrentUser);
                 
                 if(IdCurrentUser == -1)
-                {
-                     JOptionPane.showMessageDialog(porCorreo, "No se encontró el usuario");
+                {      
+                    show("No se encontró el usuario", 17, 1);      
+                    close1();
                 }
                 else
                 {
@@ -170,10 +184,35 @@ public class ControladorRecuperarContra implements ActionListener{
                 }
             }
             else{ 
-                 JOptionPane.showMessageDialog(porSMS, "El código ingresado no coincide, intente nuevamente");        
+                 show("El código ingresado no coincide", 17, 1);      
+                 close1();
                 }
             }
        }
+    }
+    
+    JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        porCorreo.jLabel6.setVisible(true);
+        porSMS.jLabel7.setVisible(true);
+        vistaRecuperarContra.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            porCorreo.jLabel6.setVisible(false);
+             porSMS.jLabel7.setVisible(false);
+            vistaRecuperarContra.setEnabled(true);
+        }
+        });
     }
 }   
         

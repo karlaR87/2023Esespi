@@ -33,8 +33,7 @@ public class cntrlUsuarios implements ActionListener{
         this.reestablecerContra = reestablecerContra;
         
         this.vistaUsuario1.btnAceptar.addActionListener(this);
-        this.reestablecerContra.btnAceptar.addActionListener(this);
-        
+        this.reestablecerContra.btnAceptar.addActionListener(this);       
     }
      
      public int IdCurrentUser;
@@ -45,7 +44,7 @@ public class cntrlUsuarios implements ActionListener{
        {
            if(vistaUsuario1.txtUsuario.getText().isBlank())
            {
-               show("No se permite ningún campo vacío", 17, 1);
+               show("Ingrese su usuario", 17, 1);
                close1();
            }
            else{
@@ -101,11 +100,11 @@ public class cntrlUsuarios implements ActionListener{
        }
     }
     
-     JoptionReplacemnt Jo;
+    JoptionReplacemnt Jo;
     
     public void show(String msg, int sizeTXT, int img)
     {
-        vistaUsuario1.jLabel6.setVisible(true);
+        vistaUsuario1.jLabel6.setVisible(true);     
         vistaRecuperarContra.setEnabled(false);
         Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
         Jo.setVisible(true);

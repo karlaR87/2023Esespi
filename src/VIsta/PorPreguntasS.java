@@ -1,6 +1,8 @@
 
 package VIsta;
 
+import Controlador.ControladorRecuperarContra;
+import Controlador.cntrlUsuarios;
 import Modelo.mdlPreguntasRespuestasDSeguridad;
 import fonts.Fuentes;
 import java.util.List;
@@ -21,10 +23,15 @@ public class PorPreguntasS extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
     public mdlPreguntasRespuestasDSeguridad mdlPreguntasS;
-
-    public PorPreguntasS(mdlPreguntasRespuestasDSeguridad mdlPreguntasS) {
+    RecuperarContra jFrame;
+    PorPreguntasS Vista;
+    
+    public PorPreguntasS(mdlPreguntasRespuestasDSeguridad mdlPreguntasS, RecuperarContra jFrame) {
         this.mdlPreguntasS = mdlPreguntasS;
+        this.Vista = this;
+        this.jFrame = jFrame;
         initComponents();
+        jLabel6.setVisible(false);
         initPreguntas();
         fontDesign();
     }
@@ -68,6 +75,7 @@ public class PorPreguntasS extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         txtR2 = new javax.swing.JTextField();
         txtR3 = new javax.swing.JTextField();
         txtR1 = new javax.swing.JTextField();
@@ -85,6 +93,9 @@ public class PorPreguntasS extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent870x700.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         txtR2.setBackground(new java.awt.Color(255, 255, 255));
         txtR2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -194,18 +205,19 @@ public class PorPreguntasS extends javax.swing.JPanel {
             
             if(txtR1.getText().isBlank() || txtR2.getText().isBlank() || txtR3.getText().isBlank())
             {
-                JOptionPane.showMessageDialog(this, "Por favor, ingrese todas las respuestas");
+                show("Ingrese todas las respuestas", 17,1);
+                close1();
                 return false;
             }
             else{
                 if(!txtR1.getText().equals(R1)|| !txtR2.getText().equals(R2) || !txtR3.getText().equals(R3))
-                {
-                    JOptionPane.showMessageDialog(this, "Alguna de las respuestas es incorrecta, intente nuevamente");
+                {                   
+                    show("Alguna de las respuestas es incorrecta", 17,1);
+                    close1();
                     return false;
                 }
                 else
                 {
-                   JOptionPane.showMessageDialog(this, "Todo OK");
                     txtR1.setText("");
                     txtR2.setText("");
                     txtR3.setText("");
@@ -226,6 +238,28 @@ public class PorPreguntasS extends javax.swing.JPanel {
    public JLabel getlblBack() {
         return lblBack;
     }
+   
+    JoptionReplacemnt Jo;
+   
+   public void show(String msg, int sizeTXT, int img)
+    {
+        this.jLabel6.setVisible(true);     
+        jFrame.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            Vista.jLabel6.setVisible(false);
+            jFrame.setEnabled(true);
+        }
+        });
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAceptar;
@@ -233,6 +267,7 @@ public class PorPreguntasS extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblPregunta1;

@@ -82,6 +82,8 @@ public class Login extends javax.swing.JFrame {
         fondoLogin = new javax.swing.JLabel();
         redondo2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btnMinimizar = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -91,7 +93,7 @@ public class Login extends javax.swing.JFrame {
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setUndecorated(true);
         setResizable(false);
-        setSize(new java.awt.Dimension(1027, 759));
+        setSize(new java.awt.Dimension(1027, 752));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -212,29 +214,44 @@ public class Login extends javax.swing.JFrame {
         redondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userBack.png"))); // NOI18N
         jPanel1.add(redondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 420, 80));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(1030, 38));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Minus-.png"))); // NOI18N
+        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 11, -1, -1));
+
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/XClose.png"))); // NOI18N
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(995, 4, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerMenuBar.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1027, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(0, 7, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1027, 40));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1027, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -267,6 +284,31 @@ public class Login extends javax.swing.JFrame {
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIngresarMouseClicked
+
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+         if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnCerrarMouseClicked
+
+    private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
+       if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            this.setExtendedState(ICONIFIED);
+        }
+    }//GEN-LAST:event_btnMinimizarMouseClicked
+
+    int LayoutX;
+    int LayoutY;
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+         if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            LayoutX = evt.getX();
+            LayoutY = evt.getY();
+        }
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
@@ -310,7 +352,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Registrarse;
     private javax.swing.JLabel back12;
     private javax.swing.JLabel back13;
+    private javax.swing.JLabel btnCerrar;
     public javax.swing.JButton btnIngresar;
+    private javax.swing.JLabel btnMinimizar;
     private javax.swing.JLabel fondoLogin;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

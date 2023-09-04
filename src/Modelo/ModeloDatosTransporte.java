@@ -2,6 +2,7 @@ package Modelo;
 import VIsta.Programa.Inventario.Inventario_Inicio_Transportes;
 import VIsta.VistaAgregarTransporte;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -71,7 +72,7 @@ public class ModeloDatosTransporte {
 
         } catch (SQLException e) {
            
-            System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null,e.toString());
         }
     }
     
@@ -120,7 +121,7 @@ public class ModeloDatosTransporte {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null,ex.toString());
 
         }
 
@@ -172,7 +173,7 @@ public class ModeloDatosTransporte {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+           JOptionPane.showMessageDialog(null,ex.toString());
 
         }
 
@@ -190,7 +191,7 @@ public class ModeloDatosTransporte {
             PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tbDetallesTransportesEstacion where IdDetalleTransporteEstacion = '" + miId + "'");
             deleteUser.executeUpdate();
         } catch (Exception e) {
-         System.out.println(e.toString());
+         JOptionPane.showMessageDialog(null,e.toString());
         }
     }
     
@@ -234,7 +235,7 @@ public class ModeloDatosTransporte {
 
 
 
-            System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null,e.toString());
 
 
 
