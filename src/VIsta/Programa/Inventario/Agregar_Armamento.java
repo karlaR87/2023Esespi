@@ -9,6 +9,7 @@ import Modelo.ModeloEquipoEspecial;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author karla
@@ -188,7 +189,9 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-//  
+       
+        
+        
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked

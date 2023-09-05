@@ -8,6 +8,7 @@ import VIsta.Registro_Idiomas;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,7 +58,7 @@ public class mdlIdiomas {
             idiomas.addCheckBox(2, idiomas.tbIdiomas);
 
         }catch(SQLException e){
-            System.out.println(e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
         }
     }
      
