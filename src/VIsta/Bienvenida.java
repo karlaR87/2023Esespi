@@ -3,6 +3,7 @@ package VIsta;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 
@@ -11,6 +12,8 @@ public class Bienvenida extends javax.swing.JFrame {
 
     public Bienvenida() {
         initComponents();
+        ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());
+
         btnRegistroContinuar.setVisible(false);
         MostrarBoton();
         

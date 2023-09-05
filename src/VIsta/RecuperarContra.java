@@ -33,7 +33,7 @@ public class RecuperarContra extends javax.swing.JFrame {
     
     public RecuperarContra() {
         initComponents();        
-        
+        ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());
         mdlUsuarios mdlUsuario = new mdlUsuarios();
         mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();       
 
