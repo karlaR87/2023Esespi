@@ -68,6 +68,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         lblRegresar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(70, 70, 70));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 500));
@@ -92,7 +93,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         ));
         jScrollPane1.setViewportView(tbNacionalidad);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 460, 410));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 460, 410));
 
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -106,7 +107,8 @@ private Registro registro;  // Referencia a la instancia de Registro
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 90, 40));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/RegresarImg.png"))); // NOI18N
+        lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
+        lblRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegresarMouseClicked(evt);

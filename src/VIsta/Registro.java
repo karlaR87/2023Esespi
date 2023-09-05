@@ -64,9 +64,9 @@ public class Registro extends javax.swing.JFrame {
   
     private void PanelsShowInit()
     {
-        Registro_DatosPersonales RDatosPersonales = new Registro_DatosPersonales();
-        RegistroInfoPolicial RInfoPolicial = new RegistroInfoPolicial();
-        RegistroUsuario RUsuario = new RegistroUsuario();
+        Registro_DatosPersonales RDatosPersonales = new Registro_DatosPersonales(this);
+        RegistroInfoPolicial RInfoPolicial = new RegistroInfoPolicial(this);
+        RegistroUsuario RUsuario = new RegistroUsuario(this);
         PreguntasSeguridad RPreguntasS = new PreguntasSeguridad();
   
         ModeloRegistro mdlRegistro = new ModeloRegistro();
@@ -132,27 +132,67 @@ public class Registro extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        btnMinimizar = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1010, 720));
+        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1010, 720));
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(1012, 720));
+        jPanel1.setBackground(new java.awt.Color(70, 70, 70));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1010, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setPreferredSize(new java.awt.Dimension(1010, 720));
         jPanel2.setLayout(new java.awt.CardLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, -1, 720));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1010, 720));
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1010, 38));
+        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel3MouseDragged(evt);
+            }
+        });
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel3MousePressed(evt);
+            }
+        });
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Minus-.png"))); // NOI18N
+        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseClicked(evt);
+            }
+        });
+        jPanel3.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 11, -1, -1));
+
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/XClose.png"))); // NOI18N
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseClicked(evt);
+            }
+        });
+        jPanel3.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 4, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerMenuBar.png"))); // NOI18N
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,6 +204,30 @@ public class Registro extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
+        if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            this.setExtendedState(ICONIFIED);
+        }
+    }//GEN-LAST:event_btnMinimizarMouseClicked
+    int LayoutX;
+    int LayoutY;
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+        if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnCerrarMouseClicked
+
+    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
+        this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
+    }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+        if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
+            LayoutX = evt.getX();
+            LayoutY = evt.getY();
+        }
+    }//GEN-LAST:event_jPanel3MousePressed
     public void loadInfoUsuario()
     {
         cardLayout.show(jPanel2, "rUsuario"); 
@@ -210,8 +274,12 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnCerrar;
+    private javax.swing.JLabel btnMinimizar;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
 

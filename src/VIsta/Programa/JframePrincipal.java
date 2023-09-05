@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
@@ -29,6 +30,8 @@ public class JframePrincipal extends javax.swing.JFrame {
       Color colorChange = new Color(255, 98, 98);
     public JframePrincipal() {       
         initComponents();
+        ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());
+
         slideMenu.setSize(0, 600);
         jLabel1.setVisible(false);
         jLabel3.setVisible(false);
