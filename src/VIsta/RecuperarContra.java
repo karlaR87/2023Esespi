@@ -38,7 +38,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         mdlPreguntasDSeguridad = new mdlPreguntasRespuestasDSeguridad();       
 
         askUsuario = new AskUsuario1();
-        resCon = new ReestablecerContra();
+        resCon = new ReestablecerContra(this);
         
         mdlTipoPersonas_Personas mdlTipoPersonasP = new mdlTipoPersonas_Personas();
         mdlRegistro = new ModeloRegistro();        
@@ -138,7 +138,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         getContentPane().add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 870, 700));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1030, 38));
+        jPanel2.setPreferredSize(new java.awt.Dimension(870, 30));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel2MouseDragged(evt);
@@ -172,7 +172,7 @@ public class RecuperarContra extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerMenuBar3.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1027, 30));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 30));
 
         pack();
         setLocationRelativeTo(null);
