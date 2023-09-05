@@ -310,7 +310,7 @@ public class ModeloEquipoEspecial {
 
         } catch (SQLException e) {
             // Manejo de errores
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.toString());
         } finally {
             // Cerrar recursos
             if (result != null) {
@@ -352,7 +352,7 @@ public class ModeloEquipoEspecial {
             // Puedes mostrar un mensaje de error al usuario o tomar alguna otra acción aquí
         }
     } catch (SQLException e) {
-        System.out.println("Error al agregar datos: " + e.toString());
+        JOptionPane.showMessageDialog(null, e.toString());
     }
 }
 // Función para verificar si un valor de IdTiposEquipamientoEstacion existe en tbTiposEquipamientoEstacion
@@ -373,7 +373,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
         // Si result tiene al menos una fila, el valor existe
         existe = result.next();
     } catch (SQLException e) {
-        System.out.println("Error al verificar la existencia del valor: " + e.toString());
+        JOptionPane.showMessageDialog(null, e.toString());
     } finally {
         // Cerrar recursos
         if (result != null) {
@@ -438,7 +438,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -468,7 +468,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
                 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -498,7 +498,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
 
         inventa.tbEquiposEspeciales.setModel(tabla);
     } catch (SQLException ex) {
-        System.out.println(ex.toString());
+        JOptionPane.showMessageDialog(null, ex.toString());
     }
 }
      
@@ -518,7 +518,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
             deleteUser.executeUpdate();
         } catch (Exception e) {
             
-         System.out.println(e.toString());
+         JOptionPane.showMessageDialog(null, e.toString());;
         }
     }
 
@@ -568,9 +568,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
                 
             } catch (Exception e) {
                 
-                System.out.println("Error de conversión a entero: " + e.getMessage());
-                
-                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, e.toString());
             }
             
         } catch (SQLException ex) {

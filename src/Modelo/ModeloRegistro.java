@@ -143,8 +143,6 @@ public class ModeloRegistro {
         this.Idgenero = Idgenero;
     }
     
-    
-    //PARTE DE ADRIANA TEL Y CORREO
 
     public String getNumeroTelefonico() {
         return numeroTelefonico;
@@ -162,6 +160,30 @@ public class ModeloRegistro {
         this.CorreoElectronico = CorreoElectronico;
     }
     
+    public int readIdTipoUsuarioFromCorreo()
+    {
+        try{   
+            String query = "SELECT IdNivelUsuario FROM tbUsuarios WHERE IdUsuario = (\n" +
+            "SELECT IdUsuario FROM tbPolicias WHERE IdTipoPersonas_Personas =\n" +
+            "(SELECT IdTipoPersonas_Personas FROM tbTiposPersonas_Personas WHERE IdPersona = (\n" +
+            "SELECT IdPersona FROM tbPersonas WHERE CorreoElectronico = ?)))";    
+            PreparedStatement readIdTipoUser = conexionSql.getConexion().prepareStatement(query);
+            readIdTipoUser.setString(1, CorreoElectronico);
+            ResultSet rs = readIdTipoUser.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdNivelUsuario");
+            } else {          
+                return -1;
+                
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    }
+    
    public int readIdUltimaPersona()
     {
         try{   
@@ -177,10 +199,11 @@ public class ModeloRegistro {
                 return -1;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuarioPersonas: " + e.toString());
+             JOptionPane.showMessageDialog(null, e.toString());
             return -1;
         }
     } 
+   
     
     public int readIdTelefono()
     {
@@ -198,7 +221,28 @@ public class ModeloRegistro {
                 return -1;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuario: " + e.toString());
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    } 
+    
+    public int readDUI()
+    {
+        try{   
+            String query = "SELECT IdPersona FROM tbPersonas WHERE Dui = ?";    
+            PreparedStatement readIdPersonaTelefono = conexionSql.getConexion().prepareStatement(query);
+            readIdPersonaTelefono.setString(1, DUI);
+            
+             ResultSet rs = readIdPersonaTelefono.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
             return -1;
         }
     } 
@@ -215,11 +259,12 @@ public class ModeloRegistro {
             // Verificar si hay alguna fila en el ResultSet
             if (rs.next()) {
                 return rs.getInt("IdPersona");
+                
             } else {          
                 return -1;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuario: " + e.toString());
+            JOptionPane.showMessageDialog(null, e.toString());
             return -1;
 
         }
@@ -533,7 +578,7 @@ public class ModeloRegistro {
 
             return true;
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null, e.toString());
             return false;
         }
     }

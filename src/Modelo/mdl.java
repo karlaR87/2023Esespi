@@ -7,6 +7,7 @@ import VIsta.Programa.Reportes.VistaReportePatrullajeConParametos;
 import VIsta.Programa.Reportes.VistaReportrTransporteConParametros;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 
 public class mdl {
@@ -68,7 +69,7 @@ public class mdl {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+              JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -124,7 +125,7 @@ public class mdl {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+             JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -177,7 +178,7 @@ public class mdl {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+              JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 

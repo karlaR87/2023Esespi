@@ -21,7 +21,8 @@ public class RegistroUsuario extends javax.swing.JPanel {
             md = MessageDigest.getInstance("SHA-256");
 	}
 	catch (NoSuchAlgorithmException e) {
-		System.out.println(e.toString());
+		
+                JOptionPane.showMessageDialog(null, e.toString());
 		return null;
 	}
 

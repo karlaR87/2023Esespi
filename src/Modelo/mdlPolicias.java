@@ -3,6 +3,7 @@ package Modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class mdlPolicias {
     private int idUsuario;
@@ -89,7 +90,7 @@ public class mdlPolicias {
             return rs;
             
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readPoliceInfoWithJoins: " + e.toString());
+             JOptionPane.showMessageDialog(null, e.toString());
             return null;
         }
     }
@@ -109,7 +110,7 @@ public class mdlPolicias {
             return true;
           
         }catch(Exception e){
-            System.out.println("ERROR en el query InsertPolicia: " + e.toString());
+             JOptionPane.showMessageDialog(null, e.toString());
             return false;
         }
     }
@@ -130,7 +131,7 @@ public class mdlPolicias {
                 return -1;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuarioA: " + e.toString());
+             JOptionPane.showMessageDialog(null, e.toString());
             return -1;
 
         }

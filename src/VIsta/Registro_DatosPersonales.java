@@ -193,38 +193,23 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl15.setText("Genero ");
         ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 210, 30));
 
-        txtNombres.setBackground(new java.awt.Color(255, 255, 255));
         txtNombres.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
-        txtNombres.setText(" ");
         txtNombres.setBorder(null);
         ContenedorP.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 230, 30));
 
-        txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
-        txtApellidos.setText(" ");
         txtApellidos.setBorder(null);
         ContenedorP.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 230, 30));
 
-        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
         txtDireccion.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
-        txtDireccion.setText(" ");
         txtDireccion.setBorder(null);
         ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 230, 30));
 
-        txtDui.setBackground(new java.awt.Color(255, 255, 255));
         txtDui.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtDui.setForeground(new java.awt.Color(0, 0, 0));
-        txtDui.setText(" ");
         txtDui.setBorder(null);
         ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 220, 30));
 
-        txtNumeroTel.setBackground(new java.awt.Color(255, 255, 255));
         txtNumeroTel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtNumeroTel.setForeground(new java.awt.Color(0, 0, 0));
-        txtNumeroTel.setText(" ");
         txtNumeroTel.setBorder(null);
         txtNumeroTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,10 +218,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         });
         ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 230, 30));
 
-        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCorreo.setText(" ");
         txtCorreo.setBorder(null);
         ContenedorP.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
 
@@ -568,7 +550,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     {
     idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
  idiomas.init();// Utilizar la referencia a registro para agregar el idioma seleccionado
-      System.out.println("Se ejectua ");
+      System.out.println("Se ejecuta ");
         
          idiomas.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 idiomas.addComponentListener(new ComponentAdapter() {
@@ -622,7 +604,16 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_MasNacionalidadesMouseClicked
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
-  
+        //aca
+        
+        ModeloRegistro m = new ModeloRegistro();
+        m.readIDCorreo();
+        
+        ModeloRegistro m1 = new ModeloRegistro();
+        m.readIdTelefono();
+        
+        ModeloRegistro m2 = new ModeloRegistro();
+        m.readDUI();
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed

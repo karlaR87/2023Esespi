@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import VIsta.Programa.Inventario.Agregar_calibre;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
@@ -87,7 +88,7 @@ public class ModeloCalibre {
               addDatos.executeUpdate();
               System.out.println("Datos de calibre agregados exitosamente.");
           } catch (SQLException e) {
-              System.out.println("Error al agregar datos de calibre: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
           }
       }
 
@@ -115,7 +116,7 @@ public class ModeloCalibre {
                 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -153,7 +154,7 @@ public class ModeloCalibre {
 //            calibre.addCheckBox(2, calibre.tbMuniconSelecccion);
 
         }catch(SQLException e){
-            System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null, e.toString());
         }
 
     }
@@ -175,7 +176,7 @@ public class ModeloCalibre {
             deleteUser.executeUpdate();
         } catch (Exception e) {
             
-         System.out.println(e.toString());
+         JOptionPane.showMessageDialog(null, e.toString());
         }
     }
 
@@ -218,9 +219,7 @@ public class ModeloCalibre {
                 
             } catch (Exception e) {
                 
-                System.out.println("Error de conversión a entero: " + e.getMessage());
-                
-                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, e.toString());
             }
             
 

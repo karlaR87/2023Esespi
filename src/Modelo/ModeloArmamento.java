@@ -104,7 +104,7 @@ public class ModeloArmamento {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -226,7 +226,7 @@ public class ModeloArmamento {
             throw new SQLException("No se pudo obtener el ID del detalle de arma.");
         }
     } catch (SQLException e) {
-        System.out.println("Error al agregar datos: " + e.toString());
+        JOptionPane.showMessageDialog(null, e.toString());
         return -1; // Retorna un valor indicando un error
     }
 }
@@ -252,7 +252,7 @@ public class ModeloArmamento {
         
         System.out.println("Relaciones entre arma y calibre agregadas con éxito.");
     } catch (SQLException e) {
-        System.out.println("Error al agregar relaciones: " + e.toString());
+        JOptionPane.showMessageDialog(null, e.toString());;
     }
 }
  
@@ -279,7 +279,7 @@ public class ModeloArmamento {
                 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 

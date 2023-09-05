@@ -8,6 +8,7 @@ import VIsta.Registro_Nacionalidades;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -54,7 +55,7 @@ public class mdlNacionalidad {
             Nacio.tbNacionalidad.setModel(modelo);
             Nacio.addCheckBox(2, Nacio.tbNacionalidad);
         }catch(SQLException e){
-            System.out.println(e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
             
         }
     }

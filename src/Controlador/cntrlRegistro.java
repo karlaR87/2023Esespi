@@ -52,11 +52,14 @@ public class cntrlRegistro implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        
           //Registro de registro           
           
         if(e.getSource() == vista.btnSiguiente){
+            
            if(vista.isOK())
             { 
+                
             modeloRegistro.setNombre(vista.txtNombres.getText().trim());
             modeloRegistro.setApellidos(vista.txtApellidos.getText().trim());
             modeloRegistro.setFecha(vista.jdcFecha.getDate());
@@ -73,7 +76,8 @@ public class cntrlRegistro implements ActionListener {
 
             vistaJframeRegistro.loadInfoPolicias();
             }
-           else{  
+           else{
+               JOptionPane.showMessageDialog(null, "Error al ingresar datos. Tienes datos repetidos. Ingresa otros datos en el DUI, Telefono, o Correo electronico");
            } 
         }
         
@@ -154,7 +158,7 @@ public class cntrlRegistro implements ActionListener {
                 close2();
                 }catch(Exception ea)
                 {
-                    System.out.println(ea.toString());
+                    JOptionPane.showMessageDialog(null, ea.toString());
                 }
             }
             else
