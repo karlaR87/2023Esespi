@@ -73,6 +73,7 @@ public class mdlUsuarios {
             insertUser.setInt(3, IdNivelUsuario);
             
             insertUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro hecho");
             return true;
           
         }catch(Exception e){

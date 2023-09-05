@@ -345,7 +345,7 @@ public class ModeloEquipoEspecial {
             addDatos.setString(2, detalles);
             addDatos.setInt(3, equipo.getCantidad());
             addDatos.executeUpdate();
-            System.out.println("Datos agregados exitosamente.");
+            JOptionPane.showMessageDialog(null, "Datos agregados");
         } else {
             // El valor no existe en tbTiposEquipamientoEstacion, maneja el error
             System.out.println("El valor de IdTiposEquipamientoEstacion no existe en tbTiposEquipamientoEstacion.");
@@ -516,6 +516,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
             PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tdDetallesEquipo where IdDetalleEquipo = '" + miId + "'");
             
             deleteUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos eliminados");
         } catch (Exception e) {
             
          JOptionPane.showMessageDialog(null, e.toString());;
@@ -564,7 +565,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
                 
                 
                 updateUser.executeUpdate();
-                System.out.println("Se actualiza");
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
                 
             } catch (Exception e) {
                 

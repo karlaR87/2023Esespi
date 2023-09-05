@@ -107,6 +107,7 @@ public class mdlPolicias {
             insertPolice.setInt(5, IdTipoPersonas_Personas);
             
             insertPolice.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro hecho");
             return true;
           
         }catch(Exception e){

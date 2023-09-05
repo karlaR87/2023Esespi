@@ -75,7 +75,7 @@ public class ModeloCalibre {
         System.out.println("agrega datos");
 
     } catch (SQLException e) {
-        System.out.println(e.toString());
+        JOptionPane.showMessageDialog(null, e.toString());
     }
 }
       //Agregar 
@@ -86,7 +86,7 @@ public class ModeloCalibre {
               addDatos.setInt(1, idArma);
               addDatos.setInt(2, idCalibre);
               addDatos.executeUpdate();
-              System.out.println("Datos de calibre agregados exitosamente.");
+              JOptionPane.showMessageDialog(null,"Datos agregados exitosamente");
           } catch (SQLException e) {
               JOptionPane.showMessageDialog(null, e.toString());
           }
@@ -174,6 +174,7 @@ public class ModeloCalibre {
             PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tbTipoMuniciones_Calibre where IdTipoMunicion_Calibre = '" + miId + "'");
             
             deleteUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos eliminados");
         } catch (Exception e) {
             
          JOptionPane.showMessageDialog(null, e.toString());
@@ -215,7 +216,7 @@ public class ModeloCalibre {
                 updateUser.setString(3, miId);
                 
                 updateUser.executeUpdate();
-                System.out.println("Se actualiza");
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
                 
             } catch (Exception e) {
                 

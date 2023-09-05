@@ -250,7 +250,7 @@ public class ModeloArmamento {
         System.out.println("ID del detalle de arma: " + idDetalleArma);
         System.out.println("IDs de calibres: " + idsCalibres);
         
-        System.out.println("Relaciones entre arma y calibre agregadas con éxito.");
+        JOptionPane.showMessageDialog(null, "Registro agregado exitosamente");
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, e.toString());;
     }
@@ -302,6 +302,7 @@ public class ModeloArmamento {
             PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tbDetallesArmamentosEstacion where IdDetalleArmamentoEstacion = '" + miId + "'");
             
             deleteUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro eliminado con exito");
         } catch (Exception e) {
             
          System.out.println(e.toString());
@@ -351,13 +352,11 @@ public class ModeloArmamento {
                     updateUser.setString(4, miId);
                     
                     updateUser.executeUpdate();
-                    System.out.println("Se actualiza");
+                    JOptionPane.showMessageDialog(null, "Datos actualizados");
                     
                 } catch (Exception e) {
                     
-                    System.out.println("Error de conversión a entero: " + e.getMessage());
-                    
-                    System.out.println(e.toString());
+                    JOptionPane.showMessageDialog(null, e.toString());
                 }
                 
             } catch (SQLException ex) {

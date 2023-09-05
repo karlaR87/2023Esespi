@@ -176,12 +176,13 @@ public class ModeloRegistro {
                 return rs.getInt("IdNivelUsuario");
             } else {          
                 return -1;
-                
             }
         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, e.toString());
-            return -1;
-        }
+            JOptionPane.showMessageDialog(null, e.toString());
+                
+            }
+        return -1;
+    
     }
     
    public int readIdUltimaPersona()

@@ -69,6 +69,7 @@ public class ModeloDatosTransporte {
             
 
             addDatos.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro agregado");
 
         } catch (SQLException e) {
            
@@ -190,6 +191,7 @@ public class ModeloDatosTransporte {
         try {
             PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tbDetallesTransportesEstacion where IdDetalleTransporteEstacion = '" + miId + "'");
             deleteUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos eliminados");
         } catch (Exception e) {
          JOptionPane.showMessageDialog(null,e.toString());
         }
@@ -229,7 +231,7 @@ public class ModeloDatosTransporte {
 
             updateUser.executeUpdate();
 
-
+            JOptionPane.showMessageDialog(null, "Datos actualizados");
 
         } catch (Exception e) {
 
