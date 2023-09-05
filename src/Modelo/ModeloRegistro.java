@@ -162,6 +162,29 @@ public class ModeloRegistro {
         this.CorreoElectronico = CorreoElectronico;
     }
     
+    public int readIdTipoUsuarioFromCorreo()
+    {
+        try{   
+            String query = "SELECT IdNivelUsuario FROM tbUsuarios WHERE IdUsuario = (\n" +
+            "SELECT IdUsuario FROM tbPolicias WHERE IdTipoPersonas_Personas =\n" +
+            "(SELECT IdTipoPersonas_Personas FROM tbTiposPersonas_Personas WHERE IdPersona = (\n" +
+            "SELECT IdPersona FROM tbPersonas WHERE CorreoElectronico = ?)))";    
+            PreparedStatement readIdTipoUser = conexionSql.getConexion().prepareStatement(query);
+            readIdTipoUser.setString(1, CorreoElectronico);
+            ResultSet rs = readIdTipoUser.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdNivelUsuario");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR en el query readIdTipoUsuarioFromCorreo: " + e.toString());
+            return -1;
+        }
+    }
+    
    public int readIdUltimaPersona()
     {
         try{   
