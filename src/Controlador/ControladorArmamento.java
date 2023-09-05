@@ -16,6 +16,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,14 +68,24 @@ public class ControladorArmamento implements ActionListener{
             
             List<Integer> idsCalibres = vistamedia.getCalibresSeleccionados();
 
+            String cantidad = (String) Vista.spCantidad.getValue();
+        if(cantidad.matches("\\d+"))
+        {
+            JOptionPane.showMessageDialog(null, "La cantidad no puedo tener letras");
+        }
+        else
+        {
             // Llamar al método para agregar relaciones
             modeloArmamento.agregarRelacionesArmamentoCalibres(idDetalleArma, idsCalibres);
 
             // Mostrar los datos actualizados
             modeloArmamento.mostrar(Vista);
         }
+            
+            
+        }
 
-        
+        //btnEliminar
         else if (e.getSource() == Vista.btnEliminar) {
             modeloArmamento.eliminar(Vista);
             modeloArmamento.mostrar(Vista);

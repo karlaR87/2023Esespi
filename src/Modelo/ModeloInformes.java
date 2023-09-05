@@ -5,6 +5,7 @@ import VIsta.Programa.Reportes.Reportes_Inicio;
 
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ModeloInformes {
@@ -49,7 +50,7 @@ public class ModeloInformes {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 

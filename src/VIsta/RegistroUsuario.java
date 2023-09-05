@@ -9,8 +9,13 @@ import javax.swing.JOptionPane;
 public class RegistroUsuario extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
-    public RegistroUsuario() {
+    Registro jFrame;
+    RegistroUsuario thisVista;
+    public RegistroUsuario(Registro jFrame) {
         initComponents();
+        this.jFrame = jFrame;
+        this.thisVista = this;
+        jLabel3.setVisible(false);
         fontDesign();
     }
 
@@ -21,7 +26,8 @@ public class RegistroUsuario extends javax.swing.JPanel {
             md = MessageDigest.getInstance("SHA-256");
 	}
 	catch (NoSuchAlgorithmException e) {
-		System.out.println(e.toString());
+		
+                JOptionPane.showMessageDialog(null, e.toString());
 		return null;
 	}
 
@@ -48,6 +54,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtContrasena2 = new javax.swing.JPasswordField();
         txtContrasena = new javax.swing.JPasswordField();
@@ -60,6 +67,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
         lblRegresar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1010x700.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,56 +151,54 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backRegistroUserAAA.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
     }// </editor-fold>//GEN-END:initComponents
 
     public boolean isOK()
     {
         if(txtUsuario.getText().isBlank() || txtContrasena.getText().isBlank() || txtContrasena2.getText().isBlank())
         {
-            JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
+            show("No se permiten campos vacíos", 17, 1);
+            close1();           
             return false;
         }
         else
         {
             if(txtUsuario.getText().length() > 20)
             {
-              JOptionPane.showMessageDialog(this, "EL usuario no puede exceder los 20 caracteres.");  
+                 show("El usuario no debe exceder los 20 caracteres", 16, 1);
+                 close1(); 
+              return false;
             }
             else{
                 if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
                {
-                  JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                   show("Ambas contraseñas deben coincidir", 17, 1);
+                   close1(); 
                    return false;
                }
                 else
                 {
                     if(txtContrasena.getText().length() <8 || txtContrasena2.getText().length() <8)
                    {
-                        JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
+                        show("La contraseña debe contener almenos 8 caracteres", 15, 1);
+                        close1();  
                         return false;
                    }
                    else
                    {
                         if(txtContrasena.getText().length() > 15 || txtContrasena.getText().length() > 15)
                        {
-                           JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                           show("La contraseña no debe exceder los 15 caracteres", 16, 1);
+                           close1();
                            return false;
                        }
                        else
                        {
                             if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
                            {
-                               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                                show("Ambas contraseñas deben coincidir", 17, 1);
+                                close1(); 
                                return false;
                            }
                            else
@@ -201,7 +211,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
             }
              
         }
-        return false;
+
     }
     
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
@@ -216,11 +226,34 @@ public class RegistroUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
+    
+     JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        this.jLabel3.setVisible(true);
+        jFrame.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            thisVista.jLabel3.setVisible(false);
+            jFrame.setEnabled(true);
+        }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

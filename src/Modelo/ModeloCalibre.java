@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import VIsta.Programa.Inventario.Agregar_calibre;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
@@ -74,7 +75,7 @@ public class ModeloCalibre {
         System.out.println("agrega datos");
 
     } catch (SQLException e) {
-        System.out.println(e.toString());
+        JOptionPane.showMessageDialog(null, e.toString());
     }
 }
       //Agregar 
@@ -85,9 +86,9 @@ public class ModeloCalibre {
               addDatos.setInt(1, idArma);
               addDatos.setInt(2, idCalibre);
               addDatos.executeUpdate();
-              System.out.println("Datos de calibre agregados exitosamente.");
+              JOptionPane.showMessageDialog(null,"Datos agregados exitosamente");
           } catch (SQLException e) {
-              System.out.println("Error al agregar datos de calibre: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
           }
       }
 
@@ -115,7 +116,7 @@ public class ModeloCalibre {
                 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -153,7 +154,7 @@ public class ModeloCalibre {
 //            calibre.addCheckBox(2, calibre.tbMuniconSelecccion);
 
         }catch(SQLException e){
-            System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null, e.toString());
         }
 
     }
@@ -173,9 +174,10 @@ public class ModeloCalibre {
             PreparedStatement deleteUser = conexionSql.getConexion().prepareStatement("delete from tbTipoMuniciones_Calibre where IdTipoMunicion_Calibre = '" + miId + "'");
             
             deleteUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos eliminados");
         } catch (Exception e) {
             
-         System.out.println(e.toString());
+         JOptionPane.showMessageDialog(null, e.toString());
         }
     }
 
@@ -214,13 +216,11 @@ public class ModeloCalibre {
                 updateUser.setString(3, miId);
                 
                 updateUser.executeUpdate();
-                System.out.println("Se actualiza");
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
                 
             } catch (Exception e) {
                 
-                System.out.println("Error de conversión a entero: " + e.getMessage());
-                
-                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, e.toString());
             }
             
 

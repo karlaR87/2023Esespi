@@ -65,11 +65,20 @@ public class cntrlUsuarios implements ActionListener{
                         close1();
                     }
                     else
-                    {    
-                         mdlPreguntasS.setIdUsuario(IdCurrentUser);
-                         modeloUsuarios.setIdUsuario(IdCurrentUser);                         
-                         show("Usuario encontrado Id: " + IdCurrentUser, 17, 0);   
-                         close2();
+                    {  
+                        int IdTipo =  modeloUsuarios.readIdTipoUsuario();;
+                        if(IdTipo !=2)
+                        {
+                            show("No se puede restablecer su contraseña, no es jefe policial", 13, 1);
+                            close1();
+                        }
+                        else
+                        {
+                            mdlPreguntasS.setIdUsuario(IdCurrentUser);
+                            modeloUsuarios.setIdUsuario(IdCurrentUser);                         
+                            show("Usuario encontrado Id: " + IdCurrentUser, 17, 0);   
+                            close2();
+                        }
                     }
                 }
            }
