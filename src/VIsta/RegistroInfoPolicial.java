@@ -7,8 +7,13 @@ import javax.swing.JOptionPane;
 public class RegistroInfoPolicial extends javax.swing.JPanel {
 
      Fuentes tipoFuentes;
-    public RegistroInfoPolicial() {
+     Registro jFrame;
+     RegistroInfoPolicial thisVista;
+    public RegistroInfoPolicial(Registro jFrame) {
         initComponents();
+        this.jFrame = jFrame;
+        this.thisVista = this;
+        jLabel3.setVisible(false);
         fontDesign();
     }
 
@@ -33,6 +38,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblRegresar = new javax.swing.JLabel();
@@ -46,6 +52,11 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1010, 720));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1027x720.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1010, 720));
 
@@ -118,29 +129,10 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1012, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
@@ -155,12 +147,23 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
-    
+    JoptionReplacemnt Jo;
     public boolean isOk()
     {
         if(txtONI.getText().isBlank() || txtNumeroPlaca.getText().isBlank())
         {
-            JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
+            this.jLabel3.setVisible(true);
+            jFrame.setEnabled(false);
+            Jo = new JoptionReplacemnt(0,1, "No se permiten campos vacíos", 17);
+            Jo.setVisible(true);
+            
+             Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            thisVista.jLabel3.setVisible(false);
+            jFrame.setEnabled(true);
+        }
+        });
             return false;
         }
         else
@@ -173,6 +176,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
     public javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;

@@ -6,6 +6,7 @@ package VIsta.Programa.Inicio;
 
 import Modelo.conexionSql;
 import Modelo.mdl;
+import VIsta.VistaUsers;
 import java.sql.SQLException;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -16,11 +17,11 @@ public class Inicio extends javax.swing.JPanel {
    
     public Inicio() {
         initComponents();
-        MostrarDato();
+        //MostrarDato();
       
     }
 
-   public void MostrarDato()
+   /*public void MostrarDato()
    {
        Connection conectar = null;
         PreparedStatement pst = null;
@@ -46,7 +47,7 @@ public class Inicio extends javax.swing.JPanel {
             } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
             }
-   }
+   }*/
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -57,7 +58,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lblMostrar = new javax.swing.JLabel();
+        lblMostrarUsers = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(980, 710));
 
@@ -77,11 +78,15 @@ public class Inicio extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Gráficas policiales");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
-        lblMostrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblMostrar.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(lblMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 150, 40));
+        lblMostrarUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
+        lblMostrarUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMostrarUsersMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblMostrarUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 50, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,6 +104,11 @@ public class Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblMostrarUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMostrarUsersMouseClicked
+        VistaUsers vU = new VistaUsers();
+        vU.setVisible(true);
+    }//GEN-LAST:event_lblMostrarUsersMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jLabel1;
@@ -106,6 +116,6 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblMostrar;
+    private javax.swing.JLabel lblMostrarUsers;
     // End of variables declaration//GEN-END:variables
 }

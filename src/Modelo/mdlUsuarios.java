@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class mdlUsuarios {
     private int IdUsuario;
@@ -10,6 +11,7 @@ public class mdlUsuarios {
 
     public int getIdUsuario() {
         return IdUsuario;
+        
     }
 
     public void setIdUsuario(int IdUsuario) {
@@ -55,7 +57,7 @@ public class mdlUsuarios {
                 return -1; // O cualquier otro valor que desees usar para indicar que no se encontró el usuario.
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuarioB: " + e.toString());
+            JOptionPane.showMessageDialog(null, e.toString());
             return -1; // O cualquier otro valor que desees usar para indicar un error.
 
         }
@@ -71,10 +73,11 @@ public class mdlUsuarios {
             insertUser.setInt(3, IdNivelUsuario);
             
             insertUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro hecho");
             return true;
           
         }catch(Exception e){
-            System.out.println("ERROR en el query InsertUsuarioA: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
             return false;
         }
     }
@@ -92,10 +95,33 @@ public class mdlUsuarios {
                 return rs.getInt("IdUsuario");
             } else {
                 // No se encontró ningún usuario con el nombre proporcionado
-                return -1; // O cualquier otro valor que desees usar para indicar que no se encontró el usuario.
+                return -1; 
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuarioC: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
+            return -1; // O cualquier otro valor que desees usar para indicar un error.
+
+        }
+    }
+    
+    public int readIdTipoUsuario()
+    {
+        
+         try {
+            String query = "SELECT IdNivelUsuario FROM tbUsuarios WHERE Usuario = ?";
+            PreparedStatement readIdTipoUsuario = conexionSql.getConexion().prepareStatement(query);
+            readIdTipoUsuario.setString(1, Usuario);
+            ResultSet rs = readIdTipoUsuario.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdNivelUsuario");
+            } else {
+                // No se encontró ningún usuario con el nombre proporcionado
+                return -1; 
+            }
+        } catch (SQLException e) {
+              JOptionPane.showMessageDialog(null, e.toString());
             return -1; // O cualquier otro valor que desees usar para indicar un error.
 
         }
@@ -115,7 +141,7 @@ public class mdlUsuarios {
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUsuario: " + e.toString());
+             JOptionPane.showMessageDialog(null, e.toString());
             return null;
 
         }  
@@ -133,7 +159,7 @@ public class mdlUsuarios {
             return true;
           
         }catch(Exception e){
-            System.out.println("ERROR en el query UpdateConUsuario: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
             return false;
         }
     }

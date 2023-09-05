@@ -14,8 +14,13 @@ import javax.swing.text.PlainDocument;
 public class ReestablecerContra extends javax.swing.JPanel {
 
     Fuentes tipoFuentes;
-    public ReestablecerContra() {
+    ReestablecerContra Vista;
+    RecuperarContra jFrame;
+    
+    public ReestablecerContra(RecuperarContra jFrame) {
         initComponents();
+        this.Vista = this;
+        this.jFrame = jFrame;
         jLabel6.setVisible(false);
         NOSPACE();
         fontDesign();
@@ -143,35 +148,40 @@ public class ReestablecerContra extends javax.swing.JPanel {
     {
         if(txtContra1.getText().isBlank() || txtContra2.getText().isBlank())
         {
-            JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
+            show("No se permiten campos vacíos", 17 , 1);
+            close1();
             return false;
         }
         else
         {
             if (!txtContra1.getText().equals(txtContra2.getText()) || !txtContra2.getText().equals(txtContra1.getText()))
             {
-               JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
-                return false;
+               show("Ambas contraseñas deben coincidir", 17 , 1);
+               close1();
+               return false;
             }
             else
             {
                 if(txtContra1.getText().length() <8 || txtContra2.getText().length() <8)
-                {
-                     JOptionPane.showMessageDialog(this, "La contraseña debe contener almenos 8 caracteres o más.");
-                     return false;
+                {                 
+                    show("La contraseña debe contener almenos 8 caracteres o más", 16 , 1);
+                    close1();
+                    return false;
                 }
                 else
                 {
                     if(txtContra1.getText().length() > 15 || txtContra2.getText().length() > 15)
                     {
-                        JOptionPane.showMessageDialog(this, "La contraseña no debe de superar los 15 caracteres.");
+                        show("La contraseña no debe de superar los 15 caracteres", 16 , 1);
+                        close1();
                         return false;
                     }
                     else
                     {
                         if (!txtContra1.getText().equals(txtContra2.getText()) || !txtContra2.getText().equals(txtContra1.getText()))
                         {
-                            JOptionPane.showMessageDialog(this, "Ambas contraseñas deben coincidir.");
+                            show("Ambas contraseñas deben coincidir", 17 , 1);
+                            close1();
                             return false;
                         }
                         else
@@ -247,6 +257,28 @@ public class ReestablecerContra extends javax.swing.JPanel {
         txtContra1.setDocument(document);
         txtContra2.setDocument(document2);
     
+    }
+    
+    JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        this.jLabel6.setVisible(true);     
+        jFrame.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            Vista.jLabel6.setVisible(false);
+            jFrame.setEnabled(true);
+        }
+        });
     }
     
     public JLabel getlblBack() {

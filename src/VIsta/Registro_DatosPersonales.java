@@ -24,7 +24,8 @@ import javax.swing.JOptionPane;
 public class Registro_DatosPersonales extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     private Registro registro;
-   
+    Registro_DatosPersonales thisVista;
+    Registro jFrame;
      public ControladorRecuperarContra cntrRegistro;
     
     public void setRegistro(Registro registro) {
@@ -33,8 +34,11 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ControladorRecuperarContra contrlRegistro;
         ModeloRegistro modeloRegistro = new ModeloRegistro();
          
-    public Registro_DatosPersonales() {
+    public Registro_DatosPersonales(Registro jFrame) {
         initComponents();
+        this.jFrame = jFrame;
+        this.thisVista = this;
+        jLabel3.setVisible(false);
         fontDesign();
              // Llenar el ComboBox de estado civil
         try {
@@ -46,7 +50,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
             
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error al cargar los estados civiles.");
+            show("Error al cargar los estados civiles", 17, 1);
+            close1(); 
         }
          
 
@@ -77,6 +82,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     private void initComponents() {
 
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblRegresar = new javax.swing.JLabel();
         ContenedorP = new javax.swing.JPanel();
@@ -115,6 +121,12 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         cmbtipoSangre1 = new javax.swing.JComboBox<>();
         jdcFecha = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(70, 70, 70));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1020x720.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 720));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1010, 700));
@@ -193,38 +205,23 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         lbl15.setText("Genero ");
         ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 210, 30));
 
-        txtNombres.setBackground(new java.awt.Color(255, 255, 255));
         txtNombres.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
-        txtNombres.setText(" ");
         txtNombres.setBorder(null);
         ContenedorP.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 230, 30));
 
-        txtApellidos.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtApellidos.setForeground(new java.awt.Color(0, 0, 0));
-        txtApellidos.setText(" ");
         txtApellidos.setBorder(null);
         ContenedorP.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 230, 30));
 
-        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
         txtDireccion.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
-        txtDireccion.setText(" ");
         txtDireccion.setBorder(null);
         ContenedorP.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 230, 30));
 
-        txtDui.setBackground(new java.awt.Color(255, 255, 255));
         txtDui.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtDui.setForeground(new java.awt.Color(0, 0, 0));
-        txtDui.setText(" ");
         txtDui.setBorder(null);
         ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 220, 30));
 
-        txtNumeroTel.setBackground(new java.awt.Color(255, 255, 255));
         txtNumeroTel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtNumeroTel.setForeground(new java.awt.Color(0, 0, 0));
-        txtNumeroTel.setText(" ");
         txtNumeroTel.setBorder(null);
         txtNumeroTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,10 +230,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         });
         ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 230, 30));
 
-        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCorreo.setText(" ");
         txtCorreo.setBorder(null);
         ContenedorP.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
 
@@ -373,22 +367,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/headerRegistroPersonas.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 120));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1012, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1012, 720));
     }// </editor-fold>//GEN-END:initComponents
    
     String currentGenero;
@@ -448,115 +427,157 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     if(txtNombres.getText().isBlank() || txtApellidos.getText().isBlank() || txtDireccion.getText().isBlank()
             || txtDui.getText().isBlank() || txtNumeroTel.getText().isBlank() || txtCorreo.getText().isBlank())
     {
-        JOptionPane.showMessageDialog(this, "No se permiten campos vacíos.");
+        show("No se permiten campos vacíos", 17, 1);
+        close1(); 
         return false;
     }
     else
     {
         // Validar longitud de campos
-        if(txtNombres.getText().length() > 30 || txtApellidos.getText().length() > 30 || txtDireccion.getText().length() > 40
-                || txtDui.getText().length() > 10 || txtNumeroTel.getText().length() > 8 )
+        if(txtNombres.getText().length() > 30 || txtApellidos.getText().length() > 30)
         {
-            JOptionPane.showMessageDialog(this, "Los campos no deben ser mayores a: Nombres y apellidos = 30, Dirección = 40, Dui = 10, y número de teléfono = 8.");
+            show("Nombre y apellido no deben exceder los 30 caracteres", 14, 1);
+            close1(); 
             return false;
         }
-        if(txtDui.getText().length() < 10){
-        JOptionPane.showMessageDialog(this, "el DUI no debe ser menor");
-            return false;
-        }
-        
-
         else
         {
-            // Validar formato del correo electrónico
-            String correoPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
-            Pattern pattern = Pattern.compile(correoPattern);
-            Matcher matcher = pattern.matcher(txtCorreo.getText());
-            if (!matcher.matches()) {
-                JOptionPane.showMessageDialog(this, "El formato del correo electrónico no es válido.");
+            if(txtDireccion.getText().length() > 40)
+            {
+                show("La direccion no debe exceder los 40 caracteres", 16, 1);
+                close1();
                 return false;
             }
-            
-            // Validar que el DUI contenga solo números
-            if (!txtDui.getText().matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El DUI debe contener solo números.");
-                return false;
-            }
-            
-            // Validar que el número de teléfono contenga solo números
-            if (!txtNumeroTel.getText().matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El número de teléfono debe contener solo números.");
-                return false;
-            } 
-            
-            else{
-                currentGenero=cmbgenero.getSelectedItem().toString().trim();
-                System.out.println(currentGenero);
-                if(currentGenero.equals("Femenino"))
+            else
+            {
+                if(txtDui.getText().length() > 10)
                 {
-                    currentIdGenero = 2;
+                    show("El DUI no debe exceder los 10 caracteres", 17, 1);
+                    close1(); 
+                    return false;
                 }
                 else
                 {
-                    currentIdGenero = 1;
-                }
-                
-                currentEstadoCivil=cmbEstadoCivil1.getSelectedItem().toString().trim();
-                System.out.println(currentEstadoCivil);
-                if(currentEstadoCivil.equals("Soltero"))
-                {
-                    currentIdEstadoCivil = 1;
-                }
-                else
-                {
-                    currentIdEstadoCivil = 2;
-                }
-                
-                currentTipoSangre=cmbtipoSangre1.getSelectedItem().toString().trim();
-                System.out.println(currentTipoSangre);
-                if(currentTipoSangre.equals("A+"))
-                {
-                    currentIdTipoSangre = 1;
-                }
-                else 
-                {
-                    if(currentTipoSangre.equals("O+"))
-                    {currentIdTipoSangre = 2;}
+                    if(txtNumeroTel.getText().length() > 8)
+                    {
+                        show("El número teléfonico no debe exceder los 8 caracteres", 15, 1);
+                        close1();
+                        return false;
+                    }
                     else
                     {
-                      if(currentTipoSangre.equals("O-"))
-                      {currentIdTipoSangre = 3;}
-                      else
-                      {
-                        if(currentTipoSangre.equals("B+"))
-                        {currentIdTipoSangre = 4;}
-                        else
-                        {
-                           if(currentTipoSangre.equals("AB+"))
-                           {currentIdTipoSangre = 5;}
-                           else
-                           {
-                              if(currentTipoSangre.equals("A-"))
-                              {currentIdTipoSangre = 6;}
-                              else
-                              {
-                                if(currentTipoSangre.equals("B-"))
-                                {currentIdTipoSangre = 7;}
-                                else
-                                {
-                                    currentIdTipoSangre = 8;
-                                }
-                              }
-                           }
-                        }
-                      }
+                        if(txtNumeroTel.getText().length() < 8)
+                    {
+                        show("El número teléfonico debe contener 8 números", 16, 1);
+                        close1();
+                        return false;
                     }
-                }    
-                return true; // Si todas las validaciones son exitosas, se retorna true.
+                    else
+                    {
+
+                            if(txtDui.getText().length() < 10){
+                                show("El DUI no debe ser menor a 10 caracteres", 17, 1);
+                                close1(); 
+                                return false;
+                            }        
+                            else
+                            {
+                                // Validar formato del correo electrónico
+                                String correoPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+                                Pattern pattern = Pattern.compile(correoPattern);
+                                Matcher matcher = pattern.matcher(txtCorreo.getText());
+                                if (!matcher.matches()) {
+                                    show("El formato del correo electrónico no es válido", 17, 1);
+                                    close1(); 
+                                    return false;
+                                }
+
+                                // Validar que el DUI contenga solo números
+                                if (!txtDui.getText().matches("\\d+")) {
+                                    show("El DUI debe contener solo números", 17, 1);
+                                    close1(); 
+                                    return false;
+                                }
+
+                                // Validar que el número de teléfono contenga solo números
+                                if (!txtNumeroTel.getText().matches("\\d+")) {
+                                    show("El número de teléfono debe contener solo números", 16, 1);
+                                    close1(); 
+                                    return false;
+                                } 
+
+                                else{
+                                    currentGenero=cmbgenero.getSelectedItem().toString().trim();
+                                    System.out.println(currentGenero);
+                                    if(currentGenero.equals("Femenino"))
+                                    {
+                                        currentIdGenero = 2;
+                                    }
+                                    else
+                                    {
+                                        currentIdGenero = 1;
+                                    }
+
+                                    currentEstadoCivil=cmbEstadoCivil1.getSelectedItem().toString().trim();
+                                    System.out.println(currentEstadoCivil);
+                                    if(currentEstadoCivil.equals("Soltero"))
+                                    {
+                                        currentIdEstadoCivil = 1;
+                                    }
+                                    else
+                                    {
+                                        currentIdEstadoCivil = 2;
+                                    }
+
+                                    currentTipoSangre=cmbtipoSangre1.getSelectedItem().toString().trim();
+                                    System.out.println(currentTipoSangre);
+                                    if(currentTipoSangre.equals("A+"))
+                                    {
+                                        currentIdTipoSangre = 1;
+                                    }
+                                    else 
+                                    {
+                                        if(currentTipoSangre.equals("O+"))
+                                        {currentIdTipoSangre = 2;}
+                                        else
+                                        {
+                                          if(currentTipoSangre.equals("O-"))
+                                          {currentIdTipoSangre = 3;}
+                                          else
+                                          {
+                                            if(currentTipoSangre.equals("B+"))
+                                            {currentIdTipoSangre = 4;}
+                                            else
+                                            {
+                                               if(currentTipoSangre.equals("AB+"))
+                                               {currentIdTipoSangre = 5;}
+                                               else
+                                               {
+                                                  if(currentTipoSangre.equals("A-"))
+                                                  {currentIdTipoSangre = 6;}
+                                                  else
+                                                  {
+                                                    if(currentTipoSangre.equals("B-"))
+                                                    {currentIdTipoSangre = 7;}
+                                                    else
+                                                    {
+                                                        currentIdTipoSangre = 8;
+                                                    }
+                                                  }
+                                               }
+                                            }
+                                          }
+                                        }
+                                    }    
+                                    return true; // Si todas las validaciones son exitosas, se retorna true.
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
-    }
-    
+    }   
 }
 
     
@@ -568,7 +589,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     {
     idiomas.setRegistro(registro); // Establecer la referencia a la instancia de Registro en Registro_Idiomas
  idiomas.init();// Utilizar la referencia a registro para agregar el idioma seleccionado
-      System.out.println("Se ejectua ");
+      System.out.println("Se ejecuta ");
         
          idiomas.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 idiomas.addComponentListener(new ComponentAdapter() {
@@ -622,7 +643,16 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_MasNacionalidadesMouseClicked
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
-  
+        //aca
+        
+        ModeloRegistro m = new ModeloRegistro();
+        m.readIDCorreo();
+        
+        ModeloRegistro m1 = new ModeloRegistro();
+        m.readIdTelefono();
+        
+        ModeloRegistro m2 = new ModeloRegistro();
+        m.readDUI();
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
@@ -660,6 +690,28 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
 //       cmbgenero.setFocusable(status);   
 //    }
     
+     JoptionReplacemnt Jo;
+    
+    public void show(String msg, int sizeTXT, int img)
+    {
+        this.jLabel3.setVisible(true);
+        jFrame.setEnabled(false);
+        Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
+    public void close1()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            thisVista.jLabel3.setVisible(false);
+            jFrame.setEnabled(true);
+        }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContenedorP;
     public javax.swing.JLabel Mas1;
@@ -675,6 +727,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;

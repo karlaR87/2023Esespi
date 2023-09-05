@@ -74,9 +74,19 @@ public class ControladorRecuperarContra implements ActionListener{
             {
                 //Ya con el idPersonas
                 System.out.println("Si hay persona con ese correo: " + IdCurrentPersona);
-                porCorreo.EnviarCorreo();
-                show("Correo Enviado", 17, 0);
-                close1();
+                //Pero ahora confirmamos que esa persona tenga usuario de tipo 2, osea, jefe de policias
+                int idNivel = modeloRegistro.readIdTipoUsuarioFromCorreo();
+                if(idNivel != 2)
+                {
+                    show("No se puede restablecer su contraseña, no es jefe policial", 13, 1);
+                    close1();
+                }
+                else
+                {
+                    porCorreo.EnviarCorreo();
+                    show("Correo Enviado", 17, 0);
+                    close1();
+                }
             }
           }
        }

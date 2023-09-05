@@ -2,6 +2,7 @@ package Modelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 public class mdlPreguntasRespuestasDSeguridad {
     private int IdPreguntaRespuestaSegura;
@@ -52,9 +53,10 @@ public class mdlPreguntasRespuestasDSeguridad {
             addPreguntasS.setString(3, Respuesta);
             
             addPreguntasS.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Preguntas registradas");
           
         }catch(Exception e){
-            System.out.println("ERROR en el query addPreguntasS: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
         }
     }
 
@@ -67,7 +69,7 @@ public class mdlPreguntasRespuestasDSeguridad {
             ResultSet rs = readPreguntas.executeQuery();
             return rs;
         }catch(Exception e){
-            System.out.println("ERROR en el query readPpreguntas: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
             return null;
         }
     }

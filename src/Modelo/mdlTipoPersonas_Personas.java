@@ -3,6 +3,7 @@ package Modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class mdlTipoPersonas_Personas {
     private int idPersona;
@@ -28,7 +29,7 @@ public class mdlTipoPersonas_Personas {
             return true;
           
         }catch(Exception e){
-            System.out.println("ERROR en el query TipoPersonas: " + e.toString());
+              JOptionPane.showMessageDialog(null, e.toString());
             return false;
         }
     }
@@ -49,7 +50,7 @@ public class mdlTipoPersonas_Personas {
                 return -1;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR en el query readIDUTipoPersona: " + e.toString());
+             JOptionPane.showMessageDialog(null, e.toString());
             return -1;
 
         }

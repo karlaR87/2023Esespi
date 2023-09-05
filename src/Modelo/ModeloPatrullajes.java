@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ModeloPatrullajes {
@@ -49,7 +50,7 @@ public class ModeloPatrullajes {
 
         }catch(SQLException ex){
 
-            System.out.println(ex.toString());
+              JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
