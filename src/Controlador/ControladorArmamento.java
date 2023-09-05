@@ -64,6 +64,7 @@ public class ControladorArmamento implements ActionListener{
             int idDetalleArma = modeloArmamento.agregar(modeloArmamento);
 
             // Obtener los IDs de los calibres seleccionados desde la vista de calibres
+            
             List<Integer> idsCalibres = vistamedia.getCalibresSeleccionados();
 
             // Llamar al método para agregar relaciones

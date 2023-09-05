@@ -216,6 +216,7 @@ public class ModeloEquipoEspecial {
     }
  
  }
+    
   public int obtenerIdClasificacion(String clasificacion) throws SQLException {
     Connection conectar = null;
     PreparedStatement pst = null;

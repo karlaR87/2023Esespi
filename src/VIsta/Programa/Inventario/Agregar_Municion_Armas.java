@@ -9,12 +9,23 @@ import Controlador.ControladorArmamento;
 import Controlador.cntrlClibre;
 import Modelo.ModeloArmamento;
 import Modelo.ModeloCalibre;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+
 
 /**
  *
@@ -28,9 +39,6 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
     ModeloCalibre modeloCalibre = new ModeloCalibre();
 
 
-
-    
-   
   
      
     public Agregar_Municion_Armas() {
@@ -39,8 +47,10 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
 
         modeloCalibre.mostrarParaSeleccion(this);
         addCheckBox(2, tbMuniconSelecccion);
-        
+//        
+
     }
+    
 
      //metodo para poner los checkbox en las columnas
      public void addCheckBox(int column, JTable table)
@@ -54,35 +64,14 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
      
 
     public boolean IsSelected(int row, int column, JTable table)
-    {    
+    {   
         
-        return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
+        return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada  
     } 
-    // Método para obtener los IDs de los calibres seleccionados
-public List<Integer> obtenerCalibresSeleccionados(JTable table) {
-    List<Integer> calibresSeleccionados = new ArrayList<>();
-    DefaultTableModel model = (DefaultTableModel) table.getModel();
+    
 
-    for (int row = 0; row < model.getRowCount(); row++) {
-        // Verifica si la casilla de verificación en la columna 2 está seleccionada
-        boolean isSelected = IsSelected(row, 2, table);
-
-        if (isSelected) {
-            // Obtiene el ID de la columna 0 (la columna de los IDs)
-            int idCalibre = (int) model.getValueAt(row, 0);
-            calibresSeleccionados.add(idCalibre);
-
-            // Agrega un mensaje de depuración para verificar los calibres seleccionados
-            System.out.println("Calibre seleccionado - ID: " + idCalibre);
-        }
-    }
-
-    // Agrega un mensaje de depuración para mostrar todos los calibres seleccionados
-    System.out.println("Calibres seleccionados: " + calibresSeleccionados);
-
-    return calibresSeleccionados;
-}
-
+    
+    
 // Agregar un campo en la clase para almacenar los IDs de calibres seleccionados
     private List<Integer> calibresSeleccionados = new ArrayList<>();
     
@@ -154,8 +143,29 @@ public List<Integer> obtenerCalibresSeleccionados(JTable table) {
     }//GEN-LAST:event_btnAgregarMunicionActionPerformed
 
     private void btnAgregarMunicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMunicionMouseClicked
-   calibresSeleccionados = obtenerCalibresSeleccionados(tbMuniconSelecccion);
-    this.dispose();  // Cerrar la ventana de calibres después de obtener los IDs
+    // Limpiar la lista de calibres seleccionados
+    calibresSeleccionados.clear();
+
+    // Iterar sobre las filas de la tabla
+    for (int row = 0; row < tbMuniconSelecccion.getRowCount(); row++) {
+        Boolean isSelected = (Boolean) tbMuniconSelecccion.getValueAt(row, 2);
+        int idCalibre = (int) tbMuniconSelecccion.getValueAt(row, 0);
+
+        if (isSelected != null && isSelected) {
+            // Agregar a la lista si está seleccionado
+            calibresSeleccionados.add(idCalibre);
+            System.out.println("Calibre seleccionado: " + idCalibre);
+        } else {
+            calibresSeleccionados.remove(Integer.valueOf(idCalibre));
+            System.out.println("Calibre que se quitó: " + idCalibre);
+        }
+    }
+
+    // Imprimir la lista final de calibres seleccionados
+    System.out.println("Calibres finales: " + calibresSeleccionados);
+
+    // Cierra la ventana de calibres después de obtener los IDs
+    this.dispose();
     }//GEN-LAST:event_btnAgregarMunicionMouseClicked
 
     
@@ -199,5 +209,7 @@ public List<Integer> obtenerCalibresSeleccionados(JTable table) {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbMuniconSelecccion;
     // End of variables declaration//GEN-END:variables
+
+      
 
 }
