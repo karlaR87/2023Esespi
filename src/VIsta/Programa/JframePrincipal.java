@@ -1,6 +1,7 @@
 package VIsta.Programa;
 
 import Controlador.cntrlPatrullajes;
+import Controlador.contrlPolicias;
 import Modelo.ModeloPatrullajes;
 import Modelo.mdlPolicias;
 import VIsta.Login;
@@ -48,6 +49,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     Inventario_Inicio inventarioInicio = new Inventario_Inicio();
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
     Patrullajes_AddPersonal PatrullajesAddP;
+      mdlPolicias mdlPolicias;
     //Patrullajes Panel
     Patrullajes_Agregar AddPatrullajes;
     private void PanelsShowInit()
@@ -59,8 +61,9 @@ public class JframePrincipal extends javax.swing.JFrame {
        
         //Inicializacion de modelos y controladores
        ModeloPatrullajes mdlPatrullajes = new ModeloPatrullajes();
+        mdlPolicias = new mdlPolicias();
       cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP);
-       
+       contrlPolicias cntrPoli = new contrlPolicias(policiasInicio, this, mdlPolicias);
        
        cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
@@ -76,18 +79,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         cardLayout.show(jPanel1, "inicio");
         iconInicio1.setVisible(true);
  //----------------------------------------------------------------------       
-        jPanelContenedorSuper1.setVisible(false);
         cardLayout2 = new CardLayout();
-        jPanelContenedorSuper1.setLayout(cardLayout);
-        jPanelContenedorSuper1.add(policiasInicio.jPanelAddPolice, "addPolice");
-        
-        JButton btnAdd = policiasInicio.getbtnAdd();
-         btnAdd.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            jLabel3.setVisible(true);
-            jPanelContenedorSuper1.setVisible(true);            
-        }
-        });
     }
     
     /**
@@ -100,7 +92,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanelContenedorSuper1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         iconUsuario = new javax.swing.JLabel();
         iconUsuario1 = new javax.swing.JLabel();
@@ -140,11 +131,6 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 710));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelContenedorSuper1.setOpaque(false);
-        jPanelContenedorSuper1.setPreferredSize(new java.awt.Dimension(740, 444));
-        jPanelContenedorSuper1.setLayout(new java.awt.CardLayout());
-        jPanel2.add(jPanelContenedorSuper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 740, 444));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -470,7 +456,7 @@ public class JframePrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.setLayout(new java.awt.CardLayout());
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 1010, 600));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 1030, 600));
 
         jLabel4.setText("jLabel4");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 390, 140));
@@ -626,6 +612,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void lblPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPoliciasMouseClicked
 
         iconChange();
+        mdlPolicias.MostrarTablePolicias(policiasInicio);
         iconPolicias1.setVisible(true);
             cardLayout.show(jPanel1, "policias");
              ShowHide(0);
@@ -674,6 +661,7 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void iconPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconPoliciasMouseClicked
             iconChange();
+             mdlPolicias.MostrarTablePolicias(policiasInicio);
             iconPolicias1.setVisible(true);
             cardLayout.show(jPanel1, "policias"); 
              ShowHide(1);
@@ -955,7 +943,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelContenedorSuper1;
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblInventario;
     private javax.swing.JLabel lblMenuPrincipal;

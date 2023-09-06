@@ -1,9 +1,18 @@
 package Modelo;
 
+import VIsta.Programa.Policias.Policias_Inicio;
+import fonts.Fuentes;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class mdlPolicias {
     private int idUsuario;
@@ -68,6 +77,80 @@ public class mdlPolicias {
 
     public void setIdTipoPersonas_Personas(int idPersona) {
         this.IdTipoPersonas_Personas = idPersona;
+    }
+    
+      //Mostrar datos en las tablas
+    public void MostrarTablePolicias(Policias_Inicio vstPolicias){
+        Color clrOrang = new Color( 243, 167, 18);
+        DefaultTableModel modelo = new DefaultTableModel();
+      
+        modelo.setColumnIdentifiers(new Object []{"ID","Apellidos", "Género","DUI", "Número", "Rango", 
+            "ONI", "Placa", "Grupo"});
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "SELECT tbPoli.IdPolicia AS IdentificadorID, tbPer.Apellido AS Apellidos, tbPer.Dui AS DUI, \n" +
+                            "tbGenero.Genero, tbPer.NumeroTel AS NumeroTel,\n" +
+                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca, tbGrP.NumeroDeGrupo\n" +
+                            "FROM tbPersonas tbPer\n" +
+                            "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
+                            "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
+                            "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
+                            "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+                            "INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
+                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje ORDER BY tbPoli.IdRangoTipoUsuario";
+            
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()){
+                modelo.addRow(new Object[] {rs.getString("IdentificadorID"),rs.getString("Apellidos"),rs.getString("Genero"), rs.getString("DUI"),
+                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca"), rs.getString("NumeroDeGrupo")});
+
+            }
+            
+            Fuentes tipoFuentes = new Fuentes();;
+            
+            vstPolicias.tbDatosPolicias.setModel(modelo);
+            
+            JTableHeader header = vstPolicias.tbDatosPolicias.getTableHeader();
+            header.setBackground(clrOrang); // Cambia el color del encabezado
+
+        // Ajustar el alto de las filas
+        vstPolicias.tbDatosPolicias.setRowHeight(35); // Cambia el alto deseado para todas las filas
+        header.setPreferredSize(new Dimension(header.getWidth(), 50)); // Cambia el alto del encabezado
+
+        // Aplicar estilo de fuente personalizado al encabezado
+        header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 15)); // Aplica el estilo de fuente personalizado
+
+        // Cambiar el color del texto del encabezado (opcional)
+        header.setForeground(Color.BLACK);
+        
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) vstPolicias.tbDatosPolicias.getTableHeader().getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // Centra el texto del encabezado
+
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 14)); // Aplica el estilo de fuente personalizado)); // Fuente de tamaño 16 para las filas de datos
+        vstPolicias.tbDatosPolicias.setDefaultRenderer(Object.class, cellRenderer);
+        
+        // Ajustar el ancho de las columnas
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(1).setPreferredWidth(100); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(2).setPreferredWidth(40);
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(3).setPreferredWidth(35); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(4).setPreferredWidth(35); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(5).setPreferredWidth(130); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(6).setPreferredWidth(20); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(7).setPreferredWidth(20); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
+
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
     }
     
     
