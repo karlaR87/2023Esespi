@@ -24,52 +24,22 @@ public class Policias_Inicio extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jPanelAddPolice = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         btnDeletePolicia = new javax.swing.JButton();
         btnEditPolicia = new javax.swing.JButton();
         btnAddPolicia = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbDatosPolicias = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelAddPolice.setBackground(new java.awt.Color(70, 70, 70));
-        jPanelAddPolice.setOpaque(false);
-        jPanelAddPolice.setPreferredSize(new java.awt.Dimension(740, 444));
-        jPanelAddPolice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanelAddPolice.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 690, 340));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/AgregarPoliciaFondo.png"))); // NOI18N
-        jPanelAddPolice.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jPanel3.add(jPanelAddPolice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 740, 444));
-
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1010, 710));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1030, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         btnDeletePolicia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnDeletePolicia.png"))); // NOI18N
         btnDeletePolicia.setBorderPainted(false);
@@ -80,7 +50,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 btnDeletePoliciaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnDeletePolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 340, 60, 60));
+        jPanel1.add(btnDeletePolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 340, 60, 60));
 
         btnEditPolicia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
         btnEditPolicia.setBorderPainted(false);
@@ -91,7 +61,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 btnEditPoliciaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEditPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, 60, 60));
+        jPanel1.add(btnEditPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 220, 60, 60));
 
         btnAddPolicia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddPolicia.png"))); // NOI18N
         btnAddPolicia.setBorderPainted(false);
@@ -102,14 +72,40 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 btnAddPoliciaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAddPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 280, 60, 60));
+        jPanel1.add(btnAddPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 280, 60, 60));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("TABLAS");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, -1, -1));
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        txtBuscar.setToolTipText("");
+        txtBuscar.setBorder(null);
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 330, 30));
 
-        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 600));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar2.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 410, 50));
+
+        tbDatosPolicias.setBackground(new java.awt.Color(70, 70, 70));
+        tbDatosPolicias.setForeground(new java.awt.Color(255, 255, 255));
+        tbDatosPolicias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbDatosPolicias.setGridColor(new java.awt.Color(255, 255, 255));
+        tbDatosPolicias.setSelectionBackground(new java.awt.Color(119, 119, 119));
+        tbDatosPolicias.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tbDatosPolicias.getTableHeader().setResizingAllowed(false);
+        jScrollPane1.setViewportView(tbDatosPolicias);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 940, 520));
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -132,16 +128,14 @@ public class Policias_Inicio extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddPolicia;
+    public javax.swing.JButton btnAddPolicia;
     private javax.swing.JButton btnDeletePolicia;
     private javax.swing.JButton btnEditPolicia;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    public javax.swing.JPanel jPanelAddPolice;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tbDatosPolicias;
+    public javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
