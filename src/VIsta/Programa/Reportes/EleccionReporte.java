@@ -15,7 +15,7 @@ public class EleccionReporte extends javax.swing.JFrame {
     VistaReportePatrullajeConParametos vp = new VistaReportePatrullajeConParametos();
 
     VistaReportrTransporteConParametros vpp = new VistaReportrTransporteConParametros();
-    
+    VistaReportePolPat vb = new VistaReportePolPat();
     
     public EleccionReporte() {
         initComponents();
@@ -23,7 +23,7 @@ public class EleccionReporte extends javax.swing.JFrame {
     
   private void mostrarReporte() {
         try {
-            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReporteTransporte.jasper"));
+            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReporteTransportes.jasper"));
             System.out.println("ee");
             JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
                 System.out.println("ee");
@@ -42,6 +42,23 @@ public class EleccionReporte extends javax.swing.JFrame {
   private void mostrarReportePat() {
         try {
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReportePatrullaje.jasper"));
+            System.out.println("ee");
+            JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
+                System.out.println("ee");
+            JasperViewer view = new JasperViewer(jprint, false);
+             System.out.println("ee");
+            view.setTitle("Reporte de transporte");
+            view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+            ex.getMessage();
+        }
+        
+    }
+  private void mostrarReportePolPat() {
+        try {
+            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/PoliciasPatrullajes.jasper"));
             System.out.println("ee");
             JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
                 System.out.println("ee");
@@ -107,7 +124,7 @@ public class EleccionReporte extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 60));
 
-        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reporte de patrullaje", "Reporte de patrullaje con parámetros", "Reporte de transporte", "Reporte de transporte con parámetros"}));
+        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reporte de patrullaje", "Reporte de patrullaje con parámetros", "Reporte de transporte", "Reporte de transporte con parámetros", "Reporte de policías en patrullaje", "Reporte de policías en patrullaje con parámetros"}));
         jPanel1.add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 290, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 77.png"))); // NOI18N
@@ -201,6 +218,18 @@ public class EleccionReporte extends javax.swing.JFrame {
         if (seleccion3.equals("Reporte de transporte con parámetros")) {
             
             vpp.setVisible(true);
+            this.dispose();
+        }
+        
+        if (seleccion3.equals("Reporte de policías en patrullaje")) {
+            
+            
+            
+            mostrarReportePolPat();
+        }
+        if (seleccion3.equals("Reporte de policías en patrullaje con parámetros")) {
+            
+            vb.setVisible(true);
             this.dispose();
         }
         

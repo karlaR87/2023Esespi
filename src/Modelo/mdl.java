@@ -4,6 +4,7 @@ package Modelo;
 import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Reportes.VistaReportePatrullajeConParametos;
+import VIsta.Programa.Reportes.VistaReportePolPat;
 import VIsta.Programa.Reportes.VistaReportrTransporteConParametros;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
@@ -79,14 +80,14 @@ public class mdl {
     //Método para mostrar datos en una tabla
  
 
-    public void mostrar(VistaReportrTransporteConParametros rrr){
+     public void mostrarRporte(VistaReportrTransporteConParametros rrr){
 
         
 
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.setColumnIdentifiers(new Object []{"IdDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", 
-            "Marca", "NumeroDeGrupo"});
+            "Marca", "Patrullaje", "NumeroDeGrupo"});
 
 
 
@@ -95,11 +96,11 @@ public class mdl {
             Statement statement = conexionSql.getConexion().createStatement();
 
             String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte, \n" +
-"                         dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
+"                         dbo.tbMarcasDeVehiculos.Marca, patr.IdPatrullaje as Patrullaje, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
 "FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
 "                         dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
 "                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
-"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje";
+"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje INNER JOIN  dbo.tbPatrullajes patr ON patr.IdPatrullaje = dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje";
 
             ResultSet rs = statement.executeQuery(query);
 
@@ -110,7 +111,7 @@ public class mdl {
             while(rs.next()){
 
                 modelo.addRow(new Object[] {rs.getString("IdDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),
-                    rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), 
+                    rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), rs.getString("Patrullaje"), 
                     rs.getString("NumeroDeGrupo")});
 
             }
@@ -125,7 +126,7 @@ public class mdl {
 
         }catch(SQLException ex){
 
-             JOptionPane.showMessageDialog(null, ex.toString());
+              JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 
@@ -139,7 +140,7 @@ public class mdl {
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.setColumnIdentifiers(new Object []{"IdDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", 
-            "Marca", "NumeroDeGrupo"});
+            "Marca", "Patrullaje", "NumeroDeGrupo"});
 
 
 
@@ -148,11 +149,11 @@ public class mdl {
             Statement statement = conexionSql.getConexion().createStatement();
 
             String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte, \n" +
-"                         dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
+"                         dbo.tbMarcasDeVehiculos.Marca, patr.IdPatrullaje as Patrullaje, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
 "FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
 "                         dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
 "                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
-"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje";
+"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje INNER JOIN  dbo.tbPatrullajes patr ON patr.IdPatrullaje = dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje";
 
             ResultSet rs = statement.executeQuery(query);
 
@@ -163,7 +164,7 @@ public class mdl {
             while(rs.next()){
 
                 modelo.addRow(new Object[] {rs.getString("IdDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),
-                    rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), 
+                    rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), rs.getString("Patrullaje"), 
                     rs.getString("NumeroDeGrupo")});
 
             }
@@ -179,6 +180,65 @@ public class mdl {
         }catch(SQLException ex){
 
               JOptionPane.showMessageDialog(null, ex.toString());
+
+        }
+
+    }
+    public void mostrarRe(VistaReportePolPat rrr1){
+
+        
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.setColumnIdentifiers(new Object []{"IdPolicia","ONI", "NumeroPlaca", "Rango", 
+            "NivelUsuario", "IdentificadorPersona", "TipoPersona", "Nombre", "NumeroDeGrupo"
+        , "ExtensionKM", "Fecha_Hora_Inicio", "Fecha_Hora_Fin"});
+
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select tbp.IdPolicia, tbp.ONI, tbp.NumeroPlaca, rp.Rango, nivu.NivelUsuario, tpp.IdTipoPersonas_Personas as IdentificadorPersona, tppr.TipoPersona ,CONCAT(Tp.Nombre, ' ', Tp.Apellido) as Nombre,\n" +
+"gp.NumeroDeGrupo, pat.ExtensionKM, pat.Fecha_Hora_Inicio, pat.Fecha_Hora_Fin\n" +
+"from tbPolicias tbP\n" +
+"INNER JOIN tbRangosTipoUsuarios rp on rp.IdRangoTipoUsuario = tbp.IdRangoTipoUsuario\n" +
+"INNER JOIN tbUsuarios nu on nu.IdUsuario = tbp.IdUsuario\n" +
+"INNER JOIN tbNivelesUsuario nivu on nivu.IdNivelUsuario = nu.IdNivelUsuario\n" +
+"INNER JOIN tbTiposPersonas_Personas tpp on tpp.IdTipoPersonas_Personas = tbp.IdTipoPersonas_Personas\n" +
+"INNER JOIN TipoPersona tppr on tppr.IdTipoPersona = tpp.IdTipoPersona\n" +
+"INNER JOIN tbPersonas tP on tP.IdPersona = tpp.IdPersona\n" +
+"INNER JOIN tbGrupoPatrullajes gp on gp.IdGrupoPatrullaje = tbP.IdGrupoPatrullaje\n" +
+"inner join tbPatrullajes pat on pat.IdGrupoPatrullaje = gp.IdGrupoPatrullaje ";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+
+                modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("ONI"),
+                    rs.getString("NumeroPlaca"), rs.getString("Rango"), rs.getString("NivelUsuario"), 
+                    rs.getString("IdentificadorPersona"), rs.getString("TipoPersona"), rs.getString("Nombre")
+                , rs.getString("NumeroDeGrupo"), rs.getString("ExtensionKM"), rs.getString("Fecha_Hora_Inicio"), 
+                rs.getString("Fecha_Hora_Fin")});
+
+            }
+
+            
+
+            rrr1.tbMostrarData.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+             JOptionPane.showMessageDialog(null, ex.toString());
 
         }
 

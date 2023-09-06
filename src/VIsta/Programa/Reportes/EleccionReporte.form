@@ -99,7 +99,7 @@
         <Component class="javax.swing.JComboBox" name="cmbOpciones">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Reporte de patrullaje&quot;, &quot;Reporte de patrullaje con par&#xe1;metros&quot;, &quot;Reporte de transporte&quot;, &quot;Reporte de transporte con par&#xe1;metros&quot;})" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Reporte de patrullaje&quot;, &quot;Reporte de patrullaje con par&#xe1;metros&quot;, &quot;Reporte de transporte&quot;, &quot;Reporte de transporte con par&#xe1;metros&quot;, &quot;Reporte de polic&#xed;as en patrullaje&quot;, &quot;Reporte de polic&#xed;as en patrullaje con par&#xe1;metros&quot;})" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
