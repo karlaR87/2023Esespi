@@ -325,8 +325,74 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
-       men.actualizar(this);
-        men.mostrar(this);
+       String texto1 = txtDetalles.getText();
+        String texto2 = txtPlaca.getText();
+        
+        if(texto1.isBlank()||texto2.isBlank())
+        {
+            JOptionPane.showMessageDialog(null, "No se permiten campos vacios");
+        }
+        else if(texto2.length()< 7)
+        {
+            JOptionPane.showMessageDialog(null, "No se permiten menos de 7 digitos para la placa");
+        }
+        else if(texto2.length()>7)
+        {
+            JOptionPane.showMessageDialog(null, "No se permiten más de 7 digitos para la placa");
+        }
+        else
+        {
+            ModeloTransporte n = new ModeloTransporte();
+        ModeloDatosTransporte m = new ModeloDatosTransporte();
+        
+        //
+        String variable = (String) cmbTipos.getSelectedItem();
+        String variable2 = (String) cmbMarcas.getSelectedItem();
+         String variable3 = (String) cmbGrupos.getSelectedItem();
+            int v = -1;
+            int v2 = -1;
+            int v3 = -1;
+            try {
+                v = n.IdRetorno(variable);
+                System.out.println(v);
+            } catch (SQLException ex) {
+                System.out.println("ee");
+                java.util.logging.Logger.getLogger(ControladorTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            try {
+                v2 = n.IdRetorno2(variable2);
+                System.out.println(v2);
+            } catch (SQLException ex) {
+                System.out.println("ee");
+                java.util.logging.Logger.getLogger(ControladorTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+             try {
+                v3= n.IdRetorno3(variable3);
+                System.out.println(v3);
+            } catch (SQLException ex) {
+                System.out.println("ee");
+                java.util.logging.Logger.getLogger(ControladorTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+             
+            m.setDetalles(txtDetalles.getText());
+             m.setPlaca(txtPlaca.getText());
+            n.setTipotransporte(variable);
+             n.setMarcas(variable2);
+             
+             
+             n.setId(v);
+             n.setId2(v2);
+             n.setId3(v3);
+    
+        try {
+            men.actualizar(this);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(VistaAgregarTransporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+            men.mostrar(this);
+        
+        
+        }  
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked

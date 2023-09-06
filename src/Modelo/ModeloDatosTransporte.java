@@ -79,10 +79,49 @@ public class ModeloDatosTransporte {
     
     //Mostrar datos en las tablas
     public void mostrar(VistaAgregarTransporte IIT){
+           DefaultTableModel modelo = new DefaultTableModel();
+       
 
-        
+        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "IdTipoTransporteEstacion", "IdMarcaDeVehiculo", "IdGrupoPatrullaje"});
 
-        DefaultTableModel modelo = new DefaultTableModel();
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select * from tbDetallesTransportesEstacion";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+                System.out.println("ddddd");
+                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("IdTipoTransporteEstacion"), rs.getString("IdMarcaDeVehiculo"), rs.getString("IdGrupoPatrullaje")});
+
+            }
+
+            
+
+            IIT.tbDatosTransporte.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+       
+
+        /*DefaultTableModel modelo = new DefaultTableModel();
        
 
         modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", "Marca", "NumeroDeGrupo"});
@@ -126,8 +165,8 @@ public class ModeloDatosTransporte {
 
         }
 
+    }*/
     }
-    
     //Barra de busqueda
     public void mostrarDatos(VistaAgregarTransporte IIT){ //Parametro de la busqueda
 
@@ -201,7 +240,8 @@ public class ModeloDatosTransporte {
 
         
     
-    public void actualizar(VistaAgregarTransporte IIT3){
+    public void actualizar(VistaAgregarTransporte IIT3) throws SQLException{
+        ModeloTransporte n = new ModeloTransporte();
 
         //obtenemos que fila seleccionó el usuario
 
@@ -215,21 +255,35 @@ public class ModeloDatosTransporte {
 
        String nuevoValorIngresadoPlaca = IIT3.txtPlaca.getText();
 
+       String combo1 =IIT3.cmbTipos.getSelectedItem().toString();
+       int var1 = n.IdRetorno(combo1);
        
+       String combo2 = IIT3.cmbMarcas.getSelectedItem().toString();
+       int var2 = n.IdRetorno2(combo2);
+       
+       String combo3 = IIT3.cmbGrupos.getSelectedItem().toString();
+       int var3 = n.IdRetorno3(combo3);
 
         try {
 
-            PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("update tbDetallesTransportesEstacion set DetalleTransporte = ?, Placa = ? where IdDetalleTransporteEstacion = ?");
+            PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("update tbDetallesTransportesEstacion set DetalleTransporte = ?, Placa = ?, IdTipoTransporteEstacion = ?, IdMarcaDeVehiculo = ?, IdGrupoPatrullaje = ? where IdDetalleTransporteEstacion = ?");
 
             updateUser.setString(1, nuevoValorIngresadoDetalle);
 
             updateUser.setString(2, nuevoValorIngresadoPlaca);
             
-         
+            updateUser.setInt(3, var1);
+            
+            updateUser.setInt(4, var2);
+            
+            updateUser.setInt(5, var3);
 
-            updateUser.setString(3, miId);
+
+            updateUser.setString(6, miId);
+              
 
             updateUser.executeUpdate();
+               
 
             JOptionPane.showMessageDialog(null, "Datos actualizados");
 

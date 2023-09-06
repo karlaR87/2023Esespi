@@ -84,7 +84,7 @@ public class ControladorTransporte implements ActionListener{
         
         //actualizar
         
-        if(e.getSource() == vstATr.btnRegistrar){
+        if(e.getSource() == vstATr.btnModificar){
             
             String variable = (String) vstATr.cmbTipos.getSelectedItem();
             int v;
@@ -94,13 +94,31 @@ public class ControladorTransporte implements ActionListener{
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
             }
+            String variable2 = (String) vstATr.cmbMarcas.getSelectedItem();
+            int v2;
+            try {
+                v2 = mdTr.IdRetorno(variable);
+                System.out.println(v2);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String variable3 = (String) vstATr.cmbGrupos.getSelectedItem();
+            int v3;
+            try {
+                v3 = mdTr.IdRetorno(variable);
+                System.out.println(v3);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             
             mdTr.setTipotransporte(vstATr.cmbTipos.getSelectedItem().toString());         
             //mdDTr.setCantidad(Integer.parseInt(vstATr.txtNumero1.getText()));
-            
-            
-            mdDTr.agregar(mdTr, mdDTr);
+            try {
+                mdDTr.actualizar(vstATr);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorTransporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             VistaAgregarTransporte m;
             try {
