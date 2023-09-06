@@ -169,7 +169,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, -1, -1));
 
-        txtBuscarEP.setText("jTextField1");
+        txtBuscarEP.setText("Buscar");
         txtBuscarEP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarEPActionPerformed(evt);

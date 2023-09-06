@@ -79,7 +79,7 @@ public class ModeloDatosTransporte {
     
     //Mostrar datos en las tablas
     public void mostrar(VistaAgregarTransporte IIT){
-           DefaultTableModel modelo = new DefaultTableModel();
+           /*DefaultTableModel modelo = new DefaultTableModel();
        
 
         modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "IdTipoTransporteEstacion", "IdMarcaDeVehiculo", "IdGrupoPatrullaje"});
@@ -118,10 +118,10 @@ public class ModeloDatosTransporte {
 
         }
 
-    
+    */
        
 
-        /*DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel();
        
 
         modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", "Marca", "NumeroDeGrupo"});
@@ -165,7 +165,7 @@ public class ModeloDatosTransporte {
 
         }
 
-    }*/
+    
     }
     //Barra de busqueda
     public void mostrarDatos(VistaAgregarTransporte IIT){ //Parametro de la busqueda

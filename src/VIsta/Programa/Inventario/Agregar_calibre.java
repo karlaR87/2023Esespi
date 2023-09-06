@@ -45,6 +45,7 @@ public class Agregar_calibre extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        txtbuscarC = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,7 +75,7 @@ public class Agregar_calibre extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbCalibre);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 410, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 410, 230));
 
         txtCalibre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,8 +115,16 @@ public class Agregar_calibre extends javax.swing.JFrame {
         });
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 350, -1, -1));
 
+        txtbuscarC.setText("Buscar");
+        txtbuscarC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarCKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtbuscarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 410, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/calibre_1.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 440));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1040, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,6 +156,14 @@ public class Agregar_calibre extends javax.swing.JFrame {
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
 
     }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void txtbuscarCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarCKeyReleased
+      
+        ModeloCalibre MC = new ModeloCalibre();
+        
+        MC.mostrarDatos(this);
+           // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarCKeyReleased
 
     /**
      * @param args the command line arguments
@@ -195,5 +212,6 @@ public class Agregar_calibre extends javax.swing.JFrame {
     public javax.swing.JSpinner spCantidad;
     public javax.swing.JTable tbCalibre;
     public javax.swing.JTextField txtCalibre;
+    public javax.swing.JTextField txtbuscarC;
     // End of variables declaration//GEN-END:variables
 }
