@@ -92,7 +92,7 @@ public class ModeloCalibre {
           }
       }
 
-  
+              
   //MOSTRAR
     
     public void mostrar(Agregar_calibre calibre){
@@ -227,5 +227,56 @@ public class ModeloCalibre {
     }
 
  
-    
+    public void mostrarDatos(Agregar_calibre IIT){
+
+        
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+    modelo.setColumnIdentifiers(new Object[]{"IdTipoMunicion_Calibre", "Cantidad", "Calibre",});
+
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+           String filtro = IIT.txtbuscarC.getText(); 
+
+        String query = "SELECT * FROM tbTipoMuniciones_Calibre WHERE " +
+                       "IdTipoMunicion_Calibre LIKE '%" + filtro + "%' OR " +
+                       "Cantidad LIKE '%" + filtro + "%' OR " +
+                       "Calibre LIKE '%" + filtro + "%' " ;
+                       
+           
+            
+
+            ResultSet rs = statement.executeQuery(query);
+            
+
+            
+
+          
+
+            while(rs.next()){
+
+                modelo.addRow(new Object[] {rs.getString("IdTipoMunicion_Calibre"),rs.getString("Cantidad"),rs.getString("Calibre")});
+
+            }
+
+            
+
+                        IIT.tbCalibre.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+            System.out.println(ex.toString());
+
+}
+
+} 
 }
