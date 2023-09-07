@@ -489,6 +489,49 @@ public class ModeloRegistro {
         }
     }
     
+         //LLENAR COMBOBOX DE RANGOS DE USUARIO
+    public void llenarCombo4(JComboBox<String> comboboRangoU) throws SQLException {
+         Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+
+ 
+
+        String SSQL = "SELECT IdRangoTipoUsuario, Rango FROM tbRangosTipoUsuarios";
+        comboboRangoU.removeAllItems();
+
+        try {
+            conectar = conexionSql.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            result = pst.executeQuery();
+
+ 
+
+
+            while (result.next()) {
+                int id = result.getInt("IdRangoTipoUsuario");
+                String nombre = result.getString("Rango");
+                comboboRangoU.addItem(nombre);
+            }
+
+ 
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }finally {
+            // Cerrar recursos
+            if (result != null) {
+                result.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (conectar != null) {
+                conectar.close();
+            }
+        }
+    }
+    
     public int IdRetorno3(String genero) throws SQLException {
         Connection conectar = null;
         PreparedStatement pst = null;

@@ -167,7 +167,7 @@ public class cntrlRegistro implements ActionListener {
                         mdlTipoPersonas.insertTipoPersona();
                         //2.3, ahora sacamos el idTipopersonas personas, de la tabla de antes
                         int TipoPersonas_Personas = mdlTipoPersonas.readIDTipoPersona();
-                        mdlPolicias.setIdTipoPersonas_Personas(TipoPersonas_Personas);
+                        mdlPolicias.setIdTipoPersonasPersonas(TipoPersonas_Personas);
                     mdlPolicias.insertPolicia();
                     
                 show("Datos insertados exitosamente", 17, 0);      

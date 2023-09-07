@@ -17,7 +17,7 @@ import javax.swing.table.JTableHeader;
 
 public class mdlPolicias {
     private int idUsuario;
-    private int IdTipoPersonas_Personas;
+    private int IdTipoPersonasPersonas;
 
     private int IdRangoTipoUsuario;
     private int IdGrupoPatrullaje;
@@ -191,18 +191,18 @@ public class mdlPolicias {
         this.idUsuario = idUsuario;
     }
 
-    public int getIdTipoPersonas_Personas() {
-        return IdTipoPersonas_Personas;
+    public int getIdTipoPersonasPersonas() {
+        return IdTipoPersonasPersonas;
     }
 
-    public void setIdTipoPersonas_Personas(int idPersona) {
-        this.IdTipoPersonas_Personas = idPersona;
+    public void setIdTipoPersonasPersonas(int idPersona) {
+        this.IdTipoPersonasPersonas = idPersona;
     }
     
-    public boolean InsertPoliceInclude_Persona_TipoP_User()
+    public boolean InsertPoliceIncludePersonaTipoPUser()
     {
            try{
-            String query = "EXEC dbo.InsertarPolicias1\n" +
+            String query = "EXEC dbo.InsertarPolicias2 \n" +
 "	@Nombre = ?,\n" +
 "	@Apellido = ?,\n" +
 "	@FechaNacimiento = ?,\n" +
@@ -222,7 +222,7 @@ public class mdlPolicias {
             PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
             insertPolice.setString(1, Nombre);
             insertPolice.setString(2, Apellido);
-            insertPolice.setDate(3, (java.sql.Date) FechaNacimiento);
+            insertPolice.setDate(3, new java.sql.Date(FechaNacimiento.getTime()));
             insertPolice.setString(4, Direccion);
             insertPolice.setString(5, DUI);
             insertPolice.setInt(6, IdEstadoCivil);
@@ -242,6 +242,26 @@ public class mdlPolicias {
         }catch(Exception e){
               JOptionPane.showMessageDialog(null, e.toString());
             return false;
+        }
+    }
+    
+     public int readUserIfExistUser()
+    {
+        try{   
+            String query = "SELECT Usuario FROM tbUsuarios WHERE Usuario = ?";    
+            PreparedStatement readUserIfExistUser = conexionSql.getConexion().prepareStatement(query);
+            readUserIfExistUser.setString(1, Usuario);
+             ResultSet rs = readUserIfExistUser.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("Usuario");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
         }
     }
     
@@ -415,7 +435,7 @@ public class mdlPolicias {
             insertPolice.setString(2, NumeroPlaca);
             insertPolice.setInt(3, idUsuario);
             insertPolice.setInt(4, IdRangoTipoUsuario);
-            insertPolice.setInt(5, IdTipoPersonas_Personas);
+            insertPolice.setInt(5, IdTipoPersonasPersonas);
             
             insertPolice.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro hecho");
@@ -432,7 +452,7 @@ public class mdlPolicias {
         try{   
             String query = "SELECT IdUsuario FROM tbPolicias WHERE IdTipoPersonas_Personas = ?";    
             PreparedStatement readIdUsuario = conexionSql.getConexion().prepareStatement(query);
-            readIdUsuario.setInt(1, IdTipoPersonas_Personas);
+            readIdUsuario.setInt(1, IdTipoPersonasPersonas);
             
              ResultSet rs = readIdUsuario.executeQuery();
 

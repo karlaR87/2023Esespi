@@ -28,6 +28,7 @@ public class Agregar_policia extends javax.swing.JFrame {
             modeloRegistro.llenarCombo(cmbEstadoCivil);
             modeloRegistro.llenarCombo2(cmbTipoSangre);
             modeloRegistro.llenarCombo3(cmbGenero);
+            modeloRegistro.llenarCombo4(cmbRangoUser);
 
         } catch (SQLException e) {
              System.out.println("Error en cmb y clndr");
@@ -106,6 +107,7 @@ public class Agregar_policia extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        cmbRangoUser = new javax.swing.JComboBox<>();
         cmbEstadoCivil = new javax.swing.JComboBox<>();
         cmbTipoSangre = new javax.swing.JComboBox<>();
         cmbGenero = new javax.swing.JComboBox<>();
@@ -119,6 +121,7 @@ public class Agregar_policia extends javax.swing.JFrame {
         jdcCalendar = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaDireccion = new javax.swing.JTextArea();
+        lblNombre12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -147,7 +150,7 @@ public class Agregar_policia extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnGuardarBlockBlue.png"))); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnGuardarBlockBlue3.png"))); // NOI18N
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -156,9 +159,9 @@ public class Agregar_policia extends javax.swing.JFrame {
                 btnGuardarMouseClicked(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 495, 120, 110));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 506, 110, 90));
 
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCancelBlockRed.png"))); // NOI18N
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCancelBlockRed3.png"))); // NOI18N
         btnCancel.setBorderPainted(false);
         btnCancel.setContentAreaFilled(false);
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -167,10 +170,16 @@ public class Agregar_policia extends javax.swing.JFrame {
                 btnCancelMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 495, 120, 110));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 506, 110, 90));
 
         jPanel1.setBackground(new java.awt.Color(46, 46, 46));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmbRangoUser.setBackground(new java.awt.Color(59, 126, 255));
+        cmbRangoUser.setForeground(new java.awt.Color(255, 255, 255));
+        cmbRangoUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbRangoUser.setBorder(null);
+        jPanel1.add(cmbRangoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 200, 25));
 
         cmbEstadoCivil.setBackground(new java.awt.Color(59, 126, 255));
         cmbEstadoCivil.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,7 +219,7 @@ public class Agregar_policia extends javax.swing.JFrame {
                 txtPlacaKeyTyped(evt);
             }
         });
-        jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 189, 180, 20));
+        jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 227, 180, 20));
 
         txtONI.setBackground(new java.awt.Color(255, 255, 255));
         txtONI.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -304,8 +313,13 @@ public class Agregar_policia extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 303, 192, 71));
 
+        lblNombre12.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        lblNombre12.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre12.setText("Rango:");
+        jPanel1.add(lblNombre12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 195, -1, -1));
+
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BACKtxtWhite.png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 189, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 227, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BACKtxtWhite.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 156, -1, -1));
@@ -331,7 +345,7 @@ public class Agregar_policia extends javax.swing.JFrame {
         lblNombre11.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         lblNombre11.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre11.setText("Número de placa:");
-        jPanel1.add(lblNombre11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 189, -1, -1));
+        jPanel1.add(lblNombre11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 227, -1, -1));
 
         lblNombre10.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         lblNombre10.setForeground(new java.awt.Color(255, 255, 255));
@@ -516,6 +530,7 @@ public class Agregar_policia extends javax.swing.JFrame {
     public javax.swing.JButton btnGuardar;
     public javax.swing.JComboBox<String> cmbEstadoCivil;
     public javax.swing.JComboBox<String> cmbGenero;
+    public javax.swing.JComboBox<String> cmbRangoUser;
     public javax.swing.JComboBox<String> cmbTipoSangre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -534,6 +549,7 @@ public class Agregar_policia extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre1;
     private javax.swing.JLabel lblNombre10;
     private javax.swing.JLabel lblNombre11;
+    private javax.swing.JLabel lblNombre12;
     private javax.swing.JLabel lblNombre2;
     private javax.swing.JLabel lblNombre3;
     private javax.swing.JLabel lblNombre4;

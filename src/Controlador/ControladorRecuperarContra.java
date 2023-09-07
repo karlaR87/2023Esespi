@@ -108,7 +108,7 @@ public class ControladorRecuperarContra implements ActionListener{
                 mdlTipoPersonasP.setIdPersona(IdCurrentPersona);
                 int currentIdpersona = mdlTipoPersonasP.readIDTipoPersona();
                 
-                mdlPolicias.setIdTipoPersonas_Personas(currentIdpersona);
+                mdlPolicias.setIdTipoPersonasPersonas(currentIdpersona);
                 int IdCurrentUser = mdlPolicias.readIDUsuario();
                 System.out.println(IdCurrentUser);
                 
@@ -178,7 +178,7 @@ public class ControladorRecuperarContra implements ActionListener{
                 mdlTipoPersonasP.setIdPersona(IdCurrentPersona);
                 int currentIdpersona = mdlTipoPersonasP.readIDTipoPersona();
                 
-                mdlPolicias.setIdTipoPersonas_Personas(currentIdpersona);
+                mdlPolicias.setIdTipoPersonasPersonas(currentIdpersona);
                 int IdCurrentUser = mdlPolicias.readIDUsuario();
                 System.out.println(IdCurrentUser);
                 

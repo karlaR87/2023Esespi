@@ -2,7 +2,9 @@ package Controlador;
 
 import Modelo.mdlPolicias;
 import VIsta.JoptionReplacemnt;
+import VIsta.Login;
 import VIsta.Programa.JframePrincipal;
+import VIsta.Programa.Policias.Agregar_Usuario;
 import VIsta.Programa.Policias.Agregar_policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import java.awt.event.ActionEvent;
@@ -17,25 +19,32 @@ public class contrlPolicias implements ActionListener{
     private mdlPolicias mdlPoli;
     
     Agregar_policia jFrameAddPolice;
+    Agregar_Usuario jFrameAddUser;
     
     String currentGenero;
     String currentTipoSangre;
     String currentEstadoCivil;
+    String currentRangoUser;
     
     public int currentIdGenero;
     public int currentIdTipoSangre;
     public int currentIdEstadoCivil;
+    public int currentIdRangoUser;
     
-    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_policia jFrameAddPolice)
+    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_policia jFrameAddPolice, Agregar_Usuario jFrameAddUser)
     {
         this.vstPoli = vstPoli;
         this.jFrameP = jFrameP;
         this.mdlPoli = mdlPoli;
         this.jFrameAddPolice = jFrameAddPolice;
+        this.jFrameAddUser = jFrameAddUser;
         
         vstPoli.btnAddPolicia.addActionListener(this);
         jFrameAddPolice.btnGuardar.addActionListener(this);
         jFrameAddPolice.btnCancel.addActionListener(this);
+        
+        jFrameAddUser.btnGuardar.addActionListener(this);
+        jFrameAddUser.btnCancel.addActionListener(this);
     }
     
     @Override
@@ -65,6 +74,26 @@ public class contrlPolicias implements ActionListener{
             jFrameAddPolice.txtPlaca.setText("");
         }  
         
+        if(e.getSource() == jFrameAddUser.btnCancel)
+        {
+           //Mostrar JOption - borrar todo
+            show("¿Seguro que quieres cancelar? se eliminarán los datos", 14, 1, 1);
+            close1();
+            
+            jFrameAddPolice.txtApellido.setText("");
+            jFrameAddPolice.txtAreaDireccion.setText("");
+            jFrameAddPolice.txtCorreo.setText("");
+            jFrameAddPolice.txtDUI.setText("");
+            jFrameAddPolice.txtNombre.setText("");
+            jFrameAddPolice.txtNumero.setText("");
+            jFrameAddPolice.txtONI.setText("");
+            jFrameAddPolice.txtPlaca.setText("");
+            
+            jFrameAddUser.txtUsuario.setText("");
+            jFrameAddUser.txtContra.setText("");
+        }  
+        
+        
         if(e.getSource() == jFrameAddPolice.btnGuardar)
         {
             String correoPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
@@ -85,9 +114,9 @@ public class contrlPolicias implements ActionListener{
                     mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
                     int resulIdPCorreo = mdlPoli.readCorreoIfExistCorreo();
                     
-                    if(resulIdPCorreo ==-1) //si es igual a -1, es que NO hay persona con ese correo
+                    if(resulIdPCorreo == -1) //si es igual a -1, es que NO hay persona con ese correo
                     {
-                         mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+                        mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
                         int resultIdPNumero = mdlPoli.readNumeroIfExistNumero();
                         
                         if(resultIdPNumero == -1)
@@ -105,14 +134,10 @@ public class contrlPolicias implements ActionListener{
                             mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
                             mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
                             mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
-                            
+                            mdlPoli.setIdRangoUsuario(returnIdRangoUser());
                             //Despues de aceptar la info del poli, vamos con el usuario
                             
-                            
-                            //Hasta el final, insertamos todo, falta usuario, contra y el id rango
-                            
-                            
-                            
+                            jFrameAddUser.setVisible(true);           
                         }
                         else
                         {
@@ -137,6 +162,38 @@ public class contrlPolicias implements ActionListener{
                                               
             }
         }
+        
+        if(e.getSource() == jFrameAddUser.btnGuardar)
+        {
+            
+            //Hasta el final, insertamos todo, falta usuario y contra 
+            mdlPoli.setUsuario(jFrameAddUser.txtUsuario.getText().trim());
+            int resultUser = mdlPoli.readUserIfExistUser();
+
+            if(resultUser == -1)
+            {
+                //Insertamos todo
+                mdlPoli.setUsuario(jFrameAddUser.txtUsuario.getText().trim());
+                mdlPoli.setContra(jFrameAddUser.txtContra.getText().trim());
+
+                if(mdlPoli.InsertPoliceIncludePersonaTipoPUser())
+                {
+                    show("El policía fue agregado correctamente", 17, 1, 0);
+                    close1();       
+                }
+                else
+                {
+                    show("No se pudo agregar al policía", 17, 1, 0);
+                    close1();   
+                }
+            }
+            else
+            {
+                mdlPoli.setUsuario("0");
+                show("Ya existe una persona con ese usuario", 17, 1, 0);
+                close1();
+            } 
+    }
     }
     
      JoptionReplacemnt Jo;
@@ -144,6 +201,7 @@ public class contrlPolicias implements ActionListener{
     public void show(String msg, int sizeTXT, int img, int type)
     {  
         jFrameAddPolice.setEnabled(false);
+        jFrameAddUser.setEnabled(false);
         Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
         Jo.setVisible(true);
     }
@@ -155,6 +213,7 @@ public class contrlPolicias implements ActionListener{
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             Jo.setVisible(false);
             jFrameAddPolice.setEnabled(true);
+            jFrameAddUser.setEnabled(true);
             jFrameP.enable(true);
             jFrameP.jLabel3.setVisible(false);
             jFrameAddPolice.dispose();
@@ -164,10 +223,52 @@ public class contrlPolicias implements ActionListener{
         Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             Jo.setVisible(false);
+            jFrameAddUser.setEnabled(true);
             jFrameAddPolice.setEnabled(true);
         }
         });
     }
+    
+    
+    
+//    public void close2()
+//    {   
+//        //Agregar evento click
+//        Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
+//        public void actionPerformed(java.awt.event.ActionEvent evt) {
+//            Jo.setVisible(false);
+//            jFrameAddPolice.setEnabled(true);
+//            jFrameAddUser.setEnabled(true);
+//            jFrameP.enable(true);
+//            jFrameP.jLabel3.setVisible(false);
+//            jFrameAddPolice.dispose();
+//            jFrameAddUser.dispose();
+//        }
+//        });
+//        
+//        Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
+//        public void actionPerformed(java.awt.event.ActionEvent evt) {
+//            Jo.setVisible(false);
+//            jFrameAddUser.setEnabled(true);
+//            jFrameAddPolice.setEnabled(true);
+//        }
+//        });
+//    }
+//    
+//    public void close3()
+//    {
+//        //Agregar evento click
+//        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+//        public void actionPerformed(java.awt.event.ActionEvent evt) {
+//            Jo.dispose();
+//            jFrameAddUser.dispose();
+//            jFrameAddPolice.dispose();
+//             jFrameAddUser.setEnabled(true);
+//            jFrameAddPolice.setEnabled(true);
+//            
+//        }
+//        });
+//    }
     
     public int returnIdEstadoCivil()
     {
@@ -200,9 +301,58 @@ public class contrlPolicias implements ActionListener{
         }
     }
     
+    public int returnIdRangoUser()
+    {
+        currentRangoUser=jFrameAddPolice.cmbRangoUser.getSelectedItem().toString().trim();
+        if(currentRangoUser.equals("Comisionado General"))
+        {
+            currentIdRangoUser = 1;
+            return currentIdRangoUser;
+        }
+        else 
+        {
+            if(currentRangoUser.equals("Comisionado"))
+            {currentIdRangoUser = 2; return currentIdRangoUser;}
+            else
+            {
+              if(currentRangoUser.equals("SubComisionado"))
+              {currentIdRangoUser = 3; return currentIdRangoUser;}
+              else
+              {
+                if(currentRangoUser.equals("Inspector Jefe"))
+                {currentIdRangoUser = 4; return currentIdRangoUser;}
+                else
+                {
+                   if(currentRangoUser.equals("Inspector"))
+                   {currentIdRangoUser = 5; return currentIdRangoUser;}
+                   else
+                   {
+                      if(currentRangoUser.equals("SubInspector"))
+                      {currentIdRangoUser = 6; return currentIdRangoUser;}
+                      else
+                      {
+                        if(currentRangoUser.equals("Sargento"))
+                        {currentIdRangoUser = 7; return currentIdRangoUser;}
+                        else
+                        {
+                            if(currentRangoUser.equals("Cabo"))
+                            {currentIdRangoUser = 8; return currentIdRangoUser;}
+                            else
+                            {
+                                currentIdRangoUser = 9; return currentIdRangoUser;
+                            }
+                        }
+                      }
+                   }
+                }
+              }
+            }
+        }  
+    }
+    
     public int returnIdTipoSangre()
     {
-        currentTipoSangre=jFrameAddPolice.cmbTipoSangre.getSelectedItem().toString().trim();
+       currentTipoSangre=jFrameAddPolice.cmbTipoSangre.getSelectedItem().toString().trim();
         if(currentTipoSangre.equals("A+"))
         {
             currentIdTipoSangre = 1;
@@ -241,6 +391,6 @@ public class contrlPolicias implements ActionListener{
                 }
               }
             }
-        }  
+        } 
     }
 }
