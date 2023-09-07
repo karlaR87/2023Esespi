@@ -23,7 +23,6 @@ public class mdl {
         , "Acercamiento", "Lugar_Detenido", "Fecha_Detenido", "NombreInfractor", "Detalles", "Lugar_Denuncia", "Fecha_Denuncia", "Nombre_Denunciante"});
 
 
-
         try{
 
             Statement statement = conexionSql.getConexion().createStatement();
