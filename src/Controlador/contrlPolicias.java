@@ -93,7 +93,26 @@ public class contrlPolicias implements ActionListener{
                         if(resultIdPNumero == -1)
                         {
                             //Ya validados, DUI, Correo y Numero, procedemos a insertar
-                            //mdlPoli.set
+                            mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
+                            mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
+                            mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
+                            mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
+                            mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                            mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
+                            mdlPoli.setIdGenero(returnIdGenero());
+                            mdlPoli.setIdTipoSangre(returnIdTipoSangre());
+                            mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+                            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+                            mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
+                            mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                            
+                            //Despues de aceptar la info del poli, vamos con el usuario
+                            
+                            
+                            //Hasta el final, insertamos todo, falta usuario, contra y el id rango
+                            
+                            
+                            
                         }
                         else
                         {
@@ -150,4 +169,78 @@ public class contrlPolicias implements ActionListener{
         });
     }
     
+    public int returnIdEstadoCivil()
+    {
+        currentEstadoCivil=jFrameAddPolice.cmbEstadoCivil.getSelectedItem().toString().trim();
+       
+       if(currentEstadoCivil.equals("Soltero"))
+       {
+           currentIdEstadoCivil = 1;
+           return currentIdEstadoCivil;
+       }
+       else
+       {
+           currentIdEstadoCivil = 2;
+           return currentIdEstadoCivil;
+       }
+    }
+    
+    public int returnIdGenero()
+    {
+        currentGenero=jFrameAddPolice.cmbGenero.getSelectedItem().toString().trim();
+        if(currentGenero.equals("Femenino"))
+        {
+            currentIdGenero = 2;
+            return currentIdGenero;
+        }
+        else
+        {
+            currentIdGenero = 1;
+            return currentIdGenero;
+        }
+    }
+    
+    public int returnIdTipoSangre()
+    {
+        currentTipoSangre=jFrameAddPolice.cmbTipoSangre.getSelectedItem().toString().trim();
+        if(currentTipoSangre.equals("A+"))
+        {
+            currentIdTipoSangre = 1;
+            return currentIdTipoSangre;
+        }
+        else 
+        {
+            if(currentTipoSangre.equals("O+"))
+            {currentIdTipoSangre = 2; return currentIdTipoSangre;}
+            else
+            {
+              if(currentTipoSangre.equals("O-"))
+              {currentIdTipoSangre = 3; return currentIdTipoSangre;}
+              else
+              {
+                if(currentTipoSangre.equals("B+"))
+                {currentIdTipoSangre = 4; return currentIdTipoSangre;}
+                else
+                {
+                   if(currentTipoSangre.equals("AB+"))
+                   {currentIdTipoSangre = 5; return currentIdTipoSangre;}
+                   else
+                   {
+                      if(currentTipoSangre.equals("A-"))
+                      {currentIdTipoSangre = 6; return currentIdTipoSangre;}
+                      else
+                      {
+                        if(currentTipoSangre.equals("B-"))
+                        {currentIdTipoSangre = 7; return currentIdTipoSangre;}
+                        else
+                        {
+                            currentIdTipoSangre = 8; return currentIdTipoSangre;
+                        }
+                      }
+                   }
+                }
+              }
+            }
+        }  
+    }
 }
