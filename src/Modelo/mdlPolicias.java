@@ -79,6 +79,25 @@ public class mdlPolicias {
         this.IdTipoPersonas_Personas = idPersona;
     }
     
+     public int readDUIIfExistDUI()
+    {
+        try{   
+            String query = "SELECT DUI FROM tbPersonas WHERE DUI = ?";    
+            PreparedStatement readDUIIfExistDUI = conexionSql.getConexion().prepareStatement(query);
+            
+             ResultSet rs = readDUIIfExistDUI.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("DUI");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    }
       //Mostrar datos en las tablas
     public void MostrarTablePolicias(Policias_Inicio vstPolicias){
         Color clrOrang = new Color( 243, 167, 18);
