@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 /**
  *
  * @author karla
@@ -25,6 +26,11 @@ public class Agregar_Armamento extends javax.swing.JFrame {
    
     public Agregar_Armamento() {
         initComponents();
+        
+        SpinnerNumberModel snm = new SpinnerNumberModel();
+        snm.setMinimum(0);
+        snm.setStepSize(1);
+        spCantidad.setModel(snm);
         
         try {
              ControladorArmamento controladorArmas = new ControladorArmamento(modeloArmamento, this, vistamedia);

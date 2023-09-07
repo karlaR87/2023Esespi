@@ -6,21 +6,22 @@ package VIsta.Programa.Inventario;
 
 import Controlador.cntrlClibre;
 import Modelo.ModeloCalibre;
+import javax.swing.SpinnerNumberModel;
 
-/**
- *
- * @author karla
- */
+
 public class Agregar_calibre extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Agregar_calibre
-     */
+   
     
     ModeloCalibre calibre = new ModeloCalibre();
     
     public Agregar_calibre() {
         initComponents();
+        
+        SpinnerNumberModel snm = new SpinnerNumberModel();
+        snm.setMinimum(0);
+        snm.setStepSize(1);
+        spCantidad.setModel(snm);
         
          cntrlClibre controlador = new cntrlClibre(calibre, this); 
                                calibre.mostrar(this);  

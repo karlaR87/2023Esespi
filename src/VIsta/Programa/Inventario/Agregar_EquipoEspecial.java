@@ -26,6 +26,12 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     
     public Agregar_EquipoEspecial()  {
             initComponents();
+            
+            SpinnerNumberModel snm = new SpinnerNumberModel();
+        snm.setMinimum(0);
+        snm.setStepSize(1);
+        spCantidad.setModel(snm);
+        
                try {
                         cntrlEquiposEspeciales controlador = new cntrlEquiposEspeciales(equipo, this); 
                    equipo.mostrar(this);   

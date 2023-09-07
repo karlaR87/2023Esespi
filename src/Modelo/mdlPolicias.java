@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -17,14 +18,82 @@ import javax.swing.table.JTableHeader;
 public class mdlPolicias {
     private int idUsuario;
     private int IdTipoPersonas_Personas;
-    private String ONI;
-    private String NumeroPlaca;
+
     private int IdRangoTipoUsuario;
     private int IdGrupoPatrullaje;
-    private byte[] Foto;
+    
+    private String Nombre;
+    private String Apellido;
+    private Date FechaNacimiento;
+    private String Direccion;
     private String DUI;
+    private int IdEstadoCivil;
+    private int IdTipoSangre;
+    private int IdGenero;
+    private String Usuario;
+    private String Contra;
+    private int IdRangoUsuario;
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getApellido() {
+        return Apellido;
+    }
+
+    public void setApellido(String Apellido) {
+        this.Apellido = Apellido;
+    }
+
+    public Date getFechaNacimiento() {
+        return FechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date FechaNacimiento) {
+        this.FechaNacimiento = FechaNacimiento;
+    }
+
+    public String getDireccion() {
+        return Direccion;
+    }
+
+    public void setDireccion(String Direccion) {
+        this.Direccion = Direccion;
+    }
+
+    public int getIdEstadoCivil() {
+        return IdEstadoCivil;
+    }
+
+    public void setIdEstadoCivil(int IdEstadoCivil) {
+        this.IdEstadoCivil = IdEstadoCivil;
+    }
+
+    public int getIdTipoSangre() {
+        return IdTipoSangre;
+    }
+
+    public void setIdTipoSangre(int IdTipoSangre) {
+        this.IdTipoSangre = IdTipoSangre;
+    }
+
+    public int getIdGenero() {
+        return IdGenero;
+    }
+
+    public void setIdGenero(int IdGenero) {
+        this.IdGenero = IdGenero;
+    }
     private String Correo;
     private String Numero;
+    private String ONI;
+    private String NumeroPlaca;
+    private byte[] Foto;
 
     public String getNumero() {
         return Numero;
@@ -89,6 +158,30 @@ public class mdlPolicias {
     public void setNumeroPlaca(String NumeroPlaca) {
         this.NumeroPlaca = NumeroPlaca;
     }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    public String getContra() {
+        return Contra;
+    }
+
+    public void setContra(String Contra) {
+        this.Contra = Contra;
+    }
+
+    public int getIdRangoUsuario() {
+        return IdRangoUsuario;
+    }
+
+    public void setIdRangoUsuario(int IdRangoUsuario) {
+        this.IdRangoUsuario = IdRangoUsuario;
+    }
     
     public int getIdUsuario() {
         return idUsuario;
@@ -104,6 +197,52 @@ public class mdlPolicias {
 
     public void setIdTipoPersonas_Personas(int idPersona) {
         this.IdTipoPersonas_Personas = idPersona;
+    }
+    
+    public boolean InsertPoliceInclude_Persona_TipoP_User()
+    {
+           try{
+            String query = "EXEC dbo.InsertarPolicias1\n" +
+"	@Nombre = ?,\n" +
+"	@Apellido = ?,\n" +
+"	@FechaNacimiento = ?,\n" +
+"	@Direccion = ?,\n" +
+"	@Dui = ?,\n" +
+"	@IdEstadoCivil = ?,\n" +
+"	@IdTipoSangre = ?,\n" +
+"	@IdGenero = ?,\n" +
+"	@CorreoElectronico = ?,\n" +
+"	@NumeroTel = ?,\n" +
+"	@ONI = ?,\n" +
+"	@NumeroPlaca = ?,\n" +
+"	@Foto = ?,\n" +
+"	@Usuario = ?,\n" +
+"	@Contrasena = ?,\n" +
+"	@IdRangoTipoUsuario  = ?"; 
+            PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
+            insertPolice.setString(1, Nombre);
+            insertPolice.setString(2, Apellido);
+            insertPolice.setDate(3, (java.sql.Date) FechaNacimiento);
+            insertPolice.setString(4, Direccion);
+            insertPolice.setString(5, DUI);
+            insertPolice.setInt(6, IdEstadoCivil);
+            insertPolice.setInt(7, IdTipoSangre);
+            insertPolice.setInt(8, IdGenero);
+            insertPolice.setString(9, Correo);
+            insertPolice.setString(10, Numero);
+            insertPolice.setString(11, ONI);
+            insertPolice.setString(12, NumeroPlaca);
+            insertPolice.setString(14, Usuario);
+            insertPolice.setString(15, Contra);
+            insertPolice.setInt(16, IdRangoUsuario);
+                       
+            insertPolice.executeUpdate();
+            return true;
+          
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null, e.toString());
+            return false;
+        }
     }
     
      public int readDUIIfExistDUI()
@@ -188,7 +327,8 @@ public class mdlPolicias {
                             "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
                             "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
                             "INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
-                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje ORDER BY tbPoli.IdRangoTipoUsuario";
+                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" +
+                            "WHERE tbTipoP.IdTipoPersona = 1 ORDER BY tbPoli.IdRangoTipoUsuario";
             
             ResultSet rs = statement.executeQuery(query);
 
