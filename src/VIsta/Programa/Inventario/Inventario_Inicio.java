@@ -37,7 +37,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jPanelAddPolice = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnDeleteEquipo = new javax.swing.JButton();
@@ -61,12 +60,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelAddPolice.setBackground(new java.awt.Color(70, 70, 70));
-        jPanelAddPolice.setOpaque(false);
-        jPanelAddPolice.setPreferredSize(new java.awt.Dimension(740, 444));
-        jPanelAddPolice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel3.add(jPanelAddPolice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 740, 444));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setPreferredSize(new java.awt.Dimension(1010, 710));
@@ -261,7 +254,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    public javax.swing.JPanel jPanelAddPolice;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
