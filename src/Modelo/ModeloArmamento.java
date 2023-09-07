@@ -170,7 +170,6 @@ public class ModeloArmamento {
             pst.setString(1, genero);
             result = pst.executeQuery();
 
- 
 
             if (result.next()) {
                 gen = result.getInt("IdTipoArmamentoEstacion");

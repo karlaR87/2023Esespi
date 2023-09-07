@@ -53,8 +53,7 @@ public class mdlPreguntasRespuestasDSeguridad {
             addPreguntasS.setString(3, Respuesta);
             
             addPreguntasS.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Preguntas registradas");
-          
+            
         }catch(Exception e){
               JOptionPane.showMessageDialog(null, e.toString());
         }

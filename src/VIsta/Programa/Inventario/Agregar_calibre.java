@@ -12,6 +12,8 @@ import javax.swing.SpinnerNumberModel;
 public class Agregar_calibre extends javax.swing.JFrame {
 
    
+    public int idCalibre;
+    
     
     ModeloCalibre calibre = new ModeloCalibre();
     
@@ -56,12 +58,12 @@ public class Agregar_calibre extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Calibre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 130, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 130, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cantidad");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 130, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 130, 30));
 
         tbCalibre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,47 +76,52 @@ public class Agregar_calibre extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbCalibre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbCalibreMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbCalibre);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 410, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 390, 230));
 
         txtCalibre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCalibreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCalibre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 150, -1));
-        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+        jPanel1.add(txtCalibre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 150, -1));
+        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnDeletePolicia.png"))); // NOI18N
         btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 350, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
 
         btnAdd.setBackground(new java.awt.Color(68, 68, 68));
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnaddBig.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddPolicia.png"))); // NOI18N
         btnAdd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, -1, -1));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
         btnModificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnModificarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 350, -1, -1));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, -1));
 
         txtbuscarC.setText("Buscar");
         txtbuscarC.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -122,10 +129,10 @@ public class Agregar_calibre extends javax.swing.JFrame {
                 txtbuscarCKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 410, -1));
+        jPanel1.add(txtbuscarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 390, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/calibre_1.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1040, 480));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Vista_AgregarMunicion1.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,7 +142,9 @@ public class Agregar_calibre extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,10 +170,17 @@ public class Agregar_calibre extends javax.swing.JFrame {
     private void txtbuscarCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarCKeyReleased
       
         ModeloCalibre MC = new ModeloCalibre();
-        
         MC.mostrarDatos(this);
            // TODO add your handling code here:
     }//GEN-LAST:event_txtbuscarCKeyReleased
+
+    private void tbCalibreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCalibreMouseClicked
+        int filaSeleccionada = tbCalibre.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String MiId = tbCalibre.getValueAt(filaSeleccionada, 0).toString();
+        idCalibre = Integer.parseInt(MiId);
+        System.out.println(idCalibre);
+    }//GEN-LAST:event_tbCalibreMouseClicked
 
     /**
      * @param args the command line arguments

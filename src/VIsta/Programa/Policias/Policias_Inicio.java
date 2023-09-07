@@ -45,6 +45,11 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 btnDeletePoliciaMouseClicked(evt);
             }
         });
+        btnDeletePolicia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletePoliciaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnDeletePolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 340, 60, 60));
 
         btnEditPolicia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
@@ -69,9 +74,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
         });
         jPanel1.add(btnAddPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 280, 60, 60));
 
-        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         txtBuscar.setToolTipText("");
         txtBuscar.setBorder(null);
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 330, 30));
@@ -128,6 +131,10 @@ public class Policias_Inicio extends javax.swing.JPanel {
         IdPolicia = Integer.parseInt(MiId);
         System.out.println(IdPolicia);
     }//GEN-LAST:event_tbDatosPoliciasMouseClicked
+
+    private void btnDeletePoliciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePoliciaActionPerformed
+        
+    }//GEN-LAST:event_btnDeletePoliciaActionPerformed
 
     
     public JButton getbtnAdd()

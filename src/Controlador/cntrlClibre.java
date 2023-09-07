@@ -46,9 +46,12 @@ public class cntrlClibre implements ActionListener{
             modeloCalibre.mostrar(Vista);
          }
          if(e.getSource() == Vista.btnEliminar){
-
+             
+            if (Vista.idCalibre != 0){
             modeloCalibre.eliminar(Vista);
             modeloCalibre.mostrar(Vista);
+            }
+            
             
             }
          

@@ -60,11 +60,15 @@ public class contrlPolicias implements ActionListener{
         
         if(e.getSource() == vstPoli.btnDeletePolicia)
         {
+            
+            if (vstPoli.IdPolicia != 0){
             mdlPoli.setIdPolicia(vstPoli.IdPolicia);
             mdlPoli.deletetbPolicias();
             mdlPoli.MostrarTablePolicias(vstPoli);
             show("El policía se ha eliminado correctamente", 17, 0, 0);
             close4();
+            }
+            
         }
         
         if(e.getSource() == vstPoli.btnAddPolicia)

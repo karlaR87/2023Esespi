@@ -170,6 +170,7 @@ private mdlIdiomas modeloIdiomas;  // Instancia de mdlIdiomas
             if (isSelected != null && isSelected){
                 IdiomasSeleccionados.add(idIdioma);
                 System.out.println("idioma seleccionado: " + idIdioma);
+                
             }
             
             else{

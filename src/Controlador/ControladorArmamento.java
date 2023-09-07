@@ -87,8 +87,12 @@ public class ControladorArmamento implements ActionListener{
 
         //btnEliminar
         else if (e.getSource() == Vista.btnEliminar) {
+            
+            if (Vista.idArmamneto !=0){
             modeloArmamento.eliminar(Vista);
             modeloArmamento.mostrar(Vista);
+            }
+            
         }
         
         
