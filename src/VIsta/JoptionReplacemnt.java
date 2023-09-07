@@ -28,6 +28,8 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
     private int FSize;
     public boolean isOpen = false;
     public JButton OKbutton;
+    public JButton SIbutton;
+    public JButton NObutton;
     Fuentes tipoFuentes;
     
     public JoptionReplacemnt(int type, int img, String msg, int FSize) {
@@ -52,10 +54,15 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
         lblMsg.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, this.FSize));
         
         Icon iconOriginal = new ImageIcon("src/VIsta/imagenes/VectorCheckOk.png");
-        Icon iconWhite = new ImageIcon("src/VIsta/imagenes/VectorCheckOkWhite.png");             
+        Icon iconWhite = new ImageIcon("src/VIsta/imagenes/VectorCheckOkWhite.png");   
+        
+        Icon iconOriginalNO = new ImageIcon("src/VIsta/imagenes/VectorExNo.png");
+        Icon iconWhiteNO = new ImageIcon("src/VIsta/imagenes/VectorExNoWhite.png");   
         
         switch (this.type) {
             case 0://1 btn de OK
+                jPanel2.setVisible(false);
+                jPanel3.setVisible(false);
                 OKbutton = new JButton("OK");
                 OKbutton.setBounds(-2, -2, 390, 47); // Coordenadas (x, y) y tamaño (ancho, alto)
                 OKbutton.setBackground(clr);
@@ -79,14 +86,75 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
                 OKbutton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseExited(java.awt.event.MouseEvent evt) {
                     OKbutton.setBackground(clr); // Restaura el color cuando el mouse sale
-                     OKbutton.setIcon(iconOriginal);
+                    OKbutton.setIcon(iconOriginal);
                 }
                 });
                 
                 jPanel1.add(OKbutton);
                 break;
                 
-            case 1:
+            case 1: //Botones si/no
+                jPanel1.setVisible(false);
+                jPanel2.setVisible(true);
+                jPanel3.setVisible(true);
+                
+                SIbutton = new JButton("SI");
+                SIbutton.setBounds(-2, -2, 195, 47); // Coordenadas (x, y) y tamaño (ancho, alto)
+                SIbutton.setBackground(clr);
+                SIbutton.setFocusPainted(false);
+                SIbutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                SIbutton.setBorderPainted(false);
+                SIbutton.setForeground(Color.WHITE);
+                SIbutton.setBorder(null);
+                SIbutton.setIcon(iconOriginal);
+                SIbutton.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+                                
+                // Agregar evento MouseEntered
+                SIbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    SIbutton.setBackground(clrBlue); // Cambia el color cuando el mouse entra
+                    SIbutton.setIcon(iconWhite);
+                }
+                });
+
+                // Agregar evento MouseExited
+                SIbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    SIbutton.setBackground(clr); // Restaura el color cuando el mouse sale
+                    SIbutton.setIcon(iconOriginal);
+                }
+                });
+                
+                //---------------------------------------NO BUTTON---------------------------------------
+                NObutton = new JButton("NO");
+                NObutton.setBounds(-2, -2, 195, 47); // Coordenadas (x, y) y tamaño (ancho, alto)
+                NObutton.setBackground(clr);
+                NObutton.setFocusPainted(false);
+                NObutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                NObutton.setBorderPainted(false);
+                NObutton.setForeground(Color.WHITE);
+                NObutton.setBorder(null);
+                NObutton.setIcon(iconOriginalNO);
+                NObutton.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 17));
+                                
+                // Agregar evento MouseEntered
+                NObutton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    NObutton.setBackground(clrBlue); // Cambia el color cuando el mouse entra
+                    NObutton.setIcon(iconWhiteNO);
+                }
+                });
+
+                // Agregar evento MouseExited
+                NObutton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    NObutton.setBackground(clr); // Restaura el color cuando el mouse sale
+                     NObutton.setIcon(iconOriginalNO);
+                }
+                });
+                
+                jPanel2.add(SIbutton);
+                jPanel3.add(NObutton);
                 break;
         }
         
@@ -108,6 +176,8 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblMsg = new javax.swing.JLabel();
         lblImg = new javax.swing.JLabel();
@@ -116,8 +186,41 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(390, 189));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(70, 70, 70));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(70, 70, 70), 6, true));
+        jPanel3.setPreferredSize(new java.awt.Dimension(195, 49));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 32, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 140, 200, 44));
+
+        jPanel2.setBackground(new java.awt.Color(70, 70, 70));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(70, 70, 70), 6, true));
+        jPanel2.setPreferredSize(new java.awt.Dimension(195, 49));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 183, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 32, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 140, 195, 44));
 
         jPanel1.setBackground(new java.awt.Color(70, 70, 70));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(70, 70, 70), 6, true));
@@ -190,6 +293,8 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblMsg;
     // End of variables declaration//GEN-END:variables
