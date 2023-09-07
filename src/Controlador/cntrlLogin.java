@@ -48,9 +48,12 @@ public class cntrlLogin implements ActionListener{
                  else
                  {
                      System.out.println(con);
+                     System.out.println(lg.convertirSHA256(lg.txtContraseña.getText().trim()));
+                     
                      if(con.equals(lg.convertirSHA256(lg.txtContraseña.getText().trim())))
                      {
-                        JframePrincipal JFP = new JframePrincipal();
+                         lg.IdNivelUser = mdlUsuarios.readIdNivelUsuario();
+                        JframePrincipal JFP = new JframePrincipal(lg.IdNivelUser);
                         JFP.setVisible(true);
                         lg.setVisible(false); 
                      }

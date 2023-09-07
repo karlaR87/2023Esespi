@@ -23,6 +23,7 @@ public class Agregar_policia extends javax.swing.JFrame {
     
     public Agregar_policia() {
         initComponents();
+        jLabel11.setVisible(false);
         NOSPACE();
          try {
             modeloRegistro.llenarCombo(cmbEstadoCivil);
@@ -104,6 +105,7 @@ public class Agregar_policia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel11 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -149,6 +151,9 @@ public class Agregar_policia extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BLACKTRANSPARENT980X707.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 600));
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnGuardarBlockBlue3.png"))); // NOI18N
         btnGuardar.setBorderPainted(false);
@@ -534,6 +539,7 @@ public class Agregar_policia extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cmbTipoSangre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    public javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

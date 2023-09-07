@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VIsta.Programa.Policias;
 
 import javax.swing.JButton;
@@ -12,9 +8,7 @@ import javax.swing.JButton;
  */
 public class Policias_Inicio extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Policias_Inicio
-     */
+    public int IdPolicia;
     public Policias_Inicio() {
         initComponents();
     }
@@ -101,6 +95,11 @@ public class Policias_Inicio extends javax.swing.JPanel {
         tbDatosPolicias.setSelectionBackground(new java.awt.Color(119, 119, 119));
         tbDatosPolicias.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tbDatosPolicias.getTableHeader().setResizingAllowed(false);
+        tbDatosPolicias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDatosPoliciasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbDatosPolicias);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 940, 520));
@@ -121,6 +120,14 @@ public class Policias_Inicio extends javax.swing.JPanel {
     private void btnAddPoliciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPoliciaMouseClicked
     }//GEN-LAST:event_btnAddPoliciaMouseClicked
 
+    private void tbDatosPoliciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosPoliciasMouseClicked
+        int filaSeleccionada = tbDatosPolicias.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String MiId = tbDatosPolicias.getValueAt(filaSeleccionada, 0).toString();
+        IdPolicia = Integer.parseInt(MiId);
+        System.out.println(IdPolicia);
+    }//GEN-LAST:event_tbDatosPoliciasMouseClicked
+
     
     public JButton getbtnAdd()
     {
@@ -129,7 +136,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddPolicia;
-    private javax.swing.JButton btnDeletePolicia;
+    public javax.swing.JButton btnDeletePolicia;
     private javax.swing.JButton btnEditPolicia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

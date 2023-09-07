@@ -34,6 +34,16 @@ public class mdlPolicias {
     private String Contra;
     private int IdRangoUsuario;
 
+    private int IdPolicia;
+
+    public int getIdPolicia() {
+        return IdPolicia;
+    }
+
+    public void setIdPolicia(int IdPolicia) {
+        this.IdPolicia = IdPolicia;
+    }
+    
     public String getNombre() {
         return Nombre;
     }
@@ -199,6 +209,23 @@ public class mdlPolicias {
         this.IdTipoPersonasPersonas = idPersona;
     }
     
+    public boolean deletetbPolicias()
+    {
+          try{
+            String query = "EXEC dbo.EliminarPolicias2 "
+                    + " @IdPolicia = ?";
+            PreparedStatement deletePolice = conexionSql.getConexion().prepareStatement(query);
+            deletePolice.setInt(1, IdPolicia);
+   
+            deletePolice.executeUpdate();
+            return true;
+          
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null, e.toString());
+            return false;
+        }
+    }
+    
     public boolean InsertPoliceIncludePersonaTipoPUser()
     {
            try{
@@ -232,6 +259,7 @@ public class mdlPolicias {
             insertPolice.setString(10, Numero);
             insertPolice.setString(11, ONI);
             insertPolice.setString(12, NumeroPlaca);
+            insertPolice.setBytes(13, Foto);
             insertPolice.setString(14, Usuario);
             insertPolice.setString(15, Contra);
             insertPolice.setInt(16, IdRangoUsuario);
@@ -332,7 +360,7 @@ public class mdlPolicias {
         DefaultTableModel modelo = new DefaultTableModel();
       
         modelo.setColumnIdentifiers(new Object []{"ID","Apellidos", "Género","DUI", "Número", "Rango", 
-            "ONI", "Placa", "Grupo"});
+            "ONI", "Placa"});
 
         try{
 
@@ -340,21 +368,21 @@ public class mdlPolicias {
 
             String query = "SELECT tbPoli.IdPolicia AS IdentificadorID, tbPer.Apellido AS Apellidos, tbPer.Dui AS DUI, \n" +
                             "tbGenero.Genero, tbPer.NumeroTel AS NumeroTel,\n" +
-                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca, tbGrP.NumeroDeGrupo\n" +
+                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca--, tbGrP.NumeroDeGrupo\n" +
                             "FROM tbPersonas tbPer\n" +
                             "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
                             "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
                             "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
                             "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
-                            "INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
-                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" +
+                            "--INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
+                            "--INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" +
                             "WHERE tbTipoP.IdTipoPersona = 1 ORDER BY tbPoli.IdRangoTipoUsuario";
             
             ResultSet rs = statement.executeQuery(query);
 
             while(rs.next()){
                 modelo.addRow(new Object[] {rs.getString("IdentificadorID"),rs.getString("Apellidos"),rs.getString("Genero"), rs.getString("DUI"),
-                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca"), rs.getString("NumeroDeGrupo")});
+                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca")});//, rs.getString("NumeroDeGrupo")});
 
             }
             
@@ -385,13 +413,13 @@ public class mdlPolicias {
         // Ajustar el ancho de las columnas
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(1).setPreferredWidth(100); 
-        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(2).setPreferredWidth(40);
-        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(3).setPreferredWidth(35); 
-        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(4).setPreferredWidth(35); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(2).setPreferredWidth(50);
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(3).setPreferredWidth(45); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(4).setPreferredWidth(45); 
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(5).setPreferredWidth(130); 
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(6).setPreferredWidth(20); 
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(7).setPreferredWidth(20); 
-        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
+        //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
 
         }catch(SQLException ex){
 

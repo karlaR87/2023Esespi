@@ -19,6 +19,8 @@ public class Login extends javax.swing.JFrame {
 
   
     Fuentes tipoFuentes;
+    public int IdNivelUser;
+    
     public Login() {
         initComponents();
         ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());

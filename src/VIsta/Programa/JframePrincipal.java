@@ -31,10 +31,11 @@ import javax.swing.OverlayLayout;
  */
 public class JframePrincipal extends javax.swing.JFrame {
       Color colorChange = new Color(255, 98, 98);
-    public JframePrincipal() {       
+      public int idNivelUser;
+    public JframePrincipal(int idNivelUser) {       
         initComponents();
         ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());
-
+        this.idNivelUser = idNivelUser;
         slideMenu.setSize(0, 600);
         jLabel1.setVisible(false);
         jLabel3.setVisible(false);
@@ -47,7 +48,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     Usuario user = new Usuario();
     Inicio home = new Inicio();
     Patrullajes_Inicio patrullajesInicio;
-    Policias_Inicio policiasInicio = new Policias_Inicio();
+    Policias_Inicio policiasInicio;
     Inventario_Inicio inventarioInicio = new Inventario_Inicio();
     Reportes_Inicio reportesInicio = new Reportes_Inicio();
     Patrullajes_AddPersonal PatrullajesAddP;
@@ -62,14 +63,24 @@ public class JframePrincipal extends javax.swing.JFrame {
        AddPatrullajes = new Patrullajes_Agregar();
        
        PatrullajesAddP = new Patrullajes_AddPersonal();
-       
+             
+        policiasInicio = new Policias_Inicio();
+        if(idNivelUser == 1)
+        {
+           policiasInicio.btnDeletePolicia.setVisible(true);
+        }
+        else
+        {
+            policiasInicio.btnDeletePolicia.setVisible(false);
+        }
+        
         //Inicializacion de modelos y controladores
        ModeloPatrullajes mdlPatrullajes = new ModeloPatrullajes();
         mdlPolicias = new mdlPolicias();
         AddUser = new Agregar_Usuario();
       cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP);
       AddPolice = new Agregar_policia(); 
-      contrlPolicias cntrPoli = new contrlPolicias(policiasInicio, this, mdlPolicias, AddPolice, AddUser);
+      contrlPolicias cntrPoli = new contrlPolicias(policiasInicio, this, mdlPolicias, AddPolice, AddUser, idNivelUser);
        
         cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
@@ -916,7 +927,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JframePrincipal frmPrincipal = new JframePrincipal();
+                JframePrincipal frmPrincipal = new JframePrincipal(0);
                 frmPrincipal.setVisible(true);
             }
         });

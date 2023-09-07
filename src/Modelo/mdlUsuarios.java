@@ -42,6 +42,28 @@ public class mdlUsuarios {
         this.IdNivelUsuario = IdNivelUsuario;
     }
     
+    public int readIdNivelUsuario()
+    {
+        try {
+        String query = "SELECT IdNivelUsuario FROM tbUsuarios WHERE Usuario = ?";
+        PreparedStatement readIDNivelUsuario = conexionSql.getConexion().prepareStatement(query);
+        readIDNivelUsuario.setString(1, Usuario);
+        ResultSet rs = readIDNivelUsuario.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdNivelUsuario");
+            } else {
+                // No se encontró ningún usuario con el nombre proporcionado
+                return -1; 
+            }
+        } catch (SQLException e) {
+              JOptionPane.showMessageDialog(null, e.toString());
+            return -1; // O cualquier otro valor que desees usar para indicar un error.
+
+        }
+    }
+    
      public int readIDULTIMATEUsuario()
     {
         try {
