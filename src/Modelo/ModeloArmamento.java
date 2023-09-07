@@ -5,6 +5,7 @@
 package Modelo;
 import VIsta.Programa.Inventario.Agregar_Armamento;
 import VIsta.Programa.Inventario.Agregar_EquipoEspecial;
+import VIsta.Programa.Inventario.Inventario_Inicio;
 import java.sql.*; 
 import java.util.List;
 import java.util.logging.Level;
@@ -275,6 +276,32 @@ public class ModeloArmamento {
                 
             }
             armamento.tbArmas.setModel(modelo);
+                
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null, ex.toString());
+
+        }
+
+    }
+    public void mostrar1(Inventario_Inicio armamento){
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleArmamentoEstacion","DetalleArmamento", "Cantidad", "IdTipoArmamentoEstacion"});
+       
+        try{
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select * from tbDetallesArmamentosEstacion";
+            ResultSet rs = statement.executeQuery(query);
+            
+            while(rs.next()){
+              
+                modelo.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("IdTipoArmamentoEstacion")});
+                
+            }
+            armamento.tbMostrarDatosArmamento.setModel(modelo);
                 
         }catch(SQLException ex){
 
