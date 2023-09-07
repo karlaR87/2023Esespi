@@ -29,7 +29,7 @@ public class EleccionArmamento extends javax.swing.JFrame {
         Armas = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Munición ", "Armas", " " }));
         Armas.setSelectedItem(Armas);
