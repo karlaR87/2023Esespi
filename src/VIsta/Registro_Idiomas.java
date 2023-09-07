@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -24,11 +25,20 @@ import javax.swing.table.TableColumn;
 public class Registro_Idiomas extends javax.swing.JFrame {
 private Registro registro;  // Referencia a la instancia de Registro
 private mdlIdiomas modeloIdiomas;  // Instancia de mdlIdiomas
- 
-    public void setRegistro(Registro registro) {
+
+     public void setRegistro(Registro registro) {
         
         this.registro = registro;  // Establecer la referencia a la instancia de Registro
     }
+     
+         private List<Integer> IdiomasSeleccionados = new ArrayList<>();
+    
+        public List<Integer> getIdiomasSeleccionados() {
+            System.out.println("idiomas finales: "+IdiomasSeleccionados);
+            
+        return IdiomasSeleccionados;
+    }
+
     
     public Registro_Idiomas() {
         initComponents();
@@ -51,6 +61,7 @@ private mdlIdiomas modeloIdiomas;  // Instancia de mdlIdiomas
          System.out.println("Fila: " + row + ", Columna: " + column);
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
     } 
+    
 
       public void enabled(boolean status)
     {
@@ -150,33 +161,27 @@ private mdlIdiomas modeloIdiomas;  // Instancia de mdlIdiomas
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
-
-          if (registro != null) {
-            // Obtener los idiomas seleccionados de la tabla
-            
-             System.out.println("Total de filas en la tabla: " + tbIdiomas.getRowCount());
-            for (int row = 0; row < tbIdiomas.getRowCount(); row++) {
-            
-                boolean isSelected = IsSelected(row, 2, tbIdiomas);  // Verificar si la casilla está seleccionada
-                System.out.println("Fila: " + row + ", Columna: 2, isSelected: " + isSelected);
-                if (isSelected) {
-                                       
-                    Boolean idioma = (Boolean) tbIdiomas.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
-                    registro.agregarIdiomaSeleccionado(idioma);                
-                        System.out.println(" Idioma");
-                }
-            }
-             // Imprimir el contenido del array de idiomasSeleccionados
-        } else {
-            System.out.println("La referencia 'registro' no se ha establecido correctamente.");
-        }
-
-        // Limpiar la selección de la tabla
-        tbIdiomas.clearSelection();
-
-        this.dispose();
+        IdiomasSeleccionados.clear();
         
+        for (int row = 0; row < tbIdiomas.getRowCount(); row++) {
+            Boolean isSelected =(Boolean) tbIdiomas.getValueAt(row, 2);
+            int idIdioma = (int)tbIdiomas.getValueAt(row, 0);
+            
+            if (isSelected != null && isSelected){
+                IdiomasSeleccionados.add(idIdioma);
+                System.out.println("idioma seleccionado: " + idIdioma);
+            }
+            
+            else{
+                IdiomasSeleccionados.remove(Integer.valueOf(idIdioma));
+                System.out.println("idioma que se quito: " + idIdioma);
+                
+            }
+        }
+        
+           this.dispose();
     }//GEN-LAST:event_lblRegresarMouseClicked
+    
 
     
     

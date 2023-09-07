@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -534,53 +535,141 @@ public class ModeloRegistro {
         return gen;
     }
     
-    // Método para insertar los datos de registro y asociar idiomas a la persona
-    public boolean agregarRegistroYAsociarIdiomas(ArrayList<Boolean> idiomasSeleccionados) {
-        try {
-            Connection conectar = conexionSql.getConexion();
+////    // Método para insertar los datos de registro y asociar idiomas a la persona
+//    public boolean agregarRegistroYAsociarIdiomas(ArrayList<Boolean> idiomasSeleccionados) {
+//        try {
+//            Connection conectar = conexionSql.getConexion();
+//
+//            // Insertar datos en la tabla tbPersonas
+//            String sqlInsertPersona = "INSERT INTO tbPersonas (Nombre, Apellido, FechaNacimiento, DireccionDomicilio, DUI, NumeroTel, CorreoElectronico, IdEstadoCivil, IdTipoSangre, IdGenero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//            PreparedStatement pstInsertPersona = conectar.prepareStatement(sqlInsertPersona, PreparedStatement.RETURN_GENERATED_KEYS);
+//            pstInsertPersona.setString(1, Nombre);
+//            pstInsertPersona.setString(2, Apellidos);
+//            pstInsertPersona.setDate(3, new java.sql.Date(Fecha.getTime())); // Convirtiendo la fecha util.Date a sql.Date
+//            pstInsertPersona.setString(4, Dirección);
+//            pstInsertPersona.setString(5, DUI);
+//            pstInsertPersona.setString(6, Tel);
+//            pstInsertPersona.setString(7, Correo);
+//            pstInsertPersona.setInt(8, Idestadocicivl);
+//            pstInsertPersona.setInt(9, IdtipoSangre);
+//            pstInsertPersona.setInt(10, Idgenero);
+//            pstInsertPersona.executeUpdate();
+//
+//            // Obtener el ID generado para la persona insertada
+//            ResultSet generatedKeys = pstInsertPersona.getGeneratedKeys();
+//            int idPersonaInsertada = -1;
+//            if (generatedKeys.next()) {
+//                idPersonaInsertada = generatedKeys.getInt(1);
+//            } else {
+//                throw new SQLException("No se pudo obtener el ID de la persona insertada.");
+//            }
+//
+//            // Llamar a la función SQL para asociar idiomas a la persona
+//            String sqlAsociarIdioma = "SELECT * FROM buscar_y_reemplazar_idioma_persona(?, ?)";
+//            PreparedStatement pstAsociarIdioma = conectar.prepareStatement(sqlAsociarIdioma);
+//
+//            // Para cada idioma seleccionado, llamar a la función con el idioma y el ID de la persona insertada
+//            for (int i = 0; i < idiomasSeleccionados.size(); i++) {
+//                boolean idiomaSeleccionado = idiomasSeleccionados.get(i);
+//                pstAsociarIdioma.setString(1, idiomaSeleccionado ? "Idioma " + (i + 1) : ""); 
+//                pstAsociarIdioma.setInt(2, idPersonaInsertada);
+//                pstAsociarIdioma.executeUpdate();
+//            }
+//
+//            conectar.close();
+//
+//            return true;
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e.toString());
+//            return false;
+//        }
+//    }
+    
+    
+    public int agregarRegistroYObtenerID( ) {
+    try {
+        Connection conectar = conexionSql.getConexion();
 
-            // Insertar datos en la tabla tbPersonas
-            String sqlInsertPersona = "INSERT INTO tbPersonas (Nombre, Apellido, FechaNacimiento, DireccionDomicilio, DUI, NumeroTel, CorreoElectronico, IdEstadoCivil, IdTipoSangre, IdGenero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement pstInsertPersona = conectar.prepareStatement(sqlInsertPersona, PreparedStatement.RETURN_GENERATED_KEYS);
-            pstInsertPersona.setString(1, Nombre);
-            pstInsertPersona.setString(2, Apellidos);
-            pstInsertPersona.setDate(3, new java.sql.Date(Fecha.getTime())); // Convirtiendo la fecha util.Date a sql.Date
-            pstInsertPersona.setString(4, Dirección);
-            pstInsertPersona.setString(5, DUI);
-            pstInsertPersona.setString(6, Tel);
-            pstInsertPersona.setString(7, Correo);
-            pstInsertPersona.setInt(8, Idestadocicivl);
-            pstInsertPersona.setInt(9, IdtipoSangre);
-            pstInsertPersona.setInt(10, Idgenero);
-            pstInsertPersona.executeUpdate();
+        // Insertar datos en la tabla tbPersonas
+        String sqlInsertPersona = "INSERT INTO tbPersonas (Nombre, Apellido, FechaNacimiento, DireccionDomicilio, DUI, NumeroTel, CorreoElectronico, IdEstadoCivil, IdTipoSangre, IdGenero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement pstInsertPersona = conectar.prepareStatement(sqlInsertPersona, PreparedStatement.RETURN_GENERATED_KEYS);
+        pstInsertPersona.setString(1, Nombre);
+        pstInsertPersona.setString(2, Apellidos);
+        pstInsertPersona.setDate(3, new java.sql.Date(Fecha.getTime())); // Convirtiendo la fecha util.Date a sql.Date
+        pstInsertPersona.setString(4, Dirección);
+        pstInsertPersona.setString(5, DUI);
+        pstInsertPersona.setString(6, Tel);
+        pstInsertPersona.setString(7, Correo);
+        pstInsertPersona.setInt(8, Idestadocicivl);
+        pstInsertPersona.setInt(9, IdtipoSangre);
+        pstInsertPersona.setInt(10, Idgenero);
+        pstInsertPersona.executeUpdate();
 
-            // Obtener el ID generado para la persona insertada
-            ResultSet generatedKeys = pstInsertPersona.getGeneratedKeys();
-            int idPersonaInsertada = -1;
-            if (generatedKeys.next()) {
-                idPersonaInsertada = generatedKeys.getInt(1);
-            } else {
-                throw new SQLException("No se pudo obtener el ID de la persona insertada.");
-            }
-
-            // Llamar a la función SQL para asociar idiomas a la persona
-            String sqlAsociarIdioma = "SELECT * FROM buscar_y_reemplazar_idioma_persona(?, ?)";
-            PreparedStatement pstAsociarIdioma = conectar.prepareStatement(sqlAsociarIdioma);
-
-            // Para cada idioma seleccionado, llamar a la función con el idioma y el ID de la persona insertada
-            for (int i = 0; i < idiomasSeleccionados.size(); i++) {
-                boolean idiomaSeleccionado = idiomasSeleccionados.get(i);
-                pstAsociarIdioma.setString(1, idiomaSeleccionado ? "Idioma " + (i + 1) : ""); // Puedes cambiar "Idioma" por algún otro identificador
-                pstAsociarIdioma.setInt(2, idPersonaInsertada);
-                pstAsociarIdioma.executeUpdate();
-            }
-
-            conectar.close();
-
-            return true;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-            return false;
+        // Obtener el ID generado para la persona insertada
+        ResultSet generatedKeys = pstInsertPersona.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int idPersonaInsertada = generatedKeys.getInt(1);
+            System.out.println("Persona agregada con ID: " + idPersonaInsertada);
+            return idPersonaInsertada; // Retorna el ID generado
+        } else {
+            throw new SQLException("No se pudo obtener el ID de la persona insertada.");
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e.toString());
+        return -1; // Retorna un valor indicando un error
     }
+    }
+    
+    
+ public void agregarRelacionesIdiomas(List<Integer> idIdiomas,  int idPersona ) {
+    try {
+        // Consulta SQL para insertar relaciones en la tabla intermedia
+        String query = "INSERT INTO tbPersonas_Idiomas (IdIdioma, IdPersona) VALUES (?, ?);";
+        
+        // Preparar la declaración SQL
+        PreparedStatement addRelaciones = conexionSql.getConexion().prepareStatement(query);
+        
+        // Iterar sobre los IDs de los calibres y agregar las relaciones
+        for (int idIdioma : idIdiomas) {
+            addRelaciones.setInt(1, idIdioma); 
+            addRelaciones.setInt(2, idPersona); 
+            
+            addRelaciones.executeUpdate();
+        }
+        
+        System.out.println("IDs de idioma: " + idIdiomas + " Del id Persona: " +idPersona);
+       
+        
+        
+        JOptionPane.showMessageDialog(null, "Registro agregado exitosamente");
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e.toString());
+    }
+}
+ 
+  public void agregarRelacionesNacionalidades( List<Integer> idNacionalidades, int idPersona ) {
+    try {
+        // Consulta SQL para insertar relaciones en la tabla intermedia
+        String query = "INSERT INTO tbNacionalidades_Personas (IdNacionalidad, IdPersona) VALUES (?, ?);";
+        
+        // Preparar la declaración SQL
+        PreparedStatement addRelaciones = conexionSql.getConexion().prepareStatement(query);
+        
+        // Iterar sobre los IDs de los calibres y agregar las relaciones
+        for (int idNacionalidad : idNacionalidades) {
+            addRelaciones.setInt(1, idNacionalidad); 
+            addRelaciones.setInt(2, idPersona); 
+            
+            addRelaciones.executeUpdate();
+        }
+        
+        System.out.println("IDs de nacionalidades: " + idNacionalidades + " Del id Persona: " +idPersona);
+       
+        
+        
+        JOptionPane.showMessageDialog(null, "Registro agregado exitosamente");
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e.toString());
+    }
+}
 }

@@ -27,35 +27,13 @@ import javax.swing.SpinnerNumberModel;
 
 public class Registro extends javax.swing.JFrame {
 
-    private Registro_Idiomas formularioIdiomas;
-    private Registro_Nacionalidades formularioNacionalidad;
-    public ArrayList<Boolean> idiomasSeleccionados = new ArrayList<>();
-    private ArrayList<Boolean> nacionalidadesSelecionadas = new ArrayList<>();
-    
-    void agregarIdiomaSeleccionado(Boolean idiomaSeleccionado) {
-        
-        idiomasSeleccionados.add(idiomaSeleccionado);
-        formularioIdiomas.setRegistro(this);
-  
-    }
-    void agregarNacionalidadSeleccionada(Boolean nacionalidadseleccionada) {
-       
-        nacionalidadesSelecionadas.add(nacionalidadseleccionada);
-        formularioNacionalidad.setRegistro(this);
-           
-    }
+   
 
-    
     public Registro() {
         initComponents();
         ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());
 
         PanelsShowInit();
-
-        formularioIdiomas = new Registro_Idiomas(); // Crear una instancia de Registro_Idiomas
-        formularioIdiomas.setRegistro(this); // Establecer la referencia a la instancia de Registro    
-        formularioNacionalidad = new Registro_Nacionalidades(); // Crear una instancia de Registro_Idiomas
-        formularioNacionalidad.setRegistro(this); // Establecer la referencia a la instancia de Registro   
 
     }
     
@@ -68,6 +46,8 @@ public class Registro extends javax.swing.JFrame {
         RegistroInfoPolicial RInfoPolicial = new RegistroInfoPolicial(this);
         RegistroUsuario RUsuario = new RegistroUsuario(this);
         PreguntasSeguridad RPreguntasS = new PreguntasSeguridad();
+        Registro_Idiomas RIdiomas = new Registro_Idiomas();
+        Registro_Nacionalidades Rnacionalidades = new Registro_Nacionalidades();
   
         ModeloRegistro mdlRegistro = new ModeloRegistro();
         mdlPolicias mdlPolicias= new mdlPolicias();
@@ -75,7 +55,7 @@ public class Registro extends javax.swing.JFrame {
         mdlUsuarios mdUsuario = new mdlUsuarios();
         mdlPreguntasRespuestasDSeguridad mdlPreguntasDS = new mdlPreguntasRespuestasDSeguridad();
         
-        cntrlRegistro cntrlRegistro = new cntrlRegistro(this, RDatosPersonales, mdlRegistro, RInfoPolicial, mdlPolicias, mdltipoPersona, RUsuario, mdUsuario, RPreguntasS, mdlPreguntasDS);
+        cntrlRegistro cntrlRegistro = new cntrlRegistro(this, RDatosPersonales, mdlRegistro, RInfoPolicial, mdlPolicias, mdltipoPersona, RUsuario, mdUsuario, RPreguntasS, mdlPreguntasDS, RIdiomas, Rnacionalidades);
         
        cardLayout = new CardLayout();
         jPanel2.setLayout(cardLayout);

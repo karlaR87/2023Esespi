@@ -76,6 +76,7 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
     private List<Integer> calibresSeleccionados = new ArrayList<>();
     
     public List<Integer> getCalibresSeleccionados() {
+        System.out.println("Calibres finales: " + calibresSeleccionados);
         return calibresSeleccionados;
     }
 
@@ -162,7 +163,7 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
     }
 
     // Imprimir la lista final de calibres seleccionados
-    System.out.println("Calibres finales: " + calibresSeleccionados);
+    
 
     // Cierra la ventana de calibres después de obtener los IDs
     this.dispose();

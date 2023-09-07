@@ -10,6 +10,8 @@ import Modelo.mdlNacionalidad;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -46,7 +48,7 @@ private Registro registro;  // Referencia a la instancia de Registro
         
     }
 
-    public boolean IsSelected(int row, int column, JTable table)
+    public boolean IsSelectedN(int row, int column, JTable table)
     {    
          System.out.println("Fila: " + row + ", Columna: " + column);
         return table.getValueAt(row, column) != null;// Obtener el valor booleano de la casilla seleccionada                
@@ -146,34 +148,35 @@ private Registro registro;  // Referencia a la instancia de Registro
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
-          
-          if (registro != null) {
-            // Obtener los idiomas seleccionados de la tabla
+              NacionalidadesSeleccionadas.clear();
+        
+        for (int row = 0; row < tbNacionalidad.getRowCount(); row++) {
+            Boolean IsSelectedN =(Boolean) tbNacionalidad.getValueAt(row, 2);
+            int idNacio = (int)tbNacionalidad.getValueAt(row, 0);
             
-             System.out.println("Total de filas en la tabla: " + tbNacionalidad.getRowCount());
-            for (int row = 0; row < tbNacionalidad.getRowCount(); row++) {
-            
-                boolean isSelected = IsSelected(row, 2, tbNacionalidad);  // Verificar si la casilla está seleccionada
-                System.out.println("Fila: " + row + ", Columna: 2, isSelected: " + isSelected);
-                if (isSelected) {
-                                       
-                    Boolean nacionalidad = (Boolean) tbNacionalidad.getValueAt(row, 2);  // Obtener el valor de idioma seleccionado
-                    registro.agregarNacionalidadSeleccionada(nacionalidad);                
-                        System.out.println("nacio");
-                }
+            if (IsSelectedN != null && IsSelectedN){
+                NacionalidadesSeleccionadas.add(idNacio);
+                System.out.println("nacionalidad seleccionado: " + idNacio);
             }
-             // Imprimir el contenido del array de idiomasSeleccionados
-        } else {
-            System.out.println("La referencia 'registro' no se ha establecido correctamente.");
+            
+            else{
+                NacionalidadesSeleccionadas.remove(Integer.valueOf(idNacio));
+                System.out.println("nacionalidad que se quito: " + idNacio);
+                
+            }
         }
-
-        // Limpiar la selección de la tabla
-        tbNacionalidad.clearSelection();
-
-        this.dispose();
-                     
+        
+           this.dispose();
     }//GEN-LAST:event_lblRegresarMouseClicked
-
+       private List<Integer> NacionalidadesSeleccionadas = new ArrayList<>();
+    
+        public List<Integer> getNacionalidadesSeleccionadas() {
+            System.out.println("nacionalidades finales: "+NacionalidadesSeleccionadas);
+        return NacionalidadesSeleccionadas;
+    }    
+       
+    
+    
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
 
     }//GEN-LAST:event_jPanel1MouseClicked

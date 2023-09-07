@@ -12,11 +12,14 @@ import VIsta.Registro;
 import VIsta.RegistroInfoPolicial;
 import VIsta.RegistroUsuario;
 import VIsta.Registro_DatosPersonales;
+import VIsta.Registro_Idiomas;
+import VIsta.Registro_Nacionalidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.sql.SQLException;
+import java.util.List;
 
 public class cntrlRegistro implements ActionListener {
 
@@ -30,8 +33,10 @@ public class cntrlRegistro implements ActionListener {
     private mdlUsuarios mdlUsuario;
     private PreguntasSeguridad preguntasS;
     private mdlPreguntasRespuestasDSeguridad mdlPreguntasDS;
+    private Registro_Idiomas vistaIdiomas;
+    private Registro_Nacionalidades vistaNacionalidades;
     
-     public cntrlRegistro(Registro vistaJframeRegistro, Registro_DatosPersonales vista, ModeloRegistro modeloRegistro, RegistroInfoPolicial InfoPolicial, mdlPolicias mdlPolicias, mdlTipoPersonas_Personas mdlTipoPersonas, RegistroUsuario registroUser, mdlUsuarios mdlUsuario, PreguntasSeguridad preguntasS, mdlPreguntasRespuestasDSeguridad mdlPreguntasDS){
+     public cntrlRegistro(Registro vistaJframeRegistro, Registro_DatosPersonales vista, ModeloRegistro modeloRegistro, RegistroInfoPolicial InfoPolicial, mdlPolicias mdlPolicias, mdlTipoPersonas_Personas mdlTipoPersonas, RegistroUsuario registroUser, mdlUsuarios mdlUsuario, PreguntasSeguridad preguntasS, mdlPreguntasRespuestasDSeguridad mdlPreguntasDS, Registro_Idiomas Idiomas, Registro_Nacionalidades idNacionalidades){
         this.vistaJframeRegistro = vistaJframeRegistro;
         this.vista = vista;
         this.modeloRegistro = modeloRegistro;
@@ -42,6 +47,8 @@ public class cntrlRegistro implements ActionListener {
         this.mdlUsuario = mdlUsuario;
         this.preguntasS = preguntasS;
         this.mdlPreguntasDS = mdlPreguntasDS;
+        this.vistaIdiomas = Idiomas;
+        this.vistaNacionalidades = idNacionalidades;
         
         InfoPolicial.btnSiguiente.addActionListener(this);
         vista.btnSiguiente.addActionListener(this);
@@ -116,7 +123,16 @@ public class cntrlRegistro implements ActionListener {
             {   
                 try{
                 //Primero, Insertar a la persona
-                modeloRegistro.agregarRegistroYAsociarIdiomas(vistaJframeRegistro.idiomasSeleccionados);
+                
+                
+                int idPeronsa = modeloRegistro.agregarRegistroYObtenerID();
+                
+                List<Integer> idIdiomas = vistaIdiomas.getIdiomasSeleccionados();
+                List<Integer> idNacion = vistaNacionalidades.getNacionalidadesSeleccionadas();
+                 modeloRegistro.agregarRelacionesNacionalidades(idNacion,idPeronsa);
+                 modeloRegistro.agregarRelacionesIdiomas(idIdiomas,idPeronsa);
+                 
+                
                 //Segundo, Insertar el usuario
                 mdlUsuario.insertUsuario();
                 //Tercero, Insertar las preguntas de Seguridad
