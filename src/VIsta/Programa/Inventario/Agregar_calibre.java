@@ -124,6 +124,11 @@ public class Agregar_calibre extends javax.swing.JFrame {
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, -1));
 
         txtbuscarC.setText("Buscar");
+        txtbuscarC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtbuscarCMouseClicked(evt);
+            }
+        });
         txtbuscarC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbuscarCKeyReleased(evt);
@@ -181,6 +186,10 @@ public class Agregar_calibre extends javax.swing.JFrame {
         idCalibre = Integer.parseInt(MiId);
         System.out.println(idCalibre);
     }//GEN-LAST:event_tbCalibreMouseClicked
+
+    private void txtbuscarCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbuscarCMouseClicked
+          txtbuscarC.setText(" ");        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarCMouseClicked
 
     /**
      * @param args the command line arguments

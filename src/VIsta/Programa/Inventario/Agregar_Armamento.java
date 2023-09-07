@@ -139,6 +139,11 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, -1, -1));
 
         txtbuscarArm.setText("Buscar");
+        txtbuscarArm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtbuscarArmMouseClicked(evt);
+            }
+        });
         txtbuscarArm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbuscarArmKeyReleased(evt);
@@ -233,6 +238,10 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         idArmamneto = Integer.parseInt(MiId);
         System.out.println(idArmamneto);
     }//GEN-LAST:event_tbArmasMouseClicked
+
+    private void txtbuscarArmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbuscarArmMouseClicked
+         txtbuscarArm.setText(" ");
+    }//GEN-LAST:event_txtbuscarArmMouseClicked
 
     /**
      * @param args the command line arguments

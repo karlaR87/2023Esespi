@@ -175,6 +175,12 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, -1, -1));
 
+        txtBuscarEP.setText("Buscar");
+        txtBuscarEP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBuscarEPMouseClicked(evt);
+            }
+        });
         txtBuscarEP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarEPActionPerformed(evt);
@@ -349,6 +355,10 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     private void txtBuscarEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarEPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarEPActionPerformed
+
+    private void txtBuscarEPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarEPMouseClicked
+      txtBuscarEP.setText(" ");
+    }//GEN-LAST:event_txtBuscarEPMouseClicked
 
     
     
