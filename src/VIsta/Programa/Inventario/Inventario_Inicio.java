@@ -4,7 +4,9 @@
  */
 package VIsta.Programa.Inventario;
 
+import Modelo.ModeloArmamento;
 import Modelo.ModeloDatosTransporte;
+import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
 import Modelo.mdl;
 import VIsta.Bienvenida;
@@ -20,6 +22,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         initComponents();
         mdl mo = new mdl();
         mo.mostrar(this);
+        ModeloEquipoEspecial c = new ModeloEquipoEspecial();
+        c.mostrar1(this);
+        ModeloArmamento v = new ModeloArmamento();
+        v.mostrar1(this);
     }
 
    
@@ -43,6 +49,8 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         tbMostrarDatosEquipoEsp = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbMostrarDatosArmamento = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
@@ -113,7 +121,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbMostrarDatosTransporte);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 820, 170));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 820, 170));
 
         tbMostrarDatosEquipoEsp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +136,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbMostrarDatosEquipoEsp);
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 820, 160));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 820, 160));
 
         tbMostrarDatosArmamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,7 +151,23 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tbMostrarDatosArmamento);
 
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 820, 160));
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 820, 160));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/lapiz 1.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 120, 30, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/lapiz 1.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 30, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/lapiz 1.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,7 +175,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 470, 30, 40));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, 30, 40));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 710));
 
@@ -214,6 +238,16 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         mo.mostrar(this);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+       ModeloEquipoEspecial c = new ModeloEquipoEspecial();
+        c.mostrar1(this);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        ModeloArmamento v = new ModeloArmamento();
+        v.mostrar1(this);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEquipo;
@@ -221,6 +255,8 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     private javax.swing.JButton btnEdiEquipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

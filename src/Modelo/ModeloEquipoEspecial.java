@@ -5,6 +5,7 @@
 package Modelo;
 
 import VIsta.Programa.Inventario.Agregar_EquipoEspecial;
+import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio_Transportes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -466,6 +467,33 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
                 
             }
             inventa.tbEquiposEspeciales.setModel(modelo);
+                
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null, ex.toString());
+
+        }
+
+    }
+     public void mostrar1(Inventario_Inicio inventa){
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTiposEquipamientoEstacion", "Detalles", "Cantidad"});
+       
+        try{
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
+                       "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
+            ResultSet rs = statement.executeQuery(query);
+            
+            while(rs.next()){
+              
+                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("NombreTipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                
+            }
+            inventa.tbMostrarDatosEquipoEsp.setModel(modelo);
                 
         }catch(SQLException ex){
 
