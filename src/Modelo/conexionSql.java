@@ -45,8 +45,8 @@ public class conexionSql {
     public Statement createStatement() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-//    CLASE PARA LA BASE LOCAL 
+//    
+//    //CLASE PARA LA BASE LOCAL 
 //     //Creación del metodo de conexión que retorna la conexión
 //    public static Connection getConexion(){
 //        
