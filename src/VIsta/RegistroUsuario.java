@@ -1,5 +1,7 @@
 package VIsta;
 
+import Modelo.mdlPolicias;
+import Modelo.mdlUsuarios;
 import fonts.Fuentes;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,6 +13,9 @@ public class RegistroUsuario extends javax.swing.JPanel {
     Fuentes tipoFuentes;
     Registro jFrame;
     RegistroUsuario thisVista;
+    
+    mdlUsuarios userz = new mdlUsuarios();
+    mdlPolicias poli = new mdlPolicias();
     public RegistroUsuario(Registro jFrame) {
         initComponents();
         this.jFrame = jFrame;
@@ -76,17 +81,13 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtContrasena2.setBackground(new java.awt.Color(255, 255, 255));
         txtContrasena2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtContrasena2.setForeground(new java.awt.Color(0, 0, 0));
         txtContrasena2.setToolTipText("");
         txtContrasena2.setBorder(null);
         txtContrasena2.setPreferredSize(new java.awt.Dimension(90, 18));
         jPanel1.add(txtContrasena2, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 462, 410, 30));
 
-        txtContrasena.setBackground(new java.awt.Color(255, 255, 255));
         txtContrasena.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtContrasena.setForeground(new java.awt.Color(0, 0, 0));
         txtContrasena.setToolTipText("");
         txtContrasena.setBorder(null);
         txtContrasena.setPreferredSize(new java.awt.Dimension(90, 18));
@@ -107,9 +108,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         jLabel4.setText("Usuario");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 276, 420, 30));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtUsuario.setToolTipText("");
         txtUsuario.setBorder(null);
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 310, 410, 30));
@@ -153,8 +152,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     public boolean isOK()
+            
+            
     {
         if(txtUsuario.getText().isBlank() || txtContrasena.getText().isBlank() || txtContrasena2.getText().isBlank())
         {
@@ -169,9 +171,12 @@ public class RegistroUsuario extends javax.swing.JPanel {
                  show("El usuario no debe exceder los 20 caracteres", 16, 1);
                  close1(); 
               return false;
+
             }
-            else{
-                if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
+            else   
+            {
+ 
+                    if (!txtContrasena.getText().equals(txtContrasena2.getText()) || !txtContrasena2.getText().equals(txtContrasena.getText()))
                {
                    show("Ambas contraseñas deben coincidir", 17, 1);
                    close1(); 
@@ -205,9 +210,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
                            {   
                                return true;
                            }
+                             }
                        }
-                   }
-                }
+                    }  
+                
+                
             }
              
         }
@@ -253,7 +260,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
     public javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

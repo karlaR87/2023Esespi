@@ -727,7 +727,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;

@@ -105,12 +105,25 @@ public class cntrlRegistro implements ActionListener {
         if(e.getSource() == registroUser.btnSiguiente)
         {
             if(registroUser.isOK())
-            {
+            {  
+                mdlPolicias.setUsuario(registroUser.txtUsuario.getText().trim());
+               int resultUser = mdlPolicias.readUserIfExistUser();
+               
+               if(resultUser == -1)
+                {
+
                 mdlUsuario.setUsuario(registroUser.txtUsuario.getText().trim());
                 mdlUsuario.setContrasena(registroUser.convertirSHA256(registroUser.txtContrasena.getText().trim()));
                 mdlUsuario.setIdNivelUsuario(2);
               
                 vistaJframeRegistro.loadPreguntasS();
+                }
+               else
+               {
+                   mdlPolicias.setUsuario("0");
+                    show("Ya existe una persona con ese usuario", 17, 0);
+                    close4();
+               }
             }
             else
             {
@@ -190,8 +203,10 @@ public class cntrlRegistro implements ActionListener {
     
     public void show(String msg, int sizeTXT, int img)
     {
+        registroUser.jLabel3.setVisible(true);
         preguntasS.jLabel12.setVisible(true);
         vistaJframeRegistro.setEnabled(false);
+        vista.jLabel3.setVisible(true);
         Jo = new JoptionReplacemnt(0,img, msg, sizeTXT);
         Jo.setVisible(true);
     }
@@ -237,6 +252,22 @@ public class cntrlRegistro implements ActionListener {
             preguntasS.jLabel12.setVisible(false);
             vista.setEnabled(true);
             
+            }
+        });
+        }
+            
+        public void close4()
+        {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+
+            registroUser.jLabel3.setVisible(false);
+            
+             vistaJframeRegistro.setEnabled(true);
+            vista.jLabel3.setVisible(false);
+            vista.setEnabled(true);
             }
         });
         }

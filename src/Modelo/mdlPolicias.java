@@ -276,14 +276,14 @@ public class mdlPolicias {
      public int readUserIfExistUser()
     {
         try{   
-            String query = "SELECT Usuario FROM tbUsuarios WHERE Usuario = ?";    
+            String query = "SELECT IdUsuario FROM tbUsuarios WHERE Usuario = ?";    
             PreparedStatement readUserIfExistUser = conexionSql.getConexion().prepareStatement(query);
             readUserIfExistUser.setString(1, Usuario);
              ResultSet rs = readUserIfExistUser.executeQuery();
 
             // Verificar si hay alguna fila en el ResultSet
             if (rs.next()) {
-                return rs.getInt("Usuario");
+                return rs.getInt("IdUsuario");
             } else {          
                 return -1;
             }
@@ -291,8 +291,8 @@ public class mdlPolicias {
             return -1;
         }
     }
-    
-     public int readDUIIfExistDUI()
+     
+           public int readDUIIfExistDUI()
     {
         try{   
             String query = "SELECT IdPersona FROM tbPersonas WHERE DUI = ?";    
