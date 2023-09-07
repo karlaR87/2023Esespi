@@ -11,6 +11,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
     public int IdPolicia;
     public Policias_Inicio() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")

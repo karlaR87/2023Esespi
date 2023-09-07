@@ -287,8 +287,7 @@ public class mdlPolicias {
             } else {          
                 return -1;
             }
-        } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, e.toString());
+        } catch (SQLException e) {            
             return -1;
         }
     }

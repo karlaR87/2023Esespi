@@ -62,6 +62,9 @@ public class contrlPolicias implements ActionListener{
         {
             mdlPoli.setIdPolicia(vstPoli.IdPolicia);
             mdlPoli.deletetbPolicias();
+            mdlPoli.MostrarTablePolicias(vstPoli);
+            show("El policía se ha eliminado correctamente", 17, 0, 0);
+            close4();
         }
         
         if(e.getSource() == vstPoli.btnAddPolicia)
@@ -231,6 +234,7 @@ public class contrlPolicias implements ActionListener{
     public void show(String msg, int sizeTXT, int img, int type)
     {  
         jFrameAddPolice.setEnabled(false);
+        jFrameP.jLabel3.setVisible(true);
         jFrameAddUser.setEnabled(false);
         jFrameAddUser.jLabel2.setVisible(true);
         jFrameAddPolice.jLabel11.setVisible(true);
@@ -270,7 +274,7 @@ public class contrlPolicias implements ActionListener{
         Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
            Jo.setVisible(false);
-             jFrameAddPolice.jLabel11.setVisible(false);
+             jFrameAddPolice.jLabel11.setVisible(true);
              jFrameAddUser.jLabel2.setVisible(false);
             jFrameAddPolice.setEnabled(true);
             jFrameAddUser.setEnabled(true);
@@ -307,7 +311,7 @@ public class contrlPolicias implements ActionListener{
             jFrameP.enable(true);
             jFrameP.jLabel3.setVisible(false);
             jFrameAddUser.dispose();
-            jFrameAddPolice.dispose();          
+            jFrameAddPolice.dispose();  
         }
         });
     }
@@ -317,8 +321,7 @@ public class contrlPolicias implements ActionListener{
         //Agregar evento click
         Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            Jo.setVisible(false);
-            
+            Jo.setVisible(false);         
             
             jFrameAddPolice.setEnabled(true);
             jFrameAddUser.setEnabled(true);
@@ -348,7 +351,7 @@ public class contrlPolicias implements ActionListener{
             Jo.dispose();         
             jFrameAddPolice.jLabel11.setVisible(false);
             jFrameAddPolice.setEnabled(true);
-             jFrameAddUser.setEnabled(true);           
+             jFrameAddUser.setEnabled(true);   
         }
         });
     }
@@ -361,7 +364,7 @@ public class contrlPolicias implements ActionListener{
             Jo.dispose();         
              jFrameAddUser.setEnabled(true);
              jFrameAddUser.jLabel2.setVisible(false);
-            
+             jFrameP.jLabel3.setVisible(false);
         }
         });
     }

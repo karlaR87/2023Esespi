@@ -52,10 +52,19 @@ public class cntrlLogin implements ActionListener{
                      
                      if(con.equals(lg.convertirSHA256(lg.txtContraseña.getText().trim())))
                      {
-                         lg.IdNivelUser = mdlUsuarios.readIdNivelUsuario();
-                        JframePrincipal JFP = new JframePrincipal(lg.IdNivelUser);
-                        JFP.setVisible(true);
-                        lg.setVisible(false); 
+                        lg.IdNivelUser = mdlUsuarios.readIdNivelUsuario();
+                        if(lg.IdNivelUser == 1 || lg.IdNivelUser == 2)
+                        {
+                            JframePrincipal JFP = new JframePrincipal(lg.IdNivelUser);
+                            JFP.setVisible(true);
+                            lg.setVisible(false); 
+                        }
+                        else
+                        {
+                            show("Solo jefes y administradores pueden iniciar sesión", 13, 1);
+                            close1();
+                        }
+                            
                      }
                      else
                      {
