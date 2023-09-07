@@ -89,50 +89,50 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbArmas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 430, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 430, 300));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre del arma: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 180, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 180, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Clasificacion: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 180, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 180, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cantidad: ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 180, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 180, -1));
 
         txtDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDetallesActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 170, -1));
-        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
+        jPanel1.add(txtDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 170, -1));
+        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
 
         cmbTipoArmamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbTipoArmamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 170, -1));
+        jPanel1.add(cmbTipoArmamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 170, -1));
 
         btnEliminar.setBackground(new java.awt.Color(68, 68, 68));
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btndeleteBig.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnDeletePolicia.png"))); // NOI18N
         btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, -1, -1));
 
         btnAdd.setBackground(new java.awt.Color(68, 68, 68));
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnaddBig.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddPolicia.png"))); // NOI18N
         btnAdd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, -1, -1));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, -1, -1));
 
         txtbuscarArm.setText("Buscar");
         txtbuscarArm.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -140,17 +140,17 @@ public class Agregar_Armamento extends javax.swing.JFrame {
                 txtbuscarArmKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscarArm, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 340, -1));
+        jPanel1.add(txtbuscarArm, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 430, -1));
 
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btneditBig.png"))); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
         btnModificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnModificarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 420, -1, -1));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
 
         btnAgregar.setText("Agregar");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,11 +163,11 @@ public class Agregar_Armamento extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 100, 40));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 100, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 123.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 540));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Vista_Armamento.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
