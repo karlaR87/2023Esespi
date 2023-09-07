@@ -84,7 +84,8 @@ public class cntrlRegistro implements ActionListener {
             vistaJframeRegistro.loadInfoPolicias();
             }
            else{
-               JOptionPane.showMessageDialog(null, "Error al ingresar datos. Tienes datos repetidos. Ingresa otros datos en el DUI, Telefono, o Correo electronico");
+               show("Error al ingresar datos, hay campos repetidos", 17, 1); 
+                    close3();
            } 
         }
         
@@ -221,7 +222,25 @@ public class cntrlRegistro implements ActionListener {
                     lg.setVisible(true);
             
         }
+        
+        
         });
     }
+     
+     
+            public void close3()
+        {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            preguntasS.jLabel12.setVisible(false);
+            vista.setEnabled(true);
+            
+            }
+        });
+        }
+        
+        
     
 }
