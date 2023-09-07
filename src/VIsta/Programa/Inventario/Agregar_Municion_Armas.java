@@ -107,7 +107,7 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
         ));
         jScrollPane1.setViewportView(tbMuniconSelecccion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 420, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 420, 240));
 
         btnAgregarMunicion.setText("Agregar");
         btnAgregarMunicion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,10 +120,10 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
                 btnAgregarMunicionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarMunicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, -1, -1));
+        jPanel1.add(btnAgregarMunicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 80, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/calibre_1.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 430));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Vista_AgregarMunicionArmas1.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
