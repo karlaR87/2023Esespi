@@ -76,7 +76,46 @@ public class contrlPolicias implements ActionListener{
             }
             else
             {
+                //Validar que NO exista el DUI
+                mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                int resultIdPDUI = mdlPoli.readDUIIfExistDUI();
                 
+                if(resultIdPDUI == -1) //si es igual a -1, es que NO hay persona con ese dui
+                {
+                    mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+                    int resulIdPCorreo = mdlPoli.readCorreoIfExistCorreo();
+                    
+                    if(resulIdPCorreo ==-1) //si es igual a -1, es que NO hay persona con ese correo
+                    {
+                         mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+                        int resultIdPNumero = mdlPoli.readNumeroIfExistNumero();
+                        
+                        if(resultIdPNumero == -1)
+                        {
+                            //Ya validados, DUI, Correo y Numero, procedemos a insertar
+                            //mdlPoli.set
+                        }
+                        else
+                        {
+                            mdlPoli.setCorreo("0");
+                            show("Ya existe una persona con ese Número", 17, 1, 0);
+                            close1();
+                        }                     
+                    }
+                    else
+                    {
+                        mdlPoli.setCorreo("0");
+                        show("Ya existe una persona con ese Correo", 17, 1, 0);
+                        close1();   
+                    }
+                }
+                else
+                {
+                    mdlPoli.setDUI("0");
+                    show("Ya existe una persona con ese DUI", 17, 1, 0);
+                    close1();   
+                }
+                                              
             }
         }
     }

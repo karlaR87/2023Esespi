@@ -22,6 +22,33 @@ public class mdlPolicias {
     private int IdRangoTipoUsuario;
     private int IdGrupoPatrullaje;
     private byte[] Foto;
+    private String DUI;
+    private String Correo;
+    private String Numero;
+
+    public String getNumero() {
+        return Numero;
+    }
+
+    public void setNumero(String Numero) {
+        this.Numero = Numero;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+    
+    public String getDUI() {
+        return DUI;
+    }
+
+    public void setDUI(String DUI) {
+        this.DUI = DUI;
+    }
 
     public byte[] getFoto() {
         return Foto;
@@ -82,14 +109,14 @@ public class mdlPolicias {
      public int readDUIIfExistDUI()
     {
         try{   
-            String query = "SELECT DUI FROM tbPersonas WHERE DUI = ?";    
+            String query = "SELECT IdPersona FROM tbPersonas WHERE DUI = ?";    
             PreparedStatement readDUIIfExistDUI = conexionSql.getConexion().prepareStatement(query);
-            
+            readDUIIfExistDUI.setString(1, DUI);
              ResultSet rs = readDUIIfExistDUI.executeQuery();
 
             // Verificar si hay alguna fila en el ResultSet
             if (rs.next()) {
-                return rs.getInt("DUI");
+                return rs.getInt("IdPersona");
             } else {          
                 return -1;
             }
@@ -98,6 +125,48 @@ public class mdlPolicias {
             return -1;
         }
     }
+     
+    public int readCorreoIfExistCorreo()
+    {
+        try{   
+            String query = "SELECT IdPersona FROM tbPersonas WHERE CorreoElectronico = ?";    
+            PreparedStatement readCorreoIfExistCorreo = conexionSql.getConexion().prepareStatement(query);
+            readCorreoIfExistCorreo.setString(1, Correo);
+             ResultSet rs = readCorreoIfExistCorreo.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    }
+    
+     public int readNumeroIfExistNumero()
+    {
+        try{   
+            String query = "SELECT IdPersona FROM tbPersonas WHERE NumeroTel = ?";    
+            PreparedStatement readNumeroIfExistNumero = conexionSql.getConexion().prepareStatement(query);
+            readNumeroIfExistNumero.setString(1, Numero);
+             ResultSet rs = readNumeroIfExistNumero.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    }
+       
+       
       //Mostrar datos en las tablas
     public void MostrarTablePolicias(Policias_Inicio vstPolicias){
         Color clrOrang = new Color( 243, 167, 18);
