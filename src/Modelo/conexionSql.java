@@ -9,7 +9,7 @@ public class conexionSql {
     //Metodo de conexion
        public static Connection getConexion() {
         // Datos de conexión
-        String endpoint = "expo2023.cwiwwdujwmza.us-east-2.rds.amazonaws.com";
+        String endpoint = "database-1.cqdnfs7kilaa.us-east-1.rds.amazonaws.com";
         String databaseName = "ESESPI_Expo1";
         String username = "admin";
         String password = "#Dbnlemus2006xd";
