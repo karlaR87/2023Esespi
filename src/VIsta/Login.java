@@ -20,6 +20,7 @@ public class Login extends javax.swing.JFrame {
   
     Fuentes tipoFuentes;
     public int IdNivelUser;
+    public String usu;
     
     public Login() {
         initComponents();
@@ -103,6 +104,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1027x720.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, -1));
 
         Registrarse.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -176,9 +182,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/ttlIniciarSesion.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 175, -1, -1));
 
-        txtContraseña.setBackground(new java.awt.Color(255, 255, 255));
         txtContraseña.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(0, 0, 0));
         txtContraseña.setBorder(null);
         txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtContraseña.setHighlighter(null);
@@ -193,9 +197,7 @@ public class Login extends javax.swing.JFrame {
         redondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/contraBack.png"))); // NOI18N
         jPanel1.add(redondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 420, 80));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtUsuario.setBorder(null);
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUsuario.setHighlighter(null);
@@ -269,6 +271,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
          
+        usu = txtUsuario.getText();
+        
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarseMouseClicked
@@ -284,7 +288,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_RecuperarContraMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnIngresarMouseClicked
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
@@ -311,6 +315,10 @@ public class Login extends javax.swing.JFrame {
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
         this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
