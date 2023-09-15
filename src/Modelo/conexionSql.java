@@ -12,7 +12,7 @@ public class conexionSql {
         String endpoint = "database-1.cqdnfs7kilaa.us-east-1.rds.amazonaws.com";
         String databaseName = "ESESPI_Expo1";
         String username = "admin";
-        String password = "#Dbnlemus2006xd";
+        String password = "#Dbnlemus2006";
 
         // Cadena de conexión
         String connectionUrl = "jdbc:sqlserver://" + endpoint + ":1433;"
