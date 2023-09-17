@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 import VIsta.Programa.Inventario.Agregar_Armamento;
 import VIsta.Programa.Inventario.Agregar_EquipoEspecial;
@@ -14,10 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author karla
- */
+
 public class ModeloArmamento {
     
     private String Armas; 
@@ -62,7 +55,7 @@ public class ModeloArmamento {
 
         
 
-        DefaultTableModel modelo = new DefaultTableModel();
+   DefaultTableModel modelo = new DefaultTableModel();
 
     modelo.setColumnIdentifiers(new Object[]{"DetalleArmamento", "IdTipoArmamentoEstacion", "Cantidad", "IdDetalleArmamentoEstacion"});
 
@@ -80,14 +73,8 @@ public class ModeloArmamento {
                        "Cantidad LIKE '%" + filtro + "%' OR " +
                        "IdDetalleArmamentoEstacion LIKE '%" + filtro + "%';";
            
-            
-
             ResultSet rs = statement.executeQuery(query);
             
-
-            
-
-          
 
             while(rs.next()){
 

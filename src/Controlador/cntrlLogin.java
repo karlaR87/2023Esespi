@@ -63,7 +63,7 @@ public class cntrlLogin implements ActionListener{
                         }
                         else
                         {
-                            show("Solo jefes y administradores pueden iniciar sesión", 13, 1);
+                            show("Solo jefes y administradores pueden iniciar sesión", 14, 1);
                             close1();
                         }
                             

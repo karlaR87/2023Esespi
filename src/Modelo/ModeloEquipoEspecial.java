@@ -7,6 +7,9 @@ package Modelo;
 import VIsta.Programa.Inventario.Agregar_EquipoEspecial;
 import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio_Transportes;
+import fonts.Fuentes;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -500,6 +506,30 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
             JOptionPane.showMessageDialog(null, ex.toString());
 
         }
+        
+        Fuentes tipoFuentes = new Fuentes();;
+            
+            JTableHeader header = inventa.tbMostrarDatosEquipoEsp.getTableHeader();
+
+        // Ajustar el alto de las filas
+        inventa.tbMostrarDatosEquipoEsp.setRowHeight(35); // Cambia el alto deseado para todas las filas
+        header.setPreferredSize(new Dimension(header.getWidth(), 50)); // Cambia el alto del encabezado
+
+        // Aplicar estilo de fuente personalizado al encabezado
+        header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 15)); // Aplica el estilo de fuente personalizado
+
+        // Cambiar el color del texto del encabezado (opcional)
+        header.setForeground(Color.BLACK);
+        
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) inventa.tbMostrarDatosEquipoEsp.getTableHeader().getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // Centra el texto del encabezado
+
+        // Ajustar el ancho de las columnas
+        inventa.tbMostrarDatosEquipoEsp.getColumnModel().getColumn(0).setPreferredWidth(20); // Cambia el ancho de la primera columna
+        inventa.tbMostrarDatosEquipoEsp.getColumnModel().getColumn(1).setPreferredWidth(20); 
+        inventa.tbMostrarDatosEquipoEsp.getColumnModel().getColumn(2).setPreferredWidth(200);
+        inventa.tbMostrarDatosEquipoEsp.getColumnModel().getColumn(3).setPreferredWidth(205); 
+        //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
 
     }
     
