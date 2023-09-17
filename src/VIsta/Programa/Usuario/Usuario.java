@@ -21,7 +21,7 @@ public Usuario() {
         initComponents();
         PanelsShowInit();
        MostrarDatosLabels();
-       
+       MostrarCosve();
         
     }
 
@@ -39,6 +39,46 @@ public Usuario() {
     }
     
     //aqui se mostrarán los DUIs de todos los usuario ingresados
+    
+    public void MostrarCosve()
+    {
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+        
+         
+        
+        String SSQL = "select * from cosve";
+
+       
+       try {
+            conectar = conexionSql.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            result = pst.executeQuery();
+
+ 
+
+
+            while (result.next()) {
+                /*Datos del usuario ingresado*/
+                
+                 //Mandar los datos del campo usuario
+               String Valor1 = result.getString("cosve");
+               //mostrar los datos obtenido en su respectivo Label
+               jLabel10.setText("COSVE: " + Valor1);
+               
+            
+               
+            }
+            
+            } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            }
+    
+    
+   
+   
+    }
     
     public void MostrarDatosLabels()
    {
@@ -144,30 +184,30 @@ public Usuario() {
         setPreferredSize(new java.awt.Dimension(1010, 710));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("COSVE");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, -1));
 
         lblDui.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         lblDui.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 260, 30));
+        add(lblDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 260, 30));
 
         lblNacimiento.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         lblNacimiento.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 410, 250, 30));
+        add(lblNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 250, 30));
 
         lblSangre.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         lblSangre.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 260, 30));
+        add(lblSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 260, 30));
 
         lblEstadoCivil.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         lblEstadoCivil.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 260, 30));
+        add(lblEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 260, 30));
 
         lblGenero.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         lblGenero.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 270, 30));
+        add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 270, 30));
 
         lblusuario.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblusuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,7 +220,7 @@ public Usuario() {
         lblRango.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblRango.setForeground(new java.awt.Color(204, 204, 204));
         lblRango.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 310, 30));
+        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fotoUserBack.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 620));
