@@ -11,6 +11,7 @@ import Modelo.ModeloEquipoEspecial;
 
 import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
+import Modelo.TextPrompt;
 import Modelo.conexionSql;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +27,14 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     
     public Agregar_EquipoEspecial()  {
             initComponents();
+        
+        //Posicionar la ventana al centro
+        this.setLocationRelativeTo(null);
+
+        //Agregar un placeholder
+        TextPrompt placeholder = new TextPrompt("Buscar", txtBuscarEP);
             
-            SpinnerNumberModel snm = new SpinnerNumberModel();
+        SpinnerNumberModel snm = new SpinnerNumberModel();
         snm.setMinimum(0);
         snm.setStepSize(1);
         spCantidad.setModel(snm);
@@ -71,6 +78,8 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         txtBuscarEP = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JPanel();
         btnACt = new javax.swing.JPanel();
@@ -109,20 +118,20 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbEquiposEspeciales);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, 390, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 420, 330));
 
         txtDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDetallesActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 290, 40));
+        jPanel1.add(txtDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 290, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Categoria: ");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 50));
-        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 110, 30));
+        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +144,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
                 cmbClasificacionActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 290, 40));
+        jPanel1.add(cmbClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 290, 30));
 
         cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbCat.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +152,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
                 cmbCatActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 290, 40));
+        jPanel1.add(cmbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 290, 30));
 
         btnModificar.setBackground(new java.awt.Color(68, 68, 68));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
@@ -175,7 +184,7 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, -1, -1));
 
-        txtBuscarEP.setText("Buscar");
+        txtBuscarEP.setBorder(null);
         txtBuscarEP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtBuscarEPMouseClicked(evt);
@@ -191,7 +200,18 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
                 txtBuscarEPKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscarEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, 360, -1));
+        jPanel1.add(txtBuscarEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 270, 30));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/searchBack.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 150, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnRegresar1.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 560, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Vista_EquipamentoExtra1.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 630));
@@ -256,7 +276,9 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -360,6 +382,10 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
       txtBuscarEP.setText(" ");
     }//GEN-LAST:event_txtBuscarEPMouseClicked
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     
     
     public static void main(String args[]) {
@@ -411,6 +437,8 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JSpinner spCantidad;
