@@ -64,7 +64,7 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
                 jPanel2.setVisible(false);
                 jPanel3.setVisible(false);
                 OKbutton = new JButton("OK");
-                OKbutton.setBounds(-2, -2, 390, 47); // Coordenadas (x, y) y tamaño (ancho, alto)
+                OKbutton.setBounds(-2, -2, 395, 47); // Coordenadas (x, y) y tamaño (ancho, alto)
                 OKbutton.setBackground(clr);
                 OKbutton.setFocusPainted(false);
                 OKbutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
