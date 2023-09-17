@@ -5,7 +5,7 @@ import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Programa.Policias.Agregar_Usuario;
-import VIsta.Programa.Policias.Agregar_policia;
+import VIsta.Programa.Policias.Agregar_Policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +21,7 @@ public class contrlPolicias implements ActionListener{
     private JframePrincipal jFrameP;
     private mdlPolicias mdlPoli;
     
-    Agregar_policia jFrameAddPolice;
+    Agregar_Policia jFrameAddPolice;
     Agregar_Usuario jFrameAddUser;
     
     String currentGenero;
@@ -36,7 +36,7 @@ public class contrlPolicias implements ActionListener{
     
     public int idNivelUser;
     
-    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_policia jFrameAddPolice, Agregar_Usuario jFrameAddUser, int idNivelUser)
+    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_Policia jFrameAddPolice, Agregar_Usuario jFrameAddUser, int idNivelUser)
     {
         this.vstPoli = vstPoli;
         this.jFrameP = jFrameP;
@@ -121,10 +121,10 @@ public class contrlPolicias implements ActionListener{
                 {
                     //Validar que NO exista el DUI
                     mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
-                    int resultIdPDUI = mdlPoli.readDUIIfExistDUI();
-
-                    if(resultIdPDUI == -1) //si es igual a -1, es que NO hay persona con ese dui
-                    {
+//                    int resultIdPDUI = mdlPoli.readDUIIfExistDUI();
+//
+//                    if(resultIdPDUI == -1) //si es igual a -1, es que NO hay persona con ese dui
+//                    {
                         mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
                         int resulIdPCorreo = mdlPoli.readCorreoIfExistCorreo();
 
@@ -170,13 +170,13 @@ public class contrlPolicias implements ActionListener{
                             show("Ya existe una persona con ese Correo", 17, 1, 0);
                             close3();   
                         }
-                    }
-                    else
-                    {
-                        mdlPoli.setDUI("0");
-                        show("Ya existe una persona con ese DUI", 17, 1, 0);
-                        close3();   
-                    }
+//                    }
+//                    else
+//                    {
+//                        mdlPoli.setDUI("0");
+//                        show("Ya existe una persona con ese DUI", 17, 1, 0);
+//                        close3();   
+//                    }
 
                 }
             }

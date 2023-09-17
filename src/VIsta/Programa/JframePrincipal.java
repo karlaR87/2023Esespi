@@ -11,7 +11,7 @@ import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import VIsta.Programa.Policias.Agregar_Usuario;
-import VIsta.Programa.Policias.Agregar_policia;
+import VIsta.Programa.Policias.Agregar_Policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Reportes.Reportes_Inicio;
 import VIsta.Programa.Usuario.Usuario;
@@ -55,7 +55,7 @@ public class JframePrincipal extends javax.swing.JFrame {
       mdlPolicias mdlPolicias;
     //Patrullajes Panel
     Patrullajes_Agregar AddPatrullajes;
-    Agregar_policia AddPolice;
+    Agregar_Policia AddPolice;
     Agregar_Usuario AddUser;
     private void PanelsShowInit()
     {
@@ -79,7 +79,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         mdlPolicias = new mdlPolicias();
         AddUser = new Agregar_Usuario();
       cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP);
-      AddPolice = new Agregar_policia(); 
+      AddPolice = new Agregar_Policia(); 
       contrlPolicias cntrPoli = new contrlPolicias(policiasInicio, this, mdlPolicias, AddPolice, AddUser, idNivelUser);
        
         cardLayout = new CardLayout();
