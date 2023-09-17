@@ -88,9 +88,11 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMuniconSelecccion = new javax.swing.JTable();
         btnAgregarMunicion = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -120,10 +122,18 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
                 btnAgregarMunicionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarMunicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 80, 30));
+        jPanel1.add(btnAgregarMunicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 80, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnRegresar1.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Vista_AgregarMunicionArmas1.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 420));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,7 +143,7 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, Short.MAX_VALUE)
         );
 
         pack();
@@ -168,6 +178,10 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
     // Cierra la ventana de calibres después de obtener los IDs
     this.dispose();
     }//GEN-LAST:event_btnAgregarMunicionMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     
     
@@ -206,6 +220,7 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregarMunicion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbMuniconSelecccion;
