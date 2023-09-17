@@ -1,6 +1,10 @@
 package VIsta.Programa.Policias;
 
 import java.awt.Color;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -13,6 +17,7 @@ public class Agregar_Usuario extends javax.swing.JFrame {
      */
     public Agregar_Usuario() {
         initComponents();
+        NOSPACE();
         jLabel2.setVisible(false);
         this.setBackground(new Color(0, 0, 0, 0)); 
     }
@@ -124,6 +129,51 @@ public class Agregar_Usuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtUsuarioKeyTyped
 
+    
+     public void NOSPACE()
+    {
+        PlainDocument document = new PlainDocument();
+        PlainDocument document2 = new PlainDocument();
+        document.setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                // Evitar la inserción de espacios en blanco
+                if (!string.contains(" ")) {
+                    super.insertString(fb, offset, string, attr);
+                }
+            }
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                // Evitar la sustitución de espacios en blanco
+                if (!text.contains(" ")) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+        
+         document2.setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                // Evitar la inserción de espacios en blanco
+                if (!string.contains(" ")) {
+                    super.insertString(fb, offset, string, attr);
+                }
+            }
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                // Evitar la sustitución de espacios en blanco
+                if (!text.contains(" ")) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+        
+        // Asignar el PlainDocument al JTextField
+        txtUsuario.setDocument(document);
+        txtContra.setDocument(document2);
+    
+    }
+    
     /**
      * @param args the command line arguments
      */

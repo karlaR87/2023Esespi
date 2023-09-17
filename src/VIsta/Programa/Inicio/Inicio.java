@@ -58,7 +58,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lblMostrarUsers = new javax.swing.JLabel();
+        lblMostrarUsers1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(980, 710));
 
@@ -80,13 +80,13 @@ public class Inicio extends javax.swing.JPanel {
         jLabel4.setText("Gráficas policiales");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
-        lblMostrarUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
-        lblMostrarUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblMostrarUsers1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
+        lblMostrarUsers1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMostrarUsersMouseClicked(evt);
+                lblMostrarUsers1MouseClicked(evt);
             }
         });
-        jPanel1.add(lblMostrarUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 50, 60));
+        jPanel1.add(lblMostrarUsers1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 50, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,10 +104,10 @@ public class Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblMostrarUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMostrarUsersMouseClicked
+    private void lblMostrarUsers1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMostrarUsers1MouseClicked
         VistaUsers vU = new VistaUsers();
         vU.setVisible(true);
-    }//GEN-LAST:event_lblMostrarUsersMouseClicked
+    }//GEN-LAST:event_lblMostrarUsers1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -116,6 +116,6 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblMostrarUsers;
+    private javax.swing.JLabel lblMostrarUsers1;
     // End of variables declaration//GEN-END:variables
 }

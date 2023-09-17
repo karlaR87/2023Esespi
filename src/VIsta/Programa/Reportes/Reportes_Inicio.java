@@ -2,6 +2,7 @@
 package VIsta.Programa.Reportes;
 
 import Modelo.ModeloInformes;
+import VIsta.Programa.Inicio.Paneles;
 
 
 public class Reportes_Inicio extends javax.swing.JPanel {
@@ -29,6 +30,7 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        MostrarPaneles = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,6 +101,14 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         jLabel2.setText("¡Agregue sus reportes aquí!");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, -1, -1));
 
+        MostrarPaneles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/LetterP.png"))); // NOI18N
+        MostrarPaneles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MostrarPanelesMouseClicked(evt);
+            }
+        });
+        jPanel1.add(MostrarPaneles, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 50, 80));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,8 +130,14 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         el.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void MostrarPanelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MostrarPanelesMouseClicked
+        Paneles p = new Paneles();
+        p.setVisible(true);
+    }//GEN-LAST:event_MostrarPanelesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MostrarPaneles;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
