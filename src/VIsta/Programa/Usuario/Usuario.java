@@ -17,17 +17,11 @@ import javax.swing.JOptionPane;
  * @author Pao
  */
 public class Usuario extends javax.swing.JPanel {
-
-    public Usuario() {
+public Usuario() {
         initComponents();
         PanelsShowInit();
-       MostrarDatoDUI();
-       MostrarDatoFechanac();
-      MostrarDatoSangre();
-      MostrarDatoEstCi();
-      MostrarDatogenero();
-      MostrarUsuario();
-      MostrarRango();
+       MostrarDatosLabels();
+       
         
     }
 
@@ -46,7 +40,7 @@ public class Usuario extends javax.swing.JPanel {
     
     //aqui se mostrarán los DUIs de todos los usuario ingresados
     
-    public void MostrarDatoDUI()
+    public void MostrarDatosLabels()
    {
        Connection conectar = null;
         PreparedStatement pst = null;
@@ -54,51 +48,15 @@ public class Usuario extends javax.swing.JPanel {
         
          
         
-        String SSQL = "select  ty.Dui from tbPolicias tb\n" +
-"Inner join tbUsuarios tu on tu.IdUsuario = tb.IdUsuario\n" +
-"inner join [tbTiposPersonas_Personas] tr on tr.IdTipoPersonas_Personas = tb.IdTipoPersonas_Personas\n" +
-"inner join tbPersonas ty on ty.IdPersona = tr.IdPersona\n";
-        
-        String SSQL2 = "select COUNT(Dui) from tbPersonas";
-        
-     
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                 String count = result.getString(1);
-                
-               lblDui.setText("DUI: " + count);
-                
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-   }
-    
-    
-    //aqui se mostrarán las fechas de nacimiento de todos los usuario ingresados
-    public void MostrarDatoFechanac()
-   {
-       Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
-        
-         
-        
-        String SSQL = "select  ty.FechaNacimiento from tbPolicias tb\n" +
-"Inner join tbUsuarios tu on tu.IdUsuario = tb.IdUsuario\n" +
-"inner join [tbTiposPersonas_Personas] tr on tr.IdTipoPersonas_Personas = tb.IdTipoPersonas_Personas\n" +
-"inner join tbPersonas ty on ty.IdPersona = tr.IdPersona";
-        
-        String SSQL2 = "select COUNT(Dui) from tbPersonas";
+        String SSQL = "select tbU.Usuario, tbR.Rango, y.Dui, y.FechaNacimiento, x.EstadoCivil, z.Genero, a.TipoSangre from tbPolicias tbPo\n" +
+"inner join tbUsuarios tbU on tbU.IdUsuario = tbPo.IdUsuario\n" +
+"inner join tbRangosTipoUsuarios tbR on tbR.IdRangoTipoUsuario = tbPo.IdRangoTipoUsuario\n" +
+"inner join tbTiposPersonas_Personas tbid on tbid.IdTipoPersonas_Personas = tbPo.IdTipoPersonas_Personas\n" +
+"inner join tbPersonas y on y.IdPersona = tbid.IdPersona\n" +
+"inner join tbEstadosCivil x on x.IdEstadoCivil = y.IdEstadoCivil\n" +
+"inner join tbGeneros z on z.IdGenero = y.IdGenero\n" +
+"inner join tbTiposSangre a on a.IdTipoSangre = y.IdTipoSangre\n" +
+"where tbU.Usuario = 'Ivansote'";
 
        
        try {
@@ -110,207 +68,58 @@ public class Usuario extends javax.swing.JPanel {
 
 
             while (result.next()) {
-                 String count = result.getString(1);
+                /*Datos del usuario ingresado*/
                 
-               lblNacimiento.setText("Fecha de nacimiento: " + count);
-                
+                 //Mandar los datos del campo usuario
+               String Valor1 = result.getString("Usuario");
+               //mostrar los datos obtenido en su respectivo Label
+               lblusuario.setText(Valor1);
+               
+               /*Datos del rango del usuario*/
+                 //Mandar los datos del campo Rango
+               String Valor2 = result.getString("Rango");
+               //mostrar los datos obtenido en su respectivo Label
+               lblRango.setText(Valor2);
+               
+               /*Datos del DUI del usuario*/
+                 //Mandar los datos del campo Dui
+               String Valor3 = result.getString("Dui");
+               //mostrar los datos obtenido en su respectivo Label
+               lblDui.setText("DUI: " + Valor3);
+               
+                /*Datos de la fecha de nacimiento del usuario*/
+                 //Mandar los datos del campo FechaNacimiento
+               String Valor4 = result.getString("FechaNacimiento");
+               //mostrar los datos obtenido en su respectivo Label
+               lblNacimiento.setText("Fecha de nacimiento: " + Valor4);
+               
+                /*Datos del Tipo de sangre del usuario*/
+                 //Mandar los datos del campo TipoSangre
+               String Valor5 = result.getString("TipoSangre");
+               //mostrar los datos obtenido en su respectivo Label
+               lblSangre.setText("Tipo de sangre: " + Valor5);
+               
+                /*Datos del estado civil del usuario*/
+                 //Mandar los datos del campo EstadoCivil
+               String Valor6 = result.getString("EstadoCivil");
+               //mostrar los datos obtenido en su respectivo Label
+               lblEstadoCivil.setText("Estado civil: " + Valor6);
+               
+                /*Datos de la fecha de nacimiento del usuario*/
+                 //Mandar los datos del campo FechaNacimiento
+               String Valor7 = result.getString("Genero");
+               //mostrar los datos obtenido en su respectivo Label
+               lblGenero.setText("Género: " + Valor7);
+               
             }
             
             } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
             }
+    
+    
+   
    }
-    
-    //aqui se mostrarán los tipos de sangre de todos los usuario ingresados
-    public void MostrarDatoSangre()
-   {
-       Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
-        
-         
-        
-        String SSQL = "select  tx.TipoSangre from tbPolicias tb\n" +
-"Inner join tbUsuarios tu on tu.IdUsuario = tb.IdUsuario\n" +
-"inner join [tbTiposPersonas_Personas] tr on tr.IdTipoPersonas_Personas = tb.IdTipoPersonas_Personas\n" +
-"inner join tbPersonas ty on ty.IdPersona = tr.IdPersona\n" +
-"inner join tbTiposSangre tx on tx.IdTipoSangre = ty.IdTipoSangre";
-        
-        String SSQL2 = "select COUNT(Dui) from tbPersonas"; //contador, no está en uso
-        
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                 String count = result.getString(1);
-                
-               lblSangre.setText("Tipo de sangre: " + count);
-                
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-   }
-    
-    //aqui se mostrarán los estados civiles de todos los usuario ingresados
-    
-    public void MostrarDatoEstCi()
-   {
-       Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
-        
-         
-        
-        String SSQL = "select  tx.EstadoCivil from tbPolicias tb\n" +
-"Inner join tbUsuarios tu on tu.IdUsuario = tb.IdUsuario\n" +
-"inner join [tbTiposPersonas_Personas] tr on tr.IdTipoPersonas_Personas = tb.IdTipoPersonas_Personas\n" +
-"inner join tbPersonas ty on ty.IdPersona = tr.IdPersona\n" +
-"inner join tbEstadosCivil tx on tx.IdEstadoCivil = ty.IdEstadoCivil";
-        
-        String SSQL2 = "select COUNT(Dui) from tbPersonas";
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                 String count = result.getString(1);
-                
-               lblEstadoCivil.setText("Estado civil: " + count);
-                
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-   }
-    
-    //aqui se mostrarán los géneros de todos los usuario ingresados
-    
-    public void MostrarDatogenero()
-   {
-       Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
-        
-         
-        
-        String SSQL = "select  tx.Genero from tbPolicias tb\n" +
-"Inner join tbUsuarios tu on tu.IdUsuario = tb.IdUsuario\n" +
-"inner join [tbTiposPersonas_Personas] tr on tr.IdTipoPersonas_Personas = tb.IdTipoPersonas_Personas\n" +
-"inner join tbPersonas ty on ty.IdPersona = tr.IdPersona\n" +
-"inner join tbGeneros tx on tx.IdGenero = ty.IdGenero";
-        
-        String SSQL2 = "select COUNT(Dui) from tbPersonas";
-        
-        
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                 String count = result.getString(1);
-                
-               lblGenero.setText("Género: " + count);
-                
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-   }
-    
-    //aqui se mostrará el Usuario ingresado
-    
-    public void MostrarUsuario()
-   {
-       Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
-        
-         
-        
-        String SSQL = "select  tu.Usuario from tbPolicias tb\n" +
-"Inner join tbUsuarios tu on tu.IdUsuario = tb.IdUsuario";
-        
-        String SSQL2 = "select COUNT(Dui) from tbPersonas";
-        
-        
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                 String count = result.getString(1);
-                
-               lblusuario.setText(count);
-                
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-   }
-    
-    //aqui se mostrará el rango del usuario ingresado
-    
-    public void MostrarRango()
-   {
-       Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
-        
-         
-        
-        String SSQL = "select  tu.Rango from tbPolicias tb\n" +
-"Inner join tbRangosTipoUsuarios tu on tu.IdRangoTipoUsuario = tb.IdRangoTipoUsuario";
-        
-        String SSQL2 = "select COUNT(Dui) from tbPersonas";
-        
-        
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                 String count = result.getString(1);
-                
-               lblRango.setText(count);
-                
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-   }
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

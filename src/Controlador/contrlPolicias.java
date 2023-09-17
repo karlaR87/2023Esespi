@@ -200,22 +200,12 @@ public class contrlPolicias implements ActionListener{
                     //Insertamos todo
                     mdlPoli.setUsuario(jFrameAddUser.txtUsuario.getText().trim());
                     mdlPoli.setContra(convertirSHA256(jFrameAddUser.txtContra.getText().trim()));
-
+                    mdlPoli.setIdNivelUsuario(returnIdNivelUsuario());
+                    
                     if(mdlPoli.InsertPoliceIncludePersonaTipoPUser())
-                    {
-                        jFrameAddPolice.txtApellido.setText("");
-                        jFrameAddPolice.txtAreaDireccion.setText("");
-                        jFrameAddPolice.txtCorreo.setText("");
-                        jFrameAddPolice.txtDUI.setText("");
-                        jFrameAddPolice.txtNombre.setText("");
-                        jFrameAddPolice.txtNumero.setText("");
-                        jFrameAddPolice.txtONI.setText("");
-                        jFrameAddPolice.txtPlaca.setText("");
-
-                        jFrameAddUser.txtUsuario.setText("");
-                        jFrameAddUser.txtContra.setText("");
+                    {                      
                         show("El policía fue agregado correctamente", 17, 1, 0);
-                        close5();       
+                        close5();
                     }
                     else
                     {
@@ -227,7 +217,7 @@ public class contrlPolicias implements ActionListener{
                 {
                     mdlPoli.setUsuario("0");
                     show("Ya existe una persona con ese usuario", 17, 1, 0);
-                    close3();
+                    close6();
                 } 
         }
     }
@@ -265,7 +255,8 @@ public class contrlPolicias implements ActionListener{
             jFrameAddUser.txtUsuario.setText("");
             jFrameAddUser.txtContra.setText("");
             
-             jFrameAddPolice.jLabel11.setVisible(false);
+            jFrameAddPolice.jLabel11.setVisible(false);
+            jFrameAddUser.jLabel2.setVisible(false);
             jFrameAddPolice.setEnabled(true);
             jFrameAddUser.setEnabled(true);
             jFrameP.enable(true);
@@ -308,14 +299,17 @@ public class contrlPolicias implements ActionListener{
             jFrameAddUser.txtUsuario.setText("");
             jFrameAddUser.txtContra.setText("");
             
-             jFrameAddPolice.jLabel11.setVisible(false);
-             jFrameAddUser.jLabel2.setVisible(false);
+            
+            jFrameAddPolice.jLabel11.setVisible(false);
+            jFrameAddUser.jLabel2.setVisible(false);
             jFrameAddPolice.setEnabled(true);
             jFrameAddUser.setEnabled(true);
             jFrameP.enable(true);
             jFrameP.jLabel3.setVisible(false);
             jFrameAddUser.dispose();
             jFrameAddPolice.dispose();  
+            
+            mdlPoli.MostrarTablePolicias(vstPoli);
         }
         });
     }
@@ -326,6 +320,18 @@ public class contrlPolicias implements ActionListener{
         Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             Jo.setVisible(false);         
+            
+            jFrameAddPolice.txtApellido.setText("");
+            jFrameAddPolice.txtAreaDireccion.setText("");
+            jFrameAddPolice.txtCorreo.setText("");
+            jFrameAddPolice.txtDUI.setText("");
+            jFrameAddPolice.txtNombre.setText("");
+            jFrameAddPolice.txtNumero.setText("");
+            jFrameAddPolice.txtONI.setText("");
+            jFrameAddPolice.txtPlaca.setText("");
+            
+            jFrameAddUser.txtUsuario.setText("");
+            jFrameAddUser.txtContra.setText("");
             
             jFrameAddPolice.setEnabled(true);
             jFrameAddUser.setEnabled(true);
@@ -371,6 +377,30 @@ public class contrlPolicias implements ActionListener{
              jFrameP.jLabel3.setVisible(false);
         }
         });
+    }
+    
+    public void close6()
+    {
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.dispose();         
+             jFrameAddUser.setEnabled(true);   
+             jFrameAddUser.jLabel2.setVisible(false);
+        }
+        });
+    }
+    
+    public int returnIdNivelUsuario()
+    {
+        if(returnIdRangoUser() == 1)
+        {
+            return 2;
+        }
+        else
+        {
+            return 4;
+        }
     }
     
     public int returnIdEstadoCivil()

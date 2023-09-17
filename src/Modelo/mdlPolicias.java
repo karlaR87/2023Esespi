@@ -19,8 +19,9 @@ public class mdlPolicias {
     private int idUsuario;
     private int IdTipoPersonasPersonas;
 
-    private int IdRangoTipoUsuario;
-    private int IdGrupoPatrullaje;
+    private int IdRangoTipoUsuario; 
+    private int IdGrupoPatrullaje; 
+    private int IdNivelUsuario;
     
     private String Nombre;
     private String Apellido;
@@ -36,6 +37,14 @@ public class mdlPolicias {
 
     private int IdPolicia;
 
+    public int getIdNivelUsuario() {
+        return IdNivelUsuario;
+    }
+
+    public void setIdNivelUsuario(int IdNivelUsuario) {
+        this.IdNivelUsuario = IdNivelUsuario;
+    }
+     
     public int getIdPolicia() {
         return IdPolicia;
     }
@@ -212,7 +221,7 @@ public class mdlPolicias {
     public boolean deletetbPolicias()
     {
           try{
-            String query = "EXEC dbo.EliminarPolicias2 "
+            String query = "EXEC dbo.EliminarPolicias "
                     + " @IdPolicia = ?";
             PreparedStatement deletePolice = conexionSql.getConexion().prepareStatement(query);
             deletePolice.setInt(1, IdPolicia);
@@ -227,9 +236,9 @@ public class mdlPolicias {
     }
     
     public boolean InsertPoliceIncludePersonaTipoPUser()
-    {
+    {//NIVEL DE USUARIO 4 = POLI $$ 2 = JEFE DE POLI
            try{
-            String query = "EXEC dbo.InsertarPolicias2 \n" +
+            String query = "EXEC dbo.InsertarPolicias \n" +
 "	@Nombre = ?,\n" +
 "	@Apellido = ?,\n" +
 "	@FechaNacimiento = ?,\n" +
@@ -245,7 +254,8 @@ public class mdlPolicias {
 "	@Foto = ?,\n" +
 "	@Usuario = ?,\n" +
 "	@Contrasena = ?,\n" +
-"	@IdRangoTipoUsuario  = ?"; 
+"	@IdRangoTipoUsuario  = ?,\n" + 
+"       @IdNivelUsuario = ?"; 
             PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
             insertPolice.setString(1, Nombre);
             insertPolice.setString(2, Apellido);
@@ -263,6 +273,7 @@ public class mdlPolicias {
             insertPolice.setString(14, Usuario);
             insertPolice.setString(15, Contra);
             insertPolice.setInt(16, IdRangoUsuario);
+             insertPolice.setInt(17, IdNivelUsuario);
                        
             insertPolice.executeUpdate();
             return true;

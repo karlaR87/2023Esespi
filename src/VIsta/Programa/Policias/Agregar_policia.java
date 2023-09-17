@@ -467,7 +467,7 @@ public class Agregar_policia extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoKeyTyped
 
     private void txtDUIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDUIKeyTyped
-      if (txtDUI.getText().length() >= 10) {
+      if (txtDUI.getText().length() >= 9) {
                     evt.consume(); // Bloquea la entrada de texto adicional
                 }   
              char c = evt.getKeyChar();
