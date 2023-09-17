@@ -4,6 +4,7 @@ import Modelo.ModeloRegistro;
 import fonts.Fuentes;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.SpinnerDateModel;
 import javax.swing.text.AttributeSet;
@@ -23,6 +24,19 @@ public class Agregar_policia extends javax.swing.JFrame {
     
     public Agregar_policia() {
         initComponents();
+        
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -18); // Restar 18 años a la fecha actual
+        Date fechaMaxima = cal.getTime();
+
+        cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -90); // Restar 90 años a la fecha actual
+        Date fechaMinima = cal.getTime();
+
+        // Configurar el JDateChooser con las fechas mínima y máxima
+        jdcCalendar.setMaxSelectableDate(fechaMaxima);
+        jdcCalendar.setMinSelectableDate(fechaMinima);
+        
         jLabel11.setVisible(false);
         NOSPACE();
          try {

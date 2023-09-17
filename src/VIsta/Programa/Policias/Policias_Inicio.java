@@ -1,17 +1,40 @@
 package VIsta.Programa.Policias;
 
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
  *
  * @author Pao
+ * 
+ * 
  */
 public class Policias_Inicio extends javax.swing.JPanel {
 
+    
+    ImageIcon iconoOriginalEdit;
+    ImageIcon iconoClareEdit;
+     
+    
+    ImageIcon iconoOriginalAdd;
+    ImageIcon iconoClareAdd;
+     
+    ImageIcon iconoOriginalDelete;
+    ImageIcon iconoClareDelete;
+     
     public int IdPolicia;
     public Policias_Inicio() {
         initComponents();
         
+        iconoOriginalEdit = new ImageIcon("src/VIsta/imagenes/btnEditPolicia.png"); 
+        iconoClareEdit = new ImageIcon("src/VIsta/imagenes/btnEditPoliciaClare.png");
+        
+        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAddPolicia.png"); 
+        iconoClareAdd = new ImageIcon("src/VIsta/imagenes/btnAddPoliciaClare.png"); 
+        
+        iconoOriginalDelete = new ImageIcon("src/VIsta/imagenes/btnDeletePolicia.png"); 
+        iconoClareDelete = new ImageIcon("src/VIsta/imagenes/btnDeletePoliciaClare.png");
     }
 
     @SuppressWarnings("unchecked")
@@ -44,6 +67,12 @@ public class Policias_Inicio extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeletePoliciaMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDeletePoliciaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDeletePoliciaMouseExited(evt);
+            }
         });
         btnDeletePolicia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +89,12 @@ public class Policias_Inicio extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEditPoliciaMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditPoliciaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditPoliciaMouseExited(evt);
+            }
         });
         jPanel1.add(btnEditPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 220, 60, 60));
 
@@ -70,6 +105,12 @@ public class Policias_Inicio extends javax.swing.JPanel {
         btnAddPolicia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddPoliciaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddPoliciaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAddPoliciaMouseExited(evt);
             }
         });
         jPanel1.add(btnAddPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 280, 60, 60));
@@ -131,11 +172,46 @@ public class Policias_Inicio extends javax.swing.JPanel {
         IdPolicia = Integer.parseInt(MiId);
         System.out.println(IdPolicia);
     }//GEN-LAST:event_tbDatosPoliciasMouseClicked
-
+    
     private void btnDeletePoliciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePoliciaActionPerformed
         
     }//GEN-LAST:event_btnDeletePoliciaActionPerformed
 
+    private void btnEditPoliciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditPoliciaMouseEntered
+              
+        OriginialIcon();
+        btnEditPolicia.setIcon(iconoClareEdit);
+    }//GEN-LAST:event_btnEditPoliciaMouseEntered
+
+    private void btnEditPoliciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditPoliciaMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnEditPoliciaMouseExited
+
+    private void btnAddPoliciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPoliciaMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnAddPoliciaMouseExited
+
+    private void btnDeletePoliciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletePoliciaMouseEntered
+        OriginialIcon();
+        btnDeletePolicia.setIcon(iconoClareDelete);
+    }//GEN-LAST:event_btnDeletePoliciaMouseEntered
+
+    private void btnDeletePoliciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletePoliciaMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnDeletePoliciaMouseExited
+
+    private void btnAddPoliciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPoliciaMouseEntered
+       OriginialIcon();
+       btnAddPolicia.setIcon(iconoClareAdd);
+    }//GEN-LAST:event_btnAddPoliciaMouseEntered
+
+    
+    public void OriginialIcon()
+    {
+        btnEditPolicia.setIcon(iconoOriginalEdit);
+        btnAddPolicia.setIcon(iconoOriginalAdd);
+        btnDeletePolicia.setIcon(iconoOriginalDelete);
+    }
     
     public JButton getbtnAdd()
     {

@@ -65,7 +65,7 @@ public class contrlPolicias implements ActionListener{
             mdlPoli.setIdPolicia(vstPoli.IdPolicia);
             mdlPoli.deletetbPolicias();
             mdlPoli.MostrarTablePolicias(vstPoli);
-            show("El policía se ha eliminado correctamente", 17, 0, 0);
+            show1("El policía se ha eliminado correctamente", 17, 0, 0);
             close4();
             }
             
@@ -133,29 +133,47 @@ public class contrlPolicias implements ActionListener{
                             mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
                             int resultIdPNumero = mdlPoli.readNumeroIfExistNumero();
 
-                            if(resultIdPNumero == -1)
+                            if(resultIdPNumero == -1) //si es igual a -1, es que NO hay persona con ese numero
                             {
-                                //Ya validados, DUI, Correo y Numero, procedemos a insertar
-                                mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
-                                mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
-                                mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
-                                mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
-                                mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
-                                mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
-                                mdlPoli.setIdGenero(returnIdGenero());
-                                mdlPoli.setIdTipoSangre(returnIdTipoSangre());
-                                mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
-                                mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
-                                mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
-                                mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
-                                mdlPoli.setIdRangoUsuario(returnIdRangoUser());
-                                //Despues de aceptar la info del poli, vamos con el usuario
-
-                                jFrameAddUser.setVisible(true);           
-                                jFrameAddUser.setEnabled(true);   
-                                jFrameAddUser.jLabel2.setVisible(false);  
-                                jFrameAddPolice.setEnabled(false);
-                                jFrameAddPolice.jLabel11.setVisible(true);
+                                //Validamos minimo de caracteres
+                                if(jFrameAddPolice.txtDUI.getText().length() < 9 )
+                                {
+                                    show("El DUI debe contener 9 caracteres", 17, 1, 0);
+                                    close3();    
+                                }                                  
+                                else
+                                {
+                                    if(jFrameAddPolice.txtNumero.getText().length() < 8 )
+                                    {
+                                        show("El número debe contener 8 caracteres", 17, 1, 0);
+                                        close3();    
+                                    } 
+                                    else
+                                    {                                   
+                                        //Ya validados, minimo de caracteres, DUI, Correo y Numero, procedemos a insertar
+                                        mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
+                                        mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
+                                        mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
+                                        mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
+                                        mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                                        mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
+                                        mdlPoli.setIdGenero(returnIdGenero());
+                                        mdlPoli.setIdTipoSangre(returnIdTipoSangre());
+                                        mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+                                        mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+                                        mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
+                                        mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                                        mdlPoli.setIdRangoUsuario(returnIdRangoUser());
+                                         //Despues de aceptar la info del poli, vamos con el usuario
+                                            
+                                        jFrameAddUser.setVisible(true);           
+                                        jFrameAddUser.setEnabled(true);   
+                                        jFrameAddUser.jLabel2.setVisible(false);  
+                                        jFrameAddPolice.setEnabled(false);
+                                        jFrameAddPolice.jLabel11.setVisible(true);
+                                        
+                                    }
+                                }
                             }
                             else
                             {
@@ -187,7 +205,7 @@ public class contrlPolicias implements ActionListener{
             if(jFrameAddUser.txtUsuario.getText().isBlank() || jFrameAddUser.txtContra.getText().isBlank())
             {
                  show("No se permiten campos vacíos", 17, 1, 0);
-                close4(); 
+                close7(); 
             }
             else
             {
@@ -236,6 +254,18 @@ public class contrlPolicias implements ActionListener{
         Jo.setVisible(true);
     }
     
+    public void show1(String msg, int sizeTXT, int img, int type)
+    {  
+        jFrameP.setEnabled(false);
+        jFrameAddPolice.setEnabled(false);
+        jFrameP.jLabel3.setVisible(true);
+        jFrameAddUser.setEnabled(false);
+        jFrameAddUser.jLabel2.setVisible(true);
+        jFrameAddPolice.jLabel11.setVisible(true);
+        Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
+        Jo.setVisible(true);
+    }
+    
     public void close1()
     {   
         //Agregar evento click
@@ -269,7 +299,7 @@ public class contrlPolicias implements ActionListener{
         Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
            Jo.setVisible(false);
-             jFrameAddPolice.jLabel11.setVisible(true);
+             jFrameAddPolice.jLabel11.setVisible(false);
              jFrameAddUser.jLabel2.setVisible(false);
             jFrameAddPolice.setEnabled(true);
             jFrameAddUser.setEnabled(true);
@@ -371,10 +401,24 @@ public class contrlPolicias implements ActionListener{
         //Agregar evento click
         Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            Jo.dispose();         
+            Jo.dispose();    
+            jFrameP.setEnabled(true);
              jFrameAddUser.setEnabled(true);
              jFrameAddUser.jLabel2.setVisible(false);
              jFrameP.jLabel3.setVisible(false);
+        }
+        });
+    }
+    public void close7()
+    {
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.dispose();    
+            jFrameP.setEnabled(false);
+             jFrameAddUser.setEnabled(true);
+             jFrameAddUser.jLabel2.setVisible(false);
+             jFrameP.jLabel3.setVisible(true);
         }
         });
     }
