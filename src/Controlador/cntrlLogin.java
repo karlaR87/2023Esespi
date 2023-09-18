@@ -40,8 +40,7 @@ public class cntrlLogin implements ActionListener{
                 mdlUsuarios.setIdUsuario(idUser);
                 System.out.println(idUser);
                 String con = mdlUsuarios.readConUsuario();
-                String usuario = lg.txtUsuario.getText();
-                System.out.println(usuario);
+                
                  if(con == null)
                  {
                     show("Usuario o contraseña incorrecto", 17, 1);

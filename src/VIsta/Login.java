@@ -271,7 +271,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
          
-        usu = txtUsuario.getText();
+       
         
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -288,7 +288,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_RecuperarContraMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-         usu = txtUsuario.getText();
+          usu = txtUsuario.getText();
+        System.out.println(usu);
     }//GEN-LAST:event_btnIngresarMouseClicked
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked

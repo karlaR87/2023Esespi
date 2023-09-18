@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.sql.*;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -36,10 +37,24 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
          
     public Registro_DatosPersonales(Registro jFrame) {
         initComponents();
+        
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -18); // Restar 18 años a la fecha actual
+        Date fechaMaxima = (Date) cal.getTime();
+
+        cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -90); // Restar 90 años a la fecha actual
+        Date fechaMinima = (Date) cal.getTime();
+
+        // Configurar el JDateChooser con las fechas mínima y máxima
+        jdcFecha.setMaxSelectableDate(fechaMaxima);
+        jdcFecha.setMinSelectableDate(fechaMinima);
+        
         this.jFrame = jFrame;
         this.thisVista = this;
         jLabel3.setVisible(false);
         fontDesign();
+        
              // Llenar el ComboBox de estado civil
         try {
            
