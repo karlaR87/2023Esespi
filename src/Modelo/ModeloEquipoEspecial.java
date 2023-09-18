@@ -405,7 +405,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
 
         DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.setColumnIdentifiers(new Object[]{"IdDetalleEquipo", "IdTiposEquipamientoEstacion", "Detalles", "Cantidad"});
+    modelo.setColumnIdentifiers(new Object[]{"IdDetalleEquipo", "TipoEquipamiento", "Detalles", "Cantidad"});
 
 
 
@@ -415,9 +415,10 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
 
            String filtro = IIT.txtBuscarEP.getText(); 
 
-        String query = "SELECT * FROM tdDetallesEquipo WHERE " +
-                       "IdDetalleEquipo LIKE '%" + filtro + "%' OR " +
-                       "IdTiposEquipamientoEstacion LIKE '%" + filtro + "%' OR " +
+        String query = "select t.IdDetalleEquipo, o.TipoEquipamiento, t.Detalles, t.Cantidad from tdDetallesEquipo t\n" +
+        "inner join tbTiposEquipamientoEstacion o on o.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion"
+                + "WHERE IdDetalleEquipo LIKE '%" + filtro + "%' OR " +
+                       "TipoEquipamiento LIKE '%" + filtro + "%' OR " +
                        "Detalles LIKE '%" + filtro + "%' OR " +
                        "Cantidad LIKE '%" + filtro + "%';";
            
@@ -432,7 +433,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("IdTiposEquipamientoEstacion"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                modelo.addRow(new Object[] {rs.getString("NombreTipoEquipamiento"),rs.getString("IdTiposEquipamientoEstacion"),rs.getString("Detalles"), rs.getString("Cantidad")});
 
             }
 
@@ -458,7 +459,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTiposEquipamientoEstacion", "Detalles", "Cantidad"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","NombreTipoEquipamiento", "Detalles", "Cantidad"});
        
         try{
             Statement statement = conexionSql.getConexion().createStatement();
@@ -469,7 +470,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
             
             while(rs.next()){
               
-                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("NombreTipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                modelo.addRow(new Object[] {rs.getString("NombreTipoEquipamiento"),rs.getString("NombreTipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
                 
             }
             inventa.tbEquiposEspeciales.setModel(modelo);

@@ -8,11 +8,14 @@ import Modelo.ModeloArmamento;
 import Modelo.ModeloDatosTransporte;
 import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
+import Modelo.conexionSql;
 import Modelo.mdl;
 import VIsta.Bienvenida;
 import VIsta.Programa.JframePrincipal;
 import VIsta.VistaAgregarTransporte;
 import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Inventario_Inicio extends javax.swing.JPanel {
@@ -26,8 +29,174 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         c.mostrar1(this);
         ModeloArmamento v = new ModeloArmamento();
         v.mostrar1(this);
+       
     }
+    
+    public void MostrarDatosdelgranselect()
+    {
+       DefaultTableModel modelo = new DefaultTableModel();
+      
 
+        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", "Marca", "NumeroDeGrupo"});
+        
+
+
+        try{
+
+            //Datos del modelo 1
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte,\n" +
+"                        dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
+"FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
+"                        dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
+"                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
+"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje\n" +
+"\n" +
+"	 where NumeroDeGrupo like '%"+txtBusqueda.getText()+"%' OR "
+                    + "IdDetalleTransporteEstacion LIKE '%" +txtBusqueda.getText()+ "%' OR "
+                    + "DetalleTransporte LIKE '%" +txtBusqueda.getText()+ "%' OR "
+                    + "Placa like '%"+ txtBusqueda.getText() +"%' OR "
+                    + "TipoTransporte like '%" +txtBusqueda.getText() + "%' or "
+                    + "Marca like '%"+txtBusqueda.getText() +"%';"; //Parametro + el texto a obtener del textfield
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+            
+          
+
+            while(rs.next()){
+
+                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
+                 
+            }
+
+            
+            
+            tbMostrarDatosTransporte.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+           JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+    }
+    //tabla de equipo especial
+    public void MostrarDatosdelgranselect2()
+    {
+       
+       DefaultTableModel modelo2 = new DefaultTableModel();
+      
+
+        
+        modelo2.setColumnIdentifiers(new Object[]{"IdDetalleEquipo", "TipoEquipamiento", "Detalles", "Cantidad"});
+        
+
+
+        try{
+
+            
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            //datos del modelo 2
+            
+
+        String query2 = "select t.IdDetalleEquipo, o.TipoEquipamiento, t.Detalles, t.Cantidad from tdDetallesEquipo t\n" +
+        "inner join tbTiposEquipamientoEstacion o on o.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion "
+                + "WHERE IdDetalleEquipo LIKE '%" + txtBusqueda.getText() + "%' OR " +
+                       "TipoEquipamiento LIKE '%" + txtBusqueda.getText() + "%' OR " +
+                       "Detalles LIKE '%" + txtBusqueda.getText() + "%' OR " +
+                       "Cantidad LIKE '%" + txtBusqueda.getText() + "%';";
+           
+            
+    ResultSet rs = statement.executeQuery(query2);
+            
+          
+
+            while(rs.next()){
+
+               
+                 modelo2.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("TipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
+            }
+
+            
+            tbMostrarDatosEquipoEsp.setModel(modelo2);
+            
+
+
+
+          
+
+        }catch(SQLException ex){
+
+           JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+    }
+    
+    public void MostrarDatosdelgranselect3()
+    {
+       
+       DefaultTableModel modelo3 = new DefaultTableModel();
+      
+
+        
+         modelo3.setColumnIdentifiers(new Object []{"IdDetalleArmamentoEstacion","DetalleArmamento", "Cantidad", "TipoArmamento"});
+        
+
+
+        try{
+
+            
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            //datos del modelo 2
+            
+
+        String query3 = "select m.IdDetalleArmamentoEstacion, m.DetalleArmamento, m.Cantidad, u.TipoArmamento from tbDetallesArmamentosEstacion m\n" +
+"						  inner join tbTipoArmamentosEstacion u on u.IdTipoArmamentoEstacion = m.IdTipoArmamentoEstacion "
+                + "where IdDetalleArmamentoEstacion like '%" + txtBusqueda.getText() +"%' or "
+                + "DetalleArmamento like '%" + txtBusqueda.getText() +"%' or "
+                + "Cantidad like '%" + txtBusqueda.getText() +"%' or "
+                + "TipoArmamento like '%"+ txtBusqueda.getText()+"$'";
+           
+            
+    ResultSet rs = statement.executeQuery(query3);
+            
+          
+
+            while(rs.next()){
+
+               
+                 modelo3.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("TipoArmamento")});
+            }
+
+            
+            tbMostrarDatosArmamento.setModel(modelo3);
+            
+
+
+
+          
+
+        }catch(SQLException ex){
+
+           JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+    }
+    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,7 +207,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         btnDeleteEquipo = new javax.swing.JButton();
         btnEdiEquipo = new javax.swing.JButton();
         btnAddEquipo = new javax.swing.JButton();
@@ -51,6 +219,8 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtBusqueda = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -64,9 +234,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setPreferredSize(new java.awt.Dimension(1010, 710));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar.png"))); // NOI18N
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         btnDeleteEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnDeletePolicia.png"))); // NOI18N
         btnDeleteEquipo.setBorderPainted(false);
@@ -170,6 +337,22 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         });
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 30, 40));
 
+        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaActionPerformed(evt);
+            }
+        });
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
+        jPanel4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 440, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 500, 60));
+
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 710));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -241,6 +424,14 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         v.mostrar1(this);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+         
+    }//GEN-LAST:event_txtBusquedaActionPerformed
+
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+       MostrarDatosdelgranselect(); MostrarDatosdelgranselect2(); MostrarDatosdelgranselect3();
+    }//GEN-LAST:event_txtBusquedaKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEquipo;
@@ -261,5 +452,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     public javax.swing.JTable tbMostrarDatosArmamento;
     public javax.swing.JTable tbMostrarDatosEquipoEsp;
     public javax.swing.JTable tbMostrarDatosTransporte;
+    public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,7 +57,7 @@ public class ModeloArmamento {
 
    DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.setColumnIdentifiers(new Object[]{"DetalleArmamento", "IdTipoArmamentoEstacion", "Cantidad", "IdDetalleArmamentoEstacion"});
+    modelo.setColumnIdentifiers(new Object[]{"DetalleArmamento", "IdTipoArmamentoEstacion", "Cantidad", "TipoArmamento"});
 
 
 
@@ -67,18 +67,19 @@ public class ModeloArmamento {
 
            String filtro = IIT.txtbuscarArm.getText(); 
 
-        String query = "SELECT * FROM  tbDetallesArmamentosEstacion WHERE " +
+        String query = "select m.IdDetalleArmamentoEstacion, m.DetalleArmamento, m.Cantidad, u.TipoArmamento from tbDetallesArmamentosEstacion m\n" +
+"						  inner join tbTipoArmamentosEstacion u on u.IdTipoArmamentoEstacion = m.IdTipoArmamentoEstacion WHERE " +
                        "IdTipoArmamentoEstacion LIKE '%" + filtro + "%' OR " +
                        "DetalleArmamento LIKE '%" + filtro + "%' OR " +
                        "Cantidad LIKE '%" + filtro + "%' OR " +
-                       "IdDetalleArmamentoEstacion LIKE '%" + filtro + "%';";
+                       "TipoArmamento LIKE '%" + filtro + "%';";
            
             ResultSet rs = statement.executeQuery(query);
             
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("IdTipoArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("IdDetalleArmamentoEstacion")});
+                modelo.addRow(new Object[] {rs.getString("IdTipoArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("TipoArmamento")});
 
             }
 
@@ -249,17 +250,18 @@ public class ModeloArmamento {
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleArmamentoEstacion","DetalleArmamento", "Cantidad", "IdTipoArmamentoEstacion"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleArmamentoEstacion","DetalleArmamento", "Cantidad", "TipoArmamento"});
        
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "select * from tbDetallesArmamentosEstacion";
+            String query = "select m.IdDetalleArmamentoEstacion, m.DetalleArmamento, m.Cantidad, u.TipoArmamento from tbDetallesArmamentosEstacion m\n" +
+"						  inner join tbTipoArmamentosEstacion u on u.IdTipoArmamentoEstacion = m.IdTipoArmamentoEstacion";
             ResultSet rs = statement.executeQuery(query);
             
             while(rs.next()){
               
-                modelo.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("IdTipoArmamentoEstacion")});
+                modelo.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("TipoArmamento")});
                 
             }
             armamento.tbArmas.setModel(modelo);
@@ -275,17 +277,18 @@ public class ModeloArmamento {
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleArmamentoEstacion","DetalleArmamento", "Cantidad", "IdTipoArmamentoEstacion"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleArmamentoEstacion","DetalleArmamento", "Cantidad", "TipoArmamento"});
        
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "select * from tbDetallesArmamentosEstacion";
+            String query = "select m.IdDetalleArmamentoEstacion, m.DetalleArmamento, m.Cantidad, u.TipoArmamento from tbDetallesArmamentosEstacion m\n" +
+"						  inner join tbTipoArmamentosEstacion u on u.IdTipoArmamentoEstacion = m.IdTipoArmamentoEstacion";
             ResultSet rs = statement.executeQuery(query);
             
             while(rs.next()){
               
-                modelo.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("IdTipoArmamentoEstacion")});
+                modelo.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("TipoArmamento")});
                 
             }
             armamento.tbMostrarDatosArmamento.setModel(modelo);
