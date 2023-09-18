@@ -235,13 +235,13 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "No se permiten campos vacios");
         }
-        else if(texto2.length()< 7)
+        else if(texto2.length()< 8)
         {
-            JOptionPane.showMessageDialog(null, "No se permiten menos de 7 digitos para la placa");
+            JOptionPane.showMessageDialog(null, "No se permiten menos de 8 digitos para la placa");
         }
-        else if(texto2.length()>7)
+        else if(texto2.length()>8)
         {
-            JOptionPane.showMessageDialog(null, "No se permiten más de 7 digitos para la placa");
+            JOptionPane.showMessageDialog(null, "No se permiten más de 8 digitos para la placa");
         }
         else
         {
@@ -307,13 +307,13 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "No se permiten campos vacios");
         }
-        else if(texto2.length()< 7)
+        else if(texto2.length()< 8)
         {
-            JOptionPane.showMessageDialog(null, "No se permiten menos de 7 digitos para la placa");
+            JOptionPane.showMessageDialog(null, "No se permiten menos de 8 digitos para la placa");
         }
-        else if(texto2.length()>7)
+        else if(texto2.length()>8)
         {
-            JOptionPane.showMessageDialog(null, "No se permiten más de 7 digitos para la placa");
+            JOptionPane.showMessageDialog(null, "No se permiten más de 8 digitos para la placa");
         }
         else
         {

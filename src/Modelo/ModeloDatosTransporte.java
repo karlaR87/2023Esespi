@@ -189,7 +189,12 @@ public class ModeloDatosTransporte {
 "                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
 "                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje\n" +
 "\n" +
-"	 where NumeroDeGrupo like '%"+IIT.txtBusqueda.getText()+"%';"; //Parametro + el texto a obtener del textfield
+"	 where NumeroDeGrupo like '%"+IIT.txtBusqueda.getText()+"%' OR "
+                    + "IdDetalleTransporteEstacion LIKE '%" +IIT.txtBusqueda.getText()+ "%' OR "
+                    + "DetalleTransporte LIKE '%" + IIT.txtBusqueda.getText()+ "%' OR "
+                    + "Placa like '%"+ IIT.txtBusqueda.getText() +"%' OR "
+                    + "TipoTransporte like '%" +IIT.txtBusqueda.getText() + "%' or "
+                    + "Marca like '%"+ IIT.txtBusqueda.getText() +"%';"; //Parametro + el texto a obtener del textfield
 
             ResultSet rs = statement.executeQuery(query);
 
