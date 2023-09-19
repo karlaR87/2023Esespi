@@ -50,7 +50,7 @@ public class Agregar_policia extends javax.swing.JFrame {
         }
          
         this.setBackground(new Color(0, 0, 0, 0)); 
-    fontDesign();
+        fontDesign();
     }
     
     public void NOSPACE()
