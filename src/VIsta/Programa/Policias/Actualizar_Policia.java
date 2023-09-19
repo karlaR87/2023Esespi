@@ -167,6 +167,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(950, 603));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BLACKTRANSPARENT980X707.png"))); // NOI18N

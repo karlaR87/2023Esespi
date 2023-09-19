@@ -296,8 +296,6 @@ public class ModeloRegistro {
                 comboboxEstadoCivil.addItem(nombre);
             }
 
- 
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }finally {

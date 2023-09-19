@@ -4,6 +4,8 @@ import Modelo.mdlPolicias;
 import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.Programa.JframePrincipal;
+import VIsta.Programa.Policias.Actualizar_Policia;
+import VIsta.Programa.Policias.Actualizar_Usuario;
 import VIsta.Programa.Policias.Agregar_Usuario;
 import VIsta.Programa.Policias.Agregar_policia;
 import VIsta.Programa.Policias.Policias_Inicio;
@@ -21,8 +23,11 @@ public class contrlPolicias implements ActionListener{
     private JframePrincipal jFrameP;
     private mdlPolicias mdlPoli;
     
-    Agregar_policia jFrameAddPolice;
-    Agregar_Usuario jFrameAddUser;
+    private Agregar_policia jFrameAddPolice;
+    private Agregar_Usuario jFrameAddUser;
+    
+    private Actualizar_Policia jFrameUpdatePolice;
+    private Actualizar_Usuario jFrameUpdateUser;
     
     String currentGenero;
     String currentTipoSangre;
@@ -36,15 +41,21 @@ public class contrlPolicias implements ActionListener{
     
     public int idNivelUser;
     
-    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_policia jFrameAddPolice, Agregar_Usuario jFrameAddUser, int idNivelUser)
+    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_policia jFrameAddPolice, Agregar_Usuario jFrameAddUser, int idNivelUser,  Actualizar_Policia jFrameUpdatePolice, Actualizar_Usuario jFrameUpdateUser)
     {
+        this.idNivelUser = idNivelUser;
+        
         this.vstPoli = vstPoli;
         this.jFrameP = jFrameP;
         this.mdlPoli = mdlPoli;
+        
         this.jFrameAddPolice = jFrameAddPolice;
         this.jFrameAddUser = jFrameAddUser;
-        this.idNivelUser = idNivelUser;
         
+        this.jFrameUpdatePolice = jFrameUpdatePolice;
+        this.jFrameUpdateUser = jFrameUpdateUser;
+        
+       
         vstPoli.btnAddPolicia.addActionListener(this);
         jFrameAddPolice.btnGuardar.addActionListener(this);
         jFrameAddPolice.btnCancel.addActionListener(this);
@@ -56,8 +67,8 @@ public class contrlPolicias implements ActionListener{
     }
     
     @Override
-    public void actionPerformed(ActionEvent e) {
-        
+    public void actionPerformed(ActionEvent e) 
+    {
         if(e.getSource() == vstPoli.btnDeletePolicia)
         {
             
@@ -95,7 +106,7 @@ public class contrlPolicias implements ActionListener{
             show("¿Seguro que quieres cancelar? se eliminarán los datos", 14, 1, 1);
             close2();
         }  
-        
+//---------------------------------------------------------AGREGAR POLICIA INCLUYENDO USUARIO---------------------------------------------------------        
         
         if(e.getSource() == jFrameAddPolice.btnGuardar)
         {   
@@ -173,9 +184,15 @@ public class contrlPolicias implements ActionListener{
                     show("Ya existe una persona con ese usuario", 17, 1, 0);
                     close6();
                 } 
+            }
         }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------ACTUALIZAR POLICIA INCLUYENDO USUARIO---------------------------------------------------------        
+
     }
-    }
+    
+
+//----------------------------------------COSAS QUE HICE PARA AGREGAR----------------------------------------   
     
     public void doTheInsertWhitAllCondicions() //Porque quiere decir que es una NUEVA persona
     {
