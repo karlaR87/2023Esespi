@@ -281,7 +281,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbMostrarDatosTransporte);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 820, 170));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 820, 170));
 
         tbMostrarDatosEquipoEsp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -311,7 +311,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tbMostrarDatosArmamento);
 
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 820, 160));
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 820, 150));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -347,7 +347,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 txtBusquedaKeyReleased(evt);
             }
         });
-        jPanel4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 440, 60));
+        jPanel4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 450, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar.png"))); // NOI18N
         jLabel1.setText("jLabel1");

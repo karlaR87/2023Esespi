@@ -12,14 +12,21 @@ import java.sql.SQLException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 
 public class Inicio extends javax.swing.JPanel {
 
+    JFreeChart grafico;
+    DefaultCategoryDataset datos = new DefaultCategoryDataset(); //valores para graficar
    
     public Inicio() {
         initComponents();
-        
+        MostrarDatosGrafico();
         
     }
     
@@ -28,7 +35,7 @@ public class Inicio extends javax.swing.JPanel {
               DefaultTableModel modelo = new DefaultTableModel();
        
 
-        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "TipoTransporte", "Marca", "NumeroDeGrupo"});
+        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion", "Marca", "NumeroDeGrupo"});
 
 
 
@@ -36,12 +43,9 @@ public class Inicio extends javax.swing.JPanel {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT        dbo.tbDetallesTransportesEstacion.IdDetalleTransporteEstacion, dbo.tbDetallesTransportesEstacion.DetalleTransporte, dbo.tbDetallesTransportesEstacion.Placa, dbo.tbTipoTransportesEstacion.TipoTransporte, \n" +
-"                         dbo.tbMarcasDeVehiculos.Marca, dbo.tbGrupoPatrullajes.NumeroDeGrupo\n" +
-"FROM            dbo.tbDetallesTransportesEstacion INNER JOIN\n" +
-"                         dbo.tbTipoTransportesEstacion ON dbo.tbDetallesTransportesEstacion.IdTipoTransporteEstacion = dbo.tbTipoTransportesEstacion.IdTipoTransporteEstacion INNER JOIN\n" +
-"                         dbo.tbMarcasDeVehiculos ON dbo.tbDetallesTransportesEstacion.IdMarcaDeVehiculo = dbo.tbMarcasDeVehiculos.IdMarcaDeVehiculo INNER JOIN\n" +
-"                         dbo.tbGrupoPatrullajes ON dbo.tbDetallesTransportesEstacion.IdGrupoPatrullaje = dbo.tbGrupoPatrullajes.IdGrupoPatrullaje";
+            String query = "select t.IdDetalleTransporteEstacion, y.Marca, g.NumeroDeGrupo from tbDetallesTransportesEstacion t\n" +
+"inner join tbMarcasDeVehiculos y on y.IdMarcaDeVehiculo = t.IdMarcaDeVehiculo\n" +
+"inner join tbGrupoPatrullajes g on g.IdGrupoPatrullaje = t.IdGrupoPatrullaje";
 
             ResultSet rs = statement.executeQuery(query);
 
@@ -51,7 +55,7 @@ public class Inicio extends javax.swing.JPanel {
 
             while(rs.next()){
                 System.out.println("ddddd");
-                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("TipoTransporte"), rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
+                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
 
             }
 
@@ -76,6 +80,8 @@ public class Inicio extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMostrar = new javax.swing.JTable();
+        btnGen = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(980, 710));
 
@@ -97,7 +103,23 @@ public class Inicio extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbMostrar);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 320, 570));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 350, 440));
+
+        btnGen.setText("Generar grafica");
+        btnGen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGenMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnGen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, 150, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 30, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -115,8 +137,41 @@ public class Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenMouseClicked
+        //Generar la grafica
+        
+        try
+        {
+            
+            for(int i = 0; i<tbMostrar.getRowCount();i++) //recorremos cada fila de la tabla
+            {
+                //Valor a graficar (se parsea para obtener el valor de la primera fila), identificar del grupo de datos, etiquetas de la columna a graficar
+                datos.addValue(Integer.parseInt(tbMostrar.getValueAt(i, 0).toString()), tbMostrar.getValueAt(i, 1).toString(), tbMostrar.getValueAt(i, 2).toString());
+            }
+            
+            //mostrar el gráfico
+            
+            grafico = ChartFactory.createBarChart("Grafico de transportes asignados", "NumeroDeGrupo", "Cantidad de vehiculos", datos, PlotOrientation.VERTICAL, true, true, false);
+            
+            ChartPanel panel = new ChartPanel(grafico);
+            add(panel);
+            panel.setBounds(500, 50, 400, 450);
+            
+        }
+        catch(Exception e)
+        {
+           JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnGenMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        MostrarDatosGrafico();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnGen;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tbMostrar;
