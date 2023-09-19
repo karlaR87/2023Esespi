@@ -8,6 +8,7 @@ import Modelo.conexionSql;
 import Modelo.mdl;
 import VIsta.Login;
 import VIsta.VistaUsers;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -22,20 +23,25 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class Inicio extends javax.swing.JPanel {
 
     JFreeChart grafico;
+    JFreeChart grafico2;
     DefaultCategoryDataset datos = new DefaultCategoryDataset(); //valores para graficar
+    DefaultCategoryDataset datos2 = new DefaultCategoryDataset(); //valores para graficar
    
     public Inicio() {
         initComponents();
         MostrarDatosGrafico();
-        
+        Grafico();
+        MostrarDatosGraficoPat();
+        GraficoPat();
     }
     
+    //Mostrar datos en la tabla de transporte
     public void MostrarDatosGrafico()
     {
               DefaultTableModel modelo = new DefaultTableModel();
        
 
-        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion", "Marca", "NumeroDeGrupo"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleTransporteEstacion", "Marca", "NumeroDeGrupo"});
 
 
 
@@ -54,8 +60,8 @@ public class Inicio extends javax.swing.JPanel {
           
 
             while(rs.next()){
-                System.out.println("ddddd");
-                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
+                
+                modelo.addRow(new Object[] {rs.getString("IdDetalleTransporteEstacion"), rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
 
             }
 
@@ -70,8 +76,109 @@ public class Inicio extends javax.swing.JPanel {
     
     
     }
+    
+    //Grafico de transporte
+    public void Grafico()
+    {
+        try
+        {
+            
+            for(int i = 0; i<tbMostrar.getRowCount();i++) //recorremos cada fila de la tabla
+            {
+                //Valor a graficar (se parsea para obtener el valor de la primera fila), identificar del grupo de datos, etiquetas de la columna a graficar
+                datos.addValue(Integer.parseInt(tbMostrar.getValueAt(i, 0).toString()), tbMostrar.getValueAt(i, 1).toString(), tbMostrar.getValueAt(i, 2).toString());
+            }
+            
+            //mostrar el gráfico
+            
+            grafico = ChartFactory.createBarChart("Grafico de transportes asignados", "Cantidad de vehiculos", "NumeroDeGrupo", datos, PlotOrientation.VERTICAL, true, true, false);
+            
+            ChartPanel panel = new ChartPanel(grafico);
+            add(panel);
+            panel.setBounds(440, 13, 530, 275);
+            panel.setBackground(Color.DARK_GRAY);
+            
+        }
+        catch(Exception e)
+        {
+           JOptionPane.showMessageDialog(null, e);
+        }
+           
+    }
+    
+    
+    
+    
+    //Mostrar datos en la tabla tbPatrullajes
+    public void MostrarDatosGraficoPat()
+    {
+              DefaultTableModel modelo = new DefaultTableModel();
+       
 
-   
+        modelo.setColumnIdentifiers(new Object []{"RecorridoPatrullaje", "NumeroDeGrupo", "Municipio"});
+
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select pat.ExtensionKM AS RecorridoPatrullaje, gu.NumeroDeGrupo ,mun.Municipio from tbPatrullajes pat\n" +
+            "inner join tbGrupoPatrullajes gu on gu.IdGrupoPatrullaje = pat.IdGrupoPatrullaje\n" +
+            "inner join tbMunicipios mun on mun.IdMunicipio = pat.IdMunicipio";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+                
+                modelo.addRow(new Object[] {rs.getString("RecorridoPatrullaje"),rs.getString("NumeroDeGrupo"), rs.getString("Municipio")});
+
+            }
+
+            tbPatrullajes.setModel(modelo);
+
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+    
+    }
+    
+   //Grafico de patrullajes
+        public void GraficoPat()
+    {
+        try
+        {
+            
+            for(int i = 0; i<tbPatrullajes.getRowCount();i++) //recorremos cada fila de la tabla
+            {
+                //Valor a graficar (se parsea para obtener el valor de la primera fila), identificar del grupo de datos, etiquetas de la columna a graficar
+                datos2.addValue(Integer.parseInt(tbPatrullajes.getValueAt(i, 0).toString()), tbPatrullajes.getValueAt(i, 1).toString(), tbPatrullajes.getValueAt(i, 2).toString());
+            }
+            
+            //mostrar el gráfico
+            
+            grafico2 = ChartFactory.createBarChart("Grafico de patrullajes", "Grupos de patrullaje", "Recorrido (KM)", datos2, PlotOrientation.VERTICAL, true, true, false);
+            
+            ChartPanel panel = new ChartPanel(grafico2);
+            add(panel);
+            panel.setBounds(440, 335, 530, 255);
+            panel.setBackground(Color.DARK_GRAY);
+            
+        }
+        catch(Exception e)
+        {
+           JOptionPane.showMessageDialog(null, e);
+        }
+           
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -80,8 +187,10 @@ public class Inicio extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMostrar = new javax.swing.JTable();
-        btnGen = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbPatrullajes = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(980, 710));
 
@@ -103,15 +212,7 @@ public class Inicio extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbMostrar);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 350, 440));
-
-        btnGen.setText("Generar grafica");
-        btnGen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGenMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnGen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, 150, 50));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 350, 280));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,7 +220,30 @@ public class Inicio extends javax.swing.JPanel {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 30, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 30, 40));
+
+        tbPatrullajes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tbPatrullajes);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 350, 260));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 30, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -137,43 +261,32 @@ public class Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenMouseClicked
-        //Generar la grafica
-        
-        try
-        {
-            
-            for(int i = 0; i<tbMostrar.getRowCount();i++) //recorremos cada fila de la tabla
-            {
-                //Valor a graficar (se parsea para obtener el valor de la primera fila), identificar del grupo de datos, etiquetas de la columna a graficar
-                datos.addValue(Integer.parseInt(tbMostrar.getValueAt(i, 0).toString()), tbMostrar.getValueAt(i, 1).toString(), tbMostrar.getValueAt(i, 2).toString());
-            }
-            
-            //mostrar el gráfico
-            
-            grafico = ChartFactory.createBarChart("Grafico de transportes asignados", "NumeroDeGrupo", "Cantidad de vehiculos", datos, PlotOrientation.VERTICAL, true, true, false);
-            
-            ChartPanel panel = new ChartPanel(grafico);
-            add(panel);
-            panel.setBounds(500, 50, 400, 450);
-            
-        }
-        catch(Exception e)
-        {
-           JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_btnGenMouseClicked
-
+    
+    
+    
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        
+        //Mostrar datos de transporte y actualizar su gráfico
+        
         MostrarDatosGrafico();
+        Grafico();
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        //Mostrar datos de patrullaje y actualizar su gráfico
+        
+        MostrarDatosGraficoPat();
+        GraficoPat();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnGen;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tbMostrar;
+    public javax.swing.JTable tbPatrullajes;
     // End of variables declaration//GEN-END:variables
 }

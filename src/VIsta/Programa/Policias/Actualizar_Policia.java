@@ -141,7 +141,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jdcCalendar = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaDireccion = new javax.swing.JTextArea();
+        ActutxtAreaDireccion = new javax.swing.JTextArea();
         lblNombre12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -318,20 +318,20 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         jdcCalendar.setDateFormatString("dd MMM yyyy");
         jPanel1.add(jdcCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 260, 155, 70));
 
-        txtAreaDireccion.setBackground(new java.awt.Color(255, 255, 255));
-        txtAreaDireccion.setColumns(20);
-        txtAreaDireccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtAreaDireccion.setForeground(new java.awt.Color(0, 0, 0));
-        txtAreaDireccion.setRows(5);
-        txtAreaDireccion.setBorder(null);
-        txtAreaDireccion.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtAreaDireccion.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        txtAreaDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+        ActutxtAreaDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        ActutxtAreaDireccion.setColumns(20);
+        ActutxtAreaDireccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        ActutxtAreaDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        ActutxtAreaDireccion.setRows(5);
+        ActutxtAreaDireccion.setBorder(null);
+        ActutxtAreaDireccion.setCaretColor(new java.awt.Color(255, 255, 255));
+        ActutxtAreaDireccion.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        ActutxtAreaDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAreaDireccionKeyTyped(evt);
+                ActutxtAreaDireccionKeyTyped(evt);
             }
         });
-        jScrollPane1.setViewportView(txtAreaDireccion);
+        jScrollPane1.setViewportView(ActutxtAreaDireccion);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 303, 192, 71));
 
@@ -426,7 +426,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         lblNombre.setText("Nombre:");
         jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 151, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/HEADERAddPolicia.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/HEADERActualizarPolicia.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BACKAddInfoPolice.png"))); // NOI18N
@@ -513,11 +513,11 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNombreKeyTyped
 
-    private void txtAreaDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAreaDireccionKeyTyped
-        if (txtAreaDireccion.getText().length() >= 50) {
+    private void ActutxtAreaDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ActutxtAreaDireccionKeyTyped
+        if (ActutxtAreaDireccion.getText().length() >= 50) {
             evt.consume(); // Bloquea la entrada de texto adicional
         }
-    }//GEN-LAST:event_txtAreaDireccionKeyTyped
+    }//GEN-LAST:event_ActutxtAreaDireccionKeyTyped
 
     /**
      * @param args the command line arguments
@@ -555,6 +555,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextArea ActutxtAreaDireccion;
     public javax.swing.JButton btnCancel;
     public javax.swing.JButton btnGuardar;
     public javax.swing.JComboBox<String> cmbEstadoCivil;
@@ -589,7 +590,6 @@ public class Actualizar_Policia extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre8;
     private javax.swing.JLabel lblNombre9;
     public javax.swing.JTextField txtApellido;
-    public javax.swing.JTextArea txtAreaDireccion;
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtDUI;
     public javax.swing.JTextField txtNombre;
