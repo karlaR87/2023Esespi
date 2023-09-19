@@ -284,6 +284,65 @@ public class mdlPolicias {
         }
     }
     
+    public int readIdPoliIfExistONI()
+    {
+        try{   
+            String query = "SELECT IdPolicia FROM tbPolicias WHERE ONI = ?";    
+            PreparedStatement readIdPoliifExistONI = conexionSql.getConexion().prepareStatement(query);
+            readIdPoliifExistONI.setString(1, ONI);
+             ResultSet rs = readIdPoliifExistONI.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPolicia");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {            
+            return -1;
+        }
+    }
+    
+    public int readIdPoliIfExistsNumeroPlaca()
+    {
+        try{   
+            String query = "SELECT IdPolicia FROM tbPolicias WHERE NumeroPlaca = ?";    
+            PreparedStatement readIdPoliIfExistsNumeroPlaca = conexionSql.getConexion().prepareStatement(query);
+            readIdPoliIfExistsNumeroPlaca.setString(1, NumeroPlaca);
+             ResultSet rs = readIdPoliIfExistsNumeroPlaca.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPolicia");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {            
+            return -1;
+        }        
+    }
+    
+    public int readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI()
+    {
+        try{   
+            String query = "SELECT IdPolicia FROM tbPolicias WHERE IdTipoPersonas_Personas = (\n" +
+            "SELECT IdTipoPersonas_Personas FROM tbTiposPersonas_Personas WHERE IdPersona = (\n" +
+            "SELECT IdPersona FROM tbPersonas WHERE Dui = ?))";    
+            PreparedStatement readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI = conexionSql.getConexion().prepareStatement(query);
+            readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI.setString(1, DUI);
+             ResultSet rs = readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPolicia");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {            
+            return -1;
+        }
+    }
+    
      public int readUserIfExistUser()
     {
         try{   

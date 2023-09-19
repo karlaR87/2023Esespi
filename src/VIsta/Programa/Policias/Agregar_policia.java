@@ -500,12 +500,21 @@ public class Agregar_policia extends javax.swing.JFrame {
               if (txtONI.getText().length() >= 8) {
                     evt.consume(); // Bloquea la entrada de texto adicional
                 }
+              
+              char c = evt.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    evt.consume(); // Descarta caracteres que no son números
+                }            
     }//GEN-LAST:event_txtONIKeyTyped
 
     private void txtPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaKeyTyped
-        if (txtPlaca.getText().length() >= 8) {
+        if (txtPlaca.getText().length() >= 5) {
                     evt.consume(); // Bloquea la entrada de texto adicional
                 }
+        char c = evt.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    evt.consume(); // Descarta caracteres que no son números
+                }   
     }//GEN-LAST:event_txtPlacaKeyTyped
 
     /**

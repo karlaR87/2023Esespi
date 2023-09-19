@@ -98,7 +98,7 @@ public class contrlPolicias implements ActionListener{
         
         
         if(e.getSource() == jFrameAddPolice.btnGuardar)
-        {
+        {   
             if(jFrameAddPolice.txtApellido.getText().isBlank() || jFrameAddPolice.txtAreaDireccion.getText().isBlank()
                || jFrameAddPolice.txtCorreo.getText().isBlank() || jFrameAddPolice.txtDUI.getText().isBlank()
                || jFrameAddPolice.txtNombre.getText().isBlank() || jFrameAddPolice.txtNumero.getText().isBlank()
@@ -119,82 +119,18 @@ public class contrlPolicias implements ActionListener{
                 }
                 else
                 {
-                    //Validar que NO exista el DUI
+                    //Validar en caso de que exista el DUI
                     mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
-//                    int resultIdPDUI = mdlPoli.readDUIIfExistDUI();
-//
-//                    if(resultIdPDUI == -1) //si es igual a -1, es que NO hay persona con ese dui
-//                    {
-                        mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
-                        int resulIdPCorreo = mdlPoli.readCorreoIfExistCorreo();
+                    int resultIdPDUI = mdlPoli.readDUIIfExistDUI();
 
-                        if(resulIdPCorreo == -1) //si es igual a -1, es que NO hay persona con ese correo
-                        {
-                            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
-                            int resultIdPNumero = mdlPoli.readNumeroIfExistNumero();
-
-                            if(resultIdPNumero == -1) //si es igual a -1, es que NO hay persona con ese numero
-                            {
-                                //Validamos minimo de caracteres
-                                if(jFrameAddPolice.txtDUI.getText().length() < 9 )
-                                {
-                                    show("El DUI debe contener 9 caracteres", 17, 1, 0);
-                                    close3();    
-                                }                                  
-                                else
-                                {
-                                    if(jFrameAddPolice.txtNumero.getText().length() < 8 )
-                                    {
-                                        show("El número debe contener 8 caracteres", 17, 1, 0);
-                                        close3();    
-                                    } 
-                                    else
-                                    {                                   
-                                        //Ya validados, minimo de caracteres, DUI, Correo y Numero, procedemos a insertar
-                                        mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
-                                        mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
-                                        mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
-                                        mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
-                                        mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
-                                        mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
-                                        mdlPoli.setIdGenero(returnIdGenero());
-                                        mdlPoli.setIdTipoSangre(returnIdTipoSangre());
-                                        mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
-                                        mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
-                                        mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
-                                        mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
-                                        mdlPoli.setIdRangoUsuario(returnIdRangoUser());
-                                         //Despues de aceptar la info del poli, vamos con el usuario
-                                            
-                                        jFrameAddUser.setVisible(true);           
-                                        jFrameAddUser.setEnabled(true);   
-                                        jFrameAddUser.jLabel2.setVisible(false);  
-                                        jFrameAddPolice.setEnabled(false);
-                                        jFrameAddPolice.jLabel11.setVisible(true);
-                                        
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                mdlPoli.setCorreo("0");
-                                show("Ya existe una persona con ese Número", 17, 1, 0);
-                                close3();
-                            }                     
-                        }
-                        else
-                        {
-                            mdlPoli.setCorreo("0");
-                            show("Ya existe una persona con ese Correo", 17, 1, 0);
-                            close3();   
-                        }
-//                    }
-//                    else
-//                    {
-//                        mdlPoli.setDUI("0");
-//                        show("Ya existe una persona con ese DUI", 17, 1, 0);
-//                        close3();   
-//                    }
+                    if(resultIdPDUI == -1) //si es igual a -1, es que NO hay persona con ese dui
+                    {
+                       doTheInsertWhitAllCondicions();
+                    }
+                    else //si hay una persona con ese dui, no es necesario verificar las otras cosas de PERSONA, mas si de POLICIA Y USUARIO
+                    {
+                        doTheInsertWhitNOCondicionsPER();
+                    }
 
                 }
             }
@@ -239,6 +175,224 @@ public class contrlPolicias implements ActionListener{
                 } 
         }
     }
+    }
+    
+    public void doTheInsertWhitAllCondicions() //Porque quiere decir que es una NUEVA persona
+    {
+        mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+        int resulIdPCorreo = mdlPoli.readCorreoIfExistCorreo();
+
+        if(resulIdPCorreo == -1) //si es igual a -1, es que NO hay persona con ese correo
+        {
+            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+            int resultIdPNumero = mdlPoli.readNumeroIfExistNumero();
+
+            if(resultIdPNumero == -1) //si es igual a -1, es que NO hay persona con ese numero
+            {
+                //Validamos minimo de caracteres
+                if(jFrameAddPolice.txtDUI.getText().length() < 9 )
+                {
+                    show("El DUI debe contener 9 caracteres", 17, 1, 0);
+                    close3();    
+                }                                  
+                else
+                {
+                    if(jFrameAddPolice.txtNumero.getText().length() < 8 )
+                    {
+                        show("El número debe contener 8 caracteres", 17, 1, 0);
+                        close3();    
+                    } 
+                    else
+                    {  
+                        if(jFrameAddPolice.txtONI.getText().length() < 8)
+                        {
+                            show("El ONI debe contener 8 caracteres", 17, 1, 0);
+                            close3(); 
+                        }
+                        else
+                        {
+                            if(jFrameAddPolice.txtPlaca.getText().length() < 5)
+                            {
+                            show("La placa debe contener 5 caracteres", 17, 1, 0);
+                            close3(); 
+                            }
+                            else
+                            {
+                                //Validar que NO Exista poli con el ONI
+                                mdlPoli.setONI(jFrameAddPolice.txtONI.getText().trim());
+                                int resulIdPoliONI = mdlPoli.readIdPoliIfExistONI();
+                                
+                                if(resulIdPoliONI == -1) //si es igual a -1, es que NO hay policia con ese ONI
+                                {
+                                    //Validar que NO exista poli con la Placa
+                                     mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                                     int resulIdPoliPlaca = mdlPoli.readIdPoliIfExistsNumeroPlaca();
+                                     
+                                    if(resulIdPoliPlaca == -1) //si es igual a -1, es que NO hay policia con esa Placa
+                                    {
+                                        //Validar que NO exista poli con el idTipoPersona en base al DUI
+                                        mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                                        int resulIdPoliIdPersona = mdlPoli.readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI();
+
+                                        if(resulIdPoliIdPersona == -1) //si es igual a -1, es que NO hay policia con ese id
+                                        {
+                                            //Ya validados, minimo de caracteres, DUI, Correo, Numero y en teoria todo, procedemos a insertar
+                                            mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
+                                            mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
+                                            mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
+                                            mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
+                                            mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                                            mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
+                                            mdlPoli.setIdGenero(returnIdGenero());
+                                            mdlPoli.setIdTipoSangre(returnIdTipoSangre());
+                                            mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+                                            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+                                            mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
+                                            mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                                            mdlPoli.setIdRangoUsuario(returnIdRangoUser());
+                                             //Despues de aceptar la info del poli, vamos con el usuario
+
+                                            jFrameAddUser.setVisible(true);           
+                                            jFrameAddUser.setEnabled(true);   
+                                            jFrameAddUser.jLabel2.setVisible(false);  
+                                            jFrameAddPolice.setEnabled(false);
+                                            jFrameAddPolice.jLabel11.setVisible(true);
+                                        }
+                                        else
+                                        {
+                                            mdlPoli.setDUI("0");
+                                            show("Ya existe un policía con ese DUI", 17, 1, 0);
+                                            close3();
+                                        }                                    
+                                    }
+                                    else
+                                    {
+                                        mdlPoli.setNumeroPlaca("0");
+                                        show("Ya existe un policía con esa placa", 17, 1, 0);
+                                        close3();
+                                    }
+                                }
+                                else
+                                {
+                                    mdlPoli.setONI("0");
+                                    show("Ya existe un policía con ese ONI", 17, 1, 0);
+                                    close3();
+                                }
+                            }                 
+                        }
+                    }
+                }
+            }
+            else
+            {
+                mdlPoli.setNumero("0");
+                show("Ya existe una persona con ese número", 17, 1, 0);
+                close3();
+            }                     
+        }
+        else
+        {
+            mdlPoli.setCorreo("0");
+            show("Ya existe una persona con ese correo", 17, 1, 0);
+            close3();   
+        }
+    }
+    
+    public void doTheInsertWhitNOCondicionsPER()
+    {               
+         //Validamos minimo de caracteres
+        if(jFrameAddPolice.txtDUI.getText().length() < 9 )
+        {
+            show("El DUI debe contener 9 caracteres", 17, 1, 0);
+            close3();    
+        }                                  
+        else
+        {
+            if(jFrameAddPolice.txtNumero.getText().length() < 8 )
+            {
+                show("El número debe contener 8 caracteres", 17, 1, 0);
+                close3();    
+            } 
+            else
+            { 
+              if(jFrameAddPolice.txtONI.getText().length() < 8)
+                {
+                    show("El ONI debe contener 8 caracteres", 17, 1, 0);
+                    close3(); 
+                }
+                else
+                {
+                    if(jFrameAddPolice.txtPlaca.getText().length() < 5)
+                    {
+                    show("La placa debe contener 5 caracteres", 17, 1, 0);
+                    close3(); 
+                    }
+                    else
+                    {
+                        //Validar que NO Exista poli con el ONI
+                        mdlPoli.setONI(jFrameAddPolice.txtONI.getText().trim());
+                        int resulIdPoliONI = mdlPoli.readIdPoliIfExistONI();
+
+                        if(resulIdPoliONI == -1) //si es igual a -1, es que NO hay policia con ese ONI
+                        {
+                            //Validar que NO exista poli con la Placa
+                             mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                             int resulIdPoliPlaca = mdlPoli.readIdPoliIfExistsNumeroPlaca();
+
+                            if(resulIdPoliPlaca == -1) //si es igual a -1, es que NO hay policia con esa Placa
+                            {
+                                //Validar que NO exista poli con el idTipoPersona en base al DUI
+                                mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                                int resulIdPoliIdPersona = mdlPoli.readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI();
+
+                                if(resulIdPoliIdPersona == -1) //si es igual a -1, es que NO hay policia con ese id
+                                {
+                                    //Ya validados, minimo de caracteres, DUI, Correo, Numero y en teoria todo, procedemos a insertar
+                                    mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
+                                    mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
+                                    mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
+                                    mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
+                                    mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                                    mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
+                                    mdlPoli.setIdGenero(returnIdGenero());
+                                    mdlPoli.setIdTipoSangre(returnIdTipoSangre());
+                                    mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+                                    mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+                                    mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
+                                    mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                                    mdlPoli.setIdRangoUsuario(returnIdRangoUser());
+                                     //Despues de aceptar la info del poli, vamos con el usuario
+
+                                    jFrameAddUser.setVisible(true);           
+                                    jFrameAddUser.setEnabled(true);   
+                                    jFrameAddUser.jLabel2.setVisible(false);  
+                                    jFrameAddPolice.setEnabled(false);
+                                    jFrameAddPolice.jLabel11.setVisible(true);
+                                }
+                                else
+                                {
+                                    mdlPoli.setDUI("0");
+                                    show("Ya existe un policía con ese DUI", 17, 1, 0);
+                                    close3();
+                                }                                    
+                            }
+                            else
+                            {
+                                mdlPoli.setNumeroPlaca("0");
+                                show("Ya existe un policía con esa placa", 17, 1, 0);
+                                close3();
+                            }
+                        }
+                        else
+                        {
+                            mdlPoli.setONI("0");
+                            show("Ya existe un policía con ese ONI", 17, 1, 0);
+                            close3();
+                        }
+                    }                 
+                }
+            }
+        }              
     }
     
      JoptionReplacemnt Jo;
