@@ -1,6 +1,7 @@
 
 package VIsta.Programa.Reportes;
 
+import Modelo.TextPrompt;
 import Modelo.conexionSql;
 import Modelo.mdl;
 import java.util.HashMap;
@@ -20,6 +21,11 @@ public class VistaReportePatrullajeConParametos extends javax.swing.JFrame {
     public VistaReportePatrullajeConParametos() {
         initComponents();
         this.setLocationRelativeTo(this);
+        
+        //Agregar un placeholder
+        TextPrompt placeholder = new TextPrompt("Ingrese el parámetro", txtFechaIn);
+        TextPrompt placeholder1 = new TextPrompt("Ingrese el parámetro", txtfechaFin);
+        
         mdl mm = new mdl();
         mm.mostrar(this);
     }
@@ -72,6 +78,7 @@ public class VistaReportePatrullajeConParametos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

@@ -19,6 +19,9 @@ public class EleccionReporte extends javax.swing.JFrame {
     
     public EleccionReporte() {
         initComponents();
+        
+        //Posicionar la ventana al centro
+        this.setLocationRelativeTo(null);
     }
     
   private void mostrarReporte() {
@@ -89,13 +92,14 @@ public class EleccionReporte extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reporte de patrullaje", "Reporte de patrullaje con parámetros", "Reporte de transporte", "Reporte de transporte con parámetros", "Reporte de policías en patrullaje", "Reporte de policías en patrullaje con parámetros"}));
-        jPanel1.add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 310, 40));
+        jPanel1.add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 310, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 77.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,13 +107,13 @@ public class EleccionReporte extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("<html> En las secciones \"con parámetros\" usted podrá generar reportes a partir de datos específicos; en las secciones que no contengan parámetros, usted podrá generar un reporte completo de todos los datos ingresados</htm>");
+        jLabel5.setText("<html> En las secciones \"con parámetros\" usted podrá generar reportes a partir de datos específicos; en las secciones que no contengan parámetros, usted podrá generar un reporte completo de todos los datos ingresados.</htm>");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,9 +126,10 @@ public class EleccionReporte extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,11 +137,11 @@ public class EleccionReporte extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addComponent(jLabel5)
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 170, 180));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 150, 140));
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCancelar.png"))); // NOI18N
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,10 +149,10 @@ public class EleccionReporte extends javax.swing.JFrame {
                 btnCancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/ReporteGenerar.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,7 +217,7 @@ public class EleccionReporte extends javax.swing.JFrame {
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
 
-        //Para cerrar la ventana con el botn de cancelar
+        //Para cerrar la ventana con el botón de cancelar
         this.dispose();
 
     }//GEN-LAST:event_btnCancelarMouseClicked
