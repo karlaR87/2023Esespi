@@ -2,7 +2,13 @@
 package VIsta.Programa.Reportes;
 
 import Modelo.ModeloInformes;
+import Modelo.conexionSql;
 import VIsta.Programa.Inicio.Paneles;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Reportes_Inicio extends javax.swing.JPanel {
@@ -16,6 +22,7 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         
     }
 
+    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -24,8 +31,8 @@ public class Reportes_Inicio extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMostrarDatos = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
         txtBusquedaInforme = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -50,9 +57,6 @@ public class Reportes_Inicio extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 140, 580, 410));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/searchBack.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 330, 50));
-
         txtBusquedaInforme.setBorder(null);
         txtBusquedaInforme.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -60,6 +64,9 @@ public class Reportes_Inicio extends javax.swing.JPanel {
             }
         });
         jPanel1.add(txtBusquedaInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 280, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/searchBack.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 330, 50));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -122,7 +129,8 @@ public class Reportes_Inicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBusquedaInformeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaInformeKeyReleased
-
+         ModeloInformes m = new ModeloInformes();
+       m.mostrar1(this);
     }//GEN-LAST:event_txtBusquedaInformeKeyReleased
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

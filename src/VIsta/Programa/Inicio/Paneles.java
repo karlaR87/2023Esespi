@@ -49,7 +49,7 @@ public class Paneles extends javax.swing.JFrame {
             
             JPanel Contenedor = new JPanel();
                Contenedor.setLayout(new FlowLayout(FlowLayout.LEADING));
-
+               
             while (result.next()) {
                //JPanel estudiantePanel2 = new JPanel(); 
                //estudiantePanel2.setBackground(Color.DARK_GRAY);
@@ -96,6 +96,7 @@ public class Paneles extends javax.swing.JFrame {
                 estudiantePanel.add(label3);
                 //add(estudiantePanel);
                 Contenedor.add(estudiantePanel);
+                
                 
             }
             JScrollPane scroll = new JScrollPane(Contenedor);
