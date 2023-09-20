@@ -50,8 +50,7 @@ public class contrlPolicias implements ActionListener{
         this.jFrameAddPolice = jFrameAddPolice;
         this.jFrameAddUser = jFrameAddUser;
         
-        this.jFrameUpdatePolice = jFrameUpdatePolice;
-        
+        this.jFrameUpdatePolice = jFrameUpdatePolice;       
        
         vstPoli.btnAddPolicia.addActionListener(this);
         jFrameAddPolice.btnGuardar.addActionListener(this);
@@ -184,8 +183,13 @@ public class contrlPolicias implements ActionListener{
             }
         }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------ACTUALIZAR POLICIA INCLUYENDO USUARIO---------------------------------------------------------        
-
+//---------------------------------------------------------ACTUALIZAR POLICIA---------------------------------------------------------        
+        
+        if(e.getSource() == vstPoli.btnEditPolicia)
+        {
+            
+        }
+        
     }
     
 
