@@ -53,11 +53,15 @@ public class contrlPolicias implements ActionListener{
         this.jFrameUpdatePolice = jFrameUpdatePolice;       
        
         vstPoli.btnAddPolicia.addActionListener(this);
+        vstPoli.btnEditPolicia.addActionListener(this);
+        
         jFrameAddPolice.btnGuardar.addActionListener(this);
         jFrameAddPolice.btnCancel.addActionListener(this);
         
         jFrameAddUser.btnGuardar.addActionListener(this);
         jFrameAddUser.btnCancel.addActionListener(this);
+        
+        jFrameUpdatePolice.btnCancel.addActionListener(this);
         
         vstPoli.btnDeletePolicia.addActionListener(this);            
     }
@@ -184,12 +188,33 @@ public class contrlPolicias implements ActionListener{
         }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------ACTUALIZAR POLICIA---------------------------------------------------------        
-        
+        //MOSTRAR datos
         if(e.getSource() == vstPoli.btnEditPolicia)
         {
-            
+            if(vstPoli.IdPolicia == 0) 
+            {
+                show1("Seleccione un policía", 17, 0, 0);
+                close4(); 
+            }
+            else
+            {
+               mdlPoli.setIdPolicia(vstPoli.IdPolicia);
+               mdlPoli.CargarDatosPoliciales(jFrameUpdatePolice, this);
+               jFrameUpdatePolice.jLabel11.setVisible(false);
+               jFrameP.jLabel3.setVisible(true);
+               jFrameP.setEnabled(false);
+               jFrameUpdatePolice.setVisible(true);
+               jFrameUpdatePolice.setEnabled(true);
+            }
+
         }
         
+        //CANCELAR DATOS
+        if(e.getSource() == jFrameUpdatePolice.btnCancel)
+        {
+            show("¿Seguro que quieres cancelar? NO se guardarán los cambios", 13, 1, 1);
+            close8(); 
+        }       
     }
     
 
@@ -413,6 +438,35 @@ public class contrlPolicias implements ActionListener{
         }              
     }
     
+    public void close8()
+    {   
+        //Agregar evento click
+        Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);         
+            jFrameUpdatePolice.setEnabled(true);
+            jFrameUpdatePolice.jLabel11.setVisible(false);
+            jFrameAddPolice.setEnabled(true);
+            jFrameAddUser.setEnabled(true);
+            jFrameP.jLabel3.setVisible(false);
+            jFrameP.setEnabled(true);
+            vstPoli.IdPolicia = 0;
+            
+            jFrameUpdatePolice.dispose();
+        }
+        });
+        
+        Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            jFrameUpdatePolice.setEnabled(true);
+            jFrameUpdatePolice.jLabel11.setVisible(false);
+            jFrameAddPolice.setEnabled(true);
+            jFrameAddUser.setEnabled(true);
+        }
+        });
+    }
+    
      JoptionReplacemnt Jo;
     
     public void show(String msg, int sizeTXT, int img, int type)
@@ -422,6 +476,8 @@ public class contrlPolicias implements ActionListener{
         jFrameAddUser.setEnabled(false);
         jFrameAddUser.jLabel2.setVisible(true);
         jFrameAddPolice.jLabel11.setVisible(true);
+        jFrameUpdatePolice.jLabel11.setVisible(true);
+        jFrameUpdatePolice.setEnabled(false);
         Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
         Jo.setVisible(true);
     }

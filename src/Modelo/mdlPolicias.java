@@ -225,7 +225,7 @@ public class mdlPolicias {
     {
         try{
             String query = "SELECT poli.IdPolicia, per.Nombre, per.Apellido, per.FechaNacimiento, per.DireccionDomicilio, Per.DUI, per.IdEstadoCivil, per.IdTipoSangre,\n" +
-            "per.IdGenero, per.CorreoElectronico, per.NumeroTel, poli.ONI, poli.NumeroPlaca, poli.Foto FROM tbPersonas per\n" +
+            "per.IdGenero, per.CorreoElectronico, per.NumeroTel, poli.IdRangoTipoUsuario, poli.ONI, poli.NumeroPlaca, poli.Foto FROM tbPersonas per\n" +
             "INNER JOIN tbTiposPersonas_Personas tipoPP ON tipoPP.IdPersona = per.IdPersona\n" +
             "INNER JOIN tbPolicias poli ON tipoPP.IdTipoPersonas_Personas = poli.IdTipoPersonas_Personas \n" +
             "WHERE poli.IdPolicia = ?";
@@ -236,7 +236,19 @@ public class mdlPolicias {
 
             // Verificar si hay alguna fila en el ResultSet
             if (rs.next()) {
-                
+                vstActuPolice.txtNombre.setText(rs.getString("Nombre"));
+                vstActuPolice.txtApellido.setText(rs.getString("Apellido"));
+                vstActuPolice.txtCorreo.setText(rs.getString("CorreoElectronico"));
+                vstActuPolice.txtNumero.setText(rs.getString("NumeroTel"));
+                vstActuPolice.ActutxtAreaDireccion.setText(rs.getString("DireccionDomicilio"));
+                vstActuPolice.cmbEstadoCivil.setSelectedIndex(rs.getInt("IdEstadoCivil"));
+                vstActuPolice.cmbGenero.setSelectedIndex(rs.getInt("IdGenero"));
+                vstActuPolice.cmbTipoSangre.setSelectedIndex(rs.getInt("IdTipoSangre"));
+                vstActuPolice.txtDUI.setText(rs.getString("DUI"));
+                vstActuPolice.jdcCalendar.setDate(rs.getDate("FechaNacimiento"));
+                vstActuPolice.txtONI.setText(rs.getString("ONI"));
+                vstActuPolice.cmbRangoUser.setSelectedIndex(rs.getInt("IdRangoTipoUsuario"));
+                vstActuPolice.txtPlaca.setText(rs.getString("NumeroPlaca"));
             } else {          
                
             }

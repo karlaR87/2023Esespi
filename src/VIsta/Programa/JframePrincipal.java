@@ -82,6 +82,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         AddUser = new Agregar_Usuario();
       cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP);
       AddPolice = new Agregar_policia(); 
+      UpdatePolice = new Actualizar_Policia();
       contrlPolicias cntrPoli = new contrlPolicias(policiasInicio, this, mdlPolicias, AddPolice, AddUser, idNivelUser, UpdatePolice);
        
         cardLayout = new CardLayout();
