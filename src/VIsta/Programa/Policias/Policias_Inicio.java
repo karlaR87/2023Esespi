@@ -221,7 +221,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddPolicia;
     public javax.swing.JButton btnDeletePolicia;
-    private javax.swing.JButton btnEditPolicia;
+    public javax.swing.JButton btnEditPolicia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

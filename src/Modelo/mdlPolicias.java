@@ -1,5 +1,7 @@
 package Modelo;
 
+import Controlador.contrlPolicias;
+import VIsta.Programa.Policias.Actualizar_Policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import fonts.Fuentes;
 import java.awt.Color;
@@ -218,9 +220,34 @@ public class mdlPolicias {
         this.IdTipoPersonasPersonas = idPersona;
     }
     
+    
+    public void CargarDatosPoliciales(Actualizar_Policia vstActuPolice, contrlPolicias cntrPolice)
+    {
+        try{
+            String query = "SELECT poli.IdPolicia, per.Nombre, per.Apellido, per.FechaNacimiento, per.DireccionDomicilio, Per.DUI, per.IdEstadoCivil, per.IdTipoSangre,\n" +
+            "per.IdGenero, per.CorreoElectronico, per.NumeroTel, poli.ONI, poli.NumeroPlaca, poli.Foto FROM tbPersonas per\n" +
+            "INNER JOIN tbTiposPersonas_Personas tipoPP ON tipoPP.IdPersona = per.IdPersona\n" +
+            "INNER JOIN tbPolicias poli ON tipoPP.IdTipoPersonas_Personas = poli.IdTipoPersonas_Personas \n" +
+            "WHERE poli.IdPolicia = ?";
+            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
+            chargePolice.setInt(1, IdPolicia);
+            
+            ResultSet rs = chargePolice.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                
+            } else {          
+               
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+    
     public boolean deletetbPolicias()
     {
-          try{
+        try{
             String query = "EXEC dbo.EliminarPolicias "
                     + " @IdPolicia = ?";
             PreparedStatement deletePolice = conexionSql.getConexion().prepareStatement(query);
