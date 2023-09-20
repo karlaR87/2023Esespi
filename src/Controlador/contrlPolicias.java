@@ -62,6 +62,7 @@ public class contrlPolicias implements ActionListener{
         jFrameAddUser.btnCancel.addActionListener(this);
         
         jFrameUpdatePolice.btnCancel.addActionListener(this);
+        jFrameUpdatePolice.btnGuardar.addActionListener(this);
         
         vstPoli.btnDeletePolicia.addActionListener(this);            
     }
@@ -225,7 +226,7 @@ public class contrlPolicias implements ActionListener{
                || jFrameUpdatePolice.txtONI.getText().isBlank() || jFrameUpdatePolice.txtPlaca.getText().isBlank())
             {
                 show("No se permiten campos vacíos", 17, 1, 0);
-                close3(); 
+                close9(); 
             }
             else
             {
@@ -236,7 +237,7 @@ public class contrlPolicias implements ActionListener{
                 
                 if (!matcher.matches()) {
                 show("El formato del correo electrónico no es válido", 17, 1, 0);
-                close3();                                    
+                close9();                                    
                 }
                 else
                 {
@@ -253,7 +254,7 @@ public class contrlPolicias implements ActionListener{
                     else
                     {
                         show("Ya existe una persona con ese DUI", 17, 1, 0);
-                        close3();      
+                        close9();      
                     }
                 }
             }
@@ -261,109 +262,100 @@ public class contrlPolicias implements ActionListener{
         
     }
     
-////----------------------------------------ME QUEDE ACAAAAAAAAAAAAAAA ME FALTA VALIDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR COREEO Y LO QUE LE SIGUE//----------------------------------------
 //----------------------------------------COSAS QUE HICE PARA ACTUALIZAR----------------------------------------
     
-    public void doTheUpdateWhitAllCondicions() //Porque quiere decir que es una NUEVA persona
+    public void doTheUpdateWhitAllCondicions() 
     {
-        mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
-        int resulIdPCorreo = mdlPoli.readCorreoIfExistCorreo();
+        mdlPoli.setCorreo(jFrameUpdatePolice.txtCorreo.getText().trim());
+        mdlPoli.setIdPolicia(vstPoli.IdPolicia);
+        
+        int resulIdPCorreo = mdlPoli.readCorreoIfExistNUEVOCorreo_Actualizar();
 
         if(resulIdPCorreo == -1) //si es igual a -1, es que NO hay persona con ese correo
         {
-            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
-            int resultIdPNumero = mdlPoli.readNumeroIfExistNumero();
+            mdlPoli.setNumero(jFrameUpdatePolice.txtNumero.getText().trim());
+            mdlPoli.setIdPolicia(vstPoli.IdPolicia);
+            int resultIdPNumero = mdlPoli.readNumeroIfExistNUEVONumero_Actualizar();
 
             if(resultIdPNumero == -1) //si es igual a -1, es que NO hay persona con ese numero
             {
                 //Validamos minimo de caracteres
-                if(jFrameAddPolice.txtDUI.getText().length() < 9 )
+                if(jFrameUpdatePolice.txtDUI.getText().length() < 9 )
                 {
                     show("El DUI debe contener 9 caracteres", 17, 1, 0);
-                    close3();    
+                    close9();    
                 }                                  
                 else
                 {
-                    if(jFrameAddPolice.txtNumero.getText().length() < 8 )
+                    if(jFrameUpdatePolice.txtNumero.getText().length() < 8 )
                     {
                         show("El número debe contener 8 caracteres", 17, 1, 0);
-                        close3();    
+                        close9();    
                     } 
                     else
                     {  
-                        if(jFrameAddPolice.txtONI.getText().length() < 8)
+                        if(jFrameUpdatePolice.txtONI.getText().length() < 8)
                         {
                             show("El ONI debe contener 8 caracteres", 17, 1, 0);
-                            close3(); 
+                            close9(); 
                         }
                         else
                         {
-                            if(jFrameAddPolice.txtPlaca.getText().length() < 5)
+                            if(jFrameUpdatePolice.txtPlaca.getText().length() < 5)
                             {
                             show("La placa debe contener 5 caracteres", 17, 1, 0);
-                            close3(); 
+                            close9(); 
                             }
                             else
                             {
                                 //Validar que NO Exista poli con el ONI
-                                mdlPoli.setONI(jFrameAddPolice.txtONI.getText().trim());
-                                int resulIdPoliONI = mdlPoli.readIdPoliIfExistONI();
+                                mdlPoli.setONI(jFrameUpdatePolice.txtONI.getText().trim());
+                                mdlPoli.setIdPolicia(vstPoli.IdPolicia);
+                                int resulIdPoliONI = mdlPoli.readONIIfExistNUEVOONI_Actualizar();
                                 
                                 if(resulIdPoliONI == -1) //si es igual a -1, es que NO hay policia con ese ONI
                                 {
                                     //Validar que NO exista poli con la Placa
-                                     mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                                     mdlPoli.setNumeroPlaca(jFrameUpdatePolice.txtPlaca.getText().trim());
+                                     mdlPoli.setIdPolicia(vstPoli.IdPolicia);
                                      int resulIdPoliPlaca = mdlPoli.readIdPoliIfExistsNumeroPlaca();
                                      
                                     if(resulIdPoliPlaca == -1) //si es igual a -1, es que NO hay policia con esa Placa
-                                    {
-                                        //Validar que NO exista poli con el idTipoPersona en base al DUI
-                                        mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
-                                        int resulIdPoliIdPersona = mdlPoli.readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI();
-
-                                        if(resulIdPoliIdPersona == -1) //si es igual a -1, es que NO hay policia con ese id
-                                        {
-                                            //Ya validados, minimo de caracteres, DUI, Correo, Numero y en teoria todo, procedemos a insertar
-                                            mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
-                                            mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
-                                            mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
-                                            mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
-                                            mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
-                                            mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
-                                            mdlPoli.setIdGenero(returnIdGenero());
-                                            mdlPoli.setIdTipoSangre(returnIdTipoSangre());
-                                            mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
-                                            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
-                                            mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
-                                            mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
-                                            mdlPoli.setIdRangoUsuario(returnIdRangoUser());
-                                             //Despues de aceptar la info del poli, vamos con el usuario
-
-                                            jFrameAddUser.setVisible(true);           
-                                            jFrameAddUser.setEnabled(true);   
-                                            jFrameAddUser.jLabel2.setVisible(false);  
-                                            jFrameAddPolice.setEnabled(false);
-                                            jFrameAddPolice.jLabel11.setVisible(true);
-                                        }
-                                        else
-                                        {
-                                            mdlPoli.setDUI("0");
-                                            show("Ya existe un policía con ese DUI", 17, 1, 0);
-                                            close3();
-                                        }                                    
+                                    { 
+                                        mdlPoli.setIdPolicia(vstPoli.IdPolicia);
+                                        //Ya validados, minimo de caracteres, DUI, Correo, Numero y en teoria todo, procedemos a insertar
+                                        mdlPoli.setNombre(jFrameUpdatePolice.txtNombre.getText());
+                                        mdlPoli.setApellido(jFrameUpdatePolice.txtApellido.getText());
+                                        mdlPoli.setFechaNacimiento(jFrameUpdatePolice.jdcCalendar.getDate());
+                                        mdlPoli.setDireccion(jFrameUpdatePolice.ActutxtAreaDireccion.getText());
+                                        mdlPoli.setDUI(jFrameUpdatePolice.txtDUI.getText().trim());
+                                        mdlPoli.setIdEstadoCivil(returnIdEstadoCivilActu());
+                                        mdlPoli.setIdGenero(returnIdGeneroActu());
+                                        mdlPoli.setIdTipoSangre(returnIdTipoSangreActu());
+                                        mdlPoli.setCorreo(jFrameUpdatePolice.txtCorreo.getText().trim());
+                                        mdlPoli.setNumero(jFrameUpdatePolice.txtNumero.getText().trim());
+                                        mdlPoli.setONI(jFrameUpdatePolice.txtNumero.getText().trim());
+                                        mdlPoli.setNumeroPlaca(jFrameUpdatePolice.txtPlaca.getText().trim());
+                                        mdlPoli.setIdRangoUsuario(returnIdRangoUserActu());
+                                        mdlPoli.setIdNivelUsuario(returnIdNivelUsuarioActu());
+                                         
+                                        mdlPoli.UpdatePolice();
+                                        
+                                        show("El policía fue agregado correctamente", 17, 1, 0);
+                                        close10(); 
                                     }
                                     else
                                     {
                                         mdlPoli.setNumeroPlaca("0");
                                         show("Ya existe un policía con esa placa", 17, 1, 0);
-                                        close3();
+                                        close9();
                                     }
                                 }
                                 else
                                 {
                                     mdlPoli.setONI("0");
                                     show("Ya existe un policía con ese ONI", 17, 1, 0);
-                                    close3();
+                                    close9();
                                 }
                             }                 
                         }
@@ -374,14 +366,14 @@ public class contrlPolicias implements ActionListener{
             {
                 mdlPoli.setNumero("0");
                 show("Ya existe una persona con ese número", 17, 1, 0);
-                close3();
+                close9();
             }                     
         }
         else
         {
             mdlPoli.setCorreo("0");
             show("Ya existe una persona con ese correo", 17, 1, 0);
-            close3();   
+            close9();   
         }
     }
     
@@ -606,6 +598,49 @@ public class contrlPolicias implements ActionListener{
         }              
     }
     
+    JoptionReplacemnt Jo;
+    
+     public void close10()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            jFrameUpdatePolice.setEnabled(true);
+            jFrameUpdatePolice.jLabel11.setVisible(false);
+            jFrameAddPolice.setEnabled(true);
+            jFrameAddUser.setEnabled(true);  
+            
+            jFrameUpdatePolice.txtApellido.setText("");
+            jFrameUpdatePolice.ActutxtAreaDireccion.setText("");
+            jFrameUpdatePolice.txtCorreo.setText("");
+            jFrameUpdatePolice.txtDUI.setText("");
+            jFrameUpdatePolice.txtNombre.setText("");
+            jFrameUpdatePolice.txtNumero.setText("");
+            jFrameUpdatePolice.txtONI.setText("");
+            jFrameUpdatePolice.txtPlaca.setText("");
+            
+            jFrameUpdatePolice.dispose();
+            jFrameP.jLabel3.setVisible(false);
+            jFrameP.setEnabled(true);
+        }
+        });
+    }
+    
+    public void close9()
+    {   
+        //Agregar evento click
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            jFrameUpdatePolice.setEnabled(true);
+            jFrameUpdatePolice.jLabel11.setVisible(false);
+            jFrameAddPolice.setEnabled(true);
+            jFrameAddUser.setEnabled(true);  
+        }
+        });
+    }
+
     public void close8()
     {   
         //Agregar evento click
@@ -634,8 +669,6 @@ public class contrlPolicias implements ActionListener{
         }
         });
     }
-    
-     JoptionReplacemnt Jo;
     
     public void show(String msg, int sizeTXT, int img, int type)
     {  
@@ -831,7 +864,7 @@ public class contrlPolicias implements ActionListener{
         });
     }
     
-    public int returnIdNivelUsuario()
+    public int returnIdNivelUsuarioActu()
     {
         if(returnIdRangoUser() == 1)
         {
@@ -841,6 +874,34 @@ public class contrlPolicias implements ActionListener{
         {
             return 4;
         }
+    }
+    
+    public int returnIdNivelUsuario()
+    {
+        if(returnIdRangoUserActu() == 1)
+        {
+            return 2;
+        }
+        else
+        {
+            return 4;
+        }
+    }
+    
+    public int returnIdEstadoCivilActu()
+    {
+        currentEstadoCivil=jFrameUpdatePolice.cmbEstadoCivil.getSelectedItem().toString().trim();
+       
+       if(currentEstadoCivil.equals("Soltero"))
+       {
+           currentIdEstadoCivil = 1;
+           return currentIdEstadoCivil;
+       }
+       else
+       {
+           currentIdEstadoCivil = 2;
+           return currentIdEstadoCivil;
+       }
     }
     
     public int returnIdEstadoCivil()
@@ -859,6 +920,21 @@ public class contrlPolicias implements ActionListener{
        }
     }
     
+    public int returnIdGeneroActu()
+    {
+        currentGenero=jFrameUpdatePolice.cmbGenero.getSelectedItem().toString().trim();
+        if(currentGenero.equals("Femenino"))
+        {
+            currentIdGenero = 2;
+            return currentIdGenero;
+        }
+        else
+        {
+            currentIdGenero = 1;
+            return currentIdGenero;
+        }
+    }
+    
     public int returnIdGenero()
     {
         currentGenero=jFrameAddPolice.cmbGenero.getSelectedItem().toString().trim();
@@ -873,6 +949,56 @@ public class contrlPolicias implements ActionListener{
             return currentIdGenero;
         }
     }
+    
+    public int returnIdRangoUserActu()
+    {
+        currentRangoUser=jFrameUpdatePolice.cmbRangoUser.getSelectedItem().toString().trim();
+        if(currentRangoUser.equals("Comisionado General"))
+        {
+            currentIdRangoUser = 1;
+            return currentIdRangoUser;
+        }
+        else 
+        {
+            if(currentRangoUser.equals("Comisionado"))
+            {currentIdRangoUser = 2; return currentIdRangoUser;}
+            else
+            {
+              if(currentRangoUser.equals("SubComisionado"))
+              {currentIdRangoUser = 3; return currentIdRangoUser;}
+              else
+              {
+                if(currentRangoUser.equals("Inspector Jefe"))
+                {currentIdRangoUser = 4; return currentIdRangoUser;}
+                else
+                {
+                   if(currentRangoUser.equals("Inspector"))
+                   {currentIdRangoUser = 5; return currentIdRangoUser;}
+                   else
+                   {
+                      if(currentRangoUser.equals("SubInspector"))
+                      {currentIdRangoUser = 6; return currentIdRangoUser;}
+                      else
+                      {
+                        if(currentRangoUser.equals("Sargento"))
+                        {currentIdRangoUser = 7; return currentIdRangoUser;}
+                        else
+                        {
+                            if(currentRangoUser.equals("Cabo"))
+                            {currentIdRangoUser = 8; return currentIdRangoUser;}
+                            else
+                            {
+                                currentIdRangoUser = 9; return currentIdRangoUser;
+                            }
+                        }
+                      }
+                   }
+                }
+              }
+            }
+        }
+    }
+    
     
     public int returnIdRangoUser()
     {
@@ -921,6 +1047,50 @@ public class contrlPolicias implements ActionListener{
               }
             }
         }  
+    }
+    
+    public int returnIdTipoSangreActu()
+    {
+        currentTipoSangre=jFrameUpdatePolice.cmbTipoSangre.getSelectedItem().toString().trim();
+        if(currentTipoSangre.equals("A+"))
+        {
+            currentIdTipoSangre = 1;
+            return currentIdTipoSangre;
+        }
+        else 
+        {
+            if(currentTipoSangre.equals("O+"))
+            {currentIdTipoSangre = 2; return currentIdTipoSangre;}
+            else
+            {
+              if(currentTipoSangre.equals("O-"))
+              {currentIdTipoSangre = 3; return currentIdTipoSangre;}
+              else
+              {
+                if(currentTipoSangre.equals("B+"))
+                {currentIdTipoSangre = 4; return currentIdTipoSangre;}
+                else
+                {
+                   if(currentTipoSangre.equals("AB+"))
+                   {currentIdTipoSangre = 5; return currentIdTipoSangre;}
+                   else
+                   {
+                      if(currentTipoSangre.equals("A-"))
+                      {currentIdTipoSangre = 6; return currentIdTipoSangre;}
+                      else
+                      {
+                        if(currentTipoSangre.equals("B-"))
+                        {currentIdTipoSangre = 7; return currentIdTipoSangre;}
+                        else
+                        {
+                            currentIdTipoSangre = 8; return currentIdTipoSangre;
+                        }
+                      }
+                   }
+                }
+              }
+            }
+        } 
     }
     
     public int returnIdTipoSangre()
