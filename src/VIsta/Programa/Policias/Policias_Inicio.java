@@ -27,6 +27,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
     public Policias_Inicio() {
         initComponents();
         
+        IdPolicia = 0;
         iconoOriginalEdit = new ImageIcon("src/VIsta/imagenes/btnEditPolicia.png"); 
         iconoClareEdit = new ImageIcon("src/VIsta/imagenes/btnEditPoliciaClare.png");
         

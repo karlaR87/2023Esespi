@@ -190,7 +190,7 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(70, 70, 70));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(70, 70, 70), 6, true));
-        jPanel3.setPreferredSize(new java.awt.Dimension(195, 49));
+        jPanel3.setPreferredSize(new java.awt.Dimension(192, 44));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -207,7 +207,7 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(70, 70, 70));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(70, 70, 70), 6, true));
-        jPanel2.setPreferredSize(new java.awt.Dimension(195, 49));
+        jPanel2.setPreferredSize(new java.awt.Dimension(195, 44));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
