@@ -237,7 +237,10 @@ public class mdlPolicias {
 "           @ONI = ?,\n" +
 "           @NumeroPlaca = ?,\n" +
 "           @Foto = ?, \n" + 
-"           @IdPolicia = ? "; 
+"           @IdPolicia = ?,\n" + 
+"           @IdRango = ?,\n" + 
+"           @IdNivelUser = ? ";  
+            
             PreparedStatement UpdtePolice = conexionSql.getConexion().prepareStatement(query);
             
             UpdtePolice.setString(1, Nombre);
@@ -254,6 +257,8 @@ public class mdlPolicias {
             UpdtePolice.setString(12, NumeroPlaca);
             UpdtePolice.setBytes(13, Foto);
             UpdtePolice.setInt(14, IdPolicia); 
+            UpdtePolice.setInt(15, IdRangoUsuario);
+            UpdtePolice.setInt(16, IdNivelUsuario);
             
             UpdtePolice.executeUpdate();
             return true;
@@ -263,6 +268,106 @@ public class mdlPolicias {
             return false;
         }
     }
+    
+    public int readCorreoIfExistNUEVOCorreo_Actualizar()
+    {
+        try{   
+            String query = "SELECT IdPersona FROM tbPersonas WHERE CorreoElectronico = ? AND\n" +
+            "IdPersona != (SELECT IdPersona FROM tbPersonas WHERE IdPersona = (\n" +
+            "SELECT TOP 1 IdPersona FROM tbTiposPersonas_Personas WHERE IdTipoPersonas_Personas = (\n" +
+            "SELECT TOP 1 IdTipoPersonas_Personas FROM tbPolicias WHERE IdPolicia = ?)))";   
+            
+            PreparedStatement readCorreoIfExstsCorreo = conexionSql.getConexion().prepareStatement(query);
+            readCorreoIfExstsCorreo.setString(1, Correo);
+            readCorreoIfExstsCorreo.setInt(2, IdPolicia);
+            
+            ResultSet rs = readCorreoIfExstsCorreo.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    } 
+    
+    
+    public int readPlacaIfExistNUEVAPlaca_Actualizar()
+    {
+        try{   
+            String query = "SELECT IdPolicia FROM tbPolicias WHERE NumeroPlaca = ? AND IdPolicia != ?";   
+            
+            PreparedStatement readPLACAIIfExstsPLACA = conexionSql.getConexion().prepareStatement(query);
+            readPLACAIIfExstsPLACA.setString(1, NumeroPlaca);
+            readPLACAIIfExstsPLACA.setInt(2, IdPolicia);
+            
+            ResultSet rs = readPLACAIIfExstsPLACA.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPolicia");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    } 
+    
+    public int readONIIfExistNUEVOONI_Actualizar()
+    {
+        try{   
+            String query = "SELECT IdPolicia FROM tbPolicias WHERE ONI = ? AND IdPolicia != ?";   
+            
+            PreparedStatement readONIIfExstsONI = conexionSql.getConexion().prepareStatement(query);
+            readONIIfExstsONI.setString(1, ONI);
+            readONIIfExstsONI.setInt(2, IdPolicia);
+            
+            ResultSet rs = readONIIfExstsONI.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPolicia");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    } 
+    
+    
+    public int readNumeroIfExistNUEVONumero_Actualizar()
+    {
+        try{   
+            String query = "SELECT IdPersona FROM tbPersonas WHERE NumeroTel = ? AND\n" +
+            "IdPersona != (SELECT IdPersona FROM tbPersonas WHERE IdPersona = (\n" +
+            "SELECT TOP 1 IdPersona FROM tbTiposPersonas_Personas WHERE IdTipoPersonas_Personas = (\n" +
+            "SELECT TOP 1 IdTipoPersonas_Personas FROM tbPolicias WHERE IdPolicia = ?)))";   
+            
+            PreparedStatement readNumIfExstsNum = conexionSql.getConexion().prepareStatement(query);
+            readNumIfExstsNum.setString(1, Numero);
+            readNumIfExstsNum.setInt(2, IdPolicia);
+            
+            ResultSet rs = readNumIfExstsNum.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    } 
     
     public void CargarDatosPoliciales(Actualizar_Policia vstActuPolice, contrlPolicias cntrPolice)
     {
@@ -317,6 +422,7 @@ public class mdlPolicias {
         }
     }
     
+  
     public boolean InsertPoliceIncludePersonaTipoPUser()
     {//NIVEL DE USUARIO 4 = POLI $$ 2 = JEFE DE POLI
        try{
@@ -356,7 +462,7 @@ public class mdlPolicias {
             insertPolice.setString(14, Usuario);
             insertPolice.setString(15, Contra);
             insertPolice.setInt(16, IdRangoUsuario);
-             insertPolice.setInt(17, IdNivelUsuario);
+            insertPolice.setInt(17, IdNivelUsuario);
 
             insertPolice.executeUpdate();
             return true;
@@ -533,6 +639,7 @@ public class mdlPolicias {
        
       //Mostrar datos en las tablas
     public void MostrarTablePolicias(Policias_Inicio vstPolicias){
+        vstPolicias.IdPolicia = 0;
         Color clrOrang = new Color( 243, 167, 18);
         DefaultTableModel modelo = new DefaultTableModel();
       
