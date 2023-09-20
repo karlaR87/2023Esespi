@@ -220,6 +220,49 @@ public class mdlPolicias {
         this.IdTipoPersonasPersonas = idPersona;
     }
     
+    public boolean  UpdatePolice()
+    {
+       try{
+            String query = "EXEC dbo.ActualizarPolicias\n" +
+"           @Nombre = ?,\n" +
+"           @Apellido = ?,\n" +
+"           @FechaNacimiento = ?,\n" +
+"           @Direccion = ?,\n" +
+"           @Dui = ?,\n" +
+"           @IdEstadoCivil = ?,\n" +
+"           @IdTipoSangre = ?,\n" +
+"           @IdGenero = ?,\n" +
+"           @CorreoElectronico = ?,\n" +
+"           @NumeroTel = ?,\n" +
+"           @ONI = ?,\n" +
+"           @NumeroPlaca = ?,\n" +
+"           @Foto = ?, \n" + 
+"           @IdPolicia = ? "; 
+            PreparedStatement UpdtePolice = conexionSql.getConexion().prepareStatement(query);
+            
+            UpdtePolice.setString(1, Nombre);
+            UpdtePolice.setString(2, Apellido);
+            UpdtePolice.setDate(3, new java.sql.Date(FechaNacimiento.getTime()));
+            UpdtePolice.setString(4, Direccion);
+            UpdtePolice.setString(5, DUI);
+            UpdtePolice.setInt(6, IdEstadoCivil);
+            UpdtePolice.setInt(7, IdTipoSangre);
+            UpdtePolice.setInt(8, IdGenero);
+            UpdtePolice.setString(9, Correo);
+            UpdtePolice.setString(10, Numero);
+            UpdtePolice.setString(11, ONI);
+            UpdtePolice.setString(12, NumeroPlaca);
+            UpdtePolice.setBytes(13, Foto);
+            UpdtePolice.setInt(14, IdPolicia); 
+            
+            UpdtePolice.executeUpdate();
+            return true;
+          
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null, e.toString());
+            return false;
+        }
+    }
     
     public void CargarDatosPoliciales(Actualizar_Policia vstActuPolice, contrlPolicias cntrPolice)
     {
@@ -276,25 +319,26 @@ public class mdlPolicias {
     
     public boolean InsertPoliceIncludePersonaTipoPUser()
     {//NIVEL DE USUARIO 4 = POLI $$ 2 = JEFE DE POLI
-           try{
+       try{
             String query = "EXEC dbo.InsertarPolicias \n" +
-"	@Nombre = ?,\n" +
-"	@Apellido = ?,\n" +
-"	@FechaNacimiento = ?,\n" +
-"	@Direccion = ?,\n" +
-"	@Dui = ?,\n" +
-"	@IdEstadoCivil = ?,\n" +
-"	@IdTipoSangre = ?,\n" +
-"	@IdGenero = ?,\n" +
-"	@CorreoElectronico = ?,\n" +
-"	@NumeroTel = ?,\n" +
-"	@ONI = ?,\n" +
-"	@NumeroPlaca = ?,\n" +
-"	@Foto = ?,\n" +
-"	@Usuario = ?,\n" +
-"	@Contrasena = ?,\n" +
-"	@IdRangoTipoUsuario  = ?,\n" + 
-"       @IdNivelUsuario = ?"; 
+    "       @Nombre = ?,\n" +
+    "       @Apellido = ?,\n" +
+    "       @FechaNacimiento = ?,\n" +
+    "       @Direccion = ?,\n" +
+    "       @Dui = ?,\n" +
+    "       @IdEstadoCivil = ?,\n" +
+    "       @IdTipoSangre = ?,\n" +
+    "       @IdGenero = ?,\n" +
+    "       @CorreoElectronico = ?,\n" +
+    "       @NumeroTel = ?,\n" +
+    "       @ONI = ?,\n" +
+    "       @NumeroPlaca = ?,\n" +
+    "       @Foto = ?,\n" +
+    "       @Usuario = ?,\n" +
+    "       @Contrasena = ?,\n" +
+    "       @IdRangoTipoUsuario  = ?,\n" + 
+    "       @IdNivelUsuario = ?"; 
+        
             PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
             insertPolice.setString(1, Nombre);
             insertPolice.setString(2, Apellido);
@@ -313,10 +357,9 @@ public class mdlPolicias {
             insertPolice.setString(15, Contra);
             insertPolice.setInt(16, IdRangoUsuario);
              insertPolice.setInt(17, IdNivelUsuario);
-                       
+
             insertPolice.executeUpdate();
             return true;
-          
         }catch(Exception e){
               JOptionPane.showMessageDialog(null, e.toString());
             return false;
@@ -401,7 +444,33 @@ public class mdlPolicias {
         }
     }
      
-           public int readDUIIfExistDUI()
+    public int readDUIIfExistNUEVODUI_Actualizar()
+    {
+        try{   
+            String query = "SELECT IdPersona FROM tbPersonas WHERE DUI = ? AND \n" +
+"           IdPersona != (SELECT IdPersona FROM tbPersonas WHERE IdPersona = (\n" +
+"           SELECT TOP 1 IdPersona FROM tbTiposPersonas_Personas WHERE IdTipoPersonas_Personas = (\n" +
+"           SELECT TOP 1 IdTipoPersonas_Personas FROM tbPolicias WHERE IdPolicia = ?)))";   
+            
+            PreparedStatement readDUIIfExistDUI = conexionSql.getConexion().prepareStatement(query);
+            readDUIIfExistDUI.setString(1, DUI);
+            readDUIIfExistDUI.setInt(2, IdPolicia);
+            
+            ResultSet rs = readDUIIfExistDUI.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdPersona");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    } 
+    
+    public int readDUIIfExistDUI()
     {
         try{   
             String query = "SELECT IdPersona FROM tbPersonas WHERE DUI = ?";    

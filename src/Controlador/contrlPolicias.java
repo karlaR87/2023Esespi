@@ -214,10 +214,178 @@ public class contrlPolicias implements ActionListener{
         {
             show("¿Seguro que quieres cancelar? NO se guardarán los cambios", 13, 1, 1);
             close8(); 
-        }       
+        } 
+        
+        //GUARDAR CAMBIOS 
+        if(e.getSource() == jFrameUpdatePolice.btnGuardar)
+        {
+            if(jFrameUpdatePolice.txtApellido.getText().isBlank() || jFrameUpdatePolice.ActutxtAreaDireccion.getText().isBlank()
+               || jFrameUpdatePolice.txtCorreo.getText().isBlank() || jFrameUpdatePolice.txtDUI.getText().isBlank()
+               || jFrameUpdatePolice.txtNombre.getText().isBlank() || jFrameUpdatePolice.txtNumero.getText().isBlank()
+               || jFrameUpdatePolice.txtONI.getText().isBlank() || jFrameUpdatePolice.txtPlaca.getText().isBlank())
+            {
+                show("No se permiten campos vacíos", 17, 1, 0);
+                close3(); 
+            }
+            else
+            {
+
+                String correoPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+                Pattern pattern = Pattern.compile(correoPattern);
+                Matcher matcher = pattern.matcher(jFrameUpdatePolice.txtCorreo.getText());
+                
+                if (!matcher.matches()) {
+                show("El formato del correo electrónico no es válido", 17, 1, 0);
+                close3();                                    
+                }
+                else
+                {
+                    //Validar en caso de que exista el DUI
+                    mdlPoli.setDUI(jFrameUpdatePolice.txtDUI.getText().trim());
+                    mdlPoli.setIdPolicia(vstPoli.IdPolicia);
+                    
+                    int resultIdPDUI = mdlPoli.readDUIIfExistNUEVODUI_Actualizar();
+
+                    if(resultIdPDUI == -1) //si es igual a -1, es que NO hay persona con ese dui EXCEPTUANDO el que tiene ELLA O EL
+                    {
+                       doTheUpdateWhitAllCondicions();
+                    }
+                    else
+                    {
+                        show("Ya existe una persona con ese DUI", 17, 1, 0);
+                        close3();      
+                    }
+                }
+            }
+        }
+        
     }
     
+////----------------------------------------ME QUEDE ACAAAAAAAAAAAAAAA ME FALTA VALIDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR COREEO Y LO QUE LE SIGUE//----------------------------------------
+//----------------------------------------COSAS QUE HICE PARA ACTUALIZAR----------------------------------------
+    
+    public void doTheUpdateWhitAllCondicions() //Porque quiere decir que es una NUEVA persona
+    {
+        mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+        int resulIdPCorreo = mdlPoli.readCorreoIfExistCorreo();
 
+        if(resulIdPCorreo == -1) //si es igual a -1, es que NO hay persona con ese correo
+        {
+            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+            int resultIdPNumero = mdlPoli.readNumeroIfExistNumero();
+
+            if(resultIdPNumero == -1) //si es igual a -1, es que NO hay persona con ese numero
+            {
+                //Validamos minimo de caracteres
+                if(jFrameAddPolice.txtDUI.getText().length() < 9 )
+                {
+                    show("El DUI debe contener 9 caracteres", 17, 1, 0);
+                    close3();    
+                }                                  
+                else
+                {
+                    if(jFrameAddPolice.txtNumero.getText().length() < 8 )
+                    {
+                        show("El número debe contener 8 caracteres", 17, 1, 0);
+                        close3();    
+                    } 
+                    else
+                    {  
+                        if(jFrameAddPolice.txtONI.getText().length() < 8)
+                        {
+                            show("El ONI debe contener 8 caracteres", 17, 1, 0);
+                            close3(); 
+                        }
+                        else
+                        {
+                            if(jFrameAddPolice.txtPlaca.getText().length() < 5)
+                            {
+                            show("La placa debe contener 5 caracteres", 17, 1, 0);
+                            close3(); 
+                            }
+                            else
+                            {
+                                //Validar que NO Exista poli con el ONI
+                                mdlPoli.setONI(jFrameAddPolice.txtONI.getText().trim());
+                                int resulIdPoliONI = mdlPoli.readIdPoliIfExistONI();
+                                
+                                if(resulIdPoliONI == -1) //si es igual a -1, es que NO hay policia con ese ONI
+                                {
+                                    //Validar que NO exista poli con la Placa
+                                     mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                                     int resulIdPoliPlaca = mdlPoli.readIdPoliIfExistsNumeroPlaca();
+                                     
+                                    if(resulIdPoliPlaca == -1) //si es igual a -1, es que NO hay policia con esa Placa
+                                    {
+                                        //Validar que NO exista poli con el idTipoPersona en base al DUI
+                                        mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                                        int resulIdPoliIdPersona = mdlPoli.readIdPoliIfExistsIdTipoPersona_PersonaInTablePOLIWhitDUI();
+
+                                        if(resulIdPoliIdPersona == -1) //si es igual a -1, es que NO hay policia con ese id
+                                        {
+                                            //Ya validados, minimo de caracteres, DUI, Correo, Numero y en teoria todo, procedemos a insertar
+                                            mdlPoli.setNombre(jFrameAddPolice.txtNombre.getText());
+                                            mdlPoli.setApellido(jFrameAddPolice.txtApellido.getText());
+                                            mdlPoli.setFechaNacimiento(jFrameAddPolice.jdcCalendar.getDate());
+                                            mdlPoli.setDireccion(jFrameAddPolice.txtAreaDireccion.getText());
+                                            mdlPoli.setDUI(jFrameAddPolice.txtDUI.getText().trim());
+                                            mdlPoli.setIdEstadoCivil(returnIdEstadoCivil());
+                                            mdlPoli.setIdGenero(returnIdGenero());
+                                            mdlPoli.setIdTipoSangre(returnIdTipoSangre());
+                                            mdlPoli.setCorreo(jFrameAddPolice.txtCorreo.getText().trim());
+                                            mdlPoli.setNumero(jFrameAddPolice.txtNumero.getText().trim());
+                                            mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
+                                            mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
+                                            mdlPoli.setIdRangoUsuario(returnIdRangoUser());
+                                             //Despues de aceptar la info del poli, vamos con el usuario
+
+                                            jFrameAddUser.setVisible(true);           
+                                            jFrameAddUser.setEnabled(true);   
+                                            jFrameAddUser.jLabel2.setVisible(false);  
+                                            jFrameAddPolice.setEnabled(false);
+                                            jFrameAddPolice.jLabel11.setVisible(true);
+                                        }
+                                        else
+                                        {
+                                            mdlPoli.setDUI("0");
+                                            show("Ya existe un policía con ese DUI", 17, 1, 0);
+                                            close3();
+                                        }                                    
+                                    }
+                                    else
+                                    {
+                                        mdlPoli.setNumeroPlaca("0");
+                                        show("Ya existe un policía con esa placa", 17, 1, 0);
+                                        close3();
+                                    }
+                                }
+                                else
+                                {
+                                    mdlPoli.setONI("0");
+                                    show("Ya existe un policía con ese ONI", 17, 1, 0);
+                                    close3();
+                                }
+                            }                 
+                        }
+                    }
+                }
+            }
+            else
+            {
+                mdlPoli.setNumero("0");
+                show("Ya existe una persona con ese número", 17, 1, 0);
+                close3();
+            }                     
+        }
+        else
+        {
+            mdlPoli.setCorreo("0");
+            show("Ya existe una persona con ese correo", 17, 1, 0);
+            close3();   
+        }
+    }
+    
+    
 //----------------------------------------COSAS QUE HICE PARA AGREGAR----------------------------------------   
     
     public void doTheInsertWhitAllCondicions() //Porque quiere decir que es una NUEVA persona
