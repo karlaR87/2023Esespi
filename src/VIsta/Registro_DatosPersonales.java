@@ -40,15 +40,15 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -18); // Restar 18 años a la fecha actual
-        Date fechaMaxima = (Date) cal.getTime();
+        //Date fechaMaxima = (Date) cal.getTime();
 
         cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -90); // Restar 90 años a la fecha actual
-        Date fechaMinima = (Date) cal.getTime();
+       // Date fechaMinima = (Date) cal.getTime();
 
         // Configurar el JDateChooser con las fechas mínima y máxima
-        jdcFecha.setMaxSelectableDate(fechaMaxima);
-        jdcFecha.setMinSelectableDate(fechaMinima);
+        //jdcFecha.setMaxSelectableDate(fechaMaxima);
+        //jdcFecha.setMinSelectableDate(fechaMinima);
         
         this.jFrame = jFrame;
         this.thisVista = this;

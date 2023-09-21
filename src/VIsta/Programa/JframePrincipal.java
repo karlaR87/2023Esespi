@@ -3,6 +3,7 @@ package VIsta.Programa;
 import Controlador.cntrlPatrullajes;
 import Controlador.contrlPolicias;
 import Modelo.ModeloPatrullajes;
+import Modelo.ModeloRegistro;
 import Modelo.mdlPolicias;
 import VIsta.Login;
 import VIsta.Programa.Inicio.Inicio;
@@ -20,8 +21,14 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.OverlayLayout;
@@ -171,6 +178,11 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 80, 60, -1));
 
         iconUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        iconUsuario1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconUsuario1MouseClicked(evt);
+            }
+        });
         jPanel2.add(iconUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 70, 70, -1));
 
         iconInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/homeIcon.png"))); // NOI18N
@@ -607,7 +619,11 @@ public class JframePrincipal extends javax.swing.JFrame {
        iconChange();
        iconUsuario1.setVisible(true);
        cardLayout.show(jPanel1, "usuario");
-       ShowHide(0);  
+       
+       
+       
+       ShowHide(0); 
+ 
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
     private void iconChange()
@@ -668,6 +684,80 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconChange();
         iconUsuario1.setVisible(true);
        cardLayout.show(jPanel1, "usuario");
+       
+       ModeloRegistro mod = new ModeloRegistro();
+       Login l = new Login();
+       System.out.println("e");
+       
+       int idUsuario = mod.IdUsuarioTomar(l);
+       
+       
+          try {
+              System.out.println("e");
+              mod.obtenerDatosPerfil(idUsuario);
+              System.out.println("e");
+                
+          } catch (SQLException ex) {
+              Logger.getLogger(JframePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+          }
+          
+                String nombreUser = mod.IdUsuarioTomar1(l);
+                
+                String Apellidos = mod.getApellidos();
+                
+                user.txtNombre.setText(nombreUser);
+                user.txtNombre.setEnabled(true);
+                user.txtNombre.setBorder(BorderFactory.createEmptyBorder());
+                
+               
+                 
+                 user.txtApellido.setText(nombreUser);
+                user.txtApellido.setEnabled(false);
+                user.txtApellido.setBorder(BorderFactory.createEmptyBorder());
+                
+                
+                Date Fecha_Nacimiento = mod.getFecha();
+                
+                user.txtFecha.setText(nombreUser);
+                user.txtFecha.setEnabled(false);
+                user.txtFecha.setBorder(BorderFactory.createEmptyBorder());
+                
+                String Direccion = mod.getDirección();
+                
+                user.txtDireccion.setText(nombreUser);
+                user.txtDireccion.setEnabled(false);
+                user.txtDireccion.setBorder(BorderFactory.createEmptyBorder());
+                
+                String Correo = mod.getCorreo();
+                
+                user.txtCorreo.setText(nombreUser);
+                user.txtCorreo.setEnabled(false);
+                user.txtCorreo.setBorder(BorderFactory.createEmptyBorder());
+                
+                  String Telefono = mod.getTel();
+                  
+                  user.txtTelefono.setText(nombreUser);
+                user.txtTelefono.setEnabled(false);
+                user.txtTelefono.setBorder(BorderFactory.createEmptyBorder());
+                
+                String EstadoCivil = mod.getEstadocicivl();
+                
+                user.txtEstadoCivil.setText(nombreUser);
+                user.txtEstadoCivil.setEnabled(false);
+                user.txtEstadoCivil.setBorder(BorderFactory.createEmptyBorder());
+                
+                
+                String TipodeSangre = mod.getTipoSangre();
+                
+                user.txtSangre.setText(nombreUser);
+                user.txtSangre.setEnabled(false);
+                user.txtSangre.setBorder(BorderFactory.createEmptyBorder());
+                
+                String Genero = mod.getGenero();
+                
+                user.txtGenero.setText(nombreUser);
+                user.txtGenero.setEnabled(false);
+                user.txtGenero.setBorder(BorderFactory.createEmptyBorder());
         ShowHide(1);
     }//GEN-LAST:event_iconUsuarioMouseClicked
 
@@ -802,6 +892,79 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
     }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void iconUsuario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuario1MouseClicked
+        ModeloRegistro mod = new ModeloRegistro();
+       Login l = new Login();
+       System.out.println("e");
+       
+       int idUsuario = mod.IdUsuarioTomar(l);
+          try {
+              System.out.println("e");
+              mod.obtenerDatosPerfil(idUsuario);
+              System.out.println("e");
+                
+          } catch (SQLException ex) {
+              Logger.getLogger(JframePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+          }
+          
+                String nombreUser = mod.getNombre();
+                
+                String Apellidos = mod.getApellidos();
+                
+                user.txtNombre.setText(nombreUser);
+                user.txtNombre.setEnabled(false);
+                user.txtNombre.setBorder(BorderFactory.createEmptyBorder());
+                System.out.println("e");
+                
+                 user.txtApellido.setText(nombreUser);
+                user.txtApellido.setEnabled(false);
+                user.txtApellido.setBorder(BorderFactory.createEmptyBorder());
+                System.out.println("e");
+                
+                Date Fecha_Nacimiento = mod.getFecha();
+                
+                user.txtFecha.setText(nombreUser);
+                user.txtFecha.setEnabled(false);
+                user.txtFecha.setBorder(BorderFactory.createEmptyBorder());
+                
+                String Direccion = mod.getDirección();
+                
+                user.txtDireccion.setText(nombreUser);
+                user.txtDireccion.setEnabled(false);
+                user.txtDireccion.setBorder(BorderFactory.createEmptyBorder());
+                
+                String Correo = mod.getCorreo();
+                
+                user.txtCorreo.setText(nombreUser);
+                user.txtCorreo.setEnabled(false);
+                user.txtCorreo.setBorder(BorderFactory.createEmptyBorder());
+                
+                  String Telefono = mod.getTel();
+                  
+                  user.txtTelefono.setText(nombreUser);
+                user.txtTelefono.setEnabled(false);
+                user.txtTelefono.setBorder(BorderFactory.createEmptyBorder());
+                
+                String EstadoCivil = mod.getEstadocicivl();
+                
+                user.txtEstadoCivil.setText(nombreUser);
+                user.txtEstadoCivil.setEnabled(false);
+                user.txtEstadoCivil.setBorder(BorderFactory.createEmptyBorder());
+                
+                
+                String TipodeSangre = mod.getTipoSangre();
+                
+                user.txtSangre.setText(nombreUser);
+                user.txtSangre.setEnabled(false);
+                user.txtSangre.setBorder(BorderFactory.createEmptyBorder());
+                
+                String Genero = mod.getGenero();
+                
+                user.txtGenero.setText(nombreUser);
+                user.txtGenero.setEnabled(false);
+                user.txtGenero.setBorder(BorderFactory.createEmptyBorder());
+    }//GEN-LAST:event_iconUsuario1MouseClicked
 
     private void changeColor()
     {

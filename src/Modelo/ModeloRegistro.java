@@ -1,6 +1,7 @@
 package Modelo;
 import java.sql.Connection;
 import Modelo.conexionSql;
+import VIsta.Login;
 import VIsta.Registro;
 import VIsta.Registro_DatosPersonales;
 import java.beans.Statement;
@@ -713,4 +714,159 @@ public class ModeloRegistro {
         JOptionPane.showMessageDialog(null, e.toString());
     }
 }
+  
+  // Define un método llamado obtenerDatosActualizar que recibe un int (idUser) como parámetro y lanza una excepción SQLException.
+    public boolean obtenerDatosPerfil(int IdPersona) throws SQLException {
+        // Declara e inicializa las variables de conexión, sentencia preparada y conjunto de resultados a null.
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+        boolean resultado = false;
+        // Define la consulta SQL para seleccionar el nombre de usuario, la imagen, el nombre completo, el número de teléfono, el correo electrónico y el nombre de la región.
+        // La consulta hace uso de INNER JOIN para obtener datos de tres tablas diferentes (usuarios, personas y regiones) relacionadas por id_user e id_region.
+        // Se utiliza la cláusula WHERE para filtrar los registros según el id_user proporcionado.
+        
+        System.out.println("aca");
+        String SSQL = "select t.IdPersona ,t.Nombre, t.Apellido, t.FechaNacimiento, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t " +
+        "inner join tbEstadosCivil e on e.IdEstadoCivil = t.IdEstadoCivil " +
+        "inner join tbTiposSangre ts on ts.IdTipoSangre = t.IdTipoSangre " +
+        "inner join tbGeneros g on g.IdGenero = t.IdGenero " +
+        "inner join tbTiposPersonas_Personas ti on ti.IdPersona = t.IdPersona " +
+        "inner join tbPolicias op on op.IdTipoPersonas_Personas = ti.IdTipoPersonas_Personas " +
+        "inner join tbUsuarios u on u.IdUsuario = op.IdUsuario " +
+        "where u.IdUsuario = ?";
+
+          System.out.println("aca");
+
+        try {
+            // Obtiene una conexión a la base de datos a través del método getConexion() de la clase ConexionSQL.
+            conectar = conexionSql.getConexion();
+            // Prepara la consulta SQL para su ejecución.
+            pst = conectar.prepareStatement(SSQL);
+            // Establece los valores de los parámetros en la consulta SQL.
+            pst.setInt(1, IdPersona);
+            // Ejecuta la consulta SQL y almacena el resultado en la variable result.
+            result = pst.executeQuery();
+
+ 
+
+            // Verifica si el conjunto de resultados tiene al menos un registro.
+            if (result.next()) {
+                // Obtiene los valores de las columnas y los almacena en variables locales.
+                String nombreUser = result.getString("Nombre");
+                setNombre(nombreUser);
+                
+                String Apellidos = result.getString("Apellido");
+                setApellidos(Apellidos);
+                
+                Date Fecha_Nacimiento = result.getDate("FechaNacimiento");
+                setFecha(Fecha_Nacimiento);
+                
+                String Direccion = result.getString("DireccionDomicilio");
+                setDirección(Direccion);
+                
+                String Correo = result.getString("CorreoElectronico");
+                setCorreo(Correo);
+                
+                  String Telefono = result.getString("NumeroTel");
+                setCorreo(Telefono);
+                
+                String EstadoCivil = result.getString("EstadoCivil");
+                setEstadocicivl(EstadoCivil);
+                
+                
+                String TipodeSangre = result.getString("TipoSangre");
+                setTipoSangre(TipodeSangre);
+                
+                String Genero = result.getString("Genero");
+                setGenero(Genero);
+
+ 
+
+                resultado = true;
+            }
+
+ 
+
+        } catch (SQLException e) {
+            // Imprime el mensaje de error en caso de que se produzca una excepción SQLException.
+            System.out.println(e.toString());
+        } finally {
+            // Bloque finally para cerrar los recursos utilizados.
+            // Cierra el conjunto de resultados si no es nulo.
+            if (result != null) {
+                result.close();
+            }
+            // Cierra la sentencia preparada si no es nula.
+            if (pst != null) {
+                pst.close();
+            }
+            // Cierra la conexión si no es nula.
+            if (conectar != null) {
+                conectar.close();
+            }
+        }
+
+ 
+
+        // Retorna el objeto usuario.
+        return resultado;
+    }
+    
+    public int IdUsuarioTomar(Login l)
+    {
+        try{   
+            
+              
+            String query = "SELECT IdUsuario FROM tbUsuarios where Usuario = '" + l.txtUsuario.getText() + "'";  
+
+              
+            PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
+            
+             ResultSet rs = readIdUltimaPersona.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getInt("IdUsuario");
+            } else {          
+                return -1;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return -1;
+        }
+    }
+    public String IdUsuarioTomar1(Login l)
+    {
+        try{   
+            
+              
+            String query = "select t.Nombre from tbPersonas t\n" +
+            "inner join tbEstadosCivil e on e.IdEstadoCivil = t.IdEstadoCivil\n" +
+            "inner join tbTiposSangre ts on ts.IdTipoSangre = t.IdTipoSangre\n" +
+            "inner join tbGeneros g on g.IdGenero = t.IdGenero\n" +
+            "inner join tbTiposPersonas_Personas ti on ti.IdPersona = t.IdPersona\n" +
+            "inner join tbPolicias op on op.IdTipoPersonas_Personas = ti.IdTipoPersonas_Personas\n" +
+            "inner join tbUsuarios u on u.IdUsuario = op.IdUsuario\n" +
+            "where u.Usuario = '" + l.txtUsuario.getText() + "'";  
+
+              
+            PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
+            
+             ResultSet rs = readIdUltimaPersona.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                return rs.getString("Nombre");
+            } else {          
+                return null;
+            }
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+
 }
+
+

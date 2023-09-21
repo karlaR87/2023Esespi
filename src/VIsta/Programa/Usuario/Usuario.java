@@ -20,10 +20,12 @@ public class Usuario extends javax.swing.JPanel {
 public Usuario() {
         initComponents();
         PanelsShowInit();
-       MostrarDatosLabels();
+       
        MostrarCosve();
         
     }
+
+       
 
     private CardLayout cardLayout;
     verInfo info = new verInfo();
@@ -42,124 +44,11 @@ public Usuario() {
     
     public void MostrarCosve()
     {
-        Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
+        
         
          
         
-        String SSQL = "select * from cosve";
-
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                /*Datos del usuario ingresado*/
-                
-                 //Mandar los datos del campo usuario
-               String Valor1 = result.getString("cosve");
-               //mostrar los datos obtenido en su respectivo Label
-               jLabel10.setText("COSVE: " + Valor1);
-               
-            
-               
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-    
-    
-   
-   
     }
-    
-    public void MostrarDatosLabels()
-   {
-       Connection conectar = null;
-        PreparedStatement pst = null;
-        ResultSet result = null;
-        
-         
-        
-        String SSQL = "select tbU.Usuario, tbR.Rango, y.Dui, y.FechaNacimiento, x.EstadoCivil, z.Genero, a.TipoSangre from tbPolicias tbPo\n" +
-"inner join tbUsuarios tbU on tbU.IdUsuario = tbPo.IdUsuario\n" +
-"inner join tbRangosTipoUsuarios tbR on tbR.IdRangoTipoUsuario = tbPo.IdRangoTipoUsuario\n" +
-"inner join tbTiposPersonas_Personas tbid on tbid.IdTipoPersonas_Personas = tbPo.IdTipoPersonas_Personas\n" +
-"inner join tbPersonas y on y.IdPersona = tbid.IdPersona\n" +
-"inner join tbEstadosCivil x on x.IdEstadoCivil = y.IdEstadoCivil\n" +
-"inner join tbGeneros z on z.IdGenero = y.IdGenero\n" +
-"inner join tbTiposSangre a on a.IdTipoSangre = y.IdTipoSangre\n" +
-"where tbU.Usuario = 'Ivansote'";
-
-       
-       try {
-            conectar = conexionSql.getConexion();
-            pst = conectar.prepareStatement(SSQL);
-            result = pst.executeQuery();
-
- 
-
-
-            while (result.next()) {
-                /*Datos del usuario ingresado*/
-                
-                 //Mandar los datos del campo usuario
-               String Valor1 = result.getString("Usuario");
-               //mostrar los datos obtenido en su respectivo Label
-               lblusuario.setText(Valor1);
-               
-               /*Datos del rango del usuario*/
-                 //Mandar los datos del campo Rango
-               String Valor2 = result.getString("Rango");
-               //mostrar los datos obtenido en su respectivo Label
-               lblRango.setText(Valor2);
-               
-               /*Datos del DUI del usuario*/
-                 //Mandar los datos del campo Dui
-               String Valor3 = result.getString("Dui");
-               //mostrar los datos obtenido en su respectivo Label
-               lblDui.setText("DUI: " + Valor3);
-               
-                /*Datos de la fecha de nacimiento del usuario*/
-                 //Mandar los datos del campo FechaNacimiento
-               String Valor4 = result.getString("FechaNacimiento");
-               //mostrar los datos obtenido en su respectivo Label
-               lblNacimiento.setText("Fecha de nacimiento: " + Valor4);
-               
-                /*Datos del Tipo de sangre del usuario*/
-                 //Mandar los datos del campo TipoSangre
-               String Valor5 = result.getString("TipoSangre");
-               //mostrar los datos obtenido en su respectivo Label
-               lblSangre.setText("Tipo de sangre: " + Valor5);
-               
-                /*Datos del estado civil del usuario*/
-                 //Mandar los datos del campo EstadoCivil
-               String Valor6 = result.getString("EstadoCivil");
-               //mostrar los datos obtenido en su respectivo Label
-               lblEstadoCivil.setText("Estado civil: " + Valor6);
-               
-                /*Datos de la fecha de nacimiento del usuario*/
-                 //Mandar los datos del campo FechaNacimiento
-               String Valor7 = result.getString("Genero");
-               //mostrar los datos obtenido en su respectivo Label
-               lblGenero.setText("Género: " + Valor7);
-               
-            }
-            
-            } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-    
-    
-   
-   }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -167,15 +56,18 @@ public Usuario() {
 
         pnlContenedor = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        lblDui = new javax.swing.JLabel();
-        lblNacimiento = new javax.swing.JLabel();
-        lblSangre = new javax.swing.JLabel();
-        lblEstadoCivil = new javax.swing.JLabel();
-        lblGenero = new javax.swing.JLabel();
-        lblusuario = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
-        lblRango = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtGenero = new javax.swing.JTextField();
+        txtEstadoCivil = new javax.swing.JTextField();
+        txtSangre = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
 
         pnlContenedor.setBackground(new java.awt.Color(51, 51, 51));
         pnlContenedor.setLayout(new java.awt.CardLayout());
@@ -189,55 +81,40 @@ public Usuario() {
         jLabel10.setText("COSVE");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, -1));
 
-        lblDui.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        lblDui.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 260, 30));
-
-        lblNacimiento.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        lblNacimiento.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 250, 30));
-
-        lblSangre.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        lblSangre.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 260, 30));
-
-        lblEstadoCivil.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        lblEstadoCivil.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 260, 30));
-
-        lblGenero.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        lblGenero.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 270, 30));
-
-        lblusuario.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblusuario.setForeground(new java.awt.Color(255, 255, 255));
-        lblusuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(lblusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 260, 310, 30));
-
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/pedroPascal.png"))); // NOI18N
         add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 250, 30));
+        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 250, 30));
+        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 250, 30));
+        add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 220, 70));
+        add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, 200, 70));
+        add(txtEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 210, 60));
+        add(txtSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 200, 60));
 
-        lblRango.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblRango.setForeground(new java.awt.Color(204, 204, 204));
-        lblRango.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 30));
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 210, 20));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fotoUserBack.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 620));
+        btnActualizar.setText("Actualizar");
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 210, 70));
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 250, 30));
+        add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 250, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnActualizar;
+    private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel lblDui;
-    public javax.swing.JLabel lblEstadoCivil;
     private javax.swing.JLabel lblFoto;
-    public javax.swing.JLabel lblGenero;
-    public javax.swing.JLabel lblNacimiento;
-    public javax.swing.JLabel lblRango;
-    public javax.swing.JLabel lblSangre;
-    public javax.swing.JLabel lblusuario;
     private javax.swing.JPanel pnlContenedor;
+    public javax.swing.JTextField txtApellido;
+    public javax.swing.JTextField txtCorreo;
+    public javax.swing.JTextField txtDireccion;
+    public javax.swing.JTextField txtEstadoCivil;
+    public javax.swing.JTextField txtFecha;
+    public javax.swing.JTextField txtGenero;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtSangre;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
