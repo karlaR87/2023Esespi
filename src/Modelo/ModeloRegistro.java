@@ -716,7 +716,7 @@ public class ModeloRegistro {
 }
   
   // Define un método llamado obtenerDatosActualizar que recibe un int (idUser) como parámetro y lanza una excepción SQLException.
-    public boolean obtenerDatosPerfil(int IdPersona) throws SQLException {
+    /*public boolean obtenerDatosPerfil(int IdPersona) throws SQLException {
         // Declara e inicializa las variables de conexión, sentencia preparada y conjunto de resultados a null.
         Connection conectar = null;
         PreparedStatement pst = null;
@@ -811,7 +811,7 @@ public class ModeloRegistro {
 
         // Retorna el objeto usuario.
         return resultado;
-    }
+    }*/
     
     public int IdUsuarioTomar(Login l)
     {
@@ -836,6 +836,7 @@ public class ModeloRegistro {
             return -1;
         }
     }
+    
     public String IdUsuarioTomar1(Login l)
     {
         try{   
