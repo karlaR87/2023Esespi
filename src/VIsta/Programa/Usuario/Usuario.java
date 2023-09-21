@@ -4,11 +4,16 @@
  */
 package VIsta.Programa.Usuario;
 
+import Modelo.ModeloRegistro;
 import Modelo.ModeloVistaDeUsuarios;
 import Modelo.conexionSql;
 import VIsta.Login;
+import VIsta.Programa.JframePrincipal;
 import java.awt.CardLayout;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 
@@ -21,7 +26,7 @@ public Usuario() {
         initComponents();
         PanelsShowInit();
        
-       MostrarCosve();
+       
         
     }
 
@@ -42,14 +47,7 @@ public Usuario() {
     
     //aqui se mostrarán los DUIs de todos los usuario ingresados
     
-    public void MostrarCosve()
-    {
-        
-        
-         
-        
-    }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,17 +55,15 @@ public Usuario() {
         pnlContenedor = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtCorreo = new javax.swing.JTextField();
-        txtGenero = new javax.swing.JTextField();
-        txtEstadoCivil = new javax.swing.JTextField();
-        txtSangre = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         pnlContenedor.setBackground(new java.awt.Color(51, 51, 51));
         pnlContenedor.setLayout(new java.awt.CardLayout());
@@ -79,42 +75,59 @@ public Usuario() {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("COSVE");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 190, -1));
 
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/pedroPascal.png"))); // NOI18N
-        add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
-        add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 250, 30));
-        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 250, 30));
-        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 250, 30));
-        add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 220, 70));
-        add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, 200, 70));
-        add(txtEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 210, 60));
-        add(txtSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 200, 60));
-
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 210, 20));
+        add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
         btnActualizar.setText("Actualizar");
         add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 210, 70));
-        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 250, 30));
-        add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 250, 30));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("USUARIO");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 170, 40));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("RANGO");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 140, 40));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("DUI");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 170, 40));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("NACIMIENTO");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 170, 40));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("TIPO DE SANGRE");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 170, 40));
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("ESTADO CIVIL");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 170, 40));
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("GENERO");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, 170, 40));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 2091.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 550, 570));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActualizar;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
+    public javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JPanel pnlContenedor;
-    private javax.swing.JTextField txtApellido;
-    public javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEstadoCivil;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtGenero;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtSangre;
-    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

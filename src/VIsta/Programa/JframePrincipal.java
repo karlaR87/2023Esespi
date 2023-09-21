@@ -21,8 +21,14 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.OverlayLayout;
@@ -172,6 +178,11 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 80, 60, -1));
 
         iconUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
+        iconUsuario1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconUsuario1MouseClicked(evt);
+            }
+        });
         jPanel2.add(iconUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 70, 70, -1));
 
         iconInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/homeIcon.png"))); // NOI18N
@@ -608,11 +619,11 @@ public class JframePrincipal extends javax.swing.JFrame {
        iconChange();
        iconUsuario1.setVisible(true);
        cardLayout.show(jPanel1, "usuario");
+       
+       
+       
        ShowHide(0); 
-       
-       ModeloRegistro mod = new ModeloRegistro();
-       
-       
+ 
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
     private void iconChange()
@@ -673,6 +684,8 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconChange();
         iconUsuario1.setVisible(true);
        cardLayout.show(jPanel1, "usuario");
+       
+       
         ShowHide(1);
     }//GEN-LAST:event_iconUsuarioMouseClicked
 
@@ -807,6 +820,10 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
     }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void iconUsuario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuario1MouseClicked
+       
+    }//GEN-LAST:event_iconUsuario1MouseClicked
 
     private void changeColor()
     {
