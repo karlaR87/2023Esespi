@@ -3,6 +3,7 @@ package VIsta.Programa;
 import Controlador.cntrlPatrullajes;
 import Controlador.contrlPolicias;
 import Modelo.ModeloPatrullajes;
+import Modelo.ModeloRegistro;
 import Modelo.mdlPolicias;
 import VIsta.Login;
 import VIsta.Programa.Inicio.Inicio;
@@ -607,7 +608,11 @@ public class JframePrincipal extends javax.swing.JFrame {
        iconChange();
        iconUsuario1.setVisible(true);
        cardLayout.show(jPanel1, "usuario");
-       ShowHide(0);  
+       ShowHide(0); 
+       
+       ModeloRegistro mod = new ModeloRegistro();
+       
+       
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
     private void iconChange()
