@@ -5,6 +5,7 @@ import VIsta.Programa.Policias.Actualizar_Policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import fonts.Fuentes;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -682,7 +684,7 @@ public class mdlPolicias {
         header.setPreferredSize(new Dimension(header.getWidth(), 50)); // Cambia el alto del encabezado
 
         // Aplicar estilo de fuente personalizado al encabezado
-        header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 15)); // Aplica el estilo de fuente personalizado
+        header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 16)); // Aplica el estilo de fuente personalizado
 
         // Cambiar el color del texto del encabezado (opcional)
         header.setForeground(Color.BLACK);
@@ -693,7 +695,7 @@ public class mdlPolicias {
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
         cellRenderer.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 14)); // Aplica el estilo de fuente personalizado)); // Fuente de tamaño 16 para las filas de datos
         vstPolicias.tbDatosPolicias.setDefaultRenderer(Object.class, cellRenderer);
-        
+
         // Ajustar el ancho de las columnas
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(1).setPreferredWidth(100); 
@@ -704,7 +706,7 @@ public class mdlPolicias {
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(6).setPreferredWidth(20); 
         vstPolicias.tbDatosPolicias.getColumnModel().getColumn(7).setPreferredWidth(20); 
         //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
-
+        
         }catch(SQLException ex){
 
             JOptionPane.showMessageDialog(null,ex.toString());
@@ -712,7 +714,6 @@ public class mdlPolicias {
         }
 
     }
-    
     
      public ResultSet readPoliceInfoWithJoins() {
         try {

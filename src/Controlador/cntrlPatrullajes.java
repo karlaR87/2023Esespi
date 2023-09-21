@@ -20,20 +20,19 @@ public class cntrlPatrullajes implements ActionListener {
 
     private ModeloPatrullajes modelPatrullajes;
     private JframePrincipal JframePrincipal;
-    private Patrullajes_Inicio patrullajesHome;
+    private Patrullajes_Inicio vstPatrullajes;
     private Patrullajes_Agregar addPatrullajes;
     private Patrullajes_AddPersonal addPersonal;
 
     public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal) {
         this.modelPatrullajes = modelPatrullajes;
         this.JframePrincipal = JframePrincipal;
-        this.patrullajesHome = patrullajesHome;
+        this.vstPatrullajes = patrullajesHome;
         this.addPatrullajes = addPatrullajes;
         this.addPersonal = addPersonal;
         
         this.JframePrincipal.btnPatrullajes.addActionListener(this);
         this.JframePrincipal.btniconPatrullajes.addActionListener(this);
-        this.patrullajesHome.btnAddPatrullaje.addActionListener(this);
         
         //Add Personal
         this.addPatrullajes.btnAddPersonal.addActionListener(this);
@@ -55,19 +54,17 @@ public class cntrlPatrullajes implements ActionListener {
         if (e.getSource() == JframePrincipal.btnPatrullajes) {
             JframePrincipal.showPatrullajePanel(1);
             
-//            modelPatrullajes.mostrar(patrullajesHome);
+            modelPatrullajes.MostrarTablePatrullajes(vstPatrullajes);
         }
         
        if (e.getSource() == JframePrincipal.btniconPatrullajes) {
             JframePrincipal.showPatrullajePanel(2);
             
-//             modelPatrullajes.mostrar(patrullajesHome);
+             modelPatrullajes.MostrarTablePatrullajes(vstPatrullajes);
         }
        
        //------------------------------------------------------------Boton que MUESTRA la PANTALLA de AGREGAR
-       if (e.getSource() == patrullajesHome.btnAddPatrullaje) {
-            JframePrincipal.showAddPatrullajePanel();
-        }
+      
        
        
        //--------------------------------AGREGAR PATRULLAJE BOTONOES-------------------------------------------------

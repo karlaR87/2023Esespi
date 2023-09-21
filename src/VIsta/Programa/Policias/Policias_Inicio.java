@@ -1,8 +1,14 @@
 package VIsta.Programa.Policias;
 
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -23,6 +29,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
     ImageIcon iconoClareDelete;
      
     public int IdPolicia;
+   
     public Policias_Inicio() {
         initComponents();
         
@@ -79,7 +86,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 btnDeletePoliciaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDeletePolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 340, 60, 60));
+        jPanel1.add(btnDeletePolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 340, 60, 60));
 
         btnEditPolicia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
         btnEditPolicia.setBorderPainted(false);
@@ -96,7 +103,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 btnEditPoliciaMouseExited(evt);
             }
         });
-        jPanel1.add(btnEditPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 220, 60, 60));
+        jPanel1.add(btnEditPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 220, 60, 60));
 
         btnAddPolicia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddPolicia.png"))); // NOI18N
         btnAddPolicia.setBorderPainted(false);
@@ -113,7 +120,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 btnAddPoliciaMouseExited(evt);
             }
         });
-        jPanel1.add(btnAddPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 280, 60, 60));
+        jPanel1.add(btnAddPolicia, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 280, 60, 60));
 
         txtBuscar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtBuscar.setToolTipText("");
@@ -124,6 +131,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 410, 50));
 
         tbDatosPolicias.setBackground(new java.awt.Color(70, 70, 70));
+        tbDatosPolicias.setFont(new java.awt.Font("Arial", 0, 14));
         tbDatosPolicias.setForeground(new java.awt.Color(255, 255, 255));
         tbDatosPolicias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,8 +145,10 @@ public class Policias_Inicio extends javax.swing.JPanel {
             }
         ));
         tbDatosPolicias.setGridColor(new java.awt.Color(255, 255, 255));
+        tbDatosPolicias.setInheritsPopupMenu(true);
         tbDatosPolicias.setSelectionBackground(new java.awt.Color(119, 119, 119));
         tbDatosPolicias.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tbDatosPolicias.setShowGrid(false);
         tbDatosPolicias.getTableHeader().setResizingAllowed(false);
         tbDatosPolicias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
