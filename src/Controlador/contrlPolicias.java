@@ -71,16 +71,14 @@ public class contrlPolicias implements ActionListener{
     public void actionPerformed(ActionEvent e) 
     {
         if(e.getSource() == vstPoli.btnDeletePolicia)
-        {
-            
+        {           
             if (vstPoli.IdPolicia != 0){
             mdlPoli.setIdPolicia(vstPoli.IdPolicia);
             mdlPoli.deletetbPolicias();
             mdlPoli.MostrarTablePolicias(vstPoli);
             show1("El policía se ha eliminado correctamente", 17, 0, 0);
             close4();
-            }
-            
+            }          
         }
         
         if(e.getSource() == vstPoli.btnAddPolicia)
@@ -318,7 +316,7 @@ public class contrlPolicias implements ActionListener{
                                     //Validar que NO exista poli con la Placa
                                      mdlPoli.setNumeroPlaca(jFrameUpdatePolice.txtPlaca.getText().trim());
                                      mdlPoli.setIdPolicia(vstPoli.IdPolicia);
-                                     int resulIdPoliPlaca = mdlPoli.readIdPoliIfExistsNumeroPlaca();
+                                     int resulIdPoliPlaca = mdlPoli.readPlacaIfExistNUEVAPlaca_Actualizar();
                                      
                                     if(resulIdPoliPlaca == -1) //si es igual a -1, es que NO hay policia con esa Placa
                                     { 
@@ -339,10 +337,16 @@ public class contrlPolicias implements ActionListener{
                                         mdlPoli.setIdRangoUsuario(returnIdRangoUserActu());
                                         mdlPoli.setIdNivelUsuario(returnIdNivelUsuarioActu());
                                          
-                                        mdlPoli.UpdatePolice();
-                                        
-                                        show("El policía fue agregado correctamente", 17, 1, 0);
-                                        close10(); 
+                                        if(mdlPoli.UpdatePolice())
+                                        {                      
+                                            show("El policía fue actualizado correctamente", 17, 1, 0);
+                                            close10();
+                                        }
+                                        else
+                                        {
+                                            show("No se pudo actualizar al policía", 17, 1, 0);
+                                            close9();   
+                                        }
                                     }
                                     else
                                     {
@@ -454,7 +458,7 @@ public class contrlPolicias implements ActionListener{
                                             mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
                                             mdlPoli.setIdRangoUsuario(returnIdRangoUser());
                                              //Despues de aceptar la info del poli, vamos con el usuario
-
+                                                
                                             jFrameAddUser.setVisible(true);           
                                             jFrameAddUser.setEnabled(true);   
                                             jFrameAddUser.jLabel2.setVisible(false);  
@@ -621,6 +625,7 @@ public class contrlPolicias implements ActionListener{
             jFrameUpdatePolice.txtPlaca.setText("");
             
             jFrameUpdatePolice.dispose();
+            mdlPoli.MostrarTablePolicias(vstPoli);
             jFrameP.jLabel3.setVisible(false);
             jFrameP.setEnabled(true);
         }
