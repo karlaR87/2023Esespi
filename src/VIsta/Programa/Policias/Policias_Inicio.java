@@ -16,7 +16,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
     ImageIcon iconoOriginalEdit;
     ImageIcon iconoClareEdit;
      
-    
     ImageIcon iconoOriginalAdd;
     ImageIcon iconoClareAdd;
      

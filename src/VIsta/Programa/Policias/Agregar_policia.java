@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.SpinnerDateModel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -22,8 +23,20 @@ public class Agregar_policia extends javax.swing.JFrame {
     ModeloRegistro modeloRegistro = new ModeloRegistro();
     Fuentes tipoFuentes;
     
+    ImageIcon iconoOriginalCancel;
+    ImageIcon iconoClareCancel;
+     
+    ImageIcon iconoOriginalSave;
+    ImageIcon iconoClareSave;
+    
     public Agregar_policia() {
         initComponents();
+        
+        iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnCancelBlockRed3.png"); 
+        iconoClareCancel = new ImageIcon("src/VIsta/imagenes/btnCancelBlockRed3CLARE.png");
+        
+        iconoOriginalSave = new ImageIcon("src/VIsta/imagenes/btnGuardarBlockBlue3.png"); 
+        iconoClareSave = new ImageIcon("src/VIsta/imagenes/btnGuardarBlockBlue3CLARE.png"); 
         
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -18); // Restar 18 años a la fecha actual
@@ -177,6 +190,12 @@ public class Agregar_policia extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
+            }
         });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 506, 110, 90));
 
@@ -187,6 +206,12 @@ public class Agregar_policia extends javax.swing.JFrame {
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelMouseExited(evt);
             }
         });
         getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 506, 110, 90));
@@ -516,6 +541,30 @@ public class Agregar_policia extends javax.swing.JFrame {
                     evt.consume(); // Descarta caracteres que no son números
                 }   
     }//GEN-LAST:event_txtPlacaKeyTyped
+
+    public void OriginialIcon()
+    {
+        this.btnCancel.setIcon(iconoOriginalCancel);
+        this.btnGuardar.setIcon(iconoOriginalSave);
+    }
+    
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        OriginialIcon();
+        btnGuardar.setIcon(iconoClareSave);
+    }//GEN-LAST:event_btnGuardarMouseEntered
+
+    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
+        OriginialIcon();
+        btnCancel.setIcon(iconoClareCancel);
+    }//GEN-LAST:event_btnCancelMouseEntered
+
+    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnCancelMouseExited
+
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnGuardarMouseExited
 
     /**
      * @param args the command line arguments
