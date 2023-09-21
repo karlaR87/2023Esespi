@@ -1,6 +1,7 @@
 package VIsta.Programa.Policias;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
@@ -11,17 +12,33 @@ import javax.swing.text.PlainDocument;
  * @author Pao
  */
 public class Agregar_Usuario extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Agregar_Usuario
-     */
+  
+    ImageIcon iconoOriginalCancel;
+    ImageIcon iconoClareCancel;
+     
+    ImageIcon iconoOriginalSave;
+    ImageIcon iconoClareSave;
+    
     public Agregar_Usuario() {
         initComponents();
+        
+        iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnCancelBlockRed2.png"); 
+        iconoClareCancel = new ImageIcon("src/VIsta/imagenes/btnCancelBlockRed2CLARE.png");
+        
+        iconoOriginalSave = new ImageIcon("src/VIsta/imagenes/btnGuardarBlockBlue2.png"); 
+        iconoClareSave = new ImageIcon("src/VIsta/imagenes/btnGuardarBlockBlue2CLARE.png"); 
+        
         NOSPACE();
         jLabel2.setVisible(false);
         this.setBackground(new Color(0, 0, 0, 0)); 
     }
 
+     public void OriginialIcon()
+    {
+        this.btnCancel.setIcon(iconoOriginalCancel);
+        this.btnGuardar.setIcon(iconoOriginalSave);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -54,6 +71,12 @@ public class Agregar_Usuario extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelMouseExited(evt);
+            }
         });
         getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 128, 90, 80));
 
@@ -64,6 +87,12 @@ public class Agregar_Usuario extends javax.swing.JFrame {
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
             }
         });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 128, 90, -1));
@@ -128,6 +157,24 @@ public class Agregar_Usuario extends javax.swing.JFrame {
             evt.consume(); // Bloquea la entrada de texto adicional
         }
     }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        OriginialIcon();
+        btnGuardar.setIcon(iconoClareSave);
+    }//GEN-LAST:event_btnGuardarMouseEntered
+
+    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
+        OriginialIcon();
+        btnCancel.setIcon(iconoClareCancel);
+    }//GEN-LAST:event_btnCancelMouseEntered
+
+    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnCancelMouseExited
+
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnGuardarMouseExited
 
     
      public void NOSPACE()

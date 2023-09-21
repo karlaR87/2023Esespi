@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
@@ -20,9 +21,20 @@ public class Actualizar_Policia extends javax.swing.JFrame {
     ModeloRegistro modeloRegistro = new ModeloRegistro();
     Fuentes tipoFuentes;
     
+    ImageIcon iconoOriginalCancel;
+    ImageIcon iconoClareCancel;
+     
+    ImageIcon iconoOriginalSave;
+    ImageIcon iconoClareSave;
+    
     public Actualizar_Policia() {
         initComponents();
         
+        iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnCancelBlockRed3.png"); 
+        iconoClareCancel = new ImageIcon("src/VIsta/imagenes/btnCancelBlockRed3CLARE.png");
+        
+        iconoOriginalSave = new ImageIcon("src/VIsta/imagenes/btnGuardarBlockBlue.png"); 
+        iconoClareSave = new ImageIcon("src/VIsta/imagenes/btnGuardarBlockBlueCLARE.png"); 
         
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -18); // Restar 18 años a la fecha actual
@@ -114,6 +126,11 @@ public class Actualizar_Policia extends javax.swing.JFrame {
        lblNombre11.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
     }
     
+    public void OriginialIcon()
+    {
+        this.btnCancel.setIcon(iconoOriginalCancel);
+        this.btnGuardar.setIcon(iconoOriginalSave);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,7 +185,6 @@ public class Actualizar_Policia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(950, 603));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BLACKTRANSPARENT980X707.png"))); // NOI18N
@@ -182,6 +198,12 @@ public class Actualizar_Policia extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
+            }
         });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 506, 110, 90));
 
@@ -192,6 +214,12 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelMouseExited(evt);
             }
         });
         getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 506, 110, 90));
@@ -521,6 +549,24 @@ public class Actualizar_Policia extends javax.swing.JFrame {
             evt.consume(); // Bloquea la entrada de texto adicional
         }
     }//GEN-LAST:event_ActutxtAreaDireccionKeyTyped
+
+    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
+      OriginialIcon();
+      btnCancel.setIcon(iconoClareCancel);
+    }//GEN-LAST:event_btnCancelMouseEntered
+
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        OriginialIcon();
+        btnGuardar.setIcon(iconoClareSave);
+    }//GEN-LAST:event_btnGuardarMouseEntered
+
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        OriginialIcon();
+    }//GEN-LAST:event_btnGuardarMouseExited
+
+    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
+         OriginialIcon();
+    }//GEN-LAST:event_btnCancelMouseExited
 
     /**
      * @param args the command line arguments
