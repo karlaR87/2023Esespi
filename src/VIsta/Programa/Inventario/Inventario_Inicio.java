@@ -8,6 +8,7 @@ import Modelo.ModeloArmamento;
 import Modelo.ModeloDatosTransporte;
 import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
+import Modelo.TextPrompt;
 import Modelo.conexionSql;
 import Modelo.mdl;
 import VIsta.Bienvenida;
@@ -23,6 +24,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
   
     public Inventario_Inicio() {
         initComponents();
+        
+        //Agregar un placeholder
+        TextPrompt placeholder = new TextPrompt("Buscar", txtBusqueda);
+        
         mdl mo = new mdl();
         mo.mostrar(this);
         ModeloEquipoEspecial c = new ModeloEquipoEspecial();
@@ -220,7 +225,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtBusqueda = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -337,6 +342,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         });
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 30, 40));
 
+        txtBusqueda.setBorder(null);
         txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBusquedaActionPerformed(evt);
@@ -347,13 +353,12 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 txtBusquedaKeyReleased(evt);
             }
         });
-        jPanel4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 450, 60));
+        jPanel4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 390, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 500, 60));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BusquedaGrande.png"))); // NOI18N
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 710));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1040, 710));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -384,7 +389,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,10 +442,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
     private javax.swing.JButton btnAddEquipo;
     private javax.swing.JButton btnDeleteEquipo;
     private javax.swing.JButton btnEdiEquipo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

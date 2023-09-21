@@ -1,6 +1,7 @@
 
 package VIsta.Programa.Reportes;
 
+import Modelo.TextPrompt;
 import Modelo.conexionSql;
 import Modelo.mdl;
 import java.util.HashMap;
@@ -19,6 +20,10 @@ public class VistaReportrTransporteConParametros extends javax.swing.JFrame {
     public VistaReportrTransporteConParametros() {
         initComponents();
           this.setLocationRelativeTo(this);
+          
+          //Agregar un placeholder
+        TextPrompt placeholder = new TextPrompt("Ingrese el parámetro", txtGrupo);
+        
         mdl nm = new mdl();
         nm.mostrarRporte(this);
     }
@@ -64,6 +69,7 @@ public class VistaReportrTransporteConParametros extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
