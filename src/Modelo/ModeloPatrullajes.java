@@ -39,7 +39,7 @@ public class ModeloPatrullajes {
         Color clrOrang = new Color( 243, 167, 18);
         DefaultTableModel modelo = new DefaultTableModel();
       
-        modelo.setColumnIdentifiers(new Object []{"IDP", "Locacion", "Longitud", "Latitud", "Extension de KM", "Fecha De Inicio", 
+        modelo.setColumnIdentifiers(new Object []{"IDP", "Locacion", "Longitud", "Latitud", "ExtensionKM", "Fecha De Inicio", 
             "Fecha De Fin", "NGrupo"});
 
         try{
@@ -86,12 +86,12 @@ public class ModeloPatrullajes {
 
             // Ajustar el ancho de las columnas
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(1).setPreferredWidth(100); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(1).setPreferredWidth(90); 
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(2).setPreferredWidth(45);
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(3).setPreferredWidth(45); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(4).setPreferredWidth(55); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(5).setPreferredWidth(120); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(6).setPreferredWidth(120); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(4).setPreferredWidth(60); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(5).setPreferredWidth(118); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(6).setPreferredWidth(118); 
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(7).setPreferredWidth(20); 
             //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
         

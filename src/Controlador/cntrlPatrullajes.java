@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.ModeloPatrullajes;
 import Modelo.mdlPolicias;
+import VIsta.JoptionReplacemnt;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
@@ -45,6 +46,8 @@ public class cntrlPatrullajes implements ActionListener {
         this.addPersonal.btnAcept.addActionListener(this);
         //Cancel Personal
         this.addPersonal.btnCancel.addActionListener(this);
+        
+        this.vstPatrullajes.btnAddPatrullaje.addActionListener(this);
        
     }
     @Override
@@ -64,7 +67,10 @@ public class cntrlPatrullajes implements ActionListener {
         }
        
        //------------------------------------------------------------Boton que MUESTRA la PANTALLA de AGREGAR
-      
+      if(e.getSource() == vstPatrullajes.btnAddPatrullaje)
+      {
+          JframePrincipal.showAddPatrullajePanel();
+      }
        
        
        //--------------------------------AGREGAR PATRULLAJE BOTONOES-------------------------------------------------
@@ -80,14 +86,9 @@ public class cntrlPatrullajes implements ActionListener {
         //------------------------------------------------------Boton que CANCELA al Personal
         if (e.getSource() == addPersonal.btnCancel) {
           
-           if(showMessage("¿Seguro que quieres cancelar?, se eliminarán todos los datos que no han sido guardados", "Confirmación"))
-           {
-            //Borrar Todo
-               JframePrincipal.jLabel3.setVisible(false);
-                addPersonal.setVisible(false);
-                JframePrincipal.enable(true);
-                JframePrincipal.setExtendedState(JFrame.NORMAL);
-           }
+           show("¿Seguro que quieres cancelar? se eliminarán los datos", 14, 1, 1);
+           close1();
+          
         }
 
         //------------------------------------------------------Boton que ACEPTA al Personal
@@ -103,34 +104,58 @@ public class cntrlPatrullajes implements ActionListener {
        
        //-------------------------------------------------------Boton que CANCELA la "Agregacion" del patrullaje
        if (e.getSource() == addPatrullajes.btnCancelPatrullaje) {
-           if(showMessage("¿Seguro que quieres cancelar?, se eliminarán todos los datos que no han sido guardados", "Confirmación"))
-           {
-            //Borrar Todo
-               JframePrincipal.showPatrullajePanel(2);
-           }
+//           if(showMessage("¿Seguro que quieres cancelar? se eliminarán los datos", "Confirmación"))
+//           {
+//            //Borrar Todo
+//               JframePrincipal.showPatrullajePanel(2);
+//           }
        }
        
     }
+   
+    //-------------METODOS SHOW JOPTION-------------
     
-    public boolean showMessage(String Message, String Title)
-    {
-        int response = -1;  // Valor inicial para entrar en el bucle
-            while (response != JOptionPane.YES_OPTION && response != JOptionPane.NO_OPTION) {
-                response = JOptionPane.showConfirmDialog(
-                    null, 
-                    Message, 
-                    Title, 
-                    JOptionPane.YES_NO_OPTION,
-                   JOptionPane.WARNING_MESSAGE
-                );
-
-                if (response == JOptionPane.YES_OPTION) {
-                    return true;                  
-                } else if (response == JOptionPane.NO_OPTION) {
-                    return false;
-                }
-            }     
-        return false;
+    JoptionReplacemnt Jo;
+    public void show(String msg, int sizeTXT, int img, int type)
+    {  
+        JframePrincipal.setEnabled(false);
+        JframePrincipal.jLabel3.setVisible(true);
+        addPersonal.setEnabled(false);
+        addPersonal.jLabel3.setVisible(true);
+        
+        Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
+        Jo.setVisible(true);
     }
-
+    
+      public void close1()
+    {   
+        //Agregar evento click
+        Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);         
+           
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            
+            addPersonal.setEnabled(true);
+            addPersonal.jLabel3.setVisible(false);
+            addPersonal.setVisible(false);
+            
+            JframePrincipal.setExtendedState(JFrame.NORMAL);
+        }
+        });
+        
+        Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);
+            
+            JframePrincipal.setEnabled(false);
+            JframePrincipal.jLabel3.setVisible(true);
+            
+            addPersonal.setEnabled(true);
+            addPersonal.jLabel3.setVisible(false);
+        }
+        });
+    }
+ 
 }
