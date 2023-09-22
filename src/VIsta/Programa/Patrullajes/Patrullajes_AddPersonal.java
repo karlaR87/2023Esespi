@@ -19,17 +19,6 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     Fuentes tipoFuentes;
     private JScrollPane jScrollPane1; 
     mdlPolicias mdlPolicias;
-   
-    int xlabelN = 70;
-    int ylabelN = 63;
-    int ySpacing = 70;
-    int yCoord = ylabelN;
-    
-    int ultimateYImage = 0;
-    int imageX = 162;
-    
-   private boolean showImageA;
-   private boolean showImageB;
     
     public Patrullajes_AddPersonal() {
         initComponents();
@@ -43,93 +32,13 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     
     public void showPolicias()
     {
-         tipoFuentes = new Fuentes();
+        tipoFuentes = new Fuentes();
         
-        try {
-            mdlPolicias = new mdlPolicias();
-            ResultSet rs = mdlPolicias.readPoliceInfoWithJoins();
-            List<String> listaNombres = new ArrayList<>();
-            List<String> listaApellidos = new ArrayList<>();
-            List<String> listaRango = new ArrayList<>();
-            
-            while (rs.next()) {
-                String nombre = rs.getString("Nombre");
-                listaNombres.add(nombre);
 
-                String apellido = rs.getString("Apellido");
-                listaApellidos.add(apellido);
-                
-                 String rango = rs.getString("Rango");
-                listaRango.add(rango);
-            }
+    }
+    
+    
 
-            for (int i = 0; i < listaNombres.size(); i++) {
-            String nombre = listaNombres.get(i);
-            
-            JLabel label = new JLabel(nombre + " " + listaApellidos.get(i));
-            label.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15)); // Aplicar la fuente al JLabel
-            label.setForeground(Color.WHITE);
-            
-                if (nombre.startsWith("A") || nombre.startsWith("a")) {
-                    showImageA = true;
-                    chargeA(label);
-                }
-                else if(nombre.startsWith("B") || nombre.startsWith("b")) {
-                    showImageB = true;
-                    chargeB(label);
-                }
-            }
-//--------------------Mostrar la imagen de la letra inicial-------------
-              if (showImageA) {
-                ImageIcon imageA = new ImageIcon(getClass().getResource("/VIsta/imagenes/LetterA.png"));
-                JLabel labelImageA = new JLabel(imageA);
-                if(ultimateYImage == 0)
-                {
-                    ultimateYImage = 1;
-                }
-                else
-                {
-                    ultimateYImage = yCoord;      
-                }
-                labelImageA.setBounds(imageX, ultimateYImage, 43, 43); // Establece las coordenadas y tamaño
-                jPanel1.add(labelImageA);
-            }
-                if (showImageB) {
-                ImageIcon imageB = new ImageIcon(getClass().getResource("/VIsta/imagenes/LetterB.png"));
-                JLabel labelImageB = new JLabel(imageB);
-                if(ultimateYImage == 0)
-                {
-                    ultimateYImage = 1;
-                }
-                else
-                {
-                    ultimateYImage = yCoord;      
-                }
-                labelImageB.setBounds(imageX, ultimateYImage, 43, 43); // Establece las coordenadas y tamaño
-                jPanel1.add(labelImageB);
-            }
-            
-        jScrollPane1.setViewportView(jPanel1);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    
-    public void chargeA(JLabel label)
-    {
-       label.setBounds(xlabelN, yCoord, 200, 19);
-       jPanel1.add(label);
-       yCoord += ySpacing;
-    }
-    
-    public void chargeB(JLabel label)
-    {
-       label.setBounds(xlabelN, yCoord, 200, 19);
-       jPanel1.add(label);
-       yCoord += ySpacing;
-    }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.

@@ -104,11 +104,9 @@ public class cntrlPatrullajes implements ActionListener {
        
        //-------------------------------------------------------Boton que CANCELA la "Agregacion" del patrullaje
        if (e.getSource() == addPatrullajes.btnCancelPatrullaje) {
-//           if(showMessage("¿Seguro que quieres cancelar? se eliminarán los datos", "Confirmación"))
-//           {
-//            //Borrar Todo
-//               JframePrincipal.showPatrullajePanel(2);
-//           }
+//           
+         show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
+         close2();
        }
        
     }
@@ -127,7 +125,40 @@ public class cntrlPatrullajes implements ActionListener {
         Jo.setVisible(true);
     }
     
-      public void close1()
+    public void close2()
+    {   
+        //Agregar evento click
+        Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);         
+           
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            
+            addPersonal.setEnabled(true);
+            addPersonal.jLabel3.setVisible(false);
+            addPersonal.setVisible(false);
+            
+            JframePrincipal.setExtendedState(JFrame.NORMAL);
+            //Borrar todo
+            JframePrincipal.showPatrullajePanel(2);
+            
+        }
+        });
+        
+        Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);           
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            
+            addPersonal.setEnabled(true);
+            addPersonal.jLabel3.setVisible(false);
+        }
+        });
+    }
+    
+    public void close1()
     {   
         //Agregar evento click
         Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
