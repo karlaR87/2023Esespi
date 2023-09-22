@@ -86,7 +86,7 @@ public class cntrlPatrullajes implements ActionListener {
         //------------------------------------------------------Boton que CANCELA al Personal
         if (e.getSource() == addPersonal.btnCancel) {
           
-           show("¿Seguro que quieres cancelar? se eliminarán los datos", 14, 1, 1);
+           show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
            close1();
           
         }

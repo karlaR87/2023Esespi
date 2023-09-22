@@ -127,7 +127,7 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
                 
                 //---------------------------------------NO BUTTON---------------------------------------
                 NObutton = new JButton("NO");
-                NObutton.setBounds(0, -2, 200, 47); // Coordenadas (x, y) y tamaño (ancho, alto)
+                NObutton.setBounds(0, -2, 195, 47); // Coordenadas (x, y) y tamaño (ancho, alto)
                 NObutton.setBackground(clr);
                 NObutton.setFocusPainted(false);
                 NObutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -190,20 +190,20 @@ public class JoptionReplacemnt extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(70, 70, 70));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(70, 70, 70), 6, true));
-        jPanel3.setPreferredSize(new java.awt.Dimension(192, 42));
+        jPanel3.setPreferredSize(new java.awt.Dimension(195, 44));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 183, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 192, 44));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, 44));
 
         jPanel2.setBackground(new java.awt.Color(70, 70, 70));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(70, 70, 70), 6, true));

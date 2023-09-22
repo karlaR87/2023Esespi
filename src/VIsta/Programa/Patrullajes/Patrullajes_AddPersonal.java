@@ -154,7 +154,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BlackTransparentADDPERSONAL.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 3, -1, 550));
 
         jPanel1.setBackground(new java.awt.Color(70, 70, 70));
         jPanel1.setForeground(new java.awt.Color(70, 70, 70));
@@ -175,7 +175,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
                 btnCancelMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 502, -1, 50));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 500, -1, 50));
 
         btnAcept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCheck1.png"))); // NOI18N
         btnAcept.setBorderPainted(false);
@@ -186,7 +186,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
                 btnAceptMouseClicked(evt);
             }
         });
-        getContentPane().add(btnAcept, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 502, -1, 50));
+        getContentPane().add(btnAcept, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 500, -1, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
