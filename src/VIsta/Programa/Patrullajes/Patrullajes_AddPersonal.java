@@ -19,20 +19,11 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     Fuentes tipoFuentes;
     private JScrollPane jScrollPane1; 
     mdlPolicias mdlPolicias;
-   
-    int xlabelN = 70;
-    int ylabelN = 63;
-    int ySpacing = 70;
-    int yCoord = ylabelN;
-    
-    int ultimateYImage = 0;
-    int imageX = 162;
-    
-   private boolean showImageA;
-   private boolean showImageB;
     
     public Patrullajes_AddPersonal() {
         initComponents();
+        this.jLabel3.setVisible(false);
+        
         jScrollPane1 = this.jScrollPane2;
         jScrollPane1.setBorder(null);
         jPanel1.setLayout(null);
@@ -41,93 +32,13 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     
     public void showPolicias()
     {
-         tipoFuentes = new Fuentes();
+        tipoFuentes = new Fuentes();
         
-        try {
-            mdlPolicias = new mdlPolicias();
-            ResultSet rs = mdlPolicias.readPoliceInfoWithJoins();
-            List<String> listaNombres = new ArrayList<>();
-            List<String> listaApellidos = new ArrayList<>();
-            List<String> listaRango = new ArrayList<>();
-            
-            while (rs.next()) {
-                String nombre = rs.getString("Nombre");
-                listaNombres.add(nombre);
 
-                String apellido = rs.getString("Apellido");
-                listaApellidos.add(apellido);
-                
-                 String rango = rs.getString("Rango");
-                listaRango.add(rango);
-            }
+    }
+    
+    
 
-            for (int i = 0; i < listaNombres.size(); i++) {
-            String nombre = listaNombres.get(i);
-            
-            JLabel label = new JLabel(nombre + " " + listaApellidos.get(i));
-            label.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15)); // Aplicar la fuente al JLabel
-            label.setForeground(Color.WHITE);
-            
-                if (nombre.startsWith("A") || nombre.startsWith("a")) {
-                    showImageA = true;
-                    chargeA(label);
-                }
-                else if(nombre.startsWith("B") || nombre.startsWith("b")) {
-                    showImageB = true;
-                    chargeB(label);
-                }
-            }
-//--------------------Mostrar la imagen de la letra inicial-------------
-              if (showImageA) {
-                ImageIcon imageA = new ImageIcon(getClass().getResource("/VIsta/imagenes/LetterA.png"));
-                JLabel labelImageA = new JLabel(imageA);
-                if(ultimateYImage == 0)
-                {
-                    ultimateYImage = 1;
-                }
-                else
-                {
-                    ultimateYImage = yCoord;      
-                }
-                labelImageA.setBounds(imageX, ultimateYImage, 43, 43); // Establece las coordenadas y tamaño
-                jPanel1.add(labelImageA);
-            }
-                if (showImageB) {
-                ImageIcon imageB = new ImageIcon(getClass().getResource("/VIsta/imagenes/LetterB.png"));
-                JLabel labelImageB = new JLabel(imageB);
-                if(ultimateYImage == 0)
-                {
-                    ultimateYImage = 1;
-                }
-                else
-                {
-                    ultimateYImage = yCoord;      
-                }
-                labelImageB.setBounds(imageX, ultimateYImage, 43, 43); // Establece las coordenadas y tamaño
-                jPanel1.add(labelImageB);
-            }
-            
-        jScrollPane1.setViewportView(jPanel1);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    
-    public void chargeA(JLabel label)
-    {
-       label.setBounds(xlabelN, yCoord, 200, 19);
-       jPanel1.add(label);
-       yCoord += ySpacing;
-    }
-    
-    public void chargeB(JLabel label)
-    {
-       label.setBounds(xlabelN, yCoord, 200, 19);
-       jPanel1.add(label);
-       yCoord += ySpacing;
-    }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,6 +49,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -149,6 +61,9 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BlackTransparentADDPERSONAL.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 3, -1, 550));
 
         jPanel1.setBackground(new java.awt.Color(70, 70, 70));
         jPanel1.setForeground(new java.awt.Color(70, 70, 70));
@@ -169,7 +84,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
                 btnCancelMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 495, -1, 50));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 500, -1, 50));
 
         btnAcept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCheck1.png"))); // NOI18N
         btnAcept.setBorderPainted(false);
@@ -180,7 +95,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
                 btnAceptMouseClicked(evt);
             }
         });
-        getContentPane().add(btnAcept, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 495, -1, 50));
+        getContentPane().add(btnAcept, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 500, -1, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,6 +155,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     public javax.swing.JButton btnCancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
