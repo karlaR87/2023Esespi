@@ -5,6 +5,7 @@ import Controlador.contrlPolicias;
 import Modelo.ModeloPatrullajes;
 import Modelo.ModeloRegistro;
 import Modelo.mdlPolicias;
+import Modelo.ModeloRegistro;
 import VIsta.Login;
 import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
@@ -40,6 +41,8 @@ import javax.swing.OverlayLayout;
 public class JframePrincipal extends javax.swing.JFrame {
       Color colorChange = new Color(255, 98, 98);
       public int idNivelUser;
+      
+      
     public JframePrincipal(int idNivelUser) {       
         initComponents();
         ImageIcon icono = new ImageIcon("src/VIsta/imagenes/lgShieldChic1.png"); this.setIconImage(icono.getImage());

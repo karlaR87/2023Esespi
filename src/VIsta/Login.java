@@ -5,6 +5,7 @@ import Controlador.cntrlLogin;
 import Modelo.mdlUsuarios;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Registro;
+import Modelo.ModeloRegistro;
 import fonts.Fuentes;
 import java.awt.BorderLayout;
 import java.awt.Frame;
@@ -17,10 +18,10 @@ import javax.swing.JLabel;
 
 public class Login extends javax.swing.JFrame {
 
-  
+   
     Fuentes tipoFuentes;
     public int IdNivelUser;
-    public String usu;
+    ModeloRegistro me = new ModeloRegistro();
     
     public Login() {
         initComponents();
@@ -30,6 +31,8 @@ public class Login extends javax.swing.JFrame {
         mdlUsuarios mdlUsuarios = new mdlUsuarios();
         cntrlLogin ctLg = new cntrlLogin(this, mdlUsuarios); 
        
+       
+        
         fontDesign();
     }
     
@@ -288,6 +291,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_RecuperarContraMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+         me.IdUsuarioTomar(this);
          
     }//GEN-LAST:event_btnIngresarMouseClicked
 
