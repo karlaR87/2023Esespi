@@ -4,14 +4,13 @@ package VIsta.Programa.Inicio;
 import Modelo.conexionSql;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -20,17 +19,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 
-public class Paneles extends javax.swing.JFrame {
 
-    
-    public Paneles() {
+public class PanelesPatrullaje extends javax.swing.JFrame {
+
+   
+    public PanelesPatrullaje() {
         initComponents();
         this.setLocationRelativeTo(this);
-        
-        // Establece el layout del contenedor principal
-        //GridLayout gridLayout = new GridLayout(0, 1);
-        //gridLayout.setVgap(1); // Espacio vertical entre los paneles
-        //setLayout(gridLayout);
         
         FlowLayout lay = new FlowLayout(FlowLayout.LEFT); //Definimos el tipo de layout que va a tener el panel
         setLayout(lay);//asignamos el valor del panel
@@ -41,7 +36,9 @@ public class Paneles extends javax.swing.JFrame {
         ResultSet result = null;
 
         //acá va la query de la tabla a la que se la harán los paneles
-        String SSQL = "select * from tbInformes ";
+        String SSQL = "select IdPatrullaje, Fecha_Hora_Inicio as FechaDeInicio, "
+                + "Fecha_Hora_Fin as FechaFinalizacion, CONCAT(Longitud, '', Latitud) AS Ubicacion "
+                + "from tbPatrullajes";
 
        
        try {
@@ -82,25 +79,33 @@ public class Paneles extends javax.swing.JFrame {
                 estudiantePanel.setBorder(borde);
                 
                 //definimos los campos que se van a mostrar, con sus respectivos valores y trayendolos del resultSet
-                 int nombre = result.getInt("IdInforme");
-                int apellido = result.getInt("IdPatrullaje");
-                String apel = result.getString("Resultados");
+                 int numPat = result.getInt("IdPatrullaje");
+                Date fecha = result.getDate("FechaDeInicio");
+                Date apellido = result.getDate("FechaFinalizacion");
+                String apel = result.getString("Ubicacion");
+                
+                //Float apel = result.getFloat("Ubicacion");
                 
                 //creamos los JLabel, los cuales van a tener la información traída de las variables antes definidas
-                JLabel label = new JLabel("Informe N° " + nombre );
-                JLabel label4 = new JLabel("\n");
-                 JLabel label2 = new JLabel("Patrullaje: "  + apellido );
-                 JLabel label3 = new JLabel("Resultados: " + apel);
+                
+                 JLabel labellabel = new JLabel("Patrullaje N° " + numPat);
+                 JLabel labellabel1 = new JLabel("\n");
+                 
+                JLabel label = new JLabel("Fecha de inicio: " + fecha );
+                 JLabel label2 = new JLabel("Fecha de finalización: "  + apellido );
+                 JLabel label3 = new JLabel("Ubicación: " + apel);
                  
                  //aquí definimos la alineación del texto
                  label.setAlignmentY(Component.CENTER_ALIGNMENT);
                  //aquí colocamos un tipo de letra al JLabel, y le colocamos el formato y tamaño
-                 Font Arial = new Font("Arial", Font.PLAIN, 17);
+                 Font Arial = new Font("Arial", Font.PLAIN, 14);
                  Font Arial1 = new Font("Arial", Font.PLAIN, 22);
                  //asignamos el tipo de letra al label
                  
                  //Lo mismo se realiza para todos los JLabels definidos
-                 label.setFont(Arial1);
+                 labellabel.setFont(Arial1);
+                 labellabel.setForeground(Color.WHITE);
+                 label.setFont(Arial);
                  label.setForeground(Color.WHITE);
                  label2.setAlignmentY(Component.CENTER_ALIGNMENT);
                   label2.setFont(Arial);
@@ -110,8 +115,10 @@ public class Paneles extends javax.swing.JFrame {
                   label3.setForeground(Color.WHITE);
                  
                   //Agregamos los JLabels al panel
+                estudiantePanel.add(labellabel);
+                estudiantePanel.add(labellabel1);
+                
                 estudiantePanel.add(label);
-                estudiantePanel.add(label4);
                 estudiantePanel.add(label2);
                 estudiantePanel.add(label3);
                 
@@ -136,14 +143,13 @@ public class Paneles extends javax.swing.JFrame {
         
     }
 
-  
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(51, 51, 51));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(385, 179));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,7 +159,7 @@ public class Paneles extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 134, Short.MAX_VALUE)
+            .addGap(0, 186, Short.MAX_VALUE)
         );
 
         pack();
@@ -176,20 +182,20 @@ public class Paneles extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Paneles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelesPatrullaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Paneles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelesPatrullaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Paneles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelesPatrullaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Paneles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelesPatrullaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Paneles().setVisible(true);
+                new PanelesPatrullaje().setVisible(true);
             }
         });
     }
