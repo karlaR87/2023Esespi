@@ -19,6 +19,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -104,10 +105,8 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
         int bottomMargin = 0; // Márgen inferior en píxeles
         int rightMargin = 0; // Márgen derecho en píxeles
         EmptyBorder border = new EmptyBorder(topMargin, leftMargin, bottomMargin, rightMargin);
-        
-        
-        JViewport viewport = jScrollPane2.getViewport();
-        
+ 
+        JViewport viewport = jScrollPane2.getViewport(); 
         panelULTIMATE.setLayout(new BoxLayout(panelULTIMATE, BoxLayout.Y_AXIS));;
         panelULTIMATE.setBackground(new Color(70, 70, 70));      
         panelULTIMATE.setBorder(border);
@@ -137,6 +136,8 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
             ResultSet rs = mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullajeAAA();
 
             while (rs.next()) {
+//               Box horizontalBox2 = Box.createHorizontalBox();
+                
                 JLabel Fto = new JLabel();
                 Fto.setIcon(FtoPrueba);
                 
@@ -149,6 +150,8 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
                 
                 String Rango = rs.getString("Rango");
                 
+                int IdPolicia = rs.getInt("IdPolicia");
+                
                 JLabel label = new JLabel(Nombre + " " + Apellido);
                 JLabel label2 = new JLabel(Rango);
                 JLabel line = new JLabel();
@@ -158,6 +161,16 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
                 label2.setForeground(new Color(177,177,177));
                 label.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 20));
                 label2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 13));
+
+//                //Crear CheckBox con el "valor" del idPolicia
+//                JCheckBox jchk = new JCheckBox(String.valueOf(IdPolicia), false);
+//                jchk.setForeground(Color.red);
+//                jchk.setBackground(Color.WHITE);
+//                
+//                horizontalBox2.add(Box.createHorizontalGlue());
+//                //Agregar el JCheckBox
+//                horizontalBox2.add(Box.createHorizontalGlue());
+//                panel.add(horizontalBox2);
 
                 verticalBox.add(Fto);
                 verticalBox.add(label); // Agrega la etiqueta al panel
