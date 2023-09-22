@@ -33,7 +33,7 @@ public class ModeloPatrullajes {
         this.idPatrullaje = IdPatrullaje;
     }
     
-    public void ChargeInfoPolicialAptaParaPatrullaje()
+    public ResultSet ChargeInfoPolicialAptaParaPatrullaje()
     {
         try{
             String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
@@ -49,17 +49,66 @@ public class ModeloPatrullajes {
             PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
             
             ResultSet rs = chargePolice.executeQuery();
+            
+            return rs;
 
-            // Verificar si hay alguna fila en el ResultSet
-            if (rs.next()) {
-                
-            } else {          
-               
-            }
+           
         }catch(Exception e){
             System.out.println(e.toString());
+            return null;
         }
     }
+    
+     public ResultSet ChargeInfoPolicialAptaParaPatrullajeAAA()
+    {
+        try{
+            String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
+            "SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
+            "SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
+            "FROM tbPolicias tbPoli\n" +
+            "INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+            "INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
+            "INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
+            "INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
+            "INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
+            "WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 AND tbPer.Nombre LIKE 'A%'";
+            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargePolice.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+     
+     public ResultSet ChargeInfoPolicialAptaParaPatrullajeBBB()
+    {
+        try{
+            String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
+            "SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
+            "SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
+            "FROM tbPolicias tbPoli\n" +
+            "INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+            "INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
+            "INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
+            "INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
+            "INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
+            "WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 AND tbPer.Nombre LIKE 'B%'";
+            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargePolice.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
     
     //------------------MOSTRAR datos de los PATRULLAJES-----------------
      public void MostrarTablePatrullajes(Patrullajes_Inicio vsPatrullajes){

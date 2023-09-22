@@ -69,7 +69,7 @@ public class cntrlPatrullajes implements ActionListener {
        //------------------------------------------------------------Boton que MUESTRA la PANTALLA de AGREGAR
       if(e.getSource() == vstPatrullajes.btnAddPatrullaje)
       {
-          JframePrincipal.showAddPatrullajePanel();
+          JframePrincipal.showAddPatrullajePanel();         
       }
        
        
@@ -79,6 +79,7 @@ public class cntrlPatrullajes implements ActionListener {
         if (e.getSource() == addPatrullajes.btnAddPersonal) {
             JframePrincipal.jLabel3.setVisible(true);
             addPersonal.setBackground(new Color(0,0,0,0));//Transparencia
+            addPersonal.showPolicias();
             addPersonal.setVisible(true);
             JframePrincipal.enable(false);
 
@@ -171,7 +172,10 @@ public class cntrlPatrullajes implements ActionListener {
             addPersonal.setEnabled(true);
             addPersonal.jLabel3.setVisible(false);
             addPersonal.setVisible(false);
-            
+            addPersonal.panelULTIMATE.removeAll();
+            // Luego, puedes llamar al método "revalidate()" para actualizar la interfaz de usuario
+            addPersonal.panelULTIMATE.revalidate();
+            addPersonal.panelULTIMATE.repaint(); 
             JframePrincipal.setExtendedState(JFrame.NORMAL);
         }
         });
