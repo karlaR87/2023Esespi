@@ -32,6 +32,35 @@ public class ModeloPatrullajes {
     public void setPatrullajes(int IdPatrullaje) {
         this.idPatrullaje = IdPatrullaje;
     }
+    
+    public void ChargeInfoPolicialAptaParaPatrullaje()
+    {
+        try{
+            String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
+            "SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
+            "SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
+            "FROM tbPolicias tbPoli\n" +
+            "INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+            "INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
+            "INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
+            "INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
+            "INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
+            "WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 ORDER BY tbPer.Nombre";
+            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargePolice.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                
+            } else {          
+               
+            }
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    
     //------------------MOSTRAR datos de los PATRULLAJES-----------------
      public void MostrarTablePatrullajes(Patrullajes_Inicio vsPatrullajes){
          
@@ -39,7 +68,7 @@ public class ModeloPatrullajes {
         Color clrOrang = new Color( 243, 167, 18);
         DefaultTableModel modelo = new DefaultTableModel();
       
-        modelo.setColumnIdentifiers(new Object []{"IDP", "Locacion", "Longitud", "Latitud", "Extension de KM", "Fecha De Inicio", 
+        modelo.setColumnIdentifiers(new Object []{"IDP", "Locacion", "Longitud", "Latitud", "ExtensionKM", "Fecha De Inicio", 
             "Fecha De Fin", "NGrupo"});
 
         try{
@@ -86,12 +115,12 @@ public class ModeloPatrullajes {
 
             // Ajustar el ancho de las columnas
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(1).setPreferredWidth(100); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(1).setPreferredWidth(90); 
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(2).setPreferredWidth(45);
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(3).setPreferredWidth(45); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(4).setPreferredWidth(55); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(5).setPreferredWidth(120); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(6).setPreferredWidth(120); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(4).setPreferredWidth(60); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(5).setPreferredWidth(118); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(6).setPreferredWidth(118); 
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(7).setPreferredWidth(20); 
             //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
         

@@ -32,13 +32,15 @@ public class Paneles extends javax.swing.JFrame {
         //gridLayout.setVgap(1); // Espacio vertical entre los paneles
         //setLayout(gridLayout);
         
-        FlowLayout lay = new FlowLayout(FlowLayout.LEFT);
-        setLayout(lay);
+        FlowLayout lay = new FlowLayout(FlowLayout.LEFT); //Definimos el tipo de layout que va a tener el panel
+        setLayout(lay);//asignamos el valor del panel
 
+        //conexion, el preparedstatement y el resultser
         Connection conectar = conexionSql.getConexion();
         PreparedStatement pst = null;
         ResultSet result = null;
 
+        //acá va la query de la tabla a la que se la harán los paneles
         String SSQL = "select * from tbInformes ";
 
        
@@ -47,41 +49,55 @@ public class Paneles extends javax.swing.JFrame {
             pst = conectar.prepareStatement(SSQL);
             result = pst.executeQuery();
             
+            //creamos un panel contenedor y le asignamos su layout,
+            //el cual es el mismo que definimos arriba, 
+            //unicamente que se debe escribir como new FlowLayout, luego definimos la ubicacion del layout
+            //la cual es Leading
+            
             JPanel Contenedor = new JPanel();
                Contenedor.setLayout(new FlowLayout(FlowLayout.LEADING));
                
             while (result.next()) {
-               //JPanel estudiantePanel2 = new JPanel(); 
-               //estudiantePanel2.setBackground(Color.DARK_GRAY);
-               
-               
-               
-              
-               
+                    
+                //Creamos el panel en el cual se visualizarán los datos
                JPanel estudiantePanel = new JPanel(); 
                
-                //estudiantePanel.setLayout(new FlowLayout());
+                //le asignamos un layout, el cual será boxlayout ya que encerraremos en una "cajita"
+                //los datos que se mostrarán, de modo que no rebasen los datos en caso que algun dato contenga bastantes caracteres
+                //BoxLayout recibe dos parámetros, el panel que contendrá (el cual es el mismo que estamos definiendo)
+                //y la orientación que tendrán los labels que se ingresarán, en este caso es en el eje Y, de forma horizontal
                 estudiantePanel.setLayout(new BoxLayout(estudiantePanel, BoxLayout.Y_AXIS));
+                
+                //lo decoramos con un fondo de color
                 estudiantePanel.setBackground(Color.DARK_GRAY); 
                 
+                //definimos un borde (para que se vea un poco mejor)
+                //BorderFactory es la "extensión" que nos permite definir distintos tipos de bordes, 
+                //en este caso, creamos un MatteBorder ya que el borde será grueso
+                //y le asignamos la ubicación del borde, en este caso ya que es primer valor, el borde se pondrá arriba del panel
+                //(Arriba, abajo, derecha, izquierda), finalmente le ponemos un color al borde
                 Border borde = BorderFactory.createMatteBorder(10, 0, 0, 0, Color.ORANGE);
+                
+                //Le colocamente el borde al panel
                 estudiantePanel.setBorder(borde);
                 
+                //definimos los campos que se van a mostrar, con sus respectivos valores y trayendolos del resultSet
                  int nombre = result.getInt("IdInforme");
                 int apellido = result.getInt("IdPatrullaje");
                 String apel = result.getString("Resultados");
                 
-                
+                //creamos los JLabel, los cuales van a tener la información traída de las variables antes definidas
                 JLabel label = new JLabel("Número de informe: " + nombre );
                  JLabel label2 = new JLabel("Patrullaje: "  + apellido );
                  JLabel label3 = new JLabel("Resultados: " + apel);
                  
-                 //estudiantePanel.add(estudiantePanel2);
-                 //estudiantePanel2.setPreferredSize(new Dimension(50, 50));
-                 //estudiantePanel2.setSize(50, 50);
-                 
+                 //aquí definimos la alineación del texto
                  label.setAlignmentY(Component.CENTER_ALIGNMENT);
+                 //aquí colocamos un tipo de letra al JLabel, y le colocamos el formato y tamaño
                  Font Arial = new Font("Arial", Font.PLAIN, 14);
+                 //asignamos el tipo de letra al label
+                 
+                 //Lo mismo se realiza para todos los JLabels definidos
                  label.setFont(Arial);
                  label.setForeground(Color.WHITE);
                  label2.setAlignmentY(Component.CENTER_ALIGNMENT);
@@ -91,10 +107,12 @@ public class Paneles extends javax.swing.JFrame {
                   label3.setFont(Arial);
                   label3.setForeground(Color.WHITE);
                  
+                  //Agregamos los JLabels al panel
                 estudiantePanel.add(label);
                 estudiantePanel.add(label2);
                 estudiantePanel.add(label3);
-                //add(estudiantePanel);
+                
+                //Agregamos el panel donde se encuentran los datos al panel Contenedor
                 Contenedor.add(estudiantePanel);
                 
                 

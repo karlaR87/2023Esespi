@@ -391,19 +391,20 @@ public class mdlPolicias {
                 vstActuPolice.txtCorreo.setText(rs.getString("CorreoElectronico"));
                 vstActuPolice.txtNumero.setText(rs.getString("NumeroTel"));
                 vstActuPolice.ActutxtAreaDireccion.setText(rs.getString("DireccionDomicilio"));
-                vstActuPolice.cmbEstadoCivil.setSelectedIndex(rs.getInt("IdEstadoCivil"));
-                vstActuPolice.cmbGenero.setSelectedIndex(rs.getInt("IdGenero"));
-                vstActuPolice.cmbTipoSangre.setSelectedIndex(rs.getInt("IdTipoSangre"));
+                vstActuPolice.cmbEstadoCivil.setSelectedIndex(rs.getInt("IdEstadoCivil") - 1);
+                vstActuPolice.cmbGenero.setSelectedIndex(rs.getInt("IdGenero") - 1);
+                vstActuPolice.cmbTipoSangre.setSelectedIndex(rs.getInt("IdTipoSangre") - 1);
                 vstActuPolice.txtDUI.setText(rs.getString("DUI"));
                 vstActuPolice.jdcCalendar.setDate(rs.getDate("FechaNacimiento"));
                 vstActuPolice.txtONI.setText(rs.getString("ONI"));
-                vstActuPolice.cmbRangoUser.setSelectedIndex(rs.getInt("IdRangoTipoUsuario"));
+                vstActuPolice.cmbRangoUser.setSelectedIndex(rs.getInt("IdRangoTipoUsuario") - 1);
                 vstActuPolice.txtPlaca.setText(rs.getString("NumeroPlaca"));
             } else {          
                
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString() + IdPolicia + " error en charge datos Actualizar");
         }
     }
     

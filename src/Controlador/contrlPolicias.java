@@ -337,6 +337,8 @@ public class contrlPolicias implements ActionListener{
                                         mdlPoli.setIdRangoUsuario(returnIdRangoUserActu());
                                         mdlPoli.setIdNivelUsuario(returnIdNivelUsuarioActu());
                                          
+                                        System.out.println(returnIdNivelUsuarioActu());
+                                        
                                         if(mdlPoli.UpdatePolice())
                                         {                      
                                             show("El policía fue actualizado correctamente", 17, 1, 0);
@@ -457,6 +459,7 @@ public class contrlPolicias implements ActionListener{
                                             mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
                                             mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
                                             mdlPoli.setIdRangoUsuario(returnIdRangoUser());
+                                            mdlPoli.setIdNivelUsuario(returnIdNivelUsuario());
                                              //Despues de aceptar la info del poli, vamos con el usuario
                                                 
                                             jFrameAddUser.setVisible(true);           
@@ -568,6 +571,7 @@ public class contrlPolicias implements ActionListener{
                                     mdlPoli.setONI(jFrameAddPolice.txtNumero.getText().trim());
                                     mdlPoli.setNumeroPlaca(jFrameAddPolice.txtPlaca.getText().trim());
                                     mdlPoli.setIdRangoUsuario(returnIdRangoUser());
+                                    mdlPoli.setIdNivelUsuario(returnIdNivelUsuario());
                                      //Despues de aceptar la info del poli, vamos con el usuario
 
                                     jFrameAddUser.setVisible(true);           
@@ -868,30 +872,7 @@ public class contrlPolicias implements ActionListener{
         }
         });
     }
-    
-    public int returnIdNivelUsuarioActu()
-    {
-        if(returnIdRangoUser() == 1)
-        {
-            return 2;
-        }
-        else
-        {
-            return 4;
-        }
-    }
-    
-    public int returnIdNivelUsuario()
-    {
-        if(returnIdRangoUserActu() == 1)
-        {
-            return 2;
-        }
-        else
-        {
-            return 4;
-        }
-    }
+
     
     public int returnIdEstadoCivilActu()
     {
@@ -952,6 +933,30 @@ public class contrlPolicias implements ActionListener{
         {
             currentIdGenero = 1;
             return currentIdGenero;
+        }
+    }
+    
+     public int returnIdNivelUsuarioActu()
+    {
+        if(currentIdRangoUser == 1)
+        {
+            return 2;
+        }
+        else
+        {
+            return 4;
+        }
+    }
+    
+    public int returnIdNivelUsuario()
+    {
+        if(currentIdRangoUser == 1)
+        {
+            return 2;
+        }
+        else
+        {
+            return 4;
         }
     }
     
