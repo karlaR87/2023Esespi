@@ -29,6 +29,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setVisible(false);
         
         mdlUsuarios mdlUsuarios = new mdlUsuarios();
+        
         cntrlLogin ctLg = new cntrlLogin(this, mdlUsuarios); 
        
        
@@ -291,7 +292,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_RecuperarContraMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-         me.IdUsuarioTomar(this);
+           /*mdlUsuarios mi = new mdlUsuarios();
+           mi.setmUsu(txtUsuario.getText());
+           
+           //String t = txtUsuario.getText();
+           System.out.println("esto se va a la pantakka " + txtUsuario.getText());*/
          
     }//GEN-LAST:event_btnIngresarMouseClicked
 
