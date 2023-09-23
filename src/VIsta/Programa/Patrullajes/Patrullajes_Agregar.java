@@ -1,6 +1,7 @@
 package VIsta.Programa.Patrullajes;
 
 import fonts.Fuentes;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -9,12 +10,45 @@ import javax.swing.JButton;
  */
 public class Patrullajes_Agregar extends javax.swing.JPanel {
 
+     ImageIcon iconoOriginalAdd;
+    ImageIcon iconoOriginalAddCLARE;
+     
+    ImageIcon iconoOriginalCancel;
+    ImageIcon iconoOriginalCancelCLARE;
+     
+    ImageIcon iconoOriginalAddPerson;
+    ImageIcon iconoOriginalAddPersonCLARE;
+    
+    ImageIcon iconoOriginalAddMap;
+    ImageIcon iconoOriginalAddMapCLARE;
+    
     Fuentes tipoFuentes;
+   
     public Patrullajes_Agregar() {
         initComponents();
+        
+        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnEditPolicia.png"); 
+        iconoOriginalAddCLARE = new ImageIcon("src/VIsta/imagenes/btnEditPoliciaClare.png");
+        
+        iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnAddPolicia.png"); 
+        iconoOriginalCancelCLARE = new ImageIcon("src/VIsta/imagenes/btnAddPoliciaClare.png"); 
+        
+        iconoOriginalAddPerson = new ImageIcon("src/VIsta/imagenes/btnDeletePolicia.png"); 
+        iconoOriginalAddPersonCLARE = new ImageIcon("src/VIsta/imagenes/btnDeletePoliciaClare.png");
+        
+        iconoOriginalAddMap = new ImageIcon("src/VIsta/imagenes/btnDeletePolicia.png"); 
+        iconoOriginalAddMapCLARE = new ImageIcon("src/VIsta/imagenes/btnDeletePoliciaClare.png");
+        
         fontDesign();
     }
 
+    public void OriginialIcon()
+    {
+        btnAddPatrullaje.setIcon(iconoOriginalAdd);
+        btnCancelPatrullaje.setIcon(iconoOriginalCancel);
+        btnAddPersonal.setIcon(iconoOriginalAddPerson);
+        btnAddUbi.setIcon(iconoOriginalAddMap);
+    }
     
    private void fontDesign()
     {      
@@ -33,6 +67,7 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         btnAddPersonal = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        pnlPersonal = new javax.swing.JPanel();
         btnCancelPatrullaje = new javax.swing.JButton();
         btnAddPatrullaje = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -91,6 +126,10 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("<html> NO EXISTE <br> PERSONAL <br> ASIGNADO </html>");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 170, 130, -1));
+
+        pnlPersonal.setBackground(new java.awt.Color(70, 70, 70));
+        pnlPersonal.setLayout(new java.awt.BorderLayout());
+        add(pnlPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, 230, 240));
 
         btnCancelPatrullaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCancel21.png"))); // NOI18N
         btnCancelPatrullaje.setBorderPainted(false);
@@ -166,5 +205,6 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    public javax.swing.JPanel pnlPersonal;
     // End of variables declaration//GEN-END:variables
 }

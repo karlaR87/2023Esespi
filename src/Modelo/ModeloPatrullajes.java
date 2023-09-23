@@ -33,6 +33,33 @@ public class ModeloPatrullajes {
         this.idPatrullaje = IdPatrullaje;
     }
     
+    public ResultSet ChargePoliciaSELECTED(int IdPolicia)
+    {
+        try{
+            String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
+"SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
+"SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
+"FROM tbPolicias tbPoli\n" +
+"INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+"INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
+"INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
+"INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
+"INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
+"WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 AND tbPoli.IdPolicia = ? ";
+            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
+            chargePolice.setInt(1, IdPolicia);
+            
+            ResultSet rs = chargePolice.executeQuery();
+            
+            return rs;
+
+           
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
     public ResultSet ChargeInfoPolicialAptaParaPatrullajeWHITOUTLIKE()
     {
         try{
@@ -135,7 +162,7 @@ public class ModeloPatrullajes {
             headerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // Centra el texto del encabezado
 
             DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
-            cellRenderer.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 14)); // Aplica el estilo de fuente personalizado)); // Fuente de tamaño 16 para las filas de datos
+            cellRenderer.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 14)); // Aplica el estilo de fuente personalizado)); // Fuente de tamaÃ±o 16 para las filas de datos
             vsPatrullajes.tbDatosPatrullajes.setDefaultRenderer(Object.class, cellRenderer);
 
             // Ajustar el ancho de las columnas
