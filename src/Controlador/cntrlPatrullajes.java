@@ -10,6 +10,7 @@ import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import fonts.Fuentes;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 
@@ -31,6 +32,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.JViewport;
 import javax.swing.border.EmptyBorder;
 
@@ -231,6 +234,8 @@ public class cntrlPatrullajes implements ActionListener {
     ImageIcon Line;
     GridBagConstraints constraints;
     ImageIcon FtoPrueba;
+    ImageIcon Check = new ImageIcon("src/VIsta/imagenes/Ellipse 25.png");
+    ImageIcon NOCheck = new ImageIcon("src/VIsta/imagenes/Ellipse 9.png");
     
     ImageIcon A; ImageIcon B; ImageIcon C; ImageIcon D; ImageIcon E; ImageIcon F; ImageIcon G;
     ImageIcon H; ImageIcon I; ImageIcon J; ImageIcon K; ImageIcon L; ImageIcon M; ImageIcon N; 
@@ -252,11 +257,9 @@ public class cntrlPatrullajes implements ActionListener {
         try
         {
             mdlPatrullajes = new ModeloPatrullajes();
-            ResultSet rs = mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje();
+            ResultSet rs = mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullajeWHITOUTLIKE();
             
             List<String> listaNombres = new ArrayList<>();
-            List<String> listaApellidos = new ArrayList<>();
-            List<String> listaRango = new ArrayList<>();
             
             while(rs.next())
             {
@@ -275,8 +278,35 @@ public class cntrlPatrullajes implements ActionListener {
     {
          // Mapa para mapear letras a funciones
         Map<Character, Consumer<Void>> letraToFunction = new HashMap<>();
-        letraToFunction.put('A', (Void) -> chargeAll(A, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullajeAAA()));
-//        letraToFunction.put('B', (Void) -> chargeB());
+        letraToFunction.put('A', (Void) -> chargeAll(A, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("A%")));
+        letraToFunction.put('B', (Void) -> chargeAll(B, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("B%")));
+        letraToFunction.put('C', (Void) -> chargeAll(C, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("C%")));
+        letraToFunction.put('D', (Void) -> chargeAll(D, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("D%")));
+        letraToFunction.put('E', (Void) -> chargeAll(E, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("E%")));
+        letraToFunction.put('F', (Void) -> chargeAll(F, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("F%")));
+        letraToFunction.put('G', (Void) -> chargeAll(G, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("G%")));
+        letraToFunction.put('H', (Void) -> chargeAll(H, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("H%")));
+        letraToFunction.put('I', (Void) -> chargeAll(I, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("I%")));
+        letraToFunction.put('J', (Void) -> chargeAll(J, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("J%")));
+        letraToFunction.put('K', (Void) -> chargeAll(K, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("K%")));
+        letraToFunction.put('L', (Void) -> chargeAll(L, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("L%")));
+        letraToFunction.put('M', (Void) -> chargeAll(M, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("M%")));
+        letraToFunction.put('N', (Void) -> chargeAll(N, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("N%")));
+        letraToFunction.put('Ñ', (Void) -> chargeAll(EGNE, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("Ñ%")));
+        letraToFunction.put('O', (Void) -> chargeAll(O, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("O%")));
+        letraToFunction.put('P', (Void) -> chargeAll(P, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("P%")));
+        letraToFunction.put('Q', (Void) -> chargeAll(Q, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("Q%")));
+        letraToFunction.put('R', (Void) -> chargeAll(R, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("R%")));
+        letraToFunction.put('S', (Void) -> chargeAll(S, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("S%")));
+        letraToFunction.put('T', (Void) -> chargeAll(T, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("T%")));
+        letraToFunction.put('U', (Void) -> chargeAll(U, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("U%")));
+        letraToFunction.put('V', (Void) -> chargeAll(V, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("V%")));
+        letraToFunction.put('W', (Void) -> chargeAll(W, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("W%")));
+        letraToFunction.put('X', (Void) -> chargeAll(X, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("X%")));
+        letraToFunction.put('Y', (Void) -> chargeAll(Y, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("Y%")));
+        letraToFunction.put('Z', (Void) -> chargeAll(Z, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("Z%")));
+        
+        
         // Agregar más letras y funciones según sea necesario
 
         // Recorre la lista y ejecuta las funciones correspondientes
@@ -301,9 +331,10 @@ public class cntrlPatrullajes implements ActionListener {
         viewport.add(panelULTIMATE);
         viewport.setView(panelULTIMATE);
     }
+    Component rigidArea = Box.createRigidArea(new Dimension(0, 10));
     
     public void chargeAll(ImageIcon img, ResultSet rs)
-    {        
+    {       
         Component rigidArea20 = Box.createRigidArea(new Dimension(0, 15));
         // Crea un nuevo panel
         JPanel panel = new JPanel();
@@ -318,6 +349,7 @@ public class cntrlPatrullajes implements ActionListener {
         horizontalBox.add(Letter); // Agrega el JLabel centrado horizontalmente
         horizontalBox.add(Box.createHorizontalGlue()); // Espacio a la derecha
 
+        horizontalBox.setBorder(new EmptyBorder(0,0,10,0));
         panel.add(horizontalBox);
 
         try {
@@ -325,9 +357,9 @@ public class cntrlPatrullajes implements ActionListener {
             while (rs.next()) {
                 
                 JLabel Fto = new JLabel();
-                Fto.setIcon(FtoPrueba);
+                ImageIcon imagenIcon = new ImageIcon("src/VIsta/imagenes/FTORplc.png");
+                Fto.setIcon(imagenIcon);
                 
-                Component rigidArea = Box.createRigidArea(new Dimension(0, 10));
                 Component rigidArea2 = Box.createRigidArea(new Dimension(0, 10));
                 
                 String Nombre = rs.getString("Nombre");
@@ -337,8 +369,9 @@ public class cntrlPatrullajes implements ActionListener {
                 
                 int IdPolicia = rs.getInt("IdPolicia");
                 
-                JLabel label = new JLabel("<html>" + Nombre + " " + Apellido + "</hmtl>");
-                label.setMaximumSize(new Dimension(150, Integer.MAX_VALUE));
+                String nameComplete = "<html>" + Nombre + " " + Apellido + "</html>";
+                JLabel label = new JLabel(nameComplete);
+               label.setPreferredSize(new Dimension(50, 50));
                 
                 JLabel label2 = new JLabel(Rango);
                 JLabel line = new JLabel();
@@ -346,14 +379,15 @@ public class cntrlPatrullajes implements ActionListener {
                 // Establece el color del texto en negro
                 label.setForeground(Color.WHITE);
                 label2.setForeground(new Color(177,177,177));
-                label.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 20));
-                label2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 13));
+                label.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 16));
+                label2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 12));
 
                 //Crear CheckBox con el "valor" del idPolicia
                 JCheckBox checkBox = new JCheckBox(String.valueOf(IdPolicia), false);
-                checkBox.setForeground(Color.WHITE);
-                checkBox.setBackground(Color.RED);
-                
+                checkBox.setForeground(new Color(70, 70, 70));
+                checkBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                checkBox.setSelectedIcon(Check);
+                checkBox.setIcon(NOCheck);
                 //ActionListenerdel checkbox
                 checkBox.addActionListener(new ActionListener() {
                 @Override
@@ -363,9 +397,11 @@ public class cntrlPatrullajes implements ActionListener {
                         System.out.println("Checkbox seleccionado " + checkBox.getText());
                         addIdANDConfirmNumber(Integer.valueOf(checkBox.getText()), checkBox);
                         
+                        
                     } else {
                         System.out.println("Checkbox deseleccionado " + checkBox.getText());
                         eliminateIdA(Integer.valueOf(checkBox.getText()));
+                        
                     }
                 }
             });
@@ -374,12 +410,17 @@ public class cntrlPatrullajes implements ActionListener {
                 int bottomMargin = 0; // Márgen inferior en píxeles
                 int rightMargin = 0; // Márgen derecho en píxeles
                 EmptyBorder border = new EmptyBorder(topMargin, leftMargin, bottomMargin, rightMargin);
-                EmptyBorder margin = new EmptyBorder(topMargin, leftMargin, bottomMargin, 10);
-
+                EmptyBorder margin = new EmptyBorder(topMargin, 20, bottomMargin, 10);
+                checkBox.setBorder(new EmptyBorder(0,5,0,5));
                 
                 Box verticalBox = Box.createVerticalBox();
+                Box verticalBox2 = Box.createVerticalBox();
+                Box horizontalBox2 = Box.createHorizontalBox();
                 
                 Box horizontalMAIN = Box.createHorizontalBox();
+                
+                verticalBox2.add(horizontalMAIN);
+                verticalBox2.add(horizontalBox2);
                 horizontalMAIN.setBorder(border);
                 Fto.setBorder(margin);
                 horizontalMAIN.add(Fto);
@@ -387,11 +428,13 @@ public class cntrlPatrullajes implements ActionListener {
                 horizontalMAIN.add(checkBox);
                 verticalBox.add(label); // Agrega la etiqueta al panel
                 verticalBox.add(label2);
-                verticalBox.add(rigidArea);
-                verticalBox.add(line);
-                verticalBox.add(rigidArea2);
-                
-                panel.add(horizontalMAIN);
+                horizontalBox2.add(rigidArea);
+                horizontalBox2.add(line);         
+                horizontalBox2.add(rigidArea2);
+                horizontalBox2.setBorder(new EmptyBorder(0,76,0,10));
+                horizontalBox2.add(Box.createHorizontalGlue());
+        
+                panel.add(verticalBox2);
             }
             
             panelULTIMATE.add(panel);
@@ -450,6 +493,6 @@ public class cntrlPatrullajes implements ActionListener {
        W = new ImageIcon("src/VIsta/imagenes/LetterW.png");
        X = new ImageIcon("src/VIsta/imagenes/LetterX.png");
        Y = new ImageIcon("src/VIsta/imagenes/LetterY.png");
-       Z = new ImageIcon("src/VIsta/imagenes/LetteZ.png");
+       Z = new ImageIcon("src/VIsta/imagenes/LetterZ.png");
     }
 }

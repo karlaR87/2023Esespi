@@ -33,19 +33,19 @@ public class ModeloPatrullajes {
         this.idPatrullaje = IdPatrullaje;
     }
     
-    public ResultSet ChargeInfoPolicialAptaParaPatrullaje()
+    public ResultSet ChargeInfoPolicialAptaParaPatrullajeWHITOUTLIKE()
     {
         try{
             String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
-            "SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
-            "SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
-            "FROM tbPolicias tbPoli\n" +
-            "INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
-            "INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
-            "INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
-            "INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
-            "INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
-            "WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 ORDER BY tbPer.Nombre";
+"SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
+"SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
+"FROM tbPolicias tbPoli\n" +
+"INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+"INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
+"INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
+"INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
+"INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
+"WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 ORDER BY tbPer.Nombre ";
             PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
             
             ResultSet rs = chargePolice.executeQuery();
@@ -59,46 +59,21 @@ public class ModeloPatrullajes {
         }
     }
     
-     public ResultSet ChargeInfoPolicialAptaParaPatrullajeAAA()
+     public ResultSet ChargeInfoPolicialAptaParaPatrullaje(String Letter)
     {
         try{
             String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
-            "SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
-            "SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
-            "FROM tbPolicias tbPoli\n" +
-            "INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
-            "INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
-            "INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
-            "INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
-            "INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
-            "WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 AND tbPer.Nombre LIKE 'A%'";
+"SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
+"SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
+"FROM tbPolicias tbPoli\n" +
+"INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+"INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
+"INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
+"INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
+"INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
+"WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 AND tbPer.Nombre LIKE ?";
             PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
-            
-            ResultSet rs = chargePolice.executeQuery();
-            
-            return rs;
-
-        }catch(Exception e){
-            System.out.println(e.toString());
-            return null;
-        }
-    }
-     
-     public ResultSet ChargeInfoPolicialAptaParaPatrullajeBBB()
-    {
-        try{
-            String query = "SELECT tbPoli.IdPolicia, tbPoli.IdUsuario, tbRan.Rango,\n" +
-            "SUBSTRING(tbPer.Nombre, 1, CHARINDEX(' ', tbPer.Nombre + ' ') - 1) AS Nombre, \n" +
-            "SUBSTRING(tbPer.Apellido, 1, CHARINDEX(' ', tbPer.Apellido + ' ') - 1) AS Apellido\n" +
-            "FROM tbPolicias tbPoli\n" +
-            "INNER JOIN tbRangosTipoUsuarios tbRan ON tbRan.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
-            "INNER JOIN tbTiposPersonas_Personas tp ON tbPoli.IdTipoPersonas_Personas = tp.IdTipoPersonas_Personas\n" +
-            "INNER JOIN tbPersonas tbPer ON tbPer.IdPersona = tp.IdPersona \n" +
-            "INNER JOIN tbUsuarios us ON us.IdUsuario = tbPoli.IdUsuario\n" +
-            "INNER JOIN tbEstadoPolicia tbEP ON tbEP.IdPolicia = tbPoli.IdPolicia \n" +
-            "WHERE tbEP.Estado != 1 AND us.IdNivelUsuario = 4 AND tbPer.Nombre LIKE 'B%'";
-            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
-            
+            chargePolice.setString(1, Letter);
             ResultSet rs = chargePolice.executeQuery();
             
             return rs;
