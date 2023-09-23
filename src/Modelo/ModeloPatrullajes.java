@@ -128,7 +128,8 @@ public class ModeloPatrullajes {
             "Fecha_Hora_Fin, tbGPatru.NumeroDeGrupo\n" +
             "FROM tbPatrullajes tbPatru \n" +
             "INNER JOIN tbGrupoPatrullajes tbGPatru ON tbGPatru.IdGrupoPatrullaje = tbPatru.IdGrupoPatrullaje\n" +
-            "INNER JOIN tbMunicipios tbMuni ON tbMuni.IdMunicipio = tbPatru.IdMunicipio";
+            "INNER JOIN tbMunicipios tbMuni ON tbMuni.IdMunicipio = tbPatru.IdMunicipio \n" +
+            "WHERE tbPatru.Fecha_Hora_Fin> GETDATE();";
             
             ResultSet rs = statement.executeQuery(query);
 
