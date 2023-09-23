@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 
 public class ModeloRegistro {
     
+   
+    
     private String CorreoElectronico;
     private String numeroTelefonico;
     //registro
@@ -162,6 +164,8 @@ public class ModeloRegistro {
     public void setCorreoElectronico(String CorreoElectronico) {
         this.CorreoElectronico = CorreoElectronico;
     }
+    
+    
     
     public int readIdTipoUsuarioFromCorreo()
     {
@@ -821,19 +825,20 @@ public class ModeloRegistro {
     
     
     
-    public String IdUsuarioTomar(Login l)
+    public void IdUsuarioTomar(Usuario u)
     {
         try{   
             
               
-            String query = "select u.IdUsuario, t.IdPersona from tbPersonas t\n" +
+            String query = "select u.IdUsuario, u.Usuario, ttt.Rango, t.IdPersona ,t.Nombre, t.Apellido, t.Dui, t.FechaNacimiento, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t\n" +
             "inner join tbEstadosCivil e on e.IdEstadoCivil = t.IdEstadoCivil\n" +
             "inner join tbTiposSangre ts on ts.IdTipoSangre = t.IdTipoSangre\n" +
             "inner join tbGeneros g on g.IdGenero = t.IdGenero\n" +
             "inner join tbTiposPersonas_Personas ti on ti.IdPersona = t.IdPersona\n" +
             "inner join tbPolicias op on op.IdTipoPersonas_Personas = ti.IdTipoPersonas_Personas\n" +
+            "inner join tbRangosTipoUsuarios ttt on ttt.IdRangoTipoUsuario = op.IdRangoTipoUsuario\n" +
             "inner join tbUsuarios u on u.IdUsuario = op.IdUsuario\n" +
-            "where u.Usuario = '" + l.txtUsuario.getText() + "'";  
+            "where u.Usuario = 'ivansote'";  
 
               
             PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
@@ -842,52 +847,37 @@ public class ModeloRegistro {
 
             // Verificar si hay alguna fila en el ResultSet
             if (rs.next()) {
-                //String retorno = rs.getString("IdUsuario");
-                //String retorno1 = rs.getString("IdPersona");
+                String retorno = rs.getString("Usuario");
+                String retorno1 = rs.getString("Rango");
+                String retorno2 = rs.getString("Dui");
+                String retorno3 = rs.getString("FechaNacimiento");
+                String retorno4 = rs.getString("TipoSangre");
+                String retorno5 = rs.getString("EstadoCivil");
+                String retorno6 = rs.getString("Genero");
                 
-                
+                u.lblUser.setText(retorno);
+                 u.lblRango.setText(retorno1);
+                u.txtDui.setText(retorno2);
+                u.txtFechaNacimiento.setText(retorno3);
+                u.txtTipoS.setText(retorno4);
+                u.txtEstadoC.setText(retorno5);
+                u.txtGenero.setText(retorno6);
             } 
             
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, e.toString());
            
         }
-        return null;
+       
     }
 
     
-    public String UsuarioTomar(Login l)
-    {
-        Usuario u = new Usuario();
-        try{   
-            
-              
-            String query = "SELECT Usuario FROM tbUsuarios where Usuario = '" + l.txtUsuario.getText() + "'";  
-
-              
-            PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
-            
-             ResultSet rs = readIdUltimaPersona.executeQuery();
-
-            // Verificar si hay alguna fila en el ResultSet
-            if (rs.next()) {
-                String us = rs.getString("Usuario");
-                
-                u.lblUser.setText(us);
-            } 
-            
-            
-            
-        } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, e.toString());
-            
-        }
-        return null;
     
-    }
     
-    public String IdUsuarioTomar1(Login l)
+    
+    /*public void IdUsuarioTomar1(Usuario u)
     {
+        Login l = new Login();
         try{   
             
               
@@ -907,15 +897,17 @@ public class ModeloRegistro {
 
             // Verificar si hay alguna fila en el ResultSet
             if (rs.next()) {
-                return rs.getString("Nombre");
+                String re =  rs.getString("Nombre");
+                u.lblUser.setText(re);
+                
             } else {          
-                return null;
+                
             }
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, e.toString());
-            return null;
-        }
-    }
+            
+        }*/
+    
 
 }
 
