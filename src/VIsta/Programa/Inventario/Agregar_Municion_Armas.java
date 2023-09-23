@@ -43,6 +43,10 @@ public class Agregar_Municion_Armas extends javax.swing.JFrame  {
      
     public Agregar_Municion_Armas() {
         initComponents();
+        
+        //Posicionar la ventana al centro
+        this.setLocationRelativeTo(null);
+        
         modeloCalibre = new ModeloCalibre();
 
         modeloCalibre.mostrarParaSeleccion(this);
