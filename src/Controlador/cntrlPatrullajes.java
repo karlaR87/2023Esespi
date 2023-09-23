@@ -113,11 +113,6 @@ public class cntrlPatrullajes implements ActionListener {
           
            show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
            close1();
-           ListaIdPolicias.clear();
-           addPatrullajes.jLabel4.setVisible(true);
-            addPatrullajes.pnlPersonal.removeAll();
-            addPatrullajes.pnlPersonal.revalidate();
-            addPatrullajes.pnlPersonal.repaint();
         }
 
         //------------------------------------------------------Boton que ACEPTA al Personal
@@ -125,97 +120,13 @@ public class cntrlPatrullajes implements ActionListener {
           //Agregarlos
           if(ListaIdPolicias.size() != 3)
           {
-            show("Debe seleccionar 3 policí­as", 17, 0, 0);
+            show("Debe seleccionar 3 policías", 17, 0, 0);
             close3();
           }
           else
           {
-            addPatrullajes.pnlPersonal.removeAll();
-            addPatrullajes.pnlPersonal.revalidate();
-            addPatrullajes.pnlPersonal.repaint();
-            panelULTIMATE.removeAll();
-            // Luego, puedes llamar al mÃ©todo "revalidate()" para actualizar la interfaz de usuario
-            panelULTIMATE.revalidate();
-            panelULTIMATE.repaint();
-            
-            JframePrincipal.jLabel3.setVisible(false);
-            JframePrincipal.setEnabled(true);
-            addPersonal.setVisible(false);
-            addPersonal.setEnabled(true);
-            addPersonal.jLabel3.setVisible(false);
-            
-            addPatrullajes.jLabel4.setVisible(false);
-            
-             mdlPatrullajes = new ModeloPatrullajes();
-             
-             for(int Id: ListaIdPolicias)
-             {
-                try {
-                    ResultSet rs = mdlPatrullajes.ChargePoliciaSELECTED(Id);
-                    addPatrullajes.pnlPersonal.setLayout(new BoxLayout(addPatrullajes.pnlPersonal, BoxLayout.Y_AXIS));
-                    while (rs.next()) {
-                        
-                        JLabel Fto = new JLabel();
-                        ImageIcon imagenIcon = new ImageIcon("src/VIsta/imagenes/FTORplc.png");
-                        Fto.setIcon(imagenIcon);
-                        
-                        Component rigidArea2 = Box.createRigidArea(new Dimension(0, 10));
-                        
-                        String Nombre = rs.getString("Nombre");
-                        String Apellido = rs.getString("Apellido");
-                        
-                        String Rango = rs.getString("Rango");
-                        
-                        int IdPolicia = rs.getInt("IdPolicia");
-                        
-                        String nameComplete = "<html>" + Nombre + " " + Apellido + "</html>";
-                        JLabel label = new JLabel(nameComplete);
-                        label.setPreferredSize(new Dimension(50, 50));
-                        
-                        JLabel label2 = new JLabel(Rango);
-                        JLabel line = new JLabel();
-                        line.setIcon(Line);
-                        // Establece el color del texto en negro
-                        label.setForeground(Color.WHITE);
-                        label2.setForeground(new Color(177,177,177));
-                        label.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 16));
-                        label2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 12));
-                        
-                        int topMargin = 0; // MÃ¡rgen superior en pÃ­xeles
-                        int leftMargin = 0; // MÃ¡rgen izquierdo en pÃ­xeles
-                        int bottomMargin = 0; // MÃ¡rgen inferior en pÃ­xeles
-                        int rightMargin = 0; // MÃ¡rgen derecho en pÃ­xeles
-                        EmptyBorder border = new EmptyBorder(topMargin, leftMargin, bottomMargin, rightMargin);
-                        EmptyBorder margin = new EmptyBorder(topMargin, 5, bottomMargin, 10);
-                        
-                        Box verticalBox = Box.createVerticalBox();
-                        Box verticalBox2 = Box.createVerticalBox();
-                        Box horizontalBox2 = Box.createHorizontalBox();
-
-                        Box horizontalMAIN = Box.createHorizontalBox();
-
-                        verticalBox2.add(horizontalMAIN);
-                        verticalBox2.add(horizontalBox2);
-                        horizontalMAIN.setBorder(border);
-                        Fto.setBorder(margin);
-                        horizontalMAIN.add(Fto);
-                        horizontalMAIN.add(verticalBox);
-                        verticalBox.add(label); // Agrega la etiqueta al panel
-                        verticalBox.add(label2);
-                        horizontalBox2.add(rigidArea);
-                        horizontalBox2.add(line);         
-                        horizontalBox2.add(rigidArea2);
-                        horizontalBox2.setBorder(new EmptyBorder(0,65,0,10));
-                        horizontalBox2.add(Box.createHorizontalGlue());
-        
-                        addPatrullajes.pnlPersonal.add(verticalBox2);
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(cntrlPatrullajes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-             }
-               
+            show("Se asignará como jefe de grupo al mayor rango u ONI", 14, 0, 0);
+            close4();
           }
     
         }
@@ -300,7 +211,13 @@ public class cntrlPatrullajes implements ActionListener {
         //Agregar evento click
         Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            Jo.setVisible(false);         
+            Jo.setVisible(false);     
+            
+            addPatrullajes.jLabel4.setVisible(true);
+            addPatrullajes.pnlPersonal.removeAll();
+            addPatrullajes.pnlPersonal.revalidate();
+            addPatrullajes.pnlPersonal.repaint();
+            
             ListaIdPolicias.clear();
             JframePrincipal.setEnabled(true);
             JframePrincipal.jLabel3.setVisible(false);
@@ -408,11 +325,8 @@ public class cntrlPatrullajes implements ActionListener {
         letraToFunction.put('X', (Void) -> chargeAll(X, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("X%")));
         letraToFunction.put('Y', (Void) -> chargeAll(Y, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("Y%")));
         letraToFunction.put('Z', (Void) -> chargeAll(Z, mdlPatrullajes.ChargeInfoPolicialAptaParaPatrullaje("Z%")));
-        
-        
-        // Agregar mÃ¡s letras y funciones segÃºn sea necesario
 
-        // Recorre la lista y ejecuta las funciones correspondientes
+        // Recorre la lista y ejecuta las funciones 
         for (String nombre : listaNombres) {
             char primeraLetra = nombre.charAt(0);
             if (letraToFunction.containsKey(primeraLetra)) {
@@ -517,7 +431,6 @@ public class cntrlPatrullajes implements ActionListener {
                     }
                 }
             });
-                System.out.println(ListaIdPolicias);
                 int topMargin = 0; // MÃ¡rgen superior en pÃ­xeles
                 int leftMargin = 0; // MÃ¡rgen izquierdo en pÃ­xeles
                 int bottomMargin = 0; // MÃ¡rgen inferior en pÃ­xeles
@@ -563,7 +476,7 @@ public class cntrlPatrullajes implements ActionListener {
         if(ListaIdPolicias.size() == 3)
         {
             checkBox.setSelected(false);
-            show("No se pueden seleccionar más de 3 policias", 16, 0, 0);
+            show("No se puede seleccionar más de 3 policias", 16, 0, 0);
             close3();
             System.out.println(ListaIdPolicias);
         }
@@ -577,7 +490,103 @@ public class cntrlPatrullajes implements ActionListener {
     {
         ListaIdPolicias.remove(Integer.valueOf(IdPolicia));
     }
+  
+    public void close4()
+    {   
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);      
+            
+            addPatrullajes.pnlPersonal.removeAll();
+            addPatrullajes.pnlPersonal.revalidate();
+            addPatrullajes.pnlPersonal.repaint();
+            panelULTIMATE.removeAll();
+            // Luego, puedes llamar al mÃ©todo "revalidate()" para actualizar la interfaz de usuario
+            panelULTIMATE.revalidate();
+            panelULTIMATE.repaint();
+            
+            JframePrincipal.jLabel3.setVisible(false);
+            JframePrincipal.setEnabled(true);
+            addPersonal.setVisible(false);
+            addPersonal.setEnabled(true);
+            addPersonal.jLabel3.setVisible(false);
+            
+            addPatrullajes.jLabel4.setVisible(false);
 
+            
+             mdlPatrullajes = new ModeloPatrullajes();
+             
+             for(int Id: ListaIdPolicias)
+             {
+                try {
+                    ResultSet rs = mdlPatrullajes.ChargePoliciaSELECTED(Id);
+                    addPatrullajes.pnlPersonal.setLayout(new BoxLayout(addPatrullajes.pnlPersonal, BoxLayout.Y_AXIS));
+                    while (rs.next()) {
+                        
+                        JLabel Fto = new JLabel();
+                        ImageIcon imagenIcon = new ImageIcon("src/VIsta/imagenes/FTORplc.png");
+                        Fto.setIcon(imagenIcon);
+                        
+                        Component rigidArea2 = Box.createRigidArea(new Dimension(0, 10));
+                        
+                        String Nombre = rs.getString("Nombre");
+                        String Apellido = rs.getString("Apellido");
+                        
+                        String Rango = rs.getString("Rango");
+                        
+                        int IdPolicia = rs.getInt("IdPolicia");
+                        
+                        String nameComplete = "<html>" + Nombre + " " + Apellido + "</html>";
+                        JLabel label = new JLabel(nameComplete);
+                        label.setPreferredSize(new Dimension(50, 50));
+                        
+                        JLabel label2 = new JLabel(Rango);
+                        JLabel line = new JLabel();
+                        line.setIcon(Line);
+                        // Establece el color del texto en negro
+                        label.setForeground(Color.WHITE);
+                        label2.setForeground(new Color(177,177,177));
+                        label.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 16));
+                        label2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 12));
+                        
+                        int topMargin = 0; // MÃ¡rgen superior en pÃ­xeles
+                        int leftMargin = 0; // MÃ¡rgen izquierdo en pÃ­xeles
+                        int bottomMargin = 0; // MÃ¡rgen inferior en pÃ­xeles
+                        int rightMargin = 0; // MÃ¡rgen derecho en pÃ­xeles
+                        EmptyBorder border = new EmptyBorder(topMargin, leftMargin, bottomMargin, rightMargin);
+                        EmptyBorder margin = new EmptyBorder(topMargin, 5, bottomMargin, 10);
+                        
+                        Box verticalBox = Box.createVerticalBox();
+                        Box verticalBox2 = Box.createVerticalBox();
+                        Box horizontalBox2 = Box.createHorizontalBox();
+
+                        Box horizontalMAIN = Box.createHorizontalBox();
+
+                        verticalBox2.add(horizontalMAIN);
+                        verticalBox2.add(horizontalBox2);
+                        horizontalMAIN.setBorder(border);
+                        Fto.setBorder(margin);
+                        horizontalMAIN.add(Fto);
+                        horizontalMAIN.add(verticalBox);
+                        verticalBox.add(label); // Agrega la etiqueta al panel
+                        verticalBox.add(label2);
+                        horizontalBox2.add(rigidArea);
+                        horizontalBox2.add(line);         
+                        horizontalBox2.add(rigidArea2);
+                        horizontalBox2.setBorder(new EmptyBorder(0,60,0,10));
+                        horizontalBox2.add(Box.createHorizontalGlue());
+        
+                        addPatrullajes.pnlPersonal.add(verticalBox2);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(cntrlPatrullajes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+             }
+        }
+        });
+    }
+    
     public void chargeImg()
     {
        A = new ImageIcon("src/VIsta/imagenes/LetterA.png");

@@ -10,7 +10,7 @@ import javax.swing.JButton;
  */
 public class Patrullajes_Agregar extends javax.swing.JPanel {
 
-     ImageIcon iconoOriginalAdd;
+    ImageIcon iconoOriginalAdd;
     ImageIcon iconoOriginalAddCLARE;
      
     ImageIcon iconoOriginalCancel;
@@ -22,32 +22,40 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
     ImageIcon iconoOriginalAddMap;
     ImageIcon iconoOriginalAddMapCLARE;
     
+    ImageIcon iconoOriginalAddActPatru;
+    ImageIcon iconoOriginalAddActPatruCLARE;
+    
+    
     Fuentes tipoFuentes;
    
     public Patrullajes_Agregar() {
         initComponents();
         
-        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnEditPolicia.png"); 
-        iconoOriginalAddCLARE = new ImageIcon("src/VIsta/imagenes/btnEditPoliciaClare.png");
+        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAdd.png"); 
+        iconoOriginalAddCLARE = new ImageIcon("src/VIsta/imagenes/btnAddCLARE.png");
         
-        iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnAddPolicia.png"); 
-        iconoOriginalCancelCLARE = new ImageIcon("src/VIsta/imagenes/btnAddPoliciaClare.png"); 
+        iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnCancel21.png"); 
+        iconoOriginalCancelCLARE = new ImageIcon("src/VIsta/imagenes/btnCancel21CLARE.png"); 
         
-        iconoOriginalAddPerson = new ImageIcon("src/VIsta/imagenes/btnDeletePolicia.png"); 
-        iconoOriginalAddPersonCLARE = new ImageIcon("src/VIsta/imagenes/btnDeletePoliciaClare.png");
+        iconoOriginalAddPerson = new ImageIcon("src/VIsta/imagenes/agregar 16.png"); 
+        iconoOriginalAddPersonCLARE = new ImageIcon("src/VIsta/imagenes/agregar 16CLARE.png");
         
-        iconoOriginalAddMap = new ImageIcon("src/VIsta/imagenes/btnDeletePolicia.png"); 
-        iconoOriginalAddMapCLARE = new ImageIcon("src/VIsta/imagenes/btnDeletePoliciaClare.png");
+        iconoOriginalAddMap = new ImageIcon("src/VIsta/imagenes/btnEditMap.png"); 
+        iconoOriginalAddMapCLARE = new ImageIcon("src/VIsta/imagenes/btnEditMapCLARE.png");
+        
+        iconoOriginalAddActPatru = new ImageIcon("src/VIsta/imagenes/btnAddActPatru.png"); 
+        iconoOriginalAddActPatruCLARE = new ImageIcon("src/VIsta/imagenes/btnAddActPatruCLARE.png");
         
         fontDesign();
     }
 
-    public void OriginialIcon()
+    public void OriginalIcon()
     {
         btnAddPatrullaje.setIcon(iconoOriginalAdd);
         btnCancelPatrullaje.setIcon(iconoOriginalCancel);
         btnAddPersonal.setIcon(iconoOriginalAddPerson);
         btnAddUbi.setIcon(iconoOriginalAddMap);
+        btnAddActPatru.setIcon(iconoOriginalAddActPatru);
     }
     
    private void fontDesign()
@@ -66,7 +74,9 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnAddPersonal = new javax.swing.JButton();
+        lblMAPImage = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnAddActPatru = new javax.swing.JButton();
         pnlPersonal = new javax.swing.JPanel();
         btnCancelPatrullaje = new javax.swing.JButton();
         btnAddPatrullaje = new javax.swing.JButton();
@@ -87,6 +97,12 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         btnAddUbi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddUbiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddUbiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAddUbiMouseExited(evt);
             }
         });
         add(btnAddUbi, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 215, 40, -1));
@@ -119,17 +135,45 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddPersonalMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddPersonalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAddPersonalMouseExited(evt);
+            }
         });
         add(btnAddPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(966, 15, 30, 31));
+
+        lblMAPImage.setBackground(new java.awt.Color(70, 70, 70));
+        lblMAPImage.setForeground(new java.awt.Color(70, 70, 70));
+        lblMAPImage.setText("jLabel12");
+        add(lblMAPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 400, 200));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("<html> NO EXISTE <br> PERSONAL <br> ASIGNADO </html>");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 170, 130, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 145, 130, -1));
+
+        btnAddActPatru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddActPatru.png"))); // NOI18N
+        btnAddActPatru.setBorderPainted(false);
+        btnAddActPatru.setContentAreaFilled(false);
+        btnAddActPatru.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddActPatru.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddActPatruMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddActPatruMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAddActPatruMouseExited(evt);
+            }
+        });
+        add(btnAddActPatru, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, 250, -1));
 
         pnlPersonal.setBackground(new java.awt.Color(70, 70, 70));
         pnlPersonal.setLayout(new java.awt.BorderLayout());
-        add(pnlPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, 230, 240));
+        add(pnlPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 230, 200));
 
         btnCancelPatrullaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCancel21.png"))); // NOI18N
         btnCancelPatrullaje.setBorderPainted(false);
@@ -138,6 +182,12 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         btnCancelPatrullaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelPatrullajeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelPatrullajeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelPatrullajeMouseExited(evt);
             }
         });
         add(btnCancelPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 518, 250, -1));
@@ -150,11 +200,17 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddPatrullajeMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddPatrullajeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAddPatrullajeMouseExited(evt);
+            }
         });
-        add(btnAddPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 434, 250, -1));
+        add(btnAddPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(762, 436, 250, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddShadow.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 434, -1, 80));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(762, 436, -1, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCancel21Shadow.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 518, -1, 80));
@@ -188,8 +244,58 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddUbiMouseClicked
 
+    private void btnAddPersonalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPersonalMouseEntered
+        OriginalIcon();
+        btnAddPersonal.setIcon(iconoOriginalAddPersonCLARE);
+    }//GEN-LAST:event_btnAddPersonalMouseEntered
+
+    private void btnAddPatrullajeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPatrullajeMouseEntered
+        OriginalIcon();
+        btnAddPatrullaje.setIcon(iconoOriginalAddCLARE);
+    }//GEN-LAST:event_btnAddPatrullajeMouseEntered
+
+    private void btnCancelPatrullajeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelPatrullajeMouseEntered
+        OriginalIcon();
+        btnCancelPatrullaje.setIcon(iconoOriginalCancelCLARE);
+    }//GEN-LAST:event_btnCancelPatrullajeMouseEntered
+
+    private void btnAddUbiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUbiMouseEntered
+      OriginalIcon();
+      btnAddUbi.setIcon(iconoOriginalAddMapCLARE);
+    }//GEN-LAST:event_btnAddUbiMouseEntered
+
+    private void btnAddPersonalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPersonalMouseExited
+        OriginalIcon();
+    }//GEN-LAST:event_btnAddPersonalMouseExited
+
+    private void btnAddPatrullajeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPatrullajeMouseExited
+        OriginalIcon();
+    }//GEN-LAST:event_btnAddPatrullajeMouseExited
+
+    private void btnCancelPatrullajeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelPatrullajeMouseExited
+        OriginalIcon();
+    }//GEN-LAST:event_btnCancelPatrullajeMouseExited
+
+    private void btnAddUbiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUbiMouseExited
+        OriginalIcon();
+    }//GEN-LAST:event_btnAddUbiMouseExited
+
+    private void btnAddActPatruMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddActPatruMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddActPatruMouseClicked
+
+    private void btnAddActPatruMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddActPatruMouseEntered
+        OriginalIcon();
+        btnAddActPatru.setIcon(iconoOriginalAddActPatruCLARE);
+    }//GEN-LAST:event_btnAddActPatruMouseEntered
+
+    private void btnAddActPatruMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddActPatruMouseExited
+        OriginalIcon();
+    }//GEN-LAST:event_btnAddActPatruMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAddActPatru;
     public javax.swing.JButton btnAddPatrullaje;
     public javax.swing.JButton btnAddPersonal;
     public javax.swing.JButton btnAddUbi;
@@ -205,6 +311,7 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblMAPImage;
     public javax.swing.JPanel pnlPersonal;
     // End of variables declaration//GEN-END:variables
 }
