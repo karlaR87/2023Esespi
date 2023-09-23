@@ -167,7 +167,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         lbl5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         lbl5.setForeground(new java.awt.Color(242, 242, 242));
-        lbl5.setText("Apellidios");
+        lbl5.setText("Apellidos");
         ContenedorP.add(lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
 
         lbl6.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
@@ -187,12 +187,12 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         lbl9.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         lbl9.setForeground(new java.awt.Color(242, 242, 242));
-        lbl9.setText("Número de Telefono ");
+        lbl9.setText("Número de Teléfono ");
         ContenedorP.add(lbl9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
         lbl10.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         lbl10.setForeground(new java.awt.Color(242, 242, 242));
-        lbl10.setText("Correo Electronico");
+        lbl10.setText("Correo Electrónico");
         ContenedorP.add(lbl10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
         lbl11.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
@@ -217,7 +217,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         lbl15.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         lbl15.setForeground(new java.awt.Color(242, 242, 242));
-        lbl15.setText("Genero ");
+        lbl15.setText("Género ");
         ContenedorP.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 210, 30));
 
         txtNombres.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
