@@ -8,6 +8,7 @@ public class mdlUsuarios {
     private String Usuario;
     private String Contrasena;
     private int IdNivelUsuario;
+    private String mUsu;
 
     public int getIdUsuario() {
         return IdUsuario;
@@ -40,6 +41,14 @@ public class mdlUsuarios {
 
     public void setIdNivelUsuario(int IdNivelUsuario) {
         this.IdNivelUsuario = IdNivelUsuario;
+    }
+
+    public String getmUsu() {
+        return mUsu;
+    }
+
+    public void setmUsu(String mUsu) {
+        this.mUsu = mUsu;
     }
     
     public int readIdNivelUsuario()
