@@ -5,6 +5,7 @@ import Modelo.mdlPolicias;
 import VIsta.JoptionReplacemnt;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
+import VIsta.Programa.Patrullajes.Patrullajes_AddUbicacion;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import fonts.Fuentes;
@@ -47,13 +48,15 @@ public class cntrlPatrullajes implements ActionListener {
     private Patrullajes_Inicio vstPatrullajes;
     private Patrullajes_Agregar addPatrullajes;
     private Patrullajes_AddPersonal addPersonal;
+    private Patrullajes_AddUbicacion addUbicacion;
 
-    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal) {
+    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal, Patrullajes_AddUbicacion addUbicacion) {
         this.modelPatrullajes = modelPatrullajes;
         this.JframePrincipal = JframePrincipal;
         this.vstPatrullajes = patrullajesHome;
         this.addPatrullajes = addPatrullajes;
         this.addPersonal = addPersonal;
+        this.addUbicacion = addUbicacion;
         
         this.JframePrincipal.btnPatrullajes.addActionListener(this);
         this.JframePrincipal.btniconPatrullajes.addActionListener(this);
@@ -64,6 +67,8 @@ public class cntrlPatrullajes implements ActionListener {
         this.addPatrullajes.btnAddPatrullaje.addActionListener(this);
         //Cancel Patrullje 
         this.addPatrullajes.btnCancelPatrullaje.addActionListener(this);
+        //Add Ubicacion
+        this.addPatrullajes.btnAddUbi.addActionListener(this);
         
         //Acept Personal
         this.addPersonal.btnAcept.addActionListener(this);
@@ -94,10 +99,29 @@ public class cntrlPatrullajes implements ActionListener {
       {
           JframePrincipal.showAddPatrullajePanel();         
       }
-       
-       
        //--------------------------------AGREGAR PATRULLAJE BOTONOES-------------------------------------------------
        
+       //------------------------------------------------------------Boton que AGREGA el patrullaje
+        if (e.getSource() == addPatrullajes.btnAddPatrullaje) {
+        
+        }
+       
+       //-------------------------------------------------------Boton que CANCELA la "Agregacion" del patrullaje
+       if (e.getSource() == addPatrullajes.btnCancelPatrullaje) {
+//           
+         show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
+         close2();
+       }
+       //-----------------------------------------------------Boton para agrear la ubicacion(MAPA)
+        if (e.getSource() == addPatrullajes.btnAddUbi) 
+        {
+            JframePrincipal.setEnabled(false);
+            JframePrincipal.jLabel3.setVisible(true);
+            
+        
+        }
+       
+
        //------------------------------------------------------Boton que MUESTRA la pantalla para AGREGAR al personal
         if (e.getSource() == addPatrullajes.btnAddPersonal) {
             JframePrincipal.jLabel3.setVisible(true);
@@ -130,19 +154,6 @@ public class cntrlPatrullajes implements ActionListener {
           }
     
         }
-       
-       //------------------------------------------------------------Boton que AGREGA el patrullaje
-        if (e.getSource() == addPatrullajes.btnAddPatrullaje) {
-        
-        }
-       
-       //-------------------------------------------------------Boton que CANCELA la "Agregacion" del patrullaje
-       if (e.getSource() == addPatrullajes.btnCancelPatrullaje) {
-//           
-         show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
-         close2();
-       }
-       
     }
    
     //-------------METODOS SHOW JOPTION-------------
@@ -512,7 +523,6 @@ public class cntrlPatrullajes implements ActionListener {
             addPersonal.jLabel3.setVisible(false);
             
             addPatrullajes.jLabel4.setVisible(false);
-
             
              mdlPatrullajes = new ModeloPatrullajes();
              
