@@ -34,8 +34,8 @@ public class VistaReportePatrullajeConParametos extends javax.swing.JFrame {
         try {
             
             Map <String, Object> parametro = new HashMap<>(); //almacena los paramteros
-            parametro.put("FechaInicioPat", txtFechaIn.getText());
-            parametro.put("FechaFinPat", txtfechaFin.getText());
+            parametro.put("FechaInicio", txtFechaIn.getText());
+            parametro.put("FechaFin", txtfechaFin.getText());
             
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReportePatrullajeConParametros.jasper"));
             
