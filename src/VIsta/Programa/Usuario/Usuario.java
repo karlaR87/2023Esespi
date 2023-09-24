@@ -40,8 +40,7 @@ public class Usuario extends javax.swing.JPanel {
         PanelsShowInit();
 
         m.IdUsuarioTomar(this);
-        
-        System.out.println();
+
     }
 
        
@@ -61,7 +60,7 @@ public class Usuario extends javax.swing.JPanel {
     
                
     
-                String nombreUser = m.getNombre();
+                /*String nombreUser = m.getNombre();
                 String Apellidos = m.getApellidos();
                 Date Fecha_Nacimiento = (Date) m.getFecha();
                 
@@ -74,7 +73,7 @@ public class Usuario extends javax.swing.JPanel {
                 String Telefono = m.getNombre();
                 String EstadoCivil = m.getNombre();
                 String TipodeSangre = m.getNombre();
-                String Genero = m.getNombre();
+                String Genero = m.getNombre();*/
                 
                /* String nombreUser = result.getString("Nombre");
                 setNombre(nombreUser);
@@ -142,10 +141,23 @@ public class Usuario extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
         lblRango = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnEdit = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtCorreoM = new javax.swing.JTextField();
+        txtMostrarTel = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        btnOcultar = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         pnlContenedor.setBackground(new java.awt.Color(51, 51, 51));
         pnlContenedor.setLayout(new java.awt.CardLayout());
@@ -160,7 +172,7 @@ public class Usuario extends javax.swing.JPanel {
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, -1));
 
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/pedroPascal.png"))); // NOI18N
-        add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         txtGenero.setBackground(new java.awt.Color(51, 51, 51));
         txtGenero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -172,7 +184,7 @@ public class Usuario extends javax.swing.JPanel {
                 txtGeneroMouseEntered(evt);
             }
         });
-        add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 370, 30));
+        add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 250, 30));
 
         txtDui.setBackground(new java.awt.Color(51, 51, 51));
         txtDui.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -190,7 +202,7 @@ public class Usuario extends javax.swing.JPanel {
                 txtDuiActionPerformed(evt);
             }
         });
-        add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 410, 30));
+        add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 290, 30));
 
         txtTipoS.setBackground(new java.awt.Color(51, 51, 51));
         txtTipoS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -202,7 +214,7 @@ public class Usuario extends javax.swing.JPanel {
                 txtTipoSMouseEntered(evt);
             }
         });
-        add(txtTipoS, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 310, 30));
+        add(txtTipoS, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 190, 30));
 
         txtFechaNacimiento.setBackground(new java.awt.Color(51, 51, 51));
         txtFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -219,7 +231,7 @@ public class Usuario extends javax.swing.JPanel {
                 txtFechaNacimientoActionPerformed(evt);
             }
         });
-        add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 340, 30));
+        add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 220, 30));
 
         txtEstadoC.setBackground(new java.awt.Color(51, 51, 51));
         txtEstadoC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -231,7 +243,7 @@ public class Usuario extends javax.swing.JPanel {
                 txtEstadoCMouseEntered(evt);
             }
         });
-        add(txtEstadoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 340, 30));
+        add(txtEstadoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 220, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,16 +274,13 @@ public class Usuario extends javax.swing.JPanel {
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUser.setText("USUARIO");
-        add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 290, 30));
+        add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 290, 30));
 
         lblRango.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblRango.setForeground(new java.awt.Color(255, 255, 255));
         lblRango.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRango.setText("RANGO");
-        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 280, 30));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 20911 (1).png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 280, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,8 +296,94 @@ public class Usuario extends javax.swing.JPanel {
                 btnEditMousePressed(evt);
             }
         });
-        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, 60));
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 540, -1, 60));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 202.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
+
+        txtCorreoM.setBackground(new java.awt.Color(51, 51, 51));
+        txtCorreoM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtCorreoM.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreoM.setEnabled(false);
+        txtCorreoM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCorreoMMouseEntered(evt);
+            }
+        });
+        add(txtCorreoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 180, 30));
+
+        txtMostrarTel.setBackground(new java.awt.Color(51, 51, 51));
+        txtMostrarTel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMostrarTel.setForeground(new java.awt.Color(255, 255, 255));
+        txtMostrarTel.setEnabled(false);
+        txtMostrarTel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtMostrarTelMouseEntered(evt);
+            }
+        });
+        add(txtMostrarTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 180, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 185.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 260, 240));
+
+        btnOcultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 186.png"))); // NOI18N
+        btnOcultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOcultarMouseClicked(evt);
+            }
+        });
+        add(btnOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, -1, -1));
+
+        jTable2.setBackground(new java.awt.Color(0, 0, 0));
+        jTable2.setForeground(new java.awt.Color(255, 255, 255));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.setEnabled(false);
+        jScrollPane2.setViewportView(jTable2);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 200, 140));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 187.png"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 230, -1));
+
+        jTable1.setBackground(new java.awt.Color(0, 0, 0));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, 130));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 189.png"))); // NOI18N
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 560, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 21013.png"))); // NOI18N
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 560, 10));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 21014.png"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 0, -1, 270));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 21014.png"))); // NOI18N
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 0, -1, 240));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuiActionPerformed
@@ -360,26 +455,62 @@ public class Usuario extends javax.swing.JPanel {
             txtGenero.setEnabled(true);
     }//GEN-LAST:event_txtGeneroMouseEntered
 
+    private void btnOcultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOcultarMouseClicked
+        if(butEstado)
+        {
+               txtDui.setEnabled(false);
+            txtFechaNacimiento.setEnabled(false);
+            txtTipoS.setEnabled(false);
+            txtEstadoC.setEnabled(false);
+            txtGenero.setEnabled(false);
+            txtCorreoM.setEnabled(false);
+        txtMostrarTel.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnOcultarMouseClicked
+
+    private void txtCorreoMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCorreoMMouseEntered
+        txtCorreoM.setEnabled(true);
+        txtMostrarTel.setEnabled(true);
+    }//GEN-LAST:event_txtCorreoMMouseEntered
+
+    private void txtMostrarTelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMostrarTelMouseEntered
+       txtCorreoM.setEnabled(true);
+        txtMostrarTel.setEnabled(true);
+    }//GEN-LAST:event_txtMostrarTelMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnEdit;
+    private javax.swing.JLabel btnOcultar;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblFoto;
     public javax.swing.JLabel lblRango;
     public javax.swing.JLabel lblUser;
     private javax.swing.JPanel pnlContenedor;
+    private javax.swing.JTextField txtCorreoM;
     public javax.swing.JTextField txtDui;
     public javax.swing.JTextField txtEstadoC;
     public javax.swing.JTextField txtFechaNacimiento;
     public javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtMostrarTel;
     public javax.swing.JTextField txtTipoS;
     // End of variables declaration//GEN-END:variables
 }

@@ -171,8 +171,7 @@ public class mdl {
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.setColumnIdentifiers(new Object []{"IdPolicia","ONI", "NumeroPlaca", "Rango", 
-            "NivelUsuario", "IdentificadorPersona", "TipoPersona", "Nombre", "NumeroDeGrupo"
-        , "ExtensionKM", "Fecha_Hora_Inicio", "Fecha_Hora_Fin"});
+             "NumeroDeGrupo"});
 
 
 
@@ -180,8 +179,8 @@ public class mdl {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "select tbp.IdPolicia, tbp.ONI, tbp.NumeroPlaca, rp.Rango, nivu.NivelUsuario, tpp.IdTipoPersonas_Personas as IdentificadorPersona, tppr.TipoPersona ,CONCAT(Tp.Nombre, ' ', Tp.Apellido) as Nombre,\n" +
-"gp.NumeroDeGrupo, pat.ExtensionKM, pat.Fecha_Hora_Inicio, pat.Fecha_Hora_Fin\n" +
+            String query = "select tbp.IdPolicia, tbp.ONI, tbp.NumeroPlaca, rp.Rango,\n" +
+"gp.NumeroDeGrupo\n" +
 "from tbPolicias tbP\n" +
 "INNER JOIN tbRangosTipoUsuarios rp on rp.IdRangoTipoUsuario = tbp.IdRangoTipoUsuario\n" +
 "INNER JOIN tbUsuarios nu on nu.IdUsuario = tbp.IdUsuario\n" +
@@ -190,7 +189,7 @@ public class mdl {
 "INNER JOIN TipoPersona tppr on tppr.IdTipoPersona = tpp.IdTipoPersona\n" +
 "INNER JOIN tbPersonas tP on tP.IdPersona = tpp.IdPersona\n" +
 "INNER JOIN tbGrupoPatrullajes gp on gp.IdGrupoPatrullaje = tbP.IdGrupoPatrullaje\n" +
-"inner join tbPatrullajes pat on pat.IdGrupoPatrullaje = gp.IdGrupoPatrullaje ";
+"inner join tbPatrullajes pat on pat.IdGrupoPatrullaje = gp.IdGrupoPatrullaje  ";
 
             ResultSet rs = statement.executeQuery(query);
 
@@ -201,10 +200,7 @@ public class mdl {
             while(rs.next()){
 
                 modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("ONI"),
-                    rs.getString("NumeroPlaca"), rs.getString("Rango"), rs.getString("NivelUsuario"), 
-                    rs.getString("IdentificadorPersona"), rs.getString("TipoPersona"), rs.getString("Nombre")
-                , rs.getString("NumeroDeGrupo"), rs.getString("ExtensionKM"), rs.getString("Fecha_Hora_Inicio"), 
-                rs.getString("Fecha_Hora_Fin")});
+                    rs.getString("NumeroPlaca"), rs.getString("Rango"), rs.getString("NumeroDeGrupo")});
 
             }
 
