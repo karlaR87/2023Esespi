@@ -68,19 +68,14 @@ public class ControladorArmamento implements ActionListener{
             
             List<Integer> idsCalibres = vistamedia.getCalibresSeleccionados();
 
-            String cantidad = (String) Vista.spCantidad.getValue();
-        if(cantidad.matches("\\d+"))
-        {
-            JOptionPane.showMessageDialog(null, "La cantidad no puedo tener letras");
-        }
-        else
-        {
+            int cantidad = (int) Vista.spCantidad.getValue();
+       
             // Llamar al método para agregar relaciones
             modeloArmamento.agregarRelacionesArmamentoCalibres(idDetalleArma, idsCalibres);
 
             // Mostrar los datos actualizados
             modeloArmamento.mostrar(Vista);
-        }
+        
             
             
         }

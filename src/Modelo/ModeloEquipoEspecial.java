@@ -416,7 +416,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
            String filtro = IIT.txtBuscarEP.getText(); 
 
         String query = "select t.IdDetalleEquipo, o.TipoEquipamiento, t.Detalles, t.Cantidad from tdDetallesEquipo t\n" +
-        "inner join tbTiposEquipamientoEstacion o on o.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion"
+        "inner join tbTiposEquipamientoEstacion o on o.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion "
                 + "WHERE IdDetalleEquipo LIKE '%" + filtro + "%' OR " +
                        "TipoEquipamiento LIKE '%" + filtro + "%' OR " +
                        "Detalles LIKE '%" + filtro + "%' OR " +
@@ -433,7 +433,7 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("NombreTipoEquipamiento"),rs.getString("IdTiposEquipamientoEstacion"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("TipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
 
             }
 
@@ -459,18 +459,18 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","NombreTipoEquipamiento", "Detalles", "Cantidad"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","TipoEquipamiento", "Detalles", "Cantidad"});
        
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
+            String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento , d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
                        "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
             ResultSet rs = statement.executeQuery(query);
             
             while(rs.next()){
               
-                modelo.addRow(new Object[] {rs.getString("NombreTipoEquipamiento"),rs.getString("NombreTipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("TipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
                 
             }
             inventa.tbEquiposEspeciales.setModel(modelo);
@@ -486,18 +486,18 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","IdTiposEquipamientoEstacion", "Detalles", "Cantidad"});
+        modelo.setColumnIdentifiers(new Object []{"IdDetalleEquipo","TipoEquipamiento", "Detalles", "Cantidad"});
        
         try{
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento AS NombreTipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
+            String query = "SELECT d.IdDetalleEquipo, t.TipoEquipamiento, d.Detalles, d.Cantidad FROM tdDetallesEquipo d " +
                        "INNER JOIN tbTiposEquipamientoEstacion t ON d.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion";
             ResultSet rs = statement.executeQuery(query);
             
             while(rs.next()){
               
-                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("NombreTipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
+                modelo.addRow(new Object[] {rs.getString("IdDetalleEquipo"),rs.getString("TipoEquipamiento"),rs.getString("Detalles"), rs.getString("Cantidad")});
                 
             }
             inventa.tbMostrarDatosEquipoEsp.setModel(modelo);

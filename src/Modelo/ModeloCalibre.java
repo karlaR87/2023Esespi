@@ -73,6 +73,7 @@ public class ModeloCalibre {
 
         addDatos.executeUpdate();
         System.out.println("agrega datos");
+        JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
 
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, e.toString());
@@ -233,7 +234,7 @@ public class ModeloCalibre {
 
         DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.setColumnIdentifiers(new Object[]{"IdTipoMunicion_Calibre", "Cantidad", "Calibre",});
+    modelo.setColumnIdentifiers(new Object[]{"IdTipoMunicion_Calibre", "Calibre", "Cantidad",});
 
 
 
@@ -260,7 +261,7 @@ public class ModeloCalibre {
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("IdTipoMunicion_Calibre"),rs.getString("Cantidad"),rs.getString("Calibre")});
+                modelo.addRow(new Object[] {rs.getString("IdTipoMunicion_Calibre"),rs.getString("Calibre"),rs.getString("Cantidad")});
 
             }
 
