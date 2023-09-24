@@ -646,29 +646,112 @@ public class mdlPolicias {
         Color clrOrang = new Color( 243, 167, 18);
         DefaultTableModel modelo = new DefaultTableModel();
       
-        modelo.setColumnIdentifiers(new Object []{"ID","Apellidos", "Género","DUI", "Número", "Rango", 
-            "ONI", "Placa"});
+        modelo.setColumnIdentifiers(new Object []{"IdPolicia","Apellido", "Dui","Genero", "NumeroTel", "Rango", 
+            "ONI", "NumeroPlaca"});
 
         try{
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT tbPoli.IdPolicia AS IdentificadorID, tbPer.Apellido AS Apellidos, tbPer.Dui AS DUI, \n" +
-                            "tbGenero.Genero, tbPer.NumeroTel AS NumeroTel,\n" +
-                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca--, tbGrP.NumeroDeGrupo\n" +
+            String query = "SELECT tbPoli.IdPolicia, tbPer.Apellido, tbPer.Dui,\n" +
+                            "tbGenero.Genero, tbPer.NumeroTel,\n" +
+                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca " +
                             "FROM tbPersonas tbPer\n" +
                             "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
                             "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
                             "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
                             "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
-                            "--INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
-                            "--INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" +
+                            "INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
+                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" +
                             "WHERE tbTipoP.IdTipoPersona = 1 ORDER BY tbPoli.IdRangoTipoUsuario";
             
             ResultSet rs = statement.executeQuery(query);
 
             while(rs.next()){
-                modelo.addRow(new Object[] {rs.getString("IdentificadorID"),rs.getString("Apellidos"),rs.getString("Genero"), rs.getString("DUI"),
+                modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellido"),rs.getString("Dui"), rs.getString("Genero"),
+                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca")});//, rs.getString("NumeroDeGrupo")});
+
+            }
+            
+            Fuentes tipoFuentes = new Fuentes();;
+            
+            vstPolicias.tbDatosPolicias.setModel(modelo);
+            
+            JTableHeader header = vstPolicias.tbDatosPolicias.getTableHeader();
+            header.setBackground(clrOrang); // Cambia el color del encabezado
+
+        // Ajustar el alto de las filas
+        vstPolicias.tbDatosPolicias.setRowHeight(35); // Cambia el alto deseado para todas las filas
+        header.setPreferredSize(new Dimension(header.getWidth(), 50)); // Cambia el alto del encabezado
+
+        // Aplicar estilo de fuente personalizado al encabezado
+        header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 16)); // Aplica el estilo de fuente personalizado
+
+        // Cambiar el color del texto del encabezado (opcional)
+        header.setForeground(Color.BLACK);
+        
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) vstPolicias.tbDatosPolicias.getTableHeader().getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // Centra el texto del encabezado
+
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 14)); // Aplica el estilo de fuente personalizado)); // Fuente de tamaño 16 para las filas de datos
+        vstPolicias.tbDatosPolicias.setDefaultRenderer(Object.class, cellRenderer);
+
+        // Ajustar el ancho de las columnas
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(1).setPreferredWidth(100); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(2).setPreferredWidth(50);
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(3).setPreferredWidth(45); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(4).setPreferredWidth(45); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(5).setPreferredWidth(130); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(6).setPreferredWidth(20); 
+        vstPolicias.tbDatosPolicias.getColumnModel().getColumn(7).setPreferredWidth(20); 
+        //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
+        
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    }
+    
+    public void MostrarTablePoliciasB(Policias_Inicio vstPolicias){
+        vstPolicias.IdPolicia = 0;
+        Color clrOrang = new Color( 243, 167, 18);
+        DefaultTableModel modelo = new DefaultTableModel();
+      
+        modelo.setColumnIdentifiers(new Object []{"IdPolicia","Apellido", "Dui","Genero", "NumeroTel", "Rango", 
+            "ONI", "NumeroPlaca"});
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "SELECT tbPoli.IdPolicia, tbPer.Apellido, tbPer.Dui,\n" +
+                            "tbGenero.Genero, tbPer.NumeroTel,\n" +
+                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca " +
+                            "FROM tbPersonas tbPer\n" +
+                            "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
+                            "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
+                            "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
+                            "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+                            "INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
+                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" 
+                           
+                    + "where IdPolicia like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "Apellido like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "Dui like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "Genero like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "NumeroTel like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "Rango like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "ONI like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "NumeroPlaca like '%" + vstPolicias.txtBuscar.getText() + "%';";
+            
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()){
+                modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellido"),rs.getString("Dui"), rs.getString("Genero"),
                     rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca")});//, rs.getString("NumeroDeGrupo")});
 
             }
