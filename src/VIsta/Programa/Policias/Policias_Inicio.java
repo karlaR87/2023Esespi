@@ -1,6 +1,7 @@
 package VIsta.Programa.Policias;
 
 
+import Modelo.mdlPolicias;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -125,7 +126,12 @@ public class Policias_Inicio extends javax.swing.JPanel {
         txtBuscar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtBuscar.setToolTipText("");
         txtBuscar.setBorder(null);
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 330, 30));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 340, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar2.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 410, 50));
@@ -147,7 +153,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
         tbDatosPolicias.setGridColor(new java.awt.Color(255, 255, 255));
         tbDatosPolicias.setInheritsPopupMenu(true);
         tbDatosPolicias.setSelectionBackground(new java.awt.Color(119, 119, 119));
-        tbDatosPolicias.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tbDatosPolicias.setShowGrid(false);
         tbDatosPolicias.getTableHeader().setResizingAllowed(false);
         tbDatosPolicias.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -214,6 +219,11 @@ public class Policias_Inicio extends javax.swing.JPanel {
        OriginialIcon();
        btnAddPolicia.setIcon(iconoClareAdd);
     }//GEN-LAST:event_btnAddPoliciaMouseEntered
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        mdlPolicias m = new mdlPolicias();
+        m.MostrarTablePoliciasB(this);
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
     
     public void OriginialIcon()

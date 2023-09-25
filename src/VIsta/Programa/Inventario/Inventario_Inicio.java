@@ -212,8 +212,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        btnDeleteEquipo = new javax.swing.JButton();
-        btnEdiEquipo = new javax.swing.JButton();
         btnAddEquipo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMostrarDatosTransporte = new javax.swing.JTable();
@@ -239,28 +237,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setPreferredSize(new java.awt.Dimension(1010, 710));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnDeleteEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnDeletePolicia.png"))); // NOI18N
-        btnDeleteEquipo.setBorderPainted(false);
-        btnDeleteEquipo.setContentAreaFilled(false);
-        btnDeleteEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDeleteEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDeleteEquipoMouseClicked(evt);
-            }
-        });
-        jPanel4.add(btnDeleteEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 340, 60, 60));
-
-        btnEdiEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEditPolicia.png"))); // NOI18N
-        btnEdiEquipo.setBorderPainted(false);
-        btnEdiEquipo.setContentAreaFilled(false);
-        btnEdiEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEdiEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEdiEquipoMouseClicked(evt);
-            }
-        });
-        jPanel4.add(btnEdiEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, 60, 60));
 
         btnAddEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddPolicia.png"))); // NOI18N
         btnAddEquipo.setBorderPainted(false);
@@ -399,14 +375,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDeleteEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEquipoMouseClicked
-
-    }//GEN-LAST:event_btnDeleteEquipoMouseClicked
-
-    private void btnEdiEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdiEquipoMouseClicked
-
-    }//GEN-LAST:event_btnEdiEquipoMouseClicked
-
     private void btnAddEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEquipoMouseClicked
         
         ElecION_Equipo JFP = new ElecION_Equipo();
@@ -440,8 +408,6 @@ public class Inventario_Inicio extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEquipo;
-    private javax.swing.JButton btnDeleteEquipo;
-    private javax.swing.JButton btnEdiEquipo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -57,7 +57,7 @@ public class ModeloArmamento {
 
    DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.setColumnIdentifiers(new Object[]{"DetalleArmamento", "IdTipoArmamentoEstacion", "Cantidad", "TipoArmamento"});
+    modelo.setColumnIdentifiers(new Object[]{"IdDetalleArmamentoEstacion", "DetalleArmamento", "Cantidad", "TipoArmamento"});
 
 
 
@@ -69,7 +69,7 @@ public class ModeloArmamento {
 
         String query = "select m.IdDetalleArmamentoEstacion, m.DetalleArmamento, m.Cantidad, u.TipoArmamento from tbDetallesArmamentosEstacion m\n" +
 "						  inner join tbTipoArmamentosEstacion u on u.IdTipoArmamentoEstacion = m.IdTipoArmamentoEstacion WHERE " +
-                       "IdTipoArmamentoEstacion LIKE '%" + filtro + "%' OR " +
+                       "IdDetalleArmamentoEstacion LIKE '%" + filtro + "%' OR " +
                        "DetalleArmamento LIKE '%" + filtro + "%' OR " +
                        "Cantidad LIKE '%" + filtro + "%' OR " +
                        "TipoArmamento LIKE '%" + filtro + "%';";
@@ -79,7 +79,7 @@ public class ModeloArmamento {
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("IdTipoArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("TipoArmamento")});
+                modelo.addRow(new Object[] {rs.getString("IdDetalleArmamentoEstacion"),rs.getString("DetalleArmamento"),rs.getString("Cantidad"), rs.getString("TipoArmamento")});
 
             }
 

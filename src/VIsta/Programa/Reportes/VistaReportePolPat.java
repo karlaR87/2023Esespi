@@ -75,7 +75,7 @@ public class VistaReportePolPat extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbMostrarData.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        tbMostrarData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tbMostrarData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

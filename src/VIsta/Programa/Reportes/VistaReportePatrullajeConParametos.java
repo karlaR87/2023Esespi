@@ -34,8 +34,8 @@ public class VistaReportePatrullajeConParametos extends javax.swing.JFrame {
         try {
             
             Map <String, Object> parametro = new HashMap<>(); //almacena los paramteros
-            parametro.put("FechaInicioPat", txtFechaIn.getText());
-            parametro.put("FechaFinPat", txtfechaFin.getText());
+            parametro.put("FechaInicio", txtFechaIn.getText());
+            parametro.put("FechaFin", txtfechaFin.getText());
             
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReportePatrullajeConParametros.jasper"));
             
@@ -83,7 +83,7 @@ public class VistaReportePatrullajeConParametos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbMostrarD.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
+        tbMostrarD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tbMostrarD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

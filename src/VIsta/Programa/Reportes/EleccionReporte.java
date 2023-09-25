@@ -27,11 +27,11 @@ public class EleccionReporte extends javax.swing.JFrame {
   private void mostrarReporte() {
         try {
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReporteTransportes.jasper"));
-            System.out.println("ee");
+          
             JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
-                System.out.println("ee");
+             
             JasperViewer view = new JasperViewer(jprint, false);
-             System.out.println("ee");
+        
             view.setTitle("Reporte de transporte");
             view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             view.setVisible(true);
@@ -45,11 +45,11 @@ public class EleccionReporte extends javax.swing.JFrame {
   private void mostrarReportePat() {
         try {
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReportePatrullaje.jasper"));
-            System.out.println("ee");
+           
             JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
-                System.out.println("ee");
+            
             JasperViewer view = new JasperViewer(jprint, false);
-             System.out.println("ee");
+             
             view.setTitle("Reporte de transporte");
             view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             view.setVisible(true);
@@ -62,11 +62,11 @@ public class EleccionReporte extends javax.swing.JFrame {
   private void mostrarReportePolPat() {
         try {
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/PoliciasPatrullajes.jasper"));
-            System.out.println("ee");
+           
             JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
-                System.out.println("ee");
+                
             JasperViewer view = new JasperViewer(jprint, false);
-             System.out.println("ee");
+             
             view.setTitle("Reporte de transporte");
             view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             view.setVisible(true);
