@@ -199,11 +199,16 @@ public class Agregar_calibre extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbuscarCKeyReleased
 
     private void tbCalibreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCalibreMouseClicked
+        
+        ModeloCalibre modelo = new ModeloCalibre();
+        modelo.SeleccionarDato(tbCalibre, txtCalibre, spCantidad);
+        
         int filaSeleccionada = tbCalibre.getSelectedRow();
         //Obtenemos el id de la fila seleccionada
         String MiId = tbCalibre.getValueAt(filaSeleccionada, 0).toString();
         idCalibre = Integer.parseInt(MiId);
         System.out.println(idCalibre);
+
     }//GEN-LAST:event_tbCalibreMouseClicked
 
     private void txtbuscarCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbuscarCMouseClicked

@@ -8,6 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -302,7 +305,35 @@ public class ModeloArmamento {
     }
     
     
-    
+    //Mostrar datos seleccionados
+    public void SeleccionarDato(JTable paramtable, JComboBox paramTipo, JTextField paramDetalles, JSpinner paramCantidad){
+        
+        try {
+            int fila = paramtable.getSelectedRow();
+            
+            if(fila >= 0){
+                
+                // Obtener los valores de las celdas seleccionadas
+                String tipo = paramtable.getValueAt(fila, 0).toString();
+                String detalles = paramtable.getValueAt(fila, 1).toString();
+                int cantidad = Integer.parseInt(paramtable.getValueAt(fila, 2).toString());
+
+                // Establecer los valores en los componentes de la interfaz
+                paramTipo.setSelectedItem(tipo);
+                paramDetalles.setText(detalles);
+                paramCantidad.setValue(cantidad);
+                
+            }else{
+                
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            
+            }
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        
+    }
     
 //    
     //Eliminar 

@@ -513,11 +513,11 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
             JTableHeader header = inventa.tbMostrarDatosEquipoEsp.getTableHeader();
 
         // Ajustar el alto de las filas
-        inventa.tbMostrarDatosEquipoEsp.setRowHeight(35); // Cambia el alto deseado para todas las filas
-        header.setPreferredSize(new Dimension(header.getWidth(), 50)); // Cambia el alto del encabezado
+        inventa.tbMostrarDatosEquipoEsp.setRowHeight(20); // Cambia el alto deseado para todas las filas
+        header.setPreferredSize(new Dimension(header.getWidth(), 23)); // Cambia el alto del encabezado
 
         // Aplicar estilo de fuente personalizado al encabezado
-        header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 15)); // Aplica el estilo de fuente personalizado
+        header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 14)); // Aplica el estilo de fuente personalizado
 
         // Cambiar el color del texto del encabezado (opcional)
         header.setForeground(Color.BLACK);

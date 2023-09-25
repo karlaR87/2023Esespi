@@ -2,7 +2,11 @@ package Modelo;
 import VIsta.Programa.Inventario.Inventario_Inicio_Transportes;
 import VIsta.VistaAgregarTransporte;
 import java.sql.*;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -224,6 +228,39 @@ public class ModeloDatosTransporte {
 
     }
     
+    //Mostrar datos seleccionados
+    public void SeleccionarDato(JTable paramtable, JTextField paramDetalles, JTextField paramPlaca, JComboBox paramTipo, JComboBox paramMarca, JComboBox paramGrupo){
+        
+        try {
+            int fila = paramtable.getSelectedRow();
+            
+            if(fila >= 0){
+                // Obtener los valores de las celdas seleccionadas
+            String detalles = paramtable.getValueAt(fila, 0).toString();
+            String placa = paramtable.getValueAt(fila, 1).toString();
+            String tipo = paramtable.getValueAt(fila, 2).toString();
+            String marca = paramtable.getValueAt(fila, 3).toString();
+            String grupo = paramtable.getValueAt(fila, 4).toString();
+
+            // Establecer los valores en los componentes de la interfaz
+            paramDetalles.setText(detalles);
+            paramPlaca.setText(placa);
+            paramTipo.setSelectedItem(tipo);
+            paramMarca.setSelectedItem(marca);
+            paramGrupo.setSelectedItem(grupo);
+            
+            }else{
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        
+    }
+    
+    
+    //Eliminar
     public void eliminar(VistaAgregarTransporte IIT2){
     
         //obtenemos que fila seleccionó el usuario
