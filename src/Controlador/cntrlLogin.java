@@ -1,11 +1,16 @@
 package Controlador;
 
+import Modelo.ModeloRegistro;
+import Modelo.conexionSql;
 import Modelo.mdlUsuarios;
 import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.Programa.JframePrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -48,6 +53,9 @@ public class cntrlLogin implements ActionListener{
                  }
                  else
                  {
+                     
+                     
+                     
                      System.out.println(con);
                      System.out.println(lg.convertirSHA256(lg.txtContraseña.getText().trim()));
                      
@@ -101,6 +109,7 @@ public class cntrlLogin implements ActionListener{
         });
     }
     
+   
     
    }
     

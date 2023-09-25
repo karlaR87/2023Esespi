@@ -271,7 +271,7 @@ public class Usuario extends javax.swing.JPanel {
         jLabel5.setText("Estado civil:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
 
-        lblRango.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblRango.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblRango.setForeground(new java.awt.Color(255, 255, 255));
         lblRango.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRango.setText("RANGO");
