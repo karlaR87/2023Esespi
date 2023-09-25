@@ -965,6 +965,58 @@ public class ModeloRegistro {
     
     }
     
+    public void mOstrarReferencias(Usuario u)
+    {
+           
+       
+
+        DefaultTableModel modelo = new DefaultTableModel();
+       
+
+        modelo.setColumnIdentifiers(new Object []{"NombreReferencia", "NumeroTel", "CorreoElectronico"});
+
+
+
+        try{
+
+            java.sql.Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select CONCAT (pp.Nombre, '', pp.Apellido) as NombreReferencia , pp.NumeroTel, pp.CorreoElectronico from tbPolicias_Referencias pr\n" +
+            "inner join tbReferenciasPersonales piR on piR.IdReferenciaPersonal = pr.IdReferenciaPersonal\n" +
+            "inner join tbPersonas pp on pp.IdPersona = piR.IdPersona\n" +
+            "inner join tbPolicias ppR on ppR.IdPolicia = pr.IdPolicia\n" +
+            "inner join tbUsuarios pUs on pUs.IdUsuario = ppR.IdUsuario\n" +
+            "where Usuario = 'ivansote'";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+                
+                modelo.addRow(new Object[] {rs.getString("NombreReferencia"),rs.getString("NumeroTel"),rs.getString("CorreoElectronico")});
+
+            }
+
+            
+
+            u.tbRef.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+    }
+    
     
     
 

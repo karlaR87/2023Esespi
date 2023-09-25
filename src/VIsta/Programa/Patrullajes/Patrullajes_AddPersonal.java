@@ -32,10 +32,29 @@ import javax.swing.border.EmptyBorder;
 public class Patrullajes_AddPersonal extends javax.swing.JFrame {
 
 
+    ImageIcon iconoOriginalAdd;
+    ImageIcon iconoOriginalAddCLARE;
+    
+    ImageIcon iconoOriginalCancel;
+    ImageIcon iconoOriginalCancelCLARE;
+    
     public Patrullajes_AddPersonal() {
         initComponents();
+        
+        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAcept.png"); 
+        iconoOriginalAddCLARE = new ImageIcon("src/VIsta/imagenes/btnCheck1CLARE.png");
+        
+        iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnX1.png"); 
+        iconoOriginalCancelCLARE = new ImageIcon("src/VIsta/imagenes/btnX1CLARE.png"); 
+        
     }
 
+    public void OriginalIcon()
+    {
+        btnCancel.setIcon(iconoOriginalCancel);
+        btnAcept.setIcon(iconoOriginalAdd);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -70,6 +89,12 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelMouseExited(evt);
+            }
         });
         getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 500, -1, 50));
 
@@ -80,6 +105,12 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
         btnAcept.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAceptMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAceptMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAceptMouseExited(evt);
             }
         });
         getContentPane().add(btnAcept, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 500, -1, 50));
@@ -100,6 +131,24 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     private void btnAceptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptMouseClicked
+
+    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
+        OriginalIcon();
+        btnCancel.setIcon(iconoOriginalCancelCLARE);
+    }//GEN-LAST:event_btnCancelMouseEntered
+
+    private void btnAceptMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptMouseEntered
+       OriginalIcon();
+       btnAcept.setIcon(iconoOriginalAddCLARE);
+    }//GEN-LAST:event_btnAceptMouseEntered
+
+    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
+         OriginalIcon();
+    }//GEN-LAST:event_btnCancelMouseExited
+
+    private void btnAceptMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptMouseExited
+        OriginalIcon();
+    }//GEN-LAST:event_btnAceptMouseExited
 
     /**
      * @param args the command line arguments

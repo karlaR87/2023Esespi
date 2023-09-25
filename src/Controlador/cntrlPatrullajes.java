@@ -4,27 +4,41 @@ import Modelo.ModeloPatrullajes;
 import Modelo.mdlPolicias;
 import VIsta.JoptionReplacemnt;
 import VIsta.Programa.JframePrincipal;
+import VIsta.Programa.Patrullajes.Patrullajes_AddActividades;
 import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
 import VIsta.Programa.Patrullajes.Patrullajes_AddUbicacion;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
+import com.teamdev.jxmaps.Circle;
+import com.teamdev.jxmaps.CircleOptions;
+import com.teamdev.jxmaps.Marker;
+import com.teamdev.jxmaps.PolygonOptions;
 import fonts.Fuentes;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
+import java.awt.Polygon;
+import java.awt.Toolkit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +53,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JViewport;
+import javax.swing.Painter;
 import javax.swing.border.EmptyBorder;
+import org.jxmapviewer.JXMapViewer;
+import org.jxmapviewer.OSMTileFactoryInfo;
+import org.jxmapviewer.input.PanMouseInputListener;
+import org.jxmapviewer.viewer.DefaultTileFactory;
+import org.jxmapviewer.viewer.DefaultWaypoint;
+import org.jxmapviewer.viewer.GeoPosition;
+import org.jxmapviewer.viewer.TileFactoryInfo;
+import org.jxmapviewer.viewer.Waypoint;
+import org.jxmapviewer.viewer.WaypointPainter;
+import org.jxmapviewer.viewer.WaypointRenderer;
 
 public class cntrlPatrullajes implements ActionListener {
 
@@ -49,14 +74,16 @@ public class cntrlPatrullajes implements ActionListener {
     private Patrullajes_Agregar addPatrullajes;
     private Patrullajes_AddPersonal addPersonal;
     private Patrullajes_AddUbicacion addUbicacion;
+    private Patrullajes_AddActividades addActPatrullaje;
 
-    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal, Patrullajes_AddUbicacion addUbicacion) {
+    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal, Patrullajes_AddUbicacion addUbicacion, Patrullajes_AddActividades addActPatrullaje) {
         this.modelPatrullajes = modelPatrullajes;
         this.JframePrincipal = JframePrincipal;
         this.vstPatrullajes = patrullajesHome;
         this.addPatrullajes = addPatrullajes;
         this.addPersonal = addPersonal;
         this.addUbicacion = addUbicacion;
+        this.addActPatrullaje = addActPatrullaje;
         
         this.JframePrincipal.btnPatrullajes.addActionListener(this);
         this.JframePrincipal.btniconPatrullajes.addActionListener(this);
@@ -69,14 +96,24 @@ public class cntrlPatrullajes implements ActionListener {
         this.addPatrullajes.btnCancelPatrullaje.addActionListener(this);
         //Add Ubicacion
         this.addPatrullajes.btnAddUbi.addActionListener(this);
-        
+        //Mostrar Act patrullajes
+        this.addPatrullajes.btnAddActPatru.addActionListener(this);
+        //Cancel ActPatrullajes
+        this.addActPatrullaje.btnCancel.addActionListener(this);
+        //Acept ActPatrullajes
+        this.addActPatrullaje.btnAcept.addActionListener(this);
+                
         //Acept Personal
         this.addPersonal.btnAcept.addActionListener(this);
         //Cancel Personal
         this.addPersonal.btnCancel.addActionListener(this);
-        
+        //Add patrullaje
         this.vstPatrullajes.btnAddPatrullaje.addActionListener(this);
        
+        //Cancelar MAPA
+        this.addUbicacion.btnCancelMap.addActionListener(this);
+        //Export MAPA
+        this.addUbicacion.btnEXPORTAR.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {   
@@ -112,13 +149,36 @@ public class cntrlPatrullajes implements ActionListener {
          show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
          close2();
        }
+       
+       //------------------------------------------------------Boton que muestra la pantalla de actpatrullaje
+       if(e.getSource() == addPatrullajes.btnAddActPatru)
+       {
+           JframePrincipal.jLabel3.setVisible(true);
+           JframePrincipal.setEnabled(false);
+           addActPatrullaje.setVisible(true);
+       }
+       
+       //-----------------------------------------------------Boton para cancelar la ubicacion(MAPA)
+        if (e.getSource() == addUbicacion.btnCancelMap) 
+        {
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            addUbicacion.setVisible(false);
+        }
+       
+        if(e.getSource() == addUbicacion.btnEXPORTAR)
+        {
+            
+           
+        }
+        
        //-----------------------------------------------------Boton para agrear la ubicacion(MAPA)
         if (e.getSource() == addPatrullajes.btnAddUbi) 
         {
             JframePrincipal.setEnabled(false);
             JframePrincipal.jLabel3.setVisible(true);
-            
-        
+            addUbicacion.setVisible(true);
+            showMap();
         }
        
 
@@ -256,7 +316,122 @@ public class cntrlPatrullajes implements ActionListener {
         }
         });
     }
+    //------------------METODO PARA MOSTRAR EL MAPA-----------------
+    public double latitud;
+    public double longitud;
+    private static double DiametroenKM = 25;
     
+     public void showMap() {
+         
+        // Crea un objeto JXMapViewer
+        JXMapViewer mapViewer = new JXMapViewer();
+
+        // Crea un TileFactoryInfo para OpenStreetMap
+        TileFactoryInfo info = new OSMTileFactoryInfo();
+        DefaultTileFactory tileFactory = new DefaultTileFactory(info);
+        mapViewer.setTileFactory(tileFactory);
+
+        // Usar 7 como zoom inicial
+        mapViewer.setZoom(11);
+        
+        // Centrar el mapa en El Salvador
+        GeoPosition elSalvador = new GeoPosition(13.6929, -89.2182);
+        mapViewer.setCenterPosition(elSalvador);
+
+      // Crear un Set de waypoints y un WaypointPainter para pintarlos
+        Set<Waypoint> waypoints = new HashSet<>();
+        WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<>();
+        waypointPainter.setWaypoints(waypoints);
+        mapViewer.setOverlayPainter(waypointPainter);
+        
+        // Agrega un listener de mouse para obtener las coordenadas al hacer clic
+        mapViewer.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Convierte el punto de la pantalla en una coordenada geográfica
+                GeoPosition geo = mapViewer.convertPointToGeoPosition(e.getPoint());
+
+                // Verifica si las coordenadas se encuentran en El Salvador
+                if(geo.getLatitude() > 13.1483 && geo.getLatitude() < 14.4226 && geo.getLongitude() > -90.1295 && geo.getLongitude() < -87.6877) {
+
+                    // Guarda las coordenadas para su recuperación posterior
+                    latitud = geo.getLatitude();
+                    longitud = geo.getLongitude();
+                    
+                    // Dibujar un círculo alrededor del marcador
+                    drawCircleAroundMarker(mapViewer, geo, DiametroenKM, waypoints, waypointPainter); 
+                    
+                } else {
+                   JOptionPane.showMessageDialog(null, "¡Ubicación fuera de El Salvador!");
+                }
+            }
+        });
+
+        // Agrega un controlador de mouse para permitir el desplazamiento del mapa
+        PanMouseInputListener mia = new PanMouseInputListener(mapViewer);
+        mapViewer.addMouseListener(mia);
+        mapViewer.addMouseMotionListener(mia);
+
+        // Agrega un controlador de rueda del mouse para permitir el zoom
+        mapViewer.addMouseWheelListener(e -> {
+            int rotation = e.getWheelRotation();
+            int currentZoom = mapViewer.getZoom();
+            if (rotation < 0) {
+                 if(currentZoom == 2) {}
+                else{mapViewer.setZoom(currentZoom - 1);}
+            } else {
+                
+                if(currentZoom == 11) {}
+                else{ mapViewer.setZoom(currentZoom + 1);}
+            }
+        });
+
+        mapViewer.setBounds(0, 0, (int)(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9), (int)(Toolkit.getDefaultToolkit().getScreenSize().height * 0.9));
+         mapViewer.setSize(addUbicacion.jpnlMapContainer.getSize());
+         mapViewer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        addUbicacion.jpnlMapContainer.add(mapViewer); 
+         
+        addUbicacion.jpnlMapContainer.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                mapViewer.setSize(addUbicacion.jpnlMapContainer.getSize());
+              }
+        });
+
+    }
+
+    // Método para obtener las últimas coordenadas seleccionadas
+    public double[] getCoordinates() {
+        return new double[] { latitud, longitud };
+    }
+       
+    
+    private void drawCircleAroundMarker(JXMapViewer mapViewer, GeoPosition center, double DiametroenKM, Set<Waypoint> waypoints, WaypointPainter<Waypoint> circlePainter) {
+    double diametroEnGrados = DiametroenKM / 111.32; // 1 grado de latitud es aproximadamente 111.32 kilómetros
+    double diametroEnPixeles = diametroEnGrados / (360.0 / (Math.pow(2, mapViewer.getZoom()) * 256));
+
+    // Añade un waypoint al conjunto de waypoints y actualiza el WaypointPainter
+    waypoints.clear(); // Limpiar los waypoints existentes (sólo queremos el último clic)
+    waypoints.add(new DefaultWaypoint(center));
+    circlePainter.setWaypoints(waypoints);
+
+    // Configura el estilo del círculo
+    circlePainter.setRenderer(new WaypointRenderer<Waypoint>() {
+        @Override
+        public void paintWaypoint(Graphics2D g, JXMapViewer map, Waypoint wp) {
+            // Dibuja un círculo alrededor del marcador
+            Point2D point = map.getTileFactory().geoToPixel(wp.getPosition(), map.getZoom());
+
+            g.setColor(new Color(0, 0, 255, 64)); // Relleno azul transparente
+            g.fillOval((int) (point.getX() - diametroEnPixeles), (int) (point.getY() - diametroEnPixeles), (int) (diametroEnPixeles * 2), (int) (diametroEnPixeles * 2));
+        }
+    });
+
+    // Agrega el WaypointPainter al JXMapViewer
+    mapViewer.setOverlayPainter(circlePainter);
+    mapViewer.repaint(); // Repintar para mostrar el nuevo waypoint
+}
     
     //----------------METODOS PARA VER LOS POLICIAS APTOS DE SELECCION--------------
     Fuentes tipoFuentes;

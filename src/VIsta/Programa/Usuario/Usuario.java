@@ -42,6 +42,7 @@ public class Usuario extends javax.swing.JPanel {
         m.MostrarCosve(this);
         m.IdUsuarioTomar(this);
         m.mOstrarPatUser(this);
+        m.mOstrarReferencias(this);
     }
 
        
