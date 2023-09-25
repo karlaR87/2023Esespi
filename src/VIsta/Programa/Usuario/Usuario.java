@@ -39,8 +39,9 @@ public class Usuario extends javax.swing.JPanel {
         initComponents();
         PanelsShowInit();
 
+        m.MostrarCosve(this);
         m.IdUsuarioTomar(this);
-
+        m.mOstrarPatUser(this);
     }
 
        
@@ -139,22 +140,21 @@ public class Usuario extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         lblRango = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnEdit = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         txtCorreoM = new javax.swing.JTextField();
         txtMostrarTel = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btnOcultar = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbRef = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbPat = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
 
         pnlContenedor.setBackground(new java.awt.Color(51, 51, 51));
         pnlContenedor.setLayout(new java.awt.CardLayout());
@@ -166,7 +166,7 @@ public class Usuario extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("COSVE");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 130, -1));
 
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/pedroPascal.png"))); // NOI18N
         add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
@@ -267,17 +267,11 @@ public class Usuario extends javax.swing.JPanel {
         jLabel5.setText("Estado civil:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
 
-        lblUser.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(255, 255, 255));
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUser.setText("USUARIO");
-        add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 290, 30));
-
         lblRango.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblRango.setForeground(new java.awt.Color(255, 255, 255));
         lblRango.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRango.setText("RANGO");
-        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 280, 30));
+        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 280, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,9 +289,6 @@ public class Usuario extends javax.swing.JPanel {
         });
         add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 540, -1, 60));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Rectangle 202.png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         txtCorreoM.setBackground(new java.awt.Color(51, 51, 51));
         txtCorreoM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -332,9 +323,9 @@ public class Usuario extends javax.swing.JPanel {
         });
         add(btnOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 560, -1, -1));
 
-        jTable2.setBackground(new java.awt.Color(0, 0, 0));
-        jTable2.setForeground(new java.awt.Color(255, 255, 255));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbRef.setBackground(new java.awt.Color(0, 0, 0));
+        tbRef.setForeground(new java.awt.Color(255, 255, 255));
+        tbRef.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -345,14 +336,14 @@ public class Usuario extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable2.setEnabled(false);
-        jScrollPane2.setViewportView(jTable2);
+        tbRef.setEnabled(false);
+        jScrollPane2.setViewportView(tbRef);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, 270, 140));
 
-        jTable1.setBackground(new java.awt.Color(0, 0, 0));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbPat.setBackground(new java.awt.Color(0, 0, 0));
+        tbPat.setForeground(new java.awt.Color(255, 255, 255));
+        tbPat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -363,15 +354,33 @@ public class Usuario extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbPat);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 490, 130));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 500, 130));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 189.png"))); // NOI18N
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 560, 230));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 570, 230));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 193.png"))); // NOI18N
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 290, 240));
+
+        txtUser.setBackground(new java.awt.Color(51, 51, 51));
+        txtUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUser.setCaretColor(new java.awt.Color(51, 51, 51));
+        txtUser.setEnabled(false);
+        txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtUserMouseEntered(evt);
+            }
+        });
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
+        add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 350, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuiActionPerformed
@@ -388,6 +397,8 @@ public class Usuario extends javax.swing.JPanel {
             txtTipoS.setEnabled(false);
             txtEstadoC.setEnabled(false);
             txtGenero.setEnabled(false);
+            txtCorreoM.setEnabled(false);
+            txtMostrarTel.setEnabled(false);
         }
         
         
@@ -453,6 +464,7 @@ public class Usuario extends javax.swing.JPanel {
             txtGenero.setEnabled(false);
             txtCorreoM.setEnabled(false);
         txtMostrarTel.setEnabled(false);
+        txtUser.setEnabled(false);
         }
     }//GEN-LAST:event_btnOcultarMouseClicked
 
@@ -465,6 +477,14 @@ public class Usuario extends javax.swing.JPanel {
        txtCorreoM.setEnabled(true);
         txtMostrarTel.setEnabled(true);
     }//GEN-LAST:event_txtMostrarTelMouseEntered
+
+    private void txtUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseEntered
+        txtUser.setEnabled(true);
+    }//GEN-LAST:event_txtUserMouseEntered
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -480,22 +500,21 @@ public class Usuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblFoto;
     public javax.swing.JLabel lblRango;
-    public javax.swing.JLabel lblUser;
     private javax.swing.JPanel pnlContenedor;
-    private javax.swing.JTextField txtCorreoM;
+    public javax.swing.JTable tbPat;
+    public javax.swing.JTable tbRef;
+    public javax.swing.JTextField txtCorreoM;
     public javax.swing.JTextField txtDui;
     public javax.swing.JTextField txtEstadoC;
     public javax.swing.JTextField txtFechaNacimiento;
     public javax.swing.JTextField txtGenero;
-    private javax.swing.JTextField txtMostrarTel;
+    public javax.swing.JTextField txtMostrarTel;
     public javax.swing.JTextField txtTipoS;
+    public javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

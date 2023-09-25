@@ -5,6 +5,7 @@ import VIsta.Login;
 import VIsta.Programa.Usuario.Usuario;
 import VIsta.Registro;
 import VIsta.Registro_DatosPersonales;
+import VIsta.VistaAgregarTransporte;
 import java.beans.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ModeloRegistro {
     
@@ -830,7 +832,7 @@ public class ModeloRegistro {
         try{   
             
               
-            String query = "select u.IdUsuario, u.Usuario, ttt.Rango, t.IdPersona ,t.Nombre, t.Apellido, t.Dui, t.FechaNacimiento, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t\n" +
+            String query = "select u.IdUsuario, u.Usuario, ttt.Rango, t.IdPersona ,t.Nombre, t.Apellido, t.Dui, t.FechaNacimiento, t.CorreoElectronico, t.NumeroTel, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t\n" +
             "inner join tbEstadosCivil e on e.IdEstadoCivil = t.IdEstadoCivil\n" +
             "inner join tbTiposSangre ts on ts.IdTipoSangre = t.IdTipoSangre\n" +
             "inner join tbGeneros g on g.IdGenero = t.IdGenero\n" +
@@ -854,41 +856,37 @@ public class ModeloRegistro {
                 String retorno4 = rs.getString("TipoSangre");
                 String retorno5 = rs.getString("EstadoCivil");
                 String retorno6 = rs.getString("Genero");
+                String retorno7 = rs.getString("CorreoElectronico");
+                String retorno8 = rs.getString("NumeroTel");
                 
-                u.lblUser.setText(retorno);
+                u.txtUser.setText(retorno);
                  u.lblRango.setText(retorno1);
                 u.txtDui.setText(retorno2);
                 u.txtFechaNacimiento.setText(retorno3);
                 u.txtTipoS.setText(retorno4);
                 u.txtEstadoC.setText(retorno5);
                 u.txtGenero.setText(retorno6);
+                u.txtMostrarTel.setText(retorno7);
+                u.txtCorreoM.setText(retorno8);
             } 
             
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, e.toString());
            
         }
+        
+        
        
     }
-
     
+    //Aquí se mostrará el codigo de seguridad para ingresar a la aplicación movil.
     
-    
-    
-    /*public void IdUsuarioTomar1(Usuario u)
+    public void MostrarCosve(Usuario u)
     {
-        Login l = new Login();
         try{   
             
               
-            String query = "select t.Nombre from tbPersonas t\n" +
-            "inner join tbEstadosCivil e on e.IdEstadoCivil = t.IdEstadoCivil\n" +
-            "inner join tbTiposSangre ts on ts.IdTipoSangre = t.IdTipoSangre\n" +
-            "inner join tbGeneros g on g.IdGenero = t.IdGenero\n" +
-            "inner join tbTiposPersonas_Personas ti on ti.IdPersona = t.IdPersona\n" +
-            "inner join tbPolicias op on op.IdTipoPersonas_Personas = ti.IdTipoPersonas_Personas\n" +
-            "inner join tbUsuarios u on u.IdUsuario = op.IdUsuario\n" +
-            "where u.Usuario = '" + l.txtUsuario.getText() + "'";  
+            String query = "Select cosve from cosve";  
 
               
             PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
@@ -897,16 +895,77 @@ public class ModeloRegistro {
 
             // Verificar si hay alguna fila en el ResultSet
             if (rs.next()) {
-                String re =  rs.getString("Nombre");
-                u.lblUser.setText(re);
+                String retorno = rs.getString("cosve");
                 
-            } else {          
                 
-            }
+                u.jLabel10.setText("COSVE: " + retorno);
+                 
+            } 
+            
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, e.toString());
+           
+        }
+        
+        
+       
+    }
+
+    
+    public void mOstrarPatUser(Usuario u)
+    {
+           
+       
+
+        DefaultTableModel modelo = new DefaultTableModel();
+       
+
+        modelo.setColumnIdentifiers(new Object []{"ExtensionKM", "Fecha_Hora_Inicio", "Fecha_Hora_Fin"});
+
+
+
+        try{
+
+            java.sql.Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select pat.ExtensionKM, pol.IdGrupoPatrullaje, pat.Fecha_Hora_Inicio, pat.Fecha_Hora_Fin \n" +
+            "from tbPatrullajes pat\n" +
+            "inner join tbPolicias pol on pol.IdGrupoPatrullaje = pat.IdGrupoPatrullaje\n" +
+            "inner join tbUsuarios u on u.IdUsuario = pol.IdUsuario\n" +
+            "inner join tbTiposPersonas_Personas itp on itp.IdTipoPersonas_Personas = pol.IdTipoPersonas_Personas\n" +
+            "inner join tbPersonas p on p.IdPersona = itp.IdPersona\n" +
+            "where Usuario = 'ivansote' ";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+                
+                modelo.addRow(new Object[] {rs.getString("ExtensionKM"),rs.getString("Fecha_Hora_Inicio"),rs.getString("Fecha_Hora_Fin")});
+
+            }
+
             
-        }*/
+
+            u.tbPat.setModel(modelo);
+
+
+
+          
+
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+    }
+    
+    
     
 
 }
