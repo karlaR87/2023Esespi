@@ -40,6 +40,8 @@ public class Usuario extends javax.swing.JPanel {
         PanelsShowInit();
 
         m.MostrarCosve(this);
+        
+        //Todos estos metodos se encuentran en el ModeloRegistro
         m.IdUsuarioTomar(this);
         m.mOstrarPatUser(this);
         m.mOstrarReferencias(this);
@@ -156,6 +158,7 @@ public class Usuario extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
+        lblNombre = new javax.swing.JLabel();
 
         pnlContenedor.setBackground(new java.awt.Color(51, 51, 51));
         pnlContenedor.setLayout(new java.awt.CardLayout());
@@ -170,7 +173,7 @@ public class Usuario extends javax.swing.JPanel {
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 130, -1));
 
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/pedroPascal.png"))); // NOI18N
-        add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+        add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         txtGenero.setBackground(new java.awt.Color(51, 51, 51));
         txtGenero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -272,7 +275,7 @@ public class Usuario extends javax.swing.JPanel {
         lblRango.setForeground(new java.awt.Color(255, 255, 255));
         lblRango.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRango.setText("RANGO");
-        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 280, 30));
+        add(lblRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -300,7 +303,7 @@ public class Usuario extends javax.swing.JPanel {
                 txtCorreoMMouseEntered(evt);
             }
         });
-        add(txtCorreoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 190, 30));
+        add(txtCorreoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 220, 30));
 
         txtMostrarTel.setBackground(new java.awt.Color(51, 51, 51));
         txtMostrarTel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -311,7 +314,7 @@ public class Usuario extends javax.swing.JPanel {
                 txtMostrarTelMouseEntered(evt);
             }
         });
-        add(txtMostrarTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 190, 30));
+        add(txtMostrarTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 220, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Group 185.png"))); // NOI18N
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 260, 240));
@@ -381,7 +384,13 @@ public class Usuario extends javax.swing.JPanel {
                 txtUserActionPerformed(evt);
             }
         });
-        add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 350, 30));
+        add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 190, 30));
+
+        lblNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombre.setText("NOMBRE");
+        add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 350, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuiActionPerformed
@@ -393,13 +402,22 @@ public class Usuario extends javax.swing.JPanel {
         //aquí se ejecutará la sentencia UPDATE
         if(butEstado)
         {
-            txtDui.setEnabled(false);
+            ModeloRegistro mi = new ModeloRegistro();
+            try {
+                mi.actualizarU(this);
+                txtDui.setEnabled(false);
             txtFechaNacimiento.setEnabled(false);
             txtTipoS.setEnabled(false);
             txtEstadoC.setEnabled(false);
             txtGenero.setEnabled(false);
             txtCorreoM.setEnabled(false);
             txtMostrarTel.setEnabled(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            
         }
         
         
@@ -505,6 +523,7 @@ public class Usuario extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblFoto;
+    public javax.swing.JLabel lblNombre;
     public javax.swing.JLabel lblRango;
     private javax.swing.JPanel pnlContenedor;
     public javax.swing.JTable tbPat;

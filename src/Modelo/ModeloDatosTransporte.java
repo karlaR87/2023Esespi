@@ -79,46 +79,7 @@ public class ModeloDatosTransporte {
     
     //Mostrar datos en las tablas
     public void mostrar(VistaAgregarTransporte IIT){
-           /*DefaultTableModel modelo = new DefaultTableModel();
-       
-
-        modelo.setColumnIdentifiers(new Object []{"idDetalleTransporteEstacion","DetalleTransporte", "Placa", "IdTipoTransporteEstacion", "IdMarcaDeVehiculo", "IdGrupoPatrullaje"});
-
-
-
-        try{
-
-            Statement statement = conexionSql.getConexion().createStatement();
-
-            String query = "select * from tbDetallesTransportesEstacion";
-
-            ResultSet rs = statement.executeQuery(query);
-
-
-
-          
-
-            while(rs.next()){
-                System.out.println("ddddd");
-                modelo.addRow(new Object[] {rs.getString("idDetalleTransporteEstacion"),rs.getString("DetalleTransporte"),rs.getString("Placa"), rs.getString("IdTipoTransporteEstacion"), rs.getString("IdMarcaDeVehiculo"), rs.getString("IdGrupoPatrullaje")});
-
-            }
-
-            
-
-            IIT.tbDatosTransporte.setModel(modelo);
-
-
-
-          
-
-        }catch(SQLException ex){
-
-            JOptionPane.showMessageDialog(null,ex.toString());
-
-        }
-
-    */
+   
        
 
         DefaultTableModel modelo = new DefaultTableModel();

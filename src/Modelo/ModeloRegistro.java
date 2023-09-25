@@ -832,7 +832,7 @@ public class ModeloRegistro {
         try{   
             
               
-            String query = "select u.IdUsuario, u.Usuario, ttt.Rango, t.IdPersona ,t.Nombre, t.Apellido, t.Dui, t.FechaNacimiento, t.CorreoElectronico, t.NumeroTel, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t\n" +
+            String query = "select u.IdUsuario, u.Usuario, ttt.Rango, t.IdPersona ,CONCAT (t.Nombre, '', t.Apellido) as Nombre , t.Dui, t.FechaNacimiento, t.CorreoElectronico, t.NumeroTel, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t\n" +
             "inner join tbEstadosCivil e on e.IdEstadoCivil = t.IdEstadoCivil\n" +
             "inner join tbTiposSangre ts on ts.IdTipoSangre = t.IdTipoSangre\n" +
             "inner join tbGeneros g on g.IdGenero = t.IdGenero\n" +
@@ -858,6 +858,7 @@ public class ModeloRegistro {
                 String retorno6 = rs.getString("Genero");
                 String retorno7 = rs.getString("CorreoElectronico");
                 String retorno8 = rs.getString("NumeroTel");
+                String nombre = rs.getString("Nombre");
                 
                 u.txtUser.setText(retorno);
                  u.lblRango.setText(retorno1);
@@ -868,6 +869,7 @@ public class ModeloRegistro {
                 u.txtGenero.setText(retorno6);
                 u.txtMostrarTel.setText(retorno7);
                 u.txtCorreoM.setText(retorno8);
+                u.lblNombre.setText(nombre);
             } 
             
         } catch (SQLException e) {
@@ -1015,6 +1017,52 @@ public class ModeloRegistro {
         }
 
     
+    }
+    
+    public void actualizarU(Usuario u) throws SQLException{
+        ModeloTransporte n = new ModeloTransporte();
+
+        //obtenemos que fila seleccionó el usuario
+
+        String nombre = u.lblNombre.getText();
+        String dui = u.txtDui.getSelectedText();
+         String nac = u.txtUser.getSelectedText();
+        /*String sangre = u.txtDui.getSelectedText();
+         String estado = u.txtUser.getSelectedText();
+        String genero = u.txtDui.getSelectedText();*/
+        //Obtenemos el id de la fila seleccionada
+
+        
+
+        try {
+
+            /*PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("update tbPersonas set Dui = ?, FechaNacimiento = ?, "
+                    + "TipoSangre = ?, EstadoCivil = ?, Genero = ? , CorreoElectronico = ?, Numerotel = ? where Usuario = ?");*/
+
+            PreparedStatement updateUser = conexionSql.getConexion().prepareStatement("update tbPersonas set Dui = ?, FechaNacimiento = ? where Nombre = ?");
+            
+            updateUser.setString(1, dui);
+
+            updateUser.setString(2, nac);
+
+            updateUser.setString(3, nombre);
+              
+
+            updateUser.executeUpdate();
+               
+
+            JOptionPane.showMessageDialog(null, "Datos actualizados");
+
+        } catch (Exception e) {
+
+
+
+            JOptionPane.showMessageDialog(null,e.toString());
+
+
+
+        }
+
     }
     
     
