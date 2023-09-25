@@ -867,8 +867,8 @@ public class ModeloRegistro {
                 u.txtTipoS.setText(retorno4);
                 u.txtEstadoC.setText(retorno5);
                 u.txtGenero.setText(retorno6);
-                u.txtMostrarTel.setText(retorno7);
-                u.txtCorreoM.setText(retorno8);
+                u.txtMostrarTel.setText(retorno8);
+                u.txtCorreoM.setText(retorno7);
                 u.lblNombre.setText(nombre);
             } 
             
