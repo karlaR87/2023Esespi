@@ -832,7 +832,7 @@ public class ModeloRegistro {
         try{   
             
               
-            String query = "select u.IdUsuario, u.Usuario, ttt.Rango, t.IdPersona ,CONCAT (t.Nombre, '', t.Apellido) as Nombre , t.Dui, t.FechaNacimiento, t.CorreoElectronico, t.NumeroTel, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t\n" +
+            String query = "select u.IdUsuario, u.Usuario, ttt.Rango, t.IdPersona ,CONCAT (t.Nombre, ' ', t.Apellido) as Nombre , t.Dui, t.FechaNacimiento, t.CorreoElectronico, t.NumeroTel, t.DireccionDomicilio, t.CorreoElectronico, t.NumeroTel, e.EstadoCivil, ts.TipoSangre, g.Genero from tbPersonas t\n" +
             "inner join tbEstadosCivil e on e.IdEstadoCivil = t.IdEstadoCivil\n" +
             "inner join tbTiposSangre ts on ts.IdTipoSangre = t.IdTipoSangre\n" +
             "inner join tbGeneros g on g.IdGenero = t.IdGenero\n" +
@@ -983,7 +983,7 @@ public class ModeloRegistro {
 
             java.sql.Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "select CONCAT (pp.Nombre, '', pp.Apellido) as NombreReferencia , pp.NumeroTel, pp.CorreoElectronico from tbPolicias_Referencias pr\n" +
+            String query = "select CONCAT (pp.Nombre, ' ', pp.Apellido) as NombreReferencia , pp.NumeroTel, pp.CorreoElectronico from tbPolicias_Referencias pr\n" +
             "inner join tbReferenciasPersonales piR on piR.IdReferenciaPersonal = pr.IdReferenciaPersonal\n" +
             "inner join tbPersonas pp on pp.IdPersona = piR.IdPersona\n" +
             "inner join tbPolicias ppR on ppR.IdPolicia = pr.IdPolicia\n" +
