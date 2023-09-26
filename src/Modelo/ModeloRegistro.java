@@ -19,8 +19,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class ModeloRegistro {
     
-   
-    
     private String CorreoElectronico;
     private String numeroTelefonico;
     //registro
@@ -279,8 +277,6 @@ public class ModeloRegistro {
 
         }
     } 
-    
-   
     
     //LLENAR COMBOBOX DE ESTADO CIVIL 
     public void llenarCombo(JComboBox<String> comboboxEstadoCivil) throws SQLException {

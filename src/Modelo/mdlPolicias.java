@@ -752,7 +752,7 @@ public class mdlPolicias {
 
             while(rs.next()){
                 modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellido"),rs.getString("Dui"), rs.getString("Genero"),
-                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca")});//, rs.getString("NumeroDeGrupo")});
+                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("Placa")});//, rs.getString("NumeroDeGrupo")});
 
             }
             

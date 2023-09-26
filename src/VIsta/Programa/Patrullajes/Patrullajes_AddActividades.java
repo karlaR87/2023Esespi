@@ -1,6 +1,8 @@
 package VIsta.Programa.Patrullajes;
 
+import Modelo.ModeloPatrullajes;
 import java.awt.Color;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 
 public class Patrullajes_AddActividades extends javax.swing.JFrame {
@@ -10,6 +12,8 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
     
     ImageIcon iconoOriginalCancel;
     ImageIcon iconoOriginalCancelCLARE;
+    
+    ModeloPatrullajes mdl = new ModeloPatrullajes();
     
     public Patrullajes_AddActividades() {
         initComponents();
@@ -22,6 +26,17 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         iconoOriginalCancelCLARE = new ImageIcon("src/VIsta/imagenes/btnX1CLARE.png"); 
         
          this.setBackground(new Color(0, 0, 0, 0));
+         
+//          try {
+////            mdl.llenarCombo(cmbMedio1);
+////            mdl.llenarCombo(cmbMedio2);
+////            mdl.llenarCombo(cmbMedio3);
+////            mdl.llenarCombo(cmbMedio4);
+////            mdl.llenarCombo(cmbMedio5);
+//
+//        } catch (SQLException e) {
+//             System.out.println("Error en cmb y clndr");
+//        }
     }
 
    public void OriginalIcon()
