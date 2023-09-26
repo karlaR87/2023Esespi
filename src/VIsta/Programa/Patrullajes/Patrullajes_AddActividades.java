@@ -27,16 +27,16 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         
          this.setBackground(new Color(0, 0, 0, 0));
          
-//          try {
-////            mdl.llenarCombo(cmbMedio1);
-////            mdl.llenarCombo(cmbMedio2);
-////            mdl.llenarCombo(cmbMedio3);
-////            mdl.llenarCombo(cmbMedio4);
-////            mdl.llenarCombo(cmbMedio5);
-//
-//        } catch (SQLException e) {
-//             System.out.println("Error en cmb y clndr");
-//        }
+          try {
+            mdl.llenarCombo(cmbMedio1);
+//            mdl.llenarCombo(cmbMedio2);
+//            mdl.llenarCombo(cmbMedio3);
+//            mdl.llenarCombo(cmbMedio4);
+//            mdl.llenarCombo(cmbMedio5);
+
+        } catch (SQLException e) {
+             System.out.println("Error en cmb y clndr");
+        }
     }
 
    public void OriginalIcon()
@@ -53,6 +53,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         cmbMedio1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         btnAcept = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -65,18 +66,25 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(70, 70, 70));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(330, 390));
 
+        jPanel1.setBackground(new java.awt.Color(70, 70, 70));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Medio de asignación:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
 
         cmbMedio1.setBackground(new java.awt.Color(59, 126, 255));
         cmbMedio1.setForeground(new java.awt.Color(255, 255, 255));
         cmbMedio1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbMedio1.setBorder(null);
         jPanel1.add(cmbMedio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 300, 25));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Medio de asignación:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -194,6 +202,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
