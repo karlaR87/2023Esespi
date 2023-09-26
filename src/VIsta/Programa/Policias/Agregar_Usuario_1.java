@@ -11,7 +11,7 @@ import javax.swing.text.PlainDocument;
  *
  * @author Pao
  */
-public class Agregar_Usuario extends javax.swing.JFrame {
+public class Agregar_Usuario_1 extends javax.swing.JFrame {
   
     ImageIcon iconoOriginalCancel;
     ImageIcon iconoClareCancel;
@@ -19,7 +19,7 @@ public class Agregar_Usuario extends javax.swing.JFrame {
     ImageIcon iconoOriginalSave;
     ImageIcon iconoClareSave;
     
-    public Agregar_Usuario() {
+    public Agregar_Usuario_1() {
         initComponents();
         
         iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnCancelBlockRed2.png"); 
@@ -238,20 +238,20 @@ public class Agregar_Usuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_Usuario_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_Usuario_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_Usuario_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar_Usuario_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agregar_Usuario().setVisible(true);
+                new Agregar_Usuario_1().setVisible(true);
             }
         });
     }
