@@ -647,7 +647,7 @@ public class mdlPolicias {
         DefaultTableModel modelo = new DefaultTableModel();
       
         modelo.setColumnIdentifiers(new Object []{"IdPolicia","Apellido", "Dui","Genero", "NumeroTel", "Rango", 
-            "ONI", "NumeroPlaca"});
+            "ONI", "Placa"});
 
         try{
 
@@ -722,7 +722,7 @@ public class mdlPolicias {
         DefaultTableModel modelo = new DefaultTableModel();
       
         modelo.setColumnIdentifiers(new Object []{"IdPolicia","Apellido", "Dui","Genero", "NumeroTel", "Rango", 
-            "ONI", "NumeroPlaca"});
+            "ONI", "Placa"});
 
         try{
 

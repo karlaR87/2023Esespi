@@ -41,7 +41,7 @@ public class Patrullajes_AddPersonal extends javax.swing.JFrame {
     public Patrullajes_AddPersonal() {
         initComponents();
         
-        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAcept.png"); 
+        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnCheck1.png"); 
         iconoOriginalAddCLARE = new ImageIcon("src/VIsta/imagenes/btnCheck1CLARE.png");
         
         iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnX1.png"); 

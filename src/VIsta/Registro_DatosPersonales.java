@@ -705,7 +705,7 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
 //       cmbgenero.setFocusable(status);   
 //    }
     
-     JoptionReplacemnt Jo;
+    JoptionReplacemnt Jo;
     
     public void show(String msg, int sizeTXT, int img)
     {
