@@ -59,7 +59,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         } catch (SQLException e) {
              System.out.println("Error en cmb y clndr");
         }
-         
+          ImageIcon icono = new ImageIcon("src/VIsta/imagenes/R100.png"); this.setIconImage(icono.getImage());
         this.setBackground(new Color(0, 0, 0, 0)); 
         fontDesign();
     }

@@ -5,7 +5,7 @@ import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Programa.Policias.Actualizar_Policia;
-import VIsta.Programa.Policias.Agregar_Usuario;
+import VIsta.Programa.Policias.Agregar_Usuario_1;
 import VIsta.Programa.Policias.Agregar_policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import java.awt.event.ActionEvent;
@@ -23,7 +23,7 @@ public class contrlPolicias implements ActionListener{
     private mdlPolicias mdlPoli;
     
     private Agregar_policia jFrameAddPolice;
-    private Agregar_Usuario jFrameAddUser;
+    private Agregar_Usuario_1 jFrameAddUser;
     
     private Actualizar_Policia jFrameUpdatePolice;
     
@@ -39,7 +39,7 @@ public class contrlPolicias implements ActionListener{
     
     public int idNivelUser;
     
-    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_policia jFrameAddPolice, Agregar_Usuario jFrameAddUser, int idNivelUser,  Actualizar_Policia jFrameUpdatePolice)
+    public contrlPolicias(Policias_Inicio vstPoli, JframePrincipal jFrameP, mdlPolicias mdlPoli, Agregar_policia jFrameAddPolice, Agregar_Usuario_1 jFrameAddUser, int idNivelUser,  Actualizar_Policia jFrameUpdatePolice)
     {
         this.idNivelUser = idNivelUser;
         

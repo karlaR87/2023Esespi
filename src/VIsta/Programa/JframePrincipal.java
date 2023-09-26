@@ -15,7 +15,7 @@ import VIsta.Programa.Patrullajes.Patrullajes_AddUbicacion;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import VIsta.Programa.Policias.Actualizar_Policia;
-import VIsta.Programa.Policias.Agregar_Usuario;
+import VIsta.Programa.Policias.Agregar_Usuario_1;
 import VIsta.Programa.Policias.Agregar_policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Reportes.Reportes_Inicio;
@@ -69,7 +69,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     //Patrullajes Panel
     Patrullajes_Agregar AddPatrullajes;
     Agregar_policia AddPolice;
-    Agregar_Usuario AddUser;
+    Agregar_Usuario_1 AddUser;
     Actualizar_Policia UpdatePolice;
     Patrullajes_AddUbicacion PAddUbi;
     Patrullajes_AddActividades AddActPatru;
@@ -93,7 +93,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         //Inicializacion de modelos y controladores
        ModeloPatrullajes mdlPatrullajes = new ModeloPatrullajes();
         mdlPolicias = new mdlPolicias();
-        AddUser = new Agregar_Usuario();
+        AddUser = new Agregar_Usuario_1();
         PAddUbi = new Patrullajes_AddUbicacion();
         AddActPatru = new Patrullajes_AddActividades();
         cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP, PAddUbi, AddActPatru);

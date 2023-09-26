@@ -255,11 +255,14 @@ public class ModeloDatosTransporte {
         String miId = IIT3.tbDatosTransporte.getValueAt(filaSeleccionada, 0).toString();
    
        String nuevoValorIngresadoDetalle = IIT3.txtDetalles.getText();
-
+        IIT3.txtDetalles.setText(nuevoValorIngresadoDetalle);
+        
        String nuevoValorIngresadoPlaca = IIT3.txtPlaca.getText();
+       IIT3.txtPlaca.setText(nuevoValorIngresadoPlaca);
 
        String combo1 =IIT3.cmbTipos.getSelectedItem().toString();
        int var1 = n.IdRetorno(combo1);
+       
        
        String combo2 = IIT3.cmbMarcas.getSelectedItem().toString();
        int var2 = n.IdRetorno2(combo2);

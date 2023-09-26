@@ -156,7 +156,8 @@ public class cntrlPatrullajes implements ActionListener {
            JframePrincipal.jLabel3.setVisible(true);
            JframePrincipal.setEnabled(false);
            addActPatrullaje.setVisible(true);
-            addActPatrullaje.jLabel3.setVisible(false);
+           addActPatrullaje.setEnabled(true);
+           addActPatrullaje.jLabel3.setVisible(false);
         
        }
        //------------------------------------------------------Boton que cancela la agregacion de actpatrullaje
@@ -249,8 +250,7 @@ public class cntrlPatrullajes implements ActionListener {
            
             JframePrincipal.setEnabled(true);
             JframePrincipal.jLabel3.setVisible(false);
-            
-            
+             
             addActPatrullaje.setEnabled(true);
             addActPatrullaje.jLabel3.setVisible(false);
             addActPatrullaje.setVisible(false);
@@ -264,7 +264,8 @@ public class cntrlPatrullajes implements ActionListener {
             JframePrincipal.setEnabled(false);
             JframePrincipal.jLabel3.setVisible(true);
             
-            
+            addActPatrullaje.setEnabled(true);
+            addActPatrullaje.jLabel3.setVisible(false);
         }
         });
     }
@@ -443,8 +444,7 @@ public class cntrlPatrullajes implements ActionListener {
     public double[] getCoordinates() {
         return new double[] { latitud, longitud };
     }
-       
-    
+          
     private void drawCircleAroundMarker(JXMapViewer mapViewer, GeoPosition center, double DiametroenKM, Set<Waypoint> waypoints, WaypointPainter<Waypoint> circlePainter) {
     double diametroEnGrados = DiametroenKM / 111.32; // 1 grado de latitud es aproximadamente 111.32 kilómetros
     double diametroEnPixeles = diametroEnGrados / (360.0 / (Math.pow(2, mapViewer.getZoom()) * 256));
@@ -475,7 +475,6 @@ public class cntrlPatrullajes implements ActionListener {
     Fuentes tipoFuentes;
     ModeloPatrullajes mdlPatrullajes;
     ImageIcon Line;
-    GridBagConstraints constraints;
     ImageIcon FtoPrueba;
     ImageIcon Check = new ImageIcon("src/VIsta/imagenes/Ellipse 25.png");
     ImageIcon NOCheck = new ImageIcon("src/VIsta/imagenes/Ellipse 9.png");
@@ -487,11 +486,9 @@ public class cntrlPatrullajes implements ActionListener {
     
     List<Integer> ListaIdPolicias = new ArrayList<>();  
     public JPanel panelULTIMATE = new JPanel();
-
     
     public void showPolicias()
-    {   
-        
+    {      
         Line = new ImageIcon("src/VIsta/imagenes/Line 4.png");
         FtoPrueba = new ImageIcon("src/VIsta/imagenes/Ellipse.png");
         addPersonal.jLabel3.setVisible(false);
@@ -612,7 +609,7 @@ public class cntrlPatrullajes implements ActionListener {
                 
                 String nameComplete = "<html>" + Nombre + " " + Apellido + "</html>";
                 JLabel label = new JLabel(nameComplete);
-               label.setPreferredSize(new Dimension(50, 50));
+                label.setPreferredSize(new Dimension(50, 50));
                 
                 JLabel label2 = new JLabel(Rango);
                 JLabel line = new JLabel();
@@ -625,7 +622,7 @@ public class cntrlPatrullajes implements ActionListener {
 
                 //Crear CheckBox con el "valor" del idPolicia
                 JCheckBox checkBox = new JCheckBox(String.valueOf(IdPolicia), false);
-                checkBox.setForeground(new Color(70, 70, 70));
+                checkBox.setForeground(new Color(70,70,70));
                 checkBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 checkBox.setSelectedIcon(Check);
                 checkBox.setIcon(NOCheck);
@@ -645,8 +642,7 @@ public class cntrlPatrullajes implements ActionListener {
                     JCheckBox source = (JCheckBox) e.getSource();
                     if (source.isSelected()) {
                         System.out.println("Checkbox seleccionado " + checkBox.getText());
-                        addIdANDConfirmNumber(Integer.valueOf(checkBox.getText()), checkBox);
-                        
+                        addIdANDConfirmNumber(Integer.valueOf(checkBox.getText()), checkBox); 
                         
                     } else {
                         System.out.println("Checkbox deseleccionado " + checkBox.getText());

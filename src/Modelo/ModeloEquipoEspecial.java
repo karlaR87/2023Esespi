@@ -595,14 +595,14 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
             //obtenemos que fila seleccionó el usuario
             
             int filaSeleccionada = especial.tbEquiposEspeciales.getSelectedRow();
-            System.out.println("pasa int ");
+            
             //Obtenemos el id de la fila seleccionada
             
             String miId = especial.tbEquiposEspeciales.getValueAt(filaSeleccionada, 0).toString();
-            System.out.println("El miId");
+            
             
             String nuevoValorIngresadoNombre = especial.txtDetalles.getText();
-            System.out.println("Nuevo nombre ");
+           
             
             int nuevoValorIngresadoCantidad = (int) especial.spCantidad.getValue();
             

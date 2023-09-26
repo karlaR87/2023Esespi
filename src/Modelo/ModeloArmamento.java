@@ -370,14 +370,14 @@ public class ModeloArmamento {
                 //obtenemos que fila seleccionó el usuario
                 
                 int filaSeleccionada = armas.tbArmas.getSelectedRow();
-                System.out.println("pasa int ");
+                
                 //Obtenemos el id de la fila seleccionada
                 
                 String miId = armas.tbArmas.getValueAt(filaSeleccionada, 0).toString();
-                System.out.println("El miId");
+                
                 
                 String nuevoValorIngresadoNombre = armas.txtDetalles.getText();
-                System.out.println("Nuevo nombre ");
+                
                 
                 int nuevoValorIngresadoCantidad = (int) armas.spCantidad.getValue();
                 
