@@ -76,6 +76,11 @@ public class PorSMS extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent870x700.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -94,9 +99,7 @@ public class PorSMS extends javax.swing.JPanel {
         jLabel11.setText("¿No has recibido nada?");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 630, -1, -1));
 
-        txtNumero.setBackground(new java.awt.Color(255, 255, 255));
         txtNumero.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtNumero.setForeground(new java.awt.Color(0, 0, 0));
         txtNumero.setToolTipText("");
         txtNumero.setBorder(null);
         jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 380, 30));
@@ -111,9 +114,7 @@ public class PorSMS extends javax.swing.JPanel {
         jLabel5.setText("<html> Ingrese el código enviado a su número telefónico  <br> para restablecer su contraseña. </html>");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 430, 430, 50));
 
-        txtCodeN.setBackground(new java.awt.Color(255, 255, 255));
         txtCodeN.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txtCodeN.setForeground(new java.awt.Color(0, 0, 0));
         txtCodeN.setToolTipText("");
         txtCodeN.setBorder(null);
         jPanel1.add(txtCodeN, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 488, 380, 30));
@@ -171,7 +172,7 @@ public class PorSMS extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-
+        
     }//GEN-LAST:event_btnAceptarMouseClicked
 
     private void btnEnviarCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarCodeMouseClicked
@@ -182,8 +183,8 @@ public class PorSMS extends javax.swing.JPanel {
     public String numeroReceptor;
     
       // Find your Account Sid and Token at twilio.com/console
-  public static final String ACCOUNT_SID = "ACd88cf77d417af40bf11c6f7e800d6d35";
-  public static final String AUTH_TOKEN = "68dfd768c35cbb3644197817765b6bde";
+  public static final String ACCOUNT_SID = "AC18da18d9c85ef2cae859f4c530f131e9";
+  public static final String AUTH_TOKEN = "66e2df19697a923f281cd8d3b72bf3c7";
 
     public void sendSMS()
     {  
@@ -199,7 +200,7 @@ public class PorSMS extends javax.swing.JPanel {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
       new com.twilio.type.PhoneNumber(numeroReceptor), //+50369983522
-      new com.twilio.type.PhoneNumber("+15738892923"),
+      new com.twilio.type.PhoneNumber("+12566702433"),
       "Ingresa el siguiente codigo en el sistema para restablecer tu Contraseña:" + numeroAleatorio)
 
     .create();
@@ -226,6 +227,10 @@ public class PorSMS extends javax.swing.JPanel {
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         sendSMS();
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        
+    }//GEN-LAST:event_jLabel7MouseClicked
 
        public JLabel getlblBack() {
         return lblBack;

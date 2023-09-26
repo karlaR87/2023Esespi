@@ -912,6 +912,34 @@ public class ModeloRegistro {
         
        
     }
+    
+    public void MostrarUser(String usuario)
+    {
+        try{   
+            
+            
+              
+            String query = "select Usuario from tbUsuarios where Usuario = '" + usuario + "'";  
+
+              
+            PreparedStatement readIdUltimaPersona = conexionSql.getConexion().prepareStatement(query);
+            
+             ResultSet rs = readIdUltimaPersona.executeQuery();
+
+            // Verificar si hay alguna fila en el ResultSet
+            if (rs.next()) {
+                String retorno = rs.getString("Usuario");
+   
+            } 
+            
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e.toString());
+           
+        }
+        
+        
+       
+    }
 
     
     public void mOstrarPatUser(Usuario u)

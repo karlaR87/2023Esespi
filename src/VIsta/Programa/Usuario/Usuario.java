@@ -35,6 +35,8 @@ public class Usuario extends javax.swing.JPanel {
     
     public boolean butEstado = true;
     
+ 
+    
     public Usuario() {
         initComponents();
         PanelsShowInit();
@@ -45,6 +47,8 @@ public class Usuario extends javax.swing.JPanel {
         m.IdUsuarioTomar(this);
         m.mOstrarPatUser(this);
         m.mOstrarReferencias(this);
+        
+       
     }
 
        

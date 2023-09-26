@@ -6,6 +6,7 @@ import Modelo.mdlUsuarios;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Registro;
 import Modelo.ModeloRegistro;
+import Modelo.conexionSql;
 import fonts.Fuentes;
 import java.awt.BorderLayout;
 import java.awt.Frame;
@@ -22,6 +23,7 @@ public class Login extends javax.swing.JFrame {
     Fuentes tipoFuentes;
     public int IdNivelUser;
     ModeloRegistro me = new ModeloRegistro();
+    public String texto;
     
     public Login() {
         initComponents();
@@ -66,6 +68,7 @@ public class Login extends javax.swing.JFrame {
 
 	return sb.toString();
 }
+     
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -297,7 +300,11 @@ public class Login extends javax.swing.JFrame {
            
            //String t = txtUsuario.getText();
            System.out.println("esto se va a la pantakka " + txtUsuario.getText());*/
+           texto = txtUsuario.getText();
          
+           
+           
+          
     }//GEN-LAST:event_btnIngresarMouseClicked
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked

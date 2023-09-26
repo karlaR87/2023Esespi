@@ -26,6 +26,12 @@ public class Inicio extends javax.swing.JPanel {
     JFreeChart grafico2;
     DefaultCategoryDataset datos = new DefaultCategoryDataset(); //valores para graficar
     DefaultCategoryDataset datos2 = new DefaultCategoryDataset(); //valores para graficar
+    
+    
+    Login l = new Login();
+ 
+    
+    
    
     public Inicio() {
         initComponents();
@@ -33,7 +39,10 @@ public class Inicio extends javax.swing.JPanel {
         Grafico();
         MostrarDatosGraficoPat();
         GraficoPat();
+        
     }
+    
+    
     
     //Mostrar datos en la tabla de transporte
     public void MostrarDatosGrafico()
@@ -179,6 +188,9 @@ public class Inicio extends javax.swing.JPanel {
         }
            
     }
+        
+        
+        
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -191,6 +203,7 @@ public class Inicio extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbPatrullajes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        lblVer = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(980, 710));
 
@@ -245,6 +258,10 @@ public class Inicio extends javax.swing.JPanel {
         });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 30, 40));
 
+        lblVer.setForeground(new java.awt.Color(255, 255, 255));
+        lblVer.setText("jLabel1");
+        jPanel1.add(lblVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 260, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -286,6 +303,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JLabel lblVer;
     public javax.swing.JTable tbMostrar;
     public javax.swing.JTable tbPatrullajes;
     // End of variables declaration//GEN-END:variables
