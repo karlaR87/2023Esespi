@@ -647,7 +647,7 @@ public class mdlPolicias {
         DefaultTableModel modelo = new DefaultTableModel();
       
         modelo.setColumnIdentifiers(new Object []{"IdPolicia","Apellido", "Dui","Genero", "NumeroTel", "Rango", 
-            "ONI", "NumeroPlaca"});
+            "ONI", "Placa"});
 
         try{
 
@@ -669,7 +669,7 @@ public class mdlPolicias {
 
             while(rs.next()){
                 modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellido"),rs.getString("Dui"), rs.getString("Genero"),
-                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("Placa")});//, rs.getString("NumeroDeGrupo")});
+                    rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca")});//, rs.getString("NumeroDeGrupo")});
 
             }
             
