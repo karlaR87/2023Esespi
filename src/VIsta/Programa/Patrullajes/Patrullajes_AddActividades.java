@@ -13,8 +13,9 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
     
     public Patrullajes_AddActividades() {
         initComponents();
+        this.jLabel3.setVisible(false);
         
-        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAcept.png"); 
+        iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnCheck1.png"); 
         iconoOriginalAddCLARE = new ImageIcon("src/VIsta/imagenes/btnCheck1CLARE.png");
         
         iconoOriginalCancel = new ImageIcon("src/VIsta/imagenes/btnX1.png"); 
@@ -33,17 +34,38 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        cmbMedio1 = new javax.swing.JComboBox<>();
         btnAcept = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BlackTransparentADDPERSONAL.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 560));
+        jScrollPane1.setBackground(new java.awt.Color(70, 70, 70));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(330, 390));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Medio de asignación:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        cmbMedio1.setBackground(new java.awt.Color(59, 126, 255));
+        cmbMedio1.setForeground(new java.awt.Color(255, 255, 255));
+        cmbMedio1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbMedio1.setBorder(null);
+        jPanel1.add(cmbMedio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 300, 25));
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 100, 330, 390));
 
         btnAcept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCheck1.png"))); // NOI18N
         btnAcept.setBorderPainted(false);
@@ -82,7 +104,11 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/actPatruBACK.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 7, -1, -1));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BlackTransparentADDPERSONAL.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 560));
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptMouseClicked
@@ -149,7 +175,11 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAcept;
     public javax.swing.JButton btnCancel;
+    public javax.swing.JComboBox<String> cmbMedio1;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
