@@ -7,6 +7,7 @@ package VIsta.Programa.Inicio;
 import Modelo.conexionSql;
 import Modelo.mdl;
 import VIsta.Login;
+import VIsta.Programa.TablasPaneles;
 import VIsta.VistaUsers;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -29,73 +30,70 @@ public class Inicio extends javax.swing.JPanel {
     
     
     Login l = new Login();
- 
+ TablasPaneles p = new TablasPaneles();
     
     
    
     public Inicio() {
         initComponents();
-        MostrarDatosGrafico();
-        Grafico();
-        MostrarDatosGraficoPat();
+        
+        
+        p.MostrarDatos();
+        p.MostrarDatosPat();
+        
+        
+        //Grafico();
+        //MostrarDatosGraficoPat();
         GraficoPat();
         
     }
     
     
+   
     
-    //Mostrar datos en la tabla de transporte
-    public void MostrarDatosGrafico()
-    {
-              DefaultTableModel modelo = new DefaultTableModel();
-       
-
-        modelo.setColumnIdentifiers(new Object []{"IdDetalleTransporteEstacion", "Marca", "NumeroDeGrupo"});
-
-
-
-        try{
-
-            Statement statement = conexionSql.getConexion().createStatement();
-
-            String query = "select t.IdDetalleTransporteEstacion, y.Marca, g.NumeroDeGrupo from tbDetallesTransportesEstacion t\n" +
-"inner join tbMarcasDeVehiculos y on y.IdMarcaDeVehiculo = t.IdMarcaDeVehiculo\n" +
-"inner join tbGrupoPatrullajes g on g.IdGrupoPatrullaje = t.IdGrupoPatrullaje";
-
-            ResultSet rs = statement.executeQuery(query);
-
-
-
-          
-
-            while(rs.next()){
-                
-                modelo.addRow(new Object[] {rs.getString("IdDetalleTransporteEstacion"), rs.getString("Marca"), rs.getString("NumeroDeGrupo")});
-
-            }
-
-            tbMostrar.setModel(modelo);
-
-        }catch(SQLException ex){
-
-            JOptionPane.showMessageDialog(null,ex.toString());
-
-        }
-
-    
-    
-    }
-    
-    //Grafico de transporte
-    public void Grafico()
+   //Grafico de patrullajes
+        public void GraficoPat()
     {
         try
         {
             
-            for(int i = 0; i<tbMostrar.getRowCount();i++) //recorremos cada fila de la tabla
+            for(int i = 0; i<p.tbMostrarDatosP.getRowCount();i++) //recorremos cada fila de la tabla
             {
                 //Valor a graficar (se parsea para obtener el valor de la primera fila), identificar del grupo de datos, etiquetas de la columna a graficar
-                datos.addValue(Integer.parseInt(tbMostrar.getValueAt(i, 0).toString()), tbMostrar.getValueAt(i, 1).toString(), tbMostrar.getValueAt(i, 2).toString());
+                datos2.addValue(Integer.parseInt(p.tbMostrarDatosP.getValueAt(i, 1).toString()), p.tbMostrarDatosP.getValueAt(i, 0).toString(), p.tbMostrarDatosP.getValueAt(i, 2).toString());
+            }
+            
+            //mostrar el gráfico
+            
+            grafico2 = ChartFactory.createBarChart("Grafico de patrullajes", "Grupos de patrullaje", "Recorrido (KM)", datos2, PlotOrientation.VERTICAL, true, true, false);
+            
+            ChartPanel panel = new ChartPanel(grafico2);
+            add(panel);
+            panel.setBounds(60, 10, 910, 580);
+            panel.setBackground(Color.DARK_GRAY);
+            
+        }
+        catch(Exception e)
+        {
+           JOptionPane.showMessageDialog(null, e);
+        }
+           
+    }
+        
+         
+    
+    
+    
+    //Grafico de transporte
+    /*public void Grafico()
+    {
+        try
+        {
+            
+            for(int i = 0; i<p.tbMostrarDatosT.getRowCount();i++) //recorremos cada fila de la tabla
+            {
+                //Valor a graficar (se parsea para obtener el valor de la primera fila), identificar del grupo de datos, etiquetas de la columna a graficar
+                datos.addValue(Integer.parseInt(p.tbMostrarDatosT.getValueAt(i, 0).toString()), p.tbMostrarDatosT.getValueAt(i, 1).toString(), p.tbMostrarDatosT.getValueAt(i, 2).toString());
             }
             
             //mostrar el gráfico
@@ -113,13 +111,13 @@ public class Inicio extends javax.swing.JPanel {
            JOptionPane.showMessageDialog(null, e);
         }
            
-    }
+    }*/
     
     
     
     
     //Mostrar datos en la tabla tbPatrullajes
-    public void MostrarDatosGraficoPat()
+    /*public void MostrarDatosGraficoPat()
     {
               DefaultTableModel modelo = new DefaultTableModel();
        
@@ -158,36 +156,7 @@ public class Inicio extends javax.swing.JPanel {
 
     
     
-    }
-    
-   //Grafico de patrullajes
-        public void GraficoPat()
-    {
-        try
-        {
-            
-            for(int i = 0; i<tbPatrullajes.getRowCount();i++) //recorremos cada fila de la tabla
-            {
-                //Valor a graficar (se parsea para obtener el valor de la primera fila), identificar del grupo de datos, etiquetas de la columna a graficar
-                datos2.addValue(Integer.parseInt(tbPatrullajes.getValueAt(i, 0).toString()), tbPatrullajes.getValueAt(i, 1).toString(), tbPatrullajes.getValueAt(i, 2).toString());
-            }
-            
-            //mostrar el gráfico
-            
-            grafico2 = ChartFactory.createBarChart("Grafico de patrullajes", "Grupos de patrullaje", "Recorrido (KM)", datos2, PlotOrientation.VERTICAL, true, true, false);
-            
-            ChartPanel panel = new ChartPanel(grafico2);
-            add(panel);
-            panel.setBounds(440, 335, 530, 255);
-            panel.setBackground(Color.DARK_GRAY);
-            
-        }
-        catch(Exception e)
-        {
-           JOptionPane.showMessageDialog(null, e);
-        }
-           
-    }
+    }*/
         
         
         
@@ -197,13 +166,7 @@ public class Inicio extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbMostrar = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbPatrullajes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        lblVer = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(980, 710));
 
@@ -211,56 +174,13 @@ public class Inicio extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1010, 710));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbMostrar.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        tbMostrar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tbMostrar);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 350, 280));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 30, 40));
-
-        tbPatrullajes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tbPatrullajes);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 350, 260));
-
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 30, 40));
-
-        lblVer.setForeground(new java.awt.Color(255, 255, 255));
-        lblVer.setText("jLabel1");
-        jPanel1.add(lblVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 260, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -281,30 +201,16 @@ public class Inicio extends javax.swing.JPanel {
     
     
     
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        
-        //Mostrar datos de transporte y actualizar su gráfico
-        
-        MostrarDatosGrafico();
-        Grafico();
-    }//GEN-LAST:event_jLabel2MouseClicked
-
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         //Mostrar datos de patrullaje y actualizar su gráfico
         
-        MostrarDatosGraficoPat();
+        //MostrarDatosGraficoPat();
         GraficoPat();
     }//GEN-LAST:event_jLabel3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JLabel lblVer;
-    public javax.swing.JTable tbMostrar;
-    public javax.swing.JTable tbPatrullajes;
     // End of variables declaration//GEN-END:variables
 }

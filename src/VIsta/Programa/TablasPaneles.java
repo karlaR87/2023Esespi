@@ -27,6 +27,7 @@ public class TablasPaneles extends javax.swing.JFrame {
         MostrarDatosPat();
     }
 
+    //Mostrar datos en la tabla de transporte
     
     public void MostrarDatos()
     {
@@ -73,7 +74,7 @@ public class TablasPaneles extends javax.swing.JFrame {
               DefaultTableModel modelo = new DefaultTableModel();
        
 
-        modelo.setColumnIdentifiers(new Object []{"RecorridoPatrullaje", "NumeroDeGrupo", "Municipio"});
+        modelo.setColumnIdentifiers(new Object []{"NumeroDeGrupo", "RecorridoPatrullaje", "Municipio"});
 
 
 
@@ -81,7 +82,7 @@ public class TablasPaneles extends javax.swing.JFrame {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "select pat.ExtensionKM AS RecorridoPatrullaje, gu.NumeroDeGrupo ,mun.Municipio from tbPatrullajes pat\n" +
+            String query = "select gu.NumeroDeGrupo ,pat.ExtensionKM AS RecorridoPatrullaje ,mun.Municipio from tbPatrullajes pat\n" +
             "inner join tbGrupoPatrullajes gu on gu.IdGrupoPatrullaje = pat.IdGrupoPatrullaje\n" +
             "inner join tbMunicipios mun on mun.IdMunicipio = pat.IdMunicipio";
 
@@ -93,7 +94,48 @@ public class TablasPaneles extends javax.swing.JFrame {
 
             while(rs.next()){
                 
-                modelo.addRow(new Object[] {rs.getString("RecorridoPatrullaje"),rs.getString("NumeroDeGrupo"), rs.getString("Municipio")});
+                modelo.addRow(new Object[] {rs.getString("NumeroDeGrupo"),rs.getString("RecorridoPatrullaje"), rs.getString("Municipio")});
+
+            }
+
+            tbMostrarDatosP.setModel(modelo);
+
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    
+    
+    }
+    
+    public void MostrarDatosPat2()
+    {
+              DefaultTableModel modelo = new DefaultTableModel();
+       
+
+        modelo.setColumnIdentifiers(new Object []{"NumeroDeGrupo", "RecorridoPatrullaje", "Municipio"});
+
+
+
+        try{
+
+            Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "select gu.NumeroDeGrupo ,pat.ExtensionKM AS RecorridoPatrullaje ,mun.Municipio from tbPatrullajes pat\n" +
+            "inner join tbGrupoPatrullajes gu on gu.IdGrupoPatrullaje = pat.IdGrupoPatrullaje\n" +
+            "inner join tbMunicipios mun on mun.IdMunicipio = pat.IdMunicipio";
+
+            ResultSet rs = statement.executeQuery(query);
+
+
+
+          
+
+            while(rs.next()){
+                
+                modelo.addRow(new Object[] {rs.getString("NumeroDeGrupo"),rs.getString("RecorridoPatrullaje"), rs.getString("Municipio")});
 
             }
 
@@ -172,7 +214,7 @@ public class TablasPaneles extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -156,7 +156,16 @@ public class cntrlPatrullajes implements ActionListener {
            JframePrincipal.jLabel3.setVisible(true);
            JframePrincipal.setEnabled(false);
            addActPatrullaje.setVisible(true);
+            addActPatrullaje.jLabel3.setVisible(false);
+        
        }
+       //------------------------------------------------------Boton que cancela la agregacion de actpatrullaje
+       if(e.getSource() == addActPatrullaje.btnCancel)
+       {
+           show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
+           close5();
+       }
+       
        
        //-----------------------------------------------------Boton para cancelar la ubicacion(MAPA)
         if (e.getSource() == addUbicacion.btnCancelMap) 
@@ -221,15 +230,44 @@ public class cntrlPatrullajes implements ActionListener {
     JoptionReplacemnt Jo;
     public void show(String msg, int sizeTXT, int img, int type)
     {  
-        JframePrincipal.setEnabled(false);
+         JframePrincipal.setEnabled(false);
         JframePrincipal.jLabel3.setVisible(true);
         addPersonal.setEnabled(false);
         addPersonal.jLabel3.setVisible(true);
+        addActPatrullaje.setEnabled(false);
+        addActPatrullaje.jLabel3.setVisible(true);
         
         Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
         Jo.setVisible(true);
     }
-    
+    public void close5()
+    {   
+        //Agregar evento click
+        Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);         
+           
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            
+            
+            addActPatrullaje.setEnabled(true);
+            addActPatrullaje.jLabel3.setVisible(false);
+            addActPatrullaje.setVisible(false);
+            
+        }
+        });
+        
+        Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);           
+            JframePrincipal.setEnabled(false);
+            JframePrincipal.jLabel3.setVisible(true);
+            
+            
+        }
+        });
+    }
     public void close3()
     {   
         Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {

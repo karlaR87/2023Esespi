@@ -8,10 +8,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.beans.Statement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -31,6 +33,42 @@ public class ModeloPatrullajes {
 
     public void setPatrullajes(int IdPatrullaje) {
         this.idPatrullaje = IdPatrullaje;
+    }
+    
+    //LLENAR COMBOBOX DE ESTADO CIVIL 
+    public void llenarCombo(JComboBox<String> cmb) throws SQLException {
+         Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+
+        String SSQL = "SELECT IdMediosAsignacionAct, Medio FROM tbMediosAsignacionAct";
+        cmb.removeAllItems();
+
+        try {
+            conectar = conexionSql.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            result = pst.executeQuery();
+
+            while (result.next()) {
+                int id = result.getInt("IdMediosAsignacionAct");
+                String Medio = result.getString("Medio");
+                cmb.addItem(Medio);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }finally {
+            // Cerrar recursos
+            if (result != null) {
+                result.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (conectar != null) {
+                conectar.close();
+            }
+        }
     }
     
     public ResultSet ChargePoliciaSELECTED(int IdPolicia)
