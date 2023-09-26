@@ -122,6 +122,11 @@ public class Agregar_Armamento extends javax.swing.JFrame {
         jLabel4.setText("Cantidad: ");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 180, -1));
 
+        txtDetalles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDetallesMouseClicked(evt);
+            }
+        });
         txtDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDetallesActionPerformed(evt);
@@ -244,7 +249,11 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbuscarArmKeyReleased
 
     private void tbArmasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbArmasMouseClicked
-         int filaSeleccionada = tbArmas.getSelectedRow();
+        
+        ModeloArmamento modelo = new ModeloArmamento();
+        modelo.SeleccionarDato(tbArmas, cmbTipoArmamento, txtDetalles, spCantidad);
+        
+        int filaSeleccionada = tbArmas.getSelectedRow();
         //Obtenemos el id de la fila seleccionada
         String MiId = tbArmas.getValueAt(filaSeleccionada, 0).toString();
         idArmamneto = Integer.parseInt(MiId);
@@ -262,6 +271,10 @@ public class Agregar_Armamento extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void txtDetallesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDetallesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDetallesMouseClicked
 
     /**
      * @param args the command line arguments

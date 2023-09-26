@@ -17,7 +17,9 @@ import VIsta.Programa.Inventario.Agregar_calibre;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.TableColumn;
 
 /**
@@ -161,6 +163,32 @@ public class ModeloCalibre {
     }
 
     
+    //Mostrar datos seleccionados
+    public void SeleccionarDato(JTable paramtable, JTextField paramCalibre, JSpinner paramCantidad){
+        
+        try {
+            int fila = paramtable.getSelectedRow();
+            
+            if(fila >= 0){
+                // Obtener los valores de las celdas seleccionadas
+            String calibre = paramtable.getValueAt(fila, 1).toString();
+            int cantidad = Integer.parseInt(paramtable.getValueAt(fila, 2).toString());
+
+            // Establecer los valores en los componentes de la interfaz
+            paramCalibre.setText(calibre);
+            paramCantidad.setValue(cantidad);
+            
+            }else{
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+            
+        }catch (Exception e){
+            
+            JOptionPane.showMessageDialog(null, e.toString());
+            
+        }
+        
+    }
     
     //Eliminar 
     public void eliminar(Agregar_calibre calibre){

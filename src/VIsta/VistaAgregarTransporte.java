@@ -372,7 +372,8 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void tbDatosTransporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosTransporteMouseClicked
-
+        ModeloDatosTransporte modelo = new ModeloDatosTransporte();
+        modelo.SeleccionarDato(tbDatosTransporte, txtDetalles, txtPlaca, cmbTipos, cmbMarcas, cmbGrupos);
     }//GEN-LAST:event_tbDatosTransporteMouseClicked
 
     private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed

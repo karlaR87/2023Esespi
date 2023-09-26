@@ -134,6 +134,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtDetalles">
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDetallesMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDetallesActionPerformed"/>
           </Events>
           <AuxValues>
