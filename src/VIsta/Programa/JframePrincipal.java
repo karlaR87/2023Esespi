@@ -10,6 +10,7 @@ import VIsta.Login;
 import VIsta.Programa.Inicio.Inicio;
 import VIsta.Programa.Inventario.Inventario_Inicio;
 import VIsta.Programa.Patrullajes.Patrullajes_AddActividades;
+import VIsta.Programa.Patrullajes.Patrullajes_AddEquipamiento;
 import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
 import VIsta.Programa.Patrullajes.Patrullajes_AddUbicacion;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
@@ -59,7 +60,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     
     private CardLayout cardLayout;
     private CardLayout cardLayout2;
-    Usuario user = new Usuario();
+   
     Inicio home = new Inicio();
     Patrullajes_Inicio patrullajesInicio;
     Policias_Inicio policiasInicio;
@@ -74,6 +75,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     Actualizar_Policia UpdatePolice;
     Patrullajes_AddUbicacion PAddUbi;
     Patrullajes_AddActividades AddActPatru;
+    Patrullajes_AddEquipamiento AddEqui;
     private void PanelsShowInit()
     {
        patrullajesInicio = new Patrullajes_Inicio();
@@ -97,7 +99,8 @@ public class JframePrincipal extends javax.swing.JFrame {
         AddUser = new Agregar_Usuario_1();
         PAddUbi = new Patrullajes_AddUbicacion();
         AddActPatru = new Patrullajes_AddActividades();
-        cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP, PAddUbi, AddActPatru);
+        AddEqui = new Patrullajes_AddEquipamiento();
+        cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP, PAddUbi, AddActPatru, AddEqui);
         AddPolice = new Agregar_policia(); 
         UpdatePolice = new Actualizar_Policia();
         contrlPolicias cntrPoli = new contrlPolicias(policiasInicio, this, mdlPolicias, AddPolice, AddUser, idNivelUser, UpdatePolice);
@@ -106,7 +109,6 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(cardLayout);
         
         jPanel1.add(home, "inicio");
-        jPanel1.add(user, "usuario");
         jPanel1.add(policiasInicio, "policias");
         jPanel1.add(patrullajesInicio, "patrullajes");
         jPanel1.add(inventarioInicio, "inventario");
@@ -143,7 +145,6 @@ public class JframePrincipal extends javax.swing.JFrame {
         iconSalir = new javax.swing.JLabel();
         lblMenuPrincipal = new javax.swing.JLabel();
         slideMenu = new javax.swing.JPanel();
-        lblUsuario = new javax.swing.JLabel();
         lblInicio = new javax.swing.JLabel();
         lblPolicias = new javax.swing.JLabel();
         btnPatrullajes = new javax.swing.JButton();
@@ -307,26 +308,6 @@ public class JframePrincipal extends javax.swing.JFrame {
         });
         slideMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblUsuario.setBackground(new java.awt.Color(70, 70, 70));
-        lblUsuario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuario.setText("  Usuario");
-        lblUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblUsuario.setOpaque(true);
-        lblUsuario.setPreferredSize(new java.awt.Dimension(180, 25));
-        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblUsuarioMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblUsuarioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblUsuarioMouseExited(evt);
-            }
-        });
-        slideMenu.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 30, 167, 30));
-
         lblInicio.setBackground(new java.awt.Color(70, 70, 70));
         lblInicio.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         lblInicio.setForeground(new java.awt.Color(255, 255, 255));
@@ -345,7 +326,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInicioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 119, 167, 30));
+        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 9, 167, 80));
 
         lblPolicias.setBackground(new java.awt.Color(70, 70, 70));
         lblPolicias.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -365,7 +346,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblPoliciasMouseExited(evt);
             }
         });
-        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 205, 167, 30));
+        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 105, 167, 70));
 
         btnPatrullajes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btnPatrullajes.setForeground(new java.awt.Color(255, 255, 255));
@@ -386,7 +367,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 btnPatrullajesMouseExited(evt);
             }
         });
-        slideMenu.add(btnPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 290, 167, 30));
+        slideMenu.add(btnPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 210, 167, 80));
 
         lblInventario.setBackground(new java.awt.Color(70, 70, 70));
         lblInventario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -406,7 +387,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInventarioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 375, 167, 30));
+        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 305, 167, 90));
 
         lblReportes.setBackground(new java.awt.Color(70, 70, 70));
         lblReportes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -426,7 +407,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblReportesMouseExited(evt);
             }
         });
-        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 459, 167, 30));
+        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 429, 167, 60));
 
         lblSalir.setBackground(new java.awt.Color(70, 70, 70));
         lblSalir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -476,6 +457,11 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 1030, 600));
 
         jLabel4.setText("jLabel4");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 390, 140));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
@@ -532,14 +518,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void slideMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideMenuMouseExited
                    
     }//GEN-LAST:event_slideMenuMouseExited
-
-    private void lblUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseEntered
-        lblUsuario.setBackground(colorChange);
-    }//GEN-LAST:event_lblUsuarioMouseEntered
-
-    private void lblUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseExited
-        changeColor(); 
-    }//GEN-LAST:event_lblUsuarioMouseExited
 
     private void lblInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseEntered
         lblInicio.setBackground(colorChange);
@@ -599,17 +577,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
 
     }//GEN-LAST:event_jPanel1MouseExited
-
-    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
-       iconChange();
-       
-       cardLayout.show(jPanel1, "usuario");
-       
-       
-       
-       ShowHide(0); 
- 
-    }//GEN-LAST:event_lblUsuarioMouseClicked
 
     private void iconChange()
     {
@@ -789,10 +756,14 @@ public class JframePrincipal extends javax.swing.JFrame {
         this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
     }//GEN-LAST:event_jPanel3MouseDragged
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     private void changeColor()
     {
         Color color = new Color(70, 70, 70);
-        lblUsuario.setBackground(color);
+       
         lblInicio.setBackground(color);
         lblPolicias.setBackground(color);
         btnPatrullajes.setBackground(color);
@@ -953,7 +924,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblPolicias;
     private javax.swing.JLabel lblReportes;
     private javax.swing.JLabel lblSalir;
-    private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel slideMenu;
     // End of variables declaration//GEN-END:variables
 }

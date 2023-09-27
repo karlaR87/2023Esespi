@@ -2,12 +2,18 @@ package VIsta.Programa.Policias;
 
 
 import Modelo.ModeloRegistro;
+import Modelo.conexionSql;
 import Modelo.mdlPolicias;
+import VIsta.Login;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -37,6 +43,8 @@ public class Policias_Inicio extends javax.swing.JPanel {
     public Policias_Inicio() {
         initComponents();
         
+        Login l = new Login();
+        
         IdPolicia = 0;
         iconoOriginalEdit = new ImageIcon("src/VIsta/imagenes/btnEditPolicia.png"); 
         iconoClareEdit = new ImageIcon("src/VIsta/imagenes/btnEditPoliciaClare.png");
@@ -48,7 +56,11 @@ public class Policias_Inicio extends javax.swing.JPanel {
         iconoClareDelete = new ImageIcon("src/VIsta/imagenes/btnDeletePoliciaClare.png");
         
         m.MostrarCosve(this);
+        
+       
     }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -173,7 +185,7 @@ public class Policias_Inicio extends javax.swing.JPanel {
         lblCosve.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblCosve.setForeground(new java.awt.Color(255, 255, 255));
         lblCosve.setText("jLabel2");
-        jPanel1.add(lblCosve, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 210, 30));
+        jPanel1.add(lblCosve, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 210, 30));
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
 

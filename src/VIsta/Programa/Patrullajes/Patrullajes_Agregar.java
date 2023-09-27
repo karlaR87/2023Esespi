@@ -1,6 +1,7 @@
 package VIsta.Programa.Patrullajes;
 
 import com.toedter.calendar.DateUtil;
+import com.toedter.calendar.JTextFieldDateEditor;
 import fonts.Fuentes;
 import java.util.Calendar;
 import java.util.Date;
@@ -59,7 +60,10 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         //------------------------------------VALIDAR JDATECHOOSERS---------------------------------
         // Configurar el rango mínimo (hoy) para la fecha de inicio
         dpFechaInicio.setMinSelectableDate(new Date());
-
+        JTextFieldDateEditor editor1 = (JTextFieldDateEditor) dpFechaInicio.getDateEditor();
+        // Deshabilitar la edición
+        editor1.setEditable(false);
+        
         // Configurar el rango máximo (1 año en el futuro) para la fecha de inicio
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.YEAR, 1);
@@ -76,6 +80,11 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         });
       
         dpFechaFin.setEnabled(false);
+        
+         JTextFieldDateEditor editor2 = (JTextFieldDateEditor) dpFechaFin.getDateEditor();
+        // Deshabilitar la edición
+        editor2.setEditable(false);
+        
         NumbersHoursMinutes();
         fontDesign();
     }
@@ -212,7 +221,7 @@ private void validarFechaInicio() {
 
         jSPArmasLargas.setBackground(new java.awt.Color(70, 70, 70));
         jSPArmasLargas.setBorder(null);
-        add(jSPArmasLargas, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 310, 220, 140));
+        add(jSPArmasLargas, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 295, 220, 140));
 
         jSPArmasCortas.setBackground(new java.awt.Color(70, 70, 70));
         jSPArmasCortas.setBorder(null);

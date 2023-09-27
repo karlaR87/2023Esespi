@@ -911,6 +911,7 @@ public class ModeloRegistro {
     }
     
     
+    
 
     
     public void mOstrarPatUser(Usuario u)

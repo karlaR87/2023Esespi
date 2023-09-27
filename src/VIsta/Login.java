@@ -7,6 +7,7 @@ import VIsta.Programa.JframePrincipal;
 import VIsta.Registro;
 import Modelo.ModeloRegistro;
 import Modelo.conexionSql;
+import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Usuario.Usuario;
 import fonts.Fuentes;
 import java.awt.BorderLayout;
@@ -300,14 +301,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_RecuperarContraMouseClicked
 
     
-     public void MostrarUser(Usuario u)
-    {
-        
-        texto = txtUsuario.getText();
-        u.txtUser.setText(texto);
-        JOptionPane.showMessageDialog(null, texto);
-       
-    }
+     
+     
+     
      
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
            /*mdlUsuarios mi = new mdlJOptionPane.showMessageDialog(null, texto);Usuarios();
@@ -317,7 +313,7 @@ public class Login extends javax.swing.JFrame {
            System.out.println("esto se va a la pantakka " + txtUsuario.getText());*/
            
          
-           
+           texto = txtUsuario.getText();
            
           
     }//GEN-LAST:event_btnIngresarMouseClicked
