@@ -37,7 +37,7 @@ public class ModeloPatrullajes {
     public ResultSet CharegeArmasCORTAS()
     {
         try{
-            String query = "SELECT DetalleArmamento FROM tbDetallesArmamentosEstacion \n" +
+            String query = "SELECT IdDetalleArmamentoEstacion, DetalleArmamento, Cantidad FROM tbDetallesArmamentosEstacion \n" +
             "WHERE IdTipoArmamentoEstacion = 1";
             PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
             
@@ -54,7 +54,7 @@ public class ModeloPatrullajes {
     public ResultSet CharegeArmasLARGAS()
     {
         try{
-            String query = "SELECT DetalleArmamento FROM tbDetallesArmamentosEstacion \n" +
+            String query = "SELECT IdDetalleArmamentoEstacion, DetalleArmamento, Cantidad FROM tbDetallesArmamentosEstacion \n" +
             "WHERE IdTipoArmamentoEstacion = 2";
             PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
             

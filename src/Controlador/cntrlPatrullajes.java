@@ -50,11 +50,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JViewport;
 import javax.swing.Painter;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.OSMTileFactoryInfo;
 import org.jxmapviewer.input.PanMouseInputListener;
@@ -134,14 +139,23 @@ public class cntrlPatrullajes implements ActionListener {
        //------------------------------------------------------------Boton que MUESTRA la PANTALLA de AGREGAR
       if(e.getSource() == vstPatrullajes.btnAddPatrullaje)
       {
-          JframePrincipal.showAddPatrullajePanel();         
+          JframePrincipal.showAddPatrullajePanel();
+          //------------CARGAR ARMAS CORTAS 
+          ChargeArmas(modelPatrullajes.CharegeArmasCORTAS(), addPatrullajes.jSPArmasCortas);
+          //------------CARGAR ARMAS LARGAS 
+          ChargeArmas(modelPatrullajes.CharegeArmasLARGAS(), addPatrullajes.jSPArmasLargas);
+          
       }
        //--------------------------------AGREGAR PATRULLAJE BOTONOES-------------------------------------------------
        
        //------------------------------------------------------------Boton que AGREGA el patrullaje
-        if (e.getSource() == addPatrullajes.btnAddPatrullaje) {
         
-        }
+       if (e.getSource() == addPatrullajes.btnAddPatrullaje) 
+       {    
+           //-----------------CONFIRMAR QUE TODO ESTE COMPLETO-----------------
+           //---SET DE HORARIOS Y ARMAMENTO-----------------
+           System.out.println(ListaIdDetalleArmamento);
+       }
        
        //-------------------------------------------------------Boton que CANCELA la "Agregacion" del patrullaje
        if (e.getSource() == addPatrullajes.btnCancelPatrullaje) {
@@ -170,50 +184,55 @@ public class cntrlPatrullajes implements ActionListener {
        //------------------------------------------------------Boton que ACEPTA la agregacion de actpatrullaje
        if(e.getSource() == addActPatrullaje.btnAcept)
        {
-           List<Integer> CountActPatru = new ArrayList<>(); ;
-            
-           if(!addActPatrullaje.txtAct1.getText().trim().equals("")){CountActPatru.add(1);}
-           else{CountActPatru.remove(1);}
+            int camposLlenos = 0;
+
+            if (!addActPatrullaje.txtAct1.getText().isEmpty()) {
+                camposLlenos++;
+            }
+
+            if (!addActPatrullaje.txtAct2.getText().isEmpty()) {
+                camposLlenos++;
+            }
+
+            if (!addActPatrullaje.txtAct3.getText().isEmpty()) {
+                camposLlenos++;
+            }
+
+            if (!addActPatrullaje.txtAct4.getText().isEmpty()) {
+                camposLlenos++;
+            }
+
+            if (!addActPatrullaje.txtAct5.getText().isEmpty()) {
+                camposLlenos++;
+            }
+
+            if (camposLlenos >= 3) {
+                //---------------------------------------------SET DE ACTIVIDADES-----------------
+            } else 
+            {
+               show("Debe asignar al menos 3 actividades", 14, 1, 0);
+               close6();
+            }
+                
            
-           if(!addActPatrullaje.txtAct2.getText().trim().equals("")){CountActPatru.add(2);}
-           else{CountActPatru.remove(2);}
-           
-           if(!addActPatrullaje.txtAct3.getText().trim().equals("")){CountActPatru.add(3);}
-           else{CountActPatru.remove(3);}
-           
-           if(!addActPatrullaje.txtAct4.getText().trim().equals("")){CountActPatru.add(4);}
-           else{CountActPatru.remove(4);}
-           
-           if(!addActPatrullaje.txtAct5.getText().trim().equals("")){CountActPatru.add(5);}
-           else{CountActPatru.remove(5);}
-           
-           if(CountActPatru.size() < 3)
-           {
-                show("Debe asignar al menos 3 actividades", 14, 1, 1);
-                close6();
-           }
-           else
-           {
-               //SETERS de las act
-           }
        }
        
        
-       //-----------------------------------------------------Boton para cancelar la ubicacion(MAPA)
+       //-----------------------------------------------------Boton para cancelar la agregacion de ubicacion(MAPA)
         if (e.getSource() == addUbicacion.btnCancelMap) 
         {
             JframePrincipal.setEnabled(true);
             JframePrincipal.jLabel3.setVisible(false);
             addUbicacion.setVisible(false);
         }
-       
+       //-----------------------------------------------------Boton para Aceptar la agregacion de ubicacion(MAPA)
         if(e.getSource() == addUbicacion.btnEXPORTAR)
         {
-            
+            //---------------------------------------------SET DEL MAPA-----------------
            
         }
         
-       //-----------------------------------------------------Boton para agrear la ubicacion(MAPA)
+       //-----------------------------------------------------Boton para mostrar la ubicacion(MAPA)
         if (e.getSource() == addPatrullajes.btnAddUbi) 
         {
             JframePrincipal.setEnabled(false);
@@ -251,6 +270,7 @@ public class cntrlPatrullajes implements ActionListener {
           }
           else
           {
+              //---------------------------------------------SET DE PERSONAL-----------------
             show("Se asignará como jefe de grupo al mayor rango u ONI", 14, 0, 0);
             close4();
           }
@@ -367,7 +387,7 @@ public class cntrlPatrullajes implements ActionListener {
             addPersonal.setEnabled(true);
             addPersonal.jLabel3.setVisible(false);
             panelULTIMATE.removeAll();
-            // Luego, puedes llamar al mÃ©todo "revalidate()" para actualizar la interfaz de usuario
+
             panelULTIMATE.revalidate();
             panelULTIMATE.repaint(); 
             JframePrincipal.setExtendedState(JFrame.NORMAL);
@@ -392,6 +412,9 @@ public class cntrlPatrullajes implements ActionListener {
             addPatrullajes.txtMin2.setText("");
             addPatrullajes.dpFechaFin.setDate(null);
             addPatrullajes.dpFechaInicio.setDate(null);
+            
+            //------------ARMAMENTO BORRAR
+            ListaIdDetalleArmamento.clear();
             
             JframePrincipal.showPatrullajePanel(2);
             addPatrullajes.setEnabled(true);
@@ -450,6 +473,74 @@ public class cntrlPatrullajes implements ActionListener {
         }
         });
     }
+    
+    //-----------------------------METODOS PARA ARMAS CORTAS Y LARGAS
+
+    Map<Integer, Integer> ListaIdDetalleArmamento = new HashMap<>();
+    
+    public void ChargeArmas(ResultSet rs, JScrollPane jScroll)
+    {
+        JPanel panel = new JPanel();
+        JViewport viewport = jScroll.getViewport(); 
+        
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));;
+        panel.setBackground(new Color(70, 70, 70));      
+                
+        tipoFuentes = new Fuentes();
+        try
+        {
+            while (rs.next()) 
+            {
+                int IdDetalle = rs.getInt("IdDetalleArmamentoEstacion");
+                int CantidadQueTieneLaBase = rs.getInt("Cantidad");
+                
+                String Arma = rs.getString("DetalleArmamento");
+                JLabel labelArma = new JLabel(Arma);
+
+                labelArma.setForeground(Color.WHITE);
+                labelArma.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
+
+                SpinnerNumberModel spinnerModel = new SpinnerNumberModel(0, 0, CantidadQueTieneLaBase, 1); // Valor inicial: 0, Mínimo: 0, Máximo: 5, Paso: 1
+                
+                JSpinner spinner = new JSpinner(spinnerModel);
+                spinner.setName(String.valueOf(IdDetalle));
+                
+                spinner.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    int valorActual = (int) spinner.getValue();
+                    // Verifica si el valor es mayor que 0
+                    if (valorActual > 0) {
+                        ListaIdDetalleArmamento.put(Integer.valueOf(spinner.getName()), valorActual);
+                    } else {
+                        // Si el valor es 0, quita el nombre de la lista (si existe)
+                        ListaIdDetalleArmamento.remove(Integer.valueOf(spinner.getName()));
+                    }
+                }
+            });
+                
+                labelArma.setBorder(new EmptyBorder(5,1,0,10));
+                spinner.setBorder(new EmptyBorder(5,1,0,10));
+                
+                Box HorizontalBox = Box.createHorizontalBox();               
+                Box VerticalBox = Box.createVerticalBox();
+
+                HorizontalBox.add(VerticalBox);
+                VerticalBox.add(labelArma);
+                HorizontalBox.add(spinner);
+                HorizontalBox.add(Box.createHorizontalGlue());
+                panel.add(HorizontalBox);
+            }
+            
+            viewport.add(panel);
+            viewport.setView(panel);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+        }
+    }
+    
     //------------------METODO PARA MOSTRAR EL MAPA-----------------
     public double latitud;
     public double longitud;

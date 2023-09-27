@@ -587,8 +587,8 @@ private void validarFechaInicio() {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jSPArmasCortas;
-    private javax.swing.JScrollPane jSPArmasLargas;
+    public javax.swing.JScrollPane jSPArmasCortas;
+    public javax.swing.JScrollPane jSPArmasLargas;
     private javax.swing.JLabel lblMAPImage;
     public javax.swing.JPanel pnlPersonal;
     public javax.swing.JTextField txtHora1;

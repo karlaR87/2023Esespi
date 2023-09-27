@@ -364,19 +364,27 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAct1KeyTyped
 
     private void txtAct2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAct2KeyTyped
-        // TODO add your handling code here:
+         if (txtAct2.getText().trim().length() >= 100) {
+            evt.consume(); // Bloquea la entrada de texto adicional
+        }
     }//GEN-LAST:event_txtAct2KeyTyped
 
     private void txtAct3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAct3KeyTyped
-        // TODO add your handling code here:
+         if (txtAct3.getText().trim().length() >= 100) {
+            evt.consume(); // Bloquea la entrada de texto adicional
+        }
     }//GEN-LAST:event_txtAct3KeyTyped
 
     private void txtAct4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAct4KeyTyped
-        // TODO add your handling code here:
+         if (txtAct4.getText().trim().length() >= 100) {
+            evt.consume(); // Bloquea la entrada de texto adicional
+        }
     }//GEN-LAST:event_txtAct4KeyTyped
 
     private void txtAct5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAct5KeyTyped
-        // TODO add your handling code here:
+         if (txtAct5.getText().trim().length() >= 100) {
+            evt.consume(); // Bloquea la entrada de texto adicional
+        }
     }//GEN-LAST:event_txtAct5KeyTyped
 
     /**
