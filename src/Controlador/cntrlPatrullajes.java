@@ -167,6 +167,37 @@ public class cntrlPatrullajes implements ActionListener {
            close5();
        }
        
+       //------------------------------------------------------Boton que ACEPTA la agregacion de actpatrullaje
+       if(e.getSource() == addActPatrullaje.btnAcept)
+       {
+           List<Integer> CountActPatru = new ArrayList<>(); ;
+            
+           if(!addActPatrullaje.txtAct1.getText().trim().equals("")){CountActPatru.add(1);}
+           else{CountActPatru.remove(1);}
+           
+           if(!addActPatrullaje.txtAct2.getText().trim().equals("")){CountActPatru.add(2);}
+           else{CountActPatru.remove(2);}
+           
+           if(!addActPatrullaje.txtAct3.getText().trim().equals("")){CountActPatru.add(3);}
+           else{CountActPatru.remove(3);}
+           
+           if(!addActPatrullaje.txtAct4.getText().trim().equals("")){CountActPatru.add(4);}
+           else{CountActPatru.remove(4);}
+           
+           if(!addActPatrullaje.txtAct5.getText().trim().equals("")){CountActPatru.add(5);}
+           else{CountActPatru.remove(5);}
+           
+           if(CountActPatru.size() < 3)
+           {
+                show("Debe asignar al menos 3 actividades", 14, 1, 1);
+                close6();
+           }
+           else
+           {
+               //SETERS de las act
+           }
+       }
+       
        
        //-----------------------------------------------------Boton para cancelar la ubicacion(MAPA)
         if (e.getSource() == addUbicacion.btnCancelMap) 
@@ -188,6 +219,7 @@ public class cntrlPatrullajes implements ActionListener {
             JframePrincipal.setEnabled(false);
             JframePrincipal.jLabel3.setVisible(true);
             addUbicacion.setVisible(true);
+            addUbicacion.setEnabled(true);
             showMap();
         }
        
@@ -196,7 +228,7 @@ public class cntrlPatrullajes implements ActionListener {
         if (e.getSource() == addPatrullajes.btnAddPersonal) {
             JframePrincipal.jLabel3.setVisible(true);
             addPersonal.setBackground(new Color(0,0,0,0));//Transparencia
-              
+            addPersonal.setEnabled(true);   
             showPolicias();
             addPersonal.setVisible(true);
             JframePrincipal.enable(false);
@@ -241,6 +273,21 @@ public class cntrlPatrullajes implements ActionListener {
         Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
         Jo.setVisible(true);
     }
+    
+    public void close6()
+    {   
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);           
+            JframePrincipal.setEnabled(false);
+            JframePrincipal.jLabel3.setVisible(true);
+            
+            addActPatrullaje.setEnabled(true);
+            addActPatrullaje.jLabel3.setVisible(false);
+        }
+        });
+    }
+    
     public void close5()
     {   
         //Agregar evento click
@@ -251,6 +298,18 @@ public class cntrlPatrullajes implements ActionListener {
             JframePrincipal.setEnabled(true);
             JframePrincipal.jLabel3.setVisible(false);
              
+            addActPatrullaje.txtAct1.setText("");
+            addActPatrullaje.txtAct2.setText("");
+            addActPatrullaje.txtAct3.setText("");
+            addActPatrullaje.txtAct4.setText("");
+            addActPatrullaje.txtAct5.setText("");
+            
+            addActPatrullaje.cmbMedio1.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio2.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio3.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio4.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio5.setSelectedIndex(0);
+            
             addActPatrullaje.setEnabled(true);
             addActPatrullaje.jLabel3.setVisible(false);
             addActPatrullaje.setVisible(false);
@@ -269,6 +328,7 @@ public class cntrlPatrullajes implements ActionListener {
         }
         });
     }
+   
     public void close3()
     {   
         Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -298,9 +358,41 @@ public class cntrlPatrullajes implements ActionListener {
             addPersonal.setVisible(false);
             
             JframePrincipal.setExtendedState(JFrame.NORMAL);
-            //Borrar todo
-            JframePrincipal.showPatrullajePanel(2);
+            //-------------------------------------------------------------BORRAR TODO----------------------------------
+            //--------------------ADD PERSONAL BORRAR
+            ListaIdPolicias.clear();
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
             
+            addPersonal.setEnabled(true);
+            addPersonal.jLabel3.setVisible(false);
+            panelULTIMATE.removeAll();
+            // Luego, puedes llamar al mÃ©todo "revalidate()" para actualizar la interfaz de usuario
+            panelULTIMATE.revalidate();
+            panelULTIMATE.repaint(); 
+            JframePrincipal.setExtendedState(JFrame.NORMAL);
+            //--------------------ADD ACTIVIDAD BORRAR
+            addActPatrullaje.txtAct1.setText("");
+            addActPatrullaje.txtAct2.setText("");
+            addActPatrullaje.txtAct3.setText("");
+            addActPatrullaje.txtAct4.setText("");
+            addActPatrullaje.txtAct5.setText("");
+            
+            addActPatrullaje.cmbMedio1.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio2.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio3.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio4.setSelectedIndex(0);
+            addActPatrullaje.cmbMedio5.setSelectedIndex(0);
+            addActPatrullaje.setEnabled(true);
+            
+            //------------------HORARIOS BORRAR
+            addPatrullajes.txtHora1.setText("");
+            addPatrullajes.txtHora2.setText("");
+            addPatrullajes.txtMin1.setText("");
+            addPatrullajes.txtMin2.setText("");
+            
+            JframePrincipal.showPatrullajePanel(2);
+            addPatrullajes.setEnabled(true);
         }
         });
         
@@ -311,6 +403,7 @@ public class cntrlPatrullajes implements ActionListener {
             JframePrincipal.jLabel3.setVisible(false);
             
             addPersonal.setEnabled(true);
+            addActPatrullaje.setEnabled(true);
             addPersonal.jLabel3.setVisible(false);
         }
         });

@@ -653,22 +653,20 @@ public class mdlPolicias {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT tbPoli.IdPolicia, tbPer.Apellido, tbPer.Dui,\n" +
-                            "tbGenero.Genero, tbPer.NumeroTel,\n" +
-                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca " +
-                            "FROM tbPersonas tbPer\n" +
-                            "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
-                            "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
-                            "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
-                            "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
-                            "INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
-                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" +
-                            "WHERE tbTipoP.IdTipoPersona = 1 ORDER BY tbPoli.IdRangoTipoUsuario";
+            String query = "SELECT tbPoli.IdPolicia, tbPer.Apellido AS Apellidos, tbPer.Dui AS DUI, \n" +
+            "tbGenero.Genero, tbPer.NumeroTel AS NumeroTel,\n" +
+            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca\n" +
+            "FROM tbPersonas tbPer\n" +
+            "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
+            "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
+            "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
+            "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+            "WHERE tbTipoP.IdTipoPersona = 1 ORDER BY tbPoli.IdRangoTipoUsuario";
             
             ResultSet rs = statement.executeQuery(query);
 
             while(rs.next()){
-                modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellido"),rs.getString("Dui"), rs.getString("Genero"),
+                modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellidos"),rs.getString("Dui"), rs.getString("Genero"),
                     rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca")});//, rs.getString("NumeroDeGrupo")});
 
             }
@@ -728,30 +726,30 @@ public class mdlPolicias {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT tbPoli.IdPolicia, tbPer.Apellido, tbPer.Dui,\n" +
-                            "tbGenero.Genero, tbPer.NumeroTel,\n" +
-                            "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca " +
-                            "FROM tbPersonas tbPer\n" +
-                            "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
-                            "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
-                            "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
-                            "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
-                            "INNER JOIN tbGrupoPatrullajes tbGrP ON tbGrP.IdGrupoPatrullaje = tbPoli.IdGrupoPatrullaje\n" +
-                            "INNER JOIN tbPatrullajes tbP ON tbP.IdGrupoPatrullaje = tbGrP.IdGrupoPatrullaje\n" 
+            String query = "SELECT tbPoli.IdPolicia, tbPer.Apellido AS Apellidos, tbPer.Dui AS DUI, \n" +
+                        "tbGenero.Genero, tbPer.NumeroTel AS NumeroTel,\n" +
+                        "tbRngTPU.Rango, tbPoli.ONI, tbPoli.NumeroPlaca\n" +
+                        "FROM tbPersonas tbPer\n" +
+                        "INNER JOIN tbGeneros tbGenero ON tbGenero.IdGenero = tbPer.IdGenero\n" +
+                        "INNER JOIN tbTiposPersonas_Personas tbTipoP ON tbTipoP.IdPersona = tbPer.IdPersona\n" +
+                        "INNER JOIN tbPolicias tbPoli ON tbPoli.IdTipoPersonas_Personas = tbTipoP.IdTipoPersonas_Personas\n" +
+                        "INNER JOIN tbRangosTipoUsuarios tbRngTPU ON tbRngTPU.IdRangoTipoUsuario = tbPoli.IdRangoTipoUsuario\n" +
+                        "WHERE tbTipoP.IdTipoPersona = 1 AND \n" 
                            
-                    + "where IdPolicia like '%" + vstPolicias.txtBuscar.getText() + "%' or "
+                    + "IdPolicia like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "Apellido like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "Dui like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "Genero like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "NumeroTel like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "Rango like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "ONI like '%" + vstPolicias.txtBuscar.getText() + "%' or "
-                    + "NumeroPlaca like '%" + vstPolicias.txtBuscar.getText() + "%';";
+                    + "NumeroPlaca like '%" + vstPolicias.txtBuscar.getText() + "%' ; " 
+                    + "ORDER BY tbPoli.IdRangoTipoUsuario";
             
             ResultSet rs = statement.executeQuery(query);
 
             while(rs.next()){
-                modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellido"),rs.getString("Dui"), rs.getString("Genero"),
+                modelo.addRow(new Object[] {rs.getString("IdPolicia"),rs.getString("Apellidos"),rs.getString("Dui"), rs.getString("Genero"),
                     rs.getString("NumeroTel"), rs.getString("Rango"), rs.getString("ONI"),rs.getString("NumeroPlaca")});//, rs.getString("NumeroDeGrupo")});
 
             }

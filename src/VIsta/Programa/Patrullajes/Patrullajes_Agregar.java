@@ -106,26 +106,49 @@ private void validarFechaInicio() {
 
     public void NumbersHoursMinutes()
     {
+        ((AbstractDocument) txtHora1.getDocument()).setDocumentFilter(new DocumentFilter() {
+        @Override
+        public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+            String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
 
-            ((AbstractDocument) txtHora1.getDocument()).setDocumentFilter(new DocumentFilter() {
-                @Override
-                public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                    String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
-                    if (newText.matches("0?[1-9]|1[0-9]|2[0-4]")) {
-                        super.replace(fb, offset, length, text, attrs);
-                    }
+            // Verificar que el nuevo texto cumple con el formato HH (00-24)
+            if (newText.matches("([01]?[0-9]|2[0-4])")) {
+                super.replace(fb, offset, length, text, attrs);
+            }
+        }
+    });
+        
+        ((AbstractDocument) txtMin1.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.matches("[0-5]?[0-9]")) {
+                    super.replace(fb, offset, length, text, attrs);
                 }
-            });
+            }
+        });
+        
+        ((AbstractDocument) txtHora2.getDocument()).setDocumentFilter(new DocumentFilter() {
+        @Override
+        public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+            String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
 
-            ((AbstractDocument) txtMin1.getDocument()).setDocumentFilter(new DocumentFilter() {
-                @Override
-                public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                    String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
-                    if (newText.matches("[0-5]?[0-9]")) {
-                        super.replace(fb, offset, length, text, attrs);
-                    }
+            // Verificar que el nuevo texto cumple con el formato HH (00-24)
+            if (newText.matches("([01]?[0-9]|2[0-4])")) {
+                super.replace(fb, offset, length, text, attrs);
+            }
+        }
+    });
+        
+        ((AbstractDocument) txtMin2.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.matches("[0-5]?[0-9]")) {
+                    super.replace(fb, offset, length, text, attrs);
                 }
-            });
+            }
+        });
         
     }
     public void OriginalIcon()
@@ -180,8 +203,8 @@ private void validarFechaInicio() {
         txtHora1.setBackground(new java.awt.Color(70, 70, 70));
         txtHora1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtHora1.setForeground(new java.awt.Color(255, 255, 255));
+        txtHora1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHora1.setToolTipText("");
-        txtHora1.setBorder(null);
         txtHora1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtHora1KeyTyped(evt);
@@ -192,8 +215,8 @@ private void validarFechaInicio() {
         txtMin1.setBackground(new java.awt.Color(70, 70, 70));
         txtMin1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtMin1.setForeground(new java.awt.Color(255, 255, 255));
+        txtMin1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMin1.setToolTipText("");
-        txtMin1.setBorder(null);
         txtMin1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMin1KeyTyped(evt);
@@ -204,8 +227,8 @@ private void validarFechaInicio() {
         txtHora2.setBackground(new java.awt.Color(70, 70, 70));
         txtHora2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtHora2.setForeground(new java.awt.Color(255, 255, 255));
+        txtHora2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHora2.setToolTipText("");
-        txtHora2.setBorder(null);
         txtHora2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtHora2KeyTyped(evt);
@@ -216,8 +239,8 @@ private void validarFechaInicio() {
         txtMin2.setBackground(new java.awt.Color(70, 70, 70));
         txtMin2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtMin2.setForeground(new java.awt.Color(255, 255, 255));
+        txtMin2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMin2.setToolTipText("");
-        txtMin2.setBorder(null);
         txtMin2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMin2KeyTyped(evt);
