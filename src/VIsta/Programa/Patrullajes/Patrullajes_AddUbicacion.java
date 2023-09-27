@@ -1,5 +1,6 @@
 package VIsta.Programa.Patrullajes;
 
+import fonts.Fuentes;
 import java.awt.Color;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.OSMTileFactoryInfo;
@@ -19,7 +20,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
     ImageIcon iconoOriginalExport;
     ImageIcon iconoOriginalExportCLARE;
     
-    
+    Fuentes tipoFuentes;
     public Patrullajes_AddUbicacion() {
         initComponents();
         this.setBackground(new Color(0, 0, 0, 0));
@@ -27,8 +28,18 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
         iconoOriginalExport = new ImageIcon("src/VIsta/imagenes/btnEXPORTAR.png"); 
         iconoOriginalExportCLARE = new ImageIcon("src/VIsta/imagenes/btnEXPORTARCLARE.png");
         
+        ImageIcon icono = new ImageIcon("src/VIsta/imagenes/R100.png"); this.setIconImage(icono.getImage());
+        
     }
 
+    private void fontDesign()
+    {      
+        tipoFuentes = new Fuentes();
+        
+        jLabel2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 16));
+
+    }
+    
     public void OriginalIcon()
     {
         btnEXPORTAR.setIcon(iconoOriginalExport);
@@ -43,6 +54,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jpnlMapContainer = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -64,7 +76,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
                 btnCancelMapMouseExited(evt);
             }
         });
-        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 40, 40));
 
         btnEXPORTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEXPORTAR.png"))); // NOI18N
         btnEXPORTAR.setBorderPainted(false);
@@ -103,6 +115,10 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
         );
 
         jPanel1.add(jpnlMapContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 490));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel2.setText("Por favor, seleccione un area");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 110, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 23, 900, -1));
 
@@ -174,6 +190,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
     public javax.swing.JButton btnCancelMap;
     public javax.swing.JButton btnEXPORTAR;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jpnlMapContainer;
     // End of variables declaration//GEN-END:variables

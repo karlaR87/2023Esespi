@@ -34,6 +34,182 @@ public class ModeloPatrullajes {
         this.idPatrullaje = IdPatrullaje;
     }
 
+    //---------------------------------------------EQUIPO DE ESPECIALIZADO
+    
+    public ResultSet CharegeEquipoESPECIALIZADO_Visores()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 9";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet CharegeEquipoESPECIALIZADO_Chalecos()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 6";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet CharegeEquipoESPECIALIZADO_Geolocalizacion()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 7";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet CharegeEquipoESPECIALIZADO_TacticoIntrv()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 6";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    //---------------------------------------------EQUIPO DE SEGURIDAD
+    
+    public ResultSet CharegeEquiposSEGURIDAD_Bastones()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 2 AND tbTipo.IdTiposEquipamientoEstacion = 1";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet CharegeEquiposSEGURIDAD_Esposas()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 2 AND tbTipo.IdTiposEquipamientoEstacion = 2";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet CharegeEquiposSEGURIDAD_Taser()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 2 AND tbTipo.IdTiposEquipamientoEstacion = 3";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet CharegeEquiposSEGURIDAD_Radios()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 2 AND tbTipo.IdTiposEquipamientoEstacion = 4";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet CharegeEquiposSEGURIDAD_Escudos()
+    {
+        try{
+            String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
+            "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
+            "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
+            "WHERE tbCate.IdCategoriaEquipamiento = 2 AND tbTipo.IdTiposEquipamientoEstacion = 5";
+            PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargeEQUIMPENT.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    
     public ResultSet CharegeArmasCORTAS()
     {
         try{
@@ -70,7 +246,7 @@ public class ModeloPatrullajes {
     
     //LLENAR COMBOBOX Medio asignacion
     public void llenarCombo(JComboBox<String> cmb) throws SQLException {
-         Connection conectar = null;
+        Connection conectar = null;
         PreparedStatement pst = null;
         ResultSet result = null;
 

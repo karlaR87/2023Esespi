@@ -95,35 +95,41 @@ public class cntrlPatrullajes implements ActionListener {
         
         this.JframePrincipal.btnPatrullajes.addActionListener(this);
         this.JframePrincipal.btniconPatrullajes.addActionListener(this);
-        
-        //Add Personal
-        this.addPatrullajes.btnAddPersonal.addActionListener(this);
-        //Add Patrullaje
+
+        //Mostrar patrullaje
+        this.vstPatrullajes.btnAddPatrullaje.addActionListener(this);
+       //Add Patrullaje
         this.addPatrullajes.btnAddPatrullaje.addActionListener(this);
         //Cancel Patrullje 
-        this.addPatrullajes.btnCancelPatrullaje.addActionListener(this);
-        //Add Ubicacion
-        this.addPatrullajes.btnAddUbi.addActionListener(this);
+        this.addPatrullajes.btnCancelPatrullaje.addActionListener(this);     
+        
         //Mostrar Act patrullajes
         this.addPatrullajes.btnAddActPatru.addActionListener(this);
         //Cancel ActPatrullajes
         this.addActPatrullaje.btnCancel.addActionListener(this);
         //Acept ActPatrullajes
         this.addActPatrullaje.btnAcept.addActionListener(this);
-        //Mostrar AddEquipamiento
-        this.addPatrullajes.btnAddEqui.addActionListener(this);
-
+        
+        //Mostrar Personal
+        this.addPatrullajes.btnAddPersonal.addActionListener(this);
         //Acept Personal
         this.addPersonal.btnAcept.addActionListener(this);
         //Cancel Personal
         this.addPersonal.btnCancel.addActionListener(this);
-        //Add patrullaje
-        this.vstPatrullajes.btnAddPatrullaje.addActionListener(this);
-       
+  
+        //Mostrar Ubicacion
+        this.addPatrullajes.btnAddUbi.addActionListener(this);
         //Cancelar MAPA
         this.addUbicacion.btnCancelMap.addActionListener(this);
         //Export MAPA
         this.addUbicacion.btnEXPORTAR.addActionListener(this);
+        
+        //Mostrar AddEquipamiento
+        this.addPatrullajes.btnAddEqui.addActionListener(this);
+        //Acept Equipamiento
+        this.addEquipamiento.btnAcept.addActionListener(this);
+        //Cancel Equipamiento
+        this.addEquipamiento.btnCancel.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {   
@@ -172,8 +178,50 @@ public class cntrlPatrullajes implements ActionListener {
         //-------------------------------Botones que muestran la Pantalla de AddEquipamiento
         if(e.getSource() == addPatrullajes.btnAddEqui)
         {
+            //---------------------Equipo Especializado--------
+                //Visores
+                ChargeEquipamiento(modelPatrullajes.CharegeEquipoESPECIALIZADO_Visores(), addEquipamiento.jScrollVisores);
+                //Chalecos
+                ChargeEquipamiento(modelPatrullajes.CharegeEquipoESPECIALIZADO_Chalecos(), addEquipamiento.jScrollChalecos);
+                //Geolocalizacion
+                ChargeEquipamiento(modelPatrullajes.CharegeEquipoESPECIALIZADO_Geolocalizacion(), addEquipamiento.jScrollGeolocalizacion);
+                //Tactico de intervencion
+                ChargeEquipamiento(modelPatrullajes.CharegeEquipoESPECIALIZADO_TacticoIntrv(), addEquipamiento.jScrollTactico);
+            
+            //---------------------Equipo Seguridad--------
+                //Bastones
+                ChargeEquipamiento(modelPatrullajes.CharegeEquiposSEGURIDAD_Bastones(), addEquipamiento.jScrollBastones);
+                //Esposas
+                ChargeEquipamiento(modelPatrullajes.CharegeEquiposSEGURIDAD_Esposas(), addEquipamiento.jScrollEsposas);
+                //Taser
+                ChargeEquipamiento(modelPatrullajes.CharegeEquiposSEGURIDAD_Taser(), addEquipamiento.jScrollTaser);
+                //Radios
+                ChargeEquipamiento(modelPatrullajes.CharegeEquiposSEGURIDAD_Radios(), addEquipamiento.jScrollRadios);
+                //Escudos
+                ChargeEquipamiento(modelPatrullajes.CharegeEquiposSEGURIDAD_Escudos(), addEquipamiento.jScrollEscudos);
+            
+            JframePrincipal.setEnabled(false);
+            JframePrincipal.jLabel3.setVisible(true);
             addEquipamiento.setEnabled(true);
             addEquipamiento.setVisible(true);
+            addEquipamiento.jLabel5.setVisible(false);
+        }
+        
+        //Boton que ACEPTA la Agregacion del Equipamiento
+        if(e.getSource() == addEquipamiento.btnAcept)
+        {
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            addEquipamiento.setEnabled(true);
+            addEquipamiento.jLabel5.setVisible(false);
+            addEquipamiento.setVisible(false);
+        }
+        
+        //Boton que Canela La Agregacion del equipamiento
+        if(e.getSource() == addEquipamiento.btnCancel)
+        {
+           show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
+           close7();
         }
        
        //------------------------------------------------------Boton que muestra la pantalla de actpatrullaje
@@ -199,30 +247,39 @@ public class cntrlPatrullajes implements ActionListener {
             int camposLlenos = 0;
 
             if (!addActPatrullaje.txtAct1.getText().isEmpty()) {
+                //SETER DE ACT1
                 camposLlenos++;
             }
 
             if (!addActPatrullaje.txtAct2.getText().isEmpty()) {
+                //SETER DE ACT2
                 camposLlenos++;
             }
 
             if (!addActPatrullaje.txtAct3.getText().isEmpty()) {
+                //SETER DE ACT3
                 camposLlenos++;
             }
 
             if (!addActPatrullaje.txtAct4.getText().isEmpty()) {
+                //SETER DE ACT4
                 camposLlenos++;
             }
 
             if (!addActPatrullaje.txtAct5.getText().isEmpty()) {
+                //SETER DE ACT5
                 camposLlenos++;
             }
 
             if (camposLlenos >= 3) {
-                //---------------------------------------------SET DE ACTIVIDADES-----------------
+                JframePrincipal.setEnabled(true);
+                JframePrincipal.jLabel3.setVisible(false);
+                addActPatrullaje.setEnabled(true);
+                addActPatrullaje.jLabel3.setVisible(false);
+                addActPatrullaje.setVisible(false);
             } else 
             {
-               show("Debe asignar al menos 3 actividades", 14, 1, 0);
+               show("Debe asignar al menos 3 actividades", 16, 1, 0);
                close6();
             }
                 
@@ -295,30 +352,50 @@ public class cntrlPatrullajes implements ActionListener {
     JoptionReplacemnt Jo;
     public void show(String msg, int sizeTXT, int img, int type)
     {  
-         JframePrincipal.setEnabled(false);
+        JframePrincipal.setEnabled(false);
         JframePrincipal.jLabel3.setVisible(true);
         addPersonal.setEnabled(false);
         addPersonal.jLabel3.setVisible(true);
         addActPatrullaje.setEnabled(false);
         addActPatrullaje.jLabel3.setVisible(true);
+        addEquipamiento.setEnabled(false);
+        addEquipamiento.jLabel5.setVisible(true);
         
         Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
         Jo.setVisible(true);
     }
     
-    public void close6()
+        public void close7()
     {   
-        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        //Agregar evento click
+        Jo.SIbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);         
+           
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+             
+            ListaIdDetalleEquipo.clear();         
+                       
+            addEquipamiento.setEnabled(true);
+            addEquipamiento.jLabel5.setVisible(false);
+            addEquipamiento.setVisible(false);
+            
+        }
+        });
+        
+        Jo.NObutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             Jo.setVisible(false);           
             JframePrincipal.setEnabled(false);
             JframePrincipal.jLabel3.setVisible(true);
             
-            addActPatrullaje.setEnabled(true);
-            addActPatrullaje.jLabel3.setVisible(false);
+            addEquipamiento.setEnabled(true);
+            addEquipamiento.jLabel5.setVisible(false);
         }
         });
     }
+   
     
     public void close5()
     {   
@@ -360,7 +437,21 @@ public class cntrlPatrullajes implements ActionListener {
         }
         });
     }
-   
+    
+    public void close6()
+    {   
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);           
+            JframePrincipal.setEnabled(false);
+            JframePrincipal.jLabel3.setVisible(true);
+            
+            addActPatrullaje.setEnabled(true);
+            addActPatrullaje.jLabel3.setVisible(false);
+        }
+        });
+    }
+    
     public void close3()
     {   
         Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -393,6 +484,7 @@ public class cntrlPatrullajes implements ActionListener {
             //-------------------------------------------------------------BORRAR TODO----------------------------------
             //--------------------ADD PERSONAL BORRAR
             ListaIdPolicias.clear();
+            
             JframePrincipal.setEnabled(true);
             JframePrincipal.jLabel3.setVisible(false);
             
@@ -403,6 +495,12 @@ public class cntrlPatrullajes implements ActionListener {
             panelULTIMATE.revalidate();
             panelULTIMATE.repaint(); 
             JframePrincipal.setExtendedState(JFrame.NORMAL);
+           
+            addPatrullajes.jLabel4.setVisible(true);
+            addPatrullajes.pnlPersonal.removeAll();;
+            addPatrullajes.pnlPersonal.revalidate();
+            addPatrullajes.pnlPersonal.repaint(); 
+            
             //--------------------ADD ACTIVIDAD BORRAR
             addActPatrullaje.txtAct1.setText("");
             addActPatrullaje.txtAct2.setText("");
@@ -427,6 +525,9 @@ public class cntrlPatrullajes implements ActionListener {
             
             //------------ARMAMENTO BORRAR
             ListaIdDetalleArmamento.clear();
+            
+            //------------EQUIPAMIENTO BORRAR
+            ListaIdDetalleEquipo.clear();
             
             JframePrincipal.showPatrullajePanel(2);
             addPatrullajes.setEnabled(true);
@@ -485,9 +586,87 @@ public class cntrlPatrullajes implements ActionListener {
         }
         });
     }
+    //-----------------------------METODOS PARA EQUIPAMIENTO ESPECIALIZADO Y DE SEGURIDAD
+    Map<Integer, Integer> ListaIdDetalleEquipo = new HashMap<>();
+    
+    public void ChargeEquipamiento(ResultSet rs, JScrollPane jScroll)
+    {
+        JPanel panel = new JPanel();
+        JViewport viewport = jScroll.getViewport(); 
+        
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));;
+        panel.setBackground(new Color(70, 70, 70));      
+                
+        tipoFuentes = new Fuentes();
+        try
+        {
+            while (rs.next()) 
+            {
+                int IdDetalle = rs.getInt("IdDetalleEquipo");
+                int CantidadQueTieneLaBase = rs.getInt("Cantidad");
+                
+                String Equipo = rs.getString("Detalles");
+                JLabel labelEquipo = new JLabel(Equipo);
+
+                labelEquipo.setForeground(Color.WHITE);
+                labelEquipo.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
+
+                SpinnerNumberModel spinnerModel = new SpinnerNumberModel(0, 0, CantidadQueTieneLaBase, 1); // Valor inicial: 0, Mínimo: 0, Máximo: 5, Paso: 1
+                
+                JSpinner spinner = new JSpinner(spinnerModel);
+                spinner.setName(String.valueOf(IdDetalle));
+                spinner.setPreferredSize(new Dimension(10, 10));
+                
+                 if (ListaIdDetalleEquipo.containsKey(IdDetalle)) 
+                {
+                    spinner.setValue(ListaIdDetalleArmamento.get(IdDetalle));
+                } else 
+                {
+                    spinner.setValue(0);
+                }
+                
+                spinner.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    int valorActual = (int) spinner.getValue();
+                    // Verifica si el valor es mayor que 0
+                    if (valorActual > 0) {
+                        ListaIdDetalleEquipo.put(Integer.valueOf(spinner.getName()), valorActual);
+                    } else {
+                        // Si el valor es 0, quita el nombre de la lista (si existe)
+                        ListaIdDetalleEquipo.remove(Integer.valueOf(spinner.getName()));
+                    }
+                }
+            });
+                
+                labelEquipo.setBorder(new EmptyBorder(5,1,0,10));
+                spinner.setBorder(new EmptyBorder(5,1,0,10));
+                
+                Box HorizontalBox = Box.createHorizontalBox();               
+                Box VerticalBox = Box.createVerticalBox();
+
+                VerticalBox.add(Box.createVerticalGlue());
+//                VerticalBox.add(VerticalBox);
+                VerticalBox.add(labelEquipo);
+                VerticalBox.add(spinner);
+                VerticalBox.add(Box.createHorizontalGlue());
+                VerticalBox.add(Box.createVerticalGlue());
+                panel.add(VerticalBox);
+                
+                
+            }
+            
+            viewport.add(panel);
+            viewport.setView(panel);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+        }
+        
+    }
     
     //-----------------------------METODOS PARA ARMAS CORTAS Y LARGAS
-
     Map<Integer, Integer> ListaIdDetalleArmamento = new HashMap<>();
     
     public void ChargeArmas(ResultSet rs, JScrollPane jScroll)
@@ -516,7 +695,16 @@ public class cntrlPatrullajes implements ActionListener {
                 
                 JSpinner spinner = new JSpinner(spinnerModel);
                 spinner.setName(String.valueOf(IdDetalle));
-                spinner.setPreferredSize(new Dimension(10, 10));
+                spinner.setPreferredSize(new Dimension(5, 30));
+                
+                
+                if (ListaIdDetalleArmamento.containsKey(IdDetalle)) 
+                {
+                    spinner.setValue(ListaIdDetalleArmamento.get(IdDetalle));
+                } else 
+                {
+                    spinner.setValue(0);
+                }
                 
                 spinner.addChangeListener(new ChangeListener() {
                 @Override
@@ -532,18 +720,23 @@ public class cntrlPatrullajes implements ActionListener {
                 }
             });
                 
-                labelArma.setBorder(new EmptyBorder(5,1,0,10));
-                spinner.setBorder(new EmptyBorder(5,1,0,10));
-                
-                Box HorizontalBox = Box.createHorizontalBox();               
+                labelArma.setBorder(new EmptyBorder(5,10,0,10));
+                spinner.setBorder(new EmptyBorder(5,10,0,10));
+                    
+                Box VerticalBoxMAINMAIN = Box.createHorizontalBox();
+                Box VerticalBoxMAIN = Box.createVerticalBox();
                 Box VerticalBox = Box.createVerticalBox();
-
-                HorizontalBox.add(VerticalBox);
+                Box HorizontalMain = Box.createHorizontalBox();
+                Box Horizontal2 = Box.createHorizontalBox();
+                
+                VerticalBoxMAINMAIN.add(VerticalBoxMAIN);
+                VerticalBoxMAIN.add(HorizontalMain);
+                HorizontalMain.add(VerticalBox);
                 VerticalBox.add(labelArma);
-                HorizontalBox.add(spinner);
-                HorizontalBox.add(Box.createHorizontalGlue());
-                VerticalBox.add(Box.createVerticalGlue());
-                panel.add(HorizontalBox);
+                VerticalBoxMAIN.add(Horizontal2);
+                Horizontal2.add(spinner);
+                VerticalBoxMAINMAIN.add(Box.createHorizontalGlue());
+                panel.add(VerticalBoxMAINMAIN);
             }
             
             viewport.add(panel);
