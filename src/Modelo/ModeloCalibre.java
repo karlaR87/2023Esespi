@@ -222,14 +222,14 @@ public class ModeloCalibre {
             //obtenemos que fila seleccionó el usuario
             
             int filaSeleccionada = calibre.tbCalibre.getSelectedRow();
-            System.out.println("pasa int ");
+           
             //Obtenemos el id de la fila seleccionada
             
             String miId = calibre.tbCalibre.getValueAt(filaSeleccionada, 0).toString();
-            System.out.println("El miId");
+           
             
             String nuevoValorIngresadoNombre = calibre.txtCalibre.getText();
-            System.out.println("Nuevo nombre ");
+            
             
             int nuevoValorIngresadoCantidad = (int) calibre.spCantidad.getValue();
             
