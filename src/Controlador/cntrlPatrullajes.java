@@ -110,7 +110,9 @@ public class cntrlPatrullajes implements ActionListener {
         this.addActPatrullaje.btnCancel.addActionListener(this);
         //Acept ActPatrullajes
         this.addActPatrullaje.btnAcept.addActionListener(this);
-                
+        //Mostrar AddEquipamiento
+        this.addPatrullajes.btnAddEqui.addActionListener(this);
+
         //Acept Personal
         this.addPersonal.btnAcept.addActionListener(this);
         //Cancel Personal
@@ -166,6 +168,13 @@ public class cntrlPatrullajes implements ActionListener {
          show("¿Seguro que quieres cancelar? no se guardarán los datos", 14, 1, 1);
          close2();
        }
+       
+        //-------------------------------Botones que muestran la Pantalla de AddEquipamiento
+        if(e.getSource() == addPatrullajes.btnAddEqui)
+        {
+            addEquipamiento.setEnabled(true);
+            addEquipamiento.setVisible(true);
+        }
        
        //------------------------------------------------------Boton que muestra la pantalla de actpatrullaje
        if(e.getSource() == addPatrullajes.btnAddActPatru)
