@@ -64,7 +64,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
                 btnCancelMapMouseExited(evt);
             }
         });
-        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(885, 15, -1, -1));
+        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
 
         btnEXPORTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEXPORTAR.png"))); // NOI18N
         btnEXPORTAR.setBorderPainted(false);
