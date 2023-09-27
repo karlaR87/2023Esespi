@@ -390,6 +390,8 @@ public class cntrlPatrullajes implements ActionListener {
             addPatrullajes.txtHora2.setText("");
             addPatrullajes.txtMin1.setText("");
             addPatrullajes.txtMin2.setText("");
+            addPatrullajes.dpFechaFin.setDate(null);
+            addPatrullajes.dpFechaInicio.setDate(null);
             
             JframePrincipal.showPatrullajePanel(2);
             addPatrullajes.setEnabled(true);

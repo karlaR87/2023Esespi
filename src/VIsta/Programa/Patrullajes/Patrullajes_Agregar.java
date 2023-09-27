@@ -205,6 +205,7 @@ private void validarFechaInicio() {
         txtHora1.setForeground(new java.awt.Color(255, 255, 255));
         txtHora1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHora1.setToolTipText("");
+        txtHora1.setBorder(null);
         txtHora1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtHora1KeyTyped(evt);
@@ -217,6 +218,7 @@ private void validarFechaInicio() {
         txtMin1.setForeground(new java.awt.Color(255, 255, 255));
         txtMin1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMin1.setToolTipText("");
+        txtMin1.setBorder(null);
         txtMin1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMin1KeyTyped(evt);
@@ -229,6 +231,7 @@ private void validarFechaInicio() {
         txtHora2.setForeground(new java.awt.Color(255, 255, 255));
         txtHora2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHora2.setToolTipText("");
+        txtHora2.setBorder(null);
         txtHora2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtHora2KeyTyped(evt);
@@ -241,6 +244,7 @@ private void validarFechaInicio() {
         txtMin2.setForeground(new java.awt.Color(255, 255, 255));
         txtMin2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMin2.setToolTipText("");
+        txtMin2.setBorder(null);
         txtMin2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMin2KeyTyped(evt);
