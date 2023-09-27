@@ -2,6 +2,7 @@ package Modelo;
 import java.sql.Connection;
 import Modelo.conexionSql;
 import VIsta.Login;
+import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Usuario.Usuario;
 import VIsta.Registro;
 import VIsta.Registro_DatosPersonales;
@@ -879,7 +880,7 @@ public class ModeloRegistro {
     
     //Aquí se mostrará el codigo de seguridad para ingresar a la aplicación movil.
     
-    public void MostrarCosve(Usuario u)
+    public void MostrarCosve(Policias_Inicio u)
     {
         try{   
             
@@ -896,7 +897,7 @@ public class ModeloRegistro {
                 String retorno = rs.getString("cosve");
                 
                 
-                u.jLabel10.setText("COSVE: " + retorno);
+                u.lblCosve.setText("COSVE: " + retorno);
                  
             } 
             

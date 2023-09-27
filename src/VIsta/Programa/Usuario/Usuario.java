@@ -41,14 +41,12 @@ public class Usuario extends javax.swing.JPanel {
         initComponents();
         PanelsShowInit();
 
-        m.MostrarCosve(this);
+      
        
         
         //Todos estos metodos se encuentran en el ModeloRegistro
-        m.IdUsuarioTomar(this);
-        m.mOstrarPatUser(this);
-        m.mOstrarReferencias(this);
-                l.MostrarUser(this);
+       
+                
         
        
     }

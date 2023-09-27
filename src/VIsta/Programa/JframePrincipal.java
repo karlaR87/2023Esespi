@@ -130,8 +130,6 @@ public class JframePrincipal extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        iconUsuario = new javax.swing.JLabel();
-        iconUsuario1 = new javax.swing.JLabel();
         iconInicio = new javax.swing.JLabel();
         iconInicio1 = new javax.swing.JLabel();
         iconPolicias = new javax.swing.JLabel();
@@ -170,30 +168,7 @@ public class JframePrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent2.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        iconUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/userIcon.png"))); // NOI18N
-        iconUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        iconUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconUsuarioMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconUsuarioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconUsuarioMouseExited(evt);
-            }
-        });
-        jPanel2.add(iconUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 80, 60, -1));
-
-        iconUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
-        iconUsuario1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconUsuario1MouseClicked(evt);
-            }
-        });
-        jPanel2.add(iconUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 70, 70, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 710));
 
         iconInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/homeIcon.png"))); // NOI18N
         iconInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -208,10 +183,10 @@ public class JframePrincipal extends javax.swing.JFrame {
                 iconInicioMouseExited(evt);
             }
         });
-        jPanel2.add(iconInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 140, 70, 90));
+        jPanel2.add(iconInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 70, 90));
 
         iconInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
-        jPanel2.add(iconInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 70, 90));
+        jPanel2.add(iconInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 70, 90));
 
         iconPolicias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/policeIcon.png"))); // NOI18N
         iconPolicias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -226,10 +201,10 @@ public class JframePrincipal extends javax.swing.JFrame {
                 iconPoliciasMouseExited(evt);
             }
         });
-        jPanel2.add(iconPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 60, 80));
+        jPanel2.add(iconPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 60, 80));
 
         iconPolicias1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
-        jPanel2.add(iconPolicias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 70, 80));
+        jPanel2.add(iconPolicias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 70, 80));
 
         btniconPatrullajes.setForeground(new java.awt.Color(255, 255, 255));
         btniconPatrullajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/carIcon.png"))); // NOI18N
@@ -247,11 +222,11 @@ public class JframePrincipal extends javax.swing.JFrame {
                 btniconPatrullajesMouseExited(evt);
             }
         });
-        jPanel2.add(btniconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 321, 50, 70));
+        jPanel2.add(btniconPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 60, 70));
         btniconPatrullajes.getAccessibleContext().setAccessibleDescription("");
 
         iconPatrullajes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
-        jPanel2.add(iconPatrullajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 321, 70, 70));
+        jPanel2.add(iconPatrullajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 70, 70));
 
         iconInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/gunIcon.png"))); // NOI18N
         iconInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -266,10 +241,10 @@ public class JframePrincipal extends javax.swing.JFrame {
                 iconInventarioMouseExited(evt);
             }
         });
-        jPanel2.add(iconInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 415, 70, 60));
+        jPanel2.add(iconInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 70, 60));
 
         iconInventario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
-        jPanel2.add(iconInventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 415, 70, 60));
+        jPanel2.add(iconInventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 70, 60));
 
         iconReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/docIcon.png"))); // NOI18N
         iconReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -284,10 +259,10 @@ public class JframePrincipal extends javax.swing.JFrame {
                 iconReportesMouseExited(evt);
             }
         });
-        jPanel2.add(iconReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 50, 70));
+        jPanel2.add(iconReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 50, 70));
 
         iconReportes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backIconSelected.png"))); // NOI18N
-        jPanel2.add(iconReportes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 70, 70));
+        jPanel2.add(iconReportes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 70, 70));
 
         iconSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/exitIcon.png"))); // NOI18N
         iconSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -627,7 +602,7 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
        iconChange();
-       iconUsuario1.setVisible(true);
+       
        cardLayout.show(jPanel1, "usuario");
        
        
@@ -638,7 +613,7 @@ public class JframePrincipal extends javax.swing.JFrame {
 
     private void iconChange()
     {
-       iconUsuario1.setVisible(false);
+       
        iconInicio1.setVisible(false);
        iconPolicias1.setVisible(false);
        iconPatrullajes1.setVisible(false);
@@ -690,16 +665,6 @@ public class JframePrincipal extends javax.swing.JFrame {
       ShowHide(0);
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
-    private void iconUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuarioMouseClicked
-        
-        iconChange();
-        iconUsuario1.setVisible(true);
-       cardLayout.show(jPanel1, "usuario");
-       
-       
-        ShowHide(1);
-    }//GEN-LAST:event_iconUsuarioMouseClicked
-
     private void iconInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInicioMouseClicked
 
         iconChange();
@@ -729,14 +694,6 @@ public class JframePrincipal extends javax.swing.JFrame {
             cardLayout.show(jPanel1, "reportes"); 
              ShowHide(1);
     }//GEN-LAST:event_iconReportesMouseClicked
-
-    private void iconUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuarioMouseEntered
-         lblUsuario.setBackground(colorChange);
-    }//GEN-LAST:event_iconUsuarioMouseEntered
-
-    private void iconUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuarioMouseExited
-          changeColor();
-    }//GEN-LAST:event_iconUsuarioMouseExited
 
     private void iconInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconInicioMouseEntered
         lblInicio.setBackground(colorChange);
@@ -831,11 +788,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         this.setLocation(evt.getXOnScreen()-LayoutX, evt.getYOnScreen()-LayoutY);
     }//GEN-LAST:event_jPanel3MouseDragged
-
-    private void iconUsuario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuario1MouseClicked
-        
-        
-    }//GEN-LAST:event_iconUsuario1MouseClicked
 
     private void changeColor()
     {
@@ -987,8 +939,6 @@ public class JframePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel iconReportes;
     private javax.swing.JLabel iconReportes1;
     private javax.swing.JLabel iconSalir;
-    private javax.swing.JLabel iconUsuario;
-    private javax.swing.JLabel iconUsuario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
