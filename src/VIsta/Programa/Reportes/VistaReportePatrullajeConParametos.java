@@ -2,6 +2,7 @@
 package VIsta.Programa.Reportes;
 
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import Modelo.conexionSql;
 import Modelo.mdl;
 import java.util.HashMap;
@@ -21,6 +22,10 @@ public class VistaReportePatrullajeConParametos extends javax.swing.JFrame {
     public VistaReportePatrullajeConParametos() {
         initComponents();
         this.setLocationRelativeTo(this);
+        
+        //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtFechaIn);
+        ValidarCVX.deshabilitarCVX(txtfechaFin);
         
         //Agregar un placeholder
         TextPrompt placeholder = new TextPrompt("Ingrese el parámetro", txtFechaIn);

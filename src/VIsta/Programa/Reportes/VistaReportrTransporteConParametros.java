@@ -2,6 +2,7 @@
 package VIsta.Programa.Reportes;
 
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import Modelo.conexionSql;
 import Modelo.mdl;
 import java.util.HashMap;
@@ -20,6 +21,9 @@ public class VistaReportrTransporteConParametros extends javax.swing.JFrame {
     public VistaReportrTransporteConParametros() {
         initComponents();
           this.setLocationRelativeTo(this);
+          
+          //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtGrupo);
           
           //Agregar un placeholder
         TextPrompt placeholder = new TextPrompt("Ingrese el parámetro", txtGrupo);

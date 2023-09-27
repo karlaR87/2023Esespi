@@ -5,6 +5,7 @@ import Controlador.ControladorTransporte;
 import Modelo.ModeloDatosTransporte;
 import Modelo.ModeloTransporte;
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import VIsta.Programa.Inventario.Inventario_Inicio_Transportes;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
@@ -12,15 +13,21 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class VistaAgregarTransporte extends javax.swing.JFrame {
+    ModeloDatosTransporte mn = new ModeloDatosTransporte();
+    ModeloTransporte menn = new ModeloTransporte();
 
     public VistaAgregarTransporte() throws SQLException {
         initComponents();
+        
+        //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtDetalles);
+        ValidarCVX.deshabilitarCVX(txtPlaca);
         
         //Agregar un placeholder
         TextPrompt placeholder = new TextPrompt("Buscar", txtBusqueda);
         
         ModeloTransporte m = new ModeloTransporte();
-        ModeloDatosTransporte mn = new ModeloDatosTransporte();
+        
         m.llenarCombo(cmbTipos);
         
        
@@ -224,6 +231,7 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
      ModeloDatosTransporte men = new ModeloDatosTransporte();
     
     private void cmbTiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTiposActionPerformed
+        
         
     }//GEN-LAST:event_cmbTiposActionPerformed
 
