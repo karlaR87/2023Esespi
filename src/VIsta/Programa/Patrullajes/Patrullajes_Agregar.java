@@ -176,6 +176,8 @@ private void validarFechaInicio() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSPArmasLargas = new javax.swing.JScrollPane();
+        jSPArmasCortas = new javax.swing.JScrollPane();
         txtHora1 = new javax.swing.JTextField();
         txtMin1 = new javax.swing.JTextField();
         txtHora2 = new javax.swing.JTextField();
@@ -207,6 +209,14 @@ private void validarFechaInicio() {
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSPArmasLargas.setBackground(new java.awt.Color(70, 70, 70));
+        jSPArmasLargas.setBorder(null);
+        add(jSPArmasLargas, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 310, 220, 140));
+
+        jSPArmasCortas.setBackground(new java.awt.Color(70, 70, 70));
+        jSPArmasCortas.setBorder(null);
+        add(jSPArmasCortas, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, 220, 140));
 
         txtHora1.setBackground(new java.awt.Color(70, 70, 70));
         txtHora1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -577,6 +587,8 @@ private void validarFechaInicio() {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jSPArmasCortas;
+    private javax.swing.JScrollPane jSPArmasLargas;
     private javax.swing.JLabel lblMAPImage;
     public javax.swing.JPanel pnlPersonal;
     public javax.swing.JTextField txtHora1;

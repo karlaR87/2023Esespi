@@ -1,6 +1,5 @@
 package Modelo;
 
-
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
 import VIsta.Programa.Policias.Policias_Inicio;
 import fonts.Fuentes;
@@ -34,8 +33,42 @@ public class ModeloPatrullajes {
     public void setPatrullajes(int IdPatrullaje) {
         this.idPatrullaje = IdPatrullaje;
     }
+
+    public ResultSet CharegeArmasCORTAS()
+    {
+        try{
+            String query = "SELECT DetalleArmamento FROM tbDetallesArmamentosEstacion \n" +
+            "WHERE IdTipoArmamentoEstacion = 1";
+            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargePolice.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
     
-    //LLENAR COMBOBOX DE ESTADO CIVIL 
+    public ResultSet CharegeArmasLARGAS()
+    {
+        try{
+            String query = "SELECT DetalleArmamento FROM tbDetallesArmamentosEstacion \n" +
+            "WHERE IdTipoArmamentoEstacion = 2";
+            PreparedStatement chargePolice = conexionSql.getConexion().prepareStatement(query);
+            
+            ResultSet rs = chargePolice.executeQuery();
+            
+            return rs;
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+    
+    //LLENAR COMBOBOX Medio asignacion
     public void llenarCombo(JComboBox<String> cmb) throws SQLException {
          Connection conectar = null;
         PreparedStatement pst = null;
