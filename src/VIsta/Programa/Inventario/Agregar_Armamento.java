@@ -7,6 +7,7 @@ import Controlador.ControladorArmamento;
  import Modelo.ModeloArmamento;
 import Modelo.ModeloEquipoEspecial;
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,10 @@ public class Agregar_Armamento extends javax.swing.JFrame {
    
     public Agregar_Armamento() {
         initComponents();
+        
+        
+        //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtDetalles);
         
         //Posicionar la ventana al centro
         this.setLocationRelativeTo(null);

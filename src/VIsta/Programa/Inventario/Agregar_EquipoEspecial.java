@@ -12,6 +12,7 @@ import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloEquipoEspecial;
 import Modelo.ModeloTransporte;
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import Modelo.conexionSql;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,10 @@ public class Agregar_EquipoEspecial extends javax.swing.JFrame {
     
     public Agregar_EquipoEspecial()  {
             initComponents();
+            
+        
+        //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtDetalles);
         
         //Posicionar la ventana al centro
         this.setLocationRelativeTo(null);

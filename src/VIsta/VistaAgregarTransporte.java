@@ -5,6 +5,7 @@ import Controlador.ControladorTransporte;
 import Modelo.ModeloDatosTransporte;
 import Modelo.ModeloTransporte;
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import VIsta.Programa.Inventario.Inventario_Inicio_Transportes;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
@@ -17,6 +18,10 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
 
     public VistaAgregarTransporte() throws SQLException {
         initComponents();
+        
+        //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtDetalles);
+        ValidarCVX.deshabilitarCVX(txtPlaca);
         
         //Agregar un placeholder
         TextPrompt placeholder = new TextPrompt("Buscar", txtBusqueda);
