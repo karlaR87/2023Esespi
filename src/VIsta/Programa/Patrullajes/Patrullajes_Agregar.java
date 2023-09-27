@@ -30,6 +30,8 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
     ImageIcon iconoOriginalAddActPatru;
     ImageIcon iconoOriginalAddActPatruCLARE;
     
+    ImageIcon iconoOriginalEquipamiento;
+    ImageIcon iconoOriginalEquipamientoSELECTED;
     
     Fuentes tipoFuentes;
    
@@ -49,7 +51,10 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
         iconoOriginalAddMapCLARE = new ImageIcon("src/VIsta/imagenes/btnEditMapCLARE.png");
         
         iconoOriginalAddActPatru = new ImageIcon("src/VIsta/imagenes/btnAddActPatru.png"); 
-        iconoOriginalAddActPatruCLARE = new ImageIcon("src/VIsta/imagenes/btnAddActPatruCLARE.png");
+        iconoOriginalAddActPatruCLARE = new ImageIcon("src/VIsta/imagenes/btnAddActPatruSELECTED.png");
+        
+        iconoOriginalEquipamiento = new ImageIcon("src/VIsta/imagenes/ADMINEQUIPAMIENTOBACK.png"); 
+        iconoOriginalEquipamientoSELECTED = new ImageIcon("src/VIsta/imagenes/ADMINEQUIPAMIENTOBACKSELECTED.png");
         
         //------------------------------------VALIDAR JDATECHOOSERS---------------------------------
         // Configurar el rango mínimo (hoy) para la fecha de inicio
@@ -158,6 +163,7 @@ private void validarFechaInicio() {
         btnAddPersonal.setIcon(iconoOriginalAddPerson);
         btnAddUbi.setIcon(iconoOriginalAddMap);
         btnAddActPatru.setIcon(iconoOriginalAddActPatru);
+        btnAddEqui.setIcon(iconoOriginalEquipamiento);
     }
     
    private void fontDesign()
@@ -186,6 +192,7 @@ private void validarFechaInicio() {
         btnAddPersonal = new javax.swing.JButton();
         lblMAPImage = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnAddEqui = new javax.swing.JButton();
         btnAddActPatru = new javax.swing.JButton();
         pnlPersonal = new javax.swing.JPanel();
         btnCancelPatrullaje = new javax.swing.JButton();
@@ -196,6 +203,7 @@ private void validarFechaInicio() {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -328,6 +336,23 @@ private void validarFechaInicio() {
         jLabel4.setText("<html> NO EXISTE <br> PERSONAL <br> ASIGNADO </html>");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 145, 130, -1));
 
+        btnAddEqui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/ADMINEQUIPAMIENTOBACK.png"))); // NOI18N
+        btnAddEqui.setBorderPainted(false);
+        btnAddEqui.setContentAreaFilled(false);
+        btnAddEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddEqui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddEquiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddEquiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAddEquiMouseExited(evt);
+            }
+        });
+        add(btnAddEqui, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 478, 250, -1));
+
         btnAddActPatru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddActPatru.png"))); // NOI18N
         btnAddActPatru.setBorderPainted(false);
         btnAddActPatru.setContentAreaFilled(false);
@@ -400,6 +425,9 @@ private void validarFechaInicio() {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backInitPatrullaje.png"))); // NOI18N
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 265, -1, 160));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BACKARMAS.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelPatrullajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelPatrullajeMouseClicked
@@ -512,9 +540,23 @@ private void validarFechaInicio() {
         }
     }//GEN-LAST:event_txtMin2KeyTyped
 
+    private void btnAddEquiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEquiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddEquiMouseClicked
+
+    private void btnAddEquiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEquiMouseEntered
+        OriginalIcon();
+        btnAddEqui.setIcon(iconoOriginalEquipamientoSELECTED);
+    }//GEN-LAST:event_btnAddEquiMouseEntered
+
+    private void btnAddEquiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEquiMouseExited
+         OriginalIcon();
+    }//GEN-LAST:event_btnAddEquiMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddActPatru;
+    public javax.swing.JButton btnAddEqui;
     public javax.swing.JButton btnAddPatrullaje;
     public javax.swing.JButton btnAddPersonal;
     public javax.swing.JButton btnAddUbi;
@@ -534,6 +576,7 @@ private void validarFechaInicio() {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblMAPImage;
     public javax.swing.JPanel pnlPersonal;
     public javax.swing.JTextField txtHora1;
