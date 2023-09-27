@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class VistaAgregarTransporte extends javax.swing.JFrame {
+    ModeloDatosTransporte mn = new ModeloDatosTransporte();
+    ModeloTransporte menn = new ModeloTransporte();
 
     public VistaAgregarTransporte() throws SQLException {
         initComponents();
@@ -20,7 +22,7 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
         TextPrompt placeholder = new TextPrompt("Buscar", txtBusqueda);
         
         ModeloTransporte m = new ModeloTransporte();
-        ModeloDatosTransporte mn = new ModeloDatosTransporte();
+        
         m.llenarCombo(cmbTipos);
         
        
@@ -224,6 +226,7 @@ public class VistaAgregarTransporte extends javax.swing.JFrame {
      ModeloDatosTransporte men = new ModeloDatosTransporte();
     
     private void cmbTiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTiposActionPerformed
+        
         
     }//GEN-LAST:event_cmbTiposActionPerformed
 

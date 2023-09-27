@@ -113,6 +113,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 560));
 
         jScrollPane1.setBackground(new java.awt.Color(70, 70, 70));
+        jScrollPane1.setBorder(null);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(330, 390));
 
         jPanel1.setBackground(new java.awt.Color(70, 70, 70));
