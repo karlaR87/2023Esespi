@@ -2,6 +2,7 @@
 package VIsta.Programa.Reportes;
 
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import Modelo.conexionSql;
 import Modelo.mdl;
 import java.util.HashMap;
@@ -22,6 +23,9 @@ public class VistaReportePolPat extends javax.swing.JFrame {
     public VistaReportePolPat() {
         initComponents();
         this.setLocationRelativeTo(this);
+        
+        //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtGrupo);
         
         //Agregar un placeholder
         TextPrompt placeholder = new TextPrompt("Ingrese el parámetro", txtGrupo);
@@ -100,6 +104,12 @@ public class VistaReportePolPat extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, -1, -1));
+
+        txtGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGrupoActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -184,6 +194,10 @@ public class VistaReportePolPat extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void txtGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGrupoActionPerformed
 
     /**
      * @param args the command line arguments

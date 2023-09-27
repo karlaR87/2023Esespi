@@ -6,6 +6,7 @@ import Modelo.mdlUsuarios;
 import VIsta.JoptionReplacemnt;
 import VIsta.Login;
 import VIsta.Programa.JframePrincipal;
+import VIsta.Programa.Usuario.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ public class cntrlLogin implements ActionListener{
 
     private Login lg;
     private mdlUsuarios mdlUsuarios;
+    public Usuario u;
     
     public cntrlLogin(Login lg, mdlUsuarios mdlUsuarios)
     {
@@ -31,6 +33,8 @@ public class cntrlLogin implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == lg.btnIngresar)
         {
+           
+            
             mdlUsuarios.setUsuario(lg.txtUsuario.getText().trim());
             int idUser = mdlUsuarios.readIDUsuario();
             
@@ -44,6 +48,8 @@ public class cntrlLogin implements ActionListener{
             {
                 mdlUsuarios.setIdUsuario(idUser);
                 System.out.println(idUser);
+                
+                
                 String con = mdlUsuarios.readConUsuario();
                 
                  if(con == null)

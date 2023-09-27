@@ -7,14 +7,19 @@ import VIsta.Programa.JframePrincipal;
 import VIsta.Registro;
 import Modelo.ModeloRegistro;
 import Modelo.conexionSql;
+import VIsta.Programa.Usuario.Usuario;
 import fonts.Fuentes;
 import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 public class Login extends javax.swing.JFrame {
@@ -294,19 +299,31 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_RecuperarContraMouseClicked
 
+    
+     public void MostrarUser(Usuario u)
+    {
+        
+        texto = txtUsuario.getText();
+        u.txtUser.setText(texto);
+        JOptionPane.showMessageDialog(null, texto);
+       
+    }
+     
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-           /*mdlUsuarios mi = new mdlUsuarios();
+           /*mdlUsuarios mi = new mdlJOptionPane.showMessageDialog(null, texto);Usuarios();
            mi.setmUsu(txtUsuario.getText());
            
            //String t = txtUsuario.getText();
            System.out.println("esto se va a la pantakka " + txtUsuario.getText());*/
-           texto = txtUsuario.getText();
+           
          
            
            
           
     }//GEN-LAST:event_btnIngresarMouseClicked
 
+    
+    
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
          if(evt.getButton()==java.awt.event.MouseEvent.BUTTON1){
             System.exit(0);

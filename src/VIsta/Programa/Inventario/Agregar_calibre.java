@@ -7,6 +7,7 @@ package VIsta.Programa.Inventario;
 import Controlador.cntrlClibre;
 import Modelo.ModeloCalibre;
 import Modelo.TextPrompt;
+import Modelo.ValidarCVX;
 import javax.swing.SpinnerNumberModel;
 
 
@@ -20,6 +21,9 @@ public class Agregar_calibre extends javax.swing.JFrame {
     
     public Agregar_calibre() {
         initComponents();
+        
+        //Deahabilitar el que se pueda copiar, pegar o cortar
+        ValidarCVX.deshabilitarCVX(txtCalibre);
         
         //Posicionar la ventana al centro
         this.setLocationRelativeTo(null);
