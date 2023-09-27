@@ -128,7 +128,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
                 txtAct1KeyTyped(evt);
             }
         });
-        jPanel1.add(txtAct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 80, 308, 20));
+        jPanel1.add(txtAct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 80, 290, 20));
 
         txtAct2.setBackground(new java.awt.Color(255, 255, 255));
         txtAct2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -140,7 +140,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
                 txtAct2KeyTyped(evt);
             }
         });
-        jPanel1.add(txtAct2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 230, 308, 20));
+        jPanel1.add(txtAct2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 230, 290, 20));
 
         txtAct3.setBackground(new java.awt.Color(255, 255, 255));
         txtAct3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -152,7 +152,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
                 txtAct3KeyTyped(evt);
             }
         });
-        jPanel1.add(txtAct3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 390, 308, 20));
+        jPanel1.add(txtAct3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 290, 20));
 
         txtAct4.setBackground(new java.awt.Color(255, 255, 255));
         txtAct4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -164,7 +164,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
                 txtAct4KeyTyped(evt);
             }
         });
-        jPanel1.add(txtAct4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 540, 308, 20));
+        jPanel1.add(txtAct4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 540, 290, 20));
 
         txtAct5.setBackground(new java.awt.Color(255, 255, 255));
         txtAct5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -176,7 +176,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
                 txtAct5KeyTyped(evt);
             }
         });
-        jPanel1.add(txtAct5, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 690, 308, 20));
+        jPanel1.add(txtAct5, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 690, 290, 20));
 
         cmbMedio1.setBackground(new java.awt.Color(59, 126, 255));
         cmbMedio1.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,7 +194,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         cmbMedio3.setForeground(new java.awt.Color(255, 255, 255));
         cmbMedio3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbMedio3.setBorder(null);
-        jPanel1.add(cmbMedio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 300, 25));
+        jPanel1.add(cmbMedio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 300, 25));
 
         cmbMedio4.setBackground(new java.awt.Color(59, 126, 255));
         cmbMedio4.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,10 +245,10 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("3° Actividad:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BACKTXTACTPATRU.png"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Line195.png"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, 10));

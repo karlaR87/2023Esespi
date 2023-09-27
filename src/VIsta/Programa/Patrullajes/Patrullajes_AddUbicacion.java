@@ -49,7 +49,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCancelMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnCANCELMAP.png"))); // NOI18N
+        btnCancelMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/XClose.png"))); // NOI18N
         btnCancelMap.setBorderPainted(false);
         btnCancelMap.setContentAreaFilled(false);
         btnCancelMap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -64,7 +64,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
                 btnCancelMapMouseExited(evt);
             }
         });
-        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(885, 15, -1, -1));
 
         btnEXPORTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEXPORTAR.png"))); // NOI18N
         btnEXPORTAR.setBorderPainted(false);
