@@ -743,7 +743,8 @@ public class mdlPolicias {
                     + "NumeroTel like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "Rango like '%" + vstPolicias.txtBuscar.getText() + "%' or "
                     + "ONI like '%" + vstPolicias.txtBuscar.getText() + "%' or "
-                    + "NumeroPlaca like '%" + vstPolicias.txtBuscar.getText() + "%'" ;
+                    + "NumeroPlaca like '%" + vstPolicias.txtBuscar.getText() + "%'" 
+                    + " ORDER BY tbPoli.IdRangoTipoUsuario;";
             
             ResultSet rs = statement.executeQuery(query);
 
