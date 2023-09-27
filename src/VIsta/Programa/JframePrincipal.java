@@ -44,6 +44,7 @@ import javax.swing.OverlayLayout;
 public class JframePrincipal extends javax.swing.JFrame {
       Color colorChange = new Color(255, 98, 98);
       public int idNivelUser;
+      Login l = new Login();
       
       
     public JframePrincipal(int idNivelUser) {       
@@ -693,6 +694,7 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
     private void iconUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuarioMouseClicked
+        
         iconChange();
         iconUsuario1.setVisible(true);
        cardLayout.show(jPanel1, "usuario");
@@ -834,7 +836,8 @@ public class JframePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void iconUsuario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUsuario1MouseClicked
-       
+        
+        
     }//GEN-LAST:event_iconUsuario1MouseClicked
 
     private void changeColor()
