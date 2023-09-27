@@ -53,7 +53,7 @@ public class MenuRC extends javax.swing.JPanel {
                 lblBackMouseClicked(evt);
             }
         });
-        jPanel2.add(lblBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 740, -1, 70));
+        jPanel2.add(lblBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 730, -1, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/gmail.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, 100));
