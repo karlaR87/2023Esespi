@@ -5,6 +5,7 @@ import Modelo.mdlPolicias;
 import VIsta.JoptionReplacemnt;
 import VIsta.Programa.JframePrincipal;
 import VIsta.Programa.Patrullajes.Patrullajes_AddActividades;
+import VIsta.Programa.Patrullajes.Patrullajes_AddEquipamiento;
 import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
 import VIsta.Programa.Patrullajes.Patrullajes_AddUbicacion;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
@@ -80,8 +81,9 @@ public class cntrlPatrullajes implements ActionListener {
     private Patrullajes_AddPersonal addPersonal;
     private Patrullajes_AddUbicacion addUbicacion;
     private Patrullajes_AddActividades addActPatrullaje;
+    private Patrullajes_AddEquipamiento addEquipamiento;
 
-    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal, Patrullajes_AddUbicacion addUbicacion, Patrullajes_AddActividades addActPatrullaje) {
+    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal, Patrullajes_AddUbicacion addUbicacion, Patrullajes_AddActividades addActPatrullaje, Patrullajes_AddEquipamiento addEquipamiento) {
         this.modelPatrullajes = modelPatrullajes;
         this.JframePrincipal = JframePrincipal;
         this.vstPatrullajes = patrullajesHome;
@@ -89,6 +91,7 @@ public class cntrlPatrullajes implements ActionListener {
         this.addPersonal = addPersonal;
         this.addUbicacion = addUbicacion;
         this.addActPatrullaje = addActPatrullaje;
+        this.addEquipamiento = addEquipamiento;
         
         this.JframePrincipal.btnPatrullajes.addActionListener(this);
         this.JframePrincipal.btniconPatrullajes.addActionListener(this);
@@ -387,7 +390,7 @@ public class cntrlPatrullajes implements ActionListener {
             addPersonal.setEnabled(true);
             addPersonal.jLabel3.setVisible(false);
             panelULTIMATE.removeAll();
-
+            // Luego, puedes llamar al mÃ©todo "revalidate()" para actualizar la interfaz de usuario
             panelULTIMATE.revalidate();
             panelULTIMATE.repaint(); 
             JframePrincipal.setExtendedState(JFrame.NORMAL);
@@ -504,6 +507,7 @@ public class cntrlPatrullajes implements ActionListener {
                 
                 JSpinner spinner = new JSpinner(spinnerModel);
                 spinner.setName(String.valueOf(IdDetalle));
+                spinner.setPreferredSize(new Dimension(10, 10));
                 
                 spinner.addChangeListener(new ChangeListener() {
                 @Override
@@ -529,6 +533,7 @@ public class cntrlPatrullajes implements ActionListener {
                 VerticalBox.add(labelArma);
                 HorizontalBox.add(spinner);
                 HorizontalBox.add(Box.createHorizontalGlue());
+                VerticalBox.add(Box.createVerticalGlue());
                 panel.add(HorizontalBox);
             }
             
