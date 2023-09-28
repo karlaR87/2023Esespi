@@ -1,5 +1,6 @@
 package VIsta.Programa.Patrullajes;
 
+import Modelo.ModeloPatrullajes;
 import fonts.Fuentes;
 import java.awt.Color;
 import org.jxmapviewer.JXMapViewer;
@@ -11,6 +12,7 @@ import org.jxmapviewer.viewer.Waypoint;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +21,8 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
 
     ImageIcon iconoOriginalExport;
     ImageIcon iconoOriginalExportCLARE;
+    
+    ModeloPatrullajes mdl = new ModeloPatrullajes();
     
     Fuentes tipoFuentes;
     public Patrullajes_AddUbicacion() {
@@ -30,13 +34,21 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
         
         ImageIcon icono = new ImageIcon("src/VIsta/imagenes/R100.png"); this.setIconImage(icono.getImage());
         
+         try {
+            mdl.llenarComboTipoPatrullaje(cmbTipoPatrullaje);
+        } catch (SQLException e) {
+             System.out.println("Error en cmb");
+        }
+         
+         fontDesign();
     }
 
     private void fontDesign()
     {      
         tipoFuentes = new Fuentes();
         
-        jLabel2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 16));
+        jLabel2.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 15));
+        jLabel3.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 1, 15));
 
     }
     
@@ -55,6 +67,10 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
         jPanel1 = new javax.swing.JPanel();
         jpnlMapContainer = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cmbTipoPatrullaje = new javax.swing.JComboBox<>();
+        txtEXTENSIONKM = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -76,7 +92,7 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
                 btnCancelMapMouseExited(evt);
             }
         });
-        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 40, 40));
+        getContentPane().add(btnCancelMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 40, 40));
 
         btnEXPORTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnEXPORTAR.png"))); // NOI18N
         btnEXPORTAR.setBorderPainted(false);
@@ -107,18 +123,48 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
         jpnlMapContainer.setLayout(jpnlMapContainerLayout);
         jpnlMapContainerLayout.setHorizontalGroup(
             jpnlMapContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
         jpnlMapContainerLayout.setVerticalGroup(
             jpnlMapContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 490, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jpnlMapContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 490));
+        jPanel1.add(jpnlMapContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 490));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel2.setText("Por favor, seleccione un area");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 110, -1));
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("<html> <center>Por favor, seleccione una zona y designe el area de patrullaje (Extensión) en KM </center></html>");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 160, 100));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("<html> <center> Seleccione el tipo de patrullaje a realizar </center></html>");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 180, 50));
+
+        cmbTipoPatrullaje.setBackground(new java.awt.Color(59, 126, 255));
+        cmbTipoPatrullaje.setForeground(new java.awt.Color(255, 255, 255));
+        cmbTipoPatrullaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTipoPatrullaje.setBorder(null);
+        jPanel1.add(cmbTipoPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 340, 140, 25));
+
+        txtEXTENSIONKM.setBackground(new java.awt.Color(255, 255, 255));
+        txtEXTENSIONKM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtEXTENSIONKM.setForeground(new java.awt.Color(0, 0, 0));
+        txtEXTENSIONKM.setToolTipText("");
+        txtEXTENSIONKM.setBorder(null);
+        txtEXTENSIONKM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEXTENSIONKMKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtEXTENSIONKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 186, 125, 20));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/BACKtxtDUI.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 180, 80));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 23, 900, -1));
 
@@ -150,6 +196,12 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
     private void btnCancelMapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMapMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelMapMouseExited
+
+    private void txtEXTENSIONKMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEXTENSIONKMKeyTyped
+        if (txtEXTENSIONKM.getText().trim().length() >= 30) {
+            evt.consume(); // Bloquea la entrada de texto adicional
+        }
+    }//GEN-LAST:event_txtEXTENSIONKMKeyTyped
 
     /**
      * @param args the command line arguments
@@ -189,9 +241,13 @@ public class Patrullajes_AddUbicacion extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCancelMap;
     public javax.swing.JButton btnEXPORTAR;
+    public javax.swing.JComboBox<String> cmbTipoPatrullaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jpnlMapContainer;
+    public javax.swing.JTextField txtEXTENSIONKM;
     // End of variables declaration//GEN-END:variables
 }

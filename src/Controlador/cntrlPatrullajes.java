@@ -32,6 +32,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -298,7 +300,21 @@ public class cntrlPatrullajes implements ActionListener {
         if(e.getSource() == addUbicacion.btnEXPORTAR)
         {
             //---------------------------------------------SET DEL MAPA-----------------
-           
+           int width = mapViewer.getWidth();
+            int height = mapViewer.getHeight();
+            BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+            // Obtener el Graphics2D del BufferedImage
+            Graphics2D g2d = bufferedImage.createGraphics();
+            mapViewer.paint(g2d);
+            g2d.dispose();
+            
+            ImageIcon mapIcon = new ImageIcon(bufferedImage);
+            
+            addPatrullajes.lblMAPImage.setIcon(mapIcon);
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            addUbicacion.setVisible(false);
         }
         
        //-----------------------------------------------------Boton para mostrar la ubicacion(MAPA)
@@ -529,6 +545,9 @@ public class cntrlPatrullajes implements ActionListener {
             //------------EQUIPAMIENTO BORRAR
             ListaIdDetalleEquipo.clear();
             
+            //------------MAPA BORRAR
+            addUbicacion.txtEXTENSIONKM.setText("");
+            
             JframePrincipal.showPatrullajePanel(2);
             addPatrullajes.setEnabled(true);
         }
@@ -751,12 +770,12 @@ public class cntrlPatrullajes implements ActionListener {
     //------------------METODO PARA MOSTRAR EL MAPA-----------------
     public double latitud;
     public double longitud;
-    private static double DiametroenKM = 25;
+    private static double RadioEnKM= 25;
+    JXMapViewer mapViewer;
     
-     public void showMap() {
-         
+    public void showMap() {
         // Crea un objeto JXMapViewer
-        JXMapViewer mapViewer = new JXMapViewer();
+        mapViewer = new JXMapViewer();
 
         // Crea un TileFactoryInfo para OpenStreetMap
         TileFactoryInfo info = new OSMTileFactoryInfo();
@@ -764,17 +783,18 @@ public class cntrlPatrullajes implements ActionListener {
         mapViewer.setTileFactory(tileFactory);
 
         // Usar 7 como zoom inicial
-        mapViewer.setZoom(11);
-        
+        mapViewer.setZoom(7);
+
         // Centrar el mapa en El Salvador
         GeoPosition elSalvador = new GeoPosition(13.6929, -89.2182);
         mapViewer.setCenterPosition(elSalvador);
 
-      // Crear un Set de waypoints y un WaypointPainter para pintarlos
+        // Crear un Set de waypoints y un WaypointPainter para pintarlos
         Set<Waypoint> waypoints = new HashSet<>();
         WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<>();
         waypointPainter.setWaypoints(waypoints);
         mapViewer.setOverlayPainter(waypointPainter);
+
         
         // Agrega un listener de mouse para obtener las coordenadas al hacer clic
         mapViewer.addMouseListener(new MouseAdapter() {
@@ -784,15 +804,17 @@ public class cntrlPatrullajes implements ActionListener {
                 GeoPosition geo = mapViewer.convertPointToGeoPosition(e.getPoint());
 
                 // Verifica si las coordenadas se encuentran en El Salvador
-                if(geo.getLatitude() > 13.1483 && geo.getLatitude() < 14.4226 && geo.getLongitude() > -90.1295 && geo.getLongitude() < -87.6877) {
+                if(geo.getLatitude() > 13.1483 && geo.getLatitude() < 14.4226 && geo.getLongitude() > -90.1295 && geo.getLongitude() < -87.6877) {                    
 
                     // Guarda las coordenadas para su recuperación posterior
                     latitud = geo.getLatitude();
                     longitud = geo.getLongitude();
-                    
-                    // Dibujar un círculo alrededor del marcador
-                    drawCircleAroundMarker(mapViewer, geo, DiametroenKM, waypoints, waypointPainter); 
-                    
+
+                    // Añade un waypoint al conjunto de waypoints y actualiza el WaypointPainter
+                    waypoints.clear();  // Limpiar los waypoints existentes (sólo queremos el último clic)
+                    waypoints.add(new DefaultWaypoint(geo));
+                    waypointPainter.setWaypoints(waypoints);
+                    mapViewer.repaint();  // Repintar para mostrar el nuevo waypoint
                 } else {
                    JOptionPane.showMessageDialog(null, "¡Ubicación fuera de El Salvador!");
                 }
@@ -809,60 +831,169 @@ public class cntrlPatrullajes implements ActionListener {
             int rotation = e.getWheelRotation();
             int currentZoom = mapViewer.getZoom();
             if (rotation < 0) {
-                 if(currentZoom == 2) {}
+                if(currentZoom == 2) {}
                 else{mapViewer.setZoom(currentZoom - 1);}
             } else {
-                
                 if(currentZoom == 11) {}
                 else{ mapViewer.setZoom(currentZoom + 1);}
             }
         });
 
-        mapViewer.setBounds(0, 0, (int)(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9), (int)(Toolkit.getDefaultToolkit().getScreenSize().height * 0.9));
+//        // Crear el botón personalizado
+//        Button_Edit btnSave = new Button_Edit();
+//        btnSave.setText("Guardar");
+//        btnSave.setPreferredSize(new Dimension(96, 40));
+//        btnSave.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                JOptionPane.showMessageDialog(null,"Latitud: " + latitud + ", Longitud: " + longitud);
+//            }
+//        });
+
+//        // Crear el JLayeredPane y añadir los componentes
+//        JLayeredPane layeredPane = new JLayeredPane();
+//        mapViewer.setBounds(0, 0, (int)(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9), (int)(Toolkit.getDefaultToolkit().getScreenSize().height * 0.9));
+//        layeredPane.add(mapViewer, JLayeredPane.DEFAULT_LAYER);
+//        layeredPane.add(btnSave, JLayeredPane.PALETTE_LAYER);
+
+//        // Crear y mostrar el JFrame
+//        JFrame frame = new JFrame("Mapa de El Salvador");
+//        frame.getContentPane().add(layeredPane);
+//        frame.setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9), (int)(Toolkit.getDefaultToolkit().getScreenSize().height * 0.9));  // Definir un tamaño inicial para el frame
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+         mapViewer.setBounds(0, 0, (int)(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9), (int)(Toolkit.getDefaultToolkit().getScreenSize().height * 0.9));
          mapViewer.setSize(addUbicacion.jpnlMapContainer.getSize());
          mapViewer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        addUbicacion.jpnlMapContainer.add(mapViewer); 
-         
+        addUbicacion.jpnlMapContainer.add(mapViewer);       
+        mapViewer.repaint();  
+        
         addUbicacion.jpnlMapContainer.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
                 mapViewer.setSize(addUbicacion.jpnlMapContainer.getSize());
+                 mapViewer.repaint();
               }
         });
-
     }
 
     // Método para obtener las últimas coordenadas seleccionadas
     public double[] getCoordinates() {
         return new double[] { latitud, longitud };
     }
-          
-    private void drawCircleAroundMarker(JXMapViewer mapViewer, GeoPosition center, double DiametroenKM, Set<Waypoint> waypoints, WaypointPainter<Waypoint> circlePainter) {
-    double diametroEnGrados = DiametroenKM / 111.32; // 1 grado de latitud es aproximadamente 111.32 kilómetros
-    double diametroEnPixeles = diametroEnGrados / (360.0 / (Math.pow(2, mapViewer.getZoom()) * 256));
-
-    // Añade un waypoint al conjunto de waypoints y actualiza el WaypointPainter
-    waypoints.clear(); // Limpiar los waypoints existentes (sólo queremos el último clic)
-    waypoints.add(new DefaultWaypoint(center));
-    circlePainter.setWaypoints(waypoints);
-
-    // Configura el estilo del círculo
-    circlePainter.setRenderer(new WaypointRenderer<Waypoint>() {
-        @Override
-        public void paintWaypoint(Graphics2D g, JXMapViewer map, Waypoint wp) {
-            // Dibuja un círculo alrededor del marcador
-            Point2D point = map.getTileFactory().geoToPixel(wp.getPosition(), map.getZoom());
-
-            g.setColor(new Color(0, 0, 255, 64)); // Relleno azul transparente
-            g.fillOval((int) (point.getX() - diametroEnPixeles), (int) (point.getY() - diametroEnPixeles), (int) (diametroEnPixeles * 2), (int) (diametroEnPixeles * 2));
-        }
-    });
-
-    // Agrega el WaypointPainter al JXMapViewer
-    mapViewer.setOverlayPainter(circlePainter);
-    mapViewer.repaint(); // Repintar para mostrar el nuevo waypoint
-}
+    
+    
+//     public void showMap() {
+//         
+//        // Crea un objeto JXMapViewer
+//        JXMapViewer mapViewer = new JXMapViewer();
+//
+//        // Crea un TileFactoryInfo para OpenStreetMap
+//        TileFactoryInfo info = new OSMTileFactoryInfo();
+//        DefaultTileFactory tileFactory = new DefaultTileFactory(info);
+//        mapViewer.setTileFactory(tileFactory);
+//
+//        // Usar 7 como zoom inicial
+//        mapViewer.setZoom(11);
+//        
+//        // Centrar el mapa en El Salvador
+//        GeoPosition elSalvador = new GeoPosition(13.6929, -89.2182);
+//        mapViewer.setCenterPosition(elSalvador);
+//
+//      // Crear un Set de waypoints y un WaypointPainter para pintarlos
+//        Set<Waypoint> waypoints = new HashSet<>();
+//        WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<>();
+//        waypointPainter.setWaypoints(waypoints);
+//        mapViewer.setOverlayPainter(waypointPainter);
+//        
+//        // Agrega un listener de mouse para obtener las coordenadas al hacer clic
+//        mapViewer.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                // Convierte el punto de la pantalla en una coordenada geográfica
+//                GeoPosition geo = mapViewer.convertPointToGeoPosition(e.getPoint());
+//
+//                // Verifica si las coordenadas se encuentran en El Salvador
+//                if(geo.getLatitude() > 13.1483 && geo.getLatitude() < 14.4226 && geo.getLongitude() > -90.1295 && geo.getLongitude() < -87.6877) {
+//
+//                    // Guarda las coordenadas para su recuperación posterior
+//                    latitud = geo.getLatitude();
+//                    longitud = geo.getLongitude();
+//                    
+//                    // Dibujar un círculo alrededor del marcador
+//                    drawCircleAroundMarker(mapViewer, geo, DiametroenKM, waypoints, waypointPainter); 
+//                    
+//                } else {
+//                   JOptionPane.showMessageDialog(null, "¡Ubicación fuera de El Salvador!");
+//                }
+//            }
+//        });
+//
+//        // Agrega un controlador de mouse para permitir el desplazamiento del mapa
+//        PanMouseInputListener mia = new PanMouseInputListener(mapViewer);
+//        mapViewer.addMouseListener(mia);
+//        mapViewer.addMouseMotionListener(mia);
+//
+//        // Agrega un controlador de rueda del mouse para permitir el zoom
+//        mapViewer.addMouseWheelListener(e -> {
+//            int rotation = e.getWheelRotation();
+//            int currentZoom = mapViewer.getZoom();
+//            if (rotation < 0) {
+//                 if(currentZoom == 2) {}
+//                else{mapViewer.setZoom(currentZoom - 1);}
+//            } else {
+//                
+//                if(currentZoom == 11) {}
+//                else{ mapViewer.setZoom(currentZoom + 1);}
+//            }
+//        });
+//
+//        mapViewer.setBounds(0, 0, (int)(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9), (int)(Toolkit.getDefaultToolkit().getScreenSize().height * 0.9));
+//         mapViewer.setSize(addUbicacion.jpnlMapContainer.getSize());
+//         mapViewer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+//        
+//        addUbicacion.jpnlMapContainer.add(mapViewer); 
+//         
+//        addUbicacion.jpnlMapContainer.addComponentListener(new ComponentAdapter() {
+//            @Override
+//            public void componentResized(ComponentEvent e) {
+//                mapViewer.setSize(addUbicacion.jpnlMapContainer.getSize());
+//              }
+//        });
+//
+//    }
+//
+//    // Método para obtener las últimas coordenadas seleccionadas
+//    public double[] getCoordinates() {
+//        return new double[] { latitud, longitud };
+//    }
+//          
+//    private void drawCircleAroundMarker(JXMapViewer mapViewer, GeoPosition center, double DiametroenKM, Set<Waypoint> waypoints, WaypointPainter<Waypoint> circlePainter) {
+//    double diametroEnGrados = DiametroenKM / 111.32; // 1 grado de latitud es aproximadamente 111.32 kilómetros
+//    double diametroEnPixeles = diametroEnGrados / (360.0 / (Math.pow(2, mapViewer.getZoom()) * 256));
+//
+//    // Añade un waypoint al conjunto de waypoints y actualiza el WaypointPainter
+//    waypoints.clear(); // Limpiar los waypoints existentes (sólo queremos el último clic)
+//    waypoints.add(new DefaultWaypoint(center));
+//    circlePainter.setWaypoints(waypoints);
+//
+//    // Configura el estilo del círculo
+//    circlePainter.setRenderer(new WaypointRenderer<Waypoint>() {
+//        @Override
+//        public void paintWaypoint(Graphics2D g, JXMapViewer map, Waypoint wp) {
+//            // Dibuja un círculo alrededor del marcador
+//            Point2D point = map.getTileFactory().geoToPixel(wp.getPosition(), map.getZoom());
+//
+//            g.setColor(new Color(0, 0, 255, 64)); // Relleno azul transparente
+//            g.fillOval((int) (point.getX() - diametroEnPixeles), (int) (point.getY() - diametroEnPixeles), (int) (diametroEnPixeles * 2), (int) (diametroEnPixeles * 2));
+//        }
+//    });
+//
+//    // Agrega el WaypointPainter al JXMapViewer
+//    mapViewer.setOverlayPainter(circlePainter);
+//    mapViewer.repaint(); // Repintar para mostrar el nuevo waypoint
+//}
     
     //----------------METODOS PARA VER LOS POLICIAS APTOS DE SELECCION--------------
     Fuentes tipoFuentes;

@@ -36,7 +36,7 @@ public class Patrullajes_AddActividades extends javax.swing.JFrame {
             mdl.llenarCombo(cmbMedio5);
 
         } catch (SQLException e) {
-             System.out.println("Error en cmb y clndr");
+             System.out.println("Error en cmb");
         }
           ImageIcon icono = new ImageIcon("src/VIsta/imagenes/R100.png"); this.setIconImage(icono.getImage());
           fontDesign();
