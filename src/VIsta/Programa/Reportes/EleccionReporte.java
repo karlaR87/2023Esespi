@@ -47,10 +47,10 @@ public class EleccionReporte extends javax.swing.JFrame {
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/ReportePatrullaje.jasper"));
            
             JasperPrint jprint = JasperFillManager.fillReport(report, null, conexionSql.getConexion());
-            
+                
             JasperViewer view = new JasperViewer(jprint, false);
              
-            view.setTitle("Reporte de transporte");
+            view.setTitle("Reporte de patrullaje");
             view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             view.setVisible(true);
 
@@ -59,6 +59,8 @@ public class EleccionReporte extends javax.swing.JFrame {
         }
         
     }
+  
+
   private void mostrarReportePolPat() {
         try {
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/VIsta/PoliciasPatrullajes.jasper"));
@@ -169,20 +171,12 @@ public class EleccionReporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-
-        String seleccion = (String) cmbOpciones.getSelectedItem();
-        if (seleccion.equals("Reporte de patrullaje")) {
+        String seleccion1 = (String) cmbOpciones.getSelectedItem();
+        if (seleccion1.equals("Reporte de patrullaje")) {
             
-           
+            
+            
             mostrarReportePat();
-        }
-        
-        
-        String seleccion2 = (String) cmbOpciones.getSelectedItem();
-        if (seleccion2.equals("Reporte de patrullaje con parámetros")) {
-            
-            vp.setVisible(true);
-            this.dispose();
         }
         
          String seleccion3 = (String) cmbOpciones.getSelectedItem();
