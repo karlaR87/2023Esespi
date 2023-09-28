@@ -1,7 +1,12 @@
 package VIsta;
 
+import Modelo.conexionSql;
 import fonts.Fuentes;
 import javax.swing.JButton;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class RegistroInfoPolicial extends javax.swing.JPanel {
@@ -81,6 +86,11 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         txtNumeroPlaca.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtNumeroPlaca.setToolTipText("");
         txtNumeroPlaca.setBorder(null);
+        txtNumeroPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNumeroPlacaKeyReleased(evt);
+            }
+        });
         jPanel2.add(txtNumeroPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 426, 410, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
@@ -112,6 +122,11 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         txtONI.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtONI.setToolTipText("");
         txtONI.setBorder(null);
+        txtONI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtONIKeyReleased(evt);
+            }
+        });
         jPanel2.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 314, 410, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
@@ -130,7 +145,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -141,12 +156,70 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
+String oni = txtONI.getText();
+    String numeroPlaca = txtNumeroPlaca.getText();
+    
 
+    // Realizar la consulta SQL para verificar la existencia de los datos
+    String query = "SELECT COUNT(*) AS count FROM tbPolicias WHERE ONI = ? OR NumeroPlaca = ?";
+    
+    try {
+        PreparedStatement pstmt = conexionSql.getConexion().prepareStatement(query);
+        pstmt.setString(1, oni);
+        pstmt.setString(2, numeroPlaca);
+        
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            int count = rs.getInt("count");
+            if (count == 0) {
+                
+              
+                
+            } else {
+                // Los datos ya existen en la base de datos, muestra un mensaje de error
+                JOptionPane.showMessageDialog(null, "Los datos ya existen en la base de datos.");
+            }
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al realizar la consulta: " + e.toString());
+}
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
 
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void txtONIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtONIKeyReleased
+   String texto = txtONI.getText();
+
+    // Eliminar todos los caracteres que no sean dígitos
+    texto = texto.replaceAll("[^0-9]", "");
+
+    // Limitar la longitud del texto a 8 caracteres
+    if (texto.length() > 8) {
+        // Si se ingresaron más de 8 caracteres, recortar el texto
+        texto = texto.substring(0, 8);
+    }
+
+    // Actualizar el texto en el campo de texto
+    txtONI.setText(texto);
+        }//GEN-LAST:event_txtONIKeyReleased
+
+    private void txtNumeroPlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroPlacaKeyReleased
+  String texto = txtNumeroPlaca.getText();
+
+    // Eliminar todos los caracteres que no sean dígitos
+    texto = texto.replaceAll("[^0-9]", "");
+
+    // Limitar la longitud del texto a 5 caracteres
+    if (texto.length() > 5) {
+        // Si se ingresaron más de 5 caracteres, recortar el texto
+        texto = texto.substring(0, 5);
+    }
+
+    // Actualizar el texto en el campo de texto
+    txtNumeroPlaca.setText(texto);    }//GEN-LAST:event_txtNumeroPlacaKeyReleased
 
     JoptionReplacemnt Jo;
     public boolean isOk()

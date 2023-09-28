@@ -8,6 +8,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -97,8 +99,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     private void initComponents() {
 
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         lblRegresar = new javax.swing.JLabel();
         ContenedorP = new javax.swing.JPanel();
         lbl4 = new javax.swing.JLabel();
@@ -140,12 +142,12 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         setBackground(new java.awt.Color(70, 70, 70));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1020x720.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 720));
-
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1010, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/blackTransparent1020x720.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 720));
 
         lblRegresar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/fast-forward.png"))); // NOI18N
@@ -234,6 +236,11 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
 
         txtDui.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtDui.setBorder(null);
+        txtDui.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDuiKeyReleased(evt);
+            }
+        });
         ContenedorP.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 220, 30));
 
         txtNumeroTel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -241,6 +248,11 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         txtNumeroTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroTelActionPerformed(evt);
+            }
+        });
+        txtNumeroTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNumeroTelKeyReleased(evt);
             }
         });
         ContenedorP.add(txtNumeroTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 230, 30));
@@ -375,6 +387,16 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
         ContenedorP.add(cmbtipoSangre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 250, 30));
 
         jdcFecha.setDateFormatString("dd MMM yyyy");
+        jdcFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdcFechaPropertyChange(evt);
+            }
+        });
+        jdcFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jdcFechaKeyReleased(evt);
+            }
+        });
         ContenedorP.add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 200, 30));
 
         jPanel1.add(ContenedorP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 940, 530));
@@ -465,13 +487,8 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
             }
             else
             {
-                if(txtDui.getText().length() > 10)
-                {
-                    show("El DUI no debe exceder los 10 caracteres", 17, 1);
-                    close1(); 
-                    return false;
-                }
-                else
+             
+               
                 {
                     if(txtNumeroTel.getText().length() > 8)
                     {
@@ -490,12 +507,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                     else
                     {
 
-                            if(txtDui.getText().length() < 10){
-                                show("El DUI no debe ser menor a 10 caracteres", 17, 1);
-                                close1(); 
-                                return false;
-                            }        
-                            else
+                          
                             {
                                 // Validar formato del correo electrónico
                                 String correoPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
@@ -507,13 +519,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                                     return false;
                                 }
 
-                                // Validar que el DUI contenga solo números
-                                if (!txtDui.getText().matches("\\d+")) {
-                                    show("El DUI debe contener solo números", 17, 1);
-                                    close1(); 
-                                    return false;
-                                }
-
+                               
                                 // Validar que el número de teléfono contenga solo números
                                 if (!txtNumeroTel.getText().matches("\\d+")) {
                                     show("El número de teléfono debe contener solo números", 16, 1);
@@ -691,6 +697,79 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     private void cmbtipoSangre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbtipoSangre1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbtipoSangre1ActionPerformed
+
+    private void txtNumeroTelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroTelKeyReleased
+       // Obtener el texto del campo de texto
+                String texto = txtNumeroTel.getText();
+
+                // Eliminar todos los caracteres que no sean dígitos
+                texto = texto.replaceAll("[^0-9]", "");
+
+                // Limitar la longitud del texto a 8 caracteres
+                if (texto.length() > 8) {
+                    // Si se ingresaron más de 8 caracteres, recortar el texto
+                    texto = texto.substring(0, 8);
+                    txtNumeroTel.setText(texto);
+                }
+            
+    }//GEN-LAST:event_txtNumeroTelKeyReleased
+
+    private void txtDuiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyReleased
+    
+             // Obtener el texto actual del campo de texto
+    String texto = txtDui.getText();
+
+    // Eliminar todos los caracteres que no sean dígitos
+    texto = texto.replaceAll("[^0-9]", "");
+
+    // Limitar la longitud del texto a 9 caracteres
+    if (texto.length() > 9) {
+        // Si se ingresaron más de 9 caracteres, recortar el texto
+        texto = texto.substring(0, 9);
+    }
+
+    // Insertar un guion después del octavo dígito si aún no existe
+    if (texto.length() >= 8 && !texto.contains("-")) {
+        texto = texto.substring(0, 8) + "-" + texto.substring(8);
+    }
+
+    // Actualizar el texto en el campo de texto
+    txtDui.setText(texto);
+    }//GEN-LAST:event_txtDuiKeyReleased
+
+    private void jdcFechaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdcFechaKeyReleased
+
+    }//GEN-LAST:event_jdcFechaKeyReleased
+
+    private void jdcFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcFechaPropertyChange
+            jdcFecha = new JDateChooser();
+
+        jdcFecha.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if ("date".equals(evt.getPropertyName())) {
+                    Date fechaSeleccionada = (Date) jdcFecha.getDate();
+
+                    if (fechaSeleccionada != null) {
+                        Calendar fechaNacimiento = Calendar.getInstance();
+                        fechaNacimiento.setTime(fechaSeleccionada);
+
+                        // Obtener la fecha actual
+                        Calendar fechaActual = Calendar.getInstance();
+
+                        // Restar 18 años a la fecha actual
+                        fechaActual.add(Calendar.YEAR, -18);
+
+                        // Verificar si la fecha de nacimiento es menor que fechaActual - 18 años
+                        if (fechaNacimiento.after(fechaActual)) {
+                            JOptionPane.showMessageDialog(null, "Debes ser mayor de 18 años.", "Error", JOptionPane.ERROR_MESSAGE);
+                            jdcFecha.setDate(null); // Vaciar el campo de fecha
+                        }
+                    }
+                }
+            }
+        });
+    }//GEN-LAST:event_jdcFechaPropertyChange
 
 //    public void setFocus0(boolean status)
 //    {
