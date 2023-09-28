@@ -578,7 +578,7 @@ public class cntrlPatrullajes implements ActionListener {
           else
           {
               //---------------------------------------------SET DE PERSONAL-----------------
-            show("Se asignará como jefe de grupo al mayor rango u ONI", 14, 0, 0);
+            show("Se asignará como jefe de grupo al primer seleccionado", 14, 0, 0);
             close4();
           }
     
