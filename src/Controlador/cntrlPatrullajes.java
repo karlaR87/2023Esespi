@@ -39,8 +39,11 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,6 +55,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -60,6 +64,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JViewport;
 import javax.swing.Painter;
@@ -67,6 +72,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import net.sf.jasperreports.engine.util.Pair;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.OSMTileFactoryInfo;
 import org.jxmapviewer.input.PanMouseInputListener;
@@ -140,6 +146,16 @@ public class cntrlPatrullajes implements ActionListener {
         showMap();
     }
    ImageIcon nuevoIcono;
+    public double latitud = 0;
+    public double longitud = 0;
+    
+    Map<String, String> ListaActPatru = new HashMap<>();
+    String valorComboBox1;
+    String valorComboBox2;
+    String valorComboBox3;
+    String valorComboBox4;
+    String valorComboBox5;
+    
     @Override
     public void actionPerformed(ActionEvent e) {   
         
@@ -172,7 +188,9 @@ public class cntrlPatrullajes implements ActionListener {
         
        if (e.getSource() == addPatrullajes.btnAddPatrullaje) 
        {    
-           //-----------------CONFIRMAR QUE TODO ESTE COMPLETO-----------------
+           //-----------------CONFIRMAR QUE TODO ESTE COMPLETO-----------------------------------------------------------------------
+          
+           //---------------PRIMER EXECUTE (PATRULLAJES)
            if(addUbicacion.txtEXTENSIONKM.getText().trim().equals(""))
            {
                show("Asigna el área de patrullaje", 17, 1, 0);
@@ -189,7 +207,58 @@ public class cntrlPatrullajes implements ActionListener {
                }
                else
                {
-                   
+                   if(longitud == 0 || latitud == 0)
+                   {
+                        show("Selecciona un punto en el mapa", 17, 1, 0);
+                        close8();
+                   }
+                   else
+                   {
+                       mdlPatrullajes.setLongitud(longitud);
+                       mdlPatrullajes.setLatitud(latitud);
+                       mdlPatrullajes.setTipoPatrullaje(addUbicacion.cmbTipoPatrullaje.getSelectedItem().toString());
+                       
+                       if(addPatrullajes.dpFechaInicio.getDate() == null || addPatrullajes.dpFechaFin.getDate() == null)
+                       {
+                           show("Determina la fecha de inicio del patrullaje", 15, 1, 0);
+                           close8();
+                       }
+                       else
+                       {
+                           Date fechaInicioSelected = addPatrullajes.dpFechaInicio.getDate();
+                           Date fechaFinSelected = addPatrullajes.dpFechaFin.getDate();
+                           
+                           int horaInicio = Integer.parseInt(addPatrullajes.txtHora1.getText().trim());
+                           int minutosInicio = Integer.parseInt(addPatrullajes.txtMin1.getText().trim());   
+                           
+                           int horaFin = Integer.parseInt(addPatrullajes.txtHora2.getText().trim());
+                           int minutosFin = Integer.parseInt(addPatrullajes.txtMin2.getText().trim());   
+
+                            Calendar calendar1 = Calendar.getInstance();
+                            calendar1.setTime(fechaInicioSelected);
+                            calendar1.set(Calendar.HOUR_OF_DAY, horaInicio);
+                            calendar1.set(Calendar.MINUTE, minutosInicio);
+
+                            Calendar calendar2 = Calendar.getInstance();
+                            calendar2.setTime(fechaFinSelected);
+                            calendar2.set(Calendar.HOUR_OF_DAY, horaFin);
+                            calendar2.set(Calendar.MINUTE, minutosFin);
+                            
+                            // Obtén la fecha completa
+                            Date fechaCompletaInicio = calendar1.getTime();
+                            Date fechaCompletaFin = calendar2.getTime();
+                            
+                            mdlPatrullajes.setFechaInicio(fechaCompletaInicio);
+                            mdlPatrullajes.setFechaFin(fechaCompletaFin);
+                            
+                            mdlPatrullajes.InsertarPatrullaje();
+                            
+                           //---------------SEGUNDO EXECUTE (ACTIVIDADES)
+                           ChargeActividadesPatru();
+                           
+ 
+                       }
+                   }
                }
                 
            }
@@ -274,30 +343,70 @@ public class cntrlPatrullajes implements ActionListener {
        if(e.getSource() == addActPatrullaje.btnAcept)
        {
             int camposLlenos = 0;
-
+            
             if (!addActPatrullaje.txtAct1.getText().isEmpty()) {
-                //SETER DE ACT1
+                String texto = addActPatrullaje.txtAct1.getText();
+                valorComboBox1 = addActPatrullaje.cmbMedio1.getSelectedItem().toString();
+                ListaActPatru.put("Act1", texto);
                 camposLlenos++;
+            } else {
+                if(addActPatrullaje.txtAct1.getText().isEmpty() && ListaActPatru.containsKey("Act1"))
+                {
+                    valorComboBox1 = "";
+                    ListaActPatru.remove("Act1");
+                }
             }
-
+            
             if (!addActPatrullaje.txtAct2.getText().isEmpty()) {
-                //SETER DE ACT2
+                String texto = addActPatrullaje.txtAct2.getText();
+                 valorComboBox2 = addActPatrullaje.cmbMedio2.getSelectedItem().toString();
+                ListaActPatru.put("Act2", texto);
                 camposLlenos++;
+            } else {
+                if(addActPatrullaje.txtAct2.getText().isEmpty() && ListaActPatru.containsKey("Act2"))
+                {
+                    valorComboBox2 = "";
+                    ListaActPatru.remove("Act2");
+                }
             }
-
+            
             if (!addActPatrullaje.txtAct3.getText().isEmpty()) {
-                //SETER DE ACT3
+                String texto = addActPatrullaje.txtAct3.getText();
+                valorComboBox3 = addActPatrullaje.cmbMedio3.getSelectedItem().toString();
+                ListaActPatru.put("Act3", texto);
                 camposLlenos++;
+            } else {
+                if(addActPatrullaje.txtAct3.getText().isEmpty() && ListaActPatru.containsKey("Act3"))
+                {
+                    valorComboBox3 = "";
+                    ListaActPatru.remove("Act3");
+                }
             }
-
+            
             if (!addActPatrullaje.txtAct4.getText().isEmpty()) {
-                //SETER DE ACT4
+                String texto = addActPatrullaje.txtAct4.getText();
+                valorComboBox4 = addActPatrullaje.cmbMedio4.getSelectedItem().toString();
+                ListaActPatru.put("Act4", texto);
                 camposLlenos++;
+            } else {
+                if(addActPatrullaje.txtAct4.getText().isEmpty() && ListaActPatru.containsKey("Act4"))
+                {
+                    valorComboBox4 = "";
+                    ListaActPatru.remove("Act4");
+                }
             }
-
+            
             if (!addActPatrullaje.txtAct5.getText().isEmpty()) {
-                //SETER DE ACT5
+                String texto = addActPatrullaje.txtAct5.getText();
+                valorComboBox5 = addActPatrullaje.cmbMedio5.getSelectedItem().toString();
+                ListaActPatru.put("Act5", texto);
                 camposLlenos++;
+            } else {
+                if(addActPatrullaje.txtAct5.getText().isEmpty() && ListaActPatru.containsKey("Act5"))
+                {
+                    valorComboBox5 = "";
+                    ListaActPatru.remove("Act5");
+                }
             }
 
             if (camposLlenos >= 3) {
@@ -327,6 +436,7 @@ public class cntrlPatrullajes implements ActionListener {
         {
             //---------------------------------------------SET DEL MAPA-----------------
             // Crear un BufferedImage para renderizar el mapa
+            getCoordinates();
             int width = mapViewer.getWidth();
             int height = mapViewer.getHeight();
             BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -392,6 +502,7 @@ public class cntrlPatrullajes implements ActionListener {
     
         }
     }
+    
    
     //-------------METODOS SHOW JOPTION-------------
     
@@ -579,6 +690,8 @@ public class cntrlPatrullajes implements ActionListener {
             addActPatrullaje.cmbMedio3.setSelectedIndex(0);
             addActPatrullaje.cmbMedio4.setSelectedIndex(0);
             addActPatrullaje.cmbMedio5.setSelectedIndex(0);
+            
+            ListaActPatru.clear();
             addActPatrullaje.setEnabled(true);
             
             //------------------HORARIOS BORRAR
@@ -655,6 +768,41 @@ public class cntrlPatrullajes implements ActionListener {
         }
         });
     }
+    //------------------CARGAR ACTIVIDADES DEL PATRULLAJE
+    public void ChargeActividadesPatru()
+    {
+        if(ListaActPatru.containsKey("Act1"))
+       {
+           mdlPatrullajes.setActividadPatrullaje(ListaActPatru.get("Act1"));
+           mdlPatrullajes.setMedioAsignacion(valorComboBox1);
+           mdlPatrullajes.InsertarActividadesPatrullaje();
+       }
+       if(ListaActPatru.containsKey("Act2"))
+       {
+           mdlPatrullajes.setActividadPatrullaje(ListaActPatru.get("Act2"));
+           mdlPatrullajes.setMedioAsignacion(valorComboBox2);
+           mdlPatrullajes.InsertarActividadesPatrullaje();
+       }
+       if(ListaActPatru.containsKey("Act3"))
+       {
+           mdlPatrullajes.setActividadPatrullaje(ListaActPatru.get("Act3"));
+           mdlPatrullajes.setMedioAsignacion(valorComboBox3);
+           mdlPatrullajes.InsertarActividadesPatrullaje();
+       }
+       if(ListaActPatru.containsKey("Act4"))
+       {
+           mdlPatrullajes.setActividadPatrullaje(ListaActPatru.get("Act4"));
+           mdlPatrullajes.setMedioAsignacion(valorComboBox4);
+           mdlPatrullajes.InsertarActividadesPatrullaje();
+       }
+       if(ListaActPatru.containsKey("Act5"))
+       {
+           mdlPatrullajes.setActividadPatrullaje(ListaActPatru.get("Act5"));
+           mdlPatrullajes.setMedioAsignacion(valorComboBox5);
+           mdlPatrullajes.InsertarActividadesPatrullaje();
+       }
+    }
+    
     //-----------------------------METODOS PARA EQUIPAMIENTO ESPECIALIZADO Y DE SEGURIDAD
     Map<Integer, Integer> ListaIdDetalleEquipo = new HashMap<>();
     
@@ -818,8 +966,6 @@ public class cntrlPatrullajes implements ActionListener {
     }
     
     //------------------METODO PARA MOSTRAR EL MAPA-----------------
-    public double latitud;
-    public double longitud;
     private static double RadioEnKM= 25;
     JXMapViewer mapViewer;
     

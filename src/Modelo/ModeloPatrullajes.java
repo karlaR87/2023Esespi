@@ -33,9 +33,27 @@ public class ModeloPatrullajes {
     private String TipoPatrullaje;
     private Date FechaInicio;
     private Date FechaFin;
-  
+    
+    private String ActividadPatrullaje;
+    private String MedioAsignacion;
+
     
     //getters y setters
+    public String getActividadPatrullaje() {    
+        return ActividadPatrullaje;
+    }
+
+    public void setActividadPatrullaje(String ActividadPatrullaje) {
+        this.ActividadPatrullaje = ActividadPatrullaje;
+    }
+
+    public String getMedioAsignacion() {
+        return MedioAsignacion;
+    }
+    
+    public void setMedioAsignacion(String MedioAsignacion) {
+        this.MedioAsignacion = MedioAsignacion;
+    }
 
     public String getExtensionKM() {
         return ExtensionKM;
@@ -122,6 +140,26 @@ public class ModeloPatrullajes {
             insertPolice.setString(5, TipoPatrullaje);
             insertPolice.setDate(6, (java.sql.Date) FechaInicio);
             insertPolice.setDate(7, (java.sql.Date) FechaFin);
+
+            insertPolice.executeUpdate();
+            return true;
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null, e.toString());
+            return false;
+        }
+    }
+     
+     //-----------------------------------------------SEGUNDO INSERT DE PATRULLAJES
+     public boolean InsertarActividadesPatrullaje()
+    {
+       try{
+            String query = "EXEC dbo.InsertarActPatrullaje\n" +
+            "	@ActividadPatrullaje = ?,\n" +
+            "	@MedioAsignacion = ? "; 
+        
+            PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
+            insertPolice.setString(1, ActividadPatrullaje);
+            insertPolice.setString(2, MedioAsignacion);
 
             insertPolice.executeUpdate();
             return true;
