@@ -329,7 +329,7 @@ public class ModeloPatrullajes {
             String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
             "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
             "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
-            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 6";
+            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 8";
             PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
             
             ResultSet rs = chargeEQUIMPENT.executeQuery();
@@ -732,4 +732,80 @@ public class ModeloPatrullajes {
         }
 
     }
+     public void MostrarTablePatrullajesBuscardor(Patrullajes_Inicio vsPatrullajes){
+         
+        vsPatrullajes.IdPatrullaje = 0;
+        Color clrOrang = new Color( 243, 167, 18);
+        DefaultTableModel modelo = new DefaultTableModel();
+      
+        modelo.setColumnIdentifiers(new Object []{"IDP", "Longitud", "Latitud", "ExtensionKM", "Fecha De Inicio", 
+            "Fecha De Fin", "NGrupo"});
+
+        try{
+
+            java.sql.Statement statement = conexionSql.getConexion().createStatement();
+
+            String query = "SELECT tbPatru.IdPatrullaje AS IDP, tbPatru.Longitud, tbPatru.Latitud, tbPatru.ExtensionKM, Fecha_Hora_Inicio, \n" +
+            "Fecha_Hora_Fin, tbGPatru.NumeroDeGrupo\n" +
+            "FROM tbPatrullajes tbPatru \n" +
+            "INNER JOIN tbGrupoPatrullajes tbGPatru ON tbGPatru.IdGrupoPatrullaje = tbPatru.IdGrupoPatrullaje\n" +
+            "WHERE NumeroDeGrupo like '%" + vsPatrullajes.txtBuscar.getText()+ "%' or "
+                    + "tbPatru.IdPatrullaje like '%" + vsPatrullajes.txtBuscar.getText()+ "%' or "
+                    + "tbPatru.Longitud like '%" + vsPatrullajes.txtBuscar.getText()+ "%' or "
+                    + "tbPatru.Latitud like '%" + vsPatrullajes.txtBuscar.getText()+ "%' or "
+                    + "tbPatru.ExtensionKM like '%" + vsPatrullajes.txtBuscar.getText()+ "%' or "
+                    + "Fecha_Hora_Inicio like '%" + vsPatrullajes.txtBuscar.getText()+ "%' or "
+                    + "tbPatru.Fecha_Hora_Fin like '%" + vsPatrullajes.txtBuscar.getText()+ "%';";
+            
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()){
+                modelo.addRow(new Object[] {rs.getString("IDP"),rs.getString("Longitud"), rs.getString("Latitud"),
+                    rs.getString("ExtensionKM"), rs.getString("Fecha_Hora_Inicio"), rs.getString("Fecha_Hora_Fin"),rs.getString("NumeroDeGrupo")});//, rs.getString("NumeroDeGrupo")});
+
+            }
+            
+            Fuentes tipoFuentes = new Fuentes();;
+            
+            vsPatrullajes.tbDatosPatrullajes.setModel(modelo);
+            
+            JTableHeader header = vsPatrullajes.tbDatosPatrullajes.getTableHeader();
+            header.setBackground(clrOrang); // Cambia el color del encabezado
+
+            // Ajustar el alto de las filas
+            vsPatrullajes.tbDatosPatrullajes.setRowHeight(35); // Cambia el alto deseado para todas las filas
+            header.setPreferredSize(new Dimension(header.getWidth(), 50)); // Cambia el alto del encabezado
+
+            // Aplicar estilo de fuente personalizado al encabezado
+            header.setFont( tipoFuentes.fuente(tipoFuentes.DMSans, 1, 16)); // Aplica el estilo de fuente personalizado
+
+            // Cambiar el color del texto del encabezado (opcional)
+            header.setForeground(Color.BLACK);
+
+            DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) vsPatrullajes.tbDatosPatrullajes.getTableHeader().getDefaultRenderer();
+            headerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // Centra el texto del encabezado
+
+            DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+            cellRenderer.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 14)); // Aplica el estilo de fuente personalizado)); // Fuente de tamaÃ±o 16 para las filas de datos
+            vsPatrullajes.tbDatosPatrullajes.setDefaultRenderer(Object.class, cellRenderer);
+
+            // Ajustar el ancho de las columnas
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(1).setPreferredWidth(45);
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(2).setPreferredWidth(45); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(3).setPreferredWidth(60); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(4).setPreferredWidth(118); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(5).setPreferredWidth(118); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(6).setPreferredWidth(20); 
+            //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
+        
+        }catch(SQLException ex){
+
+            JOptionPane.showMessageDialog(null,ex.toString());
+
+        }
+
+    }
+
+
 }

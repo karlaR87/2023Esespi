@@ -37,7 +37,7 @@ public class PanelesPatrullaje extends javax.swing.JFrame {
 
         //acá va la query de la tabla a la que se la harán los paneles
         String SSQL = "select IdPatrullaje, Fecha_Hora_Inicio as FechaDeInicio, "
-                + "Fecha_Hora_Fin as FechaFinalizacion, CONCAT(Longitud, '', Latitud) AS Ubicacion "
+                + "Fecha_Hora_Fin as FechaFinalizacion, CONCAT(Longitud, ', ', Latitud) AS Ubicacion "
                 + "from tbPatrullajes";
 
        

@@ -5,6 +5,7 @@ import Modelo.ModeloInformes;
 import Modelo.TextPrompt;
 import Modelo.conexionSql;
 import VIsta.Programa.Inicio.Paneles;
+import VIsta.Programa.Inicio.PanelesPatrullaje;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,6 +55,7 @@ public class Reportes_Inicio extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMostrarDatos.setEnabled(false);
         jScrollPane1.setViewportView(tbMostrarDatos);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 730, 480));
@@ -110,7 +112,7 @@ public class Reportes_Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void MostrarPanelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MostrarPanelesMouseClicked
-        Paneles p = new Paneles();
+        PanelesPatrullaje p = new PanelesPatrullaje();
         p.setVisible(true);
     }//GEN-LAST:event_MostrarPanelesMouseClicked
 
