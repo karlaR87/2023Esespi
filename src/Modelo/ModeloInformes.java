@@ -18,7 +18,7 @@ public class ModeloInformes {
 
         DefaultTableModel modelo = new DefaultTableModel();
 
-        modelo.setColumnIdentifiers(new Object []{"IdInforme","IdPatrullaje", "Resultados"});
+        modelo.setColumnIdentifiers(new Object []{"IdInforme","IdPatrullaje"});
 
 
 
@@ -36,7 +36,7 @@ public class ModeloInformes {
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("IdInforme"),rs.getString("IdPatrullaje"),rs.getString("Resultados")});
+                modelo.addRow(new Object[] {rs.getString("IdInforme"),rs.getString("IdPatrullaje")});
 
             }
 
@@ -62,7 +62,7 @@ public class ModeloInformes {
 
         DefaultTableModel modelo = new DefaultTableModel();
 
-        modelo.setColumnIdentifiers(new Object []{"IdInforme","IdPatrullaje", "Resultados"});
+        modelo.setColumnIdentifiers(new Object []{"IdInforme","IdPatrullaje"});
 
 
 
@@ -72,15 +72,14 @@ public class ModeloInformes {
 
             String query = "SELECT * FROM tbInformes "
                     + "where IdInforme like '%" + vistaR.txtBusquedaInforme.getText()+"%' or "
-                    + "IdPatrullaje like '%" + vistaR.txtBusquedaInforme.getText()+"%' or "
-                    + "Resultados like '%" + vistaR.txtBusquedaInforme.getText()+"%';";
+                    + "IdPatrullaje like '%" + vistaR.txtBusquedaInforme.getText()+"%';";
 
             ResultSet rs = statement.executeQuery(query);
 
 
             while(rs.next()){
 
-                modelo.addRow(new Object[] {rs.getString("IdInforme"),rs.getString("IdPatrullaje"),rs.getString("Resultados")});
+                modelo.addRow(new Object[] {rs.getString("IdInforme"),rs.getString("IdPatrullaje")});
 
             }
             
