@@ -256,7 +256,14 @@ public class cntrlPatrullajes implements ActionListener {
                            //---------------SEGUNDO EXECUTE (ACTIVIDADES)
                            ChargeActividadesPatru();
                            
- 
+                           //----------------TERCER EXECUTE (ACTUALIZAR POLICIAS)
+                            mdlPatrullajes.setIdPoli1(ListaIdPolicias.get(0));
+                            mdlPatrullajes.setIdPoli2(ListaIdPolicias.get(1));
+                            mdlPatrullajes.setIdPoli3(ListaIdPolicias.get(2));
+                           
+                            mdlPatrullajes.ActualizarPoliciasPatrullaje();
+                            
+                           //----------------CUARTO EXECUTE (INSERTAR ARMAS)
                        }
                    }
                }

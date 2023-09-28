@@ -37,8 +37,39 @@ public class ModeloPatrullajes {
     private String ActividadPatrullaje;
     private String MedioAsignacion;
 
-    
+    private int IdPoli1;
+    private int IdPoli2;
+    private int IdPoli3;
+            
+            
     //getters y setters
+
+    public int getIdPoli1() {
+        return IdPoli1;
+    }
+
+    public void setIdPoli1(int IdPoli1) {
+        this.IdPoli1 = IdPoli1;
+    }
+
+    public int getIdPoli2() {
+        return IdPoli2;
+    }
+
+    public void setIdPoli2(int IdPol21) {
+        this.IdPoli2 = IdPol21;
+    }
+
+    public int getIdPoli3() {
+        return IdPoli3;
+    }
+
+    public void setIdPoli3(int IdPoli3) {
+        this.IdPoli3 = IdPoli3;
+    }
+    
+    
+    
     public String getActividadPatrullaje() {    
         return ActividadPatrullaje;
     }
@@ -169,6 +200,27 @@ public class ModeloPatrullajes {
         }
     }
     
+      //-----------------------------------------------TERCER INSERT DE PATRULLAJES
+     public boolean ActualizarPoliciasPatrullaje()
+    {
+       try{
+            String query = "EXEC dbo.ActualizarIdPolicias\n" +
+            "	@IdPolicia1 = ?,\n" +
+            "	@IdPolicia2 = ?,\n" +
+            "	@IdPolicia3 = ?"; 
+        
+            PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
+            insertPolice.setInt(1, IdPoli1);
+            insertPolice.setInt(2, IdPoli2);
+            insertPolice.setInt(2, IdPoli3);
+
+            insertPolice.executeUpdate();
+            return true;
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null, e.toString());
+            return false;
+        }
+    }
     
     //---------------------------------------------EQUIPO DE ESPECIALIZADO
     
