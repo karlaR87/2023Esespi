@@ -1,6 +1,7 @@
 package VIsta.Programa.Policias;
 
 import Modelo.ModeloRegistro;
+import com.toedter.calendar.JTextFieldDateEditor;
 import fonts.Fuentes;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -44,6 +45,10 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         cal.add(Calendar.YEAR, -90); // Restar 90 años a la fecha actual
         Date fechaMinima = cal.getTime();
 
+        JTextFieldDateEditor editor1 = (JTextFieldDateEditor) jdcCalendar.getDateEditor();
+        // Deshabilitar la edición
+        editor1.setEditable(false);
+        
         // Configurar el JDateChooser con las fechas mínima y máxima
         jdcCalendar.setMaxSelectableDate(fechaMaxima);
         jdcCalendar.setMinSelectableDate(fechaMinima);
@@ -261,9 +266,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         });
         jPanel1.add(cmbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 128, 25));
 
-        txtPlaca.setBackground(new java.awt.Color(255, 255, 255));
         txtPlaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtPlaca.setForeground(new java.awt.Color(0, 0, 0));
         txtPlaca.setToolTipText("");
         txtPlaca.setBorder(null);
         txtPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -273,9 +276,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         });
         jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 227, 180, 20));
 
-        txtONI.setBackground(new java.awt.Color(255, 255, 255));
         txtONI.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtONI.setForeground(new java.awt.Color(0, 0, 0));
         txtONI.setToolTipText("");
         txtONI.setBorder(null);
         txtONI.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -285,21 +286,20 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         });
         jPanel1.add(txtONI, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 156, 180, 20));
 
-        txtDUI.setBackground(new java.awt.Color(255, 255, 255));
         txtDUI.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtDUI.setForeground(new java.awt.Color(0, 0, 0));
         txtDUI.setToolTipText("");
         txtDUI.setBorder(null);
         txtDUI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDUIKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDUIKeyTyped(evt);
             }
         });
         jPanel1.add(txtDUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 180, 123, 20));
 
-        txtNumero.setBackground(new java.awt.Color(255, 255, 255));
         txtNumero.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtNumero.setForeground(new java.awt.Color(0, 0, 0));
         txtNumero.setToolTipText("");
         txtNumero.setBorder(null);
         txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -309,9 +309,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         });
         jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 265, 180, 20));
 
-        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreo.setToolTipText("");
         txtCorreo.setBorder(null);
         txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -321,9 +319,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         });
         jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 227, 180, 20));
 
-        txtApellido.setBackground(new java.awt.Color(255, 255, 255));
         txtApellido.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtApellido.setForeground(new java.awt.Color(0, 0, 0));
         txtApellido.setToolTipText("");
         txtApellido.setBorder(null);
         txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -333,9 +329,7 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         });
         jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 189, 180, 20));
 
-        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -348,10 +342,8 @@ public class Actualizar_Policia extends javax.swing.JFrame {
         jdcCalendar.setDateFormatString("dd MMM yyyy");
         jPanel1.add(jdcCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 260, 155, 70));
 
-        ActutxtAreaDireccion.setBackground(new java.awt.Color(255, 255, 255));
         ActutxtAreaDireccion.setColumns(20);
         ActutxtAreaDireccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        ActutxtAreaDireccion.setForeground(new java.awt.Color(0, 0, 0));
         ActutxtAreaDireccion.setRows(5);
         ActutxtAreaDireccion.setBorder(null);
         ActutxtAreaDireccion.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -567,6 +559,27 @@ public class Actualizar_Policia extends javax.swing.JFrame {
     private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
          OriginialIcon();
     }//GEN-LAST:event_btnCancelMouseExited
+
+    private void txtDUIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDUIKeyReleased
+        String texto = txtDUI.getText();
+
+    // Eliminar todos los caracteres que no sean dígitos
+    texto = texto.replaceAll("[^0-9]", "");
+
+    // Limitar la longitud del texto a 9 caracteres
+    if (texto.length() > 9) {
+        // Si se ingresaron más de 9 caracteres, recortar el texto
+        texto = texto.substring(0, 9);
+    }
+
+    // Insertar un guion después del octavo dígito si aún no existe
+    if (texto.length() >= 8 && !texto.contains("-")) {
+        texto = texto.substring(0, 8) + "-" + texto.substring(8);
+    }
+
+    // Actualizar el texto en el campo de texto
+    txtDUI.setText(texto);
+    }//GEN-LAST:event_txtDUIKeyReleased
 
     /**
      * @param args the command line arguments

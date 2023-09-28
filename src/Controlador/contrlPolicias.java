@@ -332,6 +332,7 @@ public class contrlPolicias implements ActionListener{
                                         mdlPoli.setIdTipoSangre(returnIdTipoSangreActu());
                                         mdlPoli.setCorreo(jFrameUpdatePolice.txtCorreo.getText().trim());
                                         mdlPoli.setNumero(jFrameUpdatePolice.txtNumero.getText().trim());
+                                        
                                         mdlPoli.setONI(jFrameUpdatePolice.txtNumero.getText().trim());
                                         mdlPoli.setNumeroPlaca(jFrameUpdatePolice.txtPlaca.getText().trim());
                                         mdlPoli.setIdRangoUsuario(returnIdRangoUserActu());

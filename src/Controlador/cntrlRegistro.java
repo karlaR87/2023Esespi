@@ -64,35 +64,79 @@ public class cntrlRegistro implements ActionListener {
           
         if(e.getSource() == vista.btnSiguiente){
             
-           if(vista.isOK())
-            { 
-                
-            modeloRegistro.setNombre(vista.txtNombres.getText().trim());
-            modeloRegistro.setApellidos(vista.txtApellidos.getText().trim());
-            modeloRegistro.setFecha(vista.jdcFecha.getDate());
-            modeloRegistro.setDirección(vista.txtDireccion.getText().trim());
-            modeloRegistro.setDUI(vista.txtDui.getText().trim());
-            modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
-            modeloRegistro.setCorreo(vista.txtCorreo.getText().trim());
-            
-            modeloRegistro.setIdgenero(vista.currentIdGenero);
-             modeloRegistro.setIdtipoSangre(vista.currentIdTipoSangre);
-              modeloRegistro.setIdestadocicivl(vista.currentIdEstadoCivil);
-//            modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
-//            modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
+             mdlPolicias.setCorreo(vista.txtCorreo.getText().trim());
+            int resulIdPCorreo = mdlPolicias.readCorreoIfExistCorreo();
 
-            vistaJframeRegistro.loadInfoPolicias();
+        if(resulIdPCorreo != -1) //si es diferente a -1, es que hay persona con ese correo
+        {
+             show("El correo ya existe", 17, 1); 
+            close3();
+        }
+       
+        else
+        {
+                if(vista.isOK())
+                 { 
+                     mdlPolicias.setDUI(vista.txtDui.getText().trim());
+                     int resulIdPDUI = mdlPolicias.readDUIIfExistDUI();
+                     
+                     if(resulIdPDUI != -1) //si es diferente a -1, es que hay persona con ese correo
+                    {
+                        show("El DUI ya existe", 17, 1); 
+                        close3();
+                    }
+                     else
+                     {
+                        modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
+                         int resulIdTEL = modeloRegistro.readIdTelefono();
+
+                         if(resulIdTEL != -1) //si es diferente a -1, es que hay persona con ese correo
+                        {
+                            show("El numero de telefono ya existe", 17, 1); 
+                            close3();
+                        }
+                        else
+                         {
+                            modeloRegistro.setNombre(vista.txtNombres.getText().trim());
+                            modeloRegistro.setApellidos(vista.txtApellidos.getText().trim());
+                            modeloRegistro.setFecha(vista.jdcFecha.getDate());
+                            modeloRegistro.setDirección(vista.txtDireccion.getText().trim());
+                            modeloRegistro.setDUI(vista.txtDui.getText().trim());
+                            modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
+                            modeloRegistro.setCorreo(vista.txtCorreo.getText().trim());
+
+                            modeloRegistro.setIdgenero(vista.currentIdGenero);
+                            modeloRegistro.setIdtipoSangre(vista.currentIdTipoSangre);
+                            modeloRegistro.setIdestadocicivl(vista.currentIdEstadoCivil);
+                //           modeloRegistro.setTipoSangre(vista.cmbtipoSangre1.getSelectedItem().toString().trim());
+                //           modeloRegistro.setGenero(vista.cmbgenero.getSelectedItem().toString().trim());
+
+                            vistaJframeRegistro.loadInfoPolicias(); 
+                         }
+                    
+                     }  
+
+                 }
+                else{
+                    show("Error al ingresar datos, hay campos repetidos", 17, 1); 
+                     close3();
+                }
             }
-           else{
-               show("Error al ingresar datos, hay campos repetidos", 17, 1); 
-                    close3();
-           } 
         }
         
         if(e.getSource() == InfoPolicial.btnSiguiente)
         {
             if(InfoPolicial.isOk())
             {
+                 mdlPolicias.setONI(InfoPolicial.txtONI.getText().trim());
+                     int resulIDoni = mdlPolicias.readDUIIfExistDUI();
+                      
+                     if(resulIDoni != -1) //si es diferente a -1, es que hay persona con ese correo
+                    {
+                        show("El ONI ya existe", 17, 1); 
+                        close3();
+                    }
+                
                 mdlPolicias.setONI(InfoPolicial.txtONI.getText().trim());
                 mdlPolicias.setNumeroPlaca(InfoPolicial.txtNumeroPlaca.getText().trim());
                 
@@ -229,8 +273,13 @@ public class cntrlRegistro implements ActionListener {
         Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             Jo.setVisible(false);
+            
+             registroUser.jLabel3.setVisible(false);
             preguntasS.jLabel12.setVisible(false);
             vistaJframeRegistro.setEnabled(true);
+            vista.jLabel3.setVisible(false);
+            
+            preguntasS.jLabel12.setVisible(false);
             //Exclusivo de close2
             vistaJframeRegistro.setVisible(false);
                      Login lg = new Login();
@@ -249,6 +298,14 @@ public class cntrlRegistro implements ActionListener {
         Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             Jo.setVisible(false);
+            
+            registroUser.jLabel3.setVisible(false);
+            preguntasS.jLabel12.setVisible(false);
+            vistaJframeRegistro.setEnabled(true);
+            vista.jLabel3.setVisible(false);
+            
+            preguntasS.jLabel12.setVisible(false);
+            
             preguntasS.jLabel12.setVisible(false);
             vista.setEnabled(true);
             

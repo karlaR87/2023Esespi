@@ -3,6 +3,7 @@ package VIsta;
 import Controlador.ControladorRecuperarContra;
 import Modelo.ModeloRegistro;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 import fonts.Fuentes;
 import java.awt.Component;
 import java.awt.Container;
@@ -25,6 +26,7 @@ import javax.swing.JOptionPane;
  * @author Pao
  */
 public class Registro_DatosPersonales extends javax.swing.JPanel {
+    
     Fuentes tipoFuentes;
     private Registro registro;
     Registro_DatosPersonales thisVista;
@@ -40,17 +42,21 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
     public Registro_DatosPersonales(Registro jFrame) {
         initComponents();
         
-        Calendar cal = Calendar.getInstance();
+          Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -18); // Restar 18 años a la fecha actual
-        //Date fechaMaxima = (Date) cal.getTime();
+        java.util.Date fechaMaxima = cal.getTime();
 
         cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -90); // Restar 90 años a la fecha actual
-       // Date fechaMinima = (Date) cal.getTime();
+        java.util.Date fechaMinima = cal.getTime();
 
+         JTextFieldDateEditor editor1 = (JTextFieldDateEditor) jdcFecha.getDateEditor();
+        // Deshabilitar la edición
+        editor1.setEditable(false);
+        
         // Configurar el JDateChooser con las fechas mínima y máxima
-        //jdcFecha.setMaxSelectableDate(fechaMaxima);
-        //jdcFecha.setMinSelectableDate(fechaMinima);
+        jdcFecha.setMaxSelectableDate(fechaMaxima);
+        jdcFecha.setMinSelectableDate(fechaMinima);
         
         this.jFrame = jFrame;
         this.thisVista = this;

@@ -171,6 +171,8 @@ public class mdlPolicias {
     }
 
     public void setONI(String ONI) {
+        
+        
         this.ONI = ONI;
     }
 
