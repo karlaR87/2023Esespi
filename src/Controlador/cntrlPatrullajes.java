@@ -914,7 +914,7 @@ public class cntrlPatrullajes implements ActionListener {
                 
                 JSpinner spinner = new JSpinner(spinnerModel);
                 spinner.setName(String.valueOf(IdDetalle));
-                spinner.setPreferredSize(new Dimension(10, 10));
+                spinner.setPreferredSize(new Dimension(20, 20));
                 
                  if (ListaIdDetalleEquipo.containsKey(IdDetalle)) 
                 {
@@ -939,7 +939,7 @@ public class cntrlPatrullajes implements ActionListener {
             });
                 
                 labelEquipo.setBorder(new EmptyBorder(5,1,0,10));
-                spinner.setBorder(new EmptyBorder(5,1,0,10));
+                spinner.setBorder(new EmptyBorder(0,1,0,10));
                 
                 Box VerticalBoxMAINMAIN = Box.createHorizontalBox();
                 Box VerticalBoxMAIN = Box.createVerticalBox();
@@ -954,7 +954,7 @@ public class cntrlPatrullajes implements ActionListener {
                 VerticalBoxMAIN.add(Horizontal2);
                 Horizontal2.add(spinner);
                 VerticalBoxMAINMAIN.add(Box.createHorizontalGlue());
-                panel.add(VerticalBoxMAINMAIN);                
+                panel.add(VerticalBoxMAINMAIN);  
                 
             }
             
