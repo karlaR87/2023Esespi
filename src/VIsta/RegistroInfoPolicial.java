@@ -9,6 +9,7 @@ public class RegistroInfoPolicial extends javax.swing.JPanel {
      Fuentes tipoFuentes;
      Registro jFrame;
      RegistroInfoPolicial thisVista;
+     
     public RegistroInfoPolicial(Registro jFrame) {
         initComponents();
         this.jFrame = jFrame;
