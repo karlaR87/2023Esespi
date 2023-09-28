@@ -197,11 +197,11 @@ public class ModeloDatosTransporte {
             
             if(fila >= 0){
                 // Obtener los valores de las celdas seleccionadas
-            String detalles = paramtable.getValueAt(fila, 0).toString();
-            String placa = paramtable.getValueAt(fila, 1).toString();
-            String tipo = paramtable.getValueAt(fila, 2).toString();
-            String marca = paramtable.getValueAt(fila, 3).toString();
-            String grupo = paramtable.getValueAt(fila, 4).toString();
+            String detalles = paramtable.getValueAt(fila, 1).toString();
+            String placa = paramtable.getValueAt(fila, 2).toString();
+            String tipo = paramtable.getValueAt(fila, 3).toString();
+            String marca = paramtable.getValueAt(fila, 4).toString();
+            String grupo = paramtable.getValueAt(fila, 5).toString();
 
             // Establecer los valores en los componentes de la interfaz
             paramDetalles.setText(detalles);

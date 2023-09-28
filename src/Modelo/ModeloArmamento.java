@@ -314,9 +314,9 @@ public class ModeloArmamento {
             if(fila >= 0){
                 
                 // Obtener los valores de las celdas seleccionadas
-                String tipo = paramtable.getValueAt(fila, 0).toString();
                 String detalles = paramtable.getValueAt(fila, 1).toString();
                 int cantidad = Integer.parseInt(paramtable.getValueAt(fila, 2).toString());
+                String tipo = paramtable.getValueAt(fila, 3).toString();
 
                 // Establecer los valores en los componentes de la interfaz
                 paramTipo.setSelectedItem(tipo);
