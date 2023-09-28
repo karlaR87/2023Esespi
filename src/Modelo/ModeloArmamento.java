@@ -68,14 +68,14 @@ public class ModeloArmamento {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-           String filtro = IIT.txtbuscarArm.getText(); 
+           
 
         String query = "select m.IdDetalleArmamentoEstacion, m.DetalleArmamento, m.Cantidad, u.TipoArmamento from tbDetallesArmamentosEstacion m\n" +
 "						  inner join tbTipoArmamentosEstacion u on u.IdTipoArmamentoEstacion = m.IdTipoArmamentoEstacion WHERE " +
-                       "IdDetalleArmamentoEstacion LIKE '%" + filtro + "%' OR " +
-                       "DetalleArmamento LIKE '%" + filtro + "%' OR " +
-                       "Cantidad LIKE '%" + filtro + "%' OR " +
-                       "TipoArmamento LIKE '%" + filtro + "%';";
+                       "IdDetalleArmamentoEstacion LIKE '%" + IIT.txtbuscarArm.getText() + "%' OR " +
+                       "DetalleArmamento LIKE '%" + IIT.txtbuscarArm.getText() + "%' OR " +
+                       "Cantidad LIKE '%" + IIT.txtbuscarArm.getText() + "%' OR " +
+                       "TipoArmamento LIKE '%" + IIT.txtbuscarArm.getText() + "%';";
            
             ResultSet rs = statement.executeQuery(query);
             

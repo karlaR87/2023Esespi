@@ -74,7 +74,7 @@ public class TablasPaneles extends javax.swing.JFrame {
               DefaultTableModel modelo = new DefaultTableModel();
        
 
-        modelo.setColumnIdentifiers(new Object []{"NumeroDeGrupo", "RecorridoPatrullaje", "Municipio"});
+        modelo.setColumnIdentifiers(new Object []{"NumeroDeGrupo", "ExtensionKM", "TipoPatrullajes"});
 
 
 
@@ -82,9 +82,9 @@ public class TablasPaneles extends javax.swing.JFrame {
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "select gu.NumeroDeGrupo ,pat.ExtensionKM AS RecorridoPatrullaje ,mun.Municipio from tbPatrullajes pat\n" +
+            String query = "select pat.ExtensionKM, gu.NumeroDeGrupo ,tby.TipoPatrullajes from tbPatrullajes pat\n" +
             "inner join tbGrupoPatrullajes gu on gu.IdGrupoPatrullaje = pat.IdGrupoPatrullaje\n" +
-            "inner join tbMunicipios mun on mun.IdMunicipio = pat.IdMunicipio";
+            "inner join tbTiposPatrullajes tby on tby.IdTipoPatrullaje = pat.IdTipoPatrullaje";
 
             ResultSet rs = statement.executeQuery(query);
 
@@ -94,7 +94,7 @@ public class TablasPaneles extends javax.swing.JFrame {
 
             while(rs.next()){
                 
-                modelo.addRow(new Object[] {rs.getString("NumeroDeGrupo"),rs.getString("RecorridoPatrullaje"), rs.getString("Municipio")});
+                modelo.addRow(new Object[] {rs.getString("NumeroDeGrupo"),rs.getString("ExtensionKM"), rs.getString("TipoPatrullajes")});
 
             }
 

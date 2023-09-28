@@ -7,6 +7,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.PlainDocument;
 
 public class RegistroUsuario extends javax.swing.JPanel {
 
@@ -22,6 +26,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         this.thisVista = this;
         jLabel3.setVisible(false);
         fontDesign();
+        NOSPACE();
     }
 
      public String convertirSHA256(String password) {
@@ -85,12 +90,22 @@ public class RegistroUsuario extends javax.swing.JPanel {
         txtContrasena2.setToolTipText("");
         txtContrasena2.setBorder(null);
         txtContrasena2.setPreferredSize(new java.awt.Dimension(90, 18));
+        txtContrasena2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContrasena2KeyReleased(evt);
+            }
+        });
         jPanel1.add(txtContrasena2, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 462, 410, 30));
 
         txtContrasena.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtContrasena.setToolTipText("");
         txtContrasena.setBorder(null);
         txtContrasena.setPreferredSize(new java.awt.Dimension(90, 18));
+        txtContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContrasenaKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 387, 410, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
@@ -153,6 +168,49 @@ public class RegistroUsuario extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
     }// </editor-fold>//GEN-END:initComponents
     
+    
+    public void NOSPACE()
+    {
+        PlainDocument document = new PlainDocument();
+        PlainDocument document2 = new PlainDocument();
+        document.setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                // Evitar la inserción de espacios en blanco
+                if (!string.contains(" ")) {
+                    super.insertString(fb, offset, string, attr);
+                }
+            }
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                // Evitar la sustitución de espacios en blanco
+                if (!text.contains(" ")) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+        
+         document2.setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                // Evitar la inserción de espacios en blanco
+                if (!string.contains(" ")) {
+                    super.insertString(fb, offset, string, attr);
+                }
+            }
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                // Evitar la sustitución de espacios en blanco
+                if (!text.contains(" ")) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+        
+        // Asignar el PlainDocument al JTextField
+        txtContrasena.setDocument(document);
+        txtContrasena2.setDocument(document2);
+    }
     
     public boolean isOK()
             
@@ -232,6 +290,26 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void txtContrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyReleased
+         String contrasena = txtContrasena.getText();
+
+    // Verifica si la longitud del texto es mayor que 15
+    if (contrasena.length() > 15) {
+        // Si es mayor, elimina los caracteres adicionales
+        txtContrasena.setText(contrasena.substring(0, 15));
+    }
+    }//GEN-LAST:event_txtContrasenaKeyReleased
+
+    private void txtContrasena2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasena2KeyReleased
+       String contrasena2 = txtContrasena2.getText();
+
+    // Verifica si la longitud del texto es mayor que 15
+    if (contrasena2.length() > 15) {
+        // Si es mayor, elimina los caracteres adicionales
+        txtContrasena2.setText(contrasena2.substring(0, 15));
+    }
+    }//GEN-LAST:event_txtContrasena2KeyReleased
 
     
      JoptionReplacemnt Jo;

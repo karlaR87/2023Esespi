@@ -168,7 +168,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbDatosPolicias.setEnabled(false);
         tbDatosPolicias.setGridColor(new java.awt.Color(255, 255, 255));
         tbDatosPolicias.setInheritsPopupMenu(true);
         tbDatosPolicias.setSelectionBackground(new java.awt.Color(119, 119, 119));

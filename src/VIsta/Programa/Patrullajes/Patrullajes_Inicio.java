@@ -65,7 +65,6 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbDatosPatrullajes.setEnabled(false);
         tbDatosPatrullajes.setGridColor(new java.awt.Color(255, 255, 255));
         tbDatosPatrullajes.setInheritsPopupMenu(true);
         tbDatosPatrullajes.setSelectionBackground(new java.awt.Color(119, 119, 119));

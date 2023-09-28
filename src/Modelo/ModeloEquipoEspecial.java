@@ -413,14 +413,14 @@ private boolean existeTipoEquipamiento(int idTipoEquipamiento) throws SQLExcepti
 
             Statement statement = conexionSql.getConexion().createStatement();
 
-           String filtro = IIT.txtBuscarEP.getText(); 
+           
 
         String query = "select t.IdDetalleEquipo, o.TipoEquipamiento, t.Detalles, t.Cantidad from tdDetallesEquipo t\n" +
         "inner join tbTiposEquipamientoEstacion o on o.IdTiposEquipamientoEstacion = t.IdTiposEquipamientoEstacion "
-                + "WHERE IdDetalleEquipo LIKE '%" + filtro + "%' OR " +
-                       "TipoEquipamiento LIKE '%" + filtro + "%' OR " +
-                       "Detalles LIKE '%" + filtro + "%' OR " +
-                       "Cantidad LIKE '%" + filtro + "%';";
+                + "WHERE IdDetalleEquipo LIKE '%" + IIT.txtBuscarEP.getText() + "%' OR " +
+                       "TipoEquipamiento LIKE '%" + IIT.txtBuscarEP.getText() + "%' OR " +
+                       "Detalles LIKE '%" + IIT.txtBuscarEP.getText() + "%' OR " +
+                       "Cantidad LIKE '%" + IIT.txtBuscarEP.getText() + "%';";
            
             
 
