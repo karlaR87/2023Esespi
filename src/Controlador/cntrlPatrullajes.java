@@ -21,6 +21,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
+import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Toolkit;
 
@@ -132,6 +133,8 @@ public class cntrlPatrullajes implements ActionListener {
         this.addEquipamiento.btnAcept.addActionListener(this);
         //Cancel Equipamiento
         this.addEquipamiento.btnCancel.addActionListener(this);
+        
+        showMap();
     }
     @Override
     public void actionPerformed(ActionEvent e) {   
@@ -287,8 +290,6 @@ public class cntrlPatrullajes implements ActionListener {
                 
            
        }
-       
-       
        //-----------------------------------------------------Boton para cancelar la agregacion de ubicacion(MAPA)
         if (e.getSource() == addUbicacion.btnCancelMap) 
         {
@@ -300,7 +301,8 @@ public class cntrlPatrullajes implements ActionListener {
         if(e.getSource() == addUbicacion.btnEXPORTAR)
         {
             //---------------------------------------------SET DEL MAPA-----------------
-           int width = mapViewer.getWidth();
+            // Crear un BufferedImage para renderizar el mapa
+            int width = mapViewer.getWidth();
             int height = mapViewer.getHeight();
             BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
@@ -309,14 +311,18 @@ public class cntrlPatrullajes implements ActionListener {
             mapViewer.paint(g2d);
             g2d.dispose();
             
-            ImageIcon mapIcon = new ImageIcon(bufferedImage);
-            
-            addPatrullajes.lblMAPImage.setIcon(mapIcon);
+            ImageIcon mapIcon = new ImageIcon(bufferedImage);           
+            ImageIcon nuevoIcono = new ImageIcon(mapIcon.getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
+
+            // Asignar el ImageIcon al JLabel
+            addPatrullajes.lblMAPImage.setIcon(nuevoIcono);
+
+            // Habilitar el JFrame principal y ocultar el JFrame actual
             JframePrincipal.setEnabled(true);
             JframePrincipal.jLabel3.setVisible(false);
             addUbicacion.setVisible(false);
+            
         }
-        
        //-----------------------------------------------------Boton para mostrar la ubicacion(MAPA)
         if (e.getSource() == addPatrullajes.btnAddUbi) 
         {
@@ -324,10 +330,8 @@ public class cntrlPatrullajes implements ActionListener {
             JframePrincipal.jLabel3.setVisible(true);
             addUbicacion.setVisible(true);
             addUbicacion.setEnabled(true);
-            showMap();
         }
        
-
        //------------------------------------------------------Boton que MUESTRA la pantalla para AGREGAR al personal
         if (e.getSource() == addPatrullajes.btnAddPersonal) {
             JframePrincipal.jLabel3.setVisible(true);

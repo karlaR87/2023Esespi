@@ -402,14 +402,14 @@ public class ModeloPatrullajes {
         Color clrOrang = new Color( 243, 167, 18);
         DefaultTableModel modelo = new DefaultTableModel();
       
-        modelo.setColumnIdentifiers(new Object []{"IDP", "Locacion", "Longitud", "Latitud", "ExtensionKM", "Fecha De Inicio", 
+        modelo.setColumnIdentifiers(new Object []{"IDP", "Longitud", "Latitud", "ExtensionKM", "Fecha De Inicio", 
             "Fecha De Fin", "NGrupo"});
 
         try{
 
             java.sql.Statement statement = conexionSql.getConexion().createStatement();
 
-            String query = "SELECT tbPatru.IdPatrullaje AS IDP,  tbMuni.Municipio AS Locacion, tbPatru.Longitud, tbPatru.Latitud, tbPatru.ExtensionKM, Fecha_Hora_Inicio, \n" +
+            String query = "SELECT tbPatru.IdPatrullaje AS IDP, tbPatru.Longitud, tbPatru.Latitud, tbPatru.ExtensionKM, Fecha_Hora_Inicio, \n" +
             "Fecha_Hora_Fin, tbGPatru.NumeroDeGrupo\n" +
             "FROM tbPatrullajes tbPatru \n" +
             "INNER JOIN tbGrupoPatrullajes tbGPatru ON tbGPatru.IdGrupoPatrullaje = tbPatru.IdGrupoPatrullaje\n" +
@@ -419,7 +419,7 @@ public class ModeloPatrullajes {
             ResultSet rs = statement.executeQuery(query);
 
             while(rs.next()){
-                modelo.addRow(new Object[] {rs.getString("IDP"),rs.getString("Locacion"),rs.getString("Longitud"), rs.getString("Latitud"),
+                modelo.addRow(new Object[] {rs.getString("IDP"),rs.getString("Longitud"), rs.getString("Latitud"),
                     rs.getString("ExtensionKM"), rs.getString("Fecha_Hora_Inicio"), rs.getString("Fecha_Hora_Fin"),rs.getString("NumeroDeGrupo")});//, rs.getString("NumeroDeGrupo")});
 
             }
@@ -449,14 +449,13 @@ public class ModeloPatrullajes {
             vsPatrullajes.tbDatosPatrullajes.setDefaultRenderer(Object.class, cellRenderer);
 
             // Ajustar el ancho de las columnas
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(1).setPreferredWidth(90); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(2).setPreferredWidth(45);
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(3).setPreferredWidth(45); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(4).setPreferredWidth(60); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(0).setPreferredWidth(10); // Cambia el ancho de la primera columna 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(1).setPreferredWidth(45);
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(2).setPreferredWidth(45); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(3).setPreferredWidth(60); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(4).setPreferredWidth(118); 
             vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(5).setPreferredWidth(118); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(6).setPreferredWidth(118); 
-            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(7).setPreferredWidth(20); 
+            vsPatrullajes.tbDatosPatrullajes.getColumnModel().getColumn(6).setPreferredWidth(20); 
             //vstPolicias.tbDatosPolicias.getColumnModel().getColumn(8).setPreferredWidth(10); 
         
         }catch(SQLException ex){
