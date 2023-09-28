@@ -244,6 +244,42 @@ public class ModeloPatrullajes {
         }
     }
     
+    //LLENAR COMBOBOX Tipo Patrullaje
+    public void llenarComboTipoPatrullaje(JComboBox<String> cmb) throws SQLException {
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
+
+        String SSQL = "SELECT IdTipoPatrullaje, TipoPatrullajes FROM tbTiposPatrullajes";
+        cmb.removeAllItems();
+
+        try {
+            conectar = conexionSql.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            result = pst.executeQuery();
+
+            while (result.next()) {
+                int id = result.getInt("IdTipoPatrullaje");
+                String Medio = result.getString("TipoPatrullajes");
+                cmb.addItem(Medio);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }finally {
+            // Cerrar recursos
+            if (result != null) {
+                result.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (conectar != null) {
+                conectar.close();
+            }
+        }
+    }
+    
     //LLENAR COMBOBOX Medio asignacion
     public void llenarCombo(JComboBox<String> cmb) throws SQLException {
         Connection conectar = null;
