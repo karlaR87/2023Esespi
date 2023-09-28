@@ -329,7 +329,7 @@ public class ModeloPatrullajes {
             String query = "SELECT tbDeta.IdDetalleEquipo, tbDeta.Detalles, tbDeta.Cantidad FROM tdDetallesEquipo tbDeta\n" +
             "INNER JOIN tbTiposEquipamientoEstacion tbTipo ON tbDeta.IdTiposEquipamientoEstacion = tbTipo.IdTiposEquipamientoEstacion\n" +
             "INNER JOIN tbCategoriasEquipamiento tbCate ON tbCate.IdCategoriaEquipamiento = tbTipo.IdCategoriaEquipamiento\n" +
-            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 6";
+            "WHERE tbCate.IdCategoriaEquipamiento = 1 AND tbTipo.IdTiposEquipamientoEstacion = 8";
             PreparedStatement chargeEQUIMPENT = conexionSql.getConexion().prepareStatement(query);
             
             ResultSet rs = chargeEQUIMPENT.executeQuery();
