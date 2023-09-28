@@ -326,7 +326,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInicioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 9, 167, 80));
+        slideMenu.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 29, 167, 30));
 
         lblPolicias.setBackground(new java.awt.Color(70, 70, 70));
         lblPolicias.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -346,7 +346,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblPoliciasMouseExited(evt);
             }
         });
-        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 105, 167, 70));
+        slideMenu.add(lblPolicias, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 125, 167, 30));
 
         btnPatrullajes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btnPatrullajes.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,7 +367,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 btnPatrullajesMouseExited(evt);
             }
         });
-        slideMenu.add(btnPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 210, 167, 80));
+        slideMenu.add(btnPatrullajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 230, 167, 30));
 
         lblInventario.setBackground(new java.awt.Color(70, 70, 70));
         lblInventario.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -387,13 +387,15 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblInventarioMouseExited(evt);
             }
         });
-        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 305, 167, 90));
+        slideMenu.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 335, 167, 30));
 
         lblReportes.setBackground(new java.awt.Color(70, 70, 70));
         lblReportes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         lblReportes.setForeground(new java.awt.Color(255, 255, 255));
         lblReportes.setText("  Reportes");
         lblReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblReportes.setMaximumSize(new java.awt.Dimension(51, 24));
+        lblReportes.setMinimumSize(new java.awt.Dimension(51, 24));
         lblReportes.setOpaque(true);
         lblReportes.setPreferredSize(new java.awt.Dimension(180, 25));
         lblReportes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -407,7 +409,7 @@ public class JframePrincipal extends javax.swing.JFrame {
                 lblReportesMouseExited(evt);
             }
         });
-        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 429, 167, 60));
+        slideMenu.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 439, 167, 30));
 
         lblSalir.setBackground(new java.awt.Color(70, 70, 70));
         lblSalir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
