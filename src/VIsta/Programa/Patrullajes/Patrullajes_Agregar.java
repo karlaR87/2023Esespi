@@ -39,6 +39,7 @@ public class Patrullajes_Agregar extends javax.swing.JPanel {
     public Patrullajes_Agregar() {
         initComponents();
         
+        this.lblMAPImage.setVisible(false);
         iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAdd.png"); 
         iconoOriginalAddCLARE = new ImageIcon("src/VIsta/imagenes/btnAddCLARE.png");
         

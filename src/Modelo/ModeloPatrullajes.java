@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -23,17 +24,114 @@ import javax.swing.table.JTableHeader;
 public class ModeloPatrullajes {
     
      //Parametros
-    private int idPatrullaje;
-   
+    private int IdPatrullaje;
+    private String ExtensionKM;
+    private byte[] FotoByte;
+//     = convertImageIconToBytes(mapIcon);
+    private double Longitud;
+    private double Latitud;
+    private String TipoPatrullaje;
+    private Date FechaInicio;
+    private Date FechaFin;
+  
+    
     //getters y setters
+
+    public String getExtensionKM() {
+        return ExtensionKM;
+    }
+
+    public void setExtensionKM(String ExtensionKM) {
+        this.ExtensionKM = ExtensionKM;
+    }
+
+    public byte[] getFotoByte() {
+        return FotoByte;
+    }
+
+    public void setFotoByte(byte[] FotoByte) {
+        this.FotoByte = FotoByte;
+    }
+
+    public double getLongitud() {
+        return Longitud;
+    }
+
+    public void setLongitud(double Longitud) {
+        this.Longitud = Longitud;
+    }
+
+    public double getLatitud() {
+        return Latitud;
+    }
+
+    public void setLatitud(double Latitud) {
+        this.Latitud = Latitud;
+    }
+
+    public String getTipoPatrullaje() {
+        return TipoPatrullaje;
+    }
+
+    public void setTipoPatrullaje(String TipoPatrullaje) {
+        this.TipoPatrullaje = TipoPatrullaje;
+    }
+
+    public Date getFechaInicio() {
+        return FechaInicio;
+    }
+
+    public void setFechaInicio(Date FechaInicio) {
+        this.FechaInicio = FechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return FechaFin;
+    }
+
+    public void setFechaFin(Date FechaFin) {
+        this.FechaFin = FechaFin;
+    }
+    
     public int getPatrullajes() {
-        return idPatrullaje;
+        return IdPatrullaje;
     }
 
     public void setPatrullajes(int IdPatrullaje) {
-        this.idPatrullaje = IdPatrullaje;
+        this.IdPatrullaje = IdPatrullaje;
     }
 
+    //-----------------------------------------------PRIMER INSERT DE PATRULLAJES
+     public boolean InsertarPatrullaje()
+    {//NIVEL DE USUARIO 4 = POLI $$ 2 = JEFE DE POLI
+       try{
+            String query = "EXEC dbo.InsertarPatrullaje\n" +
+            "@ExtensionKM = ?,\n" +
+            "@FotoMAPA = ?,\n" +
+            "@Longitud = ?,\n" +
+            "@Latitud = ?,\n" +
+            "@TipoPatrullaje = ?,\n" +
+            "@FechaInicio = ?,\n" +
+            "@FechaFin = ?"; 
+        
+            PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
+            insertPolice.setString(1, ExtensionKM);
+            insertPolice.setBytes(2, FotoByte);
+            insertPolice.setDouble(3, Longitud);
+            insertPolice.setDouble(4, Latitud);
+            insertPolice.setString(5, TipoPatrullaje);
+            insertPolice.setDate(6, (java.sql.Date) FechaInicio);
+            insertPolice.setDate(7, (java.sql.Date) FechaFin);
+
+            insertPolice.executeUpdate();
+            return true;
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null, e.toString());
+            return false;
+        }
+    }
+    
+    
     //---------------------------------------------EQUIPO DE ESPECIALIZADO
     
     public ResultSet CharegeEquipoESPECIALIZADO_Visores()

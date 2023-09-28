@@ -34,6 +34,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -136,6 +139,7 @@ public class cntrlPatrullajes implements ActionListener {
         
         showMap();
     }
+   ImageIcon nuevoIcono;
     @Override
     public void actionPerformed(ActionEvent e) {   
         
@@ -169,8 +173,28 @@ public class cntrlPatrullajes implements ActionListener {
        if (e.getSource() == addPatrullajes.btnAddPatrullaje) 
        {    
            //-----------------CONFIRMAR QUE TODO ESTE COMPLETO-----------------
-           //---SET DE HORARIOS Y ARMAMENTO-----------------
-           System.out.println(ListaIdDetalleArmamento);
+           if(addUbicacion.txtEXTENSIONKM.getText().trim().equals(""))
+           {
+               show("Asigna el área de patrullaje", 17, 1, 0);
+               close8();
+           }
+           else
+           {
+               if(addPatrullajes.lblMAPImage.isVisible() == true)
+               {
+                   byte[] imageBytes = convertImageIconToBytes(nuevoIcono);
+                   
+                   mdlPatrullajes.setExtensionKM(addUbicacion.txtEXTENSIONKM.getText().trim());
+                   mdlPatrullajes.setFotoByte(imageBytes);
+               }
+               else
+               {
+                   
+               }
+                
+           }
+           
+          
        }
        
        //-------------------------------------------------------Boton que CANCELA la "Agregacion" del patrullaje
@@ -298,6 +322,7 @@ public class cntrlPatrullajes implements ActionListener {
             addUbicacion.setVisible(false);
         }
        //-----------------------------------------------------Boton para Aceptar la agregacion de ubicacion(MAPA)
+
         if(e.getSource() == addUbicacion.btnEXPORTAR)
         {
             //---------------------------------------------SET DEL MAPA-----------------
@@ -312,9 +337,10 @@ public class cntrlPatrullajes implements ActionListener {
             g2d.dispose();
             
             ImageIcon mapIcon = new ImageIcon(bufferedImage);           
-            ImageIcon nuevoIcono = new ImageIcon(mapIcon.getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
+            nuevoIcono = new ImageIcon(mapIcon.getImage().getScaledInstance(400, 200, Image.SCALE_DEFAULT));
 
             // Asignar el ImageIcon al JLabel
+            addPatrullajes.lblMAPImage.setVisible(true);
             addPatrullajes.lblMAPImage.setIcon(nuevoIcono);
 
             // Habilitar el JFrame principal y ocultar el JFrame actual
@@ -383,6 +409,26 @@ public class cntrlPatrullajes implements ActionListener {
         
         Jo = new JoptionReplacemnt(type,img, msg, sizeTXT);
         Jo.setVisible(true);
+    }
+    
+    public void close8()
+    {   
+        Jo.OKbutton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            Jo.setVisible(false);           
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+            
+            addPersonal.setEnabled(true);
+            addActPatrullaje.setEnabled(true);
+            addPersonal.jLabel3.setVisible(false);
+           
+            addActPatrullaje.jLabel3.setVisible(false);
+            addEquipamiento.setEnabled(true);
+            addEquipamiento.jLabel5.setVisible(false);      
+        
+        }
+        });
     }
     
         public void close7()
@@ -1363,5 +1409,16 @@ public class cntrlPatrullajes implements ActionListener {
        X = new ImageIcon("src/VIsta/imagenes/LetterX.png");
        Y = new ImageIcon("src/VIsta/imagenes/LetterY.png");
        Z = new ImageIcon("src/VIsta/imagenes/LetterZ.png");
+    }
+    
+     private static byte[] convertImageIconToBytes(ImageIcon imageIcon) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            // Convierte el ImageIcon en un arreglo de bytes
+            ImageIO.write((BufferedImage) imageIcon.getImage(), "png", baos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return baos.toByteArray();
     }
 }
