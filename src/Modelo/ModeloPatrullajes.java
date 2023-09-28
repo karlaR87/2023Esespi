@@ -216,7 +216,7 @@ public class ModeloPatrullajes {
             insertPolice.executeUpdate();
             return true;
         }catch(Exception e){
-              JOptionPane.showMessageDialog(null, e.toString());
+              System.out.println(e.toString() + "A1" );
             return false;
         }
     }
@@ -236,7 +236,7 @@ public class ModeloPatrullajes {
             insertPolice.executeUpdate();
             return true;
         }catch(Exception e){
-              JOptionPane.showMessageDialog(null, e.toString());
+              JOptionPane.showMessageDialog(null, e.toString() + "A2");
             return false;
         }
     }
@@ -248,7 +248,7 @@ public class ModeloPatrullajes {
             String query = "EXEC dbo.ActualizarIdPolicias\n" +
             "	@IdPolicia1 = ?,\n" +
             "	@IdPolicia2 = ?,\n" +
-            "	@IdPolicia3 = ?"; 
+            "	@IdPolicia3 = ? "; 
         
             PreparedStatement insertPolice = conexionSql.getConexion().prepareStatement(query);
             insertPolice.setInt(1, IdPoli1);
@@ -258,7 +258,7 @@ public class ModeloPatrullajes {
             insertPolice.executeUpdate();
             return true;
         }catch(Exception e){
-              JOptionPane.showMessageDialog(null, e.toString());
+              JOptionPane.showMessageDialog(null, e.toString() + "A3");
             return false;
         }
     }
@@ -278,7 +278,7 @@ public class ModeloPatrullajes {
             insertPolice.executeUpdate();
             return true;
         }catch(Exception e){
-              JOptionPane.showMessageDialog(null, e.toString());
+              JOptionPane.showMessageDialog(null, e.toString() + "A4");
             return false;
         }
     }
@@ -298,7 +298,7 @@ public class ModeloPatrullajes {
             insertPolice.executeUpdate();
             return true;
         }catch(Exception e){
-              JOptionPane.showMessageDialog(null, e.toString());
+              JOptionPane.showMessageDialog(null, e.toString() + "A5");
             return false;
         }
     }

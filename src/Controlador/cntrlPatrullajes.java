@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
@@ -38,6 +39,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -83,6 +85,11 @@ import org.jxmapviewer.viewer.TileFactoryInfo;
 import org.jxmapviewer.viewer.Waypoint;
 import org.jxmapviewer.viewer.WaypointPainter;
 import org.jxmapviewer.viewer.WaypointRenderer;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class cntrlPatrullajes implements ActionListener {
 
@@ -195,102 +202,147 @@ public class cntrlPatrullajes implements ActionListener {
            {
                show("Asigna el área de patrullaje", 17, 1, 0);
                close8();
+               System.out.println("Area sno");
            }
            else
            {
                if(addPatrullajes.lblMAPImage.isVisible() == true)
                {
-                   byte[] imageBytes = convertImageIconToBytes(nuevoIcono);
-                   
-                   mdlPatrullajes.setExtensionKM(addUbicacion.txtEXTENSIONKM.getText().trim());
-                   mdlPatrullajes.setFotoByte(imageBytes);
+                    System.out.println("Img SI");
+                    if (addPatrullajes.lblMAPImage != null && addPatrullajes.lblMAPImage.getIcon() != null) 
+                    {
+                      byte[] imageBytes = convertImageIconToBytes((ImageIcon) addPatrullajes.lblMAPImage.getIcon());
+                      mdlPatrullajes.setExtensionKM(addUbicacion.txtEXTENSIONKM.getText().trim());
+                      mdlPatrullajes.setFotoByte(imageBytes);
+                      
+                      if(longitud != 0 || latitud != 0)
+                        {
+
+                            mdlPatrullajes.setLongitud(longitud);
+                            mdlPatrullajes.setLatitud(latitud);
+                            mdlPatrullajes.setTipoPatrullaje(addUbicacion.cmbTipoPatrullaje.getSelectedItem().toString());
+                            System.out.println("Latitud y lngitud si " + longitud + latitud);
+
+                            if(addPatrullajes.dpFechaInicio.getDate() == null || addPatrullajes.dpFechaFin.getDate() == null)
+                            {
+                                show("Determina la fecha de inicio del patrullaje", 15, 1, 0);
+                                close8();
+                            }
+                            else
+                            {
+                                Date fechaInicioSelected = addPatrullajes.dpFechaInicio.getDate();
+                                Date fechaFinSelected = addPatrullajes.dpFechaFin.getDate();
+
+                                int horaInicio = Integer.parseInt(addPatrullajes.txtHora1.getText().trim());
+                                int minutosInicio = Integer.parseInt(addPatrullajes.txtMin1.getText().trim());
+
+                                int horaFin = Integer.parseInt(addPatrullajes.txtHora2.getText().trim());
+                                int minutosFin = Integer.parseInt(addPatrullajes.txtMin2.getText().trim());
+
+                                Calendar calendar1 = Calendar.getInstance();
+                                calendar1.setTime(fechaInicioSelected);
+
+                                // Obtiene el año de la fecha seleccionada
+                                int year = calendar1.get(Calendar.YEAR);
+                                int month = calendar1.get(Calendar.MONTH) + 1; // Suma 1 porque enero es 0
+                                int day = calendar1.get(Calendar.DAY_OF_MONTH);
+
+                                String fechaCompletaInicio = year + "/" + month + "/" + day + " " + horaInicio + ":" + minutosInicio + ":00";
+
+                                Calendar calendar2 = Calendar.getInstance();
+                                calendar2.setTime(fechaFinSelected);
+
+                                // Obtiene el año, mes y día de la fecha seleccionada
+                                int year2 = calendar2.get(Calendar.YEAR);
+                                int month2 = calendar2.get(Calendar.MONTH) + 1; // Suma 1 porque enero es 0
+                                int day2 = calendar2.get(Calendar.DAY_OF_MONTH);
+
+                                String fechaCompletaFin = year2 + "/" + month2 + "/" + day2 + " " + horaFin + ":" + minutosFin + ":00";
+
+                                try {
+                                    SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                                    Date fechaDate = formato.parse(fechaCompletaInicio);
+
+                                    SimpleDateFormat formato2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                                    Date fechaDate2 = formato2.parse(fechaCompletaFin);
+
+                                    java.sql.Date sqlFechaInicio = new java.sql.Date(fechaDate.getTime());
+                                    java.sql.Date sqlFechaFin = new java.sql.Date(fechaDate2.getTime());
+                                    
+                                    System.out.println(fechaCompletaInicio);
+                                    System.out.println(fechaCompletaFin);
+
+                                    mdlPatrullajes.setFechaInicio(sqlFechaInicio);
+                                    mdlPatrullajes.setFechaFin(sqlFechaFin);
+                                } catch (ParseException ex) {
+                                    ex.printStackTrace();
+                                    // Manejo de la excepción
+                                } 
+                                
+                                System.out.println(fechaCompletaInicio);
+                                System.out.println(fechaCompletaFin); 
+                                
+                                 System.out.println("INERT 1");
+                                 mdlPatrullajes.InsertarPatrullaje();
+                                
+                                //---------------SEGUNDO EXECUTE (ACTIVIDADES)
+                                ChargeActividadesPatru();
+                                System.out.println("INERT 2");
+
+                                //----------------TERCER EXECUTE (ACTUALIZAR POLICIAS)
+                                 mdlPatrullajes.setIdPoli1(ListaIdPolicias.get(0));
+                                 mdlPatrullajes.setIdPoli2(ListaIdPolicias.get(1));
+                                 mdlPatrullajes.setIdPoli3(ListaIdPolicias.get(2));
+                                System.out.println(ListaIdPolicias.get(0) );
+                                 System.out.println(ListaIdPolicias.get(1) );
+                                  System.out.println(ListaIdPolicias.get(2) );
+                                 mdlPatrullajes.ActualizarPoliciasPatrullaje();
+
+                                //----------------CUARTO EXECUTE (INSERTAR ARMAS)
+                                for (Map.Entry<Integer, Integer> entrada : ListaIdDetalleArmamento.entrySet()) 
+                                {
+                                     Integer clave = entrada.getKey();     // Obtener la clave
+                                     Integer valor = entrada.getValue();  // Obtener el valor
+
+                                     mdlPatrullajes.setIdDetalleArmamento(clave);
+                                     mdlPatrullajes.setCantidadAsignadaArmamento(valor);  
+                                     mdlPatrullajes.InsertarArmasPatrullaje();
+                                     System.out.println("INERT 4");
+                                 }
+
+                                //----------------QUINTO EXECUTE (INSERTAR EQUIPAMIENTO)
+                                for (Map.Entry<Integer, Integer> entrada : ListaIdDetalleEquipo.entrySet()) 
+                                {
+                                     Integer clave = entrada.getKey();     // Obtener la clave
+                                     Integer valor = entrada.getValue();  // Obtener el valor
+
+                                     mdlPatrullajes.setIdDetalleEquipo(clave);
+                                     mdlPatrullajes.setCantidadAsignadaEquipamiento(valor);  
+                                     mdlPatrullajes.InsertarEquipoPatrullaje();
+                                     System.out.println("INERT 5");
+                                 }
+
+                                 show("Patrullaje ingresado existosamente", 17, 0, 0);
+                                 close8();
+                            }
+                        }
+                        else
+                        {
+                             show("Selecciona un punto en el mapa", 17, 1, 0);
+                             close8();        
+                        }              
+                
+                    } 
+                    else 
+                    {
+                       System.out.println("MALDIA SEA");
+                    }
                }
                else
                {
-                   if(longitud == 0 || latitud == 0)
-                   {
-                        show("Selecciona un punto en el mapa", 17, 1, 0);
-                        close8();
-                   }
-                   else
-                   {
-                       mdlPatrullajes.setLongitud(longitud);
-                       mdlPatrullajes.setLatitud(latitud);
-                       mdlPatrullajes.setTipoPatrullaje(addUbicacion.cmbTipoPatrullaje.getSelectedItem().toString());
-                       
-                       if(addPatrullajes.dpFechaInicio.getDate() == null || addPatrullajes.dpFechaFin.getDate() == null)
-                       {
-                           show("Determina la fecha de inicio del patrullaje", 15, 1, 0);
-                           close8();
-                       }
-                       else
-                       {
-                           Date fechaInicioSelected = addPatrullajes.dpFechaInicio.getDate();
-                           Date fechaFinSelected = addPatrullajes.dpFechaFin.getDate();
-                           
-                           int horaInicio = Integer.parseInt(addPatrullajes.txtHora1.getText().trim());
-                           int minutosInicio = Integer.parseInt(addPatrullajes.txtMin1.getText().trim());   
-                           
-                           int horaFin = Integer.parseInt(addPatrullajes.txtHora2.getText().trim());
-                           int minutosFin = Integer.parseInt(addPatrullajes.txtMin2.getText().trim());   
-
-                            Calendar calendar1 = Calendar.getInstance();
-                            calendar1.setTime(fechaInicioSelected);
-                            calendar1.set(Calendar.HOUR_OF_DAY, horaInicio);
-                            calendar1.set(Calendar.MINUTE, minutosInicio);
-
-                            Calendar calendar2 = Calendar.getInstance();
-                            calendar2.setTime(fechaFinSelected);
-                            calendar2.set(Calendar.HOUR_OF_DAY, horaFin);
-                            calendar2.set(Calendar.MINUTE, minutosFin);
-                            
-                            // Obtén la fecha completa
-                            Date fechaCompletaInicio = calendar1.getTime();
-                            Date fechaCompletaFin = calendar2.getTime();
-                            
-                            mdlPatrullajes.setFechaInicio(fechaCompletaInicio);
-                            mdlPatrullajes.setFechaFin(fechaCompletaFin);
-                            
-                            mdlPatrullajes.InsertarPatrullaje();
-                            
-                           //---------------SEGUNDO EXECUTE (ACTIVIDADES)
-                           ChargeActividadesPatru();
-                           
-                           //----------------TERCER EXECUTE (ACTUALIZAR POLICIAS)
-                            mdlPatrullajes.setIdPoli1(ListaIdPolicias.get(0));
-                            mdlPatrullajes.setIdPoli2(ListaIdPolicias.get(1));
-                            mdlPatrullajes.setIdPoli3(ListaIdPolicias.get(2));
-                           
-                            mdlPatrullajes.ActualizarPoliciasPatrullaje();
-                            
-                           //----------------CUARTO EXECUTE (INSERTAR ARMAS)
-                           for (Map.Entry<Integer, Integer> entrada : ListaIdDetalleArmamento.entrySet()) 
-                           {
-                                Integer clave = entrada.getKey();     // Obtener la clave
-                                Integer valor = entrada.getValue();  // Obtener el valor
-
-                                mdlPatrullajes.setIdDetalleArmamento(clave);
-                                mdlPatrullajes.setCantidadAsignadaArmamento(valor);  
-                                mdlPatrullajes.InsertarArmasPatrullaje();
-                            }
-                           
-                           //----------------QUINTO EXECUTE (INSERTAR EQUIPAMIENTO)
-                           for (Map.Entry<Integer, Integer> entrada : ListaIdDetalleEquipo.entrySet()) 
-                           {
-                                Integer clave = entrada.getKey();     // Obtener la clave
-                                Integer valor = entrada.getValue();  // Obtener el valor
-
-                                mdlPatrullajes.setIdDetalleEquipo(clave);
-                                mdlPatrullajes.setCantidadAsignadaEquipamiento(valor);  
-                                mdlPatrullajes.InsertarEquipoPatrullaje();
-                            }
-                           
-                            show("Patrullaje ingresado existosamente", 17, 0, 0);
-                            close8();
-                       }
-                   }
+                   System.out.println("NO HAY img");
                }
-                
+
            }
            
           
@@ -889,17 +941,20 @@ public class cntrlPatrullajes implements ActionListener {
                 labelEquipo.setBorder(new EmptyBorder(5,1,0,10));
                 spinner.setBorder(new EmptyBorder(5,1,0,10));
                 
-                Box HorizontalBox = Box.createHorizontalBox();               
+                Box VerticalBoxMAINMAIN = Box.createHorizontalBox();
+                Box VerticalBoxMAIN = Box.createVerticalBox();
                 Box VerticalBox = Box.createVerticalBox();
-
-                VerticalBox.add(Box.createVerticalGlue());
-//                VerticalBox.add(VerticalBox);
-                VerticalBox.add(labelEquipo);
-                VerticalBox.add(spinner);
-                VerticalBox.add(Box.createHorizontalGlue());
-                VerticalBox.add(Box.createVerticalGlue());
-                panel.add(VerticalBox);
+                Box HorizontalMain = Box.createHorizontalBox();
+                Box Horizontal2 = Box.createHorizontalBox();
                 
+                VerticalBoxMAINMAIN.add(VerticalBoxMAIN);
+                VerticalBoxMAIN.add(HorizontalMain);
+                HorizontalMain.add(VerticalBox);
+                VerticalBox.add(labelEquipo);
+                VerticalBoxMAIN.add(Horizontal2);
+                Horizontal2.add(spinner);
+                VerticalBoxMAINMAIN.add(Box.createHorizontalGlue());
+                panel.add(VerticalBoxMAINMAIN);                
                 
             }
             
@@ -1587,14 +1642,24 @@ public class cntrlPatrullajes implements ActionListener {
        Z = new ImageIcon("src/VIsta/imagenes/LetterZ.png");
     }
     
-     private static byte[] convertImageIconToBytes(ImageIcon imageIcon) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            // Convierte el ImageIcon en un arreglo de bytes
-            ImageIO.write((BufferedImage) imageIcon.getImage(), "png", baos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return baos.toByteArray();
-    }
+        private static byte[] convertImageIconToBytes(ImageIcon imageIcon) {
+       ByteArrayOutputStream baos = new ByteArrayOutputStream();
+       try {
+           // Crear un BufferedImage a partir del ImageIcon
+           BufferedImage bufferedImage = new BufferedImage(
+               imageIcon.getIconWidth(),
+               imageIcon.getIconHeight(),
+               BufferedImage.TYPE_INT_RGB
+           );
+           Graphics g = bufferedImage.createGraphics();
+           // Dibujar el ImageIcon en el BufferedImage
+           imageIcon.paintIcon(null, g, 0, 0);
+           g.dispose();
+           // Escribir el BufferedImage en el ByteArrayOutputStream
+           ImageIO.write(bufferedImage, "png", baos);
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+       return baos.toByteArray();
+   }
 }
