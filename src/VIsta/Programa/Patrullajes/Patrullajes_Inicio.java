@@ -1,5 +1,6 @@
 package VIsta.Programa.Patrullajes;
 
+import Modelo.ModeloPatrullajes;
 import javax.swing.ImageIcon;
 
 public class Patrullajes_Inicio extends javax.swing.JPanel {
@@ -11,6 +12,9 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
     ImageIcon iconoClareAdd;
      
     public int IdPatrullaje;
+    
+    ModeloPatrullajes yi = new ModeloPatrullajes();
+    
     public Patrullajes_Inicio() {
         initComponents();
         
@@ -21,6 +25,8 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
         
         iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAddPolicia.png"); 
         iconoClareAdd = new ImageIcon("src/VIsta/imagenes/btnAddPoliciaClare.png"); 
+        
+        
 
     }
 
@@ -59,10 +65,10 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbDatosPatrullajes.setEnabled(false);
         tbDatosPatrullajes.setGridColor(new java.awt.Color(255, 255, 255));
         tbDatosPatrullajes.setInheritsPopupMenu(true);
         tbDatosPatrullajes.setSelectionBackground(new java.awt.Color(119, 119, 119));
-        tbDatosPatrullajes.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tbDatosPatrullajes.getTableHeader().setResizingAllowed(false);
         jScrollPane2.setViewportView(tbDatosPatrullajes);
 
@@ -105,6 +111,11 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
         txtBuscar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtBuscar.setToolTipText("");
         txtBuscar.setBorder(null);
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 330, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/backBuscar2.png"))); // NOI18N
@@ -150,6 +161,10 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
     private void btnAddPatrullajeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPatrullajeMouseExited
         OriginialIcon();
     }//GEN-LAST:event_btnAddPatrullajeMouseExited
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        yi.MostrarTablePatrullajesBuscardor(this);
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
     
      public void OriginialIcon()

@@ -260,9 +260,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMostrarDatosTransporte.setEnabled(false);
         jScrollPane1.setViewportView(tbMostrarDatosTransporte);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 820, 170));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 820, 170));
 
         tbMostrarDatosEquipoEsp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -275,9 +276,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMostrarDatosEquipoEsp.setEnabled(false);
         jScrollPane2.setViewportView(tbMostrarDatosEquipoEsp);
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 820, 160));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 820, 160));
 
         tbMostrarDatosArmamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -290,9 +292,10 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMostrarDatosArmamento.setEnabled(false);
         jScrollPane3.setViewportView(tbMostrarDatosArmamento);
 
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 820, 150));
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 820, 150));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -300,7 +303,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, -1, 40));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, -1, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -308,7 +311,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 290, 30, 40));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 260, 30, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/Refresh1.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -316,7 +319,7 @@ public class Inventario_Inicio extends javax.swing.JPanel {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 30, 40));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 420, 30, 40));
 
         txtBusqueda.setBorder(null);
         txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
