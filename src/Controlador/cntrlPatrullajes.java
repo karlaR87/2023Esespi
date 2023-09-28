@@ -264,6 +264,29 @@ public class cntrlPatrullajes implements ActionListener {
                             mdlPatrullajes.ActualizarPoliciasPatrullaje();
                             
                            //----------------CUARTO EXECUTE (INSERTAR ARMAS)
+                           for (Map.Entry<Integer, Integer> entrada : ListaIdDetalleArmamento.entrySet()) 
+                           {
+                                Integer clave = entrada.getKey();     // Obtener la clave
+                                Integer valor = entrada.getValue();  // Obtener el valor
+
+                                mdlPatrullajes.setIdDetalleArmamento(clave);
+                                mdlPatrullajes.setCantidadAsignadaArmamento(valor);  
+                                mdlPatrullajes.InsertarArmasPatrullaje();
+                            }
+                           
+                           //----------------QUINTO EXECUTE (INSERTAR EQUIPAMIENTO)
+                           for (Map.Entry<Integer, Integer> entrada : ListaIdDetalleEquipo.entrySet()) 
+                           {
+                                Integer clave = entrada.getKey();     // Obtener la clave
+                                Integer valor = entrada.getValue();  // Obtener el valor
+
+                                mdlPatrullajes.setIdDetalleEquipo(clave);
+                                mdlPatrullajes.setCantidadAsignadaEquipamiento(valor);  
+                                mdlPatrullajes.InsertarEquipoPatrullaje();
+                            }
+                           
+                            show("Patrullaje ingresado existosamente", 17, 0, 0);
+                            close8();
                        }
                    }
                }
