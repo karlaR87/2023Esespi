@@ -495,7 +495,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
             {
              
                
-                {
+                
                     if(txtNumeroTel.getText().length() > 8)
                     {
                         show("El número teléfonico no debe exceder los 8 caracteres", 15, 1);
@@ -514,7 +514,7 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                     {
 
                           
-                            {
+                            
                                 // Validar formato del correo electrónico
                                 String correoPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
                                 Pattern pattern = Pattern.compile(correoPattern);
@@ -598,10 +598,10 @@ public class Registro_DatosPersonales extends javax.swing.JPanel {
                                     }    
                                     return true; // Si todas las validaciones son exitosas, se retorna true.
                                 }
-                            }
+                            
                         }
                     }
-                }
+                
             }
         }
     }   
@@ -748,33 +748,33 @@ Registro_Idiomas idiomas = new Registro_Idiomas();
     }//GEN-LAST:event_jdcFechaKeyReleased
 
     private void jdcFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcFechaPropertyChange
-            jdcFecha = new JDateChooser();
-
-        jdcFecha.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                if ("date".equals(evt.getPropertyName())) {
-                    Date fechaSeleccionada = (Date) jdcFecha.getDate();
-
-                    if (fechaSeleccionada != null) {
-                        Calendar fechaNacimiento = Calendar.getInstance();
-                        fechaNacimiento.setTime(fechaSeleccionada);
-
-                        // Obtener la fecha actual
-                        Calendar fechaActual = Calendar.getInstance();
-
-                        // Restar 18 años a la fecha actual
-                        fechaActual.add(Calendar.YEAR, -18);
-
-                        // Verificar si la fecha de nacimiento es menor que fechaActual - 18 años
-                        if (fechaNacimiento.after(fechaActual)) {
-                            JOptionPane.showMessageDialog(null, "Debes ser mayor de 18 años.", "Error", JOptionPane.ERROR_MESSAGE);
-                            jdcFecha.setDate(null); // Vaciar el campo de fecha
-                        }
-                    }
-                }
-            }
-        });
+//            jdcFecha = new JDateChooser();
+//
+//        jdcFecha.addPropertyChangeListener(new PropertyChangeListener() {
+//            @Override
+//            public void propertyChange(PropertyChangeEvent evt) {
+//                if ("date".equals(evt.getPropertyName())) {
+//                    Date fechaSeleccionada = (Date) jdcFecha.getDate();
+//
+//                    if (fechaSeleccionada != null) {
+//                        Calendar fechaNacimiento = Calendar.getInstance();
+//                        fechaNacimiento.setTime(fechaSeleccionada);
+//
+//                        // Obtener la fecha actual
+//                        Calendar fechaActual = Calendar.getInstance();
+//
+//                        // Restar 18 años a la fecha actual
+//                        fechaActual.add(Calendar.YEAR, -18);
+//
+//                        // Verificar si la fecha de nacimiento es menor que fechaActual - 18 años
+//                        if (fechaNacimiento.after(fechaActual)) {
+//                            JOptionPane.showMessageDialog(null, "Debes ser mayor de 18 años.", "Error", JOptionPane.ERROR_MESSAGE);
+//                            jdcFecha.setDate(null); // Vaciar el campo de fecha
+//                        }
+//                    }
+//                }
+//            }
+//        });
     }//GEN-LAST:event_jdcFechaPropertyChange
 
 //    public void setFocus0(boolean status)

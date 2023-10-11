@@ -104,6 +104,8 @@ public class cntrlRegistro implements ActionListener {
                             modeloRegistro.setDUI(vista.txtDui.getText().trim());
                             modeloRegistro.setTel(vista.txtNumeroTel.getText().trim());
                             modeloRegistro.setCorreo(vista.txtCorreo.getText().trim());
+                            
+                             System.out.println(vista.jdcFecha.getDate());
 
                             modeloRegistro.setIdgenero(vista.currentIdGenero);
                             modeloRegistro.setIdtipoSangre(vista.currentIdTipoSangre);
