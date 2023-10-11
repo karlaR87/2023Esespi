@@ -88,7 +88,7 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
                 btnEditPatrullajeMouseExited(evt);
             }
         });
-        jPanel1.add(btnEditPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 280, 60, 60));
+        jPanel1.add(btnEditPatrullaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 60, 60));
 
         btnAddPatrullaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIsta/imagenes/btnAddPolicia.png"))); // NOI18N
         btnAddPatrullaje.setBorderPainted(false);
