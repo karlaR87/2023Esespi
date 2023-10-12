@@ -668,7 +668,13 @@ public class ModeloPatrullajes {
          
         vsPatrullajes.IdPatrullaje = 0;
         Color clrOrang = new Color( 243, 167, 18);
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Devuelve 'false' para que todas las celdas sean no editables
+                return false;
+            }
+        };
       
         modelo.setColumnIdentifiers(new Object []{"IDP", "Longitud", "Latitud", "ExtensionKM", "Fecha De Inicio", 
             "Fecha De Fin", "NGrupo"});
@@ -691,9 +697,8 @@ public class ModeloPatrullajes {
 
             }
             
-            Fuentes tipoFuentes = new Fuentes();;
-            
-            vsPatrullajes.tbDatosPatrullajes.setModel(modelo);
+            Fuentes tipoFuentes = new Fuentes();
+            vsPatrullajes.tbDatosPatrullajes.setModel(modelo);           
             
             JTableHeader header = vsPatrullajes.tbDatosPatrullajes.getTableHeader();
             header.setBackground(clrOrang); // Cambia el color del encabezado

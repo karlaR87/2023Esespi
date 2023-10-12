@@ -20,6 +20,8 @@ import VIsta.Programa.Policias.Agregar_Usuario_1;
 import VIsta.Programa.Policias.Agregar_policia;
 import VIsta.Programa.Policias.Policias_Inicio;
 import VIsta.Programa.Reportes.Reportes_Inicio;
+import VIsta.Programa.Patrullajes.Patrullajes_VistaDetallada;
+
 import VIsta.Programa.Usuario.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -76,6 +78,8 @@ public class JframePrincipal extends javax.swing.JFrame {
     Patrullajes_AddUbicacion PAddUbi;
     Patrullajes_AddActividades AddActPatru;
     Patrullajes_AddEquipamiento AddEqui;
+    Patrullajes_VistaDetallada vstDPatru;
+    
     private void PanelsShowInit()
     {
        patrullajesInicio = new Patrullajes_Inicio();
@@ -100,7 +104,9 @@ public class JframePrincipal extends javax.swing.JFrame {
         PAddUbi = new Patrullajes_AddUbicacion();
         AddActPatru = new Patrullajes_AddActividades();
         AddEqui = new Patrullajes_AddEquipamiento();
-        cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP, PAddUbi, AddActPatru, AddEqui);
+        vstDPatru = new Patrullajes_VistaDetallada();
+        
+        cntrlPatrullajes ctnrlPatrullajes = new cntrlPatrullajes(mdlPatrullajes, this, patrullajesInicio, AddPatrullajes, PatrullajesAddP, PAddUbi, AddActPatru, AddEqui, vstDPatru);
         AddPolice = new Agregar_policia(); 
         UpdatePolice = new Actualizar_Policia();
         contrlPolicias cntrPoli = new contrlPolicias(policiasInicio, this, mdlPolicias, AddPolice, AddUser, idNivelUser, UpdatePolice);

@@ -75,7 +75,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDatosPolicias = new javax.swing.JTable();
-        lblCosve = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -182,11 +181,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 940, 520));
 
-        lblCosve.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblCosve.setForeground(new java.awt.Color(255, 255, 255));
-        lblCosve.setText("jLabel2");
-        jPanel1.add(lblCosve, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 210, 30));
-
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -269,7 +263,6 @@ public class Policias_Inicio extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JLabel lblCosve;
     public javax.swing.JTable tbDatosPolicias;
     public javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

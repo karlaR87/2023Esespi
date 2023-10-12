@@ -51,10 +51,10 @@ public class conexionSql {
     public static Connection getConexion(){
         
          //Cadena de conexión
-        String conexionUrl  = "jdbc:sqlserver://localhost:1433;" // <- Editar por su puerto de SQL
-                            + "databaseName=Esespi;" // <- Editar por su base de datos
+        String conexionUrl  = "jdbc:sqlserver://localhost:49890;" // <- Editar por su puerto de SQL
+                            + "databaseName=ESESPI_EXPO1;" // <- Editar por su base de datos
                             + "user=sa;"
-                            + "password=itr23;" 
+                            + "password=yupiyolo123;" 
                             + "encrypt=true;trustServerCertificate=true";
         
         //Retornamos la conexion
@@ -69,8 +69,5 @@ public class conexionSql {
             return null;
         }
     } 
-    
-    
-
     
 }

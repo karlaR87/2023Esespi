@@ -10,6 +10,8 @@ import VIsta.Programa.Patrullajes.Patrullajes_AddPersonal;
 import VIsta.Programa.Patrullajes.Patrullajes_AddUbicacion;
 import VIsta.Programa.Patrullajes.Patrullajes_Agregar;
 import VIsta.Programa.Patrullajes.Patrullajes_Inicio;
+import VIsta.Programa.Patrullajes.Patrullajes_VistaDetallada;
+
 import com.teamdev.jxmaps.Circle;
 import com.teamdev.jxmaps.CircleOptions;
 import com.teamdev.jxmaps.Marker;
@@ -101,8 +103,9 @@ public class cntrlPatrullajes implements ActionListener {
     private Patrullajes_AddUbicacion addUbicacion;
     private Patrullajes_AddActividades addActPatrullaje;
     private Patrullajes_AddEquipamiento addEquipamiento;
+    private Patrullajes_VistaDetallada vstDetalladaPatru;
 
-    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal, Patrullajes_AddUbicacion addUbicacion, Patrullajes_AddActividades addActPatrullaje, Patrullajes_AddEquipamiento addEquipamiento) {
+    public cntrlPatrullajes(ModeloPatrullajes modelPatrullajes, JframePrincipal JframePrincipal, Patrullajes_Inicio patrullajesHome, Patrullajes_Agregar addPatrullajes, Patrullajes_AddPersonal addPersonal, Patrullajes_AddUbicacion addUbicacion, Patrullajes_AddActividades addActPatrullaje, Patrullajes_AddEquipamiento addEquipamiento, Patrullajes_VistaDetallada vstDetalladaPatru) {
         this.modelPatrullajes = modelPatrullajes;
         this.JframePrincipal = JframePrincipal;
         this.vstPatrullajes = patrullajesHome;
@@ -111,6 +114,9 @@ public class cntrlPatrullajes implements ActionListener {
         this.addUbicacion = addUbicacion;
         this.addActPatrullaje = addActPatrullaje;
         this.addEquipamiento = addEquipamiento;
+        this.vstDetalladaPatru = vstDetalladaPatru;
+        
+        this.vstDetalladaPatru.btnRegresar.addActionListener(this);
         
         this.JframePrincipal.btnPatrullajes.addActionListener(this);
         this.JframePrincipal.btniconPatrullajes.addActionListener(this);
@@ -121,6 +127,17 @@ public class cntrlPatrullajes implements ActionListener {
         this.addPatrullajes.btnAddPatrullaje.addActionListener(this);
         //Cancel Patrullje 
         this.addPatrullajes.btnCancelPatrullaje.addActionListener(this);     
+        
+        //Patrullaje VISTA DETALLA 2 veces CLIC
+        vstPatrullajes.tbDatosPatrullajes.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+                        vstDetalladaPatru.setVisible(true);
+                        System.out.println(vstPatrullajes.IdPatrullaje);
+                    }
+                }
+            });
         
         //Mostrar Act patrullajes
         this.addPatrullajes.btnAddActPatru.addActionListener(this);

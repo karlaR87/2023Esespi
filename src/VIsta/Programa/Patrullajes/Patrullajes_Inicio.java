@@ -2,6 +2,7 @@ package VIsta.Programa.Patrullajes;
 
 import Modelo.ModeloPatrullajes;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 public class Patrullajes_Inicio extends javax.swing.JPanel {
 
@@ -25,9 +26,6 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
         
         iconoOriginalAdd = new ImageIcon("src/VIsta/imagenes/btnAddPolicia.png"); 
         iconoClareAdd = new ImageIcon("src/VIsta/imagenes/btnAddPoliciaClare.png"); 
-        
-        
-
     }
 
     /**
@@ -69,6 +67,11 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
         tbDatosPatrullajes.setInheritsPopupMenu(true);
         tbDatosPatrullajes.setSelectionBackground(new java.awt.Color(119, 119, 119));
         tbDatosPatrullajes.getTableHeader().setResizingAllowed(false);
+        tbDatosPatrullajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDatosPatrullajesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbDatosPatrullajes);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 940, 520));
@@ -164,6 +167,14 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         yi.MostrarTablePatrullajesBuscardor(this);
     }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void tbDatosPatrullajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosPatrullajesMouseClicked
+        int filaSeleccionada = tbDatosPatrullajes.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String MiId = tbDatosPatrullajes.getValueAt(filaSeleccionada, 0).toString();
+        IdPatrullaje = Integer.parseInt(MiId);
+        System.out.println(IdPatrullaje);
+    }//GEN-LAST:event_tbDatosPatrullajesMouseClicked
 
     
      public void OriginialIcon()

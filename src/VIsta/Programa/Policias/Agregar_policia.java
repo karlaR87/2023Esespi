@@ -128,7 +128,7 @@ public class Agregar_policia extends javax.swing.JFrame {
        lblNombre6.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
        lblNombre7.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
        lblNombre8.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
-       lblNombre9.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
+       lblNombre12.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
        lblNombre10.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
        lblNombre11.setFont(tipoFuentes.fuente(tipoFuentes.DMSans, 0, 15));
     }
@@ -498,7 +498,7 @@ public class Agregar_policia extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoKeyTyped
 
     private void txtDUIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDUIKeyTyped
-      if (txtDUI.getText().length() >= 9) {
+      if (txtDUI.getText().length() >= 10) {
                     evt.consume(); // Bloquea la entrada de texto adicional
                 }   
              char c = evt.getKeyChar();
