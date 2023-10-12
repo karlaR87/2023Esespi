@@ -349,7 +349,7 @@ private void validarFechaInicio() {
         lblMAPImage.setBackground(new java.awt.Color(70, 70, 70));
         lblMAPImage.setForeground(new java.awt.Color(70, 70, 70));
         lblMAPImage.setText("jLabel12");
-        add(lblMAPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 20, 420, 220));
+        add(lblMAPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 20, 410, 220));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));

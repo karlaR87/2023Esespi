@@ -132,9 +132,8 @@ public class cntrlPatrullajes implements ActionListener {
         vstPatrullajes.tbDatosPatrullajes.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    if (e.getClickCount() == 2) {
-                        vstDetalladaPatru.setVisible(true);
-                        System.out.println(vstPatrullajes.IdPatrullaje);
+                    if (e.getClickCount() == 2) {                       
+                        ShowTablesAndMAP();
                     }
                 }
             });
@@ -182,6 +181,15 @@ public class cntrlPatrullajes implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {   
+        
+        //-------------------------------Boton que regresa de la vista detallada
+        if (e.getSource() == vstDetalladaPatru.btnRegresar) {
+            JframePrincipal.setEnabled(true);
+            JframePrincipal.jLabel3.setVisible(false);
+
+            vstDetalladaPatru.ImgMAP.setIcon(null);
+            vstDetalladaPatru.setVisible(false);
+        }
         
         //-------------------------------Botones que muestran la PANTALLA INICIAL de patrullajes
         if (e.getSource() == JframePrincipal.btnPatrullajes) {
@@ -602,7 +610,24 @@ public class cntrlPatrullajes implements ActionListener {
         }
     }
     
-   
+   public void ShowTablesAndMAP()
+   {
+       JframePrincipal.setEnabled(false);
+       JframePrincipal.jLabel3.setVisible(true);
+
+       vstDetalladaPatru.setVisible(true);
+       System.out.println(vstPatrullajes.IdPatrullaje);
+       
+       modelPatrullajes.setPatrullajes(vstPatrullajes.IdPatrullaje);
+       
+       modelPatrullajes.MostrarTableACTIVIDADESPatrullajes(vstDetalladaPatru);
+       modelPatrullajes.MostrarTableESPECIALIZADOPatrullajes(vstDetalladaPatru);
+       modelPatrullajes.MostrarTableSEGURIDADPatrullajes(vstDetalladaPatru);
+       modelPatrullajes.MostrarTableARMAMENTOPatrullajes(vstDetalladaPatru);
+       modelPatrullajes.showMAP(vstDetalladaPatru);
+   }
+    
+    
     //-------------METODOS SHOW JOPTION-------------
     
     JoptionReplacemnt Jo;
@@ -776,6 +801,7 @@ public class cntrlPatrullajes implements ActionListener {
             addPatrullajes.pnlPersonal.removeAll();;
             addPatrullajes.pnlPersonal.revalidate();
             addPatrullajes.pnlPersonal.repaint(); 
+            addPatrullajes.lblMAPImage.setIcon(null);
             
             //--------------------ADD ACTIVIDAD BORRAR
             addActPatrullaje.txtAct1.setText("");

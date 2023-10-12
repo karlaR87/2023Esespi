@@ -6,9 +6,8 @@ package VIsta.Programa.Patrullajes;
  */
 public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Patrullajes_VistaDetallada
-     */
+    
+    
     public Patrullajes_VistaDetallada() {
         initComponents();
     }
@@ -60,15 +59,16 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
                 btnRegresarMouseExited(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 510, 200, 70));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 510, 200, 70));
 
         ImgMAP.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(ImgMAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 0, 550, 270));
+        ImgMAP.setInheritsPopupMenu(false);
+        jPanel1.add(ImgMAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 15, 545, 263));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Armamento");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 295, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 295, -1, -1));
 
         tbActividadesA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,7 +83,7 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbActividadesA);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 35, 350, 240));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 35, 350, 245));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,12 +103,12 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tbArmamento);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 315, 295, 230));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 315, 300, 230));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Equipo de Seguridad");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 295, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 295, -1, -1));
 
         tbEquipoE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,7 +123,7 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(tbEquipoE);
 
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 315, 295, 230));
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 315, 300, 230));
 
         tbEquipoS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,7 +138,7 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tbEquipoS);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 315, 295, 230));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 315, 300, 230));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,7 +149,7 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +208,7 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ImgMAP;
+    public javax.swing.JLabel ImgMAP;
     public javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -219,9 +219,9 @@ public class Patrullajes_VistaDetallada extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable tbActividadesA;
-    private javax.swing.JTable tbArmamento;
-    private javax.swing.JTable tbEquipoE;
-    private javax.swing.JTable tbEquipoS;
+    public javax.swing.JTable tbActividadesA;
+    public javax.swing.JTable tbArmamento;
+    public javax.swing.JTable tbEquipoE;
+    public javax.swing.JTable tbEquipoS;
     // End of variables declaration//GEN-END:variables
 }

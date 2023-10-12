@@ -173,7 +173,7 @@ public class Patrullajes_Inicio extends javax.swing.JPanel {
         //Obtenemos el id de la fila seleccionada
         String MiId = tbDatosPatrullajes.getValueAt(filaSeleccionada, 0).toString();
         IdPatrullaje = Integer.parseInt(MiId);
-        System.out.println(IdPatrullaje);
+//        System.out.println(IdPatrullaje);
     }//GEN-LAST:event_tbDatosPatrullajesMouseClicked
 
     
